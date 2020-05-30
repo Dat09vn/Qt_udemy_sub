@@ -1,0 +1,879 @@
+1
+00:00:00,030 --> 00:00:02,250
+In this lecture, we're looking at the
+
+2
+00:00:02,250 --> 00:00:06,089
+BusyIndicator QT Quick Control element.
+
+3
+00:00:06,089 --> 00:00:08,220
+You use this element to show that
+
+4
+00:00:08,220 --> 00:00:11,070
+something is going on. Let's go to Qt
+
+5
+00:00:11,070 --> 00:00:13,740
+creator and play with that. Okay, here
+
+6
+00:00:13,740 --> 00:00:16,260
+we are in QT creator. We are going to
+
+7
+00:00:16,260 --> 00:00:17,550
+create a new project.
+
+8
+00:00:17,550 --> 00:00:21,300
+It's a Qt Quick Application. You have to
+
+9
+00:00:21,300 --> 00:00:23,490
+make sure to store it in a location
+
+10
+00:00:23,490 --> 00:00:26,939
+without spaces, so if you have spaces in
+
+11
+00:00:26,939 --> 00:00:28,369
+here, you're going to have problems
+
+12
+00:00:28,369 --> 00:00:31,199
+running your application on mobile
+
+13
+00:00:31,199 --> 00:00:33,570
+devices like Android. So be careful about
+
+14
+00:00:33,570 --> 00:00:36,090
+that. We are going to call it "BusyIndicatorDemo",
+
+15
+00:00:36,090 --> 00:00:38,969
+use this as the default
+
+16
+00:00:38,969 --> 00:00:44,120
+project location, choose our Qt version,
+
+17
+00:00:44,120 --> 00:00:49,489
+choose our toolkits, Android for x86 and
+
+18
+00:00:49,489 --> 00:00:53,460
+desktop. We don't want araeabi because
+
+19
+00:00:53,460 --> 00:00:56,219
+it is very slow to run on virtual
+
+20
+00:00:56,219 --> 00:00:58,710
+devices. You already know this and "finish".
+
+21
+00:00:58,710 --> 00:01:03,030
+We want to put in our import QT Quick
+
+22
+00:01:03,030 --> 00:01:06,990
+Control 2.4 and QTQuick.Layouts because
+
+23
+00:01:06,990 --> 00:01:09,119
+we're going to use this. We change the
+
+24
+00:01:09,119 --> 00:01:14,220
+title. We say "BusyIndicator Demo". And if
+
+25
+00:01:14,220 --> 00:01:16,890
+we go to the documentation, type in
+
+26
+00:01:16,890 --> 00:01:21,150
+BusyIndicator, you're going to see the
+
+27
+00:01:21,150 --> 00:01:24,840
+type here. What it does, it is used to
+
+28
+00:01:24,840 --> 00:01:27,210
+indicate activity while content is being
+
+29
+00:01:27,210 --> 00:01:30,210
+loaded or the UI is blocked waiting for
+
+30
+00:01:30,210 --> 00:01:32,070
+a resource to become available. You
+
+31
+00:01:32,070 --> 00:01:34,409
+basically use it when something is going
+
+32
+00:01:34,409 --> 00:01:37,560
+gone to let the user know. And this is how
+
+33
+00:01:37,560 --> 00:01:40,650
+you use it. What we're going to do is to
+
+34
+00:01:40,650 --> 00:01:46,320
+put in a ColumnLayout. Inside, we're
+
+35
+00:01:46,320 --> 00:01:48,420
+going to put in BusyIndicator element,
+
+36
+00:01:48,420 --> 00:01:53,040
+so we're going to say BusyIndicator. We
+
+37
+00:01:53,040 --> 00:01:56,310
+want to set a width property to the
+
+38
+00:01:56,310 --> 00:01:58,700
+layout,
+
+39
+00:01:58,850 --> 00:02:04,110
+and the height property. Set it up like
+
+40
+00:02:04,110 --> 00:02:07,259
+this. And below the BusyIndicator, we
+
+41
+00:02:07,259 --> 00:02:13,590
+want to put another ColumnLayout that
+
+42
+00:02:13,590 --> 00:02:15,840
+is going to contain two buttons, so we're
+
+43
+00:02:15,840 --> 00:02:19,290
+going to say "Button.. Id: button1"
+
+44
+00:02:19,290 --> 00:02:32,760
+"Button.. Id: button2". The first button is
+
+45
+00:02:32,760 --> 00:02:37,140
+going to say "running", meaning that
+
+46
+00:02:37,140 --> 00:02:40,290
+something is going on. And the second one
+
+47
+00:02:40,290 --> 00:02:45,450
+is going to say "not running". Let's run
+
+48
+00:02:45,450 --> 00:02:47,549
+the application and see how it works. We
+
+49
+00:02:47,549 --> 00:02:51,420
+are going to run it on desktop. Click the
+
+50
+00:02:51,420 --> 00:02:54,030
+green button and you see that we have
+
+51
+00:02:54,030 --> 00:02:57,209
+something pinning, meaning that something
+
+52
+00:02:57,209 --> 00:02:59,430
+is going on and we have our two buttons
+
+53
+00:02:59,430 --> 00:03:01,560
+down below here. But you see that it
+
+54
+00:03:01,560 --> 00:03:03,780
+doesn't look great. We need a way to push
+
+55
+00:03:03,780 --> 00:03:06,780
+the entire thing to the top, put this
+
+56
+00:03:06,780 --> 00:03:09,209
+BusyIndicator in the center and I make
+
+57
+00:03:09,209 --> 00:03:12,000
+the buttons fill the entire width. We're
+
+58
+00:03:12,000 --> 00:03:13,890
+going to start by the buttons because
+
+59
+00:03:13,890 --> 00:03:15,750
+it's easier to do. We're going to say 
+
+60
+00:03:15,750 --> 00:03:22,019
+Layout.fillWidth, "true". And the same thing to
+
+61
+00:03:22,019 --> 00:03:28,920
+the second button. And we should correct
+
+62
+00:03:28,920 --> 00:03:32,069
+this piece of text, and say it "Not Running"
+
+63
+00:03:32,069 --> 00:03:35,819
+here. Run again, see that effect of all
+
+64
+00:03:35,819 --> 00:03:38,459
+changes, mm-hmm, we are filling in the
+
+65
+00:03:38,459 --> 00:03:42,180
+entire width. Now we want to center this
+
+66
+00:03:42,180 --> 00:03:45,870
+thing. Okay, how do you do that? One way to
+
+67
+00:03:45,870 --> 00:03:48,359
+do that is to use alignments, so we're
+
+68
+00:03:48,359 --> 00:03:52,950
+going to say Layout.alignment and say
+
+69
+00:03:52,950 --> 00:03:57,739
+Qt.AlignHCenter.
+
+70
+00:03:57,739 --> 00:04:01,709
+If we run, it's going to be in the
+
+71
+00:04:01,709 --> 00:04:04,019
+center. The last thing we need to do is
+
+72
+00:04:04,019 --> 00:04:06,209
+to find a way to push this to the top.
+
+73
+00:04:06,209 --> 00:04:09,180
+And one way I can think of right now is
+
+74
+00:04:09,180 --> 00:04:11,700
+to use an item to the bottom
+
+75
+00:04:11,700 --> 00:04:14,700
+of this ColumnLayout, and make it fill
+
+76
+00:04:14,700 --> 00:04:18,329
+the remaining space in the window. Let me
+
+77
+00:04:18,329 --> 00:04:20,070
+show you what I mean. I'm going to go
+
+78
+00:04:20,070 --> 00:04:22,860
+down below this ColumnLayout, the second
+
+79
+00:04:22,860 --> 00:04:26,220
+one that contains the buttons. I am going
+
+80
+00:04:26,220 --> 00:04:30,090
+to put in an item element and I'm going
+
+81
+00:04:30,090 --> 00:04:34,490
+to make it fill the width and the height.
+
+82
+00:04:41,000 --> 00:04:45,540
+This is like a spacer item in the C++
+
+83
+00:04:45,540 --> 00:04:49,110
+side of Qt if you have worked with
+
+84
+00:04:49,110 --> 00:04:53,100
+spacer items. If we run, we're going to
+
+85
+00:04:53,100 --> 00:04:56,460
+have our two things, push to the top just
+
+86
+00:04:56,460 --> 00:04:59,790
+like this. And all this space here is
+
+87
+00:04:59,790 --> 00:05:02,550
+being filled by the item that we put in
+
+88
+00:05:02,550 --> 00:05:05,460
+here. To make it visible, we can put in a
+
+89
+00:05:05,460 --> 00:05:10,110
+rectangle inside. This is of no practical
+
+90
+00:05:10,110 --> 00:05:12,479
+use, I just want you to see this space
+
+91
+00:05:12,479 --> 00:05:17,600
+here. We want to make it fill the parent.
+
+92
+00:05:17,600 --> 00:05:21,930
+It fills the item and we give it a color
+
+93
+00:05:21,930 --> 00:05:26,520
+of red, for example. Choose a color you
+
+94
+00:05:26,520 --> 00:05:29,490
+like. If you run the application, we're
+
+95
+00:05:29,490 --> 00:05:32,039
+going to see a red rectangle down in
+
+96
+00:05:32,039 --> 00:05:34,620
+this space. Now that you have seen it, I'm
+
+97
+00:05:34,620 --> 00:05:36,210
+going to take it out because it is
+
+98
+00:05:36,210 --> 00:05:38,880
+useless. I'm going to comment it out, and
+
+99
+00:05:38,880 --> 00:05:41,729
+this is one way to push things to the
+
+100
+00:05:41,729 --> 00:05:45,060
+top by specifying an item that is going
+
+101
+00:05:45,060 --> 00:05:48,060
+to fill the remaining space. I just
+
+102
+00:05:48,060 --> 00:05:50,490
+wanted you to see this technique because
+
+103
+00:05:50,490 --> 00:05:53,729
+you might use it in other places. But you
+
+104
+00:05:53,729 --> 00:05:57,270
+can completely leave all this out, okay,
+
+105
+00:05:57,270 --> 00:06:02,070
+and not specify the height property of
+
+106
+00:06:02,070 --> 00:06:05,370
+this ColumnLayout here, and things are
+
+107
+00:06:05,370 --> 00:06:07,580
+going to be laid out to the top as well.
+
+108
+00:06:07,580 --> 00:06:10,139
+Let's run the application so that you
+
+109
+00:06:10,139 --> 00:06:13,169
+can see this. Okay, this is the same
+
+110
+00:06:13,169 --> 00:06:16,410
+effect. These are two ways you have to
+
+111
+00:06:16,410 --> 00:06:19,050
+make your user interface look like this.
+
+112
+00:06:19,050 --> 00:06:21,510
+Now we want to focus on our BusyIndicator.
+
+113
+00:06:21,510 --> 00:06:24,380
+One thing you might want to do
+
+114
+00:06:24,380 --> 00:06:27,110
+is to get the ability to start and stop it.
+
+115
+00:06:27,110 --> 00:06:28,760
+How do you do that?
+
+116
+00:06:28,760 --> 00:06:32,060
+Let's use our buttons here, handle 
+
+117
+00:06:32,060 --> 00:06:39,110
+the onClicked event, give an ID to our BusyIndicator,
+
+118
+00:06:39,110 --> 00:06:49,250
+and when you want to make it
+
+119
+00:06:49,250 --> 00:06:52,930
+run, you just set its property of running.
+
+120
+00:06:52,930 --> 00:06:57,020
+Let's look at its documentation and you
+
+121
+00:06:57,020 --> 00:06:59,990
+see that it has a property "running". This
+
+122
+00:06:59,990 --> 00:07:01,760
+property holds whether the BusyIndicator
+
+123
+00:07:01,760 --> 00:07:03,830
+is currently indicating
+
+124
+00:07:03,830 --> 00:07:06,440
+activity. If it is true, there is some
+
+125
+00:07:06,440 --> 00:07:08,900
+activity. If it is false, there is no
+
+126
+00:07:08,900 --> 00:07:12,020
+activity. So what we want to do is to say
+
+127
+00:07:12,020 --> 00:07:18,490
+here BusyIndicatorId.running equals
+
+128
+00:07:18,490 --> 00:07:23,780
+"true" because we want it to run. And when
+
+129
+00:07:23,780 --> 00:07:27,110
+you click on "Not Running", you want to
+
+130
+00:07:27,110 --> 00:07:31,490
+make it not run and what we're going to
+
+131
+00:07:31,490 --> 00:07:37,120
+do is set its running property to false.
+
+132
+00:07:37,120 --> 00:07:41,270
+We wanted to start not running so we're
+
+133
+00:07:41,270 --> 00:07:43,640
+going to set the running property to
+
+134
+00:07:43,640 --> 00:07:48,820
+false. When we declare it right here and
+
+135
+00:07:48,820 --> 00:07:52,220
+run the application. So what we should
+
+136
+00:07:52,220 --> 00:07:55,250
+have is the BusyIndicator not running
+
+137
+00:07:55,250 --> 00:07:58,780
+and not visible here. And if we run it, it
+
+138
+00:07:58,780 --> 00:08:03,650
+becomes visible. When we stop it, you
+
+139
+00:08:03,650 --> 00:08:06,950
+don't see it here. Okay, run it, you see it
+
+140
+00:08:06,950 --> 00:08:09,920
+running. Stop it, and you don't see it
+
+141
+00:08:09,920 --> 00:08:13,820
+here. A natural thing to want here is to
+
+142
+00:08:13,820 --> 00:08:17,570
+make it not occupy space while it is not
+
+143
+00:08:17,570 --> 00:08:19,940
+visible. How do you do that? It actually
+
+144
+00:08:19,940 --> 00:08:23,540
+is very easy to do. You can come back to
+
+145
+00:08:23,540 --> 00:08:26,780
+the code and make it invisible when it
+
+146
+00:08:26,780 --> 00:08:29,570
+is not running. And you can say "visible,
+
+147
+00:08:29,570 --> 00:08:34,669
+false" Do the same thing here. When you
+
+148
+00:08:34,669 --> 00:08:38,620
+run it, you also make it visible,
+
+149
+00:08:38,849 --> 00:08:47,500
+say "visible" and said visible to false
+
+150
+00:08:47,500 --> 00:08:55,330
+here. Let's run again, it is not visible.
+
+151
+00:08:55,330 --> 00:08:58,450
+When you run it, it becomes visible, and
+
+152
+00:08:58,450 --> 00:09:01,570
+the entire UI moves down a little bit to
+
+153
+00:09:01,570 --> 00:09:05,500
+give it some space. When you stop it,
+
+154
+00:09:05,500 --> 00:09:08,040
+mm-hmm
+
+155
+00:09:08,040 --> 00:09:12,280
+running, not running, it becomes invisible.
+
+156
+00:09:12,280 --> 00:09:20,320
+But it doesn't go up to fill the space.
+ 
+0:09:15.580,0:09:26.770
+What is going on? This is "true", it's not
+
+157
+00:09:20,320 --> 00:09:26,770
+"false", my bad. Run again. We run it, it
+
+158
+00:09:26,770 --> 00:09:31,480
+becomes visible. We stop it, it becomes
+
+159
+00:09:31,480 --> 00:09:34,270
+invisible. And this is really all there
+
+160
+00:09:34,270 --> 00:09:37,420
+is to using a BusyIndicator, you show it
+
+161
+00:09:37,420 --> 00:09:39,130
+when you want to show it. And you show it
+
+162
+00:09:39,130 --> 00:09:42,550
+like this by making it visible and
+
+163
+00:09:42,550 --> 00:09:45,520
+setting its running property to "true". You
+
+164
+00:09:45,520 --> 00:09:47,980
+hide it by setting these properties to
+
+165
+00:09:47,980 --> 00:09:50,620
+"false". Okay, you have seen the BusyIndicator
+
+166
+00:09:50,620 --> 00:09:54,310
+in the default style. How does
+
+167
+00:09:54,310 --> 00:09:56,890
+it look in different styles because we
+
+168
+00:09:56,890 --> 00:09:59,260
+want to see that till? So you already
+
+169
+00:09:59,260 --> 00:10:01,180
+know how to work with different styles.
+
+170
+00:10:01,180 --> 00:10:05,530
+We have two other QT Quick Controls 2
+
+171
+00:10:05,530 --> 00:10:14,590
+include here. And we have to go to the
+
+172
+00:10:14,590 --> 00:10:18,670
+main file, the cpp one, include QQuickStyle,
+
+173
+00:10:18,670 --> 00:10:27,010
+and down here say QQuickStyle, 
+
+174
+00:10:27,010 --> 00:10:29,460
+setStyle,
+
+175
+00:10:32,810 --> 00:10:38,940
+and set "Material" because we want to see
+
+176
+00:10:38,940 --> 00:10:42,570
+how this looks on Android. You changed
+
+177
+00:10:42,570 --> 00:10:44,700
+something in the project file, so you
+
+178
+00:10:44,700 --> 00:10:52,500
+should run QMake. Qt Quick Controls 2
+
+179
+00:10:52,500 --> 00:10:57,530
+is not recognized here, so I messed up.
+
+180
+00:10:57,530 --> 00:11:00,300
+Let's go to the first project, and change
+
+181
+00:11:00,300 --> 00:11:04,410
+a bit. Okay, it is quickcontrols2. It is
+
+182
+00:11:04,410 --> 00:11:13,940
+not qtquickcontrols 2. My bad. Run again.
+
+183
+00:11:13,940 --> 00:11:17,940
+Okay, this is how it should look in
+
+184
+00:11:17,940 --> 00:11:22,740
+material style. If you run it, it looks
+
+185
+00:11:22,740 --> 00:11:25,980
+like this. And you stop it just like we
+
+186
+00:11:25,980 --> 00:11:28,710
+did before. You can try all these
+
+187
+00:11:28,710 --> 00:11:31,200
+different styles if you want. For example,
+
+188
+00:11:31,200 --> 00:11:36,180
+we can use the "Fusion" style. Run again,
+
+189
+00:11:36,180 --> 00:11:40,800
+and this is how it works in fusion. Stop
+
+190
+00:11:40,800 --> 00:11:43,590
+it. The last thing I want to do is to run
+
+191
+00:11:43,590 --> 00:11:45,660
+this on an Android device and see how it
+
+192
+00:11:45,660 --> 00:11:48,300
+looks. You should build up this habit of
+
+193
+00:11:48,300 --> 00:11:51,510
+running your application on multiple
+
+194
+00:11:51,510 --> 00:11:53,520
+platforms if you can because that's
+
+195
+00:11:53,520 --> 00:11:56,730
+really what Qt is all about. So I am
+
+196
+00:11:56,730 --> 00:12:00,060
+going to put "Material" back because
+
+197
+00:12:00,060 --> 00:12:03,870
+that's the home style for Android
+
+198
+00:12:03,870 --> 00:12:07,470
+devices. I am going to go down here,
+
+199
+00:12:07,470 --> 00:12:18,530
+choose my Android kit, clean the project,
+
+200
+00:12:20,600 --> 00:12:23,960
+Run QMake,
+
+201
+00:12:26,339 --> 00:12:30,139
+and ribald the project. Just to make sure
+
+202
+00:12:30,139 --> 00:12:34,829
+that we start on a clean slate. And if
+
+203
+00:12:34,829 --> 00:12:36,749
+you want to try this on an Android
+
+204
+00:12:36,749 --> 00:12:39,480
+device, you should have your virtual
+
+205
+00:12:39,480 --> 00:12:43,519
+device start in running. I have mine here.
+
+206
+00:12:43,519 --> 00:12:48,839
+if the work is successful, I am going to
+
+207
+00:12:48,839 --> 00:12:52,129
+hit the button to run the application.
+
+208
+00:12:52,129 --> 00:12:53,309
+Okay,
+
+209
+00:12:53,309 --> 00:12:57,089
+the work is successful, I can run the
+
+210
+00:12:57,089 --> 00:13:03,410
+application, choose my device here, hit OK,
+
+211
+00:13:04,370 --> 00:13:10,199
+bring the device up again and we should
+
+212
+00:13:10,199 --> 00:13:13,709
+have our UI running on our Android
+
+213
+00:13:13,709 --> 00:13:18,240
+device in a minute. Okay, here is our
+
+214
+00:13:18,240 --> 00:13:22,370
+application. Click on "running" you see the
+
+215
+00:13:22,370 --> 00:13:26,730
+BusyIndicator here, click on "not running"
+
+216
+00:13:26,730 --> 00:13:31,170
+and it stops. These covers all I have to
+
+217
+00:13:31,170 --> 00:13:33,179
+say in this lecture. In the next one,
+
+218
+00:13:33,179 --> 00:13:35,490
+we're going to look at the check box QT
+
+219
+00:13:35,490 --> 00:00:00,000
+quick control element. I'll see you there. 
+

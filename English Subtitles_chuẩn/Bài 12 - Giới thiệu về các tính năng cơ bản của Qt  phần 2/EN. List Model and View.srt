@@ -1,0 +1,340 @@
+1
+00:00:00,319 --> 00:00:04,589
+List Model and View. In this video,
+
+2
+00:00:04,589 --> 00:00:07,560
+you will learn how to create a simple ListModel
+
+3
+00:00:07,560 --> 00:00:11,010
+with QstringListModel, then
+
+4
+00:00:11,010 --> 00:00:13,469
+we will access data from this model in
+
+5
+00:00:13,469 --> 00:00:16,980
+QListView. Lastly, as we mentioned
+
+6
+00:00:16,980 --> 00:00:19,350
+before, the Model-View architecture
+
+7
+00:00:19,350 --> 00:00:21,539
+operates the data model and the
+
+8
+00:00:21,539 --> 00:00:24,539
+presentation. We will validate this
+
+9
+00:00:24,539 --> 00:00:27,390
+principle by showing you how easy it is
+
+10
+00:00:27,390 --> 00:00:30,660
+to show that from QSqlTableModel in
+
+11
+00:00:30,660 --> 00:00:34,890
+QListView. If you are ready,
+
+12
+00:00:34,890 --> 00:00:36,120
+let's get started!
+
+13
+00:00:36,120 --> 00:00:39,149
+Launch Qt creator and open the project
+
+14
+00:00:39,149 --> 00:00:44,489
+from TableModelView, drag a
+
+15
+00:00:44,489 --> 00:00:50,820
+ListView widget and drop it into the
+
+16
+00:00:50,820 --> 00:00:53,219
+central widget, side-by-side with
+
+17
+00:00:53,219 --> 00:00:57,379
+previously added TableView widget. Now
+
+18
+00:00:58,370 --> 00:01:04,438
+let's go to mainwindow.h and let's
+
+19
+00:01:04,438 --> 00:01:06,840
+declare yet another private member
+
+20
+00:01:06,840 --> 00:01:09,409
+function to initialize a QStringModel.
+
+21
+00:01:09,409 --> 00:01:12,810
+Here, instead of returning a QstringListModel
+
+22
+00:01:12,810 --> 00:01:15,330
+pointer, we choose to return
+
+23
+00:01:15,330 --> 00:01:17,939
+the base class point. It's a common way
+
+24
+00:01:17,939 --> 00:01:22,049
+when dealing with polymorphism. Let's
+
+25
+00:01:22,049 --> 00:01:24,000
+take a closer look at this function
+
+26
+00:01:24,000 --> 00:01:30,689
+definition in the CPP file. We first
+
+27
+00:01:30,689 --> 00:01:33,060
+create a QStringList which is
+
+28
+00:01:33,060 --> 00:01:36,420
+basically a list of strings using C++ 11
+
+29
+00:01:36,420 --> 00:01:39,869
+initializer list. Then we construct our
+
+30
+00:01:39,869 --> 00:01:44,299
+QStringListModel with this list. 
+
+31
+00:01:45,950 --> 00:01:48,869
+To show you how data accessing in this
+
+32
+00:01:48,869 --> 00:01:49,799
+model works,
+
+33
+00:01:49,799 --> 00:01:53,579
+I call setData method which modifies
+
+34
+00:01:53,579 --> 00:02:00,329
+data in this model with model index. We
+
+35
+00:02:00,329 --> 00:02:01,040
+can get
+
+36
+00:02:01,040 --> 00:02:03,710
+the model index by calling method index
+
+37
+00:02:03,710 --> 00:02:06,460
+and gives the row and column number.
+
+38
+00:02:06,460 --> 00:02:09,619
+Because this is a ListModel the second
+
+39
+00:02:09,619 --> 00:02:12,260
+argument which is the column number can be
+
+40
+00:02:12,260 --> 00:02:15,560
+ignored. So this statement changes the
+
+41
+00:02:15,560 --> 00:02:22,450
+third row of model from Thyme to Cinnamon. 
+
+42
+00:02:22,450 --> 00:02:27,710
+Let's go to the constructor and the let
+
+43
+00:02:27,710 --> 00:02:31,190
+ListView use the StringModel. If you
+
+44
+00:02:31,190 --> 00:02:42,800
+build and run this application, you'll
+
+45
+00:02:42,800 --> 00:02:44,750
+see that the ListModel is shown in
+
+46
+00:02:44,750 --> 00:02:47,690
+the ListView widget, with its third
+
+47
+00:02:47,690 --> 00:02:52,280
+item changes to Cinnamon. Now remember we
+
+48
+00:02:52,280 --> 00:02:55,010
+said we are going to use the QSqlTableModel
+
+49
+00:02:55,010 --> 00:02:57,800
+with the ListView. How to
+
+50
+00:02:57,800 --> 00:03:00,560
+do that? You might wonder. It's just a
+
+51
+00:03:00,560 --> 00:03:03,680
+one-line string calling setModel from
+
+52
+00:03:03,680 --> 00:03:07,459
+ListView with the argument QSqlTableModel
+
+53
+00:03:07,459 --> 00:03:09,860
+pointer instead of initSttringModel. 
+
+54
+00:03:09,860 --> 00:03:16,959
+And if you now run the application,
+
+55
+00:03:21,530 --> 00:03:23,970
+Yes, see the ListView shows the first
+
+56
+00:03:23,970 --> 00:03:27,450
+column of the table, the reason behind
+
+57
+00:03:27,450 --> 00:03:30,360
+this is that a StringModel is a special
+
+58
+00:03:30,360 --> 00:03:32,760
+case of the table which has only one
+
+59
+00:03:32,760 --> 00:03:36,000
+column, and because the view uses the
+
+60
+00:03:36,000 --> 00:03:39,030
+model index to access data. It doesn't
+
+61
+00:03:39,030 --> 00:03:40,860
+really care about the underlying data
+
+62
+00:03:40,860 --> 00:03:43,920
+structure or the data model type as long
+
+63
+00:03:43,920 --> 00:03:46,020
+as it can get data via standard
+
+64
+00:03:46,020 --> 00:03:49,080
+interfaces. The different representation
+
+65
+00:03:49,080 --> 00:03:52,380
+only exists inside the View. And how
+
+66
+00:03:52,380 --> 00:03:55,110
+about editing? Try to change one element
+
+67
+00:03:55,110 --> 00:04:05,220
+in the list, and you'll see the change
+
+68
+00:04:05,220 --> 00:04:07,860
+immediately reflects on the table view as
+
+69
+00:04:07,860 --> 00:04:11,900
+well, and vice versa.
+
+70
+00:04:15,230 --> 00:04:17,940
+So when you double-click the view, the
+
+71
+00:04:17,940 --> 00:04:20,220
+default delegate which is the QStyleItemDelegate 
+
+72
+00:04:20,220 --> 00:04:22,710
+handles the input and
+
+73
+00:04:22,710 --> 00:04:25,050
+changes the data in the data model.
+
+74
+00:04:25,050 --> 00:04:27,570
+Because both views access the same data
+
+75
+00:04:27,570 --> 00:04:31,320
+model, the relevant signals emitted and
+
+76
+00:04:31,320 --> 00:04:33,870
+the slot invoked, which in turn
+
+77
+00:04:33,870 --> 00:04:36,510
+triggers a Pear event that changes the
+
+78
+00:04:36,510 --> 00:04:41,070
+values in the View. In this section we've
+
+79
+00:04:41,070 --> 00:04:43,170
+learned what the Model-View architecture
+
+80
+00:04:43,170 --> 00:04:45,810
+is in Qt, and how to use Table Model
+
+81
+00:04:45,810 --> 00:04:48,060
+and the View, how to use the List Model
+
+82
+00:04:48,060 --> 00:04:51,960
+and the View. In the next section you'll
+
+83
+00:04:51,960 --> 00:04:54,000
+start the journey of learning Qt quick
+
+84
+00:04:54,000 --> 00:04:57,000
+with introduction to Qt quick and the
+
+85
+00:04:57,000 --> 00:00:00,000
+QML.
+

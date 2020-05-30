@@ -1,0 +1,163 @@
+WEBVTT
+
+00:00.540 --> 00:07.890
+Welcome to learning Qt5: command-line. In this video we're going to take a look at how to create a
+
+00:07.890 --> 00:12.560
+project with Qt creator and write our first project.
+
+00:12.680 --> 00:14.520
+Hello Qt World!
+
+00:14.520 --> 00:22.110
+And then I'm going to show you how to debug in Qt creator. Lets open Qt Creator and create
+
+00:22.170 --> 00:32.430
+our first project. Click new project, select the Qt console application. A console application means
+
+00:32.510 --> 00:36.910
+non GUI which basically means command-line only.
+
+00:36.960 --> 00:42.770
+Now let's give it a name 
+ 
+00:42.820 --> 00:50.320
+HelloWorld.Here you also choose where you want to put the project and then select the Qt kit.
+
+00:53.180 --> 00:57.170
+Lastly you will be able to choose a version control tool.
+
+00:57.180 --> 00:58.220
+So just git.
+
+01:02.110 --> 01:08.230
+normally you'd prefer a version control tool to manage large scale projects or simply just the one
+
+01:08.230 --> 01:11.670
+to keep tracking your history and commit log.
+
+01:13.920 --> 01:17.900
+Let's take a look at Qt creator, at the top left.
+
+01:17.910 --> 01:23.360
+There's a project view of all the files that belong to this project.
+
+01:23.610 --> 01:30.870
+The bottom left is currently open files and on the right is the editor.
+
+01:30.890 --> 01:33.980
+Now let's write our first application.
+
+01:34.160 --> 01:34.890
+Hello Qt
+
+01:34.900 --> 01:35.690
+World.
+
+01:36.280 --> 01:44.750
+By default you will be able to use qDebug which behaves very similar to the C programming
+
+01:45.030 --> 01:53.120
+Printf function.
+
+01:53.270 --> 02:01.140
+If you're not very used to it the first overloaded function is to simply print a string, now lets build.
+
+02:04.530 --> 02:06.780
+once it's finished let's click run.
+
+02:09.550 --> 02:14.090
+as you see Hello Qt World is printed in the application output.
+
+02:14.170 --> 02:19.070
+As I said this is basically printf-like function.
+
+02:19.420 --> 02:25.300
+So we can print out a number as the second argument.
+
+02:25.450 --> 02:31.030
+Let's try it out. Build and then run it
+
+02:31.040 --> 02:32.090
+once it's finished.
+
+02:40.260 --> 02:44.930
+as you can see now it's printed 'Hello Qt  Word My 1 application'.
+
+02:53.220 --> 03:02.160
+If you include QtDebug header you will be able to use it as an output stream instead of a C like function
+
+03:02.840 --> 03:06.330
+simply call to qDebug, parentheses.
+
+03:06.570 --> 03:12.630
+This will give you an output stream just it use it like a standard cout.
+
+03:18.550 --> 03:31.370
+now build and run it again. the same output is printed using this new syntax. You have also used standard C++ standard template
+
+03:31.790 --> 03:43.560
+library, such as std::cout.
+
+03:43.730 --> 03:45.410
+You don't have to click build
+
+03:45.440 --> 03:53.020
+and then click run. If you just click run button, Qt creator will build and then run the latest
+
+03:53.080 --> 03:53.830
+code for you. 
+
+03:58.670 --> 04:09.910
+Now let's try a variable. Let's type int num equals to 1.
+
+04:09.920 --> 04:12.280
+Now this should give us "Hello Qt World
+
+04:12.470 --> 04:14.960
+My 1 application" as we expected.
+
+04:20.610 --> 04:25.050
+so far the application runs as we expected.
+
+04:25.450 --> 04:30.890
+But if you don't get the expected results don't worry we can debug this very easily
+
+04:30.900 --> 04:38.970
+in Qt creator. Just click the debug button on the left, switch to debug mode.
+
+04:39.130 --> 04:41.910
+Here you can put a break point very easily.
+
+04:46.420 --> 04:48.790
+Right clicking on the side.
+
+04:48.940 --> 04:54.940
+Now I put a break point in line seven.
+
+04:55.130 --> 04:56.150
+Let's run debugger.
+
+05:02.540 --> 05:03.920
+On the top right,
+
+05:03.920 --> 05:07.600
+we can track all our variables.
+
+05:07.720 --> 05:11.580
+Now the application stops at line 7.
+
+05:11.770 --> 05:16.110
+As you can see the num is not yet initialized.
+
+05:18.580 --> 05:28.400
+Now if we click step over button, you can see the variable now has been initialized to 1.
+
+05:28.550 --> 05:36.290
+For more information I suggest you to click help button to read Qt creator manual about debugging.
+
+05:45.620 --> 05:46.860
+in the next video.
+
+05:47.020 --> 05:49.910
+We are going to go through fundamentals of Qt.

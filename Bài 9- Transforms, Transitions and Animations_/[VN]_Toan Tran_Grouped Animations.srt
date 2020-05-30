@@ -1,0 +1,560 @@
+1
+00:00:00,000 --> 00:00:01,680
+Trong bài giảng này, chúng ta sẽ xem
+
+2
+00:00:01,680 --> 00:00:03,680
+làm thế nào các bạn có thể nhóm các hiệu ứng hoạt hình của các bạn với
+
+3
+00:00:03,680 --> 00:00:06,420
+ParallelAnimation (Hoạt hình song song) hoặc SequentialAnimation (Hoạt hình tuần tự).
+
+4
+00:00:06,420 --> 00:00:08,730
+Chúng ta sẽ mở Qt Creator và thử với nó.
+
+5
+00:00:08,730 --> 00:00:11,250
+Chúng ta đang ở Qt Creator.
+
+6
+00:00:11,250 --> 00:00:13,170
+Chúng ta sẽ tạo dự án của chúng ta
+
+7
+00:00:13,170 --> 00:00:15,830
+Nó là 1 Qt Quick Application (tạo nhanh ứng dụng Qt),
+
+8
+00:00:15,830 --> 00:00:19,350
+Chúng ta sẽ gọi nó là 'GroupedAnimationsDemo'.
+
+9
+00:00:19,350 --> 00:00:22,650
+Lưu nó ở vị trí thông thường,
+
+10
+00:00:22,650 --> 00:00:28,800
+chọn Qt version (phiên bản Qt), chọn kit (bộ hỗ trợ), và hoàn thành.
+
+11
+00:00:28,800 --> 00:00:30,630
+Các bạn sẽ muốn thay đổi tiêu đề ở đây thành 'Grouped Animations Demo'.
+
+12
+00:00:30,630 --> 00:00:39,649
+Chúng ta muốn để cho nó một ID và
+
+13
+00:00:39,649 --> 00:00:44,149
+xác định 1 'property' (thuộc tính) cho 'animationDuration' (thời lượng hoạt hình).
+
+14
+00:00:44,149 --> 00:00:48,270
+Nó sẽ là 500. Bên trong chúng ta
+
+15
+00:00:48,270 --> 00:00:51,480
+muốn có một 'Rectangle' (hình chữ nhật). Hãy tạo một số khoảng trống ở đây.
+
+16
+00:00:51,480 --> 00:00:56,550
+Chúng tôi muốn 'fill' (lấp đầy) 'parent' (cha mẹ)
+
+17
+00:00:56,550 --> 00:01:01,649
+và chúng ta muốn màu 'color' là màu xám 'gray'.
+
+18
+00:01:01,649 --> 00:01:05,400
+Bên trong chúng ta có thêm 1 'Rectangle' nữa. ID là
+
+19
+00:01:05,400 --> 00:01:08,640
+'circleId' bởi vì chúng ta muốn
+
+20
+00:01:08,640 --> 00:01:14,100
+nó hình tròn, 'width' (chiều rộng) sẽ là
+
+21
+00:01:14,100 --> 00:01:18,659
+100, 'height' (chiều cao) sẽ là 100. Và
+
+22
+00:01:18,659 --> 00:01:21,330
+'radius' (bán kính) của nó, chúng ta muốn nó đủ lớn
+
+23
+00:01:21,330 --> 00:01:23,430
+để làm cho nó thành một vòng tròn, vì vậy, tôi sẽ dùng
+
+24
+00:01:23,430 --> 00:01:26,420
+70 ở đây. Và 'color' của nó sẽ là
+
+25
+00:01:26,420 --> 00:01:30,930
+'yellowgreen' (vàng xanh). Tại sao không? Bây giờ chúng ta muốn
+
+26
+00:01:30,930 --> 00:01:33,240
+hoạt hoá nó. Những gì chúng ta muốn hoạt hoá là
+
+27
+00:01:33,240 --> 00:01:37,079
+vị trí X và Y của nó và chúng ta
+
+28
+00:01:37,079 --> 00:01:40,890
+muốn gói những hoạt hình này trong
+
+29
+00:01:40,890 --> 00:01:43,710
+hoặc là 1 nhóm hoạt hình song song (ParallelAnimation)
+
+30
+00:01:43,710 --> 00:01:46,649
+ nhóm hoạt hình tuần tự và song song. Những nhóm hoạt này chính xác 
+
+31
+00:01:46,649 --> 00:01:47,610
+như tên gọi của chúng.
+
+32
+00:01:47,610 --> 00:01:49,770
+Nhóm hoạt hình song song (ParallelAnimation) làm cho
+
+33
+00:01:49,770 --> 00:01:52,110
+các hoạt hình của các bạn diễn ra đồng thời
+
+34
+00:01:52,110 --> 00:01:55,649
+song song nhau và nhóm hoạt hình tuần tự (SequentialAnimation) khiến
+
+35
+00:01:55,649 --> 00:01:58,500
+chúng chạy cái này tiếp sau cái kia. Chúng ta sẽ
+
+36
+00:01:58,500 --> 00:02:04,500
+bắt đầu bằng SequentialAnimation. Chúng ta
+
+37
+00:02:04,500 --> 00:02:07,110
+ sẽ muốn cho nó một ID. Như thế này. Và
+
+38
+00:02:07,110 --> 00:02:09,479
+nó sẽ có 2
+
+39
+00:02:09,479 --> 00:02:12,110
+NumberAnimation.
+
+40
+00:02:14,090 --> 00:02:17,159
+Các bạn sẽ muốn làm điều đó như thế này. Chúng ta muốn
+
+41
+00:02:17,159 --> 00:02:22,920
+làm cho nó độc lập với cái đầu tiên.
+
+42
+00:02:22,920 --> 00:02:28,349
+'target' (mục tiêu) sẽ là 'circleId',
+
+43
+00:02:28,349 --> 00:02:34,889
+'property' (thuộc tính) sẽ là "X". Nó sẽ
+
+44
+00:02:34,889 --> 00:02:43,049
+hoạt hoá 'to' (đến) 'rootId.width - width'. (chiều rộng đối tượng rootId trừ chiều rộng) Nó
+
+45
+00:02:43,049 --> 00:02:48,120
+sẽ bắt đầu 'from' (từ) 0 và
+
+46
+00:02:48,120 --> 00:02:50,250
+'duration' (thời lượng) sẽ là 'animationDuration' (thời lượng hoạt hình), 
+
+47
+00:02:50,250 --> 00:02:53,220
+mà rằng chúng ta chỉ định vào đầu
+
+48
+00:02:53,220 --> 00:02:55,739
+của bài giảng này. Những thuộc tính này
+
+49
+00:02:55,739 --> 00:02:58,590
+thực sự sẽ tương tự cho những
+
+50
+00:02:58,590 --> 00:03:00,719
+các hoạt hình khác. Vì vậy, chúng ta sẽ đến sao chép nó
+
+51
+00:03:00,719 --> 00:03:03,689
+và đặt nó ở đây và chúng ta nên
+
+52
+00:03:03,689 --> 00:03:07,849
+ghi chú ở đây rằng chúng ta muốn  hoạt hoá X - Animate X.
+
+53
+00:03:07,849 --> 00:03:10,950
+Điều này giúp cho việc đọc hiểu đoạn mã nếu chúng ta
+
+54
+00:03:10,950 --> 00:03:12,599
+muốn quay lại và đọc lại đoạn mã này
+
+55
+00:03:12,599 --> 00:03:20,400
+sau đó. Chúng ta muốn hoạt hoá đối tượng 'circleId',
+
+56
+00:03:20,400 --> 00:03:28,139
+'property' sẽ là "Y". Chúng ta sẽ
+
+57
+00:03:28,139 --> 00:03:37,169
+hoạt hoá 'to' (đến) 'rootId.height - height' (chiều cao của đối tượng rootId trừ đi chiều cao) và nó
+
+58
+00:03:37,169 --> 00:03:42,030
+bắt đầu tại 0. Đây là những gì chúng ta muốn và khi
+
+59
+00:03:42,030 --> 00:03:44,340
+chúng ta nhần vào đối tượng bố mẹ ở đây,
+
+60
+00:03:44,340 --> 00:03:47,129
+chúng ta muốn chạy hoạt hình. Vì vậy, chúng ta
+
+61
+00:03:47,129 --> 00:03:52,650
+nên có 1 MouseArea (khu vực chuột) ở trong, nó
+
+62
+00:03:52,650 --> 00:03:54,850
+sẽ 'fill' (lấp đầy) 'parent' (cha mẹ)
+
+63
+00:03:54,850 --> 00:04:00,460
+và khi nó được nhấn, chúng ta muốn reset (đặt lại)
+
+64
+00:04:00,460 --> 00:04:12,900
+các giá trị và hoạt hình. Vì vậy chúng ta nói 'circleId'.
+
+65
+00:04:12,900 --> 00:04:15,970
+Bởi vì cả X và Y có thể bị thay đổi
+
+66
+00:04:15,970 --> 00:04:17,890
+trong quá trình hoạt hình, chúng ta muốn cài đặt lại
+
+67
+00:04:17,890 --> 00:04:22,680
+thành 0. Vì vậy, chúng ta nói 'circleId.x' bằng không,
+
+68
+00:04:22,680 --> 00:04:27,100
+'circleId.y' bằng không. Đây là cách chúng ta
+
+69
+00:04:27,100 --> 00:04:29,410
+thiết lập lại và chúng ta muốn bắt đầu cái này
+
+70
+00:04:29,410 --> 00:04:31,570
+SequentialAnimation ở đây. Tôi thực sự
+
+71
+00:04:31,570 --> 00:04:34,300
+nghĩ rằng ID này là không thích hợp, vì vậy tôi
+
+72
+00:04:34,300 --> 00:04:37,810
+sẽ thay đổi nó thành 'groupedAnimId'
+
+73
+00:04:37,810 --> 00:04:45,040
+và cách bạn bắt đầu hoạt hình là
+
+74
+00:04:45,040 --> 00:04:49,420
+1 điều bình thường. Các bạn nói
+
+75
+00:04:49,420 --> 00:04:53,350
+'groupedAnimId.start()' và chúng ta cần phải
+
+76
+00:04:53,350 --> 00:04:55,960
+khởi chạy hoạt hình của chúng ta. Lưu ý rằng nó là 1
+
+77
+00:04:55,960 --> 00:04:58,090
+SequentialAnimation rằng chúng ta đã có ở đây,
+
+78
+00:04:58,090 --> 00:05:01,480
+và bên trong chúng ta hoạt hoá X và chúng ta
+
+79
+00:05:01,480 --> 00:05:03,280
+hoạt hoá Y. Vậy chuyện gì sẽ xảy ra?
+
+80
+00:05:03,280 --> 00:05:06,460
+Vòng tròn của chúng ta ở đây là sẽ di chuyển từ
+
+81
+00:05:06,460 --> 00:05:08,770
+trái sang phải, và sau đó nó
+
+82
+00:05:08,770 --> 00:05:11,650
+di chuyển từ trên xuống dưới và đó là tất cả những gì
+
+83
+00:05:11,650 --> 00:05:13,630
+sẽ xảy ra trong thời gian 'duration' này ở đây.
+
+84
+00:05:13,630 --> 00:05:18,000
+Bây giờ, chúng ta có thể chạy ứng dụng.
+
+85
+00:05:18,000 --> 00:05:20,470
+Ok, các bạn có thể thấy hình tròn vàng xanh của chúng ta
+
+86
+00:05:20,470 --> 00:05:24,190
+nhấn vào, không có gì xảy ra.
+
+87
+00:05:24,190 --> 00:05:30,280
+Tại sao vậy? Tại sao vậy? Hãy trở lại
+
+88
+00:05:30,280 --> 00:05:34,630
+MouseArea và nếu các bạn nhìn, chúng ta đã
+
+89
+00:05:34,630 --> 00:05:37,870
+phạm 1 lỗi nhỏ ở đây. Vị trí đích đến 'to' nên
+
+90
+00:05:37,870 --> 00:05:40,780
+có liên hệ tới 'circleId' vì vậy chúng ta
+
+91
+00:05:40,780 --> 00:05:43,690
+không nên dùng 'width' ở đây, chúng ta nên dùng
+
+92
+00:05:43,690 --> 00:05:50,170
+'circleId.width'. Hãy sửa nó.
+
+93
+00:05:50,170 --> 00:05:55,870
+Ok, 'circleId.width' và 'circleId.height' ở đây.
+
+94
+00:05:55,870 --> 00:05:58,630
+Nó rất dễ dàng để phạm những sai lầm như thế này.
+
+95
+00:05:58,630 --> 00:06:03,330
+Hãy chạy thử chương trình.
+
+96
+00:06:04,470 --> 00:06:07,320
+Nếu chúng ta nhấn vào trong khu vực màu xám, các bạn sẽ thấy
+
+97
+00:06:07,320 --> 00:06:09,840
+rằng nó đi từ trái sang phải và sau đó
+
+98
+00:06:09,840 --> 00:06:12,990
+từ trên xuống dưới. Đây là những gì chúng ta muốn.
+
+99
+00:06:12,990 --> 00:06:15,930
+và nếu các để ý, tôi có 1 dòng debug gỡ rối
+
+100
+00:06:15,930 --> 00:06:19,140
+ở đây chỉ để biết rằng tôi
+
+101
+00:06:19,140 --> 00:06:21,270
+đã nhấn vào MouseArea. Tôi thích có
+
+102
+00:06:21,270 --> 00:06:23,970
+thông tin về quá trình hình thành. Các bạn có thể kiểm tra nó
+
+103
+00:06:23,970 --> 00:06:26,640
+nếu các bạn muốn. Nó là dòng này ở đây.
+
+104
+00:06:26,640 --> 00:06:30,300
+Được rồi, đây là một SequentialAnimation.
+
+105
+00:06:30,300 --> 00:06:32,490
+Nếu chúng ta muốn, chúng ta sẽ làm nó diễn ra song song.
+
+106
+00:06:32,490 --> 00:06:35,400
+Vì vậy chúng ta có thể thực sự comment cái này
+
+107
+00:06:35,400 --> 00:06:37,310
+Nó sẽ hơi rối nhưng nó sẽ
+
+108
+00:06:37,310 --> 00:06:39,750
+nhắc các bạn rằng các bạn có thể làm
+
+109
+00:06:39,750 --> 00:06:41,790
+hoạt hình nối tiếp và song song. Vì vậy, chúng ta sẽ
+
+110
+00:06:41,790 --> 00:06:46,950
+nói 'ParallelAnimation' và đặt một
+
+111
+00:06:46,950 --> 00:06:49,020
+dấu ngoặc như thế này. Như vậy, chúng ta thay đổi
+
+112
+00:06:49,020 --> 00:06:50,880
+SequentialAnimation (Hoạt hình tuần tự) thành ParallelAnimation (Hoạt hình song song)  
+
+113
+00:06:50,880 --> 00:06:52,950
+Và nếu các bạn muốn chuyển đổi, các bạn
+
+114
+00:06:52,950 --> 00:06:54,960
+chỉ cần uncomment (bỏ bình luận) cái này và comment (bình luận) cái kia.
+
+115
+00:06:54,960 --> 00:06:58,620
+Chúng ta sẽ chạy các ứng dụng và tôi
+
+116
+00:06:58,620 --> 00:07:00,180
+sẽ thử đoán xem chuyện gì sẽ xảy ra.
+
+117
+00:07:00,180 --> 00:07:03,390
+Hoạt hình của chúng ta sẽ diễn ra
+
+118
+00:07:03,390 --> 00:07:05,460
+đồng thời. Nó đang di chuyển từ trái sang
+
+119
+00:07:05,460 --> 00:07:07,440
+phải và từ trên xuống dưới cùng một lúc.
+
+120
+00:07:07,440 --> 00:07:09,300
+Đó là lý do tại sao các bạn thấy nó di chuyển như thế này,
+
+121
+00:07:09,300 --> 00:07:12,720
+dọc theo đường chéo.
+
+122
+00:07:12,720 --> 00:07:15,360
+Đây là những gì chúng ta muốn. Điều này thực sự là tất cả
+
+123
+00:07:15,360 --> 00:07:17,040
+để làm việc với
+
+124
+00:07:17,040 --> 00:07:19,650
+ nhóm hoạt hình tuần tự và song song. Nhưng trước khi chúng ta kết thúc bài giảng này,
+
+125
+00:07:19,650 --> 00:07:21,360
+tôi muốn chỉ cho các bạn một
+
+126
+00:07:21,360 --> 00:07:24,210
+chút về easing và overshoot. 
+
+127
+00:07:24,210 --> 00:07:27,660
+Tôi sẽ đi đến  hoạt hình  Y ở đây,
+
+128
+00:07:27,660 --> 00:07:32,490
+và tôi sẽ thiết lập một 'easing.type' (loại easing), nó
+
+129
+00:07:32,490 --> 00:07:44,220
+sẽ là 'Easing.OutBounce' và
+
+130
+00:07:44,220 --> 00:07:46,770
+biên độ, chúng ta có thể thiết lập biên độ cho loại này.
+
+131
+00:07:46,770 --> 00:07:52,280
+Hãy thử với 3.
+
+132
+00:07:52,280 --> 00:07:54,810
+Chạy ứng dụng và xem nó trông thế nào.
+
+133
+00:07:54,810 --> 00:07:59,640
+Nếu các bạn chạy, các bạn có thể thấy
+
+134
+00:07:59,640 --> 00:08:02,130
+nó trông giống như một bóng nảy và đây là
+
+135
+00:08:02,130 --> 00:08:04,110
+một trong những hiệu ứng mà các bạn có thể đạt được bằng cách sử dụng easing.
+
+136
+00:08:04,110 --> 00:08:07,680
+Cái này thật cool (ngầu). Phải không? Được rồi, đây là
+
+137
+00:08:07,680 --> 00:08:09,120
+tất cả cho bài giảng này, và
+
+138
+00:08:09,120 --> 00:08:11,520
+trong bài tiếp theo chúng ta sẽ làm  1 demo và
+
+139
+00:08:11,520 --> 00:08:14,370
+hoạt hoá 1 trái banh rơi từ trên cao xuống.
+
+140
+00:08:14,370 --> 00:00:00,000
+Hẹn gặp lại các bạn ở bài sau.
+

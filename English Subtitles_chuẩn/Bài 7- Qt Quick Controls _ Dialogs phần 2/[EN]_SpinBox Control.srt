@@ -1,0 +1,424 @@
+1
+00:00:00,000 --> 00:00:02,550
+In this video we are looking at the SpinBox
+
+2
+00:00:02,550 --> 00:00:05,640
+Qt Quick control. This control
+
+3
+00:00:05,640 --> 00:00:07,440
+allows you to choose a number by
+
+4
+00:00:07,440 --> 00:00:09,870
+pressing the button. On the top one here,
+
+5
+00:00:09,870 --> 00:00:11,790
+you see that we can select a number by
+
+6
+00:00:11,790 --> 00:00:14,370
+pressing this little thing here and on
+
+7
+00:00:14,370 --> 00:00:16,379
+the bottom one here, this is a new look
+
+8
+00:00:16,379 --> 00:00:19,109
+from QT quick, and this is what we're
+
+9
+00:00:19,109 --> 00:00:22,109
+going to look at. You press the plus
+
+10
+00:00:22,109 --> 00:00:24,570
+button to increase and the minus button
+
+11
+00:00:24,570 --> 00:00:28,140
+to decrease, and you can capture these
+
+12
+00:00:28,140 --> 00:00:30,810
+values using any of the methods we have
+
+13
+00:00:30,810 --> 00:00:33,120
+seen before. We’re going to go to Qt
+
+14
+00:00:33,120 --> 00:00:34,820
+creator and play with this.
+
+15
+00:00:34,820 --> 00:00:38,550
+Here we are in Qt creator, we
+
+16
+00:00:38,550 --> 00:00:41,160
+create a new project as usual. Click
+
+17
+00:00:41,160 --> 00:00:45,210
+Qt Quick Application, we call it Spinbox Demo,
+
+18
+00:00:45,210 --> 00:00:47,940
+save it in the usual location and
+
+19
+00:00:47,940 --> 00:00:53,670
+hit Next, choose a QT version, we choose
+
+20
+00:00:53,670 --> 00:00:58,800
+our kit and finish. The first thing we
+
+21
+00:00:58,800 --> 00:01:01,170
+want to do is to import Qt Quick controls.
+
+22
+00:01:01,170 --> 00:01:08,790
+So we say import, go down here
+
+23
+00:01:08,790 --> 00:01:12,810
+and choose 2.4, and change the title
+
+24
+00:01:12,810 --> 00:01:21,150
+here to SpinBox Demo. We want to put a
+
+25
+00:01:21,150 --> 00:01:28,979
+column in here, spacing is going to be
+
+26
+00:01:28,979 --> 00:01:31,979
+20 and it's going to be the same width
+
+27
+00:01:31,979 --> 00:01:36,659
+as the parent. If we go to the
+
+28
+00:01:36,659 --> 00:01:42,420
+documentation and look at SpinBox, look
+
+29
+00:01:42,420 --> 00:01:45,270
+at the description, it says it is a
+
+30
+00:01:45,270 --> 00:01:47,250
+control that allows the user to choose
+
+31
+00:01:47,250 --> 00:01:49,860
+an integer value by clicking the up or
+
+32
+00:01:49,860 --> 00:01:52,920
+down indicator buttons, or by pressing up
+
+33
+00:01:52,920 --> 00:01:55,680
+or down on the keyboard. It looks like
+
+34
+00:01:55,680 --> 00:01:58,409
+this, and this is how you define it. We're
+
+35
+00:01:58,409 --> 00:02:01,500
+going to go back to our code and put in
+
+36
+00:02:01,500 --> 00:02:11,550
+a SpinBox. We give it an id. We say where
+
+37
+00:02:11,550 --> 00:02:14,640
+it starts from, it's going to start from
+
+38
+00:02:14,640 --> 00:02:18,450
+1 to 100, this is what we've been
+
+39
+00:02:18,450 --> 00:02:21,360
+doing all along. And the value is going
+
+40
+00:02:21,360 --> 00:02:24,120
+to start at 20, you can choose whatever
+
+41
+00:02:24,120 --> 00:02:32,010
+you like. We want it centered and we want
+
+42
+00:02:32,010 --> 00:02:51,330
+to know when the value changes. Let's run
+
+43
+00:02:51,330 --> 00:02:55,800
+and see what we have so far. You
+
+44
+00:02:55,800 --> 00:02:58,230
+see that we have our SpinBox control
+
+45
+00:02:58,230 --> 00:03:02,099
+here, the value is 20 by default, which we
+
+46
+00:03:02,099 --> 00:03:05,310
+specified. We can decrease by clicking on
+
+47
+00:03:05,310 --> 00:03:08,010
+the minus button here and you see that the
+
+48
+00:03:08,010 --> 00:03:11,400
+values change accordingly, and when we
+
+49
+00:03:11,400 --> 00:03:13,830
+press the plus button here the value
+
+50
+00:03:13,830 --> 00:03:16,260
+increases, and we are able to capture
+
+51
+00:03:16,260 --> 00:03:19,290
+that in our code. One thing you can
+
+52
+00:03:19,290 --> 00:03:22,560
+specify is the step size, which is the
+
+53
+00:03:22,560 --> 00:03:24,840
+increment that is going to happen each
+
+54
+00:03:24,840 --> 00:03:27,900
+time you click on the plus or minus
+
+55
+00:03:27,900 --> 00:03:31,950
+button. You specify that by using the
+
+56
+00:03:31,950 --> 00:03:35,819
+stepSize property. We can specify
+
+57
+00:03:35,819 --> 00:03:39,900
+5 for example. If we run again, 
+
+58
+00:03:39,900 --> 00:03:43,230
+we are at 20. We click plus, it's going
+
+59
+00:03:43,230 --> 00:03:46,739
+to be 25. We click plus again, it's
+
+60
+00:03:46,739 --> 00:03:49,080
+going to be 30. We are incrementing and
+
+61
+00:03:49,080 --> 00:03:53,099
+decrementing by 5 every time we press
+
+62
+00:03:53,099 --> 00:03:55,980
+any button here. Another thing I want you
+
+63
+00:03:55,980 --> 00:03:59,700
+to see is that you cannot select inside
+
+64
+00:03:59,700 --> 00:04:02,849
+the spin box here and type a value. I am
+
+65
+00:04:02,849 --> 00:04:04,470
+doing that but it is not being
+
+66
+00:04:04,470 --> 00:04:07,319
+recognized. So if you want to do that, you
+
+67
+00:04:07,319 --> 00:04:09,420
+can set your SpinBox here to be
+
+68
+00:04:09,420 --> 00:04:13,230
+editable. So we say that and we set this
+
+69
+00:04:13,230 --> 00:04:17,820
+true, run the application and I can
+
+70
+00:04:17,820 --> 00:04:21,209
+now delete what is inside
+
+71
+00:04:21,209 --> 00:04:25,680
+and type 55 for example. Hit Enter and the
+
+72
+00:04:25,680 --> 00:04:28,319
+value is changed, and I can increase or
+
+73
+00:04:28,319 --> 00:04:30,650
+decrease. You can change the value
+
+74
+00:04:30,650 --> 00:04:34,110
+manually when you set this editable
+
+75
+00:04:34,110 --> 00:04:36,509
+property to true. The last thing I want
+
+76
+00:04:36,509 --> 00:04:38,400
+to do in this lecture is capture the
+
+77
+00:04:38,400 --> 00:04:40,770
+value here manually without waiting for
+
+78
+00:04:40,770 --> 00:04:44,520
+the onValueChanged signal. We have been
+
+79
+00:04:44,520 --> 00:04:47,310
+doing this a lot because it is more
+
+80
+00:04:47,310 --> 00:04:49,139
+convenient. When you need the value, you
+
+81
+00:04:49,139 --> 00:04:51,270
+capture it without waiting for a signal
+
+82
+00:04:51,270 --> 00:04:54,090
+here. It is very easy to do. We put a
+
+83
+00:04:54,090 --> 00:04:57,780
+Button here. We center it by using this
+
+84
+00:04:57,780 --> 00:05:00,690
+statement here. We copy it and put it
+
+85
+00:05:00,690 --> 00:05:06,020
+down here, and we want to give it a text
+
+86
+00:05:06,020 --> 00:05:12,659
+property, say: Capture value. And we want
+
+87
+00:05:12,659 --> 00:05:16,500
+to know when it is clicked at which time.
+
+88
+00:05:16,500 --> 00:05:20,280
+We're going to say: console.log The
+
+89
+00:05:20,280 --> 00:05:29,940
+current value in the spinbox is :” + 
+
+90
+00:05:29,940 --> 00:05:37,169
+spinBoxId.value.
+
+91
+00:05:37,169 --> 00:05:41,219
+If we run, change the value in
+
+92
+00:05:41,219 --> 00:05:45,360
+here to 41, why not? We hit Enter to
+
+93
+00:05:45,360 --> 00:05:49,020
+change it, current value changes to 41, we
+
+94
+00:05:49,020 --> 00:05:53,820
+plus a little bit: 61. Click Capture value, the
+
+95
+00:05:53,820 --> 00:05:56,520
+current value is 61. You can capture it
+
+96
+00:05:56,520 --> 00:05:59,820
+and use it in your application. This is
+
+97
+00:05:59,820 --> 00:06:01,740
+really all I had to say about the SpinBox
+
+98
+00:06:01,740 --> 00:06:04,320
+Control, you can learn more about it
+
+99
+00:06:04,320 --> 00:06:07,530
+and its properties from here. There's
+
+100
+00:06:07,530 --> 00:06:10,080
+quite a bunch, so if you need them and
+
+101
+00:06:10,080 --> 00:06:12,150
+are interested, you can look at this and
+
+102
+00:06:12,150 --> 00:06:14,009
+look at what they do in the
+
+103
+00:06:14,009 --> 00:06:16,409
+documentation here. In the next lecture,
+
+104
+00:06:16,409 --> 00:06:17,759
+we're going to look at the Application Window component
+
+105
+00:06:17,759 --> 00:06:21,000
+from Qt Quick controls.
+
+106
+00:06:21,000 --> 00:00:00,000
+I'll see you there.
+

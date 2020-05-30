@@ -1,0 +1,560 @@
+1
+00:00:00,000 --> 00:00:02,550
+In this lecture, we are looking at FileDialog.
+
+2
+00:00:02,550 --> 00:00:05,759
+This dialog allows you to choose
+
+3
+00:00:05,759 --> 00:00:08,970
+files or folders from your file system.
+
+4
+00:00:08,970 --> 00:00:11,610
+Let's go to Qt Creator and play with that.
+
+5
+00:00:11,610 --> 00:00:14,429
+Here we are in Qt Creator.
+
+6
+00:00:14,429 --> 00:00:17,130
+We're going to create a new project. It's a Qt Quick Application. 
+
+7
+00:00:17,130 --> 00:00:20,430
+We call it 'FileDialogDemo',
+
+8
+00:00:20,430 --> 00:00:23,670
+save it in a location on our drive,
+
+9
+00:00:23,670 --> 00:00:29,060
+hit next, choose the Qt Version and
+
+10
+00:00:29,060 --> 00:00:34,230
+choose our desktop kit. We are going to
+
+11
+00:00:34,230 --> 00:00:36,420
+change the title here to 'FileDialog Demo'.
+
+12
+00:00:36,420 --> 00:00:43,050
+We want to import QtQuick.Controls
+
+13
+00:00:43,050 --> 00:00:45,090
+because we are going to need to use a button.
+
+14
+00:00:45,090 --> 00:00:48,450
+We want to put a 'Column' component
+
+15
+00:00:48,450 --> 00:00:53,760
+as usual, 'spacing' is going to be 20. It's
+
+16
+00:00:53,760 --> 00:00:57,600
+going to be in the center and it's going
+
+17
+00:00:57,600 --> 00:01:01,859
+to contain a button control. The 'text' is
+
+18
+00:01:01,859 --> 00:01:13,860
+going to be 'Choose File or Folder' and it is going
+
+19
+00:01:13,860 --> 00:01:21,900
+to be centered horizontally and when it
+
+20
+00:01:21,900 --> 00:01:23,909
+is clicked, we want to know and do
+
+21
+00:01:23,909 --> 00:01:26,850
+something. Down below we want to put the
+
+22
+00:01:26,850 --> 00:01:33,590
+'Text' component.The 'text' is going to say
+
+23
+00:01:33,680 --> 00:01:42,000
+'User hasn't chosen yet' and here we're
+
+24
+00:01:42,000 --> 00:01:44,399
+going to show the path to the file or
+
+25
+00:01:44,399 --> 00:01:47,520
+folder that the user has chosen. By
+
+26
+00:01:47,520 --> 00:01:49,439
+default, we say this because the user
+
+27
+00:01:49,439 --> 00:01:53,579
+hasn't chosen yet. We want to set the
+
+28
+00:01:53,579 --> 00:01:58,530
+'wrapMode' to Text.Wrap. The next thing we
+
+29
+00:01:58,530 --> 00:02:00,930
+want to do is to import the Qt Quick
+
+30
+00:02:00,930 --> 00:02:03,119
+Dialog module. So we're going to say
+
+31
+00:02:03,119 --> 00:02:06,079
+QtQuick.Dialogs.
+
+32
+00:02:09,130 --> 00:02:14,540
+It's going to be 1.3 and down here we
+
+33
+00:02:14,540 --> 00:02:20,300
+can create one 'FileDialog'. The 'title'
+
+34
+00:02:20,300 --> 00:02:29,030
+is going to say 'Choose File or Folder'.
+
+35
+00:02:29,030 --> 00:02:35,120
+We want to give it an ID and we want to set
+
+36
+00:02:35,120 --> 00:02:38,080
+another property that is called selectFolder. 
+
+37
+00:02:38,080 --> 00:02:42,459
+We want to set this to 'true' and
+
+38
+00:02:42,459 --> 00:02:45,980
+this says that this dialogue is going to
+
+39
+00:02:45,980 --> 00:02:48,800
+be used to only select folders.
+
+40
+00:02:48,800 --> 00:02:50,360
+We're going to see that you can set this to
+
+41
+00:02:50,360 --> 00:02:54,620
+false to allow the choosing of files.
+
+42
+00:02:54,620 --> 00:02:57,260
+We want to know when the user accepts the
+
+43
+00:02:57,260 --> 00:03:02,270
+dialog and when the user rejects the
+
+44
+00:03:02,270 --> 00:03:06,440
+dialog. We want to give the 'Text' a ID
+
+45
+00:03:06,440 --> 00:03:11,420
+and set the path to the chosen file as
+
+46
+00:03:11,420 --> 00:03:14,900
+the text property for the Text here when
+
+47
+00:03:14,900 --> 00:03:16,910
+the user accepts the dialog. So we're
+
+48
+00:03:16,910 --> 00:03:23,330
+going to say 'textId.text' equals 'fileUrl'.
+
+49
+00:03:23,330 --> 00:03:27,260
+Now when the user clicks this Button,
+
+50
+00:03:27,260 --> 00:03:30,500
+we want to open the file dialog. So we're
+
+51
+00:03:30,500 --> 00:03:32,870
+going to say open here and run the
+
+52
+00:03:32,870 --> 00:03:35,630
+application. And by now you might see a
+
+53
+00:03:35,630 --> 00:03:37,910
+pattern in how you use these dialogues.
+
+54
+00:03:37,910 --> 00:03:40,310
+It really is the same you define a
+
+55
+00:03:40,310 --> 00:03:42,530
+dialog component and when something
+
+56
+00:03:42,530 --> 00:03:44,180
+happens, when the user clicks a button,
+
+57
+00:03:44,180 --> 00:03:47,030
+for example, you open the dialog and you
+
+58
+00:03:47,030 --> 00:03:49,100
+go from there to do whatever you want to
+
+59
+00:03:49,100 --> 00:03:52,040
+do with the dialog. Our UI is here we can
+
+60
+00:03:52,040 --> 00:03:54,440
+click this button and you see that we
+
+61
+00:03:54,440 --> 00:03:56,930
+see a dialog like this. Okay let's go to
+
+62
+00:03:56,930 --> 00:04:00,650
+'D:' for example and choose 'artwork', choose
+
+63
+00:04:00,650 --> 00:04:03,680
+a folder and you see that the path to
+
+64
+00:04:03,680 --> 00:04:07,459
+the folder is stored in here. Let's try
+
+65
+00:04:07,459 --> 00:04:11,030
+to choose files with this dialog here.
+
+66
+00:04:11,030 --> 00:04:13,940
+You see that I go inside the folder but
+
+67
+00:04:13,940 --> 00:04:17,120
+I don't see any files inside there
+
+68
+00:04:17,120 --> 00:04:20,120
+because this one is set up to allow us
+
+69
+00:04:20,120 --> 00:04:20,930
+to
+
+70
+00:04:20,930 --> 00:04:23,990
+only choose folders. If you want to
+
+71
+00:04:23,990 --> 00:04:27,460
+choose files, you can come in here and
+
+72
+00:04:27,460 --> 00:04:33,610
+set this property to 'false' and run again.
+
+73
+00:04:35,500 --> 00:04:41,389
+Mm-hmm.... Choose file or folder, go in 'D:', go
+
+74
+00:04:41,389 --> 00:04:43,970
+in 'artwork', you're going to see the files
+
+75
+00:04:43,970 --> 00:04:48,020
+in here. I can choose one file, click OK.
+
+76
+00:04:48,020 --> 00:04:50,479
+You see that I have the path to that
+
+77
+00:04:50,479 --> 00:04:54,410
+file. I can also select multiple files I
+
+78
+00:04:54,410 --> 00:04:57,110
+guess. Let's try and select multiple now.
+
+79
+00:04:57,110 --> 00:05:00,380
+We can't we can only select one file but
+
+80
+00:05:00,380 --> 00:05:03,650
+if we close this and come back to file
+
+81
+00:05:03,650 --> 00:05:06,229
+dialog I think we can allow the user to
+
+82
+00:05:06,229 --> 00:05:14,539
+choose multiple files. Let's go there,
+
+83
+00:05:14,539 --> 00:05:21,410
+QtQuick Dialogs and let's see if we have a
+
+84
+00:05:21,410 --> 00:05:24,349
+property called 'selectMultiple'. Whether
+
+85
+00:05:24,349 --> 00:05:27,220
+more than one file name can be selected.
+
+86
+00:05:27,220 --> 00:05:28,760
+By default,
+
+87
+00:05:28,760 --> 00:05:31,220
+this property is false. We need to set it
+
+88
+00:05:31,220 --> 00:05:33,470
+to true to allow the user to choose
+
+89
+00:05:33,470 --> 00:05:37,720
+multiple files. So we can say selectMultiple,
+
+90
+00:05:37,720 --> 00:05:49,360
+set this to 'true', run again.
+
+91
+00:05:49,360 --> 00:05:55,880
+Click to 'D:', 'artwork' and we can hit Ctrl and
+
+92
+00:05:55,880 --> 00:05:58,190
+select multiple files and you can see
+
+93
+00:05:58,190 --> 00:06:00,110
+that we have a list of those things in
+
+94
+00:06:00,110 --> 00:06:00,560
+here.
+
+95
+00:06:00,560 --> 00:06:04,159
+If I open you see that there's nothing
+
+96
+00:06:04,159 --> 00:06:08,300
+inside fileUrl. That's because when you
+
+97
+00:06:08,300 --> 00:06:11,090
+have multiple files selected, the
+
+98
+00:06:11,090 --> 00:06:15,050
+affected property is not fileUrl as we
+
+99
+00:06:15,050 --> 00:06:19,009
+did here. It is fileUrls and let's do
+
+100
+00:06:19,009 --> 00:06:22,449
+that we're going to say fileUrls and
+
+101
+00:06:22,449 --> 00:06:25,849
+this is a list. Let's try this. We are
+
+102
+00:06:25,849 --> 00:06:28,099
+trying to assign a list to a text
+
+103
+00:06:28,099 --> 00:06:32,740
+property. Let's run.
+
+104
+00:06:34,580 --> 00:06:37,320
+Mm-hmm.... fingers crossed
+
+105
+00:06:37,320 --> 00:06:41,580
+We are going to 'D:', 'artwork', you select multiple
+
+106
+00:06:41,580 --> 00:06:44,490
+files in here. Let's do this and when we
+
+107
+00:06:44,490 --> 00:06:47,460
+do this, cannot assign a list
+
+108
+00:06:47,460 --> 00:06:49,919
+to a string. This is a problem. You cannot do that.
+
+109
+00:06:49,919 --> 00:06:52,380
+But if you want, you can do
+
+110
+00:06:52,380 --> 00:06:56,970
+something like 2, to set the second
+
+111
+00:06:56,970 --> 00:06:59,810
+file Url as the text property for this.
+
+112
+00:06:59,810 --> 00:07:10,530
+Let's run. Run the application, choose in
+
+113
+00:07:10,530 --> 00:07:13,169
+artwork, we're going to choose the first
+
+114
+00:07:13,169 --> 00:07:17,130
+image here, hold Ctrl down and choose a
+
+115
+00:07:17,130 --> 00:07:20,280
+few others and if we run you see that
+
+116
+00:07:20,280 --> 00:07:23,010
+the image number 4 is chosen because
+
+117
+00:07:23,010 --> 00:07:27,180
+it is at index 4 in our list of images.
+
+118
+00:07:27,180 --> 00:07:29,460
+And if you want to show all the files
+
+119
+00:07:29,460 --> 00:07:31,830
+that have been selected, I hope you
+
+120
+00:07:31,830 --> 00:07:36,470
+remember this. You can say 
+
+121
+00:07:36,470 --> 00:07:53,880
+'for (var i = 0; i<fileUrls.length; i++)'  and say
+
+122
+00:07:53,880 --> 00:08:12,810
+'console.log'. Let's say "Value"+i+"is"+fileUrls[i]
+
+123
+00:08:12,810 --> 00:08:16,020
+ and we pass in the index that we
+
+124
+00:08:16,020 --> 00:08:18,900
+are at in the loop. Let's run to see if
+
+125
+00:08:18,900 --> 00:08:21,530
+this works.
+
+126
+00:08:21,620 --> 00:08:25,380
+Choose file or folder, go in our
+
+127
+00:08:25,380 --> 00:08:27,630
+directory. You can go wherever you want
+
+128
+00:08:27,630 --> 00:08:30,930
+in your file system. I'm going to choose
+
+129
+00:08:30,930 --> 00:08:34,770
+this 5 qml and when I open you see
+
+130
+00:08:34,770 --> 00:08:40,289
+that 0 through 5, I have files selected
+
+131
+00:08:40,289 --> 00:08:42,270
+here. I can loop through this list of
+
+132
+00:08:42,270 --> 00:08:45,690
+file Urls and extract each path that is
+
+133
+00:08:45,690 --> 00:08:46,740
+stored in there.
+
+134
+00:08:46,740 --> 00:08:48,779
+And this is really how you use file
+
+135
+00:08:48,779 --> 00:08:50,940
+dialogue. You can use it to select files
+
+136
+00:08:50,940 --> 00:08:53,520
+and folders or you can use it to select
+
+137
+00:08:53,520 --> 00:08:56,520
+one or multiple files. This is all I had
+
+138
+00:08:56,520 --> 00:08:58,320
+for this lecture and the next one we're
+
+139
+00:08:58,320 --> 00:08:59,970
+going to see how you work with font dialog. 
+
+140
+00:08:59,970 --> 00:00:00,000
+I'll see you there
+

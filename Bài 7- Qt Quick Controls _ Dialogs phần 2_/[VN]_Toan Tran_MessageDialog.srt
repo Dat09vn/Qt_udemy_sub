@@ -1,0 +1,196 @@
+1
+00:00:00,000 --> 00:00:02,009
+Trong bài giảng này, chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,009 --> 00:00:05,190
+thành phần MessageDialog (hộp thoại tin nhắn). Các bạn dùng nó để
+
+3
+00:00:05,190 --> 00:00:06,990
+bật lên thông báo cho người dùng và để cho
+
+4
+00:00:06,990 --> 00:00:09,300
+họ chọn một cái gì đó bằng cách nhấn vào một vài
+
+5
+00:00:09,300 --> 00:00:11,580
+nút có sẵn.
+
+6
+00:00:11,580 --> 00:00:13,679
+Chúng ta sẽ mở Qt Creator và thử chơi với nó.
+
+7
+00:00:13,679 --> 00:00:16,590
+Chúng ta đang ở Qt Creator, chúng ta
+
+8
+00:00:16,590 --> 00:00:19,350
+tạo dự án của chúng ta. Nó là 1 Qt Quick Application (tạo nhanh ứng dụng Qt).
+
+9
+00:00:19,350 --> 00:00:22,080
+Chúng ta gọi nó là 'MessageDialogDemo',
+
+10
+00:00:22,080 --> 00:00:26,449
+lưu nó tại một vị trí trên ổ đĩa của chúng ta,
+
+11
+00:00:26,449 --> 00:00:31,199
+chọn Qt version (phiên bản Qt), chọn kit (bộ hỗ trợ),
+
+12
+00:00:31,199 --> 00:00:35,160
+và kết thúc. Các bạn sẽ muốn thay đổi tiêu đề
+
+13
+00:00:35,160 --> 00:00:44,040
+thành 'MessageDialog Demo', 'import' (nhập) 'QtQuick.Controls'
+
+14
+00:00:44,040 --> 00:00:48,270
+và  'QtClick.Dialogs'.
+
+15
+00:00:48,270 --> 00:00:50,760
+Để tiết kiệm thời gian đánh máy, tôi sẽ
+
+16
+00:00:50,760 --> 00:00:52,440
+dùng 1 đoạn mã mà tôi
+
+17
+00:00:52,440 --> 00:00:55,530
+đã chuẩn bị, và cố gắng để giải thích nó một chút.
+
+18
+00:00:55,530 --> 00:00:56,910
+Nó thực sự rất đơn giản.
+
+19
+00:00:56,910 --> 00:00:59,550
+Chúng ta có một nút đây. Khi các bạn nhấn vào nó,
+
+20
+00:00:59,550 --> 00:01:02,910
+chúng ta mở hộp thoại và hộp thoại này là một
+
+21
+00:01:02,910 --> 00:01:06,240
+MessageDialog (hộp thoại tin nhắn). Nó có một 'id' (ID), một 'title' (tiêu đề) và
+
+22
+00:01:06,240 --> 00:01:09,630
+'text' (văn bản) thuộc tính để
+
+23
+00:01:09,630 --> 00:01:12,299
+hiện thị trong hộp thoại tin nhắn. Các bạn có thể
+
+24
+00:01:12,299 --> 00:01:14,280
+xác định nút cho để
+
+25
+00:01:14,280 --> 00:01:17,460
+người dùng nhấn vào. Chúng ta muốn có một nút 'OK' và một
+
+26
+00:01:17,460 --> 00:01:19,950
+nút 'Close' (Đóng lại) và chúng ta muốn biết khi nào
+
+27
+00:01:19,950 --> 00:01:21,720
+hộp thoại này được chấp nhận và bị từ chối.
+
+28
+00:01:21,720 --> 00:01:25,170
+Và nếu đó là chấp nhận chúng ta sẽ nói một cái gì đó.
+
+29
+00:01:25,170 --> 00:01:27,330
+Nếu nó bị từ chối, chúng ta cũng sẽ nói điều gì đó. 
+
+30
+00:01:27,330 --> 00:01:29,460
+Nó thực sự rất đơn giản. Chúng ta muốn để chạy ứng dụng
+
+31
+00:01:29,460 --> 00:01:31,110
+và xem nó hoạt động thế nào.
+
+32
+00:01:31,110 --> 00:01:35,009
+Nó là 1 hộp thoại bật lên để cho phép người dùng
+
+33
+00:01:35,009 --> 00:01:39,500
+biết gì đó về ứng dụng của các bạn.
+
+34
+00:01:39,500 --> 00:01:43,020
+Nhấn vào nút này và các bạn thấy nó nói
+
+35
+00:01:43,020 --> 00:01:45,450
+một cái gì đó. Vậy đây là thuộc tính văn bản
+
+36
+00:01:45,450 --> 00:01:47,700
+mà chúng ta đã xác định ở đây, chỗ này. Các bạn có thể thấy rằng
+
+37
+00:01:47,700 --> 00:01:52,530
+nội dung nó là đoạn văn bản ở đây. Khi chúng ta
+
+38
+00:01:52,530 --> 00:01:56,219
+nhấn ok và chấp nhận, chúng ta có tin nhắn
+
+39
+00:01:56,219 --> 00:02:00,930
+từ 'onAccepted' và nếu chúng ta đóng nó, chúng ta có
+
+40
+00:02:00,930 --> 00:02:03,270
+được 1 tin nhắn từ bộ xử lý tín hiệu 'onRejected' ở đây.
+
+41
+00:02:03,270 --> 00:02:06,509
+Và đây thực sự là tất cả cho
+
+42
+00:02:06,509 --> 00:02:09,869
+MessageDialog. Chúng ta có thể nhấn F1 khi
+
+43
+00:02:09,869 --> 00:02:13,319
+chúng ta chọn nó, để đến chế độ hỗ trợ đầy đủ
+
+44
+00:02:13,319 --> 00:02:15,450
+và để có thêm thông tin về nó.
+
+45
+00:02:15,450 --> 00:02:17,549
+Tôi đã nói tất cả về hộp thoại tin nhắn (MessageDialog).
+
+46
+00:02:17,549 --> 00:02:19,859
+Trong bài giảng tới, chúng ta sẽ
+
+47
+00:02:19,859 --> 00:02:21,420
+xem làm thế nào các bạn có thể sử dụng hộp thoại tuỳ chỉnh
+
+48
+00:02:21,420 --> 00:02:24,120
+để có một cái gì đó ít nhất
+
+49
+00:02:24,120 --> 00:00:00,000
+có thể sử dụng trên điện thoại di động. Hẹn gặp lại các bạn ở bài sau.
+

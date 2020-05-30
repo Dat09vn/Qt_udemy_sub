@@ -1,0 +1,148 @@
+WEBVTT
+
+00:01.610 --> 00:13.480
+Editable widgets in this video we will talk about different editable input widgets, namely combo
+
+00:13.480 --> 00:16.490
+box and text edit.
+
+00:16.580 --> 00:21.130
+We are going to build an application to preview our text input.
+
+00:21.260 --> 00:27.930
+We can use combo box to choose text mode, and the preview will be updated in real time.
+
+00:27.980 --> 00:29.730
+So let's get started.
+
+00:29.790 --> 00:43.110
+Launch your Qt Creator and create new project. Change the centralWidget to Lay Out Vertically. Drag
+
+00:43.210 --> 00:44.860
+a text edit widget.
+
+00:50.450 --> 01:03.560
+Drag a text edit widget into the top followed by a combo box widget, and then a text browser widget.
+
+01:03.560 --> 01:13.280
+Now we will use to text browser as our previewer and the text edit as the input widget for user to type text,
+
+01:13.280 --> 01:16.210
+the combo box to choose the mode.
+
+01:16.380 --> 01:20.060
+How can you add items into the combo box?
+
+01:20.130 --> 01:22.050
+You can simply double click it.
+
+01:23.380 --> 01:30.720
+In the Edit dialog, you can add new items, arrange them, and delete them.
+
+01:30.740 --> 01:35.700
+Here we put 2 combo box items, Plain and Html.
+
+01:35.690 --> 01:42.240
+So much for the UI design import.
+
+01:42.670 --> 01:44.220
+Let's go to the coding part.
+
+01:47.190 --> 01:56.600
+Open mainwindow.h, the header file. And the private member variable plainText
+
+02:01.060 --> 02:07.600
+Add two private slots functions, updateTextBrowser and onComboBoxChanged.
+
+02:11.560 --> 02:18.930
+The onComboBoxChanged to slot function will be used to handle text change to signal when user changes
+
+02:18.940 --> 02:20.300
+the combo box widget,
+
+02:23.310 --> 02:28.180
+the updateTextBrowser and those text edit widgets updates.
+
+02:30.960 --> 02:35.270
+Switch to the .cpp file.
+
+02:36.390 --> 02:39.130
+Let's finish these two slot definitions.
+
+02:40.370 --> 02:50.300
+We firstly, in the updateTextBrowser, get the text input from the text edit widget. The
+
+02:50.320 --> 02:54.590
+document method returns a QTextDocumentPointer.
+
+02:58.940 --> 03:04.380
+And we then call it toPlainText method to get the text from the user.
+
+03:04.610 --> 03:12.260
+There is another method called toHtml that also returns a QString but that won't mark the text
+
+03:12.350 --> 03:14.010
+up the Html,
+
+03:14.330 --> 03:21.640
+which doesn't fit the case in this example. Then depending on whether the plainText is true or not,
+
+03:23.240 --> 03:30.610
+we update the textBrowser document with a setPlainText or setHtml respectively.
+
+03:31.570 --> 03:34.240
+In the onComboBoxChanged slot function,
+
+03:37.430 --> 03:44.720
+we set plainText value depending on the combo box which is curretn text which is passed in the document
+
+03:45.490 --> 03:47.060
+by the signal.
+
+03:47.190 --> 03:51.040
+Then we update the TextBrowser to reflect the change.
+
+03:51.570 --> 03:53.220
+Last but never the least,
+
+03:53.370 --> 04:00.690
+don't forget to initialize plainText And connect those signals to the relevant slots.
+
+04:00.700 --> 04:01.530
+Here you can see
+
+04:04.520 --> 04:11.710
+the signal currentTextChanged from QComboBoxber has the same document as
+
+04:11.730 --> 04:12.480
+onComboBoxChanged.
+
+04:16.400 --> 04:32.050
+The code is now ready to be built. After that, run the application.
+
+04:32.140 --> 04:35.160
+Let's find out if it works as we expected.
+
+04:35.530 --> 04:39.970
+Try some simple Html mock-ups in the text edit widget.
+
+04:48.570 --> 04:53.110
+With the plain text mode,the text browser shows the identical text.
+
+04:53.510 --> 05:01.750
+Then if you change the combo box to select Html, you'll see nicely formatted text. And it gets updated
+
+05:02.530 --> 05:04.470
+when you change the text in the editor.
+
+05:23.420 --> 05:33.380
+Qt has also provided other input widgets.
+
+05:33.580 --> 05:39.750
+You can think Line Edit, Plain Text Edit as the simpler version of Text Edit.
+
+05:43.980 --> 05:51.440
+The APIs of all these input widgets are very similar and easy to pick up. In the next video,
+
+05:51.870 --> 05:54.390
+You'll get to learn more about layout.

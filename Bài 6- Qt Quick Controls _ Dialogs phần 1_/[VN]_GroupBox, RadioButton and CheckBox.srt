@@ -1,0 +1,437 @@
+1
+00:00:00,000 --> 00:00:02,280
+trong bài này chúng ta sẽ tìm hiểu về làm thế nào
+
+2
+00:00:02,280 --> 00:00:05,100
+để sử dụng thành phần GroupBox để 
+
+3
+00:00:05,100 --> 00:00:06,930
+gom nhóm các radio button và các checkbox
+
+4
+00:00:06,930 --> 00:00:09,870
+lại với nhau, Hãy mở Qt Creator và
+together let's go to to to create or and
+
+5
+00:00:09,870 --> 00:00:12,509
+thử nghiệm chúng. Chúng ta đã ở trong Qt Creator,
+
+6
+00:00:12,509 --> 00:00:15,590
+ta đi tạo project mới, nó là một 
+
+7
+00:00:15,590 --> 00:00:18,930
+ứng dụng QT quick, ta 
+
+8
+00:00:18,930 --> 00:00:22,439
+đặt tên nó là GroupBoxDemo, lưu nó lại trong
+
+9
+00:00:22,439 --> 00:00:28,019
+đường dẫn quen thuộc, chọn phiên bản QT
+
+10
+00:00:28,019 --> 00:00:33,930
+và chọn Desktop Kit, chúng ta sẽ
+
+11
+00:00:33,930 --> 00:00:36,660
+thay đổi tiêu đề ở đây để mô tả về cái 
+
+12
+00:00:36,660 --> 00:00:42,149
+mà chúng ta sẽ làm bên trong, chúng ta để một
+
+13
+00:00:42,149 --> 00:00:49,590
+thành phần column, để khoảng cách là 10
+
+14
+00:00:49,590 --> 00:00:55,110
+và ta muốn tràn hết đối tượng cha. Sau đó ta
+
+15
+00:00:55,110 --> 00:00:59,489
+phải khai báo thư viện QT quick control, ta sẽ gõ
+
+16
+00:00:59,489 --> 00:01:08,490
+QT quick control 2.4 và ta sẽ đặt một
+
+17
+00:01:08,490 --> 00:01:11,310
+thành phần Label để biểu thị cái này
+
+18
+00:01:11,310 --> 00:01:14,520
+làm gì, được rồi tiếp theo là một GroupBox để
+
+19
+00:01:14,520 --> 00:01:16,830
+bao các radio button lại, chúng ta
+
+20
+00:01:16,830 --> 00:01:19,020
+để chuỗi đó ở phía bên phải đây. Bây giờ chúng ta
+
+21
+00:01:19,020 --> 00:01:25,229
+để một thành phần GroupBox, nó sẽ
+
+22
+00:01:25,229 --> 00:01:28,229
+có một tiêu đề ghi là "Choose bonus"
+
+23
+00:01:28,229 --> 00:01:33,180
+ý là chúng ta sẽ cho 
+
+24
+00:01:33,180 --> 00:01:35,009
+người dùng chọn cái mà họ muốn
+
+25
+00:01:35,009 --> 00:01:38,070
+Và chúng ta cũng muốn canh giữa nó
+
+26
+00:01:38,070 --> 00:01:45,360
+theo phương ngang của đối tượng cha. GroupBox
+
+27
+00:01:45,360 --> 00:01:47,729
+không có layout của riêng nó
+
+28
+00:01:47,729 --> 00:01:50,130
+vì thế bạn sẽ phải cho nó
+
+29
+00:01:50,130 --> 00:01:52,590
+bên trong chúng ta để một thành phần column
+
+30
+00:01:52,590 --> 00:01:58,829
+và chúng ta sẽ gõ radioButton
+
+31
+00:01:58,829 --> 00:02:04,710
+để đặt một cái radio buton, thuộc tính text sẽ là
+
+32
+00:02:04,710 --> 00:02:08,280
+coke, được rồi chúng ta sẽ để một số
+
+33
+00:02:08,280 --> 00:02:12,020
+các radio button.
+
+34
+00:02:13,489 --> 00:02:22,680
+và để là Green tea chẳng hạn, bây giờ 
+
+35
+00:02:22,680 --> 00:02:25,590
+nếu chúng ta chạy chương trình, chúng ta sẽ có
+
+36
+00:02:25,590 --> 00:02:29,700
+3 radio button nằm theo chiều dọc
+
+37
+00:02:29,700 --> 00:02:34,140
+và được chứa trong một group box, group box này
+
+38
+00:02:34,140 --> 00:02:37,620
+thì không nhìn thấy được bởi vì nó gom nhóm
+
+39
+00:02:37,620 --> 00:02:40,380
+các radio button này lại với nhau, cho phép
+
+40
+00:02:40,380 --> 00:02:43,920
+bạn chỉ có thể chọn một. Rồi hãy chạy và xem
+
+41
+00:02:43,920 --> 00:02:46,200
+để hiểu ý tôi nói, mm-hmm
+
+42
+00:02:46,200 --> 00:02:49,200
+bạn thấy rằng chúng ta có tiêu đề ở phía trên cùng
+
+43
+00:02:49,200 --> 00:02:55,470
+và chúng ta chỉ có thể chọn 1 ô check box
+
+44
+00:02:55,470 --> 00:02:59,310
+ở trong nhóm các nút này, đây là tác dụng của nó.
+
+45
+00:02:59,310 --> 00:03:01,799
+Bạn sẽ sử dụng radio button trong trường hợp
+
+46
+00:03:01,799 --> 00:03:05,280
+bạn để cho user có thể chọn một cái trong số
+
+47
+00:03:05,280 --> 00:03:07,890
+một danh sách các lựa chọn mà bạn đưa ra cho họ và
+
+48
+00:03:07,890 --> 00:03:10,650
+bạn có thể biết cái nào được chọn bằng cách
+
+49
+00:03:10,650 --> 00:03:13,590
+quản lý tín hiệu checked, ví dụ 
+
+50
+00:03:13,590 --> 00:03:16,049
+hãy chọn nút coka ở đây,
+
+51
+00:03:16,049 --> 00:03:21,269
+ta có thể viết cho sự kiện onCheckedChanged,
+
+52
+00:03:21,269 --> 00:03:30,359
+rồi gõ nếu checked là true, tôi thì thích
+
+53
+00:03:30,359 --> 00:03:33,900
+làm cách này bởi vì nó thì dễ hiểu và 
+
+54
+00:03:33,900 --> 00:03:36,840
+dễ nhìn hơn, ta gõ
+
+55
+00:03:36,840 --> 00:03:52,730
+console.log và nếu nó không được check
+
+56
+00:03:52,730 --> 00:04:03,500
+chúng ta sẽ gõ "it's not checked"
+
+57
+00:04:03,500 --> 00:04:10,230
+hãy chạy lại chương trình, mm-hmm tôi check vào nó, nó 
+
+58
+00:04:10,230 --> 00:04:12,959
+hiện ra "the button is checked", tôi click 
+
+59
+00:04:12,959 --> 00:04:16,320
+vào một button khác thì chữ "Coke button is NOT checked"
+
+60
+00:04:16,320 --> 00:04:19,470
+hiện ra và ta bắt được sự kiện đó, ok
+
+61
+00:04:19,470 --> 00:04:21,510
+bạn có thể bắt hết các sự kiện này trong 
+
+62
+00:04:21,510 --> 00:04:25,260
+phần quản lý sự kiện nếu bạn có như cầu.
+
+63
+00:04:25,260 --> 00:04:27,240
+Đây là tất cả để làm việc với
+
+64
+00:04:27,240 --> 00:04:30,480
+GroupBox và RadioButton, bây giờ tôi 
+
+65
+00:04:30,480 --> 00:04:33,780
+sẽ thêm một GroupBox khác để
+
+66
+00:04:33,780 --> 00:04:38,070
+bao các checkbox để bạn thấy được
+
+67
+00:04:38,070 --> 00:04:46,650
+cách sử dụng và chhúng ta sẽ 
+
+68
+00:04:46,650 --> 00:04:51,570
+copy cái GroupBox này để có thể tiết kiệm thời gian gõ,
+
+69
+00:04:51,570 --> 00:04:55,050
+copy và dán nó xuống đây
+
+70
+00:04:55,050 --> 00:04:59,250
+và tôi sẽ thay đổi nó thành CheckBox
+
+71
+00:04:59,250 --> 00:05:07,920
+dán, dán ở đây, chúng ta sẽ để
+
+72
+00:05:07,920 --> 00:05:12,780
+"Choose Qt supported platform"
+
+73
+00:05:12,780 --> 00:05:21,480
+và chúng ta để Window, Mac,
+
+74
+00:05:21,480 --> 00:05:29,340
+Linux và hãy để là 
+
+75
+00:05:29,340 --> 00:05:29,970
+Desktop platform ở đây
+
+76
+00:05:29,970 --> 00:05:35,100
+cho phù hợp ngữ cảnh, nếu chúng ta chạy 
+
+77
+00:05:35,100 --> 00:05:39,540
+chương trình, chúng ta sẽ thấy gì, chúng ta sẽ
+
+78
+00:05:39,540 --> 00:05:42,150
+thấy các checkbox ở đây, một GroupBox
+
+79
+00:05:42,150 --> 00:05:44,910
+bao chúng lại, bạn thấy 
+
+80
+00:05:44,910 --> 00:05:47,760
+tiêu đề ở đây, chọn Desktop
+
+81
+00:05:47,760 --> 00:05:50,550
+platform và bạn chọn được một, ta thấy
+
+82
+00:05:50,550 --> 00:05:53,580
+chữ coke button checked hiện ra, tôi không muốn
+
+83
+00:05:53,580 --> 00:05:54,030
+như thế
+
+84
+00:05:54,030 --> 00:06:02,550
+tôi muốn hiện chữ window button checked, 
+
+85
+00:06:02,550 --> 00:06:07,910
+đây là một lỗi của việc sử dụng lại,
+
+86
+00:06:07,910 --> 00:06:15,030
+chạy lại và bạn thấy được thông tin
+
+87
+00:06:15,030 --> 00:06:18,450
+khi checkbox window được check, và tôi muốn
+
+88
+00:06:18,450 --> 00:06:20,730
+bạn chú ý tới việc
+
+89
+00:06:20,730 --> 00:06:23,640
+khi nhóm các checkbox vào
+
+90
+00:06:23,640 --> 00:06:25,910
+trong một GroupBox, chúng không 
+
+91
+00:06:25,910 --> 00:06:29,100
+chỉ có một mà bạn có thể chọn nhiều cái
+
+92
+00:06:29,100 --> 00:06:32,220
+như thế này khi chúng ta chọn
+
+93
+00:06:32,220 --> 00:06:34,500
+nó là trường hợp chọn nhiều nhưng lưu ý 
+
+94
+00:06:34,500 --> 00:06:36,580
+với RadioButton thì bạn chỉ có thể
+
+95
+00:06:36,580 --> 00:06:39,970
+chọn một vì thế nếu bạn cần chọn 
+
+96
+00:06:39,970 --> 00:06:43,090
+duy nhất 1 thì sử dụng radioButton còn nếu cần
+
+97
+00:06:43,090 --> 00:06:46,479
+chọn nhiều giá trị thì sử dụng
+
+98
+00:06:46,479 --> 00:06:50,379
+CheckBox. Nếu ở C++ gốc của Qt thì nó
+
+99
+00:06:50,379 --> 00:06:53,370
+có thể làm cho checkbox cũng có thể
+
+100
+00:06:53,370 --> 00:06:57,310
+chỉ chọn 1 thôi nhưng với Qt quick ta đã có
+
+101
+00:06:57,310 --> 00:06:59,680
+cách để làm việc này mà không cần
+
+102
+00:06:59,680 --> 00:07:01,780
+tới chỉnh checkbox bởi vì ta đã có hẳn radioButton
+
+103
+00:07:01,780 --> 00:07:05,020
+để phục vụ cho mục đích này, okay
+
+104
+00:07:05,020 --> 00:07:06,849
+Đây là toàn bộ nội dung tôi muốn giới thiệu
+
+105
+00:07:06,849 --> 00:07:08,860
+với bạn về thành phần GroupBox, trong 
+
+106
+00:07:08,860 --> 00:07:10,509
+bài kế tiếp chúng ta sẽ đi tìm hiểu về
+
+107
+00:07:10,509 --> 00:07:12,940
+thành phần PageIndicator và làm thế nào bạn có thể
+
+108
+00:07:12,940 --> 00:07:15,550
+sử dụng nó với những nội dung hiển thị rộng. Hẹn gặp lại bạn
+
+109
+00:07:15,550 --> 00:00:00,000
+ở đó.
+

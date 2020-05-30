@@ -1,0 +1,1196 @@
+1
+00:00:00,000 --> 00:00:02,070
+I would like to welcome you again and
+
+2
+00:00:02,070 --> 00:00:04,200
+congratulate you on taking the step to
+
+3
+00:00:04,200 --> 00:00:06,240
+become a Qt quick user interface
+
+4
+00:00:06,240 --> 00:00:08,760
+developer. Qt quick is the latest user
+
+5
+00:00:08,760 --> 00:00:11,309
+interface design technology from the Qt
+
+6
+00:00:11,309 --> 00:00:13,950
+framework, it stands for user interface
+
+7
+00:00:13,950 --> 00:00:17,190
+creation kit. Qt quick uses Qml
+
+8
+00:00:17,190 --> 00:00:20,189
+language at the core and Qml stands for
+
+9
+00:00:20,189 --> 00:00:22,470
+Qt markup language.
+
+10
+00:00:22,470 --> 00:00:24,930
+Qt is a framework you can use to build
+
+11
+00:00:24,930 --> 00:00:27,480
+cross-platform applications. You can
+
+12
+00:00:27,480 --> 00:00:29,490
+basically use it to target all these
+
+13
+00:00:29,490 --> 00:00:31,740
+operating systems you see here: the
+
+14
+00:00:31,740 --> 00:00:35,250
+Android, iOS, Linux, Mac OS, Windows, Windows Phone
+
+15
+00:00:35,250 --> 00:00:38,309
+and many others. It was originally
+
+16
+00:00:38,309 --> 00:00:40,469
+designed by these two guys: Haayard and
+
+17
+00:00:40,469 --> 00:00:43,469
+Eirik and over the years it's got owned
+
+18
+00:00:43,469 --> 00:00:46,320
+by these companies you see here. Today it
+
+19
+00:00:46,320 --> 00:00:48,840
+is owned by the Qt company which is a
+
+20
+00:00:48,840 --> 00:00:51,180
+subsidiary of Digia, you can read more on
+
+21
+00:00:51,180 --> 00:00:52,739
+these companies by clicking these links
+
+22
+00:00:52,739 --> 00:00:56,309
+here. Qt is a very powerful framework, you
+
+23
+00:00:56,309 --> 00:00:58,050
+can see some of the companies that are
+
+24
+00:00:58,050 --> 00:01:00,719
+using it. From this you can have an idea
+
+25
+00:01:00,719 --> 00:01:05,489
+of how good it is. You can see AMD here
+
+26
+00:01:05,489 --> 00:01:09,570
+Microsoft, Samsung, CMS, Volvo and many other big
+
+27
+00:01:09,570 --> 00:01:11,970
+names here. Down here if you keep
+
+28
+00:01:11,970 --> 00:01:13,470
+scrolling you're going to see a few
+
+29
+00:01:13,470 --> 00:01:15,630
+applications that are using Qt.
+
+30
+00:01:15,630 --> 00:01:18,240
+You can see some Adobe products, Google Earth,
+
+31
+00:01:18,240 --> 00:01:21,450
+Krita, it's graphics editing and
+
+32
+00:01:21,450 --> 00:01:24,210
+digital painting software, Mathematica,
+
+33
+00:01:24,210 --> 00:01:26,220
+you are going to recognize this if you
+
+34
+00:01:26,220 --> 00:01:28,770
+are a scientist. Keep going down you're going
+
+35
+00:01:28,770 --> 00:01:31,430
+to see VirtualBox, a powerful piece of
+
+36
+00:01:31,430 --> 00:01:34,920
+virtualization software. You can see VLC
+
+37
+00:01:34,920 --> 00:01:37,140
+media player. From this I hope you can
+
+38
+00:01:37,140 --> 00:01:40,020
+see how useful and powerful Qt can be.
+
+39
+00:01:40,020 --> 00:01:42,780
+Now I am talking about Qt here
+
+40
+00:01:42,780 --> 00:01:46,200
+where does Qt quick fall in. Well Qt
+
+41
+00:01:46,200 --> 00:01:48,299
+quick is another application framebuild
+
+42
+00:01:48,299 --> 00:01:51,270
+that is built on top of Qt with a sole
+
+43
+00:01:51,270 --> 00:01:54,119
+goal of building fluid and dynamic user
+
+44
+00:01:54,119 --> 00:01:56,520
+interfaces that can run on touch devices,
+
+45
+00:01:56,520 --> 00:02:00,060
+mobile devices and literally it is being
+
+46
+00:02:00,060 --> 00:02:02,909
+pushed even to desktop platform. So you
+
+47
+00:02:02,909 --> 00:02:04,920
+can use it to build user interfaces that
+
+48
+00:02:04,920 --> 00:02:07,439
+can really run anywhere. And if you're
+
+49
+00:02:07,439 --> 00:02:08,818
+looking here you're going to see that
+
+50
+00:02:08,818 --> 00:02:11,870
+the Qml syntax allows using javascript
+
+51
+00:02:11,870 --> 00:02:15,379
+provide logic. And it is often used for
+
+52
+00:02:15,379 --> 00:02:17,780
+this purpose so you can use JavaScript
+
+53
+00:02:17,780 --> 00:02:20,510
+to add some interactivity to your Qml
+
+54
+00:02:20,510 --> 00:02:23,750
+code. Qml by itself is a declarative
+
+55
+00:02:23,750 --> 00:02:26,180
+language. And by now some of you might
+
+56
+00:02:26,180 --> 00:02:29,329
+ask what is the declarative language. Qml
+
+57
+00:02:29,329 --> 00:02:32,000
+is a declarative language in that it
+
+58
+00:02:32,000 --> 00:02:34,489
+allows you to describe how your user
+
+59
+00:02:34,489 --> 00:02:37,250
+interface is going to look without going
+
+60
+00:02:37,250 --> 00:02:40,970
+into the flow of the logic. And this is a
+
+61
+00:02:40,970 --> 00:02:42,829
+Wikipedia link on the declaritive
+
+62
+00:02:42,829 --> 00:02:44,690
+programming if you want to know more on
+
+63
+00:02:44,690 --> 00:02:46,849
+the subject. If you look here they say
+
+64
+00:02:46,849 --> 00:02:49,160
+many languages that apply declarative
+
+65
+00:02:49,160 --> 00:02:52,129
+programming attempt to minimize or
+
+66
+00:02:52,129 --> 00:02:54,440
+eliminate side effects by describing
+
+67
+00:02:54,440 --> 00:02:57,200
+what the program must accomplish in
+
+68
+00:02:57,200 --> 00:03:00,920
+terms of the problem domain. In Qt quick
+
+69
+00:03:00,920 --> 00:03:03,739
+the problem domain must be how you user
+
+70
+00:03:03,739 --> 00:03:06,530
+interface is going to look. So we try and
+
+71
+00:03:06,530 --> 00:03:08,810
+describe how the user interface is going
+
+72
+00:03:08,810 --> 00:03:11,390
+to look but we don't want to go into the
+
+73
+00:03:11,390 --> 00:03:14,269
+details of how that is accomplished. The
+
+74
+00:03:14,269 --> 00:03:16,760
+job of accomplishing that belongs to the
+
+75
+00:03:16,760 --> 00:03:19,400
+Qml engine that is built into your
+
+76
+00:03:19,400 --> 00:03:21,530
+Qt framebuild. This is what they are
+
+77
+00:03:21,530 --> 00:03:23,299
+trying to say here, you can read more on
+
+78
+00:03:23,299 --> 00:03:25,849
+this if you are interested. To give you
+
+79
+00:03:25,849 --> 00:03:28,519
+some context if you were trying to put a
+
+80
+00:03:28,519 --> 00:03:31,340
+few buttons in a layout in an imperative
+
+81
+00:03:31,340 --> 00:03:34,489
+language that is not declarative, you
+
+82
+00:03:34,489 --> 00:03:38,690
+would mix flow and program logic. You see
+
+83
+00:03:38,690 --> 00:03:41,629
+here we are adding widgets to the layout
+
+84
+00:03:41,629 --> 00:03:44,319
+inside the loop which is a control flow
+
+85
+00:03:44,319 --> 00:03:49,400
+structure in C++ or any C like language. So
+
+86
+00:03:49,400 --> 00:03:52,129
+if we do this declaratively like we do
+
+87
+00:03:52,129 --> 00:03:54,190
+in Qml you see we define a component.
+
+88
+00:03:54,190 --> 00:03:57,049
+This is a column layout it lays out
+
+89
+00:03:57,049 --> 00:03:59,690
+things from top to bottom and decide we
+
+90
+00:03:59,690 --> 00:04:02,329
+just stuff things we want to put in that
+
+91
+00:04:02,329 --> 00:04:04,790
+layout and we are done, we don't concern
+
+92
+00:04:04,790 --> 00:04:06,829
+ourselves with how this is accomplished
+
+93
+00:04:06,829 --> 00:04:09,799
+it is the job of the Qml engine to
+
+94
+00:04:09,799 --> 00:04:13,010
+make sure this works. Ok now you have an
+
+95
+00:04:13,010 --> 00:04:15,889
+idea about Qt you have an idea about Qt
+
+96
+00:04:15,889 --> 00:04:18,829
+quick how do they interact, how do you
+
+97
+00:04:18,829 --> 00:04:21,529
+put them together. Well there are mainly
+
+98
+00:04:21,529 --> 00:04:24,200
+two sides to building with Qt.
+
+99
+00:04:24,200 --> 00:04:26,450
+You can develop your application
+
+100
+00:04:26,450 --> 00:04:29,360
+completely in C++ and this is what we
+
+101
+00:04:29,360 --> 00:04:31,340
+were all doing before they came up with
+
+102
+00:04:31,340 --> 00:04:32,360
+Qt quick
+
+103
+00:04:32,360 --> 00:04:34,640
+but the problem with applications
+
+104
+00:04:34,640 --> 00:04:37,370
+developed with C++ is that they don't
+
+105
+00:04:37,370 --> 00:04:39,650
+build well when you run them on mobile
+
+106
+00:04:39,650 --> 00:04:42,620
+devices. It is really painful to look at
+
+107
+00:04:42,620 --> 00:04:44,360
+the widget application running on
+
+108
+00:04:44,360 --> 00:04:47,960
+android or iOS. Another side is using Qt quick
+
+109
+00:04:47,960 --> 00:04:50,930
+which is designed to work fluid and
+
+110
+00:04:50,930 --> 00:04:53,780
+dynamic user interfaces that can run on
+
+111
+00:04:53,780 --> 00:04:57,200
+Android iOS touch interfaces or embedded
+
+112
+00:04:57,200 --> 00:04:59,750
+devices or even desktop you can use it
+
+113
+00:04:59,750 --> 00:05:01,700
+to build the desktop applications. And
+
+114
+00:05:01,700 --> 00:05:03,860
+we're going to see that along the course.
+
+115
+00:05:03,860 --> 00:05:07,250
+Now Qt quick also comprises two parts
+
+116
+00:05:07,250 --> 00:05:09,950
+there is Qml the language that
+
+117
+00:05:09,950 --> 00:05:11,810
+allows you to build how your user
+
+118
+00:05:11,810 --> 00:05:14,240
+interface is going to look it allows you
+
+119
+00:05:14,240 --> 00:05:17,570
+to build still and static UI components.
+
+120
+00:05:17,570 --> 00:05:19,010
+And if you want to add some
+
+121
+00:05:19,010 --> 00:05:20,930
+interactivity to your application you're
+
+122
+00:05:20,930 --> 00:05:23,270
+going to use JavaScript to do that. If
+
+123
+00:05:23,270 --> 00:05:25,820
+you want to do things like responding to
+
+124
+00:05:25,820 --> 00:05:28,580
+a click on a button and things like that
+
+125
+00:05:28,580 --> 00:05:30,590
+you're going to use javascript. And we're
+
+126
+00:05:30,590 --> 00:05:32,570
+going to see exactly how that builds. Now
+
+127
+00:05:32,570 --> 00:05:34,730
+I want to bring to your attention that
+
+128
+00:05:34,730 --> 00:05:37,640
+it is possible to communicate between Qt
+
+129
+00:05:37,640 --> 00:05:40,070
+quick and C++. And the recommended
+
+130
+00:05:40,070 --> 00:05:42,800
+workflow to building with Qt to develop
+
+131
+00:05:42,800 --> 00:05:46,310
+cross-platform applications is to write
+
+132
+00:05:46,310 --> 00:05:49,250
+your user interface in Qt quick and do
+
+133
+00:05:49,250 --> 00:05:52,790
+resource heavy things in C++. For example
+
+134
+00:05:52,790 --> 00:05:54,380
+if you are doing an image processing
+
+135
+00:05:54,380 --> 00:05:56,600
+application you can do your user
+
+136
+00:05:56,600 --> 00:05:59,330
+interface in Qt quick and take advantage
+
+137
+00:05:59,330 --> 00:06:01,400
+of all the cool things that this
+
+138
+00:06:01,400 --> 00:06:03,800
+technology has to offer. And you can do
+
+139
+00:06:03,800 --> 00:06:06,020
+heavy things like doing operations on
+
+140
+00:06:06,020 --> 00:06:09,800
+your images on the c++ side and pass the
+
+141
+00:06:09,800 --> 00:06:12,020
+resort back to Qt quick to be displayed.
+
+142
+00:06:12,020 --> 00:06:15,260
+I have to say this course is solely on
+
+143
+00:06:15,260 --> 00:06:17,210
+Qt quick, we don't cover how you
+
+144
+00:06:17,210 --> 00:06:19,760
+communicate between C++ and Qt quick
+
+145
+00:06:19,760 --> 00:06:21,890
+because we wanted this course to be
+
+146
+00:06:21,890 --> 00:06:24,890
+equally useful to designers who are not
+
+147
+00:06:24,890 --> 00:06:29,000
+interested in C++ and C++ developers who
+
+148
+00:06:29,000 --> 00:06:31,070
+want to know how to work with Qt quick.
+
+149
+00:06:31,070 --> 00:06:33,710
+Now you are probably going to see the
+
+150
+00:06:33,710 --> 00:06:35,870
+terms Qml and Qt quick used
+
+151
+00:06:35,870 --> 00:06:36,969
+interchangeably.
+
+152
+00:06:36,969 --> 00:06:39,969
+Qt quick is the overall technology if you
+
+153
+00:06:39,969 --> 00:06:41,409
+go down the staff you're going to see
+
+154
+00:06:41,409 --> 00:06:43,989
+that it contains Qml itself, it also
+
+155
+00:06:43,989 --> 00:06:46,869
+contains a Qml API that we are going to
+
+156
+00:06:46,869 --> 00:06:49,989
+use in this course and it contains a C++
+
+157
+00:06:49,989 --> 00:06:53,619
+API that allows you to expand Qml with
+
+158
+00:06:53,619 --> 00:06:57,669
+new types using c++. Qml itself contains
+
+159
+00:06:57,669 --> 00:06:59,699
+the Qml engine and the Qml language.
+
+160
+00:06:59,699 --> 00:07:02,319
+It is also important to know the
+
+161
+00:07:02,319 --> 00:07:05,889
+difference between Qml and C++ in terms
+
+162
+00:07:05,889 --> 00:07:08,559
+of what is available to you what can you
+
+163
+00:07:08,559 --> 00:07:11,860
+use. Qml is declarative we just saw
+
+164
+00:07:11,860 --> 00:07:14,469
+that in a previous slide but it is also
+
+165
+00:07:14,469 --> 00:07:16,209
+imperative because you can use
+
+166
+00:07:16,209 --> 00:07:17,919
+JavaScript which is an imperative
+
+167
+00:07:17,919 --> 00:07:20,379
+language to add some interactivity to
+
+168
+00:07:20,379 --> 00:07:23,049
+your Qml applications. C++
+
+169
+00:07:23,049 --> 00:07:25,329
+is imperative you are going to see less
+
+170
+00:07:25,329 --> 00:07:29,409
+debug information in Qml. And C++ is
+
+171
+00:07:29,409 --> 00:07:31,329
+a beast when it comes to giving you the value
+
+172
+00:07:31,329 --> 00:07:34,479
+information. There are API is for most Qt
+
+173
+00:07:34,479 --> 00:07:38,589
+modules in C++ but Qml covers only a
+
+174
+00:07:38,589 --> 00:07:41,139
+few selected Qt modules. It is new
+
+175
+00:07:41,139 --> 00:07:44,649
+compared to the C++ side of Qt but it
+
+176
+00:07:44,649 --> 00:07:46,509
+is getting there. We should also note
+
+177
+00:07:46,509 --> 00:07:48,969
+that there are some api's that are only
+
+178
+00:07:48,969 --> 00:07:51,879
+available in Qml for example the Qt quick
+
+179
+00:07:51,879 --> 00:07:54,610
+API it is only available in Qml.
+
+180
+00:07:54,610 --> 00:07:57,339
+And that is one main reason why you need
+
+181
+00:07:57,339 --> 00:07:58,899
+to learn Qml because you're going
+
+182
+00:07:58,899 --> 00:08:01,779
+to take advantage of that. Qml supports
+
+183
+00:08:01,779 --> 00:08:04,179
+property bindings a very important
+
+184
+00:08:04,179 --> 00:08:05,709
+property that allows you to have your
+
+185
+00:08:05,709 --> 00:08:07,959
+changes propagated to other properties
+
+186
+00:08:07,959 --> 00:08:10,209
+we're going to look at that and C++
+
+187
+00:08:10,209 --> 00:08:12,819
+doesn't support that. And Qml can be
+
+188
+00:08:12,819 --> 00:08:16,089
+extended from C++. Okay and the big idea
+
+189
+00:08:16,089 --> 00:08:18,909
+is that Qt quick is used to build your
+
+190
+00:08:18,909 --> 00:08:22,089
+user interface and C++ takes care of the
+
+191
+00:08:22,089 --> 00:08:25,209
+heavy liftin, doing resource heavy things
+
+192
+00:08:25,209 --> 00:08:27,909
+and passing the results back to Qt
+
+193
+00:08:27,909 --> 00:08:30,399
+quick to be displayed to the user.
+
+194
+00:08:30,399 --> 00:08:33,129
+Qml has four main components really. It
+
+195
+00:08:33,129 --> 00:08:35,529
+has nested elements blocks you can see
+
+196
+00:08:35,529 --> 00:08:37,929
+here this is what Qml looks like. We are
+
+197
+00:08:37,929 --> 00:08:38,979
+going to look at this
+
+198
+00:08:38,979 --> 00:08:41,349
+but you see we have an item here and
+
+199
+00:08:41,349 --> 00:08:43,299
+these brackets here inside we have
+
+200
+00:08:43,299 --> 00:08:46,000
+another rectangle item inside the
+
+201
+00:08:46,000 --> 00:08:47,380
+rectangle item we have
+
+202
+00:08:47,380 --> 00:08:49,600
+another mouse area area. You see they are
+
+203
+00:08:49,600 --> 00:08:52,540
+nested this is what we mean here. Qml has
+
+204
+00:08:52,540 --> 00:08:55,180
+properties things like XY you see here
+
+205
+00:08:55,180 --> 00:08:58,300
+width, height, color our properties in
+
+206
+00:08:58,300 --> 00:09:01,210
+Qml. You can bind properties together.
+
+207
+00:09:01,210 --> 00:09:02,980
+We're going to see how this builds in
+
+208
+00:09:02,980 --> 00:09:05,920
+Qml. And we also have signals and handlers.
+
+209
+00:09:05,920 --> 00:09:08,170
+If you look here in the mouse area on
+
+210
+00:09:08,170 --> 00:09:11,080
+clicked here is a signal handler and you
+
+211
+00:09:11,080 --> 00:09:14,320
+can also emit or send signals in Qt
+
+212
+00:09:14,320 --> 00:09:16,600
+quick. Now I have been getting this
+
+213
+00:09:16,600 --> 00:09:19,780
+question a lot how do you know the Qt
+
+214
+00:09:19,780 --> 00:09:22,690
+quick version to import. The Qt quick
+
+215
+00:09:22,690 --> 00:09:24,730
+version you use comes with your
+
+216
+00:09:24,730 --> 00:09:27,640
+installed Qt version. For example right
+
+217
+00:09:27,640 --> 00:09:30,700
+now I am using Qt 5.11
+
+218
+00:09:30,700 --> 00:09:32,950
+and the Qt quick version that comes
+
+219
+00:09:32,950 --> 00:09:36,490
+with that is 2.11. Different modules that
+
+220
+00:09:36,490 --> 00:09:38,680
+you import in Qt quick are also going to
+
+221
+00:09:38,680 --> 00:09:41,320
+have versions attached to them. They are
+
+222
+00:09:41,320 --> 00:09:43,180
+usually different from the Qt quick
+
+223
+00:09:43,180 --> 00:09:46,210
+version you see. A good way to find out
+
+224
+00:09:46,210 --> 00:09:48,340
+the version that you might use is to
+
+225
+00:09:48,340 --> 00:09:51,340
+search for the element in the Qt
+
+226
+00:09:51,340 --> 00:09:53,650
+documentation and they are going to show
+
+227
+00:09:53,650 --> 00:09:55,450
+you the import that you can use. For
+
+228
+00:09:55,450 --> 00:09:57,520
+example you can search for rectangle in
+
+229
+00:09:57,520 --> 00:10:00,040
+the Qt documentation and they are going
+
+230
+00:10:00,040 --> 00:10:03,490
+to show what you need to import to be
+
+231
+00:10:03,490 --> 00:10:05,680
+able to use that component in your
+
+232
+00:10:05,680 --> 00:10:08,230
+Qml code. I want to talk about what you
+
+233
+00:10:08,230 --> 00:10:10,420
+need to bring in this course to be able
+
+234
+00:10:10,420 --> 00:10:12,940
+to take advantage of it. First off you
+
+235
+00:10:12,940 --> 00:10:14,590
+need to bring in an open mind and the
+
+236
+00:10:14,590 --> 00:10:16,780
+willingness to learn the stuff we talked
+
+237
+00:10:16,780 --> 00:10:18,610
+about in this course, it is really not
+
+238
+00:10:18,610 --> 00:10:21,220
+difficult. All you have to do is follow
+
+239
+00:10:21,220 --> 00:10:23,880
+up the demos do what I do and try to
+
+240
+00:10:23,880 --> 00:10:27,010
+bring in your own changes to try and
+
+241
+00:10:27,010 --> 00:10:29,620
+understand how things really work. It is
+
+242
+00:10:29,620 --> 00:10:31,540
+also going to help if you have an eye
+
+243
+00:10:31,540 --> 00:10:33,730
+for design because obviously we are
+
+244
+00:10:33,730 --> 00:10:36,760
+designing the visual stuff. Qml is a
+
+245
+00:10:36,760 --> 00:10:38,980
+completely new language so you don't
+
+246
+00:10:38,980 --> 00:10:41,770
+really need to bring in any other skill
+
+247
+00:10:41,770 --> 00:10:44,710
+but if you have very basic programming
+
+248
+00:10:44,710 --> 00:10:46,780
+skills if you have worked with things
+
+249
+00:10:46,780 --> 00:10:50,050
+like CSS and HTML. And if you have some
+
+250
+00:10:50,050 --> 00:10:52,810
+basic understanding of JavaScript things
+
+251
+00:10:52,810 --> 00:10:55,060
+like control flow if you know how to
+
+252
+00:10:55,060 --> 00:10:58,300
+work with IFS and ELSES if you know how
+
+253
+00:10:58,300 --> 00:11:00,520
+to work with loop you're probably going to be
+
+254
+00:11:00,520 --> 00:11:02,500
+fine in this course. But the most
+
+255
+00:11:02,500 --> 00:11:04,270
+important thing is to have an open mind
+
+256
+00:11:04,270 --> 00:11:06,490
+and be willing to spend sometime to
+
+257
+00:11:06,490 --> 00:11:09,120
+learn what is presented in the course.
+
+258
+00:11:09,120 --> 00:11:11,740
+Okay how to make the most out of this
+
+259
+00:11:11,740 --> 00:11:14,020
+course I just said it you just have to
+
+260
+00:11:14,020 --> 00:11:16,300
+follow up with what I do and try to
+
+261
+00:11:16,300 --> 00:11:18,400
+write the code yourself and see how
+
+262
+00:11:18,400 --> 00:11:20,980
+things work for you. This course is very
+
+263
+00:11:20,980 --> 00:11:23,710
+practical we are going to spend most of
+
+264
+00:11:23,710 --> 00:11:26,290
+the time in the IDE writing code and
+
+265
+00:11:26,290 --> 00:11:29,080
+trying to get things to work. If you get
+
+266
+00:11:29,080 --> 00:11:31,420
+stuck try to compare your code to mine,
+
+267
+00:11:31,420 --> 00:11:34,270
+the projects are going to be attached to
+
+268
+00:11:34,270 --> 00:11:37,120
+every lecture and you can easily
+
+269
+00:11:37,120 --> 00:11:39,730
+download that and look at what I tapped
+
+270
+00:11:39,730 --> 00:11:42,520
+or even trying to run my project and see
+
+271
+00:11:42,520 --> 00:11:44,980
+what is not working for you. If you still
+
+272
+00:11:44,980 --> 00:11:47,920
+can solve the problem you may search in
+
+273
+00:11:47,920 --> 00:11:49,840
+Google with the error that you are
+
+274
+00:11:49,840 --> 00:11:52,540
+saying in the IDE. And this is mostly
+
+275
+00:11:52,540 --> 00:11:54,790
+going to lead you to somebody who had
+
+276
+00:11:54,790 --> 00:11:56,980
+the same problem as you and you're going
+
+277
+00:11:56,980 --> 00:11:59,440
+to see their solution and apply it. If
+
+278
+00:11:59,440 --> 00:12:01,540
+after this you still can't solve the
+
+279
+00:12:01,540 --> 00:12:03,580
+question this is a good time to jump to
+
+280
+00:12:03,580 --> 00:12:06,220
+the community. Udemy itself have the QA
+
+281
+00:12:06,220 --> 00:12:08,800
+section where you can post your question
+
+282
+00:12:08,800 --> 00:12:11,110
+and I'm going to try to answer to the
+
+283
+00:12:11,110 --> 00:12:13,870
+best of my abilities. We have also set up
+
+284
+00:12:13,870 --> 00:12:16,180
+a Facebook group dedicated to helping
+
+285
+00:12:16,180 --> 00:12:18,820
+students learning about different Qt
+
+286
+00:12:18,820 --> 00:12:21,190
+development topics, we talked about C++
+
+287
+00:12:21,190 --> 00:12:24,190
+we'll also talk about Qt quick. So if you
+
+288
+00:12:24,190 --> 00:12:26,140
+have a question or anything you want to
+
+289
+00:12:26,140 --> 00:12:28,390
+share really please go there and post
+
+290
+00:12:28,390 --> 00:12:30,700
+and share with us. And by the way this is
+
+291
+00:12:30,700 --> 00:12:33,220
+a good time to post the video go to
+
+292
+00:12:33,220 --> 00:12:35,470
+Facebook and like that page so that you
+
+293
+00:12:35,470 --> 00:12:38,290
+have updates from other students to try
+
+294
+00:12:38,290 --> 00:12:40,780
+and learn from each other. Okay this is
+
+295
+00:12:40,780 --> 00:12:42,940
+all for the introduction in the next
+
+296
+00:12:42,940 --> 00:12:44,590
+lecture we're going to download and
+
+297
+00:12:44,590 --> 00:12:47,590
+install Qt & Qt creator and set up our
+
+298
+00:12:47,590 --> 00:12:50,260
+host development environment. I'll see
+
+299
+00:12:50,260 --> 00:00:00,000
+you there.
+

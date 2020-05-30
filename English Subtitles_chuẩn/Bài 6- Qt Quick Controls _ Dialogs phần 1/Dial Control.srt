@@ -1,0 +1,376 @@
+1
+00:00:00,000 --> 00:00:02,639
+in this lecture we are visiting the dial
+
+2
+00:00:02,639 --> 00:00:05,819
+control including quick this control
+
+3
+00:00:05,819 --> 00:00:08,160
+basically allows the user to spin around
+
+4
+00:00:08,160 --> 00:00:12,059
+a circle like this and choose values
+
+5
+00:00:12,059 --> 00:00:16,230
+from a predefined range let's go to QT
+
+6
+00:00:16,230 --> 00:00:17,670
+creator and play with us
+
+7
+00:00:17,670 --> 00:00:21,000
+okay here we are in QT creator we are
+
+8
+00:00:21,000 --> 00:00:23,820
+going to create our project it's going
+
+9
+00:00:23,820 --> 00:00:26,220
+to be a QT quick application as usual
+
+10
+00:00:26,220 --> 00:00:29,640
+we're going to call it diode demo save
+
+11
+00:00:29,640 --> 00:00:33,450
+it in the usual location it next choose
+
+12
+00:00:33,450 --> 00:00:40,370
+your QT version and choose your kit and
+
+13
+00:00:40,370 --> 00:00:44,100
+finish we are going to change the title
+
+14
+00:00:44,100 --> 00:00:47,789
+here to dial demo and inside we are
+
+15
+00:00:47,789 --> 00:00:55,640
+going to put a column component import
+
+16
+00:00:55,640 --> 00:01:03,930
+QT quick controls the latest version as
+
+17
+00:01:03,930 --> 00:01:07,590
+of now which is 2.4 we want this to have
+
+18
+00:01:07,590 --> 00:01:13,080
+the same width as the parent and we want
+
+19
+00:01:13,080 --> 00:01:17,720
+to have a spacing of 40 as usual and
+
+20
+00:01:17,720 --> 00:01:20,759
+inside we want to put a Label component
+
+21
+00:01:20,759 --> 00:01:24,810
+that says what this thing does down here
+
+22
+00:01:24,810 --> 00:01:30,329
+we put it dial component and we can go
+
+23
+00:01:30,329 --> 00:01:33,210
+to the documentation of it to see what
+
+24
+00:01:33,210 --> 00:01:36,689
+it is and what it does it is similar to
+
+25
+00:01:36,689 --> 00:01:39,780
+a traditional dial knob that is found on
+
+26
+00:01:39,780 --> 00:01:42,720
+devices such as stereos and industrial
+
+27
+00:01:42,720 --> 00:01:45,240
+equipment it allows the user to specify
+
+28
+00:01:45,240 --> 00:01:48,119
+a value within a range it basically
+
+29
+00:01:48,119 --> 00:01:50,729
+looks like this if we look at the
+
+30
+00:01:50,729 --> 00:01:55,579
+properties there is a from value and to
+
+31
+00:01:55,579 --> 00:01:59,549
+value and other properties that you can
+
+32
+00:01:59,549 --> 00:02:02,130
+look at if you are interested we're
+
+33
+00:02:02,130 --> 00:02:04,829
+going to go back to our code close this
+
+34
+00:02:04,829 --> 00:02:06,780
+down we want this Center and
+
+35
+00:02:06,780 --> 00:02:08,489
+horizontally so we're going to say
+
+36
+00:02:08,489 --> 00:02:10,720
+anchor.horizontalCenter
+
+37
+00:02:10,720 --> 00:02:14,560
+parent.horizontalCenter we want this
+
+38
+00:02:14,560 --> 00:02:19,290
+to start from one and go up to 100 and
+
+39
+00:02:19,290 --> 00:02:24,820
+we wanted to start at 50 right in the
+
+40
+00:02:24,820 --> 00:02:27,490
+middle we also want to know when the
+
+41
+00:02:27,490 --> 00:02:29,770
+value changes so we're going to say
+
+42
+00:02:29,770 --> 00:02:32,830
+on value changed and we are going to
+
+43
+00:02:32,830 --> 00:02:43,450
+console.log value say let's concatenate
+
+44
+00:02:43,450 --> 00:02:48,180
+this to this later string and say value
+
+45
+00:02:48,180 --> 00:02:53,110
+and I notice that we have a typo in here
+
+46
+00:02:53,110 --> 00:02:56,020
+so we're going to say parent with
+
+47
+00:02:56,020 --> 00:02:58,960
+instead of only saying parent because we
+
+48
+00:02:58,960 --> 00:03:02,560
+want this to be the same width as its
+
+49
+00:03:02,560 --> 00:03:05,200
+parent which is this window here if we
+
+50
+00:03:05,200 --> 00:03:11,140
+run now we're going to see our knob here
+
+51
+00:03:11,140 --> 00:03:13,270
+okay you see that it is right in the
+
+52
+00:03:13,270 --> 00:03:16,180
+middle if we try and move it you see
+
+53
+00:03:16,180 --> 00:03:20,140
+that the progress is going towards 100
+
+54
+00:03:20,140 --> 00:03:23,170
+we reach the top it says 100 and we
+
+55
+00:03:23,170 --> 00:03:25,660
+can turn it back ok the user can
+
+56
+00:03:25,660 --> 00:03:28,290
+choose a value in between here
+
+57
+00:03:28,290 --> 00:03:30,910
+another thing I've seen people do a lot
+
+58
+00:03:30,910 --> 00:03:34,209
+is if you don't want to have decimal
+
+59
+00:03:34,209 --> 00:03:36,970
+values here you can turn this value into
+
+60
+00:03:36,970 --> 00:03:39,550
+integers very easily by using some
+
+61
+00:03:39,550 --> 00:03:41,500
+JavaScript functions that are available
+
+62
+00:03:41,500 --> 00:03:45,160
+to you you can say math.floor to have it
+
+63
+00:03:45,160 --> 00:03:48,820
+rounded to the lowest value so you can
+
+64
+00:03:48,820 --> 00:03:53,170
+say math.floor value and if you run
+
+65
+00:03:53,170 --> 00:03:56,980
+again you're going to see integers you
+
+66
+00:03:56,980 --> 00:04:04,230
+can also round up by saying math.ciel
+
+67
+00:04:04,230 --> 00:04:09,780
+something like this run again
+
+68
+00:04:13,240 --> 00:04:16,390
+it basically looks the same it is a
+
+69
+00:04:16,390 --> 00:04:18,640
+matter of your own choice what you want
+
+70
+00:04:18,640 --> 00:04:21,760
+to use depending on your requirements if
+
+71
+00:04:21,760 --> 00:04:23,920
+we go back to the documentation there is
+
+72
+00:04:23,920 --> 00:04:25,930
+another property I want you to pay
+
+73
+00:04:25,930 --> 00:04:28,840
+attention to and it is this wrap here
+
+74
+00:04:28,840 --> 00:04:31,800
+what it does it holds whether the down
+
+75
+00:04:31,800 --> 00:04:34,630
+wraps when dragged for example when this
+
+76
+00:04:34,630 --> 00:04:37,330
+property is set to true dragging the
+
+77
+00:04:37,330 --> 00:04:40,090
+dial past the to position will
+
+78
+00:04:40,090 --> 00:04:43,180
+result in the handle being positioned at
+
+79
+00:04:43,180 --> 00:04:45,730
+the from position in our case if we go
+
+80
+00:04:45,730 --> 00:04:48,490
+past 100 it is going to go back to one
+
+81
+00:04:48,490 --> 00:04:50,940
+if we go past one it's going to go to
+
+82
+00:04:50,940 --> 00:04:54,490
+100 I personally don't like this
+
+83
+00:04:54,490 --> 00:04:57,100
+behavior because it confuses the users
+
+84
+00:04:57,100 --> 00:04:59,890
+but if you need it it is a matter of
+
+85
+00:04:59,890 --> 00:05:04,540
+coming here and saying wrap and set this
+
+86
+00:05:04,540 --> 00:05:11,590
+to true and run the application and if
+
+87
+00:05:11,590 --> 00:05:15,160
+you go past 100 you see that it comes to
+
+88
+00:05:15,160 --> 00:05:18,340
+one you can go up again and if you
+
+89
+00:05:18,340 --> 00:05:21,370
+decrease and go past one you see that it
+
+90
+00:05:21,370 --> 00:05:24,100
+jumps to 100 okay now you know how to
+
+91
+00:05:24,100 --> 00:05:26,500
+use the dial control to let the user
+
+92
+00:05:26,500 --> 00:05:29,470
+choose a value from a predefined range
+
+93
+00:05:29,470 --> 00:05:31,690
+in the next lecture we're going to look
+
+94
+00:05:31,690 --> 00:00:00,000
+at the frame control I'll see you there
+

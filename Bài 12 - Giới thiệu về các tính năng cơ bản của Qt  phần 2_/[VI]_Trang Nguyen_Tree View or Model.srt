@@ -1,0 +1,618 @@
+﻿1
+00:00:00,840 --> 00:00:06,160
+Trong video này, ta sẽ tìm hiểu Tree View và Model.
+Trong đó sẽ có cấu trúc cây QModelIndex,
+
+2
+00:00:06,160 --> 00:00:11,410
+ánh xạ(mapping) QTreeModel thành data thực
+và hướng dẫn một ví dụ, trong đó ta
+
+3
+00:00:11,410 --> 00:00:14,490
+chạy thử một custom Tree Model.
+Nó có thể khá là khó làm.
+
+4
+00:00:14,500 --> 00:00:17,950
+Hãy bắt đầu với mô hình đánh chỉ mục trong Qt(Qt indexing paradigm).
+
+5
+00:00:18,020 --> 00:00:22,450
+Nó sử dụng các chỉ mục cho model để phân tách
+việc data hiển thị theo cách chúng được truy cập.
+
+6
+00:00:22,450 --> 00:00:26,860
+Trong thực tế, nghĩa là bạn lập trình bắc cầu
+việc hiển thị data của bạn với
+
+7
+00:00:26,860 --> 00:00:29,530
+việc hiển thị data trong Qt, chính là đánh chỉ mục model (model index).
+
+8
+00:00:29,590 --> 00:00:33,670
+Ta sẽ bàn về cách hiển thị model index
+để các bạn hiểu được
+
+9
+00:00:33,670 --> 00:00:34,970
+quy trình bắc cầu.
+
+10
+00:00:35,260 --> 00:00:39,490
+QModelIndex được định nghĩa bởi
+hàng, cột và QModelIndex cha.
+
+11
+00:00:39,490 --> 00:00:44,250
+Yêu cầu đối với QModelIndex cha
+của mỗi item sẽ tạo ra yêu cầu với
+
+12
+00:00:44,250 --> 00:00:47,830
+các item gốc của data trong danh sách.
+
+13
+00:00:47,830 --> 00:00:52,270
+Item gốc không chứa sẵn data. Mục đích
+của nó là để làm cha cho
+
+14
+00:00:52,270 --> 00:00:53,610
+data đầu tiên trong các item data thực tế.
+
+15
+00:00:53,680 --> 00:00:55,730
+Trong biểu đồ này, nó là cột đầu tiên.
+
+16
+00:00:55,730 --> 00:00:58,120
+Đây là ba cột đầu tiên. Ở đây,
+
+17
+00:00:58,120 --> 00:01:00,550
+mỗi ô thể hiện một item data.
+
+18
+00:01:00,580 --> 00:01:05,560
+Hãy cùng xem cách định nghĩa một QModelIndex
+đối với vài item được đánh dấu trong biểu đồ,
+
+19
+00:01:05,620 --> 00:01:07,550
+bắt đầu từ item gốc.
+
+20
+00:01:07,600 --> 00:01:12,440
+Bạn có thể tạo một index cho item gốc
+gọi hàm constructor của class QModelIndex.
+
+21
+00:01:12,460 --> 00:01:16,780
+Tôi biết code C++ như này là không hợp lể, nhưng nó khá dễ để
+minh họa cho việc tạo reference
+
+22
+00:01:16,780 --> 00:01:21,930
+tới item gốc, và thế là tốt vì nếu bạn nhìn
+biểu đồ, cha của ô A và C
+
+23
+00:01:22,090 --> 00:01:23,250
+chính là item gốc.
+
+24
+00:01:23,260 --> 00:01:29,020
+Hãy xem cách tạo một index cho ô A.
+QModelIndex được xác định bởi hàng, cột và parent.
+
+25
+00:01:29,020 --> 00:01:33,720
+Với ô A, mô tả sẽ là Row bằng 0,
+Column bằng 0 và parent gốc.
+
+26
+00:01:33,790 --> 00:01:34,440
+Khá là dễ.
+
+27
+00:01:34,480 --> 00:01:37,470
+Hãy nhìn sự khác biệt giữa ô A và C.
+
+28
+00:01:37,630 --> 00:01:43,060
+Ta không còn ở hàng đầu tiên nữa, vì thế
+index của ô C sẽ được xác định là Row 2, Column 2
+
+29
+00:01:43,060 --> 00:01:43,870
+và root parent.
+
+30
+00:01:43,960 --> 00:01:46,330
+Nhưng ta sẽ làm gì nếu lớp parent
+không phải là root parent nữa?
+
+31
+00:01:46,330 --> 00:01:50,950
+Hãy nhìn index của ô B. Để có
+QModelIndex cho B,
+
+32
+00:01:50,950 --> 00:01:55,770
+trước tiên ta cần QModelIndex cho A,
+vì A là parent của B.
+
+33
+00:01:55,780 --> 00:02:00,850
+Khi đã xác định được parent, ô B sẽ là
+Row 1, Column 0 và parent là A.
+
+34
+00:02:01,000 --> 00:02:05,080
+Ta đã hiểu cách Qt hiển thị
+data. Vậy ta sẽ hiển thị data của chúng ta thế nào
+
+35
+00:02:05,080 --> 00:02:11,320
+Để ví dụ. Trong ví dụ này ta sẽ dùng một class custom ColorTreeItem để chứa data của chúng ta.
+
+36
+00:02:11,320 --> 00:02:16,210
+Ô này tương ứng một instance của ColorTreeItem trong phần implement của chúng ta.
+Ở đây,
+
+37
+00:02:16,210 --> 00:02:19,180
+mỗi item sẽ có một con trỏ (pointer) trỏ đến
+item cha của nó.
+
+38
+00:02:19,180 --> 00:02:24,460
+Pointer này sẽ được thể hiện bằng
+mũi tên xanh lá và một danh sách pointer tới item con,
+
+39
+00:02:24,460 --> 00:02:25,920
+thể hiện bằng hai mũi tên xanh lá này.
+
+40
+00:02:26,050 --> 00:02:31,420
+Mỗi item cũng chứa một danh sách data màu
+thể hiện bởi những ô xanh dương này, giá trị màu
+
+41
+00:02:31,420 --> 00:02:33,430
+mà ta dùng để lấp đầy các cột này.
+
+42
+00:02:33,450 --> 00:02:38,110
+Nếu tinh mắt một chút, đoạn này khá giống với Tree Model
+trong các slide trước.
+
+43
+00:02:38,500 --> 00:02:41,730
+Nếu bài này khó hiểu, bạn đừng lo.
+
+44
+00:02:41,740 --> 00:02:46,870
+Điều bạn cần nhớ là: bạn phải map được
+data tới QModelIndex, vì thế sẽ tốt hơn
+
+45
+00:02:46,870 --> 00:02:52,360
+nếu bạn hiểu được cách Qt hiển thị data,
+đó chính là hàng, cột và parent, vì thế, hãy nghĩ
+
+46
+00:02:52,360 --> 00:02:53,490
+tới cách ta trình bày data
+
+47
+00:02:53,500 --> 00:02:54,710
+đối với ví dụ này.
+
+48
+00:02:54,820 --> 00:02:59,740
+Khi đã có vài ý tưởng về cách trình bày data
+và cách Qt hoạt động, hãy xem
+
+49
+00:02:59,740 --> 00:03:01,460
+việc implement phần mapping.
+
+50
+00:03:01,630 --> 00:03:06,610
+Khi ta kế thừa lại QtAbstractItemModel,
+chúng ta cần implement lại 2 method:
+
+51
+00:03:06,610 --> 00:03:08,190
+"parent" method và "index".
+
+52
+00:03:08,290 --> 00:03:13,360
+Khi ta kế thừa lại QtAbstractItemModel,
+chúng ta cần implement lại 2 method:
+
+53
+00:03:13,360 --> 00:03:15,200
+parent model và index.
+
+54
+00:03:15,220 --> 00:03:17,720
+Đó là hai phương pháp
+dùng để phiên dịch data cho ta.
+
+55
+00:03:17,740 --> 00:03:19,710
+Hãy tiếp tục xem nó thế nào.
+
+56
+00:03:20,800 --> 00:03:24,990
+Ta sẽ bắt đầu bằng cách xem
+cách implement QAbstractItemModel.
+
+57
+00:03:25,060 --> 00:03:28,130
+Trông nó sẽ chính xác là việc
+implement lại QAbstractListModel
+
+58
+00:03:28,130 --> 00:03:33,170
+và chỉ có một điểm khác duy nhất là
+ta có hai phương pháp như trên,
+
+59
+00:03:33,200 --> 00:03:34,370
+"index" và "parent" method.
+
+60
+00:03:34,490 --> 00:03:39,980
+Điểm duy nhất hơi lạ đó là
+ta cần phiên dịch giữa QModelIndex và data nội bộ
+
+61
+00:03:39,980 --> 00:03:40,850
+tương đối thường xuyên.
+
+62
+00:03:40,880 --> 00:03:45,020
+Ta sẽ implement một method trợ giúp (helper method)để
+phiên dịch cho chúng ta.
+
+63
+00:03:45,020 --> 00:03:47,560
+Ta sẽ gọi nó là get_item_from_index.
+
+64
+00:03:47,570 --> 00:03:53,210
+Nó sẽ trả lại cho ta một pointer dạng ColorTreeItem,
+đó chính là cách trình bày data nội bộ của ta,
+
+65
+00:03:53,210 --> 00:03:55,150
+và nó sẽ đưa vào một biến dạng QModelIndex.
+
+66
+00:03:55,160 --> 00:03:57,550
+Hãy bắt đầu implement phần này trước.
+
+67
+00:03:57,590 --> 00:04:02,300
+Ta chuyển sang file picturemodel.cpp ở đây.
+
+68
+00:04:02,300 --> 00:04:06,770
+Việc đầu tiên cần làm ở phần implement này là
+kiểm tra xem index được đưa vào
+
+69
+00:04:06,770 --> 00:04:07,530
+có phải là root item hay không...
+
+70
+00:04:07,610 --> 00:04:14,210
+bằng cách dùng method "IsValid" của "index",
+nếu index không hợp lệ, nó sẽ là
+
+71
+00:04:14,210 --> 00:04:15,460
+item ảo (shadowy item), không có data.
+
+72
+00:04:16,240 --> 00:04:21,520
+Và đoạn mã ở đây thể hiện là nếu thực tế nó không hợp lệ(valid)
+
+73
+00:04:21,520 --> 00:04:23,250
+và nó sẽ bỏ qua và trả về root item của chúng ta.
+
+74
+00:04:23,350 --> 00:04:29,110
+Nếu index hợp lệ, ta có thể sử dụng
+method "internalPointer" trên QModelIndex để
+
+75
+00:04:29,110 --> 00:04:30,220
+có pointer cho data nội bộ.
+
+76
+00:04:30,310 --> 00:04:37,490
+Ta sẽ dùng "static_cast" để chuyển đổi loại data
+từ null sang dạng data của chúng ta.
+
+77
+00:04:37,490 --> 00:04:42,370
+Cuối cùng, ta sẽ kiểm tra để đảm bảo là
+nó hợp lệ, và nếu thế thì ta sẽ tiếp tục trả về item đó.
+
+78
+00:04:42,390 --> 00:04:45,420
+Ngon. Hãy dùng tiếp
+implement method "parent".
+
+79
+00:04:45,570 --> 00:04:49,410
+Việc đầu tiên cần implement là
+kiểm tra xem index được đưa vào có hợp lệ không.
+
+80
+00:04:49,500 --> 00:04:54,660
+Nếu không thì nó là root item , và ta sẽ
+trả lại QModelIndex rỗng như một root item
+
+81
+00:04:54,660 --> 00:05:00,840
+không có parent. Rồi ta dùng lệnh get_item_from_index
+vừa tạo để lấy ra một pointer dạng ColorTreeItem.
+
+82
+00:05:00,840 --> 00:05:06,870
+Như vừa nói, class ColorTreeItem này
+chứa reference tới item parent,
+
+83
+00:05:06,960 --> 00:05:12,170
+ta sẽ cho method này lấy pointer ColorTreeItem trỏ tới
+parent. Ta sẽ kiểm tra lại xem
+
+84
+00:05:12,170 --> 00:05:16,030
+item parent có phải là root item không, và ta luôn
+có thể trả lại một QModelIndex rỗng.
+
+85
+00:05:16,030 --> 00:05:22,490
+Nếu không thì ta sẽ tạo một index
+bằng cách dùng method Create Index từ class.
+
+86
+00:05:22,490 --> 00:05:26,390
+Ta cần phải đưa vào hàng, cột và một pointer
+tới data nội bộ.
+
+87
+00:05:26,570 --> 00:05:30,740
+Theo quy ước, chỉ có cột đầu tiên của các item
+trong Tree View mới có item con.
+
+88
+00:05:30,740 --> 00:05:33,340
+Vậy nên giá trị column của ta sẽ bằng 0.
+
+89
+00:05:33,380 --> 00:05:39,130
+Việc implement ColorTreeItem cũng sẽ theo dấu
+các hàng mà nó có bằng method "childNumber".
+
+90
+00:05:39,170 --> 00:05:41,330
+Vậy là ta dùng cả ba.
+
+91
+00:05:41,330 --> 00:05:42,690
+Đây là hàng của ta.
+
+92
+00:05:42,950 --> 00:05:47,750
+Đây là cột, bằng 0, và sẽ đưa vào
+item parent.
+
+93
+00:05:47,750 --> 00:05:48,230
+Tuyệt!
+
+94
+00:05:48,230 --> 00:05:50,330
+Trước tiên, hãy dùng tiếp method "index".
+
+95
+00:05:50,330 --> 00:05:50,780
+Tuyệt!
+
+96
+00:05:50,780 --> 00:05:55,050
+Trước tiên, hãy dùng tiếp method "index", đầu tiên hãy đảm bảo rằng
+những gì chúng ta đưa vào
+
+97
+00:05:55,080 --> 00:05:59,840
+không phải là root item
+
+98
+00:06:00,080 --> 00:06:02,540
+Ta sẽ làm điều này bằng cách sử dụng method "hasIndex".
+
+99
+00:06:04,520 --> 00:06:09,060
+Bây giờ, ta làm ngược từ method "parent" lên.
+Thay vì lấy ra parent từ child,
+
+100
+00:06:09,200 --> 00:06:13,850
+Ta lấy ra child từ parent sẽ cần gọi việc hiển thị data nội bộ ra
+
+101
+00:06:13,850 --> 00:06:16,470
+bằng method "get_item_from_index".
+
+102
+00:06:18,620 --> 00:06:23,930
+Cuối cùng, ta sẽ kiểm tra lớp child và tạo ra index
+nếu nó hợp lệ bằng hàm createIndex và
+
+103
+00:06:23,930 --> 00:06:25,270
+QAbstractItemModel.
+
+104
+00:06:25,280 --> 00:06:34,910
+Nếu child không hợp lệ, ta sẽ trả lại
+QModelIndex rỗng.
+
+105
+00:06:34,950 --> 00:06:37,370
+Cuối cùng, ta cần implement một phần của method "data".
+
+106
+00:06:37,380 --> 00:06:44,080
+Cụ thể là QDecorationRole. Ta sẽ lấy item
+từ QModelIndex trước.
+
+107
+00:06:44,080 --> 00:06:49,570
+Nhớ rằng mỗi tiem chưa một danh sách data màu
+dùng để đưa vào mỗi cột trong hàng,
+
+108
+00:06:49,570 --> 00:06:56,110
+nghĩa là ta sẽ dùng method "column"
+từ model index để trả lại data màu phù hợp từ item.
+
+109
+00:06:56,110 --> 00:06:58,630
+Ta đã implement gần hết Tree Model rồi.
+
+110
+00:06:58,630 --> 00:07:01,410
+Vậy Tree Model của ta thực sự hiển thị gì?
+
+111
+00:07:01,570 --> 00:07:07,450
+Nếu nhìn vào cửa sổ chính, ta có thể thấy
+ta đã tạo ra QPushButton.
+
+112
+00:07:07,620 --> 00:07:10,460
+Đây là QPushButton, là method "clicked"
+
+113
+00:07:10,510 --> 00:07:13,870
+ở dưới này kết nối với slot "get_color".
+
+114
+00:07:13,870 --> 00:07:18,760
+Nhìn đây. Ta thấy method "get_color",
+thứ mà ta thấy khi tạo ra một QColorDialog,
+
+115
+00:07:18,760 --> 00:07:23,130
+sử dụng static method(hàm tĩnh) "get_color" để lấy ra một QColor.
+
+116
+00:07:23,140 --> 00:07:28,840
+Ta sẽ đưa màu này vào hàm "generate_hues" để tạo ra một ColorVec
+
+117
+00:07:28,840 --> 00:07:31,150
+và ta sẽ tiếp tục thêm nó vào model.
+
+118
+00:07:31,150 --> 00:07:34,360
+Hãy chạy thử
+và xem nó hoạt động thế nào.
+
+119
+00:07:34,360 --> 00:07:39,340
+Bây giờ, nếu ta click nút này ở dưới cùng,
+và chọn màu, ta sẽ thấy nó
+
+120
+00:07:39,340 --> 00:07:42,340
+hiển thị trên view giống như màu sắc chúng ta đã chọn.
+
+121
+00:07:42,340 --> 00:07:48,220
+Ta thấy là ở đây ta có một ứng dụng tạo màu
+khá đơn sơ, bằng cách chọn màu, ta sẽ tự động
+
+122
+00:07:48,220 --> 00:07:52,090
+tính toán ra 11 màu sắc khả thi khác để
+dùng trong bảng màu.
+
+123
+00:07:52,210 --> 00:07:57,730
+Nếu hơ chuột qua các giá trị, ta sẽ thấy
+giá trị được thay đổi 30 đơn vị mỗi lần
+
+124
+00:07:57,730 --> 00:08:00,100
+mà vẫn giữ nguyên giá trị saturation.
+
+125
+00:08:00,100 --> 00:08:08,050
+Nhìn sẽ thấy hua 60, saturation 254 và giá trị 255,
+đây là màu đầu tiên, hue 90,
+
+126
+00:08:08,040 --> 00:08:09,280
+saturation và giá trị giữ nguyên.
+
+127
+00:08:09,280 --> 00:08:10,940
+Tiếp theo là 120.
+
+128
+00:08:11,050 --> 00:08:12,570
+Tiếp theo là 150.
+
+129
+00:08:12,580 --> 00:08:17,080
+Tất nhiên là có những cách khác để
+tạo bảng màu, và bạn nên xem
+
+130
+00:08:17,080 --> 00:08:17,750
+bài wikiPedia này,
+
+131
+00:08:18,900 --> 00:08:21,670
+rồi implement thử cái của bạn vào ứng dụng này.
+
+132
+00:08:21,690 --> 00:08:25,220
+Biết đâu nó sẽ giúp bạn tạo ra
+những ứng dụng rất đẹp mắt.
+
+133
+00:08:25,560 --> 00:08:30,510
+Còn bây giờ, ta đã hoàn tất việc implemt
+Tree Model tùy chỉnh, hướng dẫn cách map
+
+134
+00:08:30,510 --> 00:08:36,620
+QModelIndex vào việc trình bày data nội bộ
+và thảo luận hiểu sâu về QModelIndex.
+
+135
+00:08:36,660 --> 00:08:37,740
+Hẹn gặp lại ở bài sau
+
+136
+00:08:37,740 --> 00:08:39,540
+với chủ đề tương tác với phần web.
+

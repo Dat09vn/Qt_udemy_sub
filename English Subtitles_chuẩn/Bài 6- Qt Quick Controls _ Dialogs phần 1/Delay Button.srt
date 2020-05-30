@@ -1,0 +1,500 @@
+1
+00:00:00,000 --> 00:00:02,250
+in this lecture we are looking at the
+
+2
+00:00:02,250 --> 00:00:05,670
+delay button to to quick control this is
+
+3
+00:00:05,670 --> 00:00:08,429
+a control that allows you to kind of
+
+4
+00:00:08,429 --> 00:00:12,120
+prevent accidental clicks let's go to QT
+
+5
+00:00:12,120 --> 00:00:13,860
+creator and play with us
+
+6
+00:00:13,860 --> 00:00:17,010
+here we are in QT creator we are going
+
+7
+00:00:17,010 --> 00:00:19,949
+to create a new project as usual it's a
+
+8
+00:00:19,949 --> 00:00:23,039
+QT quick application we call it delay
+
+9
+00:00:23,039 --> 00:00:25,529
+button demo and save it in the usual
+
+10
+00:00:25,529 --> 00:00:30,240
+location in next choose our Qt version
+
+11
+00:00:30,240 --> 00:00:35,160
+and choose our kids we change our title
+
+12
+00:00:35,160 --> 00:00:37,829
+here to the delay button demo and down
+
+13
+00:00:37,829 --> 00:00:44,190
+here we put in a column component we
+
+14
+00:00:44,190 --> 00:00:56,719
+want to import QT quick controls 2.4
+
+15
+00:00:56,719 --> 00:00:59,969
+because that's our version and down here
+
+16
+00:00:59,969 --> 00:01:03,629
+we want to put a label that says what
+
+17
+00:01:03,629 --> 00:01:07,439
+this component does inside I am going to
+
+18
+00:01:07,439 --> 00:01:10,380
+put a bunch of properties that I have
+
+19
+00:01:10,380 --> 00:01:13,049
+already prepared we have the width that
+
+20
+00:01:13,049 --> 00:01:15,990
+is equal to the width of the parent we
+
+21
+00:01:15,990 --> 00:01:18,479
+set the wrap mode to wrap to make this
+
+22
+00:01:18,479 --> 00:01:21,479
+text wrapped the next line if it happens
+
+23
+00:01:21,479 --> 00:01:24,090
+to be wider than the available width and
+
+24
+00:01:24,090 --> 00:01:26,759
+we make the font a little bit bigger you
+
+25
+00:01:26,759 --> 00:01:29,430
+probably know all this down here we're
+
+26
+00:01:29,430 --> 00:01:34,290
+going to put a delay button control it
+
+27
+00:01:34,290 --> 00:01:37,350
+has a lot of similarities to the usual
+
+28
+00:01:37,350 --> 00:01:39,960
+button so it has properties like text
+
+29
+00:01:39,960 --> 00:01:42,329
+we're going to call this delay button
+
+30
+00:01:42,329 --> 00:01:46,590
+how creative we also want to put this in
+
+31
+00:01:46,590 --> 00:01:48,030
+the center so we're going to say n
+
+32
+00:01:48,030 --> 00:01:51,479
+anchor.horizontalCentor parent.horizontalCentor
+
+33
+00:01:51,479 --> 00:01:53,579
+and we want to look at
+
+34
+00:01:53,579 --> 00:01:56,520
+some specific signals from this delay
+
+35
+00:01:56,520 --> 00:02:01,380
+button component selected hit f1 going
+
+36
+00:02:01,380 --> 00:02:04,070
+to full help mode if you look at the
+
+37
+00:02:04,070 --> 00:02:07,200
+description for this button it is a
+
+38
+00:02:07,200 --> 00:02:09,090
+checkable button that incorporates in
+
+39
+00:02:09,090 --> 00:02:11,890
+delay before the button B
+
+40
+00:02:11,890 --> 00:02:14,890
+comes checked and the activated signal
+
+41
+00:02:14,890 --> 00:02:18,100
+is emitted it basically is designed 
+
+42
+00:02:18,100 --> 00:02:20,500
+by default and you have to hold it
+
+43
+00:02:20,500 --> 00:02:24,340
+down to activate it and it is activated
+
+44
+00:02:24,340 --> 00:02:27,100
+after an event period of time the period
+
+45
+00:02:27,100 --> 00:02:30,010
+of time is specified in this delay
+
+46
+00:02:30,010 --> 00:02:32,680
+property and the progress says how far
+
+47
+00:02:32,680 --> 00:02:35,950
+you have progressed in that time we're
+
+48
+00:02:35,950 --> 00:02:41,200
+going to come back to our code set a
+
+49
+00:02:41,200 --> 00:02:43,690
+delay of one second
+
+50
+00:02:43,690 --> 00:02:46,600
+a thousand milliseconds and we want to
+
+51
+00:02:46,600 --> 00:02:48,790
+know when the button becomes activated
+
+52
+00:02:48,790 --> 00:02:55,870
+so we're going to say on activated you
+
+53
+00:02:55,870 --> 00:03:05,350
+want to console.log and we want to know
+
+54
+00:03:05,350 --> 00:03:07,959
+the progress as well if we go back to
+
+55
+00:03:07,959 --> 00:03:10,239
+the documentation you see there's a
+
+56
+00:03:10,239 --> 00:03:13,660
+progress property here we want to know
+
+57
+00:03:13,660 --> 00:03:18,130
+it so we have an automatic signal called
+
+58
+00:03:18,130 --> 00:03:23,560
+on progress changed we want to console
+
+59
+00:03:23,560 --> 00:03:31,090
+log progress is well dim let's run the
+
+60
+00:03:31,090 --> 00:03:33,180
+application and see what it looks like
+
+61
+00:03:33,180 --> 00:03:36,489
+you see that this stand is not as we
+
+62
+00:03:36,489 --> 00:03:38,140
+wanted we want this to fill the
+
+63
+00:03:38,140 --> 00:03:41,410
+available width but it isn't so we need
+
+64
+00:03:41,410 --> 00:03:43,959
+to set something we need to set the
+
+65
+00:03:43,959 --> 00:03:47,799
+width of this column to be equal to the
+
+66
+00:03:47,799 --> 00:03:52,750
+width of the parent and let's put in
+
+67
+00:03:52,750 --> 00:03:59,560
+some spacing if we run again we're
+
+68
+00:03:59,560 --> 00:04:03,070
+probably going to see a change and here
+
+69
+00:04:03,070 --> 00:04:06,220
+it is if you click on this button you
+
+70
+00:04:06,220 --> 00:04:10,650
+see that it just shows you some progress
+
+71
+00:04:10,650 --> 00:04:13,630
+okay the progress is between zero and
+
+72
+00:04:13,630 --> 00:04:17,168
+one and if we keep holding it down it
+
+73
+00:04:17,168 --> 00:04:20,048
+keeps going when it gets to one it says
+
+74
+00:04:20,048 --> 00:04:21,149
+button activate
+
+75
+00:04:21,149 --> 00:04:28,380
+I can click again and the button is
+
+76
+00:04:28,380 --> 00:04:35,430
+activated ok we now when the button is
+
+77
+00:04:35,430 --> 00:04:38,370
+activated when this signal is fired and
+
+78
+00:04:38,370 --> 00:04:40,889
+you can see that it is one when
+
+79
+00:04:40,889 --> 00:04:44,310
+you reach the progress of one ok you can
+
+80
+00:04:44,310 --> 00:04:46,440
+use the button like this if this is the
+
+81
+00:04:46,440 --> 00:04:47,970
+behavior that you want in your
+
+82
+00:04:47,970 --> 00:04:51,449
+application but a common usage that are
+
+83
+00:04:51,449 --> 00:04:54,150
+seen for this is to let the user hold
+
+84
+00:04:54,150 --> 00:04:56,490
+down the button until the button becomes
+
+85
+00:04:56,490 --> 00:04:59,190
+activated and when it is activated you
+
+86
+00:04:59,190 --> 00:05:01,590
+allow the user to click once and then it
+
+87
+00:05:01,590 --> 00:05:04,350
+becomes deactivate at it again we want to
+
+88
+00:05:04,350 --> 00:05:07,080
+use some custom JavaScript to have this
+
+89
+00:05:07,080 --> 00:05:09,660
+behavior so what we're going to do is
+
+90
+00:05:09,660 --> 00:05:13,349
+come to the top here and define a custom
+
+91
+00:05:13,349 --> 00:05:19,410
+property we're going to say property you
+
+92
+00:05:19,410 --> 00:05:24,650
+say activated and we set this to false
+
+93
+00:05:24,650 --> 00:05:28,620
+we also want to handle the signal when
+
+94
+00:05:28,620 --> 00:05:35,580
+the button is pressed we want to check
+
+95
+00:05:35,580 --> 00:05:44,370
+and see if the button is active we
+
+96
+00:05:44,370 --> 00:05:53,699
+console log button is clicked in here you
+
+97
+00:05:53,699 --> 00:05:55,560
+can do whatever you want to do when the
+
+98
+00:05:55,560 --> 00:05:58,770
+button is activated and collect and we
+
+99
+00:05:58,770 --> 00:06:03,120
+set the activated property to false
+
+100
+00:06:03,120 --> 00:06:07,500
+after we do our crackin so we saying
+
+101
+00:06:07,500 --> 00:06:10,440
+false here and when the button becomes
+
+102
+00:06:10,440 --> 00:06:13,919
+activated we want to set the activated
+
+103
+00:06:13,919 --> 00:06:17,449
+property here to true
+
+104
+00:06:21,029 --> 00:06:23,889
+to make it possible for the user to
+
+105
+00:06:23,889 --> 00:06:26,499
+click but as long as you click it is
+
+106
+00:06:26,499 --> 00:06:29,050
+going to become inactive again and the
+
+107
+00:06:29,050 --> 00:06:31,569
+clerks are not going to be handled
+
+108
+00:06:31,569 --> 00:06:33,999
+because activated is not going to be
+
+109
+00:06:33,999 --> 00:06:37,029
+true I hope this makes sense and we are
+
+110
+00:06:37,029 --> 00:06:39,789
+still going to see our progress as we
+
+111
+00:06:39,789 --> 00:06:42,099
+hold down the button
+
+112
+00:06:42,099 --> 00:06:46,959
+let's run hold down this pen and you see
+
+113
+00:06:46,959 --> 00:06:51,300
+that when we release the activated
+
+114
+00:06:51,300 --> 00:06:56,559
+signal is not being fired okay let's
+
+115
+00:06:56,559 --> 00:06:59,829
+hold it down till the end it says button
+
+116
+00:06:59,829 --> 00:07:03,729
+is activated but it is not click we
+
+117
+00:07:03,729 --> 00:07:06,639
+click they say button clicked and the
+
+118
+00:07:06,639 --> 00:07:09,339
+progress restarts to zero this is really
+
+119
+00:07:09,339 --> 00:07:11,829
+all there is to the delay button it is
+
+120
+00:07:11,829 --> 00:07:15,069
+very easy to use in nature but it can
+
+121
+00:07:15,069 --> 00:07:17,050
+come in handy when you need something
+
+122
+00:07:17,050 --> 00:07:17,739
+like this
+
+123
+00:07:17,739 --> 00:07:19,629
+in the next lecture we're going to look
+
+124
+00:07:19,629 --> 00:07:23,259
+at the dial control in QT quick I'll see
+
+125
+00:07:23,259 --> 00:00:00,000
+you there
+

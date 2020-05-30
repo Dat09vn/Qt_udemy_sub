@@ -1,0 +1,199 @@
+WEBVTT
+
+00:01.500 --> 00:11.190
+Qt GUI Application Development Basics. In this section, you will learn Design in Qt Creator; Signals
+
+00:11.220 --> 00:18.200
+and Slots; Window, Dialog, Pop up- all the basics of Qt GUI development.
+
+00:18.390 --> 00:23.760
+The first video is about designing in Qt Creator. In this video,
+
+00:23.840 --> 00:31.100
+we're going to take a look at how to create a Qt GUI application project in Qt creator, and to use its
+
+00:31.110 --> 00:34.530
+design mode to design the user interfaces.
+
+00:34.530 --> 00:38.880
+Now if you're ready, let's launch Qt Creator and get started.
+
+00:40.980 --> 00:48.290
+Click new project button to create a new project. Select a Qt widget application project. Qt
+
+00:48.300 --> 00:55.150
+Widgets means the traditional desktop widgets in C++. Set the project name.
+
+00:57.900 --> 01:01.050
+Click next. 
+
+01:01.140 --> 01:06.160
+Now we have a chance to choose the Base class. In this example,
+
+01:06.190 --> 01:11.010
+We'll use QMainWindow which gives us a full-featured window.
+
+01:11.280 --> 01:18.630
+Meanwhile, QWidget will give you the freedom to create a custom widget, QDialog makes things easier
+
+01:18.890 --> 01:30.420
+if you want to create a custom dialog that has simple contents with buttons to accept or reject.
+
+01:30.580 --> 01:44.470
+So we have the skeleton we can build and the run immediately.
+
+01:44.620 --> 01:46.940
+It will give you a blank window.
+
+01:47.080 --> 01:54.640
+Since we haven't done any Ui yet. How can we add a text to widget, say, Hello World to the center
+
+01:54.640 --> 01:55.200
+of Window?
+
+01:58.250 --> 02:05.940
+Double click at mainwindow.ui on  the forms and then you will be redirected into Design mode.
+
+02:05.940 --> 02:08.600
+You can only add things to this file in this mode.
+
+02:10.400 --> 02:17.240
+On the left hand side, there are all widgets and the layouts that you can use. The bottom panel has the Action
+
+02:17.300 --> 02:19.300
+Editor and the Signals and Slots Editor. 
+
+02:19.350 --> 02:28.470
+An action represents a clickable action, and it usually appears in the main or tool bar. There, on the
+
+02:28.470 --> 02:29.550
+right hand side,
+
+02:29.670 --> 02:34.580
+you have the top panel showing all widgets that belong to Ui this class.
+
+02:35.060 --> 02:40.720
+The bottom panel gives you all property details of selected widgets object.
+
+02:40.770 --> 02:44.820
+This is the place where you can further customize the object,
+
+02:44.820 --> 02:46.550
+things like title, text,
+
+02:46.620 --> 02:49.720
+icon, fontsize. 
+
+02:49.820 --> 02:53.500
+Now let's add a label widget to the window.
+
+02:53.500 --> 03:01.600
+It's so simple that all you need to do is to track a label widget into the view in the middle.
+
+03:01.600 --> 03:05.330
+You can then use the mouse to move or resize it.
+
+03:08.050 --> 03:12.350
+To change the text in the label just double click the label and edit. 
+
+03:16.610 --> 03:19.250
+Or you can go to property panel,
+
+03:19.520 --> 03:23.860
+scroll down to QLabel section,
+
+03:24.110 --> 03:25.670
+here you can change the text.
+
+03:28.890 --> 03:31.320
+Now we've changed it to Hello World.
+
+03:31.320 --> 03:32.110
+Let's build 
+
+03:32.130 --> 03:33.020
+and then run it again.
+
+03:39.640 --> 03:42.640
+And you get Helllo World placed in the window.
+
+03:45.050 --> 03:50.610
+To make it aligned right in the center of the window, we need to make use of the layout.
+
+03:50.840 --> 03:57.210
+If you look closely at the object tree you'll see that the MainWindow is treating central 
+
+03:57.210 --> 04:06.590
+Widget as a single widget that has some children objects and the central widget has its own layout to
+
+04:06.590 --> 04:10.030
+arrange its children with its objects.
+
+04:10.030 --> 04:16.850
+Since we only have one label widget here, to make the text show in the center we can use either vertical
+
+04:16.850 --> 04:25.480
+layout or horizontal layout. Select the central Widget and then click vertical layout button. You'll
+
+04:25.480 --> 04:33.180
+see the label which now fills up all space of the center widget. Then click LabelWidget object,
+
+04:33.180 --> 04:38.930
+scroll down to the alignment property.
+
+04:38.970 --> 04:45.520
+We'll change it to make aligned in the center both horizontally and vertically.
+
+04:47.600 --> 04:50.270
+If you build and then launch the application again,
+
+04:56.680 --> 05:00.510
+voilà (french word, = here it is) the text is shown right in the center.
+
+05:01.060 --> 05:02.930
+It stays in the center
+
+05:02.980 --> 05:04.900
+when you resize the window as well.
+
+05:07.880 --> 05:15.070
+All widget objects you see from the object tree are also accessible in the code.
+
+05:15.150 --> 05:19.190
+That's how you can control the user interfaces programmatically,
+
+05:19.350 --> 05:29.030
+switch back to the Edit mode to check the mainwindow Headers file .h. You see that is a private member
+
+05:29.030 --> 05:29.930
+called Ui. 
+
+05:29.950 --> 05:33.910
+This is the excess of the mainwindow.ui. 
+
+05:34.470 --> 05:40.190
+Now if you want to change the text of the label, you can do it by
+
+05:40.270 --> 05:43.710
+adding the line to the constructor like this. 
+
+05:54.540 --> 05:56.260
+Let's run the application again.
+
+06:03.160 --> 06:06.990
+You'll see the text is changed by the code.
+
+06:07.170 --> 06:16.500
+In most cases, it's much preferred to have user interfaces design in .ui file whereever possible.
+
+06:16.960 --> 06:18.360
+In the design mode,
+
+06:18.360 --> 06:25.050
+it is much more intuitive and that you can immediately see what the interface looks like without even
+
+06:25.050 --> 06:28.140
+running it. In the next video,
+
+06:28.180 --> 06:31.260
+we are going to talk about signals and slots.

@@ -1,0 +1,436 @@
+1
+00:00:00,000 --> 00:00:02,220
+Một hình ảnh động độc lập (standalone animation) là một hoạt hình
+
+2
+00:00:02,220 --> 00:00:05,670
+mà các bạn tự xác định đối tượng
+
+3
+00:00:05,670 --> 00:00:08,010
+mục tiêu để chạy hoạt hình.
+
+4
+00:00:08,010 --> 00:00:09,660
+Nếu các bạn nhớ trong bài giảng trước,
+
+5
+00:00:09,660 --> 00:00:12,030
+chúng ta đã không làm điều đó. Chúng ta chỉ dùng
+
+6
+00:00:12,030 --> 00:00:14,219
+hoạt hình trong hình chữ nhật và
+
+7
+00:00:14,219 --> 00:00:16,500
+chúng ta nói thuộc tính nào mà chúng ta muốn làm hình động.
+
+8
+00:00:16,500 --> 00:00:18,510
+Chúng ta sẽ làm khác trong bài này.
+
+9
+00:00:18,510 --> 00:00:20,970
+Và chúng ta hãy vào Qt Creator và làm điều đó.
+
+10
+00:00:20,970 --> 00:00:24,000
+Chúng ta đang ở Qt Creator.
+
+11
+00:00:24,000 --> 00:00:25,859
+Chúng ta sẽ tạo dự án của chúng ta
+
+12
+00:00:25,859 --> 00:00:28,920
+Nó là 1 Qt Quick Application (tạo nhanh ứng dụng Qt),
+
+13
+00:00:28,920 --> 00:00:31,679
+Chúng ta gọi nó là 'StandaloneAnimationDemo'.
+
+14
+00:00:31,679 --> 00:00:35,809
+Lưu nó ở vị trí thông thường, nhấn tiếp theo, làm như thường lệ
+
+15
+00:00:35,809 --> 00:00:40,890
+lựa chọn kit ở đây và kết thúc.
+
+16
+00:00:40,890 --> 00:00:47,700
+Các bạn sẽ muốn thay đổi tên ở đây.
+
+17
+00:00:47,700 --> 00:00:49,980
+Và chúng ta muốn làm chính xác những gì chúng ta đã làm trong bài trước.
+
+18
+00:00:49,980 --> 00:00:51,719
+Nhưng có 1 chút khác biệt.
+
+19
+00:00:51,719 --> 00:00:53,910
+Chúng ta sẽ đặt
+
+20
+00:00:53,910 --> 00:00:58,350
+1 hình chứa chữ nhật ở đây. ID sẽ là
+
+21
+00:00:58,350 --> 00:01:05,750
+'containerRectId'. Nó sẽ lấp đầy 'parent'
+
+22
+00:01:05,750 --> 00:01:13,010
+và sẽ có màu nền là màu be.
+
+23
+00:01:13,010 --> 00:01:14,939
+Bên trong, chúng ta sẽ có một hình chữ nhật khác.
+
+24
+00:01:14,939 --> 00:01:21,560
+ID sẽ là 'containedRectId'.
+
+25
+00:01:23,390 --> 00:01:27,360
+Chiều rộng của nó sẽ là 100, chiều cao
+
+26
+00:01:27,360 --> 00:01:31,470
+sẽ là 100. Màu sắc sẽ là
+
+27
+00:01:31,470 --> 00:01:35,250
+xanh da trời và nó sẽ bắt đầu tại
+
+28
+00:01:35,250 --> 00:01:40,280
+giá trị x bằng 50 và giá trị y bằng 50.
+
+29
+00:01:40,280 --> 00:01:44,790
+Bây giờ chúng ta muốn xác định hoạt hình của chúng ta.
+
+30
+00:01:44,790 --> 00:01:50,670
+Chúng ta sẽ nói 'NumberAnimation'.
+
+31
+00:01:50,670 --> 00:01:53,490
+Thành phần mà chúng ta muốn áp dụng hình động là hình chữ nhật này ở đây
+
+32
+00:01:53,490 --> 00:01:56,280
+và chúng ta xác định nó bằng cách sử dụng 
+
+33
+00:01:56,280 --> 00:01:59,540
+thuộc tính 'target' (mục tiêu). Vì vậy chúng ta sẽ nói 'target'
+
+34
+00:01:59,540 --> 00:02:04,860
+'containedRectId'. Đây là mục tiêu của chúng ta, 
+
+35
+00:02:04,860 --> 00:02:07,350
+đối tượng mà chúng ta muốn động.
+
+36
+00:02:07,350 --> 00:02:10,679
+Các bạn chỉ định nó bằng cách dùng thuộc tính 'property'.
+
+37
+00:02:10,679 --> 00:02:13,680
+Các bạn chỉ định x trong ngoặc kép như thế này. Chúng ta muốn
+
+38
+00:02:13,680 --> 00:02:17,040
+làm hoạt hình trên trục x ở hình chữ nhật này
+
+39
+00:02:17,040 --> 00:02:20,430
+và chúng ta chỉ định như thường lệ. Thời lượng
+
+40
+00:02:20,430 --> 00:02:23,069
+sẽ là 2 giây và chúng ta muốn
+
+41
+00:02:23,069 --> 00:02:28,680
+hình động đến vị trí 530.
+
+42
+00:02:28,680 --> 00:02:30,750
+Được rồi, chúng ta đã có hoạt hình. Hãy chạy ứng dụng
+
+43
+00:02:30,750 --> 00:02:34,290
+và xem chúng ta có gì.
+
+44
+00:02:34,290 --> 00:02:36,989
+Điều đầu tiên các bạn thấy rằng, không giống như
+
+45
+00:02:36,989 --> 00:02:38,760
+hoạt hình ở bài trước
+
+46
+00:02:38,760 --> 00:02:41,489
+cái này không chạy
+
+47
+00:02:41,489 --> 00:02:43,829
+tự động. Các bạn phải khởi động nó
+
+48
+00:02:43,829 --> 00:02:46,950
+một cách rõ ràng. Chúng ta hãy trở lại với mã
+
+49
+00:02:46,950 --> 00:02:49,859
+và chúng ta muốn đặt 1 MouseArea 
+
+50
+00:02:49,859 --> 00:02:52,049
+mà sẽ cho phép chúng ta bắt đầu hoạt hình.
+
+51
+00:02:52,049 --> 00:02:54,540
+Chúng ta sẽ đi xuống hình chữ nhật,
+
+52
+00:02:54,540 --> 00:02:58,980
+nói MouseArea và 'anchors.fill: parent' ('neo.điền vào: phụ huynh').
+
+53
+00:02:58,980 --> 00:03:01,680
+Chúng ta muốn để nó lấp đầy hình chữ nhật màu be 
+
+54
+00:03:01,680 --> 00:03:08,400
+và khi nó nhấn, chúng ta muốn
+
+55
+00:03:08,400 --> 00:03:11,430
+làm 1 cái gì đó và chúng ta muốn
+
+56
+00:03:11,430 --> 00:03:15,870
+làm điều gì đó khi chúng ta thả chuột ra. Chúng ta muốn
+
+57
+00:03:15,870 --> 00:03:24,510
+đưa cái này hoạt hình một ID. Chúng ta gọi nó là 'mXAnimationId',
+
+58
+00:03:24,510 --> 00:03:27,449
+và khi chúng ta nhấn chuột xuống, chúng ta muốn
+
+59
+00:03:27,449 --> 00:03:30,239
+bắt đầu hoạt hình. Vì vậy, các bạn có thể sao chép
+
+60
+00:03:30,239 --> 00:03:36,049
+ID ở đây và nói "start" như thế này, và
+
+61
+00:03:36,049 --> 00:03:38,669
+và ngừng hoạt hình khi các bạn thả
+
+62
+00:03:38,669 --> 00:03:41,470
+chuột, chúng ta sẽ
+
+63
+00:03:41,470 --> 00:03:42,650
+ngừng hoạt hình.
+
+64
+00:03:42,650 --> 00:03:46,319
+Hãy chạy và xem liệu logic của chúng ta ở đây
+
+65
+00:03:46,319 --> 00:03:46,739
+có hoạt động.
+
+66
+00:03:46,739 --> 00:03:52,349
+Tôi giữ chuột, hoạt hình chạy. Tôi thả ra,
+
+67
+00:03:52,349 --> 00:03:55,169
+nó dừng lại. Đây là hành vi mà chúng ta có.
+
+68
+00:03:55,169 --> 00:03:57,629
+Và lưu ý cú pháp chúng ta
+
+69
+00:03:57,629 --> 00:03:59,459
+đang dùng ở đây để làm việc với hoạt hình này.
+
+70
+00:03:59,459 --> 00:04:02,009
+Đây là những gì tôi muốn các bạn thấy.
+
+71
+00:04:02,009 --> 00:04:04,620
+Được rồi hoạt hình này thực sự độc lập 
+
+72
+00:04:04,620 --> 00:04:07,349
+và để cho nó chạy, các bạn phải tự mình bắt đầu nó.
+
+73
+00:04:07,349 --> 00:04:09,930
+Các bạn cũng cần phải xác định yếu tố mục tiêu
+
+74
+00:04:09,930 --> 00:04:12,389
+mà các bạn muốn chạy hoạt hình và
+
+75
+00:04:12,389 --> 00:04:15,030
+những cái còn lại thì là những gì chúng ta đã làm ở bài trước.
+
+76
+00:04:15,030 --> 00:04:17,940
+Và các bạn có thể đọc các tài liệu hướng dẫn như thường lệ
+
+77
+00:04:17,940 --> 00:04:21,089
+và tìm các thuộc tính mà
+
+78
+00:04:21,089 --> 00:04:23,490
+có sẵn cho các bạn khi các bạn muốn làm việc với cái này.
+
+79
+00:04:23,490 --> 00:04:25,860
+Các bạn có thể thấy rằng nó là
+
+80
+00:04:25,860 --> 00:04:27,370
+con của
+
+81
+00:04:27,370 --> 00:04:30,190
+PropertyAnimation và các bạn có thể thấy tất cả
+
+82
+00:04:30,190 --> 00:04:32,350
+thuộc tính và các bạn có thể chơi với nó.
+
+83
+00:04:32,350 --> 00:04:34,690
+Điều chúng ta đã làm ở đây,
+
+84
+00:04:34,690 --> 00:04:36,520
+các bạn có thể làm tương tự với các dạng hoạt hình khác,
+
+85
+00:04:36,520 --> 00:04:39,190
+mà chúng ta đã biết.
+
+86
+00:04:39,190 --> 00:04:42,750
+Ví dụ, bạn có thể làm tương tự vơi một RotationAnimation.
+
+87
+00:04:42,750 --> 00:04:48,120
+Hãy chọn nó ở đây. ID 'mRotationAnimation'.
+
+88
+00:04:48,120 --> 00:04:57,729
+Tôi muốn mục tiêu là 'containedRectId'.
+
+89
+00:04:57,729 --> 00:05:02,340
+'property' (thuộc tính) mà tôi muốn cho hoạt hình
+
+90
+00:05:02,340 --> 00:05:10,080
+là 'rotation' (xoay tròn). Tôi muốn nó chuyển động tối đa,
+
+91
+00:05:10,080 --> 00:05:13,419
+ví dụ như, 2000 độ. Và nó sẽ
+
+92
+00:05:13,419 --> 00:05:16,479
+quay một vài lần và thời lượng
+
+93
+00:05:16,479 --> 00:05:20,860
+sẽ là 2000, tức là 2 giây.
+
+94
+00:05:20,860 --> 00:05:25,750
+Chúng ta có thể chạy ứng dụng. Và các bạn có thể thấy rằng
+
+95
+00:05:25,750 --> 00:05:29,440
+khi tôi giữ chuột, hình không xoay
+
+96
+00:05:29,440 --> 00:05:32,500
+và đó là bởi vì chúng ta đã không khởi chạy hoạt hình.
+
+97
+00:05:32,500 --> 00:05:35,229
+Tôi chỉ muốn cho các anh chị xem
+
+98
+00:05:35,229 --> 00:05:39,070
+rất dễ quên khởi chạy những hoạt hình này.
+
+99
+00:05:39,070 --> 00:05:42,550
+Vì vậy, các anh chị chạy nó như thế này và
+
+100
+00:05:42,550 --> 00:05:50,050
+dừng nó như thế này. Bây giờ, khi chúng ta chạy, nó
+
+101
+00:05:50,050 --> 00:05:52,570
+sẽ chạy khi chúng giữ chuột và
+
+102
+00:05:52,570 --> 00:05:55,960
+ngừng khi chúng ta thả chuột như thường lệ. Và đây
+
+103
+00:05:55,960 --> 00:05:57,699
+thực sự là tất cả những gì tôi muốn chia sẻ với các bạn trong bài giảng này,
+
+104
+00:05:57,699 --> 00:05:59,919
+1 cách khác nếu các bạn
+
+105
+00:05:59,919 --> 00:06:02,699
+muốn làm việc với các hoạt hình 1 cách riêng lẻ
+
+106
+00:06:02,699 --> 00:06:05,229
+xác định 'target' (mục tiêu) và 'property' (thuộc tính)
+
+107
+00:06:05,229 --> 00:06:08,199
+mà bạn muốn làm hoạt hình cho QML.
+
+108
+00:06:08,199 --> 00:06:10,180
+Trong bài giảng tiếp theo chúng ta sẽ làm việc với Easing (tốc độ).
+
+109
+00:06:10,180 --> 00:00:00,000
+Hẹn gặp lại các bạn ở bài sau.
+

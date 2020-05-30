@@ -1,0 +1,760 @@
+1
+00:00:00,000 --> 00:00:01,890
+In this lecture, we are going to talk
+
+2
+00:00:01,890 --> 00:00:05,210
+about the JavaScript environment in QML. 
+
+3
+00:00:05,210 --> 00:00:08,309
+javascript is the first class citizen in
+
+4
+00:00:08,309 --> 00:00:11,639
+ER qml cool. It has a lot of similarities
+
+5
+00:00:11,639 --> 00:00:13,799
+with the JavaScript environment you see
+
+6
+00:00:13,799 --> 00:00:17,760
+and things like browsers and nodejs, but
+
+7
+00:00:17,760 --> 00:00:20,160
+it also has some fans that are special
+
+8
+00:00:20,160 --> 00:00:23,369
+to the qml environment. It does implement
+
+9
+00:00:23,369 --> 00:00:26,990
+ECMA-Script ES55 which is a standard of
+
+10
+00:00:26,990 --> 00:00:29,760
+JavaScript that is implemented in most
+
+11
+00:00:29,760 --> 00:00:32,700
+modern browsers like Firefox, Chrome,
+
+12
+00:00:32,700 --> 00:00:35,430
+Safari and this gives you access to
+
+13
+00:00:35,430 --> 00:00:38,460
+familiar JavaScript objects like math
+
+14
+00:00:38,460 --> 00:00:41,190
+and many others as we are about to see.
+
+15
+00:00:41,190 --> 00:00:44,550
+We also have QML global object which
+
+16
+00:00:44,550 --> 00:00:46,860
+contains the Qt global object we have
+
+17
+00:00:46,860 --> 00:00:49,440
+already seen. And we also have tons and
+
+18
+00:00:49,440 --> 00:00:51,420
+tons of JavaScript objects and functions
+
+19
+00:00:51,420 --> 00:00:54,660
+that we can use to make our job easier
+
+20
+00:00:54,660 --> 00:00:57,360
+when adding some interactivity to our
+
+21
+00:00:57,360 --> 00:01:00,809
+QML code. And the main job of JavaScript
+
+22
+00:01:00,809 --> 00:01:03,270
+is ready to add a layer of interactivity
+
+23
+00:01:03,270 --> 00:01:06,659
+to QML, just like it does the same thing
+
+24
+00:01:06,659 --> 00:01:10,200
+for HTML and CSS environments. Although
+
+25
+00:01:10,200 --> 00:01:12,390
+the JavaScript environment in QML is
+
+26
+00:01:12,390 --> 00:01:14,040
+very similar to what we see in
+
+27
+00:01:14,040 --> 00:01:16,380
+environments like the browser, there are
+
+28
+00:01:16,380 --> 00:01:18,479
+many differences you should be aware of.
+
+29
+00:01:18,479 --> 00:01:21,299
+For example, the JavaScript engine in QML
+
+30
+00:01:21,299 --> 00:01:23,850
+doesn't implement the DOM API. Its
+
+31
+00:01:23,850 --> 00:01:26,400
+implementation of ES5 gives us access
+
+32
+00:01:26,400 --> 00:01:29,009
+to objects like math, array and many
+
+33
+00:01:29,009 --> 00:01:31,680
+others as we going to see. And one thing
+
+34
+00:01:31,680 --> 00:01:33,860
+you should really be aware of is that
+
+35
+00:01:33,860 --> 00:01:36,659
+javascript is not really documented in
+
+36
+00:01:36,659 --> 00:01:38,970
+the Qt documentation. So if you try to
+
+37
+00:01:38,970 --> 00:01:41,280
+search for things like date in the Qt
+
+38
+00:01:41,280 --> 00:01:43,320
+documentation, you're going to have very
+
+39
+00:01:43,320 --> 00:01:46,049
+limited information and you're going to
+
+40
+00:01:46,049 --> 00:01:48,600
+have to go to JavaScript focus
+
+41
+00:01:48,600 --> 00:01:50,880
+documentation online, and I'm going to
+
+42
+00:01:50,880 --> 00:01:52,860
+show you one right now. That is very
+
+43
+00:01:52,860 --> 00:01:56,009
+useful. Ok. Here we are. This is the
+
+44
+00:01:56,009 --> 00:01:59,369
+developer mozilla.org javascript
+
+45
+00:01:59,369 --> 00:02:01,920
+reference. It is very good. So if you are
+
+46
+00:02:01,920 --> 00:02:04,020
+looking for the date documentation, for
+
+47
+00:02:04,020 --> 00:02:06,210
+example, you can come here to built-in
+
+48
+00:02:06,210 --> 00:02:09,119
+objects, and you get a list of objects
+
+49
+00:02:09,119 --> 00:02:10,669
+that you can really look at.
+
+50
+00:02:10,669 --> 00:02:15,140
+Inside, we have boolean, date and many
+
+51
+00:02:15,140 --> 00:02:16,970
+others. And you're going to have to come
+
+52
+00:02:16,970 --> 00:02:18,950
+here to search for whatever it is you
+
+53
+00:02:18,950 --> 00:02:22,060
+are looking for. If we click on date here,
+
+54
+00:02:22,060 --> 00:02:24,349
+we're going to have different ways we
+
+55
+00:02:24,349 --> 00:02:26,450
+can use this so they give us an example,
+
+56
+00:02:26,450 --> 00:02:28,790
+we can run, you can run this example by
+
+57
+00:02:28,790 --> 00:02:30,080
+clicking the Run button.
+
+58
+00:02:30,080 --> 00:02:32,510
+It basically is very good to test your
+
+59
+00:02:32,510 --> 00:02:35,030
+JavaScript. To show you what I mean by a
+
+60
+00:02:35,030 --> 00:02:37,459
+limited documentation, if we go to the
+
+61
+00:02:37,459 --> 00:02:42,250
+documentation here and search for date,
+
+62
+00:02:42,250 --> 00:02:48,950
+so this is a date QML type. They give you
+
+63
+00:02:48,950 --> 00:02:51,290
+a few things and how you can use it in
+
+64
+00:02:51,290 --> 00:02:53,900
+QML call. But for more information, you're
+
+65
+00:02:53,900 --> 00:02:56,090
+going to have to check the date object
+
+66
+00:02:56,090 --> 00:02:59,480
+in the JavaScript documentation that we
+
+67
+00:02:59,480 --> 00:03:02,540
+just found here. The QML global object is
+
+68
+00:03:02,540 --> 00:03:04,670
+the default object you fall and when you
+
+69
+00:03:04,670 --> 00:03:07,670
+start to write your QML code. Remember
+
+70
+00:03:07,670 --> 00:03:10,790
+when we are in our QML file, we can type
+
+71
+00:03:10,790 --> 00:03:13,940
+things like console, print. That's the
+
+72
+00:03:13,940 --> 00:03:17,120
+global object we are in QML file. It
+
+73
+00:03:17,120 --> 00:03:19,070
+contains things like the Qt global
+
+74
+00:03:19,070 --> 00:03:21,079
+object that we have seen, we have tried
+
+75
+00:03:21,079 --> 00:03:24,829
+it out, we have used Qt.quit method and
+
+76
+00:03:24,829 --> 00:03:27,650
+many others. It also contains things like
+
+77
+00:03:27,650 --> 00:03:30,170
+print that we can use to output debug
+
+78
+00:03:30,170 --> 00:03:33,049
+messages. It contains the console object
+
+79
+00:03:33,049 --> 00:03:35,420
+we have also been using that quite a lot
+
+80
+00:03:35,420 --> 00:03:38,600
+when we typed console out to output some
+
+81
+00:03:38,600 --> 00:03:41,690
+messages. It contains translation related
+
+82
+00:03:41,690 --> 00:03:43,790
+methods, but we're not going to explore
+
+83
+00:03:43,790 --> 00:03:46,489
+this in this course, but it is very
+
+84
+00:03:46,489 --> 00:03:48,200
+important when you want your application
+
+85
+00:03:48,200 --> 00:03:51,260
+to run in multiple languages. The
+
+86
+00:03:51,260 --> 00:03:53,390
+QML global objects also contains an
+
+87
+00:03:53,390 --> 00:03:56,900
+object we call XMLHttpRequest which
+
+88
+00:03:56,900 --> 00:03:58,579
+we're going to use later in the course
+
+89
+00:03:58,579 --> 00:04:01,040
+to fetch some HTTP data from the
+
+90
+00:04:01,040 --> 00:04:03,980
+internet. The QML global object is your
+
+91
+00:04:03,980 --> 00:04:07,010
+home environment when writing some QML
+
+92
+00:04:07,010 --> 00:04:09,799
+code. We also have a list of JavaScript
+
+93
+00:04:09,799 --> 00:04:12,260
+functions and objects that we can use. I
+
+94
+00:04:12,260 --> 00:04:14,810
+think this is explained better if you
+
+95
+00:04:14,810 --> 00:04:16,850
+see for yourself, so we are going to go
+
+96
+00:04:16,850 --> 00:04:19,130
+to this length. This is basically a list
+
+97
+00:04:19,130 --> 00:04:21,589
+of objects and functions that are
+
+98
+00:04:21,589 --> 00:04:23,370
+available to you in the
+
+99
+00:04:23,370 --> 00:04:26,400
+javascript engine of QML. There is the
+
+100
+00:04:26,400 --> 00:04:28,440
+global object that contains things like
+
+101
+00:04:28,440 --> 00:04:31,260
+NaN, infinity, undefined. There are
+
+102
+00:04:31,260 --> 00:04:33,240
+functions and properties that you can
+
+103
+00:04:33,240 --> 00:04:35,490
+use. There are constructor properties
+
+104
+00:04:35,490 --> 00:04:37,530
+that you can use. You can use this, for
+
+105
+00:04:37,530 --> 00:04:39,720
+example, to create a date object, a
+
+106
+00:04:39,720 --> 00:04:42,780
+boolean object, a number object. You can
+
+107
+00:04:42,780 --> 00:04:44,910
+use this if you happen to need them in
+
+108
+00:04:44,910 --> 00:04:48,449
+your QML code. There is the object object,
+
+109
+00:04:48,449 --> 00:04:50,699
+which is the parent of all the objects
+
+110
+00:04:50,699 --> 00:04:53,220
+in your JavaScript code. These are the
+
+111
+00:04:53,220 --> 00:04:55,130
+functions you can use on that object.
+
+112
+00:04:55,130 --> 00:04:57,990
+This is an exhaustive list of things you
+
+113
+00:04:57,990 --> 00:04:59,910
+can do. So if you are working with arrays,
+
+114
+00:04:59,910 --> 00:05:01,949
+these are the functions that are
+
+115
+00:05:01,949 --> 00:05:04,620
+available to you. One thing we have used
+
+116
+00:05:04,620 --> 00:05:08,100
+before is this for each method and we
+
+117
+00:05:08,100 --> 00:05:11,580
+used it to look through an array and it
+
+118
+00:05:11,580 --> 00:05:13,620
+was very convenient, so if you are
+
+119
+00:05:13,620 --> 00:05:16,260
+interested in this, you can actually come
+
+120
+00:05:16,260 --> 00:05:19,260
+to the documentation of JavaScript, go
+
+121
+00:05:19,260 --> 00:05:23,160
+back, go to built-in objects, look at
+
+122
+00:05:23,160 --> 00:05:26,190
+array. And if you go down here, you're
+
+123
+00:05:26,190 --> 00:05:28,440
+going to find array prototype for each.
+
+124
+00:05:28,440 --> 00:05:31,020
+If you click on this, they're going to give
+
+125
+00:05:31,020 --> 00:05:32,940
+you an example of how you can use this.
+
+126
+00:05:32,940 --> 00:05:35,849
+So the documentation is really good. Down
+
+127
+00:05:35,849 --> 00:05:37,590
+here they show you things you can pass
+
+128
+00:05:37,590 --> 00:05:39,479
+in and I think they have some cool
+
+129
+00:05:39,479 --> 00:05:42,360
+examples if you keep scrolling. So please
+
+130
+00:05:42,360 --> 00:05:45,270
+check this out if you happen to be rusty
+
+131
+00:05:45,270 --> 00:05:47,669
+on your JavaScript. I know I drove
+
+132
+00:05:47,669 --> 00:05:49,530
+through at you a lot of information, but
+
+133
+00:05:49,530 --> 00:05:51,900
+what you really need to know is that the
+
+134
+00:05:51,900 --> 00:05:54,720
+QML JavaScript engine implements ECMA-Script
+
+135
+00:05:54,720 --> 00:05:58,169
+standard 5, which is the standard
+
+136
+00:05:58,169 --> 00:06:00,180
+that is implemented in most browsers.
+
+137
+00:06:00,180 --> 00:06:03,389
+It contains the QML object which is your
+
+138
+00:06:03,389 --> 00:06:06,990
+home environment in your QML file and it
+
+139
+00:06:06,990 --> 00:06:09,479
+gives you a list of javascript objects
+
+140
+00:06:09,479 --> 00:06:11,760
+and functions that you can use to really
+
+141
+00:06:11,760 --> 00:06:14,520
+make your job easier. okay. I don't like
+
+142
+00:06:14,520 --> 00:06:16,260
+to throw information at you
+
+143
+00:06:16,260 --> 00:06:18,570
+without giving you references. So we're
+
+144
+00:06:18,570 --> 00:06:20,699
+going to go to the online documentation,
+
+145
+00:06:20,699 --> 00:06:22,560
+I'll show you where you can read more
+
+146
+00:06:22,560 --> 00:06:25,380
+stuff about this. Here you can learn more
+
+147
+00:06:25,380 --> 00:06:27,810
+about the JavaScript environment in QML.
+
+148
+00:06:27,810 --> 00:06:30,630
+They say that it implements standard 5
+
+149
+00:06:30,630 --> 00:06:34,110
+of the ECMA script standard. You see the
+
+150
+00:06:34,110 --> 00:06:36,080
+QML global object, the list of
+
+151
+00:06:36,080 --> 00:06:37,699
+functions that are available to you. You
+
+152
+00:06:37,699 --> 00:06:39,800
+can read on this. If you need to read
+
+153
+00:06:39,800 --> 00:06:42,110
+more about the QML global object, you can
+
+154
+00:06:42,110 --> 00:06:44,210
+see this here. They tell you that it
+
+155
+00:06:44,210 --> 00:06:46,639
+contains the Qt global object we just
+
+156
+00:06:46,639 --> 00:06:49,159
+looked at in a previous venture. You see
+
+157
+00:06:49,159 --> 00:06:51,199
+the print function, the console object,
+
+158
+00:06:51,199 --> 00:06:54,289
+the XMLHttpRequest object. And you can
+
+159
+00:06:54,289 --> 00:06:55,789
+look at this if you need more
+
+160
+00:06:55,789 --> 00:06:58,610
+information about this. Okay. Now that you
+
+161
+00:06:58,610 --> 00:07:00,319
+know a little bit more about the
+
+162
+00:07:00,319 --> 00:07:02,509
+JavaScript environment that is available
+
+163
+00:07:02,509 --> 00:07:05,419
+to you in QML, where can you type
+
+164
+00:07:05,419 --> 00:07:08,569
+JavaScript code in you QML file? Well, you
+
+165
+00:07:08,569 --> 00:07:11,210
+can do that in property bindings, signal
+
+166
+00:07:11,210 --> 00:07:14,090
+handlers, standalone JavaScript functions
+
+167
+00:07:14,090 --> 00:07:17,270
+and imported JavaScript code. In property
+
+168
+00:07:17,270 --> 00:07:19,909
+bindings, we have already actually used
+
+169
+00:07:19,909 --> 00:07:22,129
+it when you did something like height
+
+170
+00:07:22,129 --> 00:07:24,949
+equals width, multiplied by an even
+
+171
+00:07:24,949 --> 00:07:27,289
+number. This is some JavaScript you are
+
+172
+00:07:27,289 --> 00:07:29,779
+writing in your rectangle object, so you
+
+173
+00:07:29,779 --> 00:07:32,029
+can use it like this. You can also use
+
+174
+00:07:32,029 --> 00:07:34,639
+javascript in signal handlers. In your
+
+175
+00:07:34,639 --> 00:07:37,669
+MouseArea, in the on click method, this
+
+176
+00:07:37,669 --> 00:07:39,529
+is JavaScript you are write in here.
+
+177
+00:07:39,529 --> 00:07:41,599
+There are two other use cases of
+
+178
+00:07:41,599 --> 00:07:43,669
+JavaScript we haven't talked about yet,
+
+179
+00:07:43,669 --> 00:07:45,860
+but this is the topic of this chapter
+
+180
+00:07:45,860 --> 00:07:47,599
+and we are going to look at how you
+
+181
+00:07:47,599 --> 00:07:50,060
+can use JavaScript in standalone
+
+182
+00:07:50,060 --> 00:07:52,550
+functions and imported JavaScript code.
+
+183
+00:07:52,550 --> 00:07:54,560
+For now, I hope this gives you a good
+
+184
+00:07:54,560 --> 00:07:56,659
+introduction to what is available to you
+
+185
+00:07:56,659 --> 00:07:59,089
+in terms of JavaScript features in your
+
+186
+00:07:59,089 --> 00:08:02,240
+QML code. And in the next few lectures, we
+
+187
+00:08:02,240 --> 00:08:04,580
+are going to explore more earnest and
+
+188
+00:08:04,580 --> 00:08:07,219
+actually open Qt creator and start
+
+189
+00:08:07,219 --> 00:08:09,229
+playing with us. Starting in the next
+
+190
+00:08:09,229 --> 00:00:00,000
+lecture, I'll see you there
+

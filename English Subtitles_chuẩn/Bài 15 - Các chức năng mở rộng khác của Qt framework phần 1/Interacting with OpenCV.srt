@@ -1,0 +1,475 @@
+WEBVTT
+
+00:00.910 --> 00:05.670
+This is video of 4.3 of controlling multimedia which covers interacting with the open computer vision
+
+00:05.670 --> 00:11.610
+library. In this video we're going to cover linking or including open computer vision in Qt projects,
+
+00:11.840 --> 00:15.820
+cascade classifiers for facial detection and drawing on images.
+
+00:15.840 --> 00:18.260
+So let's go ahead and get started.
+
+00:18.300 --> 00:23.460
+The first thing that we need to do is go ahead and make sure that the opencv IncludePath and the
+
+00:23.460 --> 00:27.560
+opencv libraries are linked correctly in our project file.
+
+00:27.690 --> 00:33.840
+Now for Linux I've already done this or Unix in this case as the .pro file calls it, because for Linux
+
+00:33.870 --> 00:39.780
+and Unix these paths are standard but for my Windows users you're going to have to actually get the
+
+00:39.780 --> 00:44.070
+open computer vision library in and then add in the correct path.
+
+00:44.070 --> 00:50.700
+So I've included like a nominal path but you need to actually add in the correct path for your setup.
+
+00:50.730 --> 00:54.090
+And so we need to add in both the INCLUDEPATH which you can see here.
+
+00:54.120 --> 00:59.900
+So Windows users need to uncomment this and add in the correct one. And you'll need to actually add in
+
+00:59.910 --> 01:03.340
+the LIBS and you can see that all here.
+
+01:03.390 --> 01:08.810
+So you need to find those three LIBS and make sure that they're all linked correctly in your project file.
+
+01:09.060 --> 01:12.660
+So once we've got all that set up let's go ahead and take a look at the code.
+
+01:12.660 --> 01:14.570
+Now this is very familiar.
+
+01:14.580 --> 01:20.790
+This is basically the same code that we did last time using our custom video surface.
+
+01:20.790 --> 01:26.190
+The only difference is we're switching back to using a QCamera. But if you look at our implementation
+
+01:26.190 --> 01:31.470
+file you can see and scroll all the way to the bottom and look where we actually set the camera.
+
+01:31.470 --> 01:37.050
+You can see instead of setting the Viewfinder to something else, we actually set this to be our custom
+
+01:37.050 --> 01:38.020
+videosurface.
+
+01:38.160 --> 01:43.260
+So again almost exactly like the last implementation.
+
+01:43.260 --> 01:45.030
+And if you look at the VideoWidget.
+
+01:45.060 --> 01:45.300
+Right?
+
+01:45.300 --> 01:49.440
+Nothing has changed here, we reimplement the paintEvent and resizeEvent.
+
+01:49.440 --> 01:54.840
+And if we look at the implementation file, we create the QPainter, set the RenderHint and actually
+
+01:54.840 --> 02:00.960
+passed into our video_surface. And for a resizeEvent same thing, we call the parent implementation and
+
+02:00.960 --> 02:03.390
+then call it on our video_surface.
+
+02:03.390 --> 02:09.960
+So now if we look at our video_surface and scroll all the way to the bottom, you're going to find we
+
+02:09.960 --> 02:12.060
+have a new private data member here.
+
+02:12.330 --> 02:17.400
+This computer vision CascadeClassifier. So the Cascade Classifier is the actual technology that we're
+
+02:17.400 --> 02:23.510
+going to be using to do our facial detection. Cascade Classifiers are very efficient object detectors
+
+02:23.550 --> 02:28.560
+and the open computer vision library comes with pre-trained classifiers that can be used to detect faces.
+
+02:28.580 --> 02:28.980
+Well
+
+02:28.980 --> 02:32.090
+cascade classifiers are not the most accurate technology.
+
+02:32.100 --> 02:36.060
+They are one of the faster methods available for finding faces, which is why we're going to use them
+
+02:36.060 --> 02:36.640
+here.
+
+02:36.750 --> 02:41.940
+Now you see that we've actually created an instance here. But if we don't actually load a pre-trained
+
+02:41.940 --> 02:44.610
+data file our classifier won't work.
+
+02:44.610 --> 02:49.830
+So we're going to start by loading a file and so we'll switch to our implementation method,
+
+02:49.830 --> 02:53.220
+Scroll up the top here and you'll see there's a couple interesting things here.
+
+02:53.220 --> 02:58.980
+So if we switch back to the .pro file and look at the bottom, this code right here is kind of interesting.
+
+02:58.980 --> 03:06.000
+What it does is actually copies the haarcascade_frontalface_default.xml from the source code
+
+03:06.000 --> 03:08.310
+directory into our executable directory.
+
+03:08.310 --> 03:13.460
+And the reason we're doing that is because our cascade classifier has to take a C string,
+
+03:13.470 --> 03:16.710
+so we need to actually pass that in manually.
+
+03:16.710 --> 03:18.030
+So we're going to go ahead and do that now.
+
+03:18.030 --> 03:23.430
+So since we copied that data we can actually use this QCoreApplication applicationDirPath to
+
+03:23.430 --> 03:27.510
+get the executable directory out and then we know this is our file name.
+
+03:27.510 --> 03:32.360
+So if we combine these two things we can get the full path out or we can get the full file path out.
+
+03:32.370 --> 03:33.880
+So let's go ahead and do that right now.
+
+03:34.930 --> 03:35.320
+Awesome.
+
+03:35.320 --> 03:36.840
+So once we've got the file path out,
+
+03:36.860 --> 03:40.840
+we'll call our load method on our face_classifier.
+
+03:40.840 --> 03:45.340
+And again the only weird thing is we need to actually pass in this C string to this, to our load method
+
+03:45.340 --> 03:46.940
+because that's what it's expecting.
+
+03:46.960 --> 03:52.720
+And then you see we've got this red_pen which if we switch back to our data implementation it's just a
+
+03:52.720 --> 03:53.860
+QPen.
+
+03:53.860 --> 03:59.650
+All this is going to draw the boxes around so we set it to be red and we set the width to be 10.
+
+03:59.680 --> 04:00.210
+Awesome.
+
+04:00.220 --> 04:06.040
+So now that we've loaded up our face_classifier, the method that we need to use is the
+
+04:06.040 --> 04:09.460
+detectMultiScale method and it's going to actually do the facial detection.
+
+04:09.460 --> 04:14.560
+The only problem is that we need to pass in a computer vision mat to the method to make it happen, which
+
+04:14.560 --> 04:18.430
+means we basically need to convert from a QImage to a CV mat.
+
+04:18.430 --> 04:25.300
+Matt So let's scroll down to our paint method. And right after we create our QImage from our video frame
+
+04:25.450 --> 04:26.860
+which is right here,
+
+04:26.980 --> 04:32.650
+we just use the current_video_frame. Remember it's actually a video_frame that we've stored. And you can see we've
+
+04:32.650 --> 04:34.700
+actually got a helper method here.
+
+04:34.720 --> 04:39.490
+So we've got this variable here that we're creating is called cv Mat gray_mat_image.
+
+04:39.520 --> 04:42.890
+And we call the get method to get that out.
+
+04:42.950 --> 04:44.800
+So let's go ahead and look at that.
+
+04:44.800 --> 04:51.010
+So if we scroll down you can see that we're actually iterating on the QImage Format. So we have the
+
+04:51.010 --> 04:52.240
+switch statement here.
+
+04:52.300 --> 04:55.650
+And we've got our format and a bunch of cases.
+
+04:55.720 --> 05:02.680
+And basically if we scroll all the way to the bottom it actually passes us off to another method which
+
+05:02.800 --> 05:10.170
+takes the qimage_to_matt basically takes the qimage and then it takes a computer vision enum.
+
+05:10.290 --> 05:14.190
+And enum that it needs is just based on the actual image format that we have.
+
+05:14.260 --> 05:19.610
+So all these cases here are the only thing that really truly only different thing in them if we're passing in
+
+05:19.660 --> 05:23.490
+different enums to make sure that they get instantiated correctly.
+
+05:23.620 --> 05:29.590
+And if you want the method for that it's actually at the top, it's this qimage_to_mat that we pass in the image
+
+05:29.600 --> 05:33.870
+height, widht, the format and the actual data information right there.
+
+05:33.970 --> 05:38.990
+And then we static cast the bytesPerLine. So very standard data manipulation.
+
+05:39.010 --> 05:43.340
+You know we're not going to get into that too much because we want to do all the interesting stuff
+
+05:43.350 --> 05:45.920
+instead. Awesome.
+
+05:45.920 --> 05:47.020
+So let's go and scroll down.
+
+05:47.020 --> 05:49.330
+So if we make it to the end,
+
+05:49.370 --> 05:56.720
+we successfully created a CV Mat and the variable name is the actual mat_image.
+
+05:56.720 --> 05:59.450
+Now the important thing to know about this mat_image.
+
+05:59.450 --> 06:04.090
+We can't make changes to it because we'll actually make changes to our original image.
+
+06:04.100 --> 06:06.840
+So that's one of the important things to know.
+
+06:06.980 --> 06:13.220
+So because we don't want to make any changes to our original image, so let's go ahead and create a new instance
+
+06:13.280 --> 06:18.530
+which we'll call cv Mat gray_mat_image, which will be the one that I actually do operations
+
+06:18.530 --> 06:19.500
+on.
+
+06:19.520 --> 06:20.040
+Awesome.
+
+06:20.060 --> 06:23.610
+So our cascade classifier works best in gray scale.
+
+06:23.690 --> 06:30.770
+So let's go ahead and change our original image to grayscale using the cvtColor method. And we need
+
+06:30.770 --> 06:34.720
+to specify the original mat which is where the data is coming from,
+
+06:34.760 --> 06:35.610
+the result mat
+
+06:35.720 --> 06:40.160
+which is where the data is going and the color change that is going to occur.
+
+06:41.260 --> 06:46.570
+So we're using our mat_image which is mapped to our original documents that we don't want to change.
+
+06:46.840 --> 06:50.650
+And that's our input, our output is this gray_mat_image.
+
+06:50.650 --> 06:57.520
+And then we're actually changing it from BGR, which is a color scheme that openCV uses, to gray scale.
+
+06:57.520 --> 07:03.490
+So once we have got our gray image, the next thing that we want to do is actually equalize the histograms.
+
+07:03.490 --> 07:09.000
+This is going to help increase the contrast in our image so that our features are more exaggerated.
+
+07:09.000 --> 07:14.300
+Now since we've finally got our gray_mat_image, we'll go ahead and just make the changes to that.
+
+07:14.380 --> 07:19.540
+So we're going to call the cv equalizeHist method. And then the last thing that we need to do is go
+
+07:19.540 --> 07:23.230
+ahead and return this gray_mat_image, and that's it.
+
+07:23.260 --> 07:31.600
+That's how we successfully go from a QImage to a cv Mat, is we use this qimage_to_mat helper
+
+07:31.960 --> 07:36.180
+and we base it on exactly which QImage Format's coming in.
+
+07:36.250 --> 07:42.070
+And then we've got our helper method up at the top that just takes our height width, the format that we
+
+07:42.070 --> 07:45.130
+passed in and the actual data information.
+
+07:45.130 --> 07:52.200
+And then lastly the bytesPerLine. And once we've got that image out we scroll down to the bottom.
+
+07:52.240 --> 07:58.150
+We go ahead and change the color into gray scale because our cascade classifier works better on that. We
+
+07:58.150 --> 08:03.370
+use this equalize histogram function to sharpen the features to make them more contrasting.
+
+08:03.370 --> 08:08.570
+And then we go ahead and return that gray image which brings us right here.
+
+08:08.800 --> 08:15.190
+So now that we've got our gray_mat_image, let's go ahead and use the detectMultiScale method.
+
+08:15.340 --> 08:21.160
+So the two big things that need to be passed in include the mat_image and something to record where
+
+08:21.160 --> 08:26.950
+the method detects face is, which in this case will be this standard vector here, which is just a vector
+
+08:26.950 --> 08:30.000
+of cv rectangles and we've called that faces.
+
+08:30.160 --> 08:37.430
+We're also going to say that in order for a face to be detected it needs to be a certain size.
+
+08:37.480 --> 08:45.070
+So in this case what we're using is the image size columns divided by four and the rows divided by four.
+
+08:45.070 --> 08:50.050
+So basically an image a face has to be at least take up a quarter of the screen in order to actually
+
+08:50.050 --> 08:50.730
+be detected.
+
+08:50.730 --> 08:55.040
+So passing in this min_face_size will help speed up the actual computation.
+
+08:55.060 --> 08:58.930
+So let's go ahead and actually figure out where our faces are
+
+08:58.930 --> 09:00.850
+by using the detectMultiScale method.
+
+09:05.060 --> 09:08.760
+So there's a couple other data members in here that we pass in.
+
+09:08.810 --> 09:11.190
+Basically these help us tweak the detection.
+
+09:11.210 --> 09:13.600
+And that's a little outside the scope of this tutorial.
+
+09:13.610 --> 09:18.890
+But feel free to explore the detectMultiScale documentation and tweak the variables based on your
+
+09:18.890 --> 09:20.140
+specific use case.
+
+09:20.180 --> 09:24.710
+But this is a pretty good general use case right here. And if you need something more fancy than that and
+
+09:24.710 --> 09:26.470
+go ahead and tweak those.
+
+09:26.480 --> 09:31.340
+So basically once we've done this method detectMultiScale, we pass in our gray_mat_images and it's
+
+09:31.340 --> 09:37.340
+actually going to push all that information into our cv rect vector here of faces.
+
+09:37.340 --> 09:45.740
+So the last thing that we want to do is go ahead and create a painter and draw directly on our images.
+
+09:45.740 --> 09:50.070
+So we want to get back into the Qt way of doing things.
+
+09:51.150 --> 09:51.540
+Perfect.
+
+09:51.540 --> 09:55.830
+So once we've got this painter created and we've told that we're going to draw directly on this image
+
+09:55.830 --> 10:01.140
+by passing it in, let's go ahead and actually draw rectangles for each of our faces.
+
+10:01.140 --> 10:05.230
+So we need to convert from the cv rect into a QRect.
+
+10:05.250 --> 10:09.450
+And I've already done the first two steps here by getting the top_left point and the bottom_right point.
+
+10:09.510 --> 10:11.220
+So we'll just go ahead and take those,
+
+10:11.220 --> 10:16.470
+the top_left point and the bottom_right point and create a QRectangle out of that and then pass that
+
+10:16.470 --> 10:20.470
+into our image_painter to draw. Awesome.
+
+10:20.540 --> 10:26.000
+So with that we've actually successfully created image. So everything else, all the code here is exactly
+
+10:26.000 --> 10:27.390
+like it was before.
+
+10:27.440 --> 10:32.220
+Right so we check to make sure the scanLine, if it's the bottom to top then we'll go ahead and do that.
+
+10:32.350 --> 10:36.050
+And we've got a little Debug here to see how many faces we detect.
+
+10:36.080 --> 10:41.990
+And at the very end of that, once we've actually drawn our actual QImage we make sure that we unmap
+
+10:41.990 --> 10:42.530
+the data.
+
+10:42.530 --> 10:44.360
+So let's go ahead and run this.
+
+10:51.880 --> 10:54.850
+And you can see if I get close enough to the camera,
+
+10:54.850 --> 10:57.900
+we're drawing the rectangle and actually seeing our face.
+
+10:57.910 --> 11:03.260
+So we successfully used our computer vision library in order to detect faces.
+
+11:03.460 --> 11:06.520
+So with that we successfully learned how to detect faces,
+
+11:06.520 --> 11:13.680
+draw a rectangle around the detected face and link open computer vision to a project. Join us next time
+
+11:13.680 --> 11:16.620
+where we'll cover working with Qt 3D.

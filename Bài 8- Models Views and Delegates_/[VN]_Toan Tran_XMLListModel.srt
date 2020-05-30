@@ -1,0 +1,1634 @@
+1
+00:00:00,000 --> 00:00:01,740
+Trong bài giảng này, chúng ta sẽ tìm hiểu về
+
+2
+00:00:01,740 --> 00:00:04,560
+XmlListModel, thành phần cho phép
+
+3
+00:00:04,560 --> 00:00:07,500
+bạn phân tích dữ liệu trong một tập tin XML
+
+4
+00:00:07,500 --> 00:00:10,679
+rồi đưa dữ liệu vào chế độ xem của các bạn trong Qt Quick.
+
+5
+00:00:10,679 --> 00:00:12,750
+Thành phần này có một vài tính chất
+
+6
+00:00:12,750 --> 00:00:15,179
+mà các bạn cần được biết.
+
+7
+00:00:15,179 --> 00:00:17,670
+Tính chất đầu tiên cho phép các bạn liên kết đến 1 tập tin XML
+
+8
+00:00:17,670 --> 00:00:19,920
+cung cấp dữ liệu.
+
+9
+00:00:19,920 --> 00:00:22,590
+'query' ( truy vấn) cho phép các bạn xác định dữ liệu
+
+10
+00:00:22,590 --> 00:00:25,800
+mà các bạn muốn chiết xuất từ tập tin XML.
+
+11
+00:00:25,800 --> 00:00:28,260
+'role' (vai trò) cho phép bạn
+
+12
+00:00:28,260 --> 00:00:30,599
+xác định thuộc tính mà bạn muốn ở vai trò
+
+13
+00:00:30,599 --> 00:00:33,420
+mà bạn đã truy vấn được từ 'query'.
+
+14
+00:00:33,420 --> 00:00:36,600
+'status' (tình trạng) cập nhật
+
+15
+00:00:36,600 --> 00:00:38,550
+cho các bạn tình trạng tải dữ liệu của các bạn
+
+16
+00:00:38,550 --> 00:00:41,879
+vì vậy, nếu có lỗi, nếu tải thành công,
+
+17
+00:00:41,879 --> 00:00:44,430
+bạn có thể lưu ý từ
+
+18
+00:00:44,430 --> 00:00:46,800
+tình trạng ở đây
+
+19
+00:00:46,800 --> 00:00:48,960
+và ở dưới đây, các bạn có th thấy một ví dụ về làm thế nào có thể liên kết với một tập tin XML.
+
+20
+00:00:48,960 --> 00:00:52,579
+Tập tin XML có thể là local (nội bộ)
+
+21
+00:00:52,579 --> 00:00:55,469
+ở trong phần 'resource' (tài nguyên) và các bạn có thể
+
+22
+00:00:55,469 --> 00:00:58,890
+liên kết bằng cách dùng qrc như thế này
+
+23
+00:00:58,890 --> 00:01:01,800
+hay các bạn có thể tải dữ liệu XML từ internet
+
+24
+00:01:01,800 --> 00:01:04,979
+bằng cách dùng XML API.
+
+25
+00:01:04,979 --> 00:01:08,430
+Ở đây chúng ta có một ví dụ về tập tin XML 
+
+26
+00:01:08,430 --> 00:01:10,830
+và XmlListModel được dùng để đọc dữ liệu từ này tập tin XML.
+
+27
+00:01:10,830 --> 00:01:13,979
+Được rồi, chúng ta sẽ khai báo
+
+28
+00:01:13,979 --> 00:01:18,060
+'source' (nguồn) sẽ là tập tin XML
+
+29
+00:01:18,060 --> 00:01:21,330
+tại phần tài nguyên trong dự án của chúng ta.
+
+30
+00:01:21,330 --> 00:01:24,390
+'query' ( truy vấn) cho phép các bạn xác định
+
+31
+00:01:24,390 --> 00:01:27,119
+các bạn muốn gì,
+
+32
+00:01:27,119 --> 00:01:30,509
+cái gì sẽ là role (vai trò) trong tập tin XML của các bạn.
+
+33
+00:01:30,509 --> 00:01:33,270
+Trong trường hợp này, chúng ta muốn lấy tất cả các khóa học.
+
+34
+00:01:33,270 --> 00:01:36,030
+Ok, các bạn thấy rằng chúng ta có một thẻ cho các khóa học và
+
+35
+00:01:36,030 --> 00:01:38,520
+bên trong chúng ta có một loạt các khóa học và
+
+36
+00:01:38,520 --> 00:01:41,009
+mỗi khoá hóc có các yếu tố con
+
+37
+00:01:41,009 --> 00:01:44,310
+'year' (năm) và 'coursename' (tên khoá học).
+
+38
+00:01:44,310 --> 00:01:46,680
+Vì vậy, chúng ta xác định rằng chúng ta muốn lấy các khóa học
+
+39
+00:01:46,680 --> 00:01:49,649
+trong 'query' (truy vấn) trong XmlListModel.
+
+40
+00:01:49,649 --> 00:01:53,009
+Bây giờ chúng ta có một khoá học,
+
+41
+00:01:53,009 --> 00:01:55,979
+chúng ta có thể muốn lấy thêm dữ liệu từ khoá học.
+
+42
+00:01:55,979 --> 00:01:58,020
+Ví dụ chúng ta có thể muốn
+
+43
+00:01:58,020 --> 00:02:00,810
+lấy thuộc tính 'hot' (nóng) ở đây,
+
+44
+00:02:00,810 --> 00:02:02,759
+chúng ta cũng có thể muốn đọc các yếu tố
+
+45
+00:02:02,759 --> 00:02:05,610
+con của khoá học ở đây.
+
+46
+00:02:05,610 --> 00:02:09,810
+Đó là nơi XmlRole (vai trò XML) được dùng đến.
+
+47
+00:02:09,810 --> 00:02:11,489
+Điều đầu tiên được đọc ở đây là
+
+48
+00:02:11,489 --> 00:02:13,110
+yếu tố 'instructor' (giảng viên) này.
+
+49
+00:02:13,110 --> 00:02:15,960
+Các bạn chỉ định vai trò cho bất cứ gì
+
+50
+00:02:15,960 --> 00:02:18,330
+mà các bạn muốn đọc và các bạn đưa vào 1
+
+51
+00:02:18,330 --> 00:02:21,300
+truy vấn để lấy điều các bạn muốn.
+
+52
+00:02:21,300 --> 00:02:23,400
+Được rồi, chúng tôi muốn lấy tên giảng viên.
+
+53
+00:02:23,400 --> 00:02:25,650
+'instructor' (Giảng viên) này ở đây phải khớp với thẻ
+
+54
+00:02:25,650 --> 00:02:27,600
+mà bạn có trong yếu tố 'course' (khoá học) mà các bạn có ở đây,
+
+55
+00:02:27,600 --> 00:02:29,760
+và các bạn cung cấp 1 phương pháp để
+
+56
+00:02:29,760 --> 00:02:32,610
+phân loại dữ liệu mà các bạn muốn
+
+57
+00:02:32,610 --> 00:02:35,310
+đọc là loại dữ kiệu gì.
+
+58
+00:02:35,310 --> 00:02:37,710
+Chúng ta muốn đọc nó như 1 dữ liệu chuỗi trong trường hợp này.
+
+59
+00:02:37,710 --> 00:02:39,750
+Chúng ta cũng muốn lấy năm.
+
+60
+00:02:39,750 --> 00:02:42,450
+Nó thực sự là điều tương tự, nhưng chúng tôi muốn đọc nó dưới dạng chữ số.
+
+61
+00:02:42,450 --> 00:02:45,000
+Và trong phần thứ ba, chúng ta muốn
+
+62
+00:02:45,000 --> 00:02:47,550
+đọc tên khoá học tại đây.
+
+63
+00:02:47,550 --> 00:02:50,610
+Chúng ta muốn đọc nó như một chuỗi.
+
+64
+00:02:50,610 --> 00:02:54,470
+Trong XmlRole thứ tư này, chúng tôi muốn đọc 
+
+65
+00:02:54,470 --> 00:02:57,660
+thuộc tính 'hot' và đây biểu tượng @ ở đây
+
+66
+00:02:57,660 --> 00:03:00,150
+xác định rằng những gì các bạn muốn đọc là một thuộc tính.
+
+67
+00:03:00,150 --> 00:03:03,360
+Nó không phải là một yếu tố
+
+68
+00:03:03,360 --> 00:03:04,890
+và nếu bạn muốn đọc một yếu tố,
+
+69
+00:03:04,890 --> 00:03:07,200
+các bạn có thể làm như thế này.
+
+70
+00:03:07,200 --> 00:03:09,840
+Tất cả những gì mà tôi đang gõ ở đây để lấy dữ liệu
+
+71
+00:03:09,840 --> 00:03:12,330
+thực sự được quy định trong tiêu chuẩn
+
+72
+00:03:12,330 --> 00:03:12,720
+được gọi là XPath.
+
+73
+00:03:12,720 --> 00:03:16,020
+Nó là một tiêu chuẩn cho phép các bạn
+
+74
+00:03:16,020 --> 00:03:20,400
+để phân tích một tập tin XML để có được
+
+75
+00:03:20,400 --> 00:03:22,560
+thông tin cụ thể mà các bạn quan tâm
+
+76
+00:03:22,560 --> 00:03:24,900
+và đó chính xác là điều mà chúng ta đang làm ở đây.
+
+77
+00:03:24,900 --> 00:03:27,930
+Đọc những tập tin XML để lấy
+
+78
+00:03:27,930 --> 00:03:31,530
+các yếu tố hay thuộc tính ở đây
+
+79
+00:03:31,530 --> 00:03:33,870
+và trong trường hợp này, chúng ta muốn đưa dữ liệu đó đến
+
+80
+00:03:33,870 --> 00:03:35,190
+một XML List Model (mô hình danh sách XML).
+
+81
+00:03:35,190 --> 00:03:37,680
+Tôi hy vọng điều này có ý nghĩa.
+
+82
+00:03:37,680 --> 00:03:39,959
+Nếu điều này là không rõ ràng, chúng ta chờ đợi để chạy một ví dụ trong giây lát
+
+83
+00:03:39,959 --> 00:03:41,700
+và các bạn sẽ để hiểu nó hoạt động thế nào.
+
+84
+00:03:41,700 --> 00:03:44,370
+Được rồi, chúng tôi vừa nhìn ví dụ khái quát của việc
+
+85
+00:03:44,370 --> 00:03:47,100
+làm thế nào các bạn đọc dữ liệu
+
+86
+00:03:47,100 --> 00:03:50,130
+từ tập tin XML và đưa nó vào mô hình danh sách XML (XML List Model).
+
+87
+00:03:50,130 --> 00:03:52,860
+Bây giờ chúng ta sẽ tập trung vào cú pháp
+
+88
+00:03:52,860 --> 00:03:55,170
+mà các bạn có thể sử dụng để truy vấn.
+
+89
+00:03:55,170 --> 00:03:58,200
+Truy vấn được dùng trong XmlListModel.
+
+90
+00:03:58,200 --> 00:04:00,780
+Hãy để ý rằng chúng ta có 2 loại truy vấn:
+
+91
+00:04:00,780 --> 00:04:03,180
+1 là cái này, ở trong XmlListModel
+
+92
+00:04:03,180 --> 00:04:05,940
+và cái còn lại là truy vấn này
+
+93
+00:04:05,940 --> 00:04:08,790
+ở trong XmlRole chỗ này.
+
+94
+00:04:08,790 --> 00:04:11,100
+Chúng ta sẽ tập trung vào cái đầu tiên.
+
+95
+00:04:11,100 --> 00:04:13,080
+Được rồi, đây là những cách khác nhau mà có bạn có thể làm để đọc dữ liệu.
+
+96
+00:04:13,080 --> 00:04:15,360
+Các bạn có thể xác định rằng các bạn
+
+97
+00:04:15,360 --> 00:04:18,390
+muốn đọc một khoá học bằng cách sữ dụng một dấu gạch xiên
+
+98
+00:04:18,390 --> 00:04:21,089
+và cung cấp đường dẫn đến
+
+99
+00:04:21,089 --> 00:04:23,520
+thẻ mà bạn muốn đọc.
+
+100
+00:04:23,520 --> 00:04:26,850
+Ví dụ, tại đây, các khóa học khóa học.
+Chúng tôi xác định rằng chúng tôi muốn đọc khoá học
+
+101
+00:04:26,850 --> 00:04:29,460
+Các bạn có thể dùng 2 dấu gach xiên ở đây
+
+102
+00:04:29,460 --> 00:04:32,100
+và xác định tên thẻ
+
+103
+00:04:32,100 --> 00:04:34,950
+cho bất cứ gì mà các bạn muốn đọc.
+
+104
+00:04:34,950 --> 00:04:37,050
+Này cũng sẽ tương đương với
+
+105
+00:04:37,050 --> 00:04:39,690
+cú pháp đầu tiên ở đây. Bạn cũng có thể dùng
+
+106
+00:04:39,690 --> 00:04:41,820
+dấu @ để xác định rằng các bạn
+
+107
+00:04:41,820 --> 00:04:44,100
+muốn đọc một thuộc tính. Các bạn cũng có thể
+
+108
+00:04:44,100 --> 00:04:46,620
+xác định rằng các bạn muốn đọc khoá học đầu tiên.
+
+109
+00:04:46,620 --> 00:04:49,740
+Okay, chúng ta sẽ lấy các khóa học ở đây
+
+110
+00:04:49,740 --> 00:04:52,500
+chúng ta sẽ lấy tất cả các khóa học trong tập tin XML
+
+111
+00:04:52,500 --> 00:04:54,930
+nhưng các bạn cũng có thể nói rằng
+
+112
+00:04:54,930 --> 00:04:56,820
+các bạn muốn lấy khoá học đầu tiên và các bạn có thể làm điều đó như thế này.
+
+113
+00:04:56,820 --> 00:04:59,600
+Nếu các bạn là một lập trình viên C hay C++,
+
+114
+00:04:59,600 --> 00:05:02,790
+hoặc bất kỳ ngôn ngữ đó là dựa trên C,
+
+115
+00:05:02,790 --> 00:05:06,240
+các bạn biết rằng mảng bắt đầu tại 0.
+
+116
+00:05:06,240 --> 00:05:08,580
+Đây là một lưu ý cho các bạn bởi vì
+
+117
+00:05:08,580 --> 00:05:11,880
+mảng này chỉ bắt đầu tại 1 và các bạn cần phải cẩn thận về chuyện đó.
+
+118
+00:05:11,880 --> 00:05:14,370
+Bây giờ chúng ta muốn xem xét một vài ví dụ.
+
+119
+00:05:14,370 --> 00:05:17,040
+Okay, chúng ta có ví dụ ở đây.
+
+120
+00:05:17,040 --> 00:05:19,200
+Nó là cùng một tập tin chúng ta đã có.
+
+121
+00:05:19,200 --> 00:05:22,200
+Bạn có thể cung cấp những truy vấn để đọc tất cả các khóa học.
+
+122
+00:05:22,200 --> 00:05:24,390
+Bạn có thể dùng truy vấn khác
+
+123
+00:05:24,390 --> 00:05:26,550
+để đọc tất cả các khóa học.
+
+124
+00:05:26,550 --> 00:05:29,490
+2 dấu gạch xiên ở đây, các bạn có thể
+
+125
+00:05:29,490 --> 00:05:31,830
+dùng mảng để xác định nguyên tố mà bạn muốn.
+
+126
+00:05:31,830 --> 00:05:34,440
+Các bạn có thể lấy tất cả các khóa học
+
+127
+00:05:34,440 --> 00:05:37,290
+có thuộc tính 'hot'.
+
+128
+00:05:37,290 --> 00:05:39,930
+Các bạn có thể lấy cho các khóa học mà có
+
+129
+00:05:39,930 --> 00:05:41,970
+thuộc tính 'hot' và 'required' ('cần thiết').
+
+130
+00:05:41,970 --> 00:05:44,400
+Nếu các bạn cần,
+
+131
+00:05:44,400 --> 00:05:47,280
+các bạn cũng có thể truy vấn các khóa học mà có
+
+132
+00:05:47,280 --> 00:05:49,440
+thuộc tính 'hot' hoặc 'required' ('cần thiết').
+
+133
+00:05:49,440 --> 00:05:51,810
+Được rồi, các bạn có thể làm tất cả các hoạt động này.
+
+134
+00:05:51,810 --> 00:05:53,970
+Điều tiếp theo, chúng ta muốn xem là
+
+135
+00:05:53,970 --> 00:05:56,250
+cú pháp mà các bạn sử dụng trong
+
+136
+00:05:56,250 --> 00:06:00,660
+XmlRole của các bạn để xác định dữ liệu mà
+
+137
+00:06:00,660 --> 00:06:03,510
+các bạn muốn lấy trong mỗi khoá học.
+
+138
+00:06:03,510 --> 00:06:06,240
+Okay để lặp lại, các bạn có thể lấy các thuộc tính hay
+
+139
+00:06:06,240 --> 00:06:09,390
+các yếu tố ở trong tại đây.
+
+140
+00:06:09,390 --> 00:06:12,870
+Để xem các yếu tố, các bạn cung cấp tên của những
+
+141
+00:06:12,870 --> 00:06:15,990
+yếu tố mà các bạn muốn đọc.
+
+142
+00:06:15,990 --> 00:06:18,450
+Được rồi, vậy, nếu chúng ta muốn đọc 'instructor' ở đây, chúng ta chỉ việc
+
+143
+00:06:18,450 --> 00:06:21,120
+sử dụng 'instructor' tại đây và chúng ta xác định
+
+144
+00:06:21,120 --> 00:06:23,490
+các kiểu dữ liệu cho bất cứ điều gì chúng ta muốn đọc.
+
+145
+00:06:23,490 --> 00:06:26,010
+Nếu các bạn muốn đọc một thuộc tính,
+
+146
+00:06:26,010 --> 00:06:28,770
+các bạn sử dụng biểu tượng @ ở đây và các bạn
+
+147
+00:06:28,770 --> 00:06:31,440
+cũng có thể chỉ định loại dữ liệu mà các bạn muốn
+
+148
+00:06:31,440 --> 00:06:34,650
+muốn đọc và nó cũng giống thế cho 'year'.
+
+149
+00:06:34,650 --> 00:06:36,330
+Chúng ta muốn đọc nó như một chữ số.
+
+150
+00:06:36,330 --> 00:06:38,880
+Bây giờ chúng ta qua Qt Creator
+
+151
+00:06:38,880 --> 00:06:40,630
+tạo ra một dự án và chơi với nó.
+
+152
+00:06:40,630 --> 00:06:43,750
+Okay, chúng ta đang ở Qt Creator.
+
+153
+00:06:43,750 --> 00:06:45,100
+Chúng ta sẽ tạo dự án của chúng ta
+
+154
+00:06:45,100 --> 00:06:48,580
+Đây là Qt quick application (trình khởi tạo chương trình nhanh Qt),
+
+155
+00:06:48,580 --> 00:06:52,690
+Chúng ta gọi nó là 'XMLListModelDemo',
+
+156
+00:06:52,690 --> 00:06:53,940
+lựa chọn Qt Version (phiên bản Qt),
+
+157
+00:06:53,940 --> 00:06:58,630
+lựa chọn kit và kết thúc.
+
+158
+00:06:58,630 --> 00:07:01,060
+Chúng ta sẽ muốn thay đổi tiêu đề ở đây và xác định những gì chúng ta đang làm.
+
+159
+00:07:01,060 --> 00:07:04,930
+Điều đầu tiên chúng ta muốn làm
+
+160
+00:07:04,930 --> 00:07:07,690
+chúng ta muốn xác định tập tin XML mà chúng ta muốn đọc.
+
+161
+00:07:07,690 --> 00:07:10,300
+Vì vậy, chúng ta sẽ thêm 
+
+162
+00:07:10,300 --> 00:07:12,490
+một tập tin tài nguyên  mà sẽ chỉ đến tập tin XML.
+
+163
+00:07:12,490 --> 00:07:17,520
+Bấm 'resources' (các nguồn tài nguyên) tại đây, 'add new' (thêm mới)
+
+164
+00:07:17,520 --> 00:07:21,460
+chọn tập tin tài nguyên Qt, và tôi muốn đổi tên nó thành 'resource' (nguồn tài nguyên)
+
+165
+00:07:21,460 --> 00:07:24,400
+Chúng ta sẽ thực hiện điều này khá nhiều.
+
+166
+00:07:24,400 --> 00:07:28,980
+Bây giờ tôi muốn thêm prefix (tiền tố)
+
+167
+00:07:28,980 --> 00:07:32,830
+lấy cái này ra, nhấn enter.
+
+168
+00:07:32,830 --> 00:07:36,280
+Bây giờ chúng ta muốn đi tới nơi chúng ta lưu tập tin 'main.qml'.
+
+169
+00:07:36,280 --> 00:07:40,090
+Bấm phải vào nó, chọn 'Show in explorer'.
+
+170
+00:07:40,090 --> 00:07:42,190
+Nó sẽ mở đến vị trí lưu trữ tập tin trong giây lát.
+
+171
+00:07:42,190 --> 00:07:45,180
+Chúng ta đã ở đây.
+
+172
+00:07:45,180 --> 00:07:50,590
+Thêm một thư mục mới và gọi nó là 'XML'.
+
+173
+00:07:50,590 --> 00:07:53,890
+Tôi muốn mở thư mục 'XML' này và dán và đó một tập tin
+
+174
+00:07:53,890 --> 00:07:56,680
+mà tôi đã chuẩn bị.
+
+175
+00:07:56,680 --> 00:07:59,260
+Đây cơ bản giống tập tin mà các bạn nhìn thấy trong các ảnh chiếu.
+
+176
+00:07:59,260 --> 00:08:01,600
+Tôi sẽ quay lại dự án của tôi,
+
+177
+00:08:01,600 --> 00:08:07,290
+thêm tập tin vào tập tin tài nguyên của tôi,
+
+178
+00:08:07,290 --> 00:08:10,830
+chọn tập tin này ở đây, và tôi có thể lưu nó
+
+179
+00:08:10,830 --> 00:08:14,830
+bởi vì bây giờ nó là của tôi, trong tài nguyên nhưng là tập tin qrc.
+
+180
+00:08:14,830 --> 00:08:18,160
+Tôi có thể bấm đôi vào nó để hiện thị nội dung bên trong
+
+181
+00:08:18,160 --> 00:08:20,860
+Qt Creator và các bạn thấy rằng nó là cùng một tập tin.
+
+182
+00:08:20,860 --> 00:08:23,710
+Chúng ta có các khoá học bên trong
+
+183
+00:08:23,710 --> 00:08:26,530
+và chúng ta thấy rằng chúng ta có giảng viên, năm và tên khoá học.
+
+184
+00:08:26,530 --> 00:08:29,140
+Bây giờ chúng ta có thể trở lại 'main.qml'.
+
+185
+00:08:29,140 --> 00:08:31,720
+Tôi muốn xác định 'XmlListModel' của tôi
+
+186
+00:08:31,720 --> 00:08:36,870
+Tôi cho nó một ID
+
+187
+00:08:38,450 --> 00:08:42,769
+Tôi cung cấp cho nó một tính chất 'source' (nguồn) và
+
+188
+00:08:42,769 --> 00:08:45,230
+sẽ xác định vị trí của tập tin XML của tôi.
+
+189
+00:08:45,230 --> 00:08:48,889
+Tôi muốn sử dụng một tập tin nội bộ
+
+190
+00:08:48,889 --> 00:08:54,380
+vì vậy tôi dùng qrc, ba gạch xiên
+
+191
+00:08:54,380 --> 00:08:57,170
+thư mục nơi tập tin lưu trữ
+
+192
+00:08:57,170 --> 00:09:00,019
+và tên tập tin.
+
+193
+00:09:00,019 --> 00:09:06,500
+Nó được gọi là 'employees.xml'.
+
+194
+00:09:06,500 --> 00:09:11,199
+Bạn cũng có thể xác định tập tin ngoại tuyến bằng cách sử dụng HTTP
+
+195
+00:09:11,199 --> 00:09:15,500
+như một API để lấy một số dữ liệu XML từ internet.
+
+196
+00:09:15,500 --> 00:09:18,170
+Tôi đánh dấu ở đây để
+
+197
+00:09:18,170 --> 00:09:19,820
+các bạn biết rằng chúng ta sẽ không làm điều đó
+
+198
+00:09:19,820 --> 00:09:22,370
+ở đây nhưng nếu các bạn có 1 API
+
+199
+00:09:22,370 --> 00:09:25,250
+có thể cung cấp cho các bạn tập tin XML, các bạn chỉ cần
+
+200
+00:09:25,250 --> 00:09:28,699
+cung cấp địa chỉ HTTP đến tập tin XML
+
+201
+00:09:28,699 --> 00:09:31,850
+và nó sẽ chạy.
+
+202
+00:09:31,850 --> 00:09:33,829
+Các bạn chỉ cần dùng đúng truy vấn để
+
+203
+00:09:33,829 --> 00:09:36,560
+lấy dữ liệu XML của các bạn.
+Bây giờ chúng ta muốn dùng
+
+204
+00:09:36,560 --> 00:09:38,690
+query' (truy vấn). Vì thế chúng ta  
+
+205
+00:09:38,690 --> 00:09:41,829
+ghi 'query' tại đây và chúng ta sẽ ghi
+
+206
+00:09:41,829 --> 00:09:46,579
+'courses/course' ('các khóa học/khóa học') bởi vì đó là những gì chúng ta
+
+207
+00:09:46,579 --> 00:09:49,130
+muốn nhận được từ tập tin XML ở đây.
+
+208
+00:09:49,130 --> 00:09:51,949
+Chúng ta muốn đọc tất cả các khóa học và các bạn
+
+209
+00:09:51,949 --> 00:09:54,680
+dùng truy vấn như thế này để làm việc đó.
+
+210
+00:09:54,680 --> 00:09:57,199
+Đây là một cách để làm điều đó.
+
+211
+00:09:57,199 --> 00:09:58,940
+Khi chúng ta chạy ứng dụng, tôi sẽ chỉ cho các bạn 
+
+212
+00:09:58,940 --> 00:10:01,250
+các cú pháp khác để các bạn có thể thử với chúng.
+
+213
+00:10:01,250 --> 00:10:04,610
+Okay, bây giờ tôi sẽ dùng 'XmlRole'
+
+214
+00:10:04,610 --> 00:10:10,279
+để phân tách những dữ liệu mà tôi muốn
+
+215
+00:10:10,279 --> 00:10:13,370
+đọc từ những mục, vốn là kết quả trả về
+
+216
+00:10:13,370 --> 00:10:16,190
+từ 'query' này ở đây.
+
+217
+00:10:16,190 --> 00:10:18,709
+Truy vấn này sẽ trả về danh sách của tất cả các khoá học
+
+218
+00:10:18,709 --> 00:10:21,290
+mà chúng ta có ở đây và chúng ta cần
+
+219
+00:10:21,290 --> 00:10:23,720
+có thể đọc các dữ liệu từ mỗi
+
+220
+00:10:23,720 --> 00:10:26,569
+khoá học mà chúng ta có. Đây là mục đích
+
+221
+00:10:26,569 --> 00:10:29,660
+của XML Role ở đây. Tôi muốn đưa vào
+
+222
+00:10:29,660 --> 00:10:34,100
+thuộc tính 'name' với giá trị là
+
+223
+00:10:34,100 --> 00:10:36,850
+'instructor'
+
+224
+00:10:38,390 --> 00:10:40,880
+bởi vì đây là những gì tôi muốn đọc và
+
+225
+00:10:40,880 --> 00:10:44,150
+tôi sẽ dùng 'query' ở đây
+
+226
+00:10:44,150 --> 00:10:48,280
+và ở đây, tôi sẽ ghi là 'instructor'
+
+227
+00:10:48,280 --> 00:10:51,680
+và nó sẽ là một chuỗi.
+
+228
+00:10:51,680 --> 00:10:54,280
+Đây là định dạng mà tôi muốn đọc nó.
+
+229
+00:10:54,280 --> 00:10:57,410
+Điều đầu tiên ở đây ghi rõ vai trò
+
+230
+00:10:57,410 --> 00:11:00,920
+mà nó sẽ trở thành.
+
+231
+00:11:00,920 --> 00:11:03,650
+Vì vậy, nếu tôi muốn dùng dữ liệu này trog delegate
+
+232
+00:11:03,650 --> 00:11:06,350
+ví dụ , tôi sẽ sử dụng tên
+
+233
+00:11:06,350 --> 00:11:09,920
+mà tôi có ở đây như thế này. Nó không phải
+
+234
+00:11:09,920 --> 00:11:13,430
+giống như những gì chúng ta có ở đây, trong tập tin XML.
+
+235
+00:11:13,430 --> 00:11:17,360
+Nhưng những gì chúng ta có ở đây, trong truy vấn
+
+236
+00:11:17,360 --> 00:11:20,330
+bắt buộc phải giống như những gì chúng ta có tại đây
+
+237
+00:11:20,330 --> 00:11:23,030
+để chúng ta có thể đọc được dữ liệu.
+
+238
+00:11:23,030 --> 00:11:25,400
+Vì thế, chúng ta có 'instructor' ở đây, các bạn nên
+
+239
+00:11:25,400 --> 00:11:27,830
+copy cái này và đến đây và chắc chắn rằng
+
+240
+00:11:27,830 --> 00:11:30,650
+chúng ta cũng có 'instructor' tại đây.
+
+241
+00:11:30,650 --> 00:11:34,100
+Cái này bắt buộc phải khớp với tập tin XML. Cái này phải
+
+242
+00:11:34,100 --> 00:11:36,350
+giống như cái mà các bạn có trong delegate.
+
+243
+00:11:36,350 --> 00:11:39,500
+Okay, chúng ta đã đọc dữ liệu về giảng viên, chúng ta cũng có thể
+
+244
+00:11:39,500 --> 00:11:43,490
+đọc về năm. Chúng ta hãy làm điều đó. Chúng ta dùng
+
+245
+00:11:43,490 --> 00:11:51,440
+'year' và 'year' ở đây và chúng ta sẽ
+
+246
+00:11:51,440 --> 00:11:57,710
+đọc nó dưới dạng con số. Chúng ta cũng muốn
+
+247
+00:11:57,710 --> 00:12:00,950
+đọc tên khoá học. Hãy xem
+
+248
+00:12:00,950 --> 00:12:03,770
+nó được viết thế nào, 'coursename', tôi có thể
+
+249
+00:12:03,770 --> 00:12:08,750
+copy nó để đảm bảo không 
+
+250
+00:12:08,750 --> 00:12:11,780
+có lỗi và tên khoá học cũng sẽ là
+
+251
+00:12:11,780 --> 00:12:14,690
+một chuỗi. Tôi cũng muốn đọc
+
+252
+00:12:14,690 --> 00:12:21,110
+thuộc tính để xem nó 'hot' hay không.
+
+253
+00:12:21,110 --> 00:12:27,560
+Vì thế, tôi sẽ copy nó và paste xuống đây và
+
+254
+00:12:27,560 --> 00:12:31,940
+ghi 'hot' bởi vì đó là tên của 
+
+255
+00:12:31,940 --> 00:12:34,520
+thuộc tính nếu tôi nhớ đúng. Vâng đúng thế.
+
+256
+00:12:34,520 --> 00:12:38,360
+Và chúng ta sẽ dùng '@hot' ở đây và chúng ta
+
+257
+00:12:38,360 --> 00:12:40,730
+muốn đọc nó dưới dạng chuỗi.
+
+258
+00:12:40,730 --> 00:12:42,590
+Và bây giờ mô hình của chúng ta đã sẵn sàng
+
+259
+00:12:42,590 --> 00:12:45,590
+để liên kết với một list view (chế độ hiển thị dạng danh sách) hay grid view (chế độ hiển thị dạng lưới)
+
+260
+00:12:45,590 --> 00:12:47,930
+tuỳ các bạn chọn. Nhưng trước khi chúng ta làm thế,
+
+261
+00:12:47,930 --> 00:12:50,750
+tôi muốn xem dữ liệu này.
+
+262
+00:12:50,750 --> 00:12:51,570
+Tôi muốn chỉ cho các bạn 1 cách để xem
+
+263
+00:12:51,570 --> 00:12:53,670
+chuyện gì đang diễn ra khi mô hình của các bạn
+
+264
+00:12:53,670 --> 00:12:56,670
+đọc dữ liệu từ tập tin XML.
+
+265
+00:12:56,670 --> 00:13:00,240
+Chúng ta muốn theo dõi bộ xử lý tín hiệu 'onStatusChanged' ('về trạng thái đã thay đổi') ('onStatusChanged' signal handler)
+
+266
+00:13:00,240 --> 00:13:03,240
+và quyết định là chúng ta sẽ
+
+267
+00:13:03,240 --> 00:13:05,070
+làm như thế này. Ctrl+A, Ctrl+I để căn chỉnh lại.
+
+268
+00:13:05,070 --> 00:13:08,540
+Chúng ta, về cơ bản,
+
+269
+00:13:08,540 --> 00:13:12,150
+sẽ định nghĩa 1 'pre' gọi là 'XmlListModel'
+
+270
+00:13:12,150 --> 00:13:16,230
+và nếu tình trạng là
+
+271
+00:13:16,230 --> 00:13:19,320
+sẵn sàng, chúng ta in ra sẵn sàng và chúng ta sẽ hiện
+
+272
+00:13:19,320 --> 00:13:22,080
+số lượng mục mà chúng ta đọc được.
+
+273
+00:13:22,080 --> 00:13:25,350
+từ tập tin XML. Nếu nó đang tải, chúng ta nói
+
+274
+00:13:25,350 --> 00:13:27,420
+nó đang tải. Nếu chúng ta có một lỗi,
+
+275
+00:13:27,420 --> 00:13:30,180
+chúng ta nói ra và nếu nó là 'null',
+
+276
+00:13:30,180 --> 00:13:33,240
+chúng ta cũng nói ra. Đây là một cách tốt để debug và
+
+277
+00:13:33,240 --> 00:13:36,390
+xem xét những gì đang diễn ra với mô hình của chúng ta
+
+278
+00:13:36,390 --> 00:13:39,810
+khi đọc dữ liệu từ tập tin XML.
+
+279
+00:13:39,810 --> 00:13:41,610
+Bây giờ chúng ta có mô hình, chúng ta có thể xuống
+
+280
+00:13:41,610 --> 00:13:46,110
+dưới này để định nghĩa 1 ListView. Nó sẽ nhanh thôi.
+
+281
+00:13:46,110 --> 00:13:48,840
+ID sẽ là 'mListViewId',
+
+282
+00:13:48,840 --> 00:13:56,220
+model sẽ là 'mXmlListModel',
+
+283
+00:13:56,220 --> 00:13:59,550
+chúng ta muốn điền vào parent
+
+284
+00:13:59,550 --> 00:14:03,390
+vì thế chúng ta sẽ ghi là 'anchors.fill:parent' và chúng ta
+
+285
+00:14:03,390 --> 00:14:08,220
+muốn cung cấp cho nó 1 delegate đẹp mà chúng ta đã chuẩn bị sẵn.
+
+286
+00:14:08,220 --> 00:14:11,100
+Ctrl+A, Ctrl+I để căn chỉnh lại. 
+
+287
+00:14:11,100 --> 00:14:14,610
+Và delegate của chúng ta không có gì mới với các bạn
+
+288
+00:14:14,610 --> 00:14:18,810
+như bây giờ chúng tôi có một hàng với hai
+
+289
+00:14:18,810 --> 00:14:21,510
+thành phần văn bản: 1 sẽ là
+
+290
+00:14:21,510 --> 00:14:23,940
+'instructor' và chú ý rằng chúng ta đang dùng
+
+291
+00:14:23,940 --> 00:14:27,720
+cùng một thứ mà chúng ta đã có trong 
+
+292
+00:14:27,720 --> 00:14:30,090
+XmlRole của chúng ta ở đây. Vì thế 'instructor' ở đây phải
+
+293
+00:14:30,090 --> 00:14:33,150
+giống 'instructor' ở đây và chúng ta có 'coursename' 
+
+294
+00:14:33,150 --> 00:14:36,780
+giống 'coursename' ở đây. Chúng ta
+
+295
+00:14:36,780 --> 00:14:41,880
+có 'year' ở đây giống với 'year' ở đây và chúng ta
+
+296
+00:14:41,880 --> 00:14:43,050
+có 'hot'
+
+297
+00:14:43,050 --> 00:14:46,590
+giống 'hot' chúng ta có ở đây và
+
+298
+00:14:46,590 --> 00:14:48,720
+chúng ta đọc 'hot' như 1 thuộc tính
+
+299
+00:14:48,720 --> 00:14:51,030
+vì chúng ta có dấu @ ở đây.
+
+300
+00:14:51,030 --> 00:14:53,520
+Các bạn phải biết điều đó. Và chúng ta sẽ kiểm tra xem
+
+301
+00:14:53,520 --> 00:14:56,670
+liệu nó có 'hot'. Okay, nếu nó 'hot', nó
+
+302
+00:14:56,670 --> 00:14:59,910
+sẽ trả về 'true' ở đây. Nếu nó
+
+303
+00:14:59,910 --> 00:15:02,280
+là 'true', chữ sẽ được
+
+304
+00:15:02,280 --> 00:15:05,400
+in đậm cho tên khoá học và năm
+
+305
+00:15:05,400 --> 00:15:08,010
+và nếu nó không 'hot', nó sẽ không
+
+306
+00:15:08,010 --> 00:15:10,110
+được in đậm ở đây. Và chúng ta có 'MouseArea'
+
+307
+00:15:10,110 --> 00:15:12,510
+chỉ ra rằng liệu chúng ta có 'hot'
+
+308
+00:15:12,510 --> 00:15:15,360
+và giá trị này khi chúng ta click
+
+309
+00:15:15,360 --> 00:15:18,540
+vào 1 mục trong ListView ở đây.
+
+310
+00:15:18,540 --> 00:15:20,520
+Được rồi, ứng dụng của chúng ta sẵn sàng, nhưng bây giờ
+
+311
+00:15:20,520 --> 00:15:23,430
+có một vài điều chúng ta quên mất.
+
+312
+00:15:23,430 --> 00:15:25,620
+Nếu các bạn đọc tài liệu hướng dẫn cho 'XmlListModel',
+
+313
+00:15:25,620 --> 00:15:28,020
+các bạn sẽ thấy rằng để sử dụng
+
+314
+00:15:28,020 --> 00:15:30,090
+nó, các bạn phải import module này
+
+315
+00:15:30,090 --> 00:15:32,790
+bằng dòng sau. Chúng ta cần
+
+316
+00:15:32,790 --> 00:15:34,800
+import nó cho nên chúng ta sẽ copy
+
+317
+00:15:34,800 --> 00:15:38,850
+cái này và đặt ở đây để import
+
+318
+00:15:38,850 --> 00:15:40,950
+thành phần này để có thể sử dụng nó và
+
+319
+00:15:40,950 --> 00:15:43,710
+tôi để ý rằng chúng ta đã phạm sai lầm chỗ này với
+
+320
+00:15:43,710 --> 00:15:46,440
+dấu @ ở đây.
+
+321
+00:15:46,440 --> 00:15:49,470
+Chúng không nên có ở đây. Okay, xoá chúng.
+
+322
+00:15:49,470 --> 00:15:53,550
+Một lần nữa, tôi xin lỗi về việc này. Và chúng ta
+
+323
+00:15:53,550 --> 00:15:55,160
+có thể chạy ứng dụng của chúng ta.
+
+324
+00:15:55,160 --> 00:15:57,750
+Hãy chắc chắn rằng bạn không có bất kỳ dấu @ nào ở đây
+
+325
+00:15:57,750 --> 00:16:00,180
+và đảm bảo rằng bạn đã
+
+326
+00:16:00,180 --> 00:16:03,030
+import XmlListModel Chạy ứng dụng.
+
+327
+00:16:03,030 --> 00:16:05,850
+Được rồi, các bạn sẽ thấy rằng chúng tôi có
+
+328
+00:16:05,850 --> 00:16:07,650
+tên của giảng viên, chúng ta có
+
+329
+00:16:07,650 --> 00:16:09,360
+tên khoá học và năm và
+
+330
+00:16:09,360 --> 00:16:12,810
+các bạn có thể thấy khoá học của Matt Kabwe
+
+331
+00:16:12,810 --> 00:16:17,700
+được in đậm bởi vì nó có thuộc tính 'hot'.
+
+332
+00:16:17,700 --> 00:16:20,760
+Được rồi, đây là khóa học và
+
+333
+00:16:20,760 --> 00:16:23,070
+đây là tên, đây là năm.
+
+334
+00:16:23,070 --> 00:16:24,750
+Nếu các bạn nhìn xuống dưới, các bạn thấy rằng chúng ta có 1
+
+335
+00:16:24,750 --> 00:16:27,420
+khoá học khác cũng có thuộc tính 'hot' nhưng
+
+336
+00:16:27,420 --> 00:16:30,420
+bởi vì nó không phải là 'true', chúng ta không
+
+337
+00:16:30,420 --> 00:16:34,080
+in đậm cái chúng ta có ở đây.
+
+338
+00:16:34,080 --> 00:16:38,610
+Được rồi, khoá học là của Lillian ở đây và nó không được in đậm.
+
+339
+00:16:38,610 --> 00:16:41,040
+Và điều này thực sự là cách làm thế nào các bạn đọc
+
+340
+00:16:41,040 --> 00:16:43,830
+dữ liệu của các bạn từ tập tin XML, đặt chúng vào
+
+341
+00:16:43,830 --> 00:16:46,550
+XML List Model rồi đưa chúng ra 1 List View.
+
+342
+00:16:46,550 --> 00:16:49,500
+Bây giờ tôi muốn thử một vài cú pháp mà
+
+343
+00:16:49,500 --> 00:16:52,020
+chúng ta đã thấy trước đây. Một cách khác, các bạn có thể
+
+344
+00:16:52,020 --> 00:16:55,140
+truy vấn các mục. Các bạn có thể comment dòng này
+
+345
+00:16:55,140 --> 00:16:59,010
+để giữ nó lại ở đây. Tôi sẽ ghi
+
+346
+00:16:59,010 --> 00:17:06,150
+'query' và dùng 2 gạch xiên và ghi
+
+347
+00:17:06,150 --> 00:17:07,450
+'course'
+
+348
+00:17:07,450 --> 00:17:10,619
+và nếu tôi chạy, tôi sẽ thấy cùng kết quả.
+
+349
+00:17:10,619 --> 00:17:14,020
+Chúng có hiệu quả điều tương tự và
+
+350
+00:17:14,020 --> 00:17:17,230
+các bạn thấy đó, tôi có dữ liệu của tôi và tôi
+
+351
+00:17:17,230 --> 00:17:19,859
+đang xem kết quả debug. Nó đang nói:
+
+352
+00:17:19,859 --> 00:17:23,020
+đang tải và khi nó đã sẵn sàng, tôi sẽ biết.
+
+353
+00:17:23,020 --> 00:17:25,450
+Tôi có năm mục và nếu các bạn đếm
+
+354
+00:17:25,450 --> 00:17:29,200
+những gì chúng ta có ở tập tin XML, chúng ta có
+
+355
+00:17:29,200 --> 00:17:32,170
+một khoá học ở đây, 2 khoá học, 3 khoá học,
+
+356
+00:17:32,170 --> 00:17:36,460
+4 khoá học và 5 khoá học.
+
+357
+00:17:36,460 --> 00:17:38,770
+Được rồi đây là những gì chúng ta thành công đọc được.
+
+358
+00:17:38,770 --> 00:17:42,400
+Quay trở lại tập tin QMl và nếu tôi
+
+359
+00:17:42,400 --> 00:17:45,190
+chỉ muốn lấy khoá học đầu tiên,
+
+360
+00:17:45,190 --> 00:17:48,220
+chúng ta cũng đã thấy cú pháp này, tôi có thể dùng
+
+361
+00:17:48,220 --> 00:17:50,920
+dấu ngoặc vuông như thế này và cung cấp chỉ mục (index)
+
+362
+00:17:50,920 --> 00:17:53,830
+của khoá học mà tôi muốn. Nếu tôi chạy nó,
+
+363
+00:17:53,830 --> 00:17:56,620
+tôi sẽ chỉ đọc 1 khoá học từ
+
+364
+00:17:56,620 --> 00:17:59,500
+từ tập tin XML. Bạn thấy con số ở đây, 
+
+365
+00:17:59,500 --> 00:18:02,200
+số lượng và các babnj thấy rằng nó chỉ có 1 khoá học
+
+366
+00:18:02,200 --> 00:18:05,110
+của Matt Kabwe ở đây. Tôi cũng có thể
+
+367
+00:18:05,110 --> 00:18:07,330
+chỉ định khóa học khác, ví dụ
+
+368
+00:18:07,330 --> 00:18:10,180
+dùng số 2 và tôi sẽ đọc
+
+369
+00:18:10,180 --> 00:18:14,860
+khoá học thứ 2 Ok, chúng ta có
+
+370
+00:18:14,860 --> 00:18:17,410
+khoá học ở đây. Đây là tất cả tôi có thể nói trong
+
+371
+00:18:17,410 --> 00:18:19,480
+cho khoá này. Tôi hy vọng các bạn có một khái niệm tốt hơn
+
+372
+00:18:19,480 --> 00:18:22,510
+về cách mà các bạn làm việc với XML List Model
+
+373
+00:18:22,510 --> 00:18:25,420
+để đọc dữ liệu từ tập tin XML.
+
+374
+00:18:25,420 --> 00:18:28,000
+Nó thực sự là dễ dàng và phần lớn của nó đã sẵn sàng
+
+375
+00:18:28,000 --> 00:18:30,070
+để có thể làm việc với những truy vấn.
+
+376
+00:18:30,070 --> 00:18:32,950
+Truy vấn đầu tiên là trong XmlListModel ở đây
+
+377
+00:18:32,950 --> 00:18:35,650
+và cái thứ 2 là trong XmlRole
+
+378
+00:18:35,650 --> 00:18:38,680
+để xác định bất cứ thông tin cụ thể
+
+379
+00:18:38,680 --> 00:18:41,800
+mà các bạn cần lấy từ các mục
+
+380
+00:18:41,800 --> 00:18:44,980
+mà truy vấn đầu tiên trả về.
+
+381
+00:18:44,980 --> 00:18:47,380
+Và nếu bạn muốn tìm hiểu thêm về những truy vấn này
+
+382
+00:18:47,380 --> 00:18:49,570
+và điều bạn cần làm là đọc
+
+383
+00:18:49,570 --> 00:18:51,850
+tài liệu hướng dẫn. Tôi nghĩ họ có ví dụ tốt
+
+384
+00:18:51,850 --> 00:18:53,830
+về cách các bạn làm việc với những thứ này.
+
+385
+00:18:53,830 --> 00:18:56,200
+Bạn có thể xem hết những ví dụ này.
+
+386
+00:18:56,200 --> 00:18:59,470
+Họ có tập tin XML, họ có truy vấn ở đây,
+
+387
+00:18:59,470 --> 00:19:01,750
+họ có role Các bạn có thể nhìn cái này
+
+388
+00:19:01,750 --> 00:19:03,940
+và nếu các bạn tiếp tục đi xuống,
+
+389
+00:19:03,940 --> 00:19:06,850
+các bạn sẽ thấy những ví dụ khác
+
+390
+00:19:06,850 --> 00:19:09,100
+về những gì các bạn có thể làm với những thứ này. Nếu các bạn vào liên kết này,
+
+391
+00:19:09,100 --> 00:19:11,260
+chúng sẽ nói cho các bạn
+
+392
+00:19:11,260 --> 00:19:15,550
+về Xml Role Query và
+
+393
+00:19:15,550 --> 00:19:17,470
+nếu các bạn tiếp tục đi xuống, họ sẽ
+
+394
+00:19:17,470 --> 00:19:19,480
+chỉ cho các bạn link đến nơi mà các bạn cần
+
+395
+00:19:19,480 --> 00:19:23,260
+để đọc thêm về tiêu  XPath
+
+396
+00:19:23,260 --> 00:19:26,170
+một tiêu chuẩn cho những thứ 
+
+397
+00:19:26,170 --> 00:19:28,180
+mà chúng ta đang làm ở đây, trong các truy vấn.
+
+398
+00:19:28,180 --> 00:19:31,300
+Các bạn sẽ thấy tất cả mọi thứ về nó.
+
+399
+00:19:31,300 --> 00:19:33,280
+Nếu các bạn đang trong chế độ cho hướng dẫn, các bạn có thể
+
+400
+00:19:33,280 --> 00:19:35,860
+đến liên kết này ở đây. Đây là một
+
+401
+00:19:35,860 --> 00:19:38,470
+bài hướng dẫn vêf
+
+402
+00:19:38,470 --> 00:19:41,530
+tiêu chuẩn XPath và cách nó hoạt động.
+
+403
+00:19:41,530 --> 00:19:43,390
+Nếu bạn cần một bồi dưỡng hoặc một
+
+404
+00:19:43,390 --> 00:19:45,580
+giới thiệu về nó, đây là bài các bạn nên đọc.
+
+405
+00:19:45,580 --> 00:19:48,910
+đọc Đây là tất cả tôi có thể nói trong bài giảng này
+
+406
+00:19:48,910 --> 00:19:51,100
+và bài kế chúng ta
+
+407
+00:19:51,100 --> 00:19:52,360
+sẽ tìm hiểu cách các bạn có thể làm việc với
+
+408
+00:19:52,360 --> 00:00:00,000
+hoạt hình trong Qt Quick. Hẹn gặp lại các bạn ở bài sau.
+

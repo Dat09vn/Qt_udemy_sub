@@ -1,0 +1,256 @@
+1
+00:00:00,000 --> 00:00:02,550
+Trong bài giảng này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,550 --> 00:00:05,879
+thành phần Slider trong Qt Quick Control, nó
+
+3
+00:00:05,879 --> 00:00:08,069
+đơn giản hoạt động giống như RangeSlider
+
+4
+00:00:08,069 --> 00:00:10,110
+mà chúng ta đã tìm hiểu ở bài 
+
+5
+00:00:10,110 --> 00:00:12,840
+trước tuy nhiên ở thành phần này chúng ta
+
+6
+00:00:12,840 --> 00:00:15,719
+chỉ có một chốt để trượt, nào hãy vào
+
+7
+00:00:15,719 --> 00:00:18,150
+Qt Creator và thử nghiệm nó, ok
+
+8
+00:00:18,150 --> 00:00:20,039
+chúng ta đã mở Qt Creator và ta
+
+9
+00:00:20,039 --> 00:00:23,039
+đi tạo project mới, nó thuộc dạng
+
+10
+00:00:23,039 --> 00:00:26,099
+QT Quick application và ta đặt tên nó là 
+
+11
+00:00:26,099 --> 00:00:35,630
+SliderDemo, lưu nó ở đường dẫn thường lệ và
+
+12
+00:00:35,630 --> 00:00:40,680
+nhấn finish, ta cập nhật thư viện 
+
+13
+00:00:40,680 --> 00:00:54,449
+QtQuick control 2.4, thay đổi tiêu đề
+
+14
+00:00:54,449 --> 00:01:00,030
+ở đây, hãy đề là Slider Demo và để một thành phần
+
+15
+00:01:00,030 --> 00:01:03,510
+Row ở đây, có chiều rộng 
+
+16
+00:01:03,510 --> 00:01:06,380
+bằng với đối tượng cha và ta cho nó 
+
+17
+00:01:06,380 --> 00:01:09,930
+thêm một ít khoảng cách, hãy để 
+
+18
+00:01:09,930 --> 00:01:13,350
+là 20, sau đó ta để một 
+
+19
+00:01:13,350 --> 00:01:17,610
+thành phần Slider, nó sẽ bắt đầu
+
+20
+00:01:17,610 --> 00:01:23,640
+từ 1 và kết thúc ở 100, và giá trị ban đầu
+
+21
+00:01:23,640 --> 00:01:28,530
+thì hãy để là 40, tiếp theo ta muốn
+
+22
+00:01:28,530 --> 00:01:32,369
+bắt sự kiện thay đổi giá trị, ok bạn 
+
+23
+00:01:32,369 --> 00:01:44,040
+sẽ gõ console.log nội dung ra là giá trị. Trước khi
+
+24
+00:01:44,040 --> 00:01:45,810
+chạy chương trình ta nên lên phía trên và sửa 
+
+25
+00:01:45,810 --> 00:01:49,740
+chỗ này, tôi luôn bị lỗi chỗ chiều rộng này
+
+26
+00:01:49,740 --> 00:01:52,820
+bề rộng của nó thì sẽ bằng với chiều rộng của đối tượng cha.
+
+27
+00:01:52,820 --> 00:01:58,950
+Chạy nào, mm-hmm chúng ta có một thanh trượt
+
+28
+00:01:58,950 --> 00:02:02,219
+và nếu ta trượt nó qua phải là ta tăng
+
+29
+00:02:02,219 --> 00:02:05,280
+giá trị nó lên và nếu trượt qua trái là
+
+30
+00:02:05,280 --> 00:02:08,160
+ta giảm giá trị của nó xuống, cho tới khi
+
+31
+00:02:08,160 --> 00:02:10,139
+đến mức nhỏ nhất là giá trị 
+
+32
+00:02:10,139 --> 00:02:12,989
+bắt đầu (from), để làm cho nó
+
+33
+00:02:12,989 --> 00:02:13,780
+thú vị hơn
+
+34
+00:02:13,780 --> 00:02:16,000
+tôi sẽ thay đổi cái này thành
+
+35
+00:02:16,000 --> 00:02:21,340
+Column và bên dưới Slider, tôi sẽ
+
+36
+00:02:21,340 --> 00:02:23,860
+để một thanh tiến trình, chúng ta đã làm 
+
+37
+00:02:23,860 --> 00:02:27,940
+về nó trước đay, chúng ta thay đổi
+
+38
+00:02:27,940 --> 00:02:32,140
+cái này thành ProgressBar, okay và khi 
+
+39
+00:02:32,140 --> 00:02:35,140
+giá trị thay đổi ở trên thanh trượt, ta muốn
+
+40
+00:02:35,140 --> 00:02:37,120
+thay đổi giá trị ở thanht tiến trình theo
+
+41
+00:02:37,120 --> 00:02:42,180
+okay, ta gõ propressBarId ở đây
+
+42
+00:02:44,340 --> 00:02:47,350
+nên bắt đầu bằng ký tự ghi thường
+
+43
+00:02:47,350 --> 00:02:49,930
+chúng ta không cần biết khi nào giá trị 
+
+44
+00:02:49,930 --> 00:02:52,300
+thay đổi ở trên progress bar, chúng ta chỉ muốn
+
+45
+00:02:52,300 --> 00:02:55,120
+nhìn nó, nhưng khi giá trị thay đổi trên
+
+46
+00:02:55,120 --> 00:02:58,720
+thanh trượt (slider), ta muốn thay đổi
+
+47
+00:02:58,720 --> 00:03:00,850
+giá trị trên thanh tiến trình luôn, vì thế ta
+
+48
+00:03:00,850 --> 00:03:04,800
+gõ progressBarId.value bằng với giá trị
+
+49
+00:03:04,800 --> 00:03:08,670
+như thế này, các thuộc tính from, to, value
+
+50
+00:03:08,670 --> 00:03:12,700
+thì hãy để giống thế này. Rồi được rồi, ta
+
+51
+00:03:12,700 --> 00:03:17,230
+chạy chương trình và di chuyển nó, bạn thấy
+
+52
+00:03:17,230 --> 00:03:20,230
+chúng ta di chuyển thanh trượt và 
+
+53
+00:03:20,230 --> 00:03:22,810
+giá trị trên thanh tiến trình cũng thay đổi theo
+
+54
+00:03:22,810 --> 00:03:24,910
+và đây là tất cả những gì cần thiết để
+
+55
+00:03:24,910 --> 00:03:27,459
+làm việc với thanh trượt, nhưng cái này thì
+
+56
+00:03:27,459 --> 00:03:30,459
+đang không nằm giữa và tôi muốn đối tượng này
+
+57
+00:03:30,459 --> 00:03:34,410
+luôn được canh giữa nên tôi gõ
+
+58
+00:03:34,410 --> 00:03:39,850
+anchor.horizontalCenter là parent.horizontalCenter
+
+59
+00:03:39,850 --> 00:03:42,609
+để nó nằm giữa đối tượng cha, làm tương tự cho
+
+60
+00:03:42,609 --> 00:03:53,560
+thanh tiến trình và chạy lại, tốt hơn rồi. Đây là
+
+61
+00:03:53,560 --> 00:03:55,510
+tất cả những gì tôi muốn nói trong bài này và
+
+62
+00:03:55,510 --> 00:03:57,220
+trong bài kế tiếp chúng ta sẽ tìm hiểu về
+
+63
+00:03:57,220 --> 00:03:59,290
+một phần tử Qt Quick control khác
+
+64
+00:03:59,290 --> 00:00:00,000
+và đó là Switch, hẹn gặp lại.
+

@@ -1,0 +1,560 @@
+1
+00:00:00,000 --> 00:00:02,550
+Trong bài giảng này, chúng ta sẽ tìm hiểu về FileDialog.
+
+2
+00:00:02,550 --> 00:00:05,759
+Hộp thoại này cho phép các bạn chọn
+
+3
+00:00:05,759 --> 00:00:08,970
+tập tin hay thư mục từ hệ thống tập tin của các bạn.
+
+4
+00:00:08,970 --> 00:00:11,610
+Và chúng ta hãy vào Qt Creator và chơi với nó.
+
+5
+00:00:11,610 --> 00:00:14,429
+Chúng ta đang ở Qt Creator.
+
+6
+00:00:14,429 --> 00:00:17,130
+Chúng ta sẽ tạo dự án của chúng ta Nó là 1 Qt Quick Application (tạo nhanh ứng dụng Qt). 
+
+7
+00:00:17,130 --> 00:00:20,430
+Chúng ta gọi nó là 'FileDialogDemo',
+
+8
+00:00:20,430 --> 00:00:23,670
+lưu nó tại một vị trí trên ổ đĩa của chúng ta,
+
+9
+00:00:23,670 --> 00:00:29,060
+nhấn tiếp theo, chọn phiên bản Qt và 
+
+10
+00:00:29,060 --> 00:00:34,230
+chọn kit cho desktop của chúng ta. Chúng ta sẽ
+
+11
+00:00:34,230 --> 00:00:36,420
+thay đổi tiêu đề ở đây thành 'FileDialog Demo'.
+
+12
+00:00:36,420 --> 00:00:43,050
+Chúng ta muốn 'import' (thêm) 'QtQuick.Controls' (module Nút điều khiển trong Qt Quick)
+
+13
+00:00:43,050 --> 00:00:45,090
+bởi vì chúng ta sẽ cần phải sử dụng một nút.
+
+14
+00:00:45,090 --> 00:00:48,450
+Chúng ta muốn đưa một thành phần 'Column' - 'Cột'
+
+15
+00:00:48,450 --> 00:00:53,760
+như thường lệ, 'spacing' (khoảng cách) sẽ là 20. Nó
+
+16
+00:00:53,760 --> 00:00:57,600
+sẽ được canh giữa và nó sẽ
+
+17
+00:00:57,600 --> 00:01:01,859
+chứa 1 nút điều khiển. 'text' (nội dung) là
+
+18
+00:01:01,859 --> 00:01:13,860
+'Choose File or Folder' ('Chọn Tập tin hay Thư mục) và nó sẽ
+
+19
+00:01:13,860 --> 00:01:21,900
+canh giữa theo chiều ngang và khi nó
+
+20
+00:01:21,900 --> 00:01:23,909
+được nhấp, chúng tôi ta biết và làm
+
+21
+00:01:23,909 --> 00:01:26,850
+một cái gì đó. Xuống dưới, chúng ta muốn đưa vào
+
+22
+00:01:26,850 --> 00:01:33,590
+1 thành phần 'Text' . Nội dung 'text' sẽ là
+
+23
+00:01:33,680 --> 00:01:42,000
+'User hasn't chosen yet' (Người dùng vẫn chưa lựa chọn) và ở đây chúng ta
+
+24
+00:01:42,000 --> 00:01:44,399
+sẽ hiển thị đường dẫn đến tập tin hay
+
+25
+00:01:44,399 --> 00:01:47,520
+thư mục mà người dùng đã chọn. Mặc định
+
+26
+00:01:47,520 --> 00:01:49,439
+chúng ta nói điều này bởi vì người dùng
+
+27
+00:01:49,439 --> 00:01:53,579
+vẫn chưa chọn gì. Chúng ta muốn đặt
+
+28
+00:01:53,579 --> 00:01:58,530
+'wrapMode' (chế độ đóng gói) là Text.Wrap. Điều tiếp theo chúng ta
+
+29
+00:01:58,530 --> 00:02:00,930
+muốn làm là để nhập module
+
+30
+00:02:00,930 --> 00:02:03,119
+Qt Quick Dialog. Vì vậy, chúng ta sẽ nói
+
+31
+00:02:03,119 --> 00:02:06,079
+QtQuick.Dialogs.
+
+32
+00:02:09,130 --> 00:02:14,540
+Nó sẽ là 1.3 và ở dưới đây chúng ta
+
+33
+00:02:14,540 --> 00:02:20,300
+sẽ tạo 1 'FileDialog' (Hộp thoại file). 'title' (tiêu đề)
+
+34
+00:02:20,300 --> 00:02:29,030
+sẽ là  'Choose File or Folder' (Chọn Tập tin hay Thư mục).
+
+35
+00:02:29,030 --> 00:02:35,120
+Chúng ta muốn để cho nó một ID và chúng ta muốn đặt
+
+36
+00:02:35,120 --> 00:02:38,080
+vào nó 1 thuộc tính khác gọi là 'selectFolder'. 
+
+37
+00:02:38,080 --> 00:02:42,459
+Chúng ta muốn thiết lập 'true' cho nó và
+
+38
+00:02:42,459 --> 00:02:45,980
+nó nghĩa là hộp thoại này sẽ
+
+39
+00:02:45,980 --> 00:02:48,800
+được dùng chỉ để chọn thư mục.
+
+40
+00:02:48,800 --> 00:02:50,360
+Chúng ta sẽ thấy rằng các bạn có thể thiết lập cái này thành
+
+41
+00:02:50,360 --> 00:02:54,620
+'false' để có thể chọn được tập tin.
+
+42
+00:02:54,620 --> 00:02:57,260
+Chúng ta muốn biết khi người dùng chấp nhận
+
+43
+00:02:57,260 --> 00:03:02,270
+hộp thoại và khi người dùng từ chối hộp
+
+44
+00:03:02,270 --> 00:03:06,440
+thoại. Chúng ta muốn cho thành phần 'Text' 1 ID
+
+45
+00:03:06,440 --> 00:03:11,420
+và thiết lập đường dẫn đến tập tin được lựa chọn với
+
+46
+00:03:11,420 --> 00:03:14,900
+thuộc tính văn bản cho thành phần Text ở đây khi
+
+47
+00:03:14,900 --> 00:03:16,910
+người dùng chấp nhận hộp thoại. Vì vậy chúng ta
+
+48
+00:03:16,910 --> 00:03:23,330
+sẽ nói 'textId.text' là 'fileUrl'.
+
+49
+00:03:23,330 --> 00:03:27,260
+Bây giờ khi người dùng bấm vào Button này,
+
+50
+00:03:27,260 --> 00:03:30,500
+chúng ta sẽ mở hộp thoại file (File Dialog). Vì vậy chúng ta
+
+51
+00:03:30,500 --> 00:03:32,870
+sẽ ghi 'open' ở đây và chạy
+
+52
+00:03:32,870 --> 00:03:35,630
+ứng dụng. Và bây giờ các bạn có thể thấy
+
+53
+00:03:35,630 --> 00:03:37,910
+hình mẫu cho cách mà các bạn sử dụng những hộp thoại này.
+
+54
+00:03:37,910 --> 00:03:40,310
+Nó thực sự là giống cách các bạn xác định
+
+55
+00:03:40,310 --> 00:03:42,530
+1 thành phần hộp thoại và khi
+
+56
+00:03:42,530 --> 00:03:44,180
+có gì xảy ra, khi người dùng nhấn vào nút,
+
+57
+00:03:44,180 --> 00:03:47,030
+chằng hạn, các bạn mở hộp thoại và các bạn
+
+58
+00:03:47,030 --> 00:03:49,100
+sẽ đi từ đó và làm bất cứ gì các bạn muốn
+
+59
+00:03:49,100 --> 00:03:52,040
+làm với hộp thoại. UI (Giao diện người dùng) của chúng ta là ở đây, chúng ta có thể
+
+60
+00:03:52,040 --> 00:03:54,440
+nhấn nút này và các bạn thấy rằng chúng ta
+
+61
+00:03:54,440 --> 00:03:56,930
+thấy 1 hộp thoại như này. OK, hãy đến
+
+62
+00:03:56,930 --> 00:04:00,650
+ổ 'D' chẳng hạn và chọn thư mục tên 'artwork', chọn
+
+63
+00:04:00,650 --> 00:04:03,680
+1 thư mục, và các bạn thấy rằng đường dẫn
+
+64
+00:04:03,680 --> 00:04:07,459
+đến thư mục thì được chứa ở đây. Hãy thử
+
+65
+00:04:07,459 --> 00:04:11,030
+chọn tập tin với hộp thoại này ở đây.
+
+66
+00:04:11,030 --> 00:04:13,940
+Các bạn thấy rằng tôi vào trong thư mục nhưng
+
+67
+00:04:13,940 --> 00:04:17,120
+tôi không thấy bất kỳ tập tin nào ở trong đây
+
+68
+00:04:17,120 --> 00:04:20,120
+đó là bởi vì cái nay được thiết lập cho phép chúng ta
+
+69
+00:04:20,120 --> 00:04:20,930
+chỉ
+
+70
+00:04:20,930 --> 00:04:23,990
+chọn thư mục. Nếu các bạn muốn
+
+71
+00:04:23,990 --> 00:04:27,460
+chọn tập tin, các bạn có thể đến đây và
+
+72
+00:04:27,460 --> 00:04:33,610
+thiết lập thuộc tính này thành 'false' và chạy lại.
+
+73
+00:04:35,500 --> 00:04:41,389
+Mm-hmm.... Chọn tập tin hoặc thư mục, đi vào trong 'D:', đi
+
+74
+00:04:41,389 --> 00:04:43,970
+vào 'artwork', các bạn sẽ thấy các tập tin
+
+75
+00:04:43,970 --> 00:04:48,020
+ở trong đây. Tôi chọn 1 tập tin, nhấn OK.
+
+76
+00:04:48,020 --> 00:04:50,479
+Các bạn thấy rằng tôi có đường dẫn đến
+
+77
+00:04:50,479 --> 00:04:54,410
+tập tin đó. Tôi cũng có thể chọn nhiều tập tin,
+
+78
+00:04:54,410 --> 00:04:57,110
+ tôi đoán thế. Hãy thử và bây giờ chọn nhiều tập tin.
+
+79
+00:04:57,110 --> 00:05:00,380
+Chúng ta không thể, chúng ta chỉ có thể chọn 1 tập tin nhưng
+
+80
+00:05:00,380 --> 00:05:03,650
+nếu chúng ta đóng cái này , quay trở lại
+
+81
+00:05:03,650 --> 00:05:06,229
+hộp thoại file, tôi nghĩ chúng ta có thể cho phép người dùng
+
+82
+00:05:06,229 --> 00:05:14,539
+chọn nhiều tập tin. Hãy thử đến đó,
+
+83
+00:05:14,539 --> 00:05:21,410
+QtQuick Dialogs và xem liệu chúng ta có
+
+84
+00:05:21,410 --> 00:05:24,349
+thuộc tính goi là 'selectMultiple'. Cho dù
+
+85
+00:05:24,349 --> 00:05:27,220
+nhiều hơn một tên tập tin có thể được lựa chọn.
+
+86
+00:05:27,220 --> 00:05:28,760
+Mặc định
+
+87
+00:05:28,760 --> 00:05:31,220
+thuộc tính này là false. Chúng ta cần phải đặt nó
+
+88
+00:05:31,220 --> 00:05:33,470
+thành true để cho phép người dùng chọn
+
+89
+00:05:33,470 --> 00:05:37,720
+nhiều tập tin. Vì vậy chúng ta có thể ghi selectMultiple,
+
+90
+00:05:37,720 --> 00:05:49,360
+thiết lập nó thành 'true' và chạy lại.
+
+91
+00:05:49,360 --> 00:05:55,880
+Nhấn 'D:', 'artwork', chúng ta có thể nhấn Ctrl và
+
+92
+00:05:55,880 --> 00:05:58,190
+chọn nhiều tập tin và các bạn có thể thấy
+
+93
+00:05:58,190 --> 00:06:00,110
+rằng chúng ta có 1 danh sách
+
+94
+00:06:00,110 --> 00:06:00,560
+ở đây.
+
+95
+00:06:00,560 --> 00:06:04,159
+Nếu tôi mở nó, các bạn thấy không có
+
+96
+00:06:04,159 --> 00:06:08,300
+gì ở trong fileUrl. Đó là bởi vì khi các bạn
+
+97
+00:06:08,300 --> 00:06:11,090
+chọn nhiều tập tin,
+
+98
+00:06:11,090 --> 00:06:15,050
+thuộc tính bị ảnh hưởng không phải là fileUrl như chúng ta
+
+99
+00:06:15,050 --> 00:06:19,009
+đã làm ở đây. Nó là fileUrls và hãy
+
+100
+00:06:19,009 --> 00:06:22,449
+dùng fileUrls và
+
+101
+00:06:22,449 --> 00:06:25,849
+đây là 1 list. Hãy thử cái này. Chúng ta
+
+102
+00:06:25,849 --> 00:06:28,099
+sẽ thử gán 1 list vào 
+
+103
+00:06:28,099 --> 00:06:32,740
+1 thuộc tính văn bản. Hãy chạy thử chương trình.
+
+104
+00:06:34,580 --> 00:06:37,320
+Mm-hmm.... cầu nguyện
+
+105
+00:06:37,320 --> 00:06:41,580
+Chúng ta sẽ đến 'D:', 'artwork', các bạn chọn nhiều
+
+106
+00:06:41,580 --> 00:06:44,490
+tập tin ở đây. Hãy làm điều này và khi chúng ta
+
+107
+00:06:44,490 --> 00:06:47,460
+làm điều này, không thể gán 1 list
+
+108
+00:06:47,460 --> 00:06:49,919
+vào 1 string. Đây là vấn đề. Các bạn không thể làm điều đó.
+
+109
+00:06:49,919 --> 00:06:52,380
+Nhưng nếu các bạn muốn thì các bạn có thể làm
+
+110
+00:06:52,380 --> 00:06:56,970
+một cái gì đó như 2, để thiết lập đường dẫn file thứ hai
+
+111
+00:06:56,970 --> 00:06:59,810
+như 1 thuộc tính văn bản cho cái này.
+
+112
+00:06:59,810 --> 00:07:10,530
+Hãy chạy thử chương trình. Chạy ứng dụng, chọn
+
+113
+00:07:10,530 --> 00:07:13,169
+trong artwork, chúng ta sẽ chọn hình đầu tiên
+
+114
+00:07:13,169 --> 00:07:17,130
+ở đây, giữ Ctrl, và chọn
+
+115
+00:07:17,130 --> 00:07:20,280
+1 số tập tin khác và nếu chúng ta chạy, các bạn thấy rằng
+
+116
+00:07:20,280 --> 00:07:23,010
+hình thứ 4 được chọn bởi vì
+
+117
+00:07:23,010 --> 00:07:27,180
+nó ở mục thứ 4 trong danh sách các hình.
+
+118
+00:07:27,180 --> 00:07:29,460
+Và nếu các bạn muốn hiển thị tất cả các tập tin
+
+119
+00:07:29,460 --> 00:07:31,830
+mà đuọc chọn, tôi hy vọng các bạn
+
+120
+00:07:31,830 --> 00:07:36,470
+nhớ cái này. Các bạn có thể ghi 
+
+121
+00:07:36,470 --> 00:07:53,880
+'for (var i = 0; i<fileUrls.length; i++)' và ghi
+
+122
+00:07:53,880 --> 00:08:12,810
+'console.log'. Hãy ghi "Value"+i+"is"+fileUrls[i]
+
+123
+00:08:12,810 --> 00:08:16,020
+ và chúng ta sẽ đưa vào đó chỉ mục mà chúng ta
+
+124
+00:08:16,020 --> 00:08:18,900
+đang ở trong vòng lập. Hãy chạy để xem liệu
+
+125
+00:08:18,900 --> 00:08:21,530
+nó có hoạt động.
+
+126
+00:08:21,620 --> 00:08:25,380
+Chọn tập tin hoặc thư mục, đi vào
+
+127
+00:08:25,380 --> 00:08:27,630
+thư mục của các bạn. Các bạn có thể đi đến bất cứ chỗ nào các bạn muốn
+
+128
+00:08:27,630 --> 00:08:30,930
+trong hệ thống tập tin của các bạn. Tôi sẽ chọn
+
+129
+00:08:30,930 --> 00:08:34,770
+5 tập tin qml này và khi tôi mở ra, các bạn thấy
+
+130
+00:08:34,770 --> 00:08:40,289
+rằng từ 0 đến 5, tôi có các tập tin được lựa chọn
+
+131
+00:08:40,289 --> 00:08:42,270
+ở đây. Tôi có thể đi qua hết danh sách các
+
+132
+00:08:42,270 --> 00:08:45,690
+đường dẫn tập tin và trích xuất từng đường dẫn
+
+133
+00:08:45,690 --> 00:08:46,740
+lưu trữ ở đó.
+
+134
+00:08:46,740 --> 00:08:48,779
+Và điều này thực sự là cách làm thế nào các bạn sử dụng
+
+135
+00:08:48,779 --> 00:08:50,940
+hộp thoại file. Các bạn có thể dùng nó để lựa chọn tập tin
+
+136
+00:08:50,940 --> 00:08:53,520
+và thư mục hay các bạn có thể dùng nó để lựa chọn
+
+137
+00:08:53,520 --> 00:08:56,520
+1 hay nhiều tập tin. Đây là tất cả những gì tôi có
+
+138
+00:08:56,520 --> 00:08:58,320
+cho bài này và ở bài sau, chúng ta
+
+139
+00:08:58,320 --> 00:08:59,970
+sẽ tìm hiểu làm thế nào các bạn làm việc với hộp thoại font. 
+
+140
+00:08:59,970 --> 00:00:00,000
+Hẹn gặp lại các bạn ở bài sau.
+

@@ -1,0 +1,264 @@
+﻿1
+00:00:01,500 --> 00:00:11,190
+Kiến thức căn bản về phát triển dứng dụng giao diện bằng Qt GUI, trong phần này các bạn sẽ học cách thiết kế bằng Qt Creator, Signals
+
+2
+00:00:11,220 --> 00:00:18,200
+và Slots, window, dialog, pop up. Tất cả là các phần cơ bản trong phát triến ứng dụng giao diện bằng Qt Gui.
+
+3
+00:00:18,390 --> 00:00:23,760
+Video đầu tiên giới thiệu về việc thiết kế trong Qt Creator.
+
+4
+00:00:23,840 --> 00:00:31,100
+Chúng ta sẽ xem cách để tạo ra một project ứng dụng Qt GUI bao gồm việc sử dụng
+
+5
+00:00:31,110 --> 00:00:34,530
+creator để thiết kế giao diện người dùng.
+
+6
+00:00:34,530 --> 00:00:38,880
+Bây giờ nếu bạn đã sẵn sang hãy mở Qt Creator và bắt đầu/
+
+7
+00:00:40,980 --> 00:00:48,290
+Click vào nút new project để tạo mới một dự án, chọn Qt Widgets Application.
+
+8
+00:00:48,300 --> 00:00:55,150
+Qt Widgets Application có nghĩa là chúng ta sẽ tạo một thành phần desktop thông thường bằng ngôn ngữ C++. Đặt tên cho dự án.
+
+9
+00:00:57,900 --> 00:01:01,050
+Sau đó click next.
+
+10
+00:01:01,140 --> 00:01:06,160
+Bây giờ chúng ta có thể chọn lớp cơ sở và ở trong ví dụ này,
+
+11
+00:01:06,190 --> 00:01:11,010
+chúng ta sử dụng QMainWindow là đối tượng mà sẽ cung cấp cho chúng ta một cửa sổ giao diện đầy đủ thành phần.
+
+12
+00:01:11,280 --> 00:01:18,630
+Còn Qwidget sẽ giúp ta tạo nên một thành phần giao diện tự thiết kế từ đó giúp việc thiết kế được thoải mái hơn.
+
+13
+00:01:18,890 --> 00:01:30,420
+QDialog giúp bạn tạo các cửa sổ Dialog tùy biến một cách đơn giản bao gồm nội dung và nút đồng ý hay từ chối.
+
+14
+00:01:30,580 --> 00:01:44,470
+Chúng ta sẽ có được dàn khung code tạo ra sẵn và chúng ta có thể build và chạy ngay ứng dụng.
+
+15
+00:01:44,620 --> 00:01:46,940
+Nó sẽ hiện ra một cửa sổ trống.
+
+16
+00:01:47,080 --> 00:01:54,640
+Bởi vì chúng ta chưa làm bất cứ điều gì cho nó cả, vậy làm sao để có thể them một thành phần chữ hiển thị “hello world”
+
+17
+00:01:54,640 --> 00:01:55,200
+vào giữa cửa sổ.
+
+18
+00:01:58,250 --> 00:02:05,940
+Double Click vào file  mainwindow.ui trong thư mục form và bạn sẽ được chuyển sang màn hình chế độ Design.
+
+19
+00:02:05,940 --> 00:02:08,600
+Bạn có thể thiết kế giao diện ở chế độ này.
+
+20
+00:02:10,400 --> 00:02:17,240
+Ở phía bên trái là tất cả các thành phần giao diện mà bạn có thể sử dụng để thiết kế, Bảng ở bên dưới này là bảng Action Editor,
+
+21
+00:02:17,300 --> 00:02:19,300
+Signals & slots editor.
+
+22
+00:02:19,350 --> 00:02:28,470
+Một action đại diện cho một sự kiện như click chẳng hạn và nó thường xuất hiện để chúng ta chỉnh ở bên 2 cửa sổ
+
+23
+00:02:28,470 --> 00:02:29,550
+bên phải.
+
+24
+00:02:29,670 --> 00:02:34,580
+Bảng phía trên bên phải hiển thị thông tin của tất cả các thành phần giao diện mà thuộc về class này.
+
+25
+00:02:35,060 --> 00:02:40,720
+Bảng bên dưới cung cấp tất cả thông tin chi tiết về thuộc tính của thành phần giao diện của bạn.
+
+26
+00:02:40,770 --> 00:02:44,820
+Đây là nơi mà bạn có thể chỉnh sửa cho đối tượng giao diện.
+
+27
+00:02:44,820 --> 00:02:46,550
+Ví dụ như title, text,
+
+28
+00:02:46,620 --> 00:02:49,720
+icon, fontsize.
+
+29
+00:02:49,820 --> 00:02:53,500
+Bây giờ hãy thêm một thành phần chữ (label) vào cửa sổ giao diện.
+
+30
+00:02:53,500 --> 00:03:01,600
+Chỉ đơn giản là kéo label widget (thành phần chữ) vào giữa giao diện.
+
+31
+00:03:01,600 --> 00:03:05,330
+Sau đó bạn có thể dùng chuột để di chuyển hay thay đổi kích thước nhãn này.
+
+32
+00:03:08,050 --> 00:03:12,350
+Để thay đổi chữ trong nhãn này chỉ cần double click vào nhãn và sửa nội dung
+
+33
+00:03:16,610 --> 00:03:19,250
+Hoặc bạn có thể chọn nó rồi vào trong bảng thuộc tính (property panel),
+
+34
+00:03:19,520 --> 00:03:23,860
+cuộn xuống phần Qlabel,
+
+35
+00:03:24,110 --> 00:03:25,670
+ở đây bạn có thể thay đổi nội dung chữ trong label.
+
+36
+00:03:28,890 --> 00:03:31,320
+Và bây giờ chúng ta hãy đổi nó thành Hello World.
+
+37
+00:03:31,320 --> 00:03:32,110
+Sau đó chúng ta build lại dự án,
+
+38
+00:03:32,130 --> 00:03:33,020
+Và sau đó chạy lại nó.
+
+39
+00:03:39,640 --> 00:03:42,640
+Và bạn đã thấy chữ Hello World ở khung này của cửa sổ.
+
+40
+00:03:45,050 --> 00:03:50,610
+Để căn giữa cho chữ này chúng ta cần sử dụng đến layout (sắp xếp bố cục).
+
+41
+00:03:50,840 --> 00:03:57,210
+Nếu bạn để ý tại phần cây thông tin đối tượng bạn sẽ thấy cửa sổ giao diện chính của chúng ta được để ở bố cục canh giữa centralWidget,
+
+42
+00:03:57,210 --> 00:04:06,590
+đây là một thành phần layout và nó có các đối tượng thành phần con của nó,
+
+43
+00:04:06,590 --> 00:04:10,030
+và centralWidget sẽ có layout riêng của nó đồng thời nó sắp xếp các đối tượng con của nó theo bố cục này .
+
+44
+00:04:10,030 --> 00:04:16,850
+Và chúng ta chỉ có duy nhất một đối tượng nhãn label ở đây để hiển thị chữ ở giữa chúng ta sử dụng bố cục theo chiều dọc
+
+45
+00:04:16,850 --> 00:04:25,480
+hoặc bố cục theo chiều ngang. Chọn centralWidget và sau đó click chọn nút bố cục theo chiều (vertical layout)
+
+46
+00:04:25,480 --> 00:04:33,180
+bạn sẽ thấy label widget của bạn chiếm hết thành phần centralWidget, sau đó chọn đối tượng labelWidget này và
+
+47
+00:04:33,180 --> 00:04:38,930
+cuộn xuống thuộc tính alignment ở bảng thuộc tính.
+
+48
+00:04:38,970 --> 00:04:45,520
+Chúng ta hãy chỉnh nó căn giữa theo cả chiều ngang và chiều dọc.
+
+49
+00:04:47,600 --> 00:04:50,270
+Nếu bạn build và chạy lại chương trình,
+
+50
+00:04:56,680 --> 00:05:00,510
+Bạn sẽ thấy dòng chữ đã nằm ở giữa.
+
+51
+00:05:01,060 --> 00:05:02,930
+Nó duy trì vị trí ở giữa này
+
+52
+00:05:02,980 --> 00:05:04,900
+ngay cả khi bạn thay đổi kích thước của cửa sổ.
+
+53
+00:05:07,880 --> 00:05:15,070
+Tất cả các object (đối tượng) bạn thấy ở cây object đều có thể truy xuất được bằng code.
+
+54
+00:05:15,150 --> 00:05:19,190
+Đó là cách để bạn có thể lập trình điều khiển thay đổi giao diện người dùng.
+
+55
+00:05:19,350 --> 00:05:29,030
+Chuyển qua chế độ edit mode để kiểm tra file mainwindow.h, bạn sẽ thấy ở khu vực private có dòng code
+
+56
+00:05:29,030 --> 00:05:29,930
+khai báo ui.
+
+57
+00:05:29,950 --> 00:05:33,910
+Đây là đối tượng đại diện truy xuất đến file mainwindow.ui.
+
+58
+00:05:34,470 --> 00:05:40,190
+Bây giờ nếu bạn muốn thay đổi nội dung chữ của label bạn có làm bằng cách
+
+59
+00:05:40,270 --> 00:05:43,710
+thêm một dòng tại hàm khởi tạo giống như thế này.
+
+60
+00:05:54,540 --> 00:05:56,260
+Sau đó chạy lại chương trình.
+
+61
+00:06:03,160 --> 00:06:06,990
+Bạn sẽ thấy nội dung chữ đã được thay đổi bởi code.
+
+62
+00:06:07,170 --> 00:06:16,500
+Trong hầu hết các trường hợp thì người ta thường ưu tiên cách sử dụng giao diện design và chỉnh file .ui hơn nếu có thể.
+
+63
+00:06:16,960 --> 00:06:18,360
+Design mode
+
+64
+00:06:18,360 --> 00:06:25,050
+giúp cho giao diện trực quan hơn và bạn có thể nhìn thấy ngay giao diện trông như thế nào mà không cần
+
+65
+00:06:25,050 --> 00:06:28,140
+chạy nó. Trong video tiếp theo,
+
+66
+00:06:28,180 --> 00:06:31,260
+Chúng ta sẽ nói về Signals và Slots.
+

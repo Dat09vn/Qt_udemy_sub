@@ -1,0 +1,1481 @@
+1
+00:00:00,000 --> 00:00:01,680
+In this lecture, we're going to look at
+
+2
+00:00:01,680 --> 00:00:04,980
+Easings for your animations. Easing is a
+
+3
+00:00:04,980 --> 00:00:07,529
+grouped property that controls how your
+
+4
+00:00:07,529 --> 00:00:10,349
+animation changes over time. What do I mean?
+
+5
+00:00:10,349 --> 00:00:13,590
+If we look at the app we have here
+
+6
+00:00:13,590 --> 00:00:15,389
+which is what we'd like to build in this
+
+7
+00:00:15,389 --> 00:00:18,570
+lecture, we start by a Linear animation
+
+8
+00:00:18,570 --> 00:00:21,330
+here and you see that everything is
+
+9
+00:00:21,330 --> 00:00:24,390
+linear. The animation starts and finishes
+
+10
+00:00:24,390 --> 00:00:27,930
+at a constant speed. If you look at InQuad here,
+
+11
+00:00:27,930 --> 00:00:30,539
+you see that it starts out slow
+
+12
+00:00:30,539 --> 00:00:34,770
+and it ends fast. And we have all
+
+13
+00:00:34,770 --> 00:00:37,590
+kinds of animations in here, they are all
+
+14
+00:00:37,590 --> 00:00:40,050
+different in their own ways. But notice
+
+15
+00:00:40,050 --> 00:00:42,420
+that it is one animation, it starts and
+
+16
+00:00:42,420 --> 00:00:45,090
+finishes in one location. We are just
+
+17
+00:00:45,090 --> 00:00:47,579
+changing the easing type, okay, the way
+
+18
+00:00:47,579 --> 00:00:50,250
+the animation changes over time within
+
+19
+00:00:50,250 --> 00:00:52,530
+this distance from the start to finish.
+
+20
+00:00:52,530 --> 00:00:55,469
+And if we go on its online documentation,
+
+21
+00:00:55,469 --> 00:00:57,030
+you see that there is a bunch of
+
+22
+00:00:57,030 --> 00:00:59,579
+properties that we can set for this. You
+
+23
+00:00:59,579 --> 00:01:01,550
+can set the type of the curve and
+
+24
+00:01:01,550 --> 00:01:03,870
+depending on the curve that you have, you
+
+25
+00:01:03,870 --> 00:01:06,689
+can set all these other properties. They
+
+26
+00:01:06,689 --> 00:01:08,880
+say to specify this in curve, you need to
+
+27
+00:01:08,880 --> 00:01:12,150
+specify a type. For some curves you can
+
+28
+00:01:12,150 --> 00:01:15,330
+also specify amplitude, period and
+
+29
+00:01:15,330 --> 00:01:18,420
+overshoot. If you go down here, they show
+
+30
+00:01:18,420 --> 00:01:21,119
+you how you can apply these settings.
+
+31
+00:01:21,119 --> 00:01:23,580
+Okay, you have a PropertyAnimation and you
+
+32
+00:01:23,580 --> 00:01:26,790
+put an 'easing.type' here and they show
+
+33
+00:01:26,790 --> 00:01:29,520
+you the available types. Okay, and easing type
+
+34
+00:01:29,520 --> 00:01:31,890
+can be Linear. You see that the
+
+35
+00:01:31,890 --> 00:01:35,850
+curve here is linear. InQuad starts out slow and fast.
+
+36
+00:01:35,850 --> 00:01:39,600
+Okay you see that as we
+
+37
+00:01:39,600 --> 00:01:42,180
+progress in time, the slope is becoming
+
+38
+00:01:42,180 --> 00:01:45,810
+more steep. OutQuad starts out fast and
+
+39
+00:01:45,810 --> 00:01:49,170
+ends slow. And you can look at all these
+
+40
+00:01:49,170 --> 00:01:51,420
+curves and see different properties that
+
+41
+00:01:51,420 --> 00:01:54,570
+they have. Now we are going to go to Qt Creator,
+
+42
+00:01:54,570 --> 00:01:57,509
+and play with these things.
+
+43
+00:01:57,509 --> 00:01:59,939
+Okay, here we are in Qt Creator.
+
+44
+00:01:59,939 --> 00:02:02,610
+We're going to create our project. it's a Qt Quick Application.
+
+45
+00:02:02,610 --> 00:02:06,329
+We call it is 'EasingDemo'.
+
+46
+00:02:06,329 --> 00:02:11,250
+Save it in the usual location.
+
+47
+00:02:11,250 --> 00:02:12,580
+Choose our Qt Version.
+
+48
+00:02:12,580 --> 00:02:18,709
+Choose our kit and finish.
+
+49
+00:02:18,709 --> 00:02:20,900
+We want to change the title here to say is 'Easings Demo'.
+
+50
+00:02:20,900 --> 00:02:26,930
+Okay, we want to remind ourselves of
+
+51
+00:02:26,930 --> 00:02:29,780
+what we want to work, we are going to
+
+52
+00:02:29,780 --> 00:02:33,019
+build this moving rectangle as an
+
+53
+00:02:33,019 --> 00:02:35,360
+external component and then we are going
+
+54
+00:02:35,360 --> 00:02:38,480
+to tap that into a column layout to
+
+55
+00:02:38,480 --> 00:02:41,360
+have this behaviour here. And the column
+
+56
+00:02:41,360 --> 00:02:43,459
+layout is probably going to be wrapped
+
+57
+00:02:43,459 --> 00:02:45,620
+in a flickable component to have this
+
+58
+00:02:45,620 --> 00:02:47,930
+flicking. And that's really all for this
+
+59
+00:02:47,930 --> 00:02:50,359
+application and we are going to be able
+
+60
+00:02:50,359 --> 00:02:53,299
+to apply Easing externally to the
+
+61
+00:02:53,299 --> 00:02:56,810
+component from the 'main.qml' file.
+
+62
+00:02:56,810 --> 00:02:57,680
+Let's get to work.
+
+63
+00:02:57,680 --> 00:03:00,140
+We're going to add a new QML file.
+
+64
+00:03:00,140 --> 00:03:04,310
+Right click on 'qml.qrc' here, add new,
+
+65
+00:03:04,310 --> 00:03:08,540
+choose Qt, choose Qt Quick.
+
+66
+00:03:08,540 --> 00:03:12,260
+We are going to call it the 'MovingRectangle'
+
+67
+00:03:12,260 --> 00:03:15,349
+because that's what it is. We want to change the Qt Quick import here.
+
+68
+00:03:15,349 --> 00:03:19,430
+We want to start by
+
+69
+00:03:19,430 --> 00:03:22,040
+putting in a few properties
+
+70
+00:03:22,040 --> 00:03:24,190
+that the user is going to be able to set externally.
+
+71
+00:03:24,190 --> 00:03:26,599
+We are going to set these properties
+
+72
+00:03:26,599 --> 00:03:29,269
+when we define our item in the 'main.qml' file.
+
+73
+00:03:29,269 --> 00:03:32,359
+Okay we want to be able to
+
+74
+00:03:32,359 --> 00:03:35,359
+set this background colour, the grey here.
+
+75
+00:03:35,359 --> 00:03:37,459
+We want to set the starting colour which
+
+76
+00:03:37,459 --> 00:03:40,370
+is 'beige' in general. We want to set the
+
+77
+00:03:40,370 --> 00:03:42,919
+ending color is in text. You see in the
+
+78
+00:03:42,919 --> 00:03:45,079
+middle here, the duration for the
+
+79
+00:03:45,079 --> 00:03:47,900
+animation, the Easing type and the width
+
+80
+00:03:47,900 --> 00:03:49,459
+of the container.
+
+81
+00:03:49,459 --> 00:03:51,829
+Okay, these are things we want.
+
+82
+00:03:51,829 --> 00:03:54,199
+So put them here. Inside, we want to put a rectangle.
+
+83
+00:03:54,199 --> 00:03:59,629
+It's ID is going to be 'smallContainerRectId1'. We're
+
+84
+00:03:59,629 --> 00:04:02,239
+going to give it this ID. Width is going
+
+85
+00:04:02,239 --> 00:04:06,859
+to be 'containerwidth', height is going to
+
+86
+00:04:06,859 --> 00:04:11,930
+be 50 and the color is going to be 'backgroundColor'.
+
+87
+00:04:11,930 --> 00:04:14,180
+Okay you see the
+
+88
+00:04:14,180 --> 00:04:15,739
+properties that we set here, we are
+
+89
+00:04:15,739 --> 00:04:18,349
+starting to use them. We have used this
+
+90
+00:04:18,349 --> 00:04:20,539
+'containerwidth' and we have used this
+
+91
+00:04:20,539 --> 00:04:22,760
+'backgroundColor'. Inside we're going to
+
+92
+00:04:22,760 --> 00:04:25,310
+put a 'Text' component that is going to be
+
+93
+00:04:25,310 --> 00:04:25,610
+Easing text.
+
+94
+00:04:25,610 --> 00:04:29,210
+We don't want this ID.
+
+95
+00:04:29,210 --> 00:04:33,259
+The text is going to be is 'easingText', what we
+
+96
+00:04:33,259 --> 00:04:36,469
+passed in here and we want it 'centreIn'
+
+97
+00:04:36,469 --> 00:04:41,569
+the 'parent'. Its parent happens to be
+
+98
+00:04:41,569 --> 00:04:43,969
+this rectangle here. We also want to put
+
+99
+00:04:43,969 --> 00:04:49,370
+another rectangle which is this small
+
+100
+00:04:49,370 --> 00:04:52,939
+moving rectangle in the middle here.
+
+101
+00:04:52,939 --> 00:04:59,090
+ID is going to be 'containedRectId1' because it is a
+
+102
+00:04:59,090 --> 00:05:01,819
+contained rectangle. It's color is going
+
+103
+00:05:01,819 --> 00:05:05,539
+to be 'startColor'. Width is going to be 50.
+
+104
+00:05:05,539 --> 00:05:09,740
+Height is going to be 50. We wanted to
+
+105
+00:05:09,740 --> 00:05:12,680
+have a border like this and a radius of 10,
+
+106
+00:05:12,680 --> 00:05:16,639
+because we wanted to have round edges.
+
+107
+00:05:16,639 --> 00:05:19,389
+We also want to put in a MouseArea
+
+108
+00:05:19,389 --> 00:05:21,590
+because this thing is going to be clickable.
+
+109
+00:05:21,590 --> 00:05:25,330
+It is going to fill the parent,
+
+110
+00:05:25,330 --> 00:05:30,879
+and we want to know when it is clicked.
+
+111
+00:05:30,879 --> 00:05:33,889
+Ok we are going to do something but
+
+112
+00:05:33,889 --> 00:05:36,919
+before we do anything fancy here, I want
+
+113
+00:05:36,919 --> 00:05:40,370
+to provide our animations. Okay because
+
+114
+00:05:40,370 --> 00:05:43,430
+we want this thing to animate from left
+
+115
+00:05:43,430 --> 00:05:47,089
+to right, it is going to start at 0, it is
+
+116
+00:05:47,089 --> 00:05:49,940
+going to end at the width of the window
+
+117
+00:05:49,940 --> 00:05:52,370
+here minus the width of the rectangle.
+
+118
+00:05:52,370 --> 00:05:54,050
+The first thing I want to do I want to
+
+119
+00:05:54,050 --> 00:05:56,150
+provide the final destination which is
+
+120
+00:05:56,150 --> 00:05:58,759
+'finalX'. So right here
+
+121
+00:05:58,759 --> 00:06:01,909
+I can come and say 'property', it is an 'int',
+
+122
+00:06:01,909 --> 00:06:05,330
+it is going to be called 'finalX',
+
+123
+00:06:05,330 --> 00:06:10,009
+the value is 'parent.width' minus 'width'
+
+124
+00:06:10,009 --> 00:06:13,219
+of this rectangle here. This is all we
+
+125
+00:06:13,219 --> 00:06:15,889
+need now. Down here we're going to put our animations,
+
+126
+00:06:15,889 --> 00:06:19,210
+we want to have a NumberAnimation,
+
+127
+00:06:19,210 --> 00:06:22,009
+it's Id is going to be 'mNumberAnimationId',
+
+128
+00:06:22,009 --> 00:06:30,319
+the 'target' is going
+
+129
+00:06:30,319 --> 00:06:32,839
+to be this rectangle here, the contained
+
+130
+00:06:32,839 --> 00:06:35,870
+rectangle. So we can copy the ID put that here.
+
+131
+00:06:35,870 --> 00:06:38,610
+That's going to work.
+
+132
+00:06:38,610 --> 00:06:45,229
+The 'property' that we want to animate is "X".
+
+133
+00:06:45,229 --> 00:06:50,430
+The 'easing.type' is going to be 'easingType',
+
+134
+00:06:50,430 --> 00:06:55,129
+what we paste, when we create the
+
+135
+00:06:55,129 --> 00:06:58,379
+component here. You see that we paste
+
+136
+00:06:58,379 --> 00:07:03,810
+that right here. It's a 'var' type and we
+
+137
+00:07:03,810 --> 00:07:06,870
+use it right here. It is going to animate
+
+138
+00:07:06,870 --> 00:07:10,949
+up to 'finalX' which is what we just
+
+139
+00:07:10,949 --> 00:07:14,159
+specified here and the duration for the
+
+140
+00:07:14,159 --> 00:07:16,680
+animation is going to be this property
+
+141
+00:07:16,680 --> 00:07:18,659
+that we paste in here. It's going to be
+
+142
+00:07:18,659 --> 00:07:20,699
+an 'animDuration'. We're going to be able
+
+143
+00:07:20,699 --> 00:07:24,419
+to set this externally. That's what we
+
+144
+00:07:24,419 --> 00:07:26,189
+are designing for here. We have one
+
+145
+00:07:26,189 --> 00:07:28,650
+'NumberAnimation' finished now. We also
+
+146
+00:07:28,650 --> 00:07:31,169
+want to animate the changes in color.
+
+147
+00:07:31,169 --> 00:07:34,620
+So , we're going to say 'ColorAnimation'.
+
+148
+00:07:34,620 --> 00:07:39,330
+It's going to go from 'startColor' and go to 'endColor'.
+
+149
+00:07:39,330 --> 00:07:44,639
+The 'duration' is going to be
+
+150
+00:07:44,639 --> 00:07:47,610
+the same as for the NumberAnimation, 'animDuration'
+
+151
+00:07:47,610 --> 00:07:50,279
+The 'target' is going to be
+
+152
+00:07:50,279 --> 00:07:53,009
+the same as for the NumberAnimation as well.
+
+153
+00:07:53,009 --> 00:07:58,229
+So we put it here. The ID is going
+
+154
+00:07:58,229 --> 00:08:01,110
+to be 'mColorAnimationId'.
+
+155
+00:08:01,110 --> 00:08:03,830
+The 'property' that we are going to animate
+
+156
+00:08:03,830 --> 00:08:07,409
+is going to be "color".
+
+157
+00:08:07,409 --> 00:08:11,120
+And for debugging purposes, we want to put in
+
+158
+00:08:11,120 --> 00:08:15,990
+the width of the component in a debug output
+
+159
+00:08:15,990 --> 00:08:18,870
+to see that our sizes are working correctly.
+
+160
+00:08:18,870 --> 00:08:22,669
+We're going to say 'console.log'.
+
+161
+00:08:24,680 --> 00:08:28,439
+This should do. Now we want to come in
+
+162
+00:08:28,439 --> 00:08:31,139
+our MouseArea. When we click, we want to
+
+163
+00:08:31,139 --> 00:08:33,890
+animate two things: one is the X position.
+
+164
+00:08:33,890 --> 00:08:36,779
+The rectangle is going to move from left
+
+165
+00:08:36,779 --> 00:08:39,208
+to right, the final destination is going
+
+166
+00:08:39,208 --> 00:08:42,719
+to be the width of the parent rectangle,
+
+167
+00:08:42,719 --> 00:08:45,000
+which is this one, minus the width of
+
+168
+00:08:45,000 --> 00:08:47,310
+this rectangle here. And we should
+
+169
+00:08:47,310 --> 00:08:49,170
+specify the width and height of this
+
+170
+00:08:49,170 --> 00:08:51,889
+item here, because we are going to use it in layout.
+
+171
+00:08:51,889 --> 00:08:54,049
+The width is going to be the
+
+172
+00:08:54,049 --> 00:08:56,179
+width of this rectangle, the height is
+
+173
+00:08:56,179 --> 00:08:57,589
+going to be the height of this rectangle here.
+
+174
+00:08:57,589 --> 00:09:07,699
+width: smallContainerRectId1.width
+height: smallContainerRectId1.height
+
+175
+00:09:07,699 --> 00:09:10,339
+We want to come back to our MouseArea.
+
+176
+00:09:10,339 --> 00:09:12,769
+Okay when we click, we want to animate X
+
+177
+00:09:12,769 --> 00:09:16,959
+from 0 to this location and
+
+178
+00:09:16,959 --> 00:09:20,959
+animate the color changes from the startColor 
+
+179
+00:09:20,959 --> 00:09:23,989
+to the endColor and the start and
+
+180
+00:09:23,989 --> 00:09:26,619
+end colors are going to be specified
+
+181
+00:09:26,619 --> 00:09:29,720
+externally when you define this item.
+
+182
+00:09:29,720 --> 00:09:31,339
+We want to start by keeping track of
+
+183
+00:09:31,339 --> 00:09:34,220
+whether the small rectangle is on the
+
+184
+00:09:34,220 --> 00:09:38,230
+left or on the right, and we do that by
+
+185
+00:09:38,230 --> 00:09:46,609
+defining a 'property' here. We call it 'toRight'
+
+186
+00:09:46,609 --> 00:09:48,949
+and it's going to start out 'false',
+
+187
+00:09:48,949 --> 00:09:51,049
+because our rectangles are going to
+
+188
+00:09:51,049 --> 00:09:53,779
+start on the left.
+
+189
+00:09:53,779 --> 00:10:03,850
+Inside here, we are going to say if 'toRight' equals 'false',
+
+190
+00:10:06,730 --> 00:10:11,809
+we're going to move to right, otherwise
+
+191
+00:10:11,809 --> 00:10:18,679
+we are going to move to left. But before
+
+192
+00:10:18,679 --> 00:10:20,660
+we do that we have to set this setting
+
+193
+00:10:20,660 --> 00:10:23,569
+here. So we're going to tangle the value
+
+194
+00:10:23,569 --> 00:10:26,119
+of 'toRight' here. If it is 'false', we want
+
+195
+00:10:26,119 --> 00:10:27,739
+to make it 'true'.
+
+196
+00:10:27,739 --> 00:10:31,339
+So, you're going to say 'toRight', it was
+
+197
+00:10:31,339 --> 00:10:34,789
+'true' and here we want to make it 'false',
+
+198
+00:10:34,789 --> 00:10:37,579
+because if we false here, it is true obviously.
+
+199
+00:10:37,579 --> 00:10:49,929
+Now we want to animate X, animate color.
+
+200
+00:10:52,540 --> 00:10:57,380
+The only thing we need to
+
+201
+00:10:57,380 --> 00:11:02,060
+do to animate number is called 'mNumberAnimation'
+
+202
+00:11:02,060 --> 00:11:06,850
+and set its 'to' value of 'finalX'.
+
+203
+00:11:06,850 --> 00:11:09,620
+We want to start the animation after we
+
+204
+00:11:09,620 --> 00:11:15,680
+do that. For the colors, we want to set
+
+205
+00:11:15,680 --> 00:11:17,860
+the starting color and the ending color.
+
+206
+00:11:17,860 --> 00:11:21,050
+So, we're going to start by the starting
+
+207
+00:11:21,050 --> 00:11:28,310
+color, 'mColorAnimationId.from' is  going to 'startColor'
+
+208
+00:11:28,310 --> 00:11:32,720
+and 'mColorAnimationI.to'
+
+209
+00:11:32,720 --> 00:11:38,150
+equals 'endColor' and we want to
+
+210
+00:11:38,150 --> 00:11:41,380
+start the animation. Just like this.
+
+211
+00:11:41,380 --> 00:11:43,670
+Otherwise, we're just going to do the reverse.
+
+212
+00:11:43,670 --> 00:11:46,970
+Let's copy this because we don't
+
+213
+00:11:46,970 --> 00:11:49,940
+want to type all this again. We are going
+
+214
+00:11:49,940 --> 00:11:53,870
+to animate back to zero and we are going
+
+215
+00:11:53,870 --> 00:11:57,770
+to switch 'endColor', we are going to
+
+216
+00:11:57,770 --> 00:11:59,810
+animate from the 'endColor' and the
+
+217
+00:11:59,810 --> 00:12:01,610
+destination is going to be the 'startColor'.
+
+218
+00:12:01,610 --> 00:12:04,310
+This is what we want.
+
+219
+00:12:04,310 --> 00:12:07,100
+Okay, when we click, if we are on the left, we are going
+
+220
+00:12:07,100 --> 00:12:11,150
+to animate to the right and if we are on
+
+221
+00:12:11,150 --> 00:12:13,820
+the right, we are going to animate to the left.
+
+222
+00:12:13,820 --> 00:12:17,300
+And this should be all for our component here.
+
+223
+00:12:17,300 --> 00:12:19,700
+I know it might confuse you
+
+224
+00:12:19,700 --> 00:12:22,160
+because I think this is the biggest
+
+225
+00:12:22,160 --> 00:12:24,470
+component we have whilst ever in this course.
+
+226
+00:12:24,470 --> 00:12:27,500
+So take a deep breath and look at
+
+227
+00:12:27,500 --> 00:12:29,360
+it a couple of times. You're going to
+
+228
+00:12:29,360 --> 00:12:31,760
+understand how it works. Now we want to
+
+229
+00:12:31,760 --> 00:12:33,680
+go back to the 'main.qml' file and
+
+230
+00:12:33,680 --> 00:12:36,140
+actually use this. We want to import
+
+231
+00:12:36,140 --> 00:12:39,430
+QtQuick LayOuts,
+
+232
+00:12:40,149 --> 00:12:44,120
+we want to use 1.4. We want to give a
+
+233
+00:12:44,120 --> 00:12:46,250
+window here an ID, so we're going to say
+
+234
+00:12:46,250 --> 00:12:50,120
+'rootID'. We also want to set the
+
+235
+00:12:50,120 --> 00:12:53,110
+'property' for the animation duration.
+
+236
+00:12:53,110 --> 00:12:57,279
+'property' and it's going to be
+
+237
+00:12:57,279 --> 00:12:59,740
+'animDuration',
+
+238
+00:12:59,740 --> 00:13:03,949
+let's start by half a second, 500 milliseconds.
+
+239
+00:13:03,949 --> 00:13:06,440
+Inside we want to put the
+
+240
+00:13:06,440 --> 00:13:11,449
+'Flickable' component. It is going to 'fill'
+
+241
+00:13:11,449 --> 00:13:14,690
+the 'parent' and inside that we want to
+
+242
+00:13:14,690 --> 00:13:19,160
+have a 'ColumnLayout'. The ID is going to be
+
+243
+00:13:19,160 --> 00:13:24,740
+'mColumnId' and we want to pass the
+
+244
+00:13:24,740 --> 00:13:27,769
+height of this column as the 'contentHeight'
+
+245
+00:13:27,769 --> 00:13:29,630
+of this flickable component
+
+246
+00:13:29,630 --> 00:13:32,420
+because that's the height of what it has
+
+247
+00:13:32,420 --> 00:13:36,170
+to display. So we can say 'contentHeight' here.
+
+248
+00:13:36,170 --> 00:13:40,699
+This is an important property for
+
+249
+00:13:40,699 --> 00:13:43,550
+a 'Flickable' component. We are going to say
+
+250
+00:13:43,550 --> 00:13:47,899
+'mColumnId.implicitHeight'. The width is
+
+251
+00:13:47,899 --> 00:13:49,880
+going to be that of the parent, so we're
+
+252
+00:13:49,880 --> 00:13:54,440
+going to say 'parent.width'. And we want the
+
+253
+00:13:54,440 --> 00:13:58,250
+'spacing' of 2. Now we
+
+254
+00:13:58,250 --> 00:14:00,529
+want to put in our 'MovingRectangle'.
+
+255
+00:14:00,529 --> 00:14:03,199
+Okay, we define it like this, like we
+
+256
+00:14:03,199 --> 00:14:05,990
+would for any other components. Okay let's
+
+257
+00:14:05,990 --> 00:14:07,579
+look at the properties that we can
+
+258
+00:14:07,579 --> 00:14:09,890
+specify. We can specify a background
+
+259
+00:14:09,890 --> 00:14:12,680
+color, so we should say 'backgroundColor'.
+
+260
+00:14:12,680 --> 00:14:15,350
+the 'backgroundColor' is going to be
+
+261
+00:14:15,350 --> 00:14:18,410
+"gray". We can specify the starting color
+
+262
+00:14:18,410 --> 00:14:21,800
+so we say 'startColor' and it's going to
+
+263
+00:14:21,800 --> 00:14:24,290
+be "beige". The 'endColor' is going to be
+
+264
+00:14:24,290 --> 00:14:30,230
+'blue' and 'animDuration' is going to be
+
+265
+00:14:30,230 --> 00:14:33,260
+duration from this one, but we don't want
+
+266
+00:14:33,260 --> 00:14:35,029
+to confuse the properties so we should
+
+267
+00:14:35,029 --> 00:14:39,589
+say 'animationDuration' here.
+
+268
+00:14:39,589 --> 00:14:41,889
+That's better.
+
+269
+00:14:44,149 --> 00:14:47,970
+This property is from this 'main.qml' file here.
+
+270
+00:14:47,970 --> 00:14:51,990
+Okay, the other one is from the 'Item' here 
+
+271
+00:14:51,990 --> 00:14:54,810
+which is called 'animDuration'.
+
+272
+00:14:54,810 --> 00:14:56,670
+That's what we are setting. I hope this
+
+273
+00:14:56,670 --> 00:15:01,680
+makes sense. The 'easingText' is going to
+
+274
+00:15:01,680 --> 00:15:05,069
+be "Linear". This is what we want to see in
+
+275
+00:15:05,069 --> 00:15:08,060
+the middle. 'easingType' is going to be
+
+276
+00:15:08,060 --> 00:15:13,740
+'Easing.Linear'. The remaining property is
+
+277
+00:15:13,740 --> 00:15:16,970
+'containerwidth'. We should specify that.
+
+278
+00:15:16,970 --> 00:15:20,339
+'containerwidth', it's going to be 'rootId.width'.
+
+279
+00:15:20,339 --> 00:15:24,600
+Okay, by now we should be able to
+
+280
+00:15:24,600 --> 00:15:27,300
+run the application and see how it looks.
+
+281
+00:15:27,300 --> 00:15:29,550
+We are only going to have one component
+
+282
+00:15:29,550 --> 00:15:31,980
+but if this works correctly, it's going
+
+283
+00:15:31,980 --> 00:15:35,069
+to be very easy to add others. Let's run
+
+284
+00:15:35,069 --> 00:15:40,740
+the application. mm-hmm.... Our app is here.
+
+285
+00:15:40,740 --> 00:15:44,399
+If you click, nothing happens and they
+
+286
+00:15:44,399 --> 00:15:49,069
+say 'finalX is not defined'. Why is that?
+
+287
+00:15:49,069 --> 00:15:52,790
+Let's go back to our MovingRectangle and
+
+288
+00:15:52,790 --> 00:15:59,180
+look at 'finalX'. Why is it not recognised?
+
+289
+00:15:59,180 --> 00:16:02,360
+Can I not define a property here?
+
+290
+00:16:02,360 --> 00:16:05,279
+Let's debug and see what is happening.
+
+291
+00:16:05,279 --> 00:16:08,699
+Here what if I put in a static value
+
+292
+00:16:08,699 --> 00:16:15,240
+like 200. Let's come to the 'main.qml' file,
+
+293
+00:16:15,240 --> 00:16:18,860
+change a few things, put in spaces, run again.
+
+294
+00:16:18,860 --> 00:16:23,040
+hmmmm... I know it's not defined. Let's put
+
+295
+00:16:23,040 --> 00:16:25,740
+this property outside and see if this
+
+296
+00:16:25,740 --> 00:16:30,779
+works. I'm going to put that here and I'm
+
+297
+00:16:30,779 --> 00:16:33,120
+going to say this finalX is going to be
+
+298
+00:16:33,120 --> 00:16:41,250
+a 'smallContainerRectId1.width - containedRectId1.width'
+
+299
+00:16:41,250 --> 00:16:47,040
+Now let's see if this works correctly.
+
+300
+00:16:47,040 --> 00:16:51,389
+Let's come to main.qml, put in a
+
+301
+00:16:51,389 --> 00:16:54,920
+few spaces, run again.
+
+302
+00:16:56,890 --> 00:17:02,270
+Now it's going to work. Okay, why is it
+
+303
+00:17:02,270 --> 00:17:04,280
+not working here when you define a
+
+304
+00:17:04,280 --> 00:17:07,880
+property inside? This is a mystery to me.
+
+305
+00:17:07,880 --> 00:17:10,970
+Okay, keep that in mind. If you find an
+
+306
+00:17:10,970 --> 00:17:13,040
+answer to this mystery, you can ping me
+
+307
+00:17:13,040 --> 00:17:15,020
+in the QA section to tell me. I'm going
+
+308
+00:17:15,020 --> 00:17:17,420
+to research on this after this video. But
+
+309
+00:17:17,420 --> 00:17:19,520
+the important thing is that we found a
+
+310
+00:17:19,520 --> 00:17:21,859
+way around and it is working. And that's
+
+311
+00:17:21,859 --> 00:17:24,500
+a good skill as a software developer to
+
+312
+00:17:24,500 --> 00:17:26,689
+find ways around even if you haven't
+
+313
+00:17:26,689 --> 00:17:28,760
+understood yet how it works,
+
+314
+00:17:28,760 --> 00:17:30,590
+because sometimes you need something
+
+315
+00:17:30,590 --> 00:17:34,790
+that works due to time constraints.
+
+316
+00:17:34,790 --> 00:17:36,830
+Okay, we have our thing working here. We are
+
+317
+00:17:36,830 --> 00:17:39,590
+animating from left to right and that Easing type
+
+318
+00:17:39,590 --> 00:17:42,470
+is the Linear. If you look to the
+
+319
+00:17:42,470 --> 00:17:45,850
+curve we had here, linear as
+
+320
+00:17:45,850 --> 00:17:49,460
+is easing curse for a linear function: velocity is constant.
+
+321
+00:17:49,460 --> 00:17:52,310
+We want to try all these
+
+322
+00:17:52,310 --> 00:17:53,060
+Easings.
+
+323
+00:17:53,060 --> 00:17:55,520
+So we are going to come back to 'main.qml' file,
+
+324
+00:17:55,520 --> 00:17:58,780
+and simply copy what we have here
+
+325
+00:17:58,780 --> 00:18:00,890
+put in a second
+
+326
+00:18:00,890 --> 00:18:04,040
+MovingRectangle, the easing type we want
+
+327
+00:18:04,040 --> 00:18:08,810
+to test is InQuad and we want to color
+
+328
+00:18:08,810 --> 00:18:19,340
+to end 'green'. Let's run. Okay you see
+
+329
+00:18:19,340 --> 00:18:21,350
+that it is different. It starts out slow
+
+330
+00:18:21,350 --> 00:18:24,980
+and ends fast. And this goes only linear.
+
+331
+00:18:24,980 --> 00:18:28,190
+I hope you can see this. So I am going to
+
+332
+00:18:28,190 --> 00:18:30,350
+pause the video, put in all the other
+
+333
+00:18:30,350 --> 00:18:32,960
+easings and I'm going to come back to
+
+334
+00:18:32,960 --> 00:18:34,429
+test what we have.
+
+335
+00:18:34,429 --> 00:18:36,679
+I should also correct this text. It
+
+336
+00:18:36,679 --> 00:18:38,900
+shouldn't say 'Linear', it should say 'InQuad'.
+
+337
+00:18:38,900 --> 00:18:46,490
+Ok, let's change the text. Okay we
+
+338
+00:18:46,490 --> 00:18:49,250
+have our moving rectangles. Then you see
+
+339
+00:18:49,250 --> 00:18:53,090
+that there is quite a lot and that's
+
+340
+00:18:53,090 --> 00:18:55,790
+because there are quite a lot of easing
+
+341
+00:18:55,790 --> 00:18:59,179
+types that you can use in here. Okay I'm
+
+342
+00:18:59,179 --> 00:19:01,340
+going to let you take some time and read
+
+343
+00:19:01,340 --> 00:19:05,350
+on all these if you happen to need them.
+
+344
+00:19:05,350 --> 00:19:07,370
+But what I wanted you
+
+345
+00:19:07,370 --> 00:19:10,370
+to see is how they work and how you can
+
+346
+00:19:10,370 --> 00:19:12,559
+set those if you happen to need them.
+
+347
+00:19:12,559 --> 00:19:15,530
+You see that the width is in here, being
+
+348
+00:19:15,530 --> 00:19:18,740
+displayed linear, it's going to animate
+
+349
+00:19:18,740 --> 00:19:23,120
+InQuad, OutQuad. If we keep scrolling, we
+
+350
+00:19:23,120 --> 00:19:25,820
+can see all the others. The InBounce.
+
+351
+00:19:25,820 --> 00:19:29,720
+This is interesting. Let's look at this
+
+352
+00:19:29,720 --> 00:19:35,330
+curve. InBounce is easing curve for a bounce.
+
+353
+00:19:35,330 --> 00:19:38,330
+This is the curve. Okay it
+
+354
+00:19:38,330 --> 00:19:41,059
+follows this structure here. Okay this is
+
+355
+00:19:41,059 --> 00:19:42,320
+really all I've to say in this lecture.
+
+356
+00:19:42,320 --> 00:19:45,559
+I hope you saw how easing can effect
+
+357
+00:19:45,559 --> 00:19:48,500
+your animation. You see we have a
+
+358
+00:19:48,500 --> 00:19:50,900
+same animation from a given location to
+
+359
+00:19:50,900 --> 00:19:54,050
+another location, but just changing the
+
+360
+00:19:54,050 --> 00:19:57,260
+easing, can dramatically change how your
+
+361
+00:19:57,260 --> 00:19:59,480
+animation happens. And you can play with
+
+362
+00:19:59,480 --> 00:20:01,429
+thiese things to see what you like more.
+
+363
+00:20:01,429 --> 00:20:03,830
+And I want you to notice that the color
+
+364
+00:20:03,830 --> 00:20:06,740
+changes are also animated. Look at this
+
+365
+00:20:06,740 --> 00:20:11,210
+color it starts out 'beige' and it fluidly
+
+366
+00:20:11,210 --> 00:20:14,270
+changes to another color. Okay, this is
+
+367
+00:20:14,270 --> 00:20:16,610
+another thing you should know too.
+
+368
+00:20:16,610 --> 00:20:17,750
+Okay, this is all for now.
+
+369
+00:20:17,750 --> 00:20:19,130
+In the next lecture, we're going to look
+
+370
+00:20:19,130 --> 00:00:00,000
+at grouped animations. I'll see you there
+

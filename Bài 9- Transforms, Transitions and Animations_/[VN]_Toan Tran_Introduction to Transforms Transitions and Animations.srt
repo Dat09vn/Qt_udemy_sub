@@ -1,0 +1,412 @@
+1
+00:00:00,000 --> 00:00:01,620
+Trong chương này, chúng ta sẽ tìm hiểu về
+
+2
+00:00:01,620 --> 00:00:04,009
+biến đổi (transform), chuyển tiếp (transition) và hiệu ứng (animation).
+
+3
+00:00:04,009 --> 00:00:06,660
+Điều này là rất thú vị
+
+4
+00:00:06,660 --> 00:00:09,059
+và rất giàu chủ đề
+
+5
+00:00:09,059 --> 00:00:11,580
+bởi vì nó thực sự mang giao diện của bạn vào thực tế.
+
+6
+00:00:11,580 --> 00:00:13,950
+Chúng ta sẽ chạm tới sự biến đổi - transform,
+
+7
+00:00:13,950 --> 00:00:16,379
+là một tập hợp các thay đổi mà các bạn dùng
+
+8
+00:00:16,379 --> 00:00:19,020
+cho các yếu tố thành phần QML của các bạn.
+
+9
+00:00:19,020 --> 00:00:22,080
+Các bạn có thực hiện chuyển đổi (translation), đó là cách để di chuyển
+
+10
+00:00:22,080 --> 00:00:24,660
+yếu tố thành phần của bạn theo trục x hoặc y.
+
+11
+00:00:24,660 --> 00:00:27,539
+Bạn có thể thấy ở phía bên trái ở đây.
+
+12
+00:00:27,539 --> 00:00:29,490
+Chúng tôi có vị trí bắt đầu của chữ Qt  ở đây,
+
+13
+00:00:29,490 --> 00:00:33,030
+Nó nằm ở phía trên bên trái
+
+14
+00:00:33,030 --> 00:00:36,000
+và chúng ta chuyển đổi nó đến vị trí chính giữa của hình chữ nhật ở đây.
+
+15
+00:00:36,000 --> 00:00:38,280
+Nó được cung cấp khoảng cách di chuyển trên trục x,
+
+16
+00:00:38,280 --> 00:00:40,710
+và trên trục y.
+
+17
+00:00:40,710 --> 00:00:43,649
+Xoay (rotation) chính xác như những gì nó được gọi.
+
+18
+00:00:43,649 --> 00:00:45,629
+Nó cho phép các bạn xoay các yếu tố thành phần của các bạn.
+
+19
+00:00:45,629 --> 00:00:48,660
+Các bạn thấy đó nó đã ở ngay giữa
+
+20
+00:00:48,660 --> 00:00:51,809
+tại trạng thái đầu tiên ở đây nhưng bây giờ
+
+21
+00:00:51,809 --> 00:00:54,840
+chúng ta đã xoay nó theo 1 góc cho trước.
+
+22
+00:00:54,840 --> 00:00:57,000
+Đây là những gì mà xoay có thể làm và chúng ta sẽ có
+
+23
+00:00:57,000 --> 00:00:59,489
+cơ hội để chơi với nó. Chúng tôi cũng sẽ
+
+24
+00:00:59,489 --> 00:01:01,670
+tìm hiểu về mở rộng (scaling) và xem làm thế nào các bạn có thể
+
+25
+00:01:01,670 --> 00:01:04,920
+mở rộng yếu tố thành phần QML của các bạn hay nén chúng lại về kích thước.
+
+26
+00:01:04,920 --> 00:01:07,920
+Hiệu ứng (animation) là cách mà các bạn
+
+27
+00:01:07,920 --> 00:01:10,080
+xác định trạng thái bắt đầu của
+
+28
+00:01:10,080 --> 00:01:12,450
+yếu tố thành phần QML của các bạn và trạng thái kết thúc
+
+29
+00:01:12,450 --> 00:01:15,090
+và các bạn để hệ thống lấp đầy các bước trung gian.
+
+30
+00:01:15,090 --> 00:01:17,520
+Để tôi cho các bạn thấy những gì tôi muốn nói.
+
+31
+00:01:17,520 --> 00:01:20,159
+Chúng ta có một hình chữ nhật ở đây ở bên trái
+
+32
+00:01:20,159 --> 00:01:21,930
+và chúng ta muốn chuyển nó qua bên phải.
+
+33
+00:01:21,930 --> 00:01:24,659
+Chúng ta xác định vị trí bắt đầu ở
+
+34
+00:01:24,659 --> 00:01:27,990
+bên trái cửa sổ ở đây và
+
+35
+00:01:27,990 --> 00:01:30,930
+vị trí kết thúc là bên phải cửa sổ ở đây.
+
+36
+00:01:30,930 --> 00:01:33,659
+Lưu ý chuyện gì xảy ra khi chúng ta chạm vào nó.
+
+37
+00:01:33,659 --> 00:01:36,810
+Nó đi cả quãng đường từ trái
+
+38
+00:01:36,810 --> 00:01:38,820
+sang phải. Và đó chính xác là những gì
+
+39
+00:01:38,820 --> 00:01:41,189
+hiệu ứng animation cho phép các bạn làm.
+
+40
+00:01:41,189 --> 00:01:43,560
+Có nhiều loại hoạt hình mà các bạn
+
+41
+00:01:43,560 --> 00:01:46,439
+có thể dùng trong QML. Và bố mẹ của 
+
+42
+00:01:46,439 --> 00:01:48,149
+hoạt ảnh mà chúng ta dùng là
+
+43
+00:01:48,149 --> 00:01:51,060
+PropertyAnimation (thuộc tính hiệu ứng), là thuộc tính 
+
+44
+00:01:51,060 --> 00:01:53,310
+cho phép các bạn tạo hiệu ứng cho bất kỳ thuộc tính nào trong QML.
+
+45
+00:01:53,310 --> 00:01:55,860
+Chúng ta cũng có một số
+
+46
+00:01:55,860 --> 00:01:58,770
+loại hiệu ứng đặc biệt được thiết kế
+
+47
+00:01:58,770 --> 00:02:00,960
+để phù hợp với một mục đích nhất định. Chúng ta có
+
+48
+00:02:00,960 --> 00:02:03,240
+NumberAnimation (hiệu ứng chữ số), ColorAnimation (hiệu ứng màu sắc),
+
+49
+00:02:03,240 --> 00:02:05,700
+RotationAnimation (hiệu ứng xoay) và Vector3dAnimation (hiệu ứng vector 3d).
+
+50
+00:02:05,700 --> 00:02:07,680
+Chúng ta sẽ có cơ hội
+
+51
+00:02:07,680 --> 00:02:09,568
+để tìm hiểu vài trong số những hiệu ứng này.
+
+52
+00:02:09,568 --> 00:02:12,599
+Chúng ta cũng sẽ xem làm thế nào các bạn có thể nhóm
+
+53
+00:02:12,599 --> 00:02:15,780
+các hiệu ứng của các bạn và làm cho chúng chạy trong 1
+
+54
+00:02:15,780 --> 00:02:18,329
+trình tự bằng SequentialAnimation (trình tự hiệu ứng) hay
+
+55
+00:02:18,329 --> 00:02:21,510
+làm cho chúng chạy song song bằng ParallelAninmation (hiệu ứng song song).
+
+56
+00:02:21,510 --> 00:02:24,329
+Có nhiều
+
+57
+00:02:24,329 --> 00:02:26,340
+phương pháp, tính chất và tín hiệu
+
+58
+00:02:26,340 --> 00:02:29,040
+mà chúng ta có thể sử dụng để điều khiển cách mà
+
+59
+00:02:29,040 --> 00:02:31,439
+hiệu ứng chạy. Các bạn cũng sẽ muốn
+
+60
+00:02:31,439 --> 00:02:33,569
+hiểu một chút về Easing
+
+61
+00:02:33,569 --> 00:02:36,540
+là những cách khác nhau mà hiệu ứng của chúng ta diễn ra.
+
+62
+00:02:36,540 --> 00:02:38,909
+Ví dụ, chúng ta đã thấy một ví dụ
+
+63
+00:02:38,909 --> 00:02:41,819
+của một hình chữ nhật di chuyển từ trái sang phải.
+
+64
+00:02:41,819 --> 00:02:45,450
+Nếu chúng ta dùng Linear Easing ở đây, nó sẽ
+
+65
+00:02:45,450 --> 00:02:47,310
+đi thẳng, nó sẽ đi với 1 tốc độ không đổi.
+
+66
+00:02:47,310 --> 00:02:50,310
+Nếu các bạn dùng InQuad Easing, nó sẽ
+
+67
+00:02:50,310 --> 00:02:53,370
+bắt đầu chậm và kết thúc nhanh chóng.
+
+68
+00:02:53,370 --> 00:02:55,739
+Chúng ta thực sự có thể mang xem lại ví dụ đó
+
+69
+00:02:55,739 --> 00:02:57,449
+để các bạn biết những điều này là gì.
+
+70
+00:02:57,449 --> 00:03:00,299
+Okay, chúng ta có ví dụ ở đây.
+
+71
+00:03:00,299 --> 00:03:02,989
+Các bạn có thể thấy: tại Linear, nó đi với tốc độ không đổi.
+
+72
+00:03:02,989 --> 00:03:06,840
+tại InQuad, nó bắt đầu chậm và kết thúc nhanh.
+
+73
+00:03:06,840 --> 00:03:09,060
+Tôi không biết nếu các phần mềm ghi hình có thể
+
+74
+00:03:09,060 --> 00:03:11,219
+bắt được điều đó không. Nhưng đây là những gì các bạn nhìn thấy
+
+75
+00:03:11,219 --> 00:03:12,569
+và các bạn sẽ có cơ hội để
+
+76
+00:03:12,569 --> 00:03:14,879
+viết ứng dụng này trong chương này.
+
+77
+00:03:14,879 --> 00:03:18,299
+Và danh sách các loại Easing 
+
+78
+00:03:18,299 --> 00:03:20,099
+mà các bạn có thể dùng trong hiệu ứng trong QML còn tiếp tục. 
+
+79
+00:03:20,099 --> 00:03:22,650
+Chúng ta sẽ
+
+80
+00:03:22,650 --> 00:03:24,870
+có cơ hội để thử tất cả điều này. Các bạn có thể
+
+81
+00:03:24,870 --> 00:03:26,579
+có vài thứ thật sự
+
+82
+00:03:26,579 --> 00:03:29,400
+thú vị ở đây. Chúng ta sẽ kết thúc
+
+83
+00:03:29,400 --> 00:03:31,229
+chương bằng cách tìm hiểu về trạng thái (state) và
+
+84
+00:03:31,229 --> 00:03:34,139
+chuyển tiếp (chuyển tiếp). Trạng thái là 1 nhóm
+
+85
+00:03:34,139 --> 00:03:37,229
+các tính chất mà bạn sử dụng cho yếu tố thành phần QML của các bạn.
+
+86
+00:03:37,229 --> 00:03:39,329
+Nếu các bạn nhìn vào hình chữ nhật này ở đây,
+
+87
+00:03:39,329 --> 00:03:41,939
+nó có chiều rộng này, chiều cao này, màu sắc này.
+
+88
+00:03:41,939 --> 00:03:44,759
+Các bạn có thể xem xét nó là trạng thái
+
+89
+00:03:44,759 --> 00:03:48,209
+của hình chữ nhật hiện tại. Ví dụ như nếu
+
+90
+00:03:48,209 --> 00:03:49,919
+một trong các tính chất này thay đổi, nó
+
+91
+00:03:49,919 --> 00:03:52,769
+sẽ đi đến trạng thái khác. Trạng thái nghĩa là như 
+
+92
+00:03:52,769 --> 00:03:54,419
+thế. Và tôi không mong các bạn
+
+93
+00:03:54,419 --> 00:03:56,159
+hiểu tất cả điều này ngay bây giờ. Chúng ta sẽ
+
+94
+00:03:56,159 --> 00:03:58,859
+giải thích chuyện này trong chương. Chuyển tiếp
+
+95
+00:03:58,859 --> 00:04:00,840
+có một cách cho các để đi từ một trạng thái này
+
+96
+00:04:00,840 --> 00:04:03,299
+sang một trạng thái khác. Và các bạn có thể tạo hiệu ứng
+
+97
+00:04:03,299 --> 00:04:05,129
+cho những thay đổi này. Và chúng ta sẽ nhìn thấy chính xác
+
+98
+00:04:05,129 --> 00:04:07,229
+làm thế nào các bạn làm điều đó trong một vài bài giảng sắp tới.
+
+99
+00:04:07,229 --> 00:04:09,419
+Tôi không biết các bạn thế nào, nhưng tôi
+
+100
+00:04:09,419 --> 00:04:11,519
+nghĩ rằng đây là phần thú vị nhất khi
+
+101
+00:04:11,519 --> 00:04:13,979
+làm việc với QML. Bài giảng tiếp theo
+
+102
+00:04:13,979 --> 00:04:16,079
+chúng ta sẽ tìm hiểu kỹ về biến đổi. 
+
+103
+00:04:16,079 --> 00:00:00,000
+Hẹn gặp lại các bạn ở bài sau.
+

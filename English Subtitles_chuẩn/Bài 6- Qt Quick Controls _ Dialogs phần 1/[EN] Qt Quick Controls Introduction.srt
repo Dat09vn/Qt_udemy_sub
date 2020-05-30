@@ -1,0 +1,559 @@
+1
+00:00:00,000 --> 00:00:06,270
+In this lecture we are looking at QT
+
+2
+00:00:02,939 --> 00:00:08,309
+quick controls. These are a set of QML
+
+3
+00:00:06,270 --> 00:00:12,090
+elements that allow you to work
+
+4
+00:00:08,309 --> 00:00:14,610
+beautiful user interfaces very fast. With
+
+5
+00:00:12,090 --> 00:00:17,699
+QT quick controls, you are enabled
+
+6
+00:00:14,610 --> 00:00:20,730
+to work to user interfaces like this. If
+
+7
+00:00:17,699 --> 00:00:23,519
+you look here we have radio buttons, we
+
+8
+00:00:20,730 --> 00:00:26,310
+have sliders, and we have a button here.
+
+9
+00:00:23,519 --> 00:00:28,830
+And of course this is a small subset of
+
+10
+00:00:26,310 --> 00:00:30,929
+what is available in QT quick controls,
+
+11
+00:00:28,830 --> 00:00:34,050
+but you can see that you can apply
+
+12
+00:00:30,929 --> 00:00:36,809
+different styles and themes to your user
+
+13
+00:00:34,050 --> 00:00:40,260
+interface, to have different looks and
+
+14
+00:00:36,809 --> 00:00:42,960
+feels. There is a predefined set of
+
+15
+00:00:40,260 --> 00:00:45,960
+styles that you can use in your QT Quick
+
+16
+00:00:42,960 --> 00:00:47,879
+controls and they are listed here if you
+
+17
+00:00:45,960 --> 00:00:50,190
+are interested. Then before the style is
+
+18
+00:00:47,879 --> 00:00:53,969
+what you have, if you don't set any style,
+
+19
+00:00:50,190 --> 00:00:57,000
+the fusion style tries to match what we
+
+20
+00:00:53,969 --> 00:00:59,850
+see on desktop platforms. Imagine it's the
+
+21
+00:00:57,000 --> 00:01:02,910
+style that is customizable with your own
+
+22
+00:00:59,850 --> 00:01:04,650
+icons that you put in a special folder
+
+23
+00:01:02,910 --> 00:01:08,040
+in your project and they are
+
+24
+00:01:04,650 --> 00:01:10,590
+automatically used as your icons. You use
+
+25
+00:01:08,040 --> 00:01:12,540
+material style when you want your QT
+
+26
+00:01:10,590 --> 00:01:15,450
+quick application to look like an edit
+
+27
+00:01:12,540 --> 00:01:17,820
+Android application, and universal style
+
+28
+00:01:15,450 --> 00:01:20,340
+is used when you want your QT quick
+
+29
+00:01:17,820 --> 00:01:23,430
+application to look like a Microsoft
+
+30
+00:01:20,340 --> 00:01:25,950
+native application on mobile devices, or
+
+31
+00:01:23,430 --> 00:01:28,020
+this new fluid interfaces you see in
+
+32
+00:01:25,950 --> 00:01:31,560
+newer versions of the Microsoft
+
+33
+00:01:28,020 --> 00:01:33,960
+operating system. There are two versions
+
+34
+00:01:31,560 --> 00:01:37,020
+of QT quick controls you need to be
+
+35
+00:01:33,960 --> 00:01:40,020
+aware of. QT quick control one series.
+
+36
+00:01:37,020 --> 00:01:42,600
+We're targeting desktop devices. They
+
+37
+00:01:40,020 --> 00:01:45,540
+were used a long time ago and they are
+
+38
+00:01:42,600 --> 00:01:47,820
+on their way of being deprecated. What
+
+39
+00:01:45,540 --> 00:01:50,820
+you should use now is QT quick control
+
+40
+00:01:47,820 --> 00:01:53,520
+2, which are more performant on mobile
+
+41
+00:01:50,820 --> 00:01:55,259
+devices. And if they are performing on
+
+42
+00:01:53,520 --> 00:01:58,170
+mobile devices, they should also be
+
+43
+00:01:55,259 --> 00:02:01,860
+performant on desktop devices. So if you
+
+44
+00:01:58,170 --> 00:02:04,920
+can use QT quick controls 2. Here we are
+
+45
+00:02:01,860 --> 00:02:07,950
+on the online documentation for QT quick
+
+46
+00:02:04,920 --> 00:02:11,640
+controls one series. Tou can see that the
+
+47
+00:02:07,950 --> 00:02:14,160
+module was introduced back in QT 5
+
+48
+00:02:11,640 --> 00:02:16,650
+one, and if you scroll down here you see
+
+49
+00:02:14,160 --> 00:02:20,160
+the components that we have in QT quick
+
+50
+00:02:16,650 --> 00:02:23,010
+controls one. We have application window
+
+51
+00:02:20,160 --> 00:02:25,470
+that we can use to have a main window
+
+52
+00:02:23,010 --> 00:02:26,040
+with menus, status bars and things like
+
+53
+00:02:25,470 --> 00:02:28,890
+that.
+
+54
+00:02:26,040 --> 00:02:30,840
+We have controls like buttons, checkbox,
+
+55
+00:02:28,890 --> 00:02:33,300
+combo boxes. We're going to look at this
+
+56
+00:02:30,840 --> 00:02:35,820
+thing. On this side you see the online
+
+57
+00:02:33,300 --> 00:02:38,100
+documentation from QT quick controls 2,
+
+58
+00:02:35,820 --> 00:02:41,459
+they basically look like QT quick
+
+59
+00:02:38,100 --> 00:02:43,790
+controls one series. But in terms of
+
+60
+00:02:41,459 --> 00:02:47,130
+performance they are very different from
+
+61
+00:02:43,790 --> 00:02:50,010
+QT Quick control one series, because a lot
+
+62
+00:02:47,130 --> 00:02:53,640
+of effort has been put into making them
+
+63
+00:02:50,010 --> 00:02:55,920
+as less resource hungry as possible. Okay.
+
+64
+00:02:53,640 --> 00:02:58,709
+To use them you have to import them like
+
+65
+00:02:55,920 --> 00:03:03,989
+this. The latest version of QT Quick
+
+66
+00:02:58,709 --> 00:03:07,530
+controls is 2.4, that comes with Q 511.
+
+67
+00:03:03,989 --> 00:03:10,230
+You can see it here. And if you go down
+
+68
+00:03:07,530 --> 00:03:15,030
+you see different versions for Qt Quick
+
+69
+00:03:10,230 --> 00:03:18,420
+controls and the matching QT version. So
+
+70
+00:03:15,030 --> 00:03:22,049
+if you are running QT 5 7 you learn to
+
+71
+00:03:18,420 --> 00:03:24,450
+have to use QT quick controls 2.0. And as
+
+72
+00:03:22,049 --> 00:03:26,340
+you go up you see that the version changes.
+
+73
+00:03:24,450 --> 00:03:28,140
+You can see that there are many things
+
+74
+00:03:26,340 --> 00:03:30,989
+you can use, but for now we are
+
+75
+00:03:28,140 --> 00:03:33,780
+interested in Qt Quick controls. So if
+
+76
+00:03:30,989 --> 00:03:35,670
+you click here on Qt Quick controls you
+
+77
+00:03:33,780 --> 00:03:39,739
+wait to see a list of elements that are
+
+78
+00:03:35,670 --> 00:03:42,930
+available to you in QT quick controls 2.
+
+79
+00:03:39,739 --> 00:03:44,610
+you can see that we basically have the
+
+80
+00:03:42,930 --> 00:03:47,610
+same things we had in QT Quick
+
+81
+00:03:44,610 --> 00:03:51,030
+controls 1 but they are very different,
+
+82
+00:03:47,610 --> 00:03:54,180
+in the way they look and in the amount
+
+83
+00:03:51,030 --> 00:03:56,730
+of resources that they consume on the
+
+84
+00:03:54,180 --> 00:03:58,799
+device where they ran. Ok you can click
+
+85
+00:03:56,730 --> 00:04:01,769
+on any of these elements to know more
+
+86
+00:03:58,799 --> 00:04:04,829
+about them. But this chapter is about all
+
+87
+00:04:01,769 --> 00:04:08,190
+these elements, so we're going to cover a
+
+88
+00:04:04,829 --> 00:04:09,930
+good number of them in detail. I also
+
+89
+00:04:08,190 --> 00:04:12,239
+want to show you a little bit more
+
+90
+00:04:09,930 --> 00:04:15,959
+information about these styles that you
+
+91
+00:04:12,239 --> 00:04:19,140
+can use so you can see the default style
+
+92
+00:04:15,959 --> 00:04:22,620
+looks like this and they say that it is
+
+93
+00:04:19,140 --> 00:04:24,540
+a simple and lightweight all-round style
+
+94
+00:04:22,620 --> 00:04:26,670
+that offers maximum
+
+95
+00:04:24,540 --> 00:04:29,100
+performance. So if you want to have
+
+96
+00:04:26,670 --> 00:04:32,160
+maximum performance especially on mobile
+
+97
+00:04:29,100 --> 00:04:35,280
+devices you should use this style. Fusion
+
+98
+00:04:32,160 --> 00:04:37,800
+style is designed to give you a desktop
+
+99
+00:04:35,280 --> 00:04:40,740
+experience. Iit is designed to look like
+
+100
+00:04:37,800 --> 00:04:43,410
+desktop platforms. Imagine style is
+
+101
+00:04:40,740 --> 00:04:46,410
+designed to be customizable, so you can
+
+102
+00:04:43,410 --> 00:04:48,930
+define a folder in your project that
+
+103
+00:04:46,410 --> 00:04:50,670
+contains your icons for your style and
+
+104
+00:04:48,930 --> 00:04:52,800
+they are going to be picked up
+
+105
+00:04:50,670 --> 00:04:56,340
+automatically. And if you look here they
+
+106
+00:04:52,800 --> 00:04:58,380
+say it is based on image assets, the
+
+107
+00:04:56,340 --> 00:05:00,690
+style comes with the default set of
+
+108
+00:04:58,380 --> 00:05:03,120
+images which can easily be changed by
+
+109
+00:05:00,690 --> 00:05:05,550
+providing the directory with images
+
+110
+00:05:03,120 --> 00:05:08,010
+using the predefined naming convention.
+
+111
+00:05:05,550 --> 00:05:10,590
+So you can do that if you want to
+
+112
+00:05:08,010 --> 00:05:12,960
+provide your own icons for your style.
+
+113
+00:05:10,590 --> 00:05:15,510
+But we're not going to do that in this
+
+114
+00:05:12,960 --> 00:05:16,920
+course. if you are interested click on
+
+115
+00:05:15,510 --> 00:05:19,890
+this link and you're going to have
+
+116
+00:05:16,920 --> 00:05:23,070
+more information on that. Material style
+
+117
+00:05:19,890 --> 00:05:25,110
+is for Android devices and a key piece
+
+118
+00:05:23,070 --> 00:05:26,340
+of information here is that it is
+
+119
+00:05:25,110 --> 00:05:29,820
+resource-hungry.
+
+120
+00:05:26,340 --> 00:05:33,830
+This style and it is the same as the
+
+121
+00:05:29,820 --> 00:05:37,130
+universal style that targets Microsoft
+
+122
+00:05:33,830 --> 00:05:40,110
+universal design guidelines. It is also
+
+123
+00:05:37,130 --> 00:05:42,450
+resource-hungry the same as material
+
+124
+00:05:40,110 --> 00:05:44,760
+style. So we are going to have a chance
+
+125
+00:05:42,450 --> 00:05:47,820
+to look at these styles and how they
+
+126
+00:05:44,760 --> 00:05:50,790
+look as we go through the QT Quick
+
+127
+00:05:47,820 --> 00:05:53,400
+controls. And we are going to focus on
+
+128
+00:05:50,790 --> 00:05:55,710
+QT Quick controls 2 because that's
+
+129
+00:05:53,400 --> 00:05:58,560
+the way forward. You don't really want to
+
+130
+00:05:55,710 --> 00:06:00,720
+focus on critically controls one because
+
+131
+00:05:58,560 --> 00:06:03,570
+they are going to be deprecated pretty
+
+132
+00:06:00,720 --> 00:06:05,790
+soon. But if you want to use them the API
+
+133
+00:06:03,570 --> 00:06:07,860
+is pretty much the same, all you have to
+
+134
+00:06:05,790 --> 00:06:11,040
+do is look at the documentation on some
+
+135
+00:06:07,860 --> 00:06:12,480
+things you need to be careful about. Okay
+
+136
+00:06:11,040 --> 00:06:14,580
+this brings us to the end of this
+
+137
+00:06:12,480 --> 00:06:16,440
+lecture, and the next lecture we're going
+
+138
+00:06:14,580 --> 00:06:18,810
+to start playing with these QT quick
+
+139
+00:06:16,440 --> 00:06:23,240
+controls, starting with the button
+
+140
+00:06:18,810 --> 00:06:23,240
+control. I'll see you in the next lecture

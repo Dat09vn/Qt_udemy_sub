@@ -1,0 +1,620 @@
+1
+00:00:00,000 --> 00:00:01,800
+In this lecture, we're going to gently
+
+2
+00:00:01,800 --> 00:00:04,140
+dive in the world of working with
+
+3
+00:00:04,140 --> 00:00:06,870
+animations. Let's go to Qt Creator
+
+4
+00:00:06,870 --> 00:00:09,510
+and do that. Here we are in Qt Creator.
+
+5
+00:00:09,510 --> 00:00:11,910
+We are going to create our project.
+
+6
+00:00:11,910 --> 00:00:15,360
+It's a Qt Quick Application.
+
+7
+00:00:15,360 --> 00:00:18,390
+We call it 'AnimationsIntroDemo'.
+
+8
+00:00:18,390 --> 00:00:22,109
+Save it in a location on our drive. Hit next,
+
+9
+00:00:22,109 --> 00:00:25,230
+choose the Qt version you have and choose your kit and finish.
+
+10
+00:00:25,230 --> 00:00:29,609
+We want to change the title here.
+
+11
+00:00:29,609 --> 00:00:32,640
+What we are going to do is
+
+12
+00:00:32,640 --> 00:00:34,980
+basically to put in a rectangle and
+
+13
+00:00:34,980 --> 00:00:38,129
+animate it as it moves from left to
+
+14
+00:00:38,129 --> 00:00:42,090
+right and top to bottom. Let's put in our rectangle.
+
+15
+00:00:42,090 --> 00:00:44,700
+Firstly, we are going to put in a parent rectangle.
+
+16
+00:00:44,700 --> 00:00:47,789
+The 'id' is going to be 'container'.
+
+17
+00:00:47,789 --> 00:00:51,780
+It's going to 'fill' the 'parent',
+
+18
+00:00:51,780 --> 00:00:55,940
+and it's going to have a beige colour.
+
+19
+00:00:55,940 --> 00:00:59,399
+This is what we want. We also want to
+
+20
+00:00:59,399 --> 00:01:03,780
+give an ID to the window here. Let's call
+
+21
+00:01:03,780 --> 00:01:07,860
+it 'rootId' and inside, we want to put our
+
+22
+00:01:07,860 --> 00:01:11,369
+contained rectangle. It's ID is
+
+23
+00:01:11,369 --> 00:01:17,310
+going to be 'ContainedRectId'. We want
+
+24
+00:01:17,310 --> 00:01:21,509
+to give it a width of 100, height of 100,
+
+25
+00:01:21,509 --> 00:01:24,810
+and we want it to start at the position
+
+26
+00:01:24,810 --> 00:01:31,799
+of x 50 and y 50. We also want to give it
+
+27
+00:01:31,799 --> 00:01:35,900
+a colour. Let's make it dodger blue.
+
+28
+00:01:36,229 --> 00:01:39,119
+Now let's say that I want to animate
+
+29
+00:01:39,119 --> 00:01:42,000
+this rectangle as it moves from left to right.
+
+30
+00:01:42,000 --> 00:01:44,399
+I want to move it up to an x value
+
+31
+00:01:44,399 --> 00:01:47,640
+of 300 for example and I want to animate
+
+32
+00:01:47,640 --> 00:01:50,790
+that process of moving from left to right.
+
+33
+00:01:50,790 --> 00:01:53,490
+I can use a PropertyAnimation and
+
+34
+00:01:53,490 --> 00:01:55,790
+the way you use that you say 'PropertyAnimation'. 
+
+35
+00:01:55,790 --> 00:02:00,799
+Let's select this and say 'on x'.
+
+36
+00:02:00,799 --> 00:02:05,670
+We go inside. I want to animate up to 530.
+
+37
+00:02:05,670 --> 00:02:08,489
+You can put in whatever you want.
+
+38
+00:02:08,489 --> 00:02:11,640
+And I want the animation to take two seconds
+
+39
+00:02:11,640 --> 00:02:13,830
+which is 2000 Milliseconds as we specify here.
+
+40
+00:02:13,830 --> 00:02:17,130
+Okay and if you want
+
+41
+00:02:17,130 --> 00:02:18,690
+to know more properties that are
+
+42
+00:02:18,690 --> 00:02:20,820
+available on this thing, you already know
+
+43
+00:02:20,820 --> 00:02:23,670
+what to do. You can select that, hit F1,
+
+44
+00:02:23,670 --> 00:02:27,000
+and you go in the full help mode to see
+
+45
+00:02:27,000 --> 00:02:29,790
+all the properties. We just used 'duration'
+
+46
+00:02:29,790 --> 00:02:35,900
+and the 'to' property. Let's come back.
+
+47
+00:02:35,900 --> 00:02:38,790
+And we can run the application and see how
+
+48
+00:02:38,790 --> 00:02:44,940
+it behaves. Let's run it. mm-hmm.. You see
+
+49
+00:02:44,940 --> 00:02:47,670
+that as we run it, it moves from left to
+
+50
+00:02:47,670 --> 00:02:51,120
+right, the rectangle inside. This is the
+
+51
+00:02:51,120 --> 00:02:53,760
+behaviour you have. The animation runs by
+
+52
+00:02:53,760 --> 00:02:56,340
+default even if you didn't specify for
+
+53
+00:02:56,340 --> 00:02:59,730
+it to run. To be able to control when it
+
+54
+00:02:59,730 --> 00:03:01,920
+runs and when it doesn't run, which is
+
+55
+00:03:01,920 --> 00:03:04,650
+what you most likely go into one, you can
+
+56
+00:03:04,650 --> 00:03:07,020
+put a MouseArea inside this parent
+
+57
+00:03:07,020 --> 00:03:12,750
+rectangle here. Let's do that. We wanted
+
+58
+00:03:12,750 --> 00:03:16,890
+to fill the 'parent' and when it is
+
+59
+00:03:16,890 --> 00:03:20,340
+clicked, we want to do something. We are
+
+60
+00:03:20,340 --> 00:03:23,820
+going to come to the top here. Say
+
+61
+00:03:23,820 --> 00:03:29,220
+'property', it's a 'boolean' and it is
+
+62
+00:03:29,220 --> 00:03:32,900
+'running' and it is 'false' by default
+
+63
+00:03:32,900 --> 00:03:35,489
+because we want the animation to be not
+
+64
+00:03:35,489 --> 00:03:38,190
+running. We actually want to run the
+
+65
+00:03:38,190 --> 00:03:40,019
+animation when you press down the mouse
+
+66
+00:03:40,019 --> 00:03:42,959
+and stop the animation when you release it.
+
+67
+00:03:42,959 --> 00:03:45,060
+This is what we're going to do.
+
+68
+00:03:45,060 --> 00:03:47,640
+So, we're not going to use 'onClicked', we are
+
+69
+00:03:47,640 --> 00:03:52,620
+going to use 'onPressed', which is this one
+
+70
+00:03:52,620 --> 00:03:57,959
+and 'onReleased'. And again you can
+
+71
+00:03:57,959 --> 00:03:59,820
+find these signals by looking at the
+
+72
+00:03:59,820 --> 00:04:03,000
+documentation of 'MouseArea' here. So, when
+
+73
+00:04:03,000 --> 00:04:05,610
+we press, we are going to set the running
+
+74
+00:04:05,610 --> 00:04:09,360
+property of this window here, because
+
+75
+00:04:09,360 --> 00:04:11,880
+that's where we defined it. We are going
+
+76
+00:04:11,880 --> 00:04:15,330
+to set it to 'true' when we press down. You
+
+77
+00:04:15,330 --> 00:04:20,459
+should actually put 'rootId'. I'll have
+
+78
+00:04:20,459 --> 00:04:23,450
+to do this so that things are very clear
+
+79
+00:04:23,450 --> 00:04:26,440
+where the properties are coming from.
+
+80
+00:04:26,440 --> 00:04:29,710
+When we release, we want to set this to
+
+81
+00:04:29,710 --> 00:04:35,920
+'false' and we want to set the running
+
+82
+00:04:35,920 --> 00:04:37,930
+property of the animation. We can set
+
+83
+00:04:37,930 --> 00:04:41,230
+that 'running', you see that we have it.
+
+84
+00:04:41,230 --> 00:04:47,620
+We want to say 'rootId.running'.
+
+85
+00:04:47,620 --> 00:04:50,200
+Okay, and this is a property bindings that runs
+
+86
+00:04:50,200 --> 00:04:52,870
+this property to the property that we
+
+87
+00:04:52,870 --> 00:04:55,270
+have at the root level. Don't be confused
+
+88
+00:04:55,270 --> 00:04:58,060
+by the name. The names are the same but
+
+89
+00:04:58,060 --> 00:05:00,580
+they are two different properties: one is
+
+90
+00:05:00,580 --> 00:05:02,590
+a custom property that we defined here
+
+91
+00:05:02,590 --> 00:05:05,710
+and another is a build-in property for the
+
+92
+00:05:05,710 --> 00:05:07,810
+'PropertyAnimation' that we are working with.
+
+93
+00:05:07,810 --> 00:05:14,500
+Now if we run the application,
+
+94
+00:05:14,500 --> 00:05:16,540
+the animation is not going to run by default.
+
+95
+00:05:16,540 --> 00:05:19,780
+We press down, it runs. We release, it stops.
+
+96
+00:05:19,780 --> 00:05:22,780
+We press down, it runs. We release, it stops.
+
+97
+00:05:22,780 --> 00:05:25,300
+This is how you can control
+
+98
+00:05:25,300 --> 00:05:28,560
+your animation. We can also make our
+
+99
+00:05:28,560 --> 00:05:31,540
+rectangle move from top to bottom.
+
+100
+00:05:31,540 --> 00:05:34,030
+That's what we want to do and we are going to
+
+101
+00:05:34,030 --> 00:05:36,220
+use a 'NumberAnimation' which is a
+
+102
+00:05:36,220 --> 00:05:38,290
+special kind of animation you use when
+
+103
+00:05:38,290 --> 00:05:40,660
+you just want to animate numbers.
+
+104
+00:05:40,660 --> 00:05:50,470
+So we are going to say 'NumberAnimation on y'.
+
+105
+00:05:50,470 --> 00:05:54,700
+We want to animate up to 300. It's going to
+
+106
+00:05:54,700 --> 00:05:58,690
+take two seconds as well, and it's going
+
+107
+00:05:58,690 --> 00:06:03,070
+to be running when we make it run. The
+
+108
+00:06:03,070 --> 00:06:06,250
+same as this 'PropertyAnimation' here.
+
+109
+00:06:06,250 --> 00:06:12,010
+So we're going to say 'rootId.running'.
+
+110
+00:06:12,010 --> 00:06:17,440
+Run the application. When you press down, you
+
+111
+00:06:17,440 --> 00:06:21,190
+see that our rectangle moves down and it
+
+112
+00:06:21,190 --> 00:06:23,830
+stops when it gets upto the ending
+
+113
+00:06:23,830 --> 00:06:28,720
+location which is a y-coordinate of 300.
+
+114
+00:06:28,720 --> 00:06:30,730
+You can also do a rotation animation.
+
+115
+00:06:30,730 --> 00:06:36,120
+Let's do that 'RotationAnimation' on
+
+116
+00:06:36,120 --> 00:06:38,169
+rotation.
+
+117
+00:06:38,169 --> 00:06:40,539
+That's the property that we want to play with.
+
+118
+00:06:40,539 --> 00:06:44,979
+It's going to animate up to an angle
+
+119
+00:06:44,979 --> 00:06:48,490
+of let's say 600. It's going to spin a
+
+120
+00:06:48,490 --> 00:06:51,669
+few times. It's going to take two seconds
+
+121
+00:06:51,669 --> 00:06:54,879
+as well. We want it to run when we press
+
+122
+00:06:54,879 --> 00:06:58,419
+down the mouse and stop when we
+
+123
+00:06:58,419 --> 00:07:01,090
+release it. And we're going to say 'rootId.running' here.
+
+124
+00:07:01,090 --> 00:07:07,499
+Let's run the application.
+
+125
+00:07:08,520 --> 00:07:11,949
+mm-hmm... and you see that as we press down
+
+126
+00:07:11,949 --> 00:07:14,650
+it moves to the right, moves to the bottom,
+
+127
+00:07:14,650 --> 00:07:18,009
+and it rotates. And just like this,
+
+128
+00:07:18,009 --> 00:07:20,349
+we have covered a few basics of how you
+
+129
+00:07:20,349 --> 00:07:23,229
+work with animations in your QML code.
+
+130
+00:07:23,229 --> 00:07:25,449
+You basically specify your properties
+
+131
+00:07:25,449 --> 00:07:27,460
+like we specified this rectangle here.
+
+132
+00:07:27,460 --> 00:07:30,490
+And then you specify the animations that
+
+133
+00:07:30,490 --> 00:07:33,400
+are going to animate the changes in
+
+134
+00:07:33,400 --> 00:07:35,710
+properties. In our case, we animated the
+
+135
+00:07:35,710 --> 00:07:38,710
+changes in X, the changes in Y and the
+
+136
+00:07:38,710 --> 00:07:41,710
+changes in rotation for our rectangle here.
+
+137
+00:07:41,710 --> 00:07:43,659
+If you want to know more on these animations,
+
+138
+00:07:43,659 --> 00:07:46,930
+you can select them, hit F1,
+
+139
+00:07:46,930 --> 00:07:50,199
+come back in full help mode and look at.
+
+140
+00:07:50,199 --> 00:07:52,599
+'PropertyAnimation' provides a way to
+
+141
+00:07:52,599 --> 00:07:55,169
+animate changes to a property's value.
+
+142
+00:07:55,169 --> 00:07:58,180
+Come back to the code. Look at 'NumberAnimation'.
+
+143
+00:07:58,180 --> 00:08:03,310
+We do the same thing. It is a
+
+144
+00:08:03,310 --> 00:08:05,349
+specialized PropertyAnimation that
+
+145
+00:08:05,349 --> 00:08:08,139
+defines an animation to be applied when
+
+146
+00:08:08,139 --> 00:08:10,870
+a numerical value changes. And they do
+
+147
+00:08:10,870 --> 00:08:15,219
+what we basically did. RotationAnimation
+
+148
+00:08:15,219 --> 00:08:22,509
+is the same for rotation. It gives
+
+149
+00:08:22,509 --> 00:08:24,729
+control over the direction of rotation
+
+150
+00:08:24,729 --> 00:08:27,789
+during an animation. Now you have all
+
+151
+00:08:27,789 --> 00:08:30,159
+that you need to start playing with it
+
+152
+00:08:30,159 --> 00:08:33,010
+in your QML applications.
+
+153
+00:08:33,010 --> 00:08:34,510
+In the next lecture, we're going to look at how you
+
+154
+00:08:34,510 --> 00:08:37,630
+work with standalone animations.
+
+155
+00:08:37,630 --> 00:00:00,000
+I'll see you there.
+

@@ -1,0 +1,919 @@
+1
+00:00:00,000 --> 00:00:01,620
+Trong chương này ta sẽ học về
+
+2
+00:00:01,620 --> 00:00:03,540
+những cách khác nhau để bạn lưu trữ dữ liệu
+
+3
+00:00:03,540 --> 00:00:06,359
+trong ứng dụng Qt Quick. Ta sẽ
+
+4
+00:00:06,359 --> 00:00:08,370
+học về 2 cách: settings và
+
+5
+00:00:08,370 --> 00:00:11,250
+SQL, nhưng tôi nghĩ bạn cũng nên
+
+6
+00:00:11,250 --> 00:00:13,559
+biết rằng bạn có thể lưu với
+
+7
+00:00:13,559 --> 00:00:16,949
+C++ nữa, và gửi 
+
+8
+00:00:16,949 --> 00:00:20,490
+dữ liệu tới Qt Quick hoặc QML
+
+9
+00:00:20,490 --> 00:00:22,470
+qua các kênh giao tiếp
+
+10
+00:00:22,470 --> 00:00:25,890
+giữa C++ và QML. Ta sẽ không
+
+11
+00:00:25,890 --> 00:00:27,660
+học về cách giao tiếp giữa
+
+12
+00:00:27,660 --> 00:00:30,179
+C++ và QML vì đó không phải là
+
+13
+00:00:30,179 --> 00:00:32,700
+nội dung của khóa học này, nhưng tôi dự định
+
+14
+00:00:32,700 --> 00:00:35,190
+sẽ làm một khóa khác về chủ đề đó, nên hay theo dõi
+
+15
+00:00:35,190 --> 00:00:36,960
+nếu bạn muốn tìm hiểu thêm về
+
+16
+00:00:36,960 --> 00:00:39,540
+chủ đề đó. Ý chính ở đây là chúng ta sẽ
+
+17
+00:00:39,540 --> 00:00:42,239
+tìm hiểu về Settings và SQL. 
+
+18
+00:00:42,239 --> 00:00:44,340
+Có một kiểu QML gọi là settings
+
+19
+00:00:44,340 --> 00:00:46,260
+để bạn có thể dùng để lưu trữ dữ liệu. Ta sẽ
+
+20
+00:00:46,260 --> 00:00:47,969
+tìm hiểu kiểu đó. Việc đầu tiên
+
+21
+00:00:47,969 --> 00:00:50,250
+bạn cần làm để sử dụng nó là
+
+22
+00:00:50,250 --> 00:00:52,320
+thiết lập thông tìn cho
+
+23
+00:00:52,320 --> 00:00:54,780
+ứng dụng của bạn, và thường thì làm việc đó trong
+
+24
+00:00:54,780 --> 00:00:58,320
+tệp main.cpp, và làm
+
+25
+00:00:58,320 --> 00:01:00,329
+như thế này: bạn
+
+26
+00:01:00,329 --> 00:01:03,120
+khởi tại một lớp QGuiApplication,
+
+27
+00:01:03,120 --> 00:01:05,700
+trong đó bạn đặt tên tổ chức,
+
+28
+00:01:05,700 --> 00:01:08,610
+tên miền của tổ chức, và tên ứng dụng.
+
+29
+00:01:08,610 --> 00:01:11,040
+Với từng ứng dụng thì những
+
+30
+00:01:11,040 --> 00:01:13,470
+thông tin này sẽ khác đi. Đây là
+
+31
+00:01:13,470 --> 00:01:15,450
+việc đầu tiên cần làm khi bạn
+
+32
+00:01:15,450 --> 00:01:17,369
+làm việc vơi settings, đừng quên
+
+33
+00:01:17,369 --> 00:01:20,490
+đấy. Sau đó bạn cần import
+
+34
+00:01:20,490 --> 00:01:23,040
+Qt.lab.settings. Để dùng cái này thì bạn
+
+35
+00:01:23,040 --> 00:01:24,990
+định nghĩa một component Settings trong qml
+
+36
+00:01:24,990 --> 00:01:27,270
+như thê snafy, rồi bạn nhập vào những
+
+37
+00:01:27,270 --> 00:01:28,829
+dữ liệu mà bạn cần lưu lại với
+
+38
+00:01:28,829 --> 00:01:31,409
+property alias như thế này, ok. Trong
+
+39
+00:01:31,409 --> 00:01:33,570
+ví dụ này, ta lưu trữ dữ liệu về vị trí của
+
+40
+00:01:33,570 --> 00:01:36,299
+một cửa sổ, ta cần lưu tọa độ x,
+
+41
+00:01:36,299 --> 00:01:38,299
+tọa độ y, chiều rộng và cao của cửa sổ đó,
+
+42
+00:01:38,299 --> 00:01:40,890
+và ta lưu lại như thế này.
+
+43
+00:01:40,890 --> 00:01:43,170
+Thế này xong rồi bạn không cần
+
+44
+00:01:43,170 --> 00:01:44,549
+làm gì nữa, dữ liệu của bạn sẽ được
+
+45
+00:01:44,549 --> 00:01:47,220
+tự động lưu lại. Nếu 
+
+46
+00:01:47,220 --> 00:01:49,470
+bạn còn chưa hiểu cũng không sao, ta sẽ
+
+47
+00:01:49,470 --> 00:01:51,840
+làm demo hoàn chỉnh cho ví dụ này, và
+
+48
+00:01:51,840 --> 00:01:53,970
+bạn sẽ thấy nó hoạt động thế nào. Bạn
+
+49
+00:01:53,970 --> 00:01:56,100
+cũng có thể tách Settings ra thành 
+
+50
+00:01:56,100 --> 00:01:58,380
+các category thế này: bạn thấy ta có một
+
+51
+00:01:58,380 --> 00:02:01,200
+category cho dữ liệu về window, và
+
+52
+00:02:01,200 --> 00:02:04,770
+một category để lưu dữ liệu về colors đây.
+
+53
+00:02:04,770 --> 00:02:06,540
+Bạn có thể tách settings ra thành
+
+54
+00:02:06,540 --> 00:02:09,209
+nhiều category. Đây là cách bạn có thể dùng
+
+55
+00:02:09,209 --> 00:02:11,519
+để lưu trữ setting một cách tự động. 
+
+56
+00:02:11,519 --> 00:02:13,319
+Có một cách khác nếu bạn không muốn
+
+57
+00:02:13,319 --> 00:02:16,260
+lưu dữ liệu tự động. Lưu trữ
+
+58
+00:02:16,260 --> 00:02:19,049
+dữ liệu tự động có thể tiêu tốn tài nguyên
+
+59
+00:02:19,049 --> 00:02:21,480
+khi chương trình phải lưu thông tin bất cứ khi nào
+
+60
+00:02:21,480 --> 00:02:23,879
+có gì đó thay đổi, ví dụ như bất cứ khi nào tôi dịch chuyển
+
+61
+00:02:23,879 --> 00:02:26,519
+cửa sổ hoặc thay đổi màu sắc này đi,
+
+62
+00:02:26,519 --> 00:02:28,290
+thông tin sẽ được lưu lại, và việc này
+
+63
+00:02:28,290 --> 00:02:30,840
+đôi khi có thể gây ảnh hưởng đến
+
+64
+00:02:30,840 --> 00:02:33,359
+công suất máy. Nếu bạn không muốn kiểu này, bạn 
+
+65
+00:02:33,359 --> 00:02:36,090
+có thể dùng settings tùy chỉnh. Cái này sẽ
+
+66
+00:02:36,090 --> 00:02:38,250
+sẽ cho phép bạn lưu trữ dữ liệu
+
+67
+00:02:38,250 --> 00:02:40,349
+đúng lúc bạn muốn. Để làm như vận, 
+
+68
+00:02:40,349 --> 00:02:42,150
+bạn định nghĩa componenet settings thế này,
+
+69
+00:02:42,150 --> 00:02:44,430
+đặt vào cái property mà bạn
+
+70
+00:02:44,430 --> 00:02:47,700
+muốn lưu, rồi cho nó một
+
+71
+00:02:47,700 --> 00:02:50,010
+giá trị mặc định thế này... bạn thấy "spring" đây là
+
+72
+00:02:50,010 --> 00:02:53,310
+giá trị mặc định... Trong ví dụ này ta đang 
+
+73
+00:02:53,310 --> 00:02:56,280
+lưu dữ liệu về state, ta vừa làm việc với state 
+
+74
+00:02:56,280 --> 00:02:58,980
+và transition trong chương trước, chắc bạn
+
+75
+00:02:58,980 --> 00:03:01,470
+còn nhớ... ta lưu 
+
+76
+00:03:01,470 --> 00:03:03,959
+state spring trong một demo ta làm trong bài trước.
+
+77
+00:03:03,959 --> 00:03:06,480
+Sau khi định nghĩa settings 
+
+78
+00:03:06,480 --> 00:03:08,939
+rồi, bạn điều chỉnh property
+
+79
+00:03:08,939 --> 00:03:10,950
+trong ứng dụng của bạn. Ứng dụng của bạn sẽ phải
+
+80
+00:03:10,950 --> 00:03:13,799
+đọc property từ component 
+
+81
+00:03:13,799 --> 00:03:15,900
+Settings này, như thế này:
+
+82
+00:03:15,900 --> 00:03:18,510
+state của Rectangle được
+
+83
+00:03:18,510 --> 00:03:20,639
+lấy từ component Settings, và
+
+84
+00:03:20,639 --> 00:03:22,769
+mỗi khi state có thay đổi trong 
+
+85
+00:03:22,769 --> 00:03:25,500
+ứng dụng, thì cập nhật state ở đây.
+
+86
+00:03:25,500 --> 00:03:27,720
+Xong rồi, bạn cần quyết định xem
+
+87
+00:03:27,720 --> 00:03:30,180
+khi nào thì lưu trữ dữ liệu. Trong trường hợp này,
+
+88
+00:03:30,180 --> 00:03:31,769
+ta lưu trữ dữ liệu khi
+
+89
+00:03:31,769 --> 00:03:34,500
+component kết thúc, nhưng bạn muốn lưu
+
+90
+00:03:34,500 --> 00:03:36,720
+lúc nào cũng được. Ví dụ, bạn có thể lưu 
+whenever you want. For example, you can do
+
+91
+00:03:36,720 --> 00:03:38,669
+khi người dùng nhấn một nút nào đó, hoặc
+
+92
+00:03:38,669 --> 00:03:41,310
+đại khái thế, trong ứng dụng QML.
+
+93
+00:03:41,310 --> 00:03:43,829
+Okay, Settings là một kiểu lưu dữ liệu, 
+
+94
+00:03:43,829 --> 00:03:46,650
+ta còn có thể dùng
+
+95
+00:03:46,650 --> 00:03:49,560
+cơ sở dữ liệu SQLite trong
+
+96
+00:03:49,560 --> 00:03:52,049
+máy bạn. Để lưu kiểu này, bạn cần
+
+97
+00:03:52,049 --> 00:03:55,620
+import QtQuick.LocalStorage 2.0. Đây
+
+98
+00:03:55,620 --> 00:03:57,810
+là phiên bản hiện tại khi tôi làm
+
+99
+00:03:57,810 --> 00:04:00,120
+video này. Cơ sở dữ liệu này đã có sẵn
+
+100
+00:04:00,120 --> 00:04:02,189
+trong náy nên bạn không cần cài đặt
+
+101
+00:04:02,189 --> 00:04:04,739
+hay kết nối gì thêm với nó, bạn chỉ cần
+
+102
+00:04:04,739 --> 00:04:06,930
+tạo và quản lí cơ sở dữ liệu
+
+103
+00:04:06,930 --> 00:04:09,030
+và các bảng trong đó, và ta sẽ làm việc đó ngay thôi.
+
+104
+00:04:09,030 --> 00:04:10,650
+Bạn sẽ hiểu cách nó
+
+105
+00:04:10,650 --> 00:04:13,349
+hoạt động thôi. Ở đây ta có một bảng
+
+106
+00:04:13,349 --> 00:04:15,239
+mà ta tạo ra trong demo này.
+
+107
+00:04:15,239 --> 00:04:18,209
+Ta cần lưu trữ dữ liệu về vị trí và
+
+108
+00:04:18,209 --> 00:04:20,459
+màu sắc, giống hệt như ta làm kiểu
+
+109
+00:04:20,459 --> 00:04:23,280
+settings, nhưng ta sẽ lưu dữ liệu đó
+
+110
+00:04:23,280 --> 00:04:25,650
+dưới dạng đối tượng json tỏng một bảng mà
+
+111
+00:04:25,650 --> 00:04:27,750
+ta sẽ tạo. Bảng này sẽ 
+
+112
+00:04:27,750 --> 00:04:30,360
+có 2 trường: tên của
+
+113
+00:04:30,360 --> 00:04:32,790
+setting mà ta cần lưu, va f
+
+114
+00:04:32,790 --> 00:04:35,639
+giá trị của setting đó. Ví dụ này
+
+115
+00:04:35,639 --> 00:04:37,650
+rất đơn giản cho bạn dễ hiểu, 
+
+116
+00:04:37,650 --> 00:04:42,090
+nhưng nếu bạn biết dùng SQLite thì bạn
+
+117
+00:04:42,090 --> 00:04:44,580
+sẽ thấy rằng cái này có thể
+
+118
+00:04:44,580 --> 00:04:47,160
+làm đủ thứ phức tạp được. Ta sẽ không
+
+119
+00:04:47,160 --> 00:04:49,919
+học vè SQLite trong bài này, bạn sẽ phải
+
+120
+00:04:49,919 --> 00:04:52,380
+đọc tài liệu khác nếu muốn biết thêm
+
+121
+00:04:52,380 --> 00:04:55,740
+về nó, nhưng cũng không khó hiểu lắm đâu.
+
+122
+00:04:55,740 --> 00:04:58,440
+Ở đây bạn thấy có thể
+
+123
+00:04:58,440 --> 00:05:00,690
+thấy địa chỉ của cơ sở dữ liệu này
+
+124
+00:05:00,690 --> 00:05:02,910
+trong náy, nó là một tệp
+
+125
+00:05:02,910 --> 00:05:04,710
+bạn có thể tìm được, và bạn sẽ
+
+126
+00:05:04,710 --> 00:05:06,330
+thấy ta làm thế trong demo.
+
+127
+00:05:06,330 --> 00:05:09,090
+Đây là cách bạn kết nối với
+
+128
+00:05:09,090 --> 00:05:11,640
+cơ sở dữ liệu và tạo bảng. Bạn thấy có
+
+129
+00:05:11,640 --> 00:05:14,100
+localStorage,openDatabaseSync, bạn nhập vào
+
+130
+00:05:14,100 --> 00:05:17,700
+tên của cơ sở dữ liệu, 
+
+131
+00:05:17,700 --> 00:05:20,300
+nhập vào phiên bản, nhập vào
+
+132
+00:05:20,300 --> 00:05:22,590
+mô tả về nó, và nhập vào
+
+133
+00:05:22,590 --> 00:05:24,960
+kích thước dự tính của cơ sở dữ liệu.
+
+134
+00:05:24,960 --> 00:05:27,210
+Sau đó bạn có thể thực hiện lệnh lên
+
+135
+00:05:27,210 --> 00:05:29,630
+cơ sở dữ liệu đó. Ví dụ, ở đây ta
+
+136
+00:05:29,630 --> 00:05:32,190
+chạy câu lệnh để tạo một bảng.
+
+137
+00:05:32,190 --> 00:05:34,860
+Đây là tên bảng, và đây là những
+
+138
+00:05:34,860 --> 00:05:36,990
+trường ta có. Khi đã tạo
+
+139
+00:05:36,990 --> 00:05:38,970
+cơ sở dữ liệu và bảng rồi, việc tiếp theo
+
+140
+00:05:38,970 --> 00:05:40,919
+bạn cần làm là nhập
+
+141
+00:05:40,919 --> 00:05:43,770
+dữ liệu vào. Ở đây tôi có một
+
+142
+00:05:43,770 --> 00:05:46,110
+hàm đơn giản để
+
+143
+00:05:46,110 --> 00:05:48,600
+lưu một số dữ liệu. Cái này kiểm tra xem
+
+144
+00:05:48,600 --> 00:05:50,820
+cơ sở dữ liệu có tồn tại hay không. Nếu không  
+
+145
+00:05:50,820 --> 00:05:53,550
+tồn tại thì sẽ trả về. Và ta thực hiện
+
+146
+00:05:53,550 --> 00:05:57,690
+lệnh để lưu trữ dữ liệu. Ta cần
+
+147
+00:05:57,690 --> 00:06:00,780
+xem xem giá trị này đã có được lưu trong bảng hay chưa,
+
+148
+00:06:00,780 --> 00:06:03,600
+nên ta Select tất cả từ 
+
+149
+00:06:03,600 --> 00:06:06,600
+sqlitedemotable với name = 
+
+150
+00:06:06,600 --> 00:06:09,960
+"sqlitedemo", trong bảng này có
+
+151
+00:06:09,960 --> 00:06:12,750
+một trường gọi là sqlitedemo, đây là trường
+
+152
+00:06:12,750 --> 00:06:14,550
+ta cần tìm. Ở đây ta 
+
+153
+00:06:14,550 --> 00:06:16,800
+chuẩn bị dữ liệu cần lưu vào
+
+154
+00:06:16,800 --> 00:06:17,940
+cơ sở dữ liệu,
+
+155
+00:06:17,940 --> 00:06:20,340
+ok, ta lấy dữ liệu từ 
+
+156
+00:06:20,340 --> 00:06:22,919
+component của giao diện người dùng... bạn thấy đây... ta lấy X
+
+157
+00:06:22,919 --> 00:06:25,680
+X, chiều rộng, chiều cao, và ta
+
+158
+00:06:25,680 --> 00:06:27,570
+lấy component về màu sắc 
+
+159
+00:06:27,570 --> 00:06:29,610
+cần lưu, và lưu nó vào
+
+160
+00:06:29,610 --> 00:06:32,250
+trong đối tượng json 'obj'. Sau đó ta
+
+161
+00:06:32,250 --> 00:06:34,500
+kiểm tra result. Nếu có 1 result 
+
+162
+00:06:34,500 --> 00:06:36,320
+tức là có tồn tại thông tin đó
+
+163
+00:06:36,320 --> 00:06:39,920
+ở trong bảng, thì ta sẽ update, chứ không
+
+164
+00:06:39,920 --> 00:06:42,110
+lưu thêm thông tin mới... vậy nên
+
+165
+00:06:42,110 --> 00:06:44,960
+câu lệnh ở đây sẽ là UPDATE, ta cập nhật
+
+166
+00:06:44,960 --> 00:06:48,020
+bảng đó và set value where
+
+167
+00:06:48,020 --> 00:06:50,960
+name="sqlitedemo", và ta
+
+168
+00:06:50,960 --> 00:06:53,630
+đặt vào đối tượng JSON obj vào.
+
+169
+00:06:53,630 --> 00:06:58,040
+Ta cần phải stringify đối tượng đó. Nếu
+
+170
+00:06:58,040 --> 00:07:00,770
+trong bảng chưa có chứa dữ liệu đó, ta
+
+171
+00:07:00,770 --> 00:07:03,920
+INSERT nó vào cơ sở dữ liệu, và
+
+172
+00:07:03,920 --> 00:07:06,530
+đặt nó vào thế này. Đây là kiến thức SQLite
+
+173
+00:07:06,530 --> 00:07:09,500
+cơ bản thôi, nên nếu bạn chưa năm rõ thì 
+
+174
+00:07:09,500 --> 00:07:11,600
+nên đọc thêm về chủ đề này, bạn sẽ
+
+175
+00:07:11,600 --> 00:07:13,400
+hiểu được ý nghĩa của những câu lệnh
+
+176
+00:07:13,400 --> 00:07:15,980
+này đây. Cái ta có trong 
+
+177
+00:07:15,980 --> 00:07:18,410
+ngoặc [] này sẽ được đặt vào vị trí
+
+178
+00:07:18,410 --> 00:07:21,530
+của dấu hỏi chấm này đây. Đây là
+have with this question mark. This is
+
+179
+00:07:21,530 --> 00:07:23,900
+thứ duy nhất hơi lạ trong câu này, okay.
+
+180
+00:07:23,900 --> 00:07:25,550
+Đây là cách bạn lưu trữ thông tin, ta sẽ
+
+181
+00:07:25,550 --> 00:07:27,380
+làm thử một demo, nên nếu bạn chưa
+
+182
+00:07:27,380 --> 00:07:28,790
+hiểu cái này thì
+
+183
+00:07:28,790 --> 00:07:31,190
+cũng đừng lo. Và đây là cách bạn
+
+184
+00:07:31,190 --> 00:07:33,740
+đọc dữ liệu. Bạn cần kiểm tra xem
+
+185
+00:07:33,740 --> 00:07:36,320
+cở sở dữ liệu có tồn tại không, có
+
+186
+00:07:36,320 --> 00:07:38,810
+câu lệnh ở đây, trong đó bạn cần
+
+187
+00:07:38,810 --> 00:07:42,530
+chạy câu lệnh SQL này, ta SELECT
+
+188
+00:07:42,530 --> 00:07:44,600
+mọi thứ, cơ bản là giống như trước.
+
+189
+00:07:44,600 --> 00:07:47,330
+Nếu có kết quả thì ta
+
+190
+00:07:47,330 --> 00:07:50,270
+nhận lấy giá trị trong kết quả đó, okay,
+
+191
+00:07:50,270 --> 00:07:53,150
+đây là cách nhận lấy giá trị đó. Ta nhập vào
+
+192
+00:07:53,150 --> 00:07:55,940
+giá trị đó vào một đối tượng JSON, rồi
+
+193
+00:07:55,940 --> 00:07:58,040
+đọc dữ liệu, okay. Đây là một
+
+194
+00:07:58,040 --> 00:08:00,560
+đối tượng JSON tên là obj. Ta 
+
+195
+00:08:00,560 --> 00:08:02,480
+lấy dữ liệu ta cần và
+
+196
+00:08:02,480 --> 00:08:05,450
+đặt nó vào một component của giao diện: X, Y, chiều rộng,
+
+197
+00:08:05,450 --> 00:08:08,600
+chiều cao, và tạo màu cho 
+
+198
+00:08:08,600 --> 00:08:10,550
+component thế này. Hàm rgba này
+
+199
+00:08:10,550 --> 00:08:13,550
+có sẵn trong đối tượng Qt toàn cục
+
+200
+00:08:13,550 --> 00:08:15,740
+như ta đã học, và 
+
+201
+00:08:15,740 --> 00:08:17,960
+tất cả những gì ta dùng ở đây
+
+202
+00:08:17,960 --> 00:08:20,600
+đều được giải thích trong tài liệu local storage
+
+203
+00:08:20,600 --> 00:08:23,870
+documentation trên mạng hoặc là trong
+
+204
+00:08:23,870 --> 00:08:25,700
+Qt Creater. Ta có thể vào Qt Creator 
+
+205
+00:08:25,700 --> 00:08:28,640
+đọc xem. Và Qt Creator đây rồi.
+
+206
+00:08:28,640 --> 00:08:31,220
+Bạn đi vào documentation và
+
+207
+00:08:31,220 --> 00:08:36,370
+gõ vào 'local storage' thê snafy, 
+
+208
+00:08:37,210 --> 00:08:39,890
+bạn sẽ tìm thấy Qt Quick local 
+
+209
+00:08:39,890 --> 00:08:41,809
+storage, click vào đó và 
+
+210
+00:08:41,809 --> 00:08:44,210
+đi vào đây. Trong này giải thích rằng Đây là một
+
+211
+00:08:44,210 --> 00:08:45,940
+singleton dùng để đọc và viết vào
+
+212
+00:08:45,940 --> 00:08:49,490
+cơ sở dữ liệu SQLite. Bạn click vào đây,
+
+213
+00:08:49,490 --> 00:08:53,510
+cái này sẽ có tài liệu về 
+
+214
+00:08:53,510 --> 00:08:56,360
+môi trường sqlite, có thông tin về
+
+215
+00:08:56,360 --> 00:08:58,460
+những hàm mà bạn có thể gọi: openDatabaseSync,...
+
+216
+00:08:58,460 --> 00:09:01,340
+có thông tin về tất cả những thứ ta đã
+
+217
+00:09:01,340 --> 00:09:04,160
+học, và còn hơn nữa. Vậy nên nếu bạn
+
+218
+00:09:04,160 --> 00:09:06,710
+không năm chắc về cái gì đó, đây là cái
+
+219
+00:09:06,710 --> 00:09:09,200
+bạn nên đọc. Dưới này còn có
+
+220
+00:09:09,200 --> 00:09:11,570
+ví dụ cho bạn xem. Tôi 
+an example that you can look at. I do
+
+221
+00:09:11,570 --> 00:09:14,270
+khuyện bạn nên đọc cái này khi bạn
+
+222
+00:09:14,270 --> 00:09:17,210
+học xong khóa học rồi, vì đây 
+
+223
+00:09:17,210 --> 00:09:18,980
+là cũng là một cách tốt để học. 
+
+224
+00:09:18,980 --> 00:09:21,050
+Okay, đây là toàn bộ những nội dung ta sẽ học trong
+
+225
+00:09:21,050 --> 00:09:22,490
+chương này. Ta học về
+
+226
+00:09:22,490 --> 00:09:24,320
+settings, về cách 
+
+227
+00:09:24,320 --> 00:09:27,110
+làm việc với SQLite trong ứng dụng QML.
+
+228
+00:09:27,110 --> 00:09:29,300
+Trong bài cuối, ta sẽ
+
+229
+00:09:29,300 --> 00:00:00,000
+học về settings. Hẹn gặp lại bạn.
+

@@ -1,0 +1,796 @@
+﻿1
+00:00:00,000 --> 00:00:03,899
+Trong bài này, ta sẽ cùng nhau tìm hiểu
+
+2
+00:00:01,829 --> 00:00:07,830
+về phần tử button (nút) trong module
+
+3
+00:00:03,899 --> 00:00:11,460
+Qt Quick Controls. Ta đi đến Qt Creator,
+
+4
+00:00:07,830 --> 00:00:16,770
+click vào help, gõ chữ
+
+5
+00:00:11,460 --> 00:00:18,810
+"button" vào ô tìm kiếm. Ta sẽ được
+
+6
+00:00:16,770 --> 00:00:22,080
+dẫn đến phần tài liệu về
+
+7
+00:00:18,810 --> 00:00:24,869
+Button QML Type (Dạng nút trong QML). Một thứ mà
+
+8
+00:00:22,080 --> 00:00:28,680
+các bạn nên chú ý ở đây đó là
+
+9
+00:00:24,869 --> 00:00:33,570
+lệnh import thực hiện từ Qt Quick Controls 2.4.
+10
+
+10
+00:00:28,680 --> 00:00:36,809
+Loại button này bắt đầu xuất hiện trong phiên bản Qt này,
+
+11
+00:00:33,570 --> 00:00:40,050
+kế thừa AbstractButton (nút trừu tượng).
+
+12
+00:00:36,809 --> 00:00:42,450
+Ta sẽ lấy một vài tính năng từ loại QML này.
+
+13
+00:00:40,050 --> 00:00:45,450
+Kéo xuống đến phần mô tả,
+
+14
+00:00:42,450 --> 00:00:47,550
+ở đây có viết: button (nút)
+
+15
+00:00:45,450 --> 00:00:50,579
+biểu thị cho việc điều khiển nhấn nút, người dùng có thể
+
+16
+00:00:47,550 --> 00:00:52,559
+nhấn hoặc click vào button.
+
+17
+00:00:50,579 --> 00:00:55,440
+Nếu nhìn xuống dưới, ta thấy có
+
+18
+00:00:52,559 --> 00:00:57,059
+một bộ tín hiệu (signal) mà ta có thể
+
+19
+00:00:55,440 --> 00:00:57,660
+thu được từ button. Ta có thể biết
+
+20
+00:00:57,059 --> 00:00:59,699
+khi nào thì click vào button,
+
+21
+00:00:57,660 --> 00:01:02,969
+khi nào thì kích đúp chuột vào button,
+
+22
+00:00:59,699 --> 00:01:05,670
+khi nào thì nhấn, thả, nhấn và giữ button.
+
+23
+00:01:02,969 --> 00:01:08,460
+Các tín hiệu này rất giống với những gì
+
+24
+00:01:05,670 --> 00:01:10,530
+mà ta đã thấy trong MouseArea, tuy nhiên,
+
+25
+00:01:08,460 --> 00:01:13,740
+button là một khối liền, do đó, ta không cần
+
+26
+00:01:10,530 --> 00:01:15,659
+đặt MouseArea vào bên trong các hình chữ nhật.
+
+27
+00:01:13,740 --> 00:01:18,210
+Ta chỉ dùng một button, và ta luôn sẵn có
+
+28
+00:01:15,659 --> 00:01:20,189
+những tín hiệu này để sử dụng. Bây giờ,
+
+29
+00:01:18,210 --> 00:01:24,330
+ta sẽ thiết lập một dự án mới, và
+
+30
+00:01:20,189 --> 00:01:28,680
+cùng nghiên cứu. Tạo dự án mới ở đây.
+
+31
+00:01:24,330 --> 00:01:31,740
+Ta chọn Qt Quick Application. Ta gọi dự án này
+
+32
+00:01:28,680 --> 00:01:35,579
+là "Button Demo", lưu vào
+
+33
+00:01:31,740 --> 00:01:38,400
+vị trí trong ổ đĩa, chọn "next", chọn phiên bản Qt
+
+34
+00:01:35,579 --> 00:01:40,409
+mà ta sẽ dùng. Ở thời điểm hiện tại,
+
+35
+00:01:38,400 --> 00:01:43,560
+do ta đang muốn thử ứng dụng này
+
+36
+00:01:40,409 --> 00:01:46,890
+trên cả máy tính và Android, do đó,
+
+37
+00:01:43,560 --> 00:01:49,409
+ta sẽ chọn bộ công cụ cho Android,
+
+38
+00:01:46,890 --> 00:01:52,409
+phiên bản x86 bởi ta muốn chạy ứng dụng
+
+39
+00:01:49,409 --> 00:01:54,899
+trên một thiết bị ảo. Nếu dùng araeabi ở đây,
+
+40
+00:01:52,409 --> 00:01:57,570
+thì sẽ rất chậm, do đó,
+
+41
+00:01:54,899 --> 00:02:00,360
+ta chọn x86 để có thể đẩy nhanh tốc độ
+
+42
+00:01:57,570 --> 00:02:02,430
+các thao tác. Ta cũng chọn bộ công cụ cho máy tính
+
+43
+00:02:00,360 --> 00:02:04,619
+do đây là môi trường mặc định
+
+44
+00:02:02,430 --> 00:02:08,489
+mà ta làm việc. Ấn "Next",
+
+45
+00:02:04,619 --> 00:02:11,430
+và "Finish". Do ta sẽ làm việc với module
+
+46
+00:02:08,489 --> 00:02:13,340
+Qt Quick Controls, do đó ta sẽ phải import module đó.
+
+47
+00:02:11,430 --> 00:02:21,500
+Ta viết "import...
+
+48
+00:02:13,340 --> 00:02:26,020
+controls 2.4" Ta sẽ thay đổi
+
+49
+00:02:21,500 --> 00:02:29,090
+tên ở đây, ta viết "Button Demo".
+
+50
+00:02:26,020 --> 00:02:32,959
+Ta cũng cần import các layout để về sau còn
+
+51
+00:02:29,090 --> 00:02:39,190
+sử dụng. Ta viết QtQuick.Layouts 1.3,
+
+52
+00:02:32,959 --> 00:02:42,800
+Ta sẽ đặt RowLayout (layout dạng hàng) vào đây.
+
+53
+00:02:39,190 --> 00:02:45,050
+Ở bên trong, ta đặt hai button,
+
+54
+00:02:42,800 --> 00:02:48,560
+ta viết "button". Id sẽ là
+
+55
+00:02:45,050 --> 00:02:51,709
+"button1". Button này sẽ có
+
+56
+00:02:48,560 --> 00:03:06,349
+một thuộc tính chữ, ở đó ta có "Button1".
+
+57
+00:02:51,709 --> 00:03:08,780
+Ta sẽ thêm một button nữa.
+
+58
+00:03:06,349 --> 00:03:13,280
+Ta muốn RowLayout này phủ đầy
+
+59
+00:03:08,780 --> 00:03:16,430
+chiều rộng cho sẵn. Ta làm bằng cách
+
+60
+00:03:13,280 --> 00:03:19,600
+neo layout này vào phía bên trái
+
+61
+00:03:16,430 --> 00:03:37,489
+và phía bên phải của phần tử mẹ, ta viết "anchors.left"
+
+62
+00:03:19,600 --> 00:03:40,310
+Ok, cạnh trái của RowLayout
+
+63
+00:03:37,489 --> 00:03:42,319
+sẽ được gắn vào cạnh trái của
+
+64
+00:03:40,310 --> 00:03:44,840
+cửa sổ. Tương tự,
+
+65
+00:03:42,319 --> 00:03:46,340
+cạnh phải cũng vậy. Do ta muốn
+
+66
+00:03:44,840 --> 00:03:49,989
+các button trải ra hết chiều rộng
+
+67
+00:03:46,340 --> 00:03:55,880
+cho sẵn, vậy nên ta viết
+
+68
+00:03:49,989 --> 00:04:00,940
+Layout.fillWidth, đặt là "true" (đúng).
+
+69
+00:03:55,880 --> 00:04:00,940
+Ta đã học phần này trong bài giảng về layout.
+
+70
+00:04:01,180 --> 00:04:09,980
+Đặt là "true" (đúng). Chạy ứng dụng, và xem
+
+71
+00:04:06,769 --> 00:04:12,109
+ta có những gì. Ta thấy ta có hai button.
+
+72
+00:04:09,980 --> 00:04:14,269
+Một ở bên trái và
+
+73
+00:04:12,109 --> 00:04:17,299
+một ở bên phải. Các button
+
+74
+00:04:14,269 --> 00:04:20,030
+trông như thế này. Một điều mà tôi muốn các bạn
+
+75
+00:04:17,299 --> 00:04:23,150
+chú ý ở đây, đây là về kiểu dáng mặc định.
+
+76
+00:04:20,030 --> 00:04:25,940
+Nếu muốn thay đổi kiểu dạng,
+
+77
+00:04:23,150 --> 00:04:26,540
+thì ta làm thế nào? Một cách để thay đổi
+
+78
+00:04:25,940 --> 00:04:30,260
+đó là đi đến
+
+79
+00:04:26,540 --> 00:04:32,810
+file main.cpp, và đặt kiểu dáng
+
+80
+00:04:30,260 --> 00:04:35,300
+mà ta muốn dùng trong file của mình.
+
+81
+00:04:32,810 --> 00:04:37,640
+Tuy nhiên, trước khi làm điều này,
+
+82
+00:04:35,300 --> 00:04:44,360
+ta cần phải import một module.
+
+83
+00:04:37,640 --> 00:04:46,460
+Module này có tên là "quick quickcontrols2", cho phép
+
+84
+00:04:44,360 --> 00:04:48,890
+ta truy cập vào môt lớp có tên gọi
+
+85
+00:04:46,460 --> 00:04:52,840
+QQuickStyle. Tuy nhiên, nếu ta cố
+
+86
+00:04:48,890 --> 00:04:56,630
+include lớp này vào đây, QQuickStyle,
+
+87
+00:04:52,840 --> 00:04:59,890
+ta thấy lớp này không được hiện lên
+
+88
+00:04:56,630 --> 00:05:02,630
+qua tính năng autocomplete. Để có thể
+
+89
+00:04:59,890 --> 00:05:05,900
+include, ta cần phải chạy QMake
+
+90
+00:05:02,630 --> 00:05:07,730
+sau khi ta thêm một thứ gì đó vào file dự án ở đây.
+
+91
+00:05:05,900 --> 00:05:10,310
+Bất kỳ khi nào ta thêm
+
+92
+00:05:07,730 --> 00:05:12,530
+hay bỏ một thứ gì đó từ file dự án,
+
+93
+00:05:10,310 --> 00:05:15,710
+ta cần phải chạy QMake.
+
+94
+00:05:12,530 --> 00:05:19,610
+Do đó ta cần lưu dự án vào đây,
+
+95
+00:05:15,710 --> 00:05:25,790
+và chạy QMake. Nếu ta quay trở lại96
+
+96
+00:05:19,610 --> 00:05:28,190
+và include QQuickStyle,97
+
+97
+00:05:25,790 --> 00:05:32,630
+ta thấy lớp này đã xuất hiện.98
+
+98
+00:05:28,190 --> 00:05:35,780
+Ta sẽ include lớp này. Trước khi tải file QML,99
+
+99
+00:05:32,630 --> 00:05:40,820
+ta cần phải làm một số thứ. Ok,100
+
+100
+00:05:35,780 --> 00:05:44,930
+ta muốn tải kiểu dáng button. Cách ta làm như sau:101
+
+101
+00:05:40,820 --> 00:05:48,620
+ta viết QQuickStyle, setStyle,
+
+102
+00:05:44,930 --> 00:05:51,140
+ta gọi phương thức tĩnh trên lớp này.
+
+103
+00:05:48,620 --> 00:05:55,400
+và ta viết tên kiểu dáng button mà
+
+104
+00:05:51,140 --> 00:06:02,690
+ta muốn. Ví dụ, ta muốn thử kiểu dáng
+
+105
+00:05:55,400 --> 00:06:04,190
+"Material", kiểu dáng quen thuộc trên Android. Ta cũng sẽ
+
+106
+00:06:02,690 --> 00:06:07,400
+thử các kiểu dáng button khác nên các bạn không cần
+
+107
+00:06:04,190 --> 00:06:09,340
+phải lo. Nếu chạy ứng dụng, các nút button
+
+108
+00:06:07,400 --> 00:06:12,400
+trông sẽ khác,
+
+109
+00:06:09,340 --> 00:06:14,950
+mm-hmm, các button này là những gì mà ta thường thấy
+
+110
+00:06:12,400 --> 00:06:18,550
+trên các thiết bị Android.
+
+111
+00:06:14,950 --> 00:06:23,050
+Một kiểu dáng khác mà ta có thể thử là "Universal"
+
+112
+00:06:18,550 --> 00:06:29,270
+kiểu dáng quen thuộc trên các thiết bị Microsoft.
+
+113
+00:06:23,050 --> 00:06:32,920
+Ta gõ "Universal", chạy ứng dụng,
+
+114
+00:06:29,270 --> 00:06:37,030
+mm-hmm, các button đã có kiểu khác.
+
+115
+00:06:32,920 --> 00:06:37,030
+Ta cũng có thể thử kiểu "Fusion",
+
+116
+00:06:37,980 --> 00:06:45,700
+hãy xem thế nào nào. Trông giống với các button
+
+117
+00:06:40,540 --> 00:06:49,600
+hay xuất hiện trên ứng dụng máy tính. Ta có thể
+
+118
+00:06:45,700 --> 00:06:52,930
+thử kiểu dáng "Inagine" để xem kiểu mặc định.
+
+119
+00:06:49,600 --> 00:06:57,100
+Chạy chương trình, và đây là những gì ta có.
+
+120
+00:06:52,930 --> 00:07:00,730
+Ta cũng có thể đặt lại kiểu mặc định trước đó,
+
+121
+00:06:57,100 --> 00:07:03,970
+trước khi ta chưa chỉ rõ kiểu mà ta muốn. Ta gõ
+
+122
+00:07:00,730 --> 00:07:08,140
+"Default" như thế này, và button có dạng
+
+123
+00:07:03,970 --> 00:07:09,030
+giống với những gì mà ta thấy khi bắt đầu
+
+124
+00:07:08,140 --> 00:07:11,980
+vào bài giảng.
+
+125
+00:07:09,030 --> 00:07:14,920
+Chính là kiểu dáng đó. Ok, đến đây, các bạn đã biết cách
+
+126
+00:07:11,980 --> 00:07:17,440
+thử tất cả các kiểu dáng cho button.
+
+127
+00:07:14,920 --> 00:07:19,900
+Hiện ta đang cho chạy ứng dụng,
+
+128
+00:07:17,440 --> 00:07:23,050
+do đó ta cần biết khi nào thì từng button
+
+129
+00:07:19,900 --> 00:07:25,360
+chạy đúng. Vấn đề này không khác
+
+130
+00:07:23,050 --> 00:07:27,610
+với những gì mà ta đã làm trong MouseArea là mấy.
+
+131
+00:07:25,360 --> 00:07:29,950
+Nếu đi đến phần tài liệu
+
+132
+00:07:27,610 --> 00:07:33,010
+
+133
+00:07:29,950 --> 00:07:35,920
+không có một tín hiệu nào ở đây, do tất cả
+
+134
+00:07:33,010 --> 00:07:39,430
+các tín hiệu đều đến từ phần tử
+
+135
+00:07:35,920 --> 00:07:41,890
+AbstractButton trong QML. Click vào đây,
+
+136
+00:07:39,430 --> 00:07:44,860
+xem xét các tín hiệu, ta sẽ thấy
+
+137
+00:07:41,890 --> 00:07:49,930
+một loạt các tín hiệu mà ta có thể dùng
+
+138
+00:07:44,860 --> 00:07:53,620
+cho phần tử button của mình. Ta hãy thử tín hiệu click
+
+139
+00:07:49,930 --> 00:08:05,050
+vào button1. Ta viết onClicked, ta thấy
+
+140
+00:07:53,620 --> 00:08:18,580
+tín hiệu được nhận diện ở đây,.. console.log.
+
+141
+00:08:05,050 --> 00:08:21,790
+Ta thực hiện thao tác tương tự với button2. Chạy ứng dụng.
+
+142
+00:08:18,580 --> 00:08:24,850
+Nếu click, ta thấy button đã bắt được
+
+143
+00:08:21,790 --> 00:08:27,460
+các tín hiệu. Ta có thể thử tất cả
+
+144
+00:08:24,850 --> 00:08:30,820
+các tín hiệu này nếu muốn. Ta sẽ thử
+
+145
+00:08:27,460 --> 00:08:38,729
+doubleClicked. Hãy thử tín hiệu này trên button1,
+
+146
+00:08:30,820 --> 00:08:38,729
+onDoubleClicked, console.log.
+
+147
+00:08:43,400 --> 00:08:50,730
+Chạy ứng dụng, mm-hmm,
+
+148
+00:08:47,870 --> 00:08:53,460
+click đúp chuột, ok, ta thấy
+
+149
+00:08:50,730 --> 00:08:55,740
+tín hiệu doubleClick được phát ra, đồng thời,
+
+150
+00:08:53,460 --> 00:08:57,990
+tín hiệu click cũng được phát ra. Tuy nhiên, ta có thể
+
+151
+00:08:55,740 --> 00:09:00,870
+dùng bất kỳ tín hiệu nào mà ta muốn
+
+152
+00:08:57,990 --> 00:09:03,210
+trong ứng dụng QML. Một thứ khác
+
+153
+00:09:00,870 --> 00:09:07,410
+mà tôi chưa chỉ ra cho các bạn, đó là
+
+154
+00:09:03,210 --> 00:09:12,180
+ta có thể sử dụng Qt Quick Controls series 1.
+
+155
+00:09:07,410 --> 00:09:14,880
+Ở đây ta đổi thành 1.4, ta thấy tín hiệu này
+
+156
+00:09:12,180 --> 00:09:18,990
+không nằm trong Qt Quick Controls 1,
+
+157
+00:09:14,880 --> 00:09:21,870
+do đó, ta sẽ chú giải điều này, chạy ứng dụng,
+
+158
+00:09:18,990 --> 00:09:23,460
+và xem xem mọi thứ thế nào.
+
+159
+00:09:21,870 --> 00:09:26,580
+Trông giống với một ứng dụng trên máy tính.
+
+160
+00:09:23,460 --> 00:09:29,280
+Đây là những gì mà ta thấy ở đây. Ok,
+
+161
+00:09:26,580 --> 00:09:31,650
+đây là cách mà các bạn thử Qt Quick Controls 1
+
+162
+00:09:29,280 --> 00:09:33,780
+nếu bạn muốn. Nếu muốn tìm hiểu thêm về
+
+163
+00:09:31,650 --> 00:09:37,130
+vấn đề này, ta có thể
+
+164
+00:09:33,780 --> 00:09:40,020
+đi đến phần tài liệu online, và nghiên cứu
+
+165
+00:09:37,130 --> 00:09:42,030
+bất kỳ những gì mà ta muốn.
+
+166
+00:09:40,020 --> 00:09:45,270
+Ví dụ, nếu muốn biết
+
+167
+00:09:42,030 --> 00:09:48,630
+button của ta có những gì, ta có thể
+
+168
+00:09:45,270 --> 00:09:50,730
+đi đến phần này, xem các tín hiệu, ta thấy
+
+169
+00:09:48,630 --> 00:09:53,340
+tín hiệu clicked ỏ đây. Các button trông như thế nào.
+
+170
+00:09:50,730 --> 00:09:56,550
+Đây là những thuộc tính khác
+
+171
+00:09:53,340 --> 00:10:00,090
+luôn sẵn có cho ta sử dụng. Ok, ta viết lại
+
+172
+00:09:56,550 --> 00:10:02,220
+thành Qt Quick Controls 2. Một điều
+
+173
+00:10:00,090 --> 00:10:04,400
+mà tôi muốn các bạn biết, đó là
+
+174
+00:10:02,220 --> 00:10:07,380
+các thành phần trong Qt Quick Controls
+
+175
+00:10:04,400 --> 00:10:10,590
+đều sử dụng các phần tử mà ta đã thấy trước đó,
+
+176
+00:10:07,380 --> 00:10:12,330
+bao gồm hình chữ nhật, hình ảnh, từ
+
+177
+00:10:10,590 --> 00:10:14,910
+làm nguyên liệu ban đầu, giúp bạn có được
+
+178
+00:10:12,330 --> 00:10:17,790
+một thứ gì đó nhanh chóng. Những phần tử này
+
+179
+00:10:14,910 --> 00:10:19,590
+cũng rất hiệu quả khi được sử dụng. Do đó hãy linh hoạt,
+
+180
+00:10:17,790 --> 00:10:22,380
+các phần tử có thể làm những thứ giống nhau. Ví dụ,
+
+181
+00:10:19,590 --> 00:10:28,080
+ta có thể đặt các phần tử vào trong ColumnLayout (layout dạng cột).
+
+182
+00:10:22,380 --> 00:10:30,450
+Hãy thử xem. Nếu làm như vậy, các phần tử
+
+183
+00:10:28,080 --> 00:10:32,460
+sẽ được đặt từ trên xuống dưới,
+
+184
+00:10:30,450 --> 00:10:34,680
+button1 sẽ nằm ở trên,
+
+185
+00:10:32,460 --> 00:10:38,160
+còn button2 sẽ nằm ở dưới.
+
+186
+00:10:34,680 --> 00:10:40,680
+Cả hai button đều trải đều trải ra hết
+
+187
+00:10:38,160 --> 00:10:42,840
+phần chiều rộng cho sẵn. Chạy ứng dụng,
+
+188
+00:10:40,680 --> 00:10:45,630
+và xem ta có những gì.
+
+189
+00:10:42,840 --> 00:10:48,120
+Button1, button2, ta có thể click vào
+
+190
+00:10:45,630 --> 00:10:49,450
+button2, ta có thể click vào button1,
+
+191
+00:10:48,120 --> 00:10:51,910
+ta cũng có thể click đúp chuột vào
+
+192
+00:10:49,450 --> 00:10:54,730
+Ta thấy ta có các tín hiệu ở đây.
+
+193
+00:10:51,910 --> 00:10:57,160
+Ok, đây là tất cả những nội dung
+
+194
+00:10:54,730 --> 00:11:00,010
+mà tôi cần chia sẻ về phần tử button
+
+195
+00:10:57,160 --> 00:11:02,200
+trong Qt Quick Controls. Trong bài tiếp theo,
+
+196
+00:11:00,010 --> 00:11:04,990
+ta sẽ cùng nhau chạy ứng dụng
+
+197
+00:11:02,200 --> 00:11:07,570
+trên thiết bị Android, và đi qua
+
+198
+00:11:04,990 --> 00:11:10,200
+toàn bộ quy trình chạy.
+
+199
+00:11:07,570 --> 00:11:10,200
+Hẹn gặp lại các bạn trong bài tiếp theo.
+

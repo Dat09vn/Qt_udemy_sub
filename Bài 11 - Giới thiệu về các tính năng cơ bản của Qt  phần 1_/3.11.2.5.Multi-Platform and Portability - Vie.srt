@@ -1,0 +1,236 @@
+﻿1
+00:00:01,690 --> 00:00:03,880
+Chào mừng bạn quay trở lại với khóa học Qt5.
+
+2
+00:00:03,970 --> 00:00:11,810
+Tôi là Symeon Huang. Bài học cuối cùng trong phần 1 sẽ nói về đa nền tảng(multi-platform) và tính cơ động(portability).
+
+3
+00:00:12,700 --> 00:00:13,710
+Trong bài học này
+
+4
+00:00:13,720 --> 00:00:20,420
+ta sẽ học cách sử dụng OS macros trong quá trình biên dịch và cách đọc thông tin hệ thống
+
+5
+00:00:20,450 --> 00:00:21,870
+khi chương trình thực thi.
+
+6
+00:00:22,030 --> 00:00:27,700
+Cuối bài, ta sẽ học cách cài đặt cho project file được build bằng qmake trên từng nền tảng(platform-specific configuration).
+
+7
+00:00:27,750 --> 00:00:32,960
+Nếu bạn đã sẵn sàng, ta cùng xem lại project HelloWorld lần trước.
+
+8
+00:00:33,370 --> 00:00:39,620
+Khi bạn phát triển một ứng dụng ở tầng thấp hay một bộ thư viện
+
+9
+00:00:39,620 --> 00:00:47,500
+bạn phải cung cấp API với nhiều cách cài đặt khác nhau. Tôi có một hàm ví dụ rất đơn giản tên là printHello()
+
+10
+00:00:49,080 --> 00:00:55,390
+Hàm này sẽ in ra chuỗi "Hello Qt World" và tên hệ điều hành hay nền tảng bạn đang dùng.
+
+11
+00:00:55,390 --> 00:00:58,240
+Đơn giản vậy thôi.
+
+12
+00:00:59,070 --> 00:01:01,920
+Nếu là một người dùng bình thường, bạn chỉ cần gọi đến hàm printHello()
+
+13
+00:01:01,950 --> 00:01:10,020
+mà không cần quan tâm đến cài đặt cụ thể của hàm. Nhưng nếu bạn là người cung cấp API, thì bạn cần biết hệ điều hành mình đang dùng là gì
+
+14
+00:01:10,020 --> 00:01:17,090
+Qt cung cấp cho ta các biến toàn cục
+
+15
+00:01:17,320 --> 00:01:24,050
+riêng của các hệ điều hành. Ví dụ biến Q_OS_WIN chỉ được định nghĩa
+
+16
+00:01:24,050 --> 00:01:31,570
+khi Qt được build trên Windows. Còn biến Q_OS_UNIX
+
+17
+00:01:31,720 --> 00:01:34,210
+chỉ được định nghĩa
+
+18
+00:01:34,290 --> 00:01:39,000
+khi Qt được build trên các hệ thống nhân UNIX, ví dụ Mac hay Linux.
+
+19
+00:01:40,630 --> 00:01:49,210
+Khi biến Q_OS_WIN được định nghĩa, hàm printHello() sẽ in ra chuỗi "Hello Qt World in Windows"
+
+20
+00:01:49,210 --> 00:01:54,070
+Nếu là UNIX, hàm sẽ in ra "Hello Qt world on Unix". Bạn có thể thấy
+
+21
+00:01:54,120 --> 00:02:02,300
+Qt creator đủ thông minh để nhận biết đoạn code bất khả dụng ở defined và đã bôi xám nó.
+
+22
+00:02:02,460 --> 00:02:05,110
+Ta thử build và chạy chương trình nhé.
+
+23
+00:02:05,180 --> 00:02:10,190
+Thử xem chuỗi "Hello Qt World on Windows" có được in ra không nhé. Bởi vì tôi đang dùng Windows.
+
+24
+00:02:13,670 --> 00:02:15,460
+Chuẩn rồi. "Hello Qt on Windows".
+
+25
+00:02:18,380 --> 00:02:19,010
+Rồi
+
+26
+00:02:19,080 --> 00:02:26,730
+Đôi khi bạn muốn lấy thông tin hệ thông khi chương trình chạy. Hay là bạn muốn lấy một số thông tin quan trọng
+
+27
+00:02:27,080 --> 00:02:34,250
+khi ứng dụng bị lỗi, ví dụ như là số phiên bản của Windows, hay chỉ đơn giản là bạn muốn
+
+28
+00:02:34,250 --> 00:02:35,810
+đưa ra cảnh báo dừng hỗ trợ.
+
+29
+00:02:42,390 --> 00:02:47,590
+Ví dụ trên Windows, ta muốn in ra thông báo "we're deprecating Windows XP support".
+
+30
+00:02:47,750 --> 00:02:51,890
+Ta dùng QSysInfo để lấy giá trị của enum này.
+
+31
+00:02:52,150 --> 00:02:58,540
+Nhớ include nó ở phần header. Khi gọi hàm windowVersion(). Ta sẽ
+
+32
+00:02:58,600 --> 00:03:02,350
+lấy được giá trị enum là số phiên bản Windows.
+
+33
+00:03:02,510 --> 00:03:09,530
+Nếu là Windows XP thì ta in ra thông báo "We're deprecating Windows XP support". Tôi
+
+34
+00:03:09,530 --> 00:03:13,170
+đang dùng Windows 10.
+
+35
+00:03:13,300 --> 00:03:18,550
+Và không muốn ngừng hỗ trợ Windows 10.
+
+36
+00:03:28,130 --> 00:03:31,280
+Do đó tôi muốn in ra thông báo
+
+37
+00:03:37,200 --> 00:03:38,280
+Welcome to Windows 10.
+
+38
+00:03:42,300 --> 00:03:43,720
+Giờ ta build và chạy lại chương trình nhé.
+
+39
+00:03:43,860 --> 00:03:49,440
+Ta sẽ nhận được hai thông báo. Đầu tiên là thông báo "Hello Qt World on Windows".
+
+40
+00:03:49,440 --> 00:03:51,650
+và thứ hai sẽ là "Welcome to Windows 10".
+
+41
+00:03:55,280 --> 00:04:04,850
+Đúng "Hello Qt world in Windows" và "welcome to windows 10" luôn.
+
+42
+00:04:04,850 --> 00:04:11,210
+Bởi vì một số module, như win32 chẳng hạn, là chạy trên nền tảng riêng(platform-specific)
+
+43
+00:04:11,930 --> 00:04:17,230
+nên chắc bạn sẽ thắc mắc là làm sao để cài đặt file đuôi .pro để nó sử dụng được các modules,
+
+44
+00:04:17,330 --> 00:04:19,950
+hay chỉ đơn giản là cài đặt sao cho nó in ra được thông báo.
+
+45
+00:04:20,150 --> 00:04:26,810
+Ta có thể dùng các keyword chẳng hạn như win32 hay unix.
+
+46
+00:04:27,080 --> 00:04:32,960
+Khi chạy lệnh qmake, tôi sẽ nhận được thông báo "building on Windows"
+
+47
+00:04:36,970 --> 00:04:46,270
+Project MESSAGE(thông báo): Building on Windows. Bằng cách này, bạn có thể thông báo cho người dùng khi họ chạy ứng dụng trên nền tảng chưa được hỗ trợ
+
+48
+00:04:46,900 --> 00:04:53,970
+với thông báo kiểu như "Unknown platform!Doesn't support it yet". Nhờ vậy người dùng khi chạy lệnh qmake sẽ biết
+
+49
+00:04:54,360 --> 00:04:57,680
+là nền tảng này chưa được hỗ trợ.
+
+50
+00:04:57,750 --> 00:04:58,450
+Thay vì là
+
+51
+00:04:58,620 --> 00:05:06,420
+biên dịch ra một đống lỗi, hay thậm chí là ứng dụng đang chạy bị thoát ra ngoài.
+
+52
+00:05:06,460 --> 00:05:12,780
+Tổng kết lại phần một, ta đã học được kiến thức căn bản về ứng dụng Qt,
+
+53
+00:05:12,840 --> 00:05:13,230
+học
+
+54
+00:05:13,230 --> 00:05:20,860
+về QObject, cách Qt quản lý bộ nhớ, kỹ thuật phân tích và xử lý lệnh command-line,
+
+55
+00:05:21,400 --> 00:05:23,970
+tính đa nền tảng(multi-platform) và tính cơ động(portability)
+
+56
+00:05:24,280 --> 00:05:31,720
+và kỹ thuật phát triển
+
+57
+00:05:31,720 --> 00:05:32,740
+ứng dụng đa nền tảng(cross-platform application).
+
+58
+00:05:34,200 --> 00:05:39,550
+Ở phần tiếp theo, ta sẽ học về đa luồng(multi-threading) và xử lý đa luồng(multiprocessing).
+
+59
+00:05:39,550 --> 00:05:44,370
+dùng để hoàn thiện ứng dụng console của bạn hơn.
+

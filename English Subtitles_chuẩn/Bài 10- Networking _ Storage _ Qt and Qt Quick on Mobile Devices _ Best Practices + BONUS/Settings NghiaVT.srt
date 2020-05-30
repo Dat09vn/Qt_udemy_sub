@@ -1,0 +1,856 @@
+1
+00:00:00,030 --> 00:00:01,589
+In this lecture we're going to see how
+
+2
+00:00:01,589 --> 00:00:04,170
+you store your data in QML using
+
+3
+00:00:04,170 --> 00:00:05,730
+the Settings QML type.
+
+4
+00:00:05,730 --> 00:00:08,400
+Here we are on the online documentation
+
+5
+00:00:08,400 --> 00:00:11,460
+for the settings qml type, and they say
+
+6
+00:00:11,460 --> 00:00:14,179
+that it provides persistent
+
+7
+00:00:14,179 --> 00:00:16,320
+platform-independent application
+
+8
+00:00:16,320 --> 00:00:18,330
+settings. If you are on a Windows machine
+
+9
+00:00:18,330 --> 00:00:20,640
+it, is stored in a given location, if you
+
+10
+00:00:20,640 --> 00:00:22,590
+are on a Mac, it is stored in a given
+
+11
+00:00:22,590 --> 00:00:25,410
+location, but this location is not for
+
+12
+00:00:25,410 --> 00:00:28,500
+you to mess with, ok. This is handled by
+
+13
+00:00:28,500 --> 00:00:31,590
+the system, all you have to do is know
+
+14
+00:00:31,590 --> 00:00:33,420
+how to use this and your data is going
+
+15
+00:00:33,420 --> 00:00:34,890
+to be saved, you're going to be able to
+
+16
+00:00:34,890 --> 00:00:36,899
+save you data and you're going to be
+
+17
+00:00:36,899 --> 00:00:39,120
+able to load your data. First thing you
+
+18
+00:00:39,120 --> 00:00:40,649
+should notice is that they have a note
+
+19
+00:00:40,649 --> 00:00:42,500
+here, you should read this very carefully.
+
+20
+00:00:42,500 --> 00:00:45,390
+this type is made available by importing
+
+21
+00:00:45,390 --> 00:00:49,620
+the Qt.labs.settings module. Types in QT
+
+22
+00:00:49,620 --> 00:00:51,750
+labs modules are not guaranteed to
+
+23
+00:00:51,750 --> 00:00:54,840
+remain compatible in future versions. If
+
+24
+00:00:54,840 --> 00:00:56,699
+you are using thi, you should be careful
+
+25
+00:00:56,699 --> 00:00:59,219
+and come back in the future to see if
+
+26
+00:00:59,219 --> 00:01:02,850
+there are any changes to this and change
+
+27
+00:01:02,850 --> 00:01:04,709
+your application accordingly.
+
+28
+00:01:04,709 --> 00:01:06,510
+There are two ways we are going to use
+
+29
+00:01:06,510 --> 00:01:09,000
+this thing, really. One is to let the
+
+30
+00:01:09,000 --> 00:01:12,060
+settings completely handle the saving
+
+31
+00:01:12,060 --> 00:01:14,520
+and loading of data for us and this is
+
+32
+00:01:14,520 --> 00:01:16,290
+what they do in this example here.
+
+33
+00:01:16,290 --> 00:01:19,439
+Another way is to do part of the work of
+
+34
+00:01:19,439 --> 00:01:22,530
+saving the data yourself, and save the
+
+35
+00:01:22,530 --> 00:01:25,259
+data when your component is dying, ok. You
+
+36
+00:01:25,259 --> 00:01:27,330
+do that like this, and we're going to do
+
+37
+00:01:27,330 --> 00:01:29,850
+an example in a moment. Right now we want
+
+38
+00:01:29,850 --> 00:01:32,310
+to go to QT creator, and start a project,
+
+39
+00:01:32,310 --> 00:01:35,250
+and see how we can let the system handle
+
+40
+00:01:35,250 --> 00:01:37,890
+everything for us. Here we are in QT
+
+41
+00:01:37,890 --> 00:01:39,570
+creator, we're going to create a new
+
+42
+00:01:39,570 --> 00:01:42,780
+project, it's Qt Quick application as
+
+43
+00:01:42,780 --> 00:01:45,479
+usual, we call it SettingsDemo1,
+
+44
+00:01:45,479 --> 00:01:47,310
+because we are going to do another
+
+45
+00:01:47,310 --> 00:01:52,530
+settings demo. We hit next, choose our QT
+
+46
+00:01:52,530 --> 00:01:59,130
+version, and finish. We want to say
+
+47
+00:01:59,130 --> 00:02:03,719
+SettingsDemo1. We want to do what we
+
+48
+00:02:03,719 --> 00:02:06,090
+are supposed to do: import Qt.labs.settings 1.0.
+
+49
+00:02:06,090 --> 00:02:10,348
+Come back to our
+
+50
+00:02:10,348 --> 00:02:11,959
+application and do that.
+
+51
+00:02:11,959 --> 00:02:14,269
+In this application we want to store the
+
+52
+00:02:14,269 --> 00:02:16,730
+location and the size of the window, so
+
+53
+00:02:16,730 --> 00:02:19,370
+we are going to store X, Y, width, and
+
+54
+00:02:19,370 --> 00:02:22,040
+height, and we want to store the color of
+
+55
+00:02:22,040 --> 00:02:23,930
+the rectangle that we are going to put
+
+56
+00:02:23,930 --> 00:02:26,090
+inside here. We want to put in a
+
+57
+00:02:26,090 --> 00:02:27,969
+rectangle component pretty quick.
+
+58
+00:02:27,969 --> 00:02:34,069
+Rectangle... id... recId. It's going to fill
+
+59
+00:02:34,069 --> 00:02:38,480
+the parent, and this color is going to be
+
+60
+00:02:38,480 --> 00:02:43,129
+red by default. Inside we want to put a
+
+61
+00:02:43,129 --> 00:02:46,879
+mouse area, it's going to fill the
+
+62
+00:02:46,879 --> 00:02:51,290
+rectangle. When it is clicked, we want to
+
+63
+00:02:51,290 --> 00:02:53,659
+pop up a dialog that is going to allow
+
+64
+00:02:53,659 --> 00:02:56,480
+the user to select a color. Because we
+
+65
+00:02:56,480 --> 00:02:59,480
+want to use dialogues, we want to import
+
+66
+00:02:59,480 --> 00:03:02,000
+the module like this, you probably
+
+67
+00:03:02,000 --> 00:03:04,159
+remember this, we have seen this before.
+
+68
+00:03:04,159 --> 00:03:07,430
+Inside our mouse area, we are going to
+
+69
+00:03:07,430 --> 00:03:10,159
+define a color dialogue component.
+
+70
+00:03:10,159 --> 00:03:14,480
+Ctrl+A, Ctrl+I to  align. And it is
+
+71
+00:03:14,480 --> 00:03:17,180
+nothing fancy, we have an ID, it has a
+
+72
+00:03:17,180 --> 00:03:19,579
+title that tells us to choose a color,
+
+73
+00:03:19,579 --> 00:03:21,979
+and we want to know when the color is
+
+74
+00:03:21,979 --> 00:03:24,620
+selected, we know that in the onAccepted
+
+75
+00:03:24,620 --> 00:03:26,750
+method here, and the new color is going
+
+76
+00:03:26,750 --> 00:03:28,909
+to be stored in the color property of
+
+77
+00:03:28,909 --> 00:03:31,280
+the color dialogue. When it is rejected,
+
+78
+00:03:31,280 --> 00:03:34,609
+we say "Cancelled". Notice that we are
+
+79
+00:03:34,609 --> 00:03:37,370
+using the wrong ID here, so we should say
+
+80
+00:03:37,370 --> 00:03:42,199
+rectId, and set the color of this
+
+81
+00:03:42,199 --> 00:03:44,419
+rectangle here. So what we want to do
+
+82
+00:03:44,419 --> 00:03:47,000
+when we click, we're going to say 
+
+83
+00:03:47,000 --> 00:03:52,790
+color.dialogId.open(). We're going to open the
+
+84
+00:03:52,790 --> 00:03:56,689
+dialog. If you run the application, mm-hmm,
+
+85
+00:03:56,689 --> 00:03:59,720
+we see our window here, but we have the
+
+86
+00:03:59,720 --> 00:04:01,489
+possibility to click inside the
+
+87
+00:04:01,489 --> 00:04:03,829
+rectangle and choose a different color
+
+88
+00:04:03,829 --> 00:04:06,889
+if we wish so, ok. The color becomes blue.
+
+89
+00:04:06,889 --> 00:04:10,310
+But if we close the application and open
+
+90
+00:04:10,310 --> 00:04:13,310
+it again, you see that the color that we
+
+91
+00:04:13,310 --> 00:04:15,859
+set is lost. And if we move it for
+
+92
+00:04:15,859 --> 00:04:18,380
+example to the top here change the color
+
+93
+00:04:18,380 --> 00:04:21,190
+to black,
+
+94
+00:04:23,110 --> 00:04:29,500
+hit okay, close up, and again, you see that
+
+95
+00:04:29,500 --> 00:04:33,349
+location data and color data is lost. We
+
+96
+00:04:33,349 --> 00:04:35,210
+want to change that, we want to save all
+
+97
+00:04:35,210 --> 00:04:38,180
+this information using settings. So we're
+
+98
+00:04:38,180 --> 00:04:40,129
+going to go below the rectangle here and
+
+99
+00:04:40,129 --> 00:04:46,539
+say Settings... We want to set the category
+
+100
+00:04:46,539 --> 00:04:51,169
+for this set of settings. Let's call this
+
+101
+00:04:51,169 --> 00:04:54,470
+"window" because it is window related data.
+
+102
+00:04:54,470 --> 00:04:57,380
+And the way you store data automatically:
+
+103
+00:04:57,380 --> 00:05:00,440
+you define a set of property aliases
+
+104
+00:05:00,440 --> 00:05:03,380
+that link to the data that you want to
+
+105
+00:05:03,380 --> 00:05:05,990
+save. So for example for the X location
+
+106
+00:05:05,990 --> 00:05:08,240
+for this window, we're going to say
+
+107
+00:05:08,240 --> 00:05:18,620
+property alias, and say window... we need to
+
+108
+00:05:18,620 --> 00:05:23,289
+give the window an ID... let's say rootId
+
+109
+00:05:23,289 --> 00:05:28,550
+and we're going to say here rootId.x.
+
+110
+00:05:28,550 --> 00:05:30,979
+And we're going to do the same for Y,
+
+111
+00:05:30,979 --> 00:05:34,669
+width, and height, so we can copy this and
+
+112
+00:05:34,669 --> 00:05:39,830
+paste it a couple of times. This is going
+
+113
+00:05:39,830 --> 00:05:51,400
+to be y, width, and height. And
+
+114
+00:05:59,110 --> 00:06:02,120
+you may not believe it, but just by doing
+
+115
+00:06:02,120 --> 00:06:05,270
+this you are instructing your system to
+
+116
+00:06:05,270 --> 00:06:08,270
+keep track of these values for you, okay.
+
+117
+00:06:08,270 --> 00:06:11,029
+When the X property changes for this
+
+118
+00:06:11,029 --> 00:06:13,279
+window, we're going to store that, and
+
+119
+00:06:13,279 --> 00:06:15,529
+next time when we run the application, it
+
+120
+00:06:15,529 --> 00:06:17,509
+is going to get the data from these
+
+121
+00:06:17,509 --> 00:06:19,880
+settings here. Notice that the default
+
+122
+00:06:19,880 --> 00:06:22,669
+value for this thing is set here, so the
+
+123
+00:06:22,669 --> 00:06:24,770
+x position is going to be the default
+
+124
+00:06:24,770 --> 00:06:26,960
+one, the Y position is going to be the
+
+125
+00:06:26,960 --> 00:06:29,210
+default one, width and height are going
+
+126
+00:06:29,210 --> 00:06:31,580
+to be these things here. Let's see what
+
+127
+00:06:31,580 --> 00:06:33,800
+happens on the location data of our
+
+128
+00:06:33,800 --> 00:06:36,169
+window if we run.
+
+129
+00:06:36,169 --> 00:06:39,229
+Let's move it in the top-left corner of
+
+130
+00:06:39,229 --> 00:06:43,729
+our screen here, and reduce the size of
+
+131
+00:06:43,729 --> 00:06:45,229
+it, make it really small.
+
+132
+00:06:45,229 --> 00:06:48,800
+Let's close the application, run it again,
+
+133
+00:06:48,800 --> 00:06:52,159
+and you see that our settings are not
+
+134
+00:06:52,159 --> 00:06:55,009
+saved. We expected the settings to be
+
+135
+00:06:55,009 --> 00:06:58,189
+saved, what is wrong? Well, if we go back
+
+136
+00:06:58,189 --> 00:07:01,009
+to the documentation, if you scroll down
+
+137
+00:07:01,009 --> 00:07:02,860
+a little bit, you're going to see
+
+138
+00:07:02,860 --> 00:07:05,749
+application identifiers here. So these
+
+139
+00:07:05,749 --> 00:07:07,699
+are the settings that are specific to
+
+140
+00:07:07,699 --> 00:07:09,560
+your application, and you have to parse in
+
+141
+00:07:09,560 --> 00:07:11,900
+things like this, okay: organization
+
+142
+00:07:11,900 --> 00:07:14,870
+name, organization domain, application
+
+143
+00:07:14,870 --> 00:07:17,330
+name, if you don't parse in these settings,
+
+144
+00:07:17,330 --> 00:07:19,129
+your settings are not going to be saved,
+
+145
+00:07:19,129 --> 00:07:22,250
+because obviously your application does
+
+146
+00:07:22,250 --> 00:07:24,560
+not have an identity, and if the system
+
+147
+00:07:24,560 --> 00:07:26,569
+saves your data, it's not going to know
+
+148
+00:07:26,569 --> 00:07:29,569
+who the data belongs to. So short story
+
+149
+00:07:29,569 --> 00:07:32,000
+is you have to set this. And if you
+
+150
+00:07:32,000 --> 00:07:34,039
+notice that we set this in
+
+151
+00:07:34,039 --> 00:07:38,900
+the main.cpp file, the C++ file of your
+
+152
+00:07:38,900 --> 00:07:42,259
+qml project, so we can go back to our
+
+153
+00:07:42,259 --> 00:07:46,699
+project here, go in sources, open main.cpp,
+
+154
+00:07:46,699 --> 00:07:51,770
+go below where we define app here,
+
+155
+00:07:51,770 --> 00:07:55,279
+go below it, and put in things like this...
+
+156
+00:07:55,279 --> 00:07:58,909
+Ctrl+A Ctrl+I to align, okay. We are
+
+157
+00:07:58,909 --> 00:08:02,060
+setting the organization name, we are
+
+158
+00:08:02,060 --> 00:08:04,189
+setting the domain, and we are setting
+
+159
+00:08:04,189 --> 00:08:07,069
+the application name, okay. Do this 
+
+160
+00:08:07,069 --> 00:08:09,620
+you can parse in whatever data
+
+161
+00:08:09,620 --> 00:08:11,029
+you want, you can parse in whatever
+
+162
+00:08:11,029 --> 00:08:14,240
+organization name, parse in a domain, you
+
+163
+00:08:14,240 --> 00:08:16,370
+can even parse this if you want, I don't
+
+164
+00:08:16,370 --> 00:08:19,569
+mind, and you can parse in "SettingsDemo".
+
+165
+00:08:19,569 --> 00:08:23,960
+Now, if we run the application, you see
+
+166
+00:08:23,960 --> 00:08:29,060
+that location data is saved. I can change
+
+167
+00:08:29,060 --> 00:08:31,610
+this, I can make it... I can make this
+
+168
+00:08:31,610 --> 00:08:34,880
+really really big, and move it to the
+
+169
+00:08:34,880 --> 00:08:37,510
+right, for example, close the application,
+
+170
+00:08:37,510 --> 00:08:42,078
+open it again, and you see that location
+
+171
+00:08:42,078 --> 00:08:45,930
+and size information is stored for us.
+
+172
+00:08:45,930 --> 00:08:48,089
+This is how you store data automatically,
+
+173
+00:08:48,089 --> 00:08:50,190
+you put whatever data that you want to
+
+174
+00:08:50,190 --> 00:08:53,279
+save in their settings like this, and the
+
+175
+00:08:53,279 --> 00:08:55,290
+data is going to be saved. Another thing
+
+176
+00:08:55,290 --> 00:08:57,420
+worth seeing is that you can break your
+
+177
+00:08:57,420 --> 00:09:00,000
+settings into categories, and we are
+
+178
+00:09:00,000 --> 00:09:01,740
+going to do that. We're going to create
+
+179
+00:09:01,740 --> 00:09:07,680
+another settings component, category is
+
+180
+00:09:07,680 --> 00:09:12,420
+going to be colors, you can do whatever
+
+181
+00:09:12,420 --> 00:09:15,630
+you want in here, and we are going to
+
+182
+00:09:15,630 --> 00:09:18,680
+say property
+
+183
+00:09:18,680 --> 00:09:26,670
+alias rectColor... it's going to be 
+
+184
+00:09:26,670 --> 00:09:33,480
+rectId.color. And just like this, it is
+
+185
+00:09:33,480 --> 00:09:35,820
+going to keep track of the color that we
+
+186
+00:09:35,820 --> 00:09:37,800
+have in the rectangle here. In other
+
+187
+00:09:37,800 --> 00:09:41,279
+words, if we change it like we do here,
+
+188
+00:09:41,279 --> 00:09:43,529
+the new change is going to be saved.
+
+189
+00:09:43,529 --> 00:09:47,640
+Let's run, choose the color, let's make it
+
+190
+00:09:47,640 --> 00:09:51,810
+green like this, hit OK, make this thing
+
+191
+00:09:51,810 --> 00:09:55,800
+really small like this, put it in the
+
+192
+00:09:55,800 --> 00:09:58,380
+bottom left corner of the window, close
+
+193
+00:09:58,380 --> 00:10:01,100
+the application, open it again,
+
+194
+00:10:01,100 --> 00:10:03,990
+you see that even the color is saved.
+
+195
+00:10:03,990 --> 00:10:09,390
+Let's make it yellow, hit ok, put it in the
+
+196
+00:10:09,390 --> 00:10:13,620
+top like this, close the application, open
+
+197
+00:10:13,620 --> 00:10:16,980
+it again, you see that everything is
+
+198
+00:10:16,980 --> 00:10:19,890
+saved. This is really convenient, and it
+
+199
+00:10:19,890 --> 00:10:21,060
+works really well
+
+200
+00:10:21,060 --> 00:10:22,680
+if you want to save data, you don't have
+
+201
+00:10:22,680 --> 00:10:25,140
+to do a lot of things, and it is very
+
+202
+00:10:25,140 --> 00:10:27,810
+clean looking at this, you don't have a
+
+203
+00:10:27,810 --> 00:10:31,290
+lot of garbage that saves and loads your
+
+204
+00:10:31,290 --> 00:10:34,829
+data. But the cost is that every time the
+
+205
+00:10:34,829 --> 00:10:37,260
+property changes, you are going to save
+
+206
+00:10:37,260 --> 00:10:39,360
+it in your application, and this can be a
+
+207
+00:10:39,360 --> 00:10:41,970
+huge drown on your performance, so you
+
+208
+00:10:41,970 --> 00:10:43,980
+want to be careful when you use this. And
+
+209
+00:10:43,980 --> 00:10:46,440
+a better way if you don't want to pay
+
+210
+00:10:46,440 --> 00:10:49,410
+this performance cost is to save the
+
+211
+00:10:49,410 --> 00:10:51,450
+data yourself, and choose when you save
+
+212
+00:10:51,450 --> 00:10:53,399
+the data. And in the next lecture we're
+
+213
+00:10:53,399 --> 00:10:55,500
+going to show you how you can exactly do
+
+214
+00:10:55,500 --> 00:00:00,000
+that. I'll see you there
+

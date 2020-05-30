@@ -1,0 +1,671 @@
+1
+00:00:00,000 --> 00:00:02,329
+Trong bài này chúng ta sẽ tìm hiểu về các
+
+2
+00:00:02,336 --> 00:00:05,167
+đặc tính đi kèm với key và cách sử dụng
+
+3
+00:00:05,167 --> 00:00:07,412
+để thêm tính năng cho các thành phần
+
+4
+00:00:07,415 --> 00:00:10,030
+QML. Vậy các đặc tính đi kèm với key là gì?
+
+5
+00:00:10,034 --> 00:00:12,409
+Đó là các đặc tính được đính vào các
+
+6
+00:00:12,417 --> 00:00:15,141
+thành phần QML để trao cho các thành phần
+
+7
+00:00:15,152 --> 00:00:17,691
+này những khả năng mà trước đó chúng không có
+
+8
+00:00:17,698 --> 00:00:20,272
+để giúp mọi việc rõ ràng hơn.
+
+9
+00:00:20,279 --> 00:00:22,803
+Hãy mở QT Creator và thực hành với tôi.
+
+10
+00:00:22,811 --> 00:00:27,260
+Đây là QT Creator của chúng ta. Như mọi khi
+
+11
+00:00:27,885 --> 00:00:30,181
+ta sẽ tạo một dự án mới.
+
+12
+00:00:30,186 --> 00:00:33,413
+Ta sẽ gọi dự án này là demo đặc tính đi kèm với key,
+
+13
+00:00:33,415 --> 00:00:35,510
+lưu dự án ở thư mục thông thường, chọn
+
+14
+00:00:35,517 --> 00:00:42,761
+phiên bản QT. Chọn Q và
+
+15
+00:00:42,771 --> 00:00:46,701
+kết thúc. Ta sẽ đổi tiêu đề thành
+
+16
+00:00:46,701 --> 00:00:50,701
+Keys attached và thêm một hình chữ nhật vào bên trong.
+
+17
+00:00:50,711 --> 00:00:59,581
+Chúng ta sẽ nhập rectangle, đặt độ
+
+18
+00:00:59,636 --> 00:01:09,240
+rộng là 300, chiều cao là 50.
+
+19
+00:01:09,248 --> 00:01:15,461
+Màu là dodgerblue. Ta sẽ đặt hình
+
+20
+00:01:15,461 --> 00:01:20,820
+này ở trung tâm đối tượng parent và đặt focused
+
+21
+00:01:20,828 --> 00:01:24,791
+thành true. Ta muốn đối tượng này nhận được focus để
+
+22
+00:01:24,791 --> 00:01:28,100
+nhận các key events. Việc cần làm đó là
+
+23
+00:01:28,469 --> 00:01:35,253
+nhập key cho số 1. Ví dụ, press (nhấn nút).
+
+24
+00:01:35,253 --> 00:01:38,074
+Và console.log.
+
+25
+00:01:41,396 --> 00:01:45,544
+Nhấn phím một. Ta sẽ chạy thử
+
+26
+00:01:45,554 --> 00:01:48,383
+để xem ứng dụng hoạt động thế nào.
+
+27
+00:01:48,394 --> 00:01:50,686
+Có thể bạn đã đoán rằng chúng ta sẽ
+
+28
+00:01:50,693 --> 00:01:54,175
+nhấn phím 1 trên bàn phím
+
+29
+00:01:54,175 --> 00:01:57,366
+và ta sẽ nhận được tin nhắn trên
+
+30
+00:01:57,366 --> 00:02:00,084
+bảng thông báo của ứng dụng để biết
+
+31
+00:02:00,087 --> 00:02:03,035
+ứng dụng có hoạt động như mong đợi không.
+Tôi nhấn
+
+32
+00:02:03,036 --> 00:02:05,694
+vào phím 1 và bạn có thể thấy thông báo
+tôi đã nhấn phím 1. Đây là
+
+33
+00:02:05,699 --> 00:02:08,714
+cách ghi lại các event trong đối tượng
+
+34
+00:02:08,726 --> 00:02:12,105
+QML. Bạn cung cấp focus cho đối tượng
+
+35
+00:02:12,113 --> 00:02:14,543
+nếu đối tượng chưa có, sau đó xử lý event
+
+36
+00:02:14,549 --> 00:02:16,546
+cho các key khác nhau như tôi đã làm.
+
+37
+00:02:16,554 --> 00:02:19,575
+Nhấn phím 1. Để xem danh sách
+
+38
+00:02:19,576 --> 00:02:22,225
+đầy đủ các event, hãy mở
+
+39
+00:02:22,226 --> 00:02:24,643
+tài liệu và tìm keys (khóa). Và
+
+40
+00:02:24,651 --> 00:02:28,755
+nếu bạn kéo xuống phần signals (tín hiệu) ở đây
+
+41
+00:02:29,057 --> 00:02:30,934
+bạn sẽ thấy tất cả các tín hiệu
+
+42
+00:02:30,934 --> 00:02:34,559
+có thể xử lý ở đây. Nhưng danh sách các tín hiệu
+
+43
+00:02:34,566 --> 00:02:37,719
+này không đầy đủ, không chứa hết các tín hiệu
+
+44
+00:02:37,727 --> 00:02:39,697
+và đó là lí do vì sao họ
+
+45
+00:02:39,705 --> 00:02:42,340
+cung cấp event pressed này, trong đó bạn
+
+46
+00:02:42,340 --> 00:02:45,199
+có thể tự mình kiểm tra clicked event.
+
+47
+00:02:45,203 --> 00:02:49,539
+Ở đây ta sẽ thực hiện
+
+48
+00:02:49,546 --> 00:02:53,999
+key onpressed.
+
+49
+00:02:54,003 --> 00:02:57,507
+Xử lý event đó. Và từ
+
+50
+00:02:57,514 --> 00:02:59,579
+tài liệu, bạn sẽ thấy event pressed
+
+51
+00:02:59,579 --> 00:03:03,239
+được chuyền vào key event, và
+
+52
+00:03:03,243 --> 00:03:06,809
+event này lấy đặc tính là phím được nhấn.
+
+53
+00:03:06,817 --> 00:03:09,347
+Ta có thể kiểm tra. Tiếp theo,
+
+54
+00:03:09,347 --> 00:03:11,319
+ta sẽ kiểm tra điều này. Chúng ta sẽ
+
+55
+00:03:11,319 --> 00:03:19,802
+xem event key có bằng QT key 1
+
+56
+00:03:19,808 --> 00:03:26,519
+không, nếu có ta sẽ xuất ra kết quả.
+
+57
+00:03:26,522 --> 00:03:32,171
+Chúng ta sẽ hiện một thông báo ở đây.
+
+58
+00:03:32,171 --> 00:03:35,368
+console.log. Nhấn phím 1,
+
+59
+00:03:35,369 --> 00:03:37,659
+ta sẽ lược bỏ phần này để đảm bảo
+
+60
+00:03:37,661 --> 00:03:40,948
+khóa đang hoạt động. Chạy
+
+61
+00:03:40,959 --> 00:03:45,268
+ứng dụng. Nhấn phím 1. Bạn có thể thấy
+
+62
+00:03:45,273 --> 00:03:48,591
+ta đã nhận được event. Có hai cách
+
+63
+00:03:48,591 --> 00:03:51,877
+để ghi lại key event trong
+
+64
+00:03:51,879 --> 00:03:52,537
+ứng dụng
+
+65
+00:03:52,544 --> 00:03:54,997
+QML. Bạn có thể ghi lại event
+
+66
+00:03:55,005 --> 00:03:57,918
+cho các event cụ thể được cung cấp
+
+67
+00:03:57,924 --> 00:04:00,738
+ở đây, hoặc có thể sử dụng event pressed
+
+68
+00:04:00,742 --> 00:04:04,399
+và kiểm tra khóa đã được nhấn
+
+69
+00:04:04,405 --> 00:04:08,009
+và thực hiện các hành động phù hợp
+
+70
+00:04:08,009 --> 00:04:10,307
+trong ứng dụng QML. Nếu bạn
+
+71
+00:04:10,307 --> 00:04:14,790
+có hai tín hiệu được xử lý thì sao. Hãy xem
+
+72
+00:04:14,794 --> 00:04:15,401
+điều gì sẽ xảy ra.
+
+73
+00:04:15,408 --> 00:04:20,380
+Chạy ứng dụng. Nhấn vào 1.
+
+74
+00:04:20,380 --> 00:04:24,339
+Bạn có thể thấy một tín hiệu đã được
+phát ra. Tín hiệu
+
+75
+00:04:24,350 --> 00:04:26,440
+còn lại không được phát ra. Vậy tín hiệu
+
+76
+00:04:26,446 --> 00:04:29,080
+nào đang được phát ra. Để phân biệt
+
+77
+00:04:29,083 --> 00:04:32,501
+ta sẽ đánh dấu trong bảng điều khiển. Ví dụ
+
+78
+00:04:32,501 --> 00:04:37,589
+đây là tín hiệu cụ thể.
+
+79
+00:04:37,597 --> 00:04:45,852
+Chúng ta sẽ ghi tín hiệu cụ thể
+
+80
+00:04:45,858 --> 00:04:51,499
+và tín hiệu chung. Chạy ứng dụng. Nếu nhấn vào
+
+81
+00:04:51,506 --> 00:04:55,071
+1, bạn sẽ thấy tín hiệu cụ thể
+
+82
+00:04:55,077 --> 00:04:59,219
+được ưu tiên hơn tín hiệu chung.
+
+83
+00:04:59,226 --> 00:05:02,000
+Nếu muốn gọi cả hai handler này,
+
+84
+00:05:02,001 --> 00:05:05,539
+bạn cần tìm cách để nhận biệt
+
+85
+00:05:05,544 --> 00:05:08,191
+phím 1 được nhấn. Hãy tạo cơ hội
+
+86
+00:05:08,195 --> 00:05:12,071
+cho handler thứ hai được chạy. Và để
+
+87
+00:05:12,071 --> 00:05:17,961
+làm điều đó ta sẽ nhập event accepted và
+
+88
+00:05:17,971 --> 00:05:21,220
+đặt giá trị false. Điều gì sẽ xảy ra?
+
+89
+00:05:21,222 --> 00:05:25,420
+Sự kiện này sẽ được đánh dấu là không
+được xử lý
+
+90
+00:05:25,889 --> 00:05:28,442
+và các handler tín hiệu khác sẽ
+
+91
+00:05:28,541 --> 00:05:30,350
+được khởi động để
+
+92
+00:05:30,358 --> 00:05:32,151
+tập trung xử lý event này. Trong trường hợp này
+
+93
+00:05:32,380 --> 00:05:34,851
+khóa onpressed sẽ được kích hoạt và ta sẽ
+
+94
+00:05:35,449 --> 00:05:37,913
+ghi lại ở đây và xuất ra
+
+95
+00:05:38,169 --> 00:05:40,801
+tin nhắn ở trình điều khiển ở đây. Hãy
+
+96
+00:05:41,079 --> 00:05:47,409
+chạy thử ứng dụng. Nhấn 1. Bạn sẽ thấy
+
+97
+00:05:47,630 --> 00:05:50,870
+cả hai handler tín hiệu đều được gọi.
+
+98
+00:05:50,971 --> 00:05:53,671
+Để chứng minh ta sẽ cài đặt
+
+99
+00:05:53,801 --> 00:05:56,631
+đặc tính eventaccepted này thành true
+
+100
+00:05:56,740 --> 00:05:59,408
+và bạn sẽ thấy chỉ có các tín hiệu
+
+101
+00:05:59,528 --> 00:06:01,689
+cụ thể được khởi động và xử lý.
+
+102
+00:06:01,750 --> 00:06:04,559
+Chỉ một tín hiệu, đó là tín hiệu cụ thể.
+
+103
+00:06:04,691 --> 00:06:07,530
+Một điều nữa tôi muốn các bạn biết đó là cách
+
+104
+00:06:07,621 --> 00:06:10,118
+làm việc với các modifier. Làm thế nào để biết
+
+105
+00:06:10,280 --> 00:06:12,880
+người dùng đã nhấn phím
+
+106
+00:06:13,060 --> 00:06:16,270
+trong khi nhấn các phím khác, vị dụ ctrl,
+
+107
+00:06:16,361 --> 00:06:19,690
+shift, vân vân. Ta sẽ thêm
+
+108
+00:06:19,883 --> 00:06:23,961
+một key handler khác. Ta cần
+
+109
+00:06:24,073 --> 00:06:29,781
+ghi lại handler cho key.
+
+110
+00:06:29,822 --> 00:06:32,841
+Ta cần phát hiện khi người dùng
+
+111
+00:06:33,016 --> 00:06:35,879
+nhấn phím 5 trong khi
+
+112
+00:06:36,069 --> 00:06:38,351
+nhấn phím điều khiển ctrl.
+
+113
+00:06:38,510 --> 00:06:45,871
+Ta sẽ phải nhập event.modifiers = control modifier.
+
+114
+00:06:45,981 --> 00:06:54,642
+Và phải nhập pressed control 5. Nếu
+
+115
+00:06:54,772 --> 00:07:03,931
+không, OK. Có thể bạn đang tự hỏi
+
+116
+00:07:04,192 --> 00:07:20,981
+làm thế nào tôi biết được việc này.
+
+117
+00:07:21,112 --> 00:07:24,670
+Hãy quay trở lại tài liệu.
+
+118
+00:07:24,870 --> 00:07:27,682
+Đây là nguồn thông tin
+
+119
+00:07:27,811 --> 00:07:28,598
+xác thực nhất
+
+120
+00:07:28,730 --> 00:07:32,692
+nếu cảm thấy nghi ngờ. Hãy quay trở lại một chút.
+
+121
+00:07:32,820 --> 00:07:37,941
+Khi phím 5 được nhấn, bạn có thể thấy
+
+122
+00:07:38,072 --> 00:07:41,071
+có một tham số event
+
+123
+00:07:41,162 --> 00:07:44,051
+đã được truyền ở đây. Hãy tìm hiểu tham số này.
+
+124
+00:07:44,051 --> 00:07:47,201
+Tham số có đặc tính modifer, cho biết
+
+125
+00:07:47,201 --> 00:07:50,101
+modifer có thể truyền ở đây. Ta cần
+
+126
+00:07:50,111 --> 00:07:53,406
+quan tâm đến modifier contorl,
+
+127
+00:07:53,406 --> 00:07:55,795
+cho biết khi phím ctrl trên bàn phím
+
+128
+00:07:55,956 --> 00:07:58,424
+được nhấn. Đó là cách kiểm tra.
+
+129
+00:07:58,424 --> 00:08:00,053
+Và họ đã cung cấp một ví dụ rất hay
+
+130
+00:08:00,184 --> 00:08:02,193
+để ta tìm hiểu. Nhưng ta sẽ kiểm tra
+
+131
+00:08:02,294 --> 00:08:04,826
+trong mã lập trình của chính mình. Hãy chạy thử
+
+132
+00:08:04,955 --> 00:08:06,245
+ứng dụng.
+
+133
+00:08:06,397 --> 00:08:10,913
+Tôi nhấn phím 5 để nhận thông báo
+
+134
+00:08:10,976 --> 00:08:14,364
+đã nhấn phím 5 thông thường. Tôi sẽ giữ phím ctrl và
+
+135
+00:08:14,474 --> 00:08:17,902
+nhấn phím 5, và bạn có thể thấy
+
+136
+00:08:18,003 --> 00:08:21,544
+thông báo tôi đã nhấn ctrl 5. Rất tốt.
+
+137
+00:08:21,672 --> 00:08:24,585
+Bạn nên làm tương tự
+
+138
+00:08:24,652 --> 00:08:28,576
+để kiểm tra các modifier trong khi sử dụng
+
+139
+00:08:28,674 --> 00:08:31,874
+tín hiệu unpressed. Bằng cách nào?
+
+140
+00:08:31,935 --> 00:08:35,865
+Theo tôi ta có thể gian lận một chút
+
+141
+00:08:35,991 --> 00:08:37,421
+bằng tài liệu này. Bạn có thể thấy.
+
+142
+00:08:37,503 --> 00:08:42,772
+Bạn có thể nhấn vào đây và chỉnh sửa cho phù hợp
+
+143
+00:08:42,883 --> 00:08:45,644
+với nhu cầu. Tôi sẽ lược bỏ phần này
+
+144
+00:08:45,793 --> 00:08:48,173
+để có cùng hiệu ứng với
+
+145
+00:08:48,273 --> 00:08:50,604
+phần này. Tôi sẽ dán
+
+146
+00:08:50,733 --> 00:08:53,173
+đoạn mã của tôi vào. Ta cần kiểm tra
+
+147
+00:08:53,333 --> 00:08:56,045
+phím số 5, vì vậy ta sẽ đổi
+
+148
+00:08:56,145 --> 00:09:03,193
+chỗ này thành key_5. Kéo xuống key_5.
+
+149
+00:09:03,333 --> 00:09:06,125
+Ta sẽ chuyển thành 3 dấu =
+
+150
+00:09:06,294 --> 00:09:08,774
+cho chắc chắn. Ta
+
+151
+00:09:08,933 --> 00:09:14,232
+cũng cần kiểm tra modifier ctrl.
+
+152
+00:09:14,374 --> 00:09:23,012
+Ta sẽ sao chép và đặt vào đây. Chúng ta
+
+153
+00:09:23,244 --> 00:09:27,044
+sẽ kiểm tra xem phím được nhấn có phải
+
+154
+00:09:27,211 --> 00:09:29,255
+phím số 5 không. Và ta sẽ thực hiện một
+
+155
+00:09:29,361 --> 00:09:31,823
+tác vụ end bằng biểu thức này để
+
+156
+00:09:31,967 --> 00:09:34,655
+kiểm tra xem phím ctrl
+
+157
+00:09:34,774 --> 00:09:37,472
+có được nhấn không. Nếu đúng
+
+158
+00:09:37,533 --> 00:09:40,493
+ta sẽ biết ctrl 5 đã được nhấn.
+
+159
+00:09:40,606 --> 00:09:44,726
+Chạy ứng dụng và nhấn ctrl 5. bạn
+
+160
+00:09:44,884 --> 00:09:48,676
+sẽ thấy ứng dụng đã hoạt động.
+
+161
+00:09:48,862 --> 00:09:51,843
+Tôi hy vọng video này đã giúp các bạn hiểu thêm về cách
+
+162
+00:09:51,976 --> 00:09:54,574
+sử dụng đặc tính đi kèm với key để
+
+163
+00:09:54,714 --> 00:09:57,544
+xử lý các key trong ứng dụng QML.
+
+164
+00:09:57,703 --> 00:09:59,543
+Trong bài tiếp theo chúng ta sẽ tìm hiểu
+
+165
+00:09:59,684 --> 00:10:02,244
+cách chuyển focus giữa
+
+166
+00:10:02,344 --> 00:10:04,681
+các thành phần QML trong
+
+167
+00:10:04,784 --> 00:10:07,039
+giao diện người dùng. Hẹn gặp lại.

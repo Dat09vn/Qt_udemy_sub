@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:03,149
+Tất cả chương này chúng ta nói về đầu vào của người dùng. Ta
+
+2
+00:00:03,149 --> 00:00:05,069
+sẽ xem xét các phần tử
+
+3
+00:00:05,069 --> 00:00:07,649
+cho phép người dùng nhập một số văn bản như
+
+4
+00:00:07,649 --> 00:00:10,320
+TextInput và TextEdit. Ta sẽ
+
+5
+00:00:10,320 --> 00:00:12,599
+tìm hiểu thêm về MouseArea mà ta
+
+6
+00:00:12,599 --> 00:00:15,179
+đã sử dụng và xem xét thêm một số
+
+7
+00:00:15,179 --> 00:00:17,640
+tín hiệu của nó. Ta cũng sẽ xem xét làm thế nào
+
+8
+00:00:17,640 --> 00:00:19,650
+để có thể biết phím nào trên bàn phím
+
+9
+00:00:19,650 --> 00:00:22,260
+đã được bấm. Một điều khác chúng ta sẽ thấy là
+
+10
+00:00:22,260 --> 00:00:24,900
+cách ta chuyển tiêu điểm giữa ta hoặc các
+
+11
+00:00:24,900 --> 00:00:27,300
+thành phần UI bằng cách sử dụng KeyNavulation và cách
+
+12
+00:00:27,300 --> 00:00:30,179
+ta đảm bảo rằng tiêu điểm đó được chuyển
+
+13
+00:00:30,179 --> 00:00:33,030
+chính xác trong các thành phần tùy chỉnh của mình. Trong
+
+14
+00:00:33,030 --> 00:00:35,130
+các bài giảng tiếp theo, ta sẽ giải quyết
+
+15
+00:00:35,130 --> 00:00:37,559
+những chủ đề này, bắt đầu với TextInput
+
+16
+00:00:37,559 --> 00:00:39,540
+trong phần tiếp theo. Chúng ta sẽ gặp lại trong
+
+17
+00:00:39,540 --> 00:00:00,000
+bài giảng tiếp theo.
+

@@ -1,0 +1,268 @@
+1
+00:00:00,000 --> 00:00:02,070
+Trong bài giảng này, chúng ta sẽ xem xét
+
+2
+00:00:02,070 --> 00:00:05,370
+phần tử nhập văn bản (text input) của QT. Đến
+
+3
+00:00:05,370 --> 00:00:07,290
+thể hiện khả năng của nó, ta sẽ xây dựng
+
+4
+00:00:07,290 --> 00:00:09,750
+bảng địa chỉ như thế này, nơi
+
+5
+00:00:09,750 --> 00:00:11,730
+người dùng được phép nhập
+
+6
+00:00:11,730 --> 00:00:14,460
+họ và tên. Hãy mở
+
+7
+00:00:14,460 --> 00:00:17,730
+QT Creator và làm "chuyện ấy". Ở đây ta đang mở
+
+8
+00:00:17,730 --> 00:00:19,680
+Qt Creator. Ta sẽ tạo
+
+9
+00:00:19,680 --> 00:00:23,699
+"project". Nó là một "QT Quick Application". Ta
+
+10
+00:00:23,699 --> 00:00:25,859
+sẽ đặt tên cho nó là "TextInputDemo",
+
+11
+00:00:25,859 --> 00:00:29,600
+lưu nó ở vị trí thông thường. Ta muốn
+
+12
+00:00:29,600 --> 00:00:31,740
+sử dụng vị trí này làm vị trí mặc định bởi vì
+
+13
+00:00:31,740 --> 00:00:37,920
+đây là một chương mới. Hãy chọn
+
+14
+00:00:37,920 --> 00:00:41,550
+Kit, chọn "Desktop". Và ta có
+
+15
+00:00:41,550 --> 00:00:44,550
+"project" ở đây. Tiêu đề sẽ là
+
+16
+00:00:44,550 --> 00:00:48,960
+"TextInput ...". Ta sẽ chỉ định
+
+17
+00:00:48,960 --> 00:00:56,879
+Row (hàng). Đặt cho nó vị trí Y tiếp theo, chỉ định
+
+18
+00:00:56,879 --> 00:00:58,260
+khoảng cách 10.
+
+19
+00:00:58,260 --> 00:01:00,989
+Bạn có thể nhớ lại thành phần "Row" (hàng)
+
+20
+00:01:00,989 --> 00:01:03,480
+từ các bài giảng trước. Nó được sử dụng để
+
+21
+00:01:03,480 --> 00:01:06,780
+bố cục thành phần từ trái sang phải. Bên trong
+
+22
+00:01:06,780 --> 00:01:09,570
+chúng ta sẽ đặt một Rectangle (hình chữ nhật). Cái này dành cho
+
+23
+00:01:09,570 --> 00:01:16,350
+First Name (Họ). Bên trong chúng ta sẽ
+
+24
+00:01:16,350 --> 00:01:18,990
+đặt phần tử Text dành cho văn bản.
+
+25
+00:01:18,990 --> 00:01:34,220
+Phần tử này sẽ hoạt động như một nhãn (label). Và
+
+26
+00:01:34,220 --> 00:01:38,070
+nó phải được căn giữa trong phần tử cha (parent).
+
+27
+00:01:38,070 --> 00:01:40,930
+Bây giờ ta muốn chỉ định chiều rộng và
+
+28
+00:01:40,930 --> 00:01:43,180
+chiều cao của hình chữ nhật này theo tỉ lệ với
+
+29
+00:01:43,180 --> 00:01:46,750
+kích thước của văn bản. Nó ở đây.
+
+30
+00:01:46,750 --> 00:01:49,000
+Cách ta làm điều đó, bạn có thể biết tất cả
+
+31
+00:01:49,000 --> 00:01:52,030
+điều này từ các bài giảng trước. Chiều rộng
+
+32
+00:01:52,030 --> 00:01:57,130
+bằng firstNameLabelId.implicitWidth.
+
+33
+00:01:57,130 --> 00:02:03,270
+Ta thêm một biên độ 20. Hãy gõ lại
+
+34
+00:02:03,270 --> 00:02:10,950
+chữ width cho đẹp. Chiều cao sẽ giống nhau.
+
+35
+00:02:15,030 --> 00:02:18,480
+Hãy chạy nó để xem nó trông như thế nào.
+
+36
+00:02:18,480 --> 00:02:23,200
+Mm-hmm chúng ta có nhãn (label) FirstName.
+
+37
+00:02:23,200 --> 00:02:24,400
+Trông có vẻ ổn.
+
+38
+00:02:24,400 --> 00:02:27,070
+Ta muốn thêm một phần tử TextInput
+
+39
+00:02:27,070 --> 00:02:29,440
+ở bên trong hình chữ nhật nữa. Để
+
+40
+00:02:29,440 --> 00:02:32,500
+mọi thứ trông nhất quán một chút.
+
+41
+00:02:32,500 --> 00:02:34,180
+Vì vậy, chúng ta sẽ thêm hình chữ nhật
+
+42
+00:02:34,180 --> 00:02:46,330
+nữa. Bên trong ta sẽ đặt một
+
+43
+00:02:46,330 --> 00:02:54,580
+phần tử TextInput. ID sẽ là
+
+44
+00:02:54,580 --> 00:03:01,269
+firstName ... Nội dung sẽ là: "Type in
+
+45
+00:03:01,269 --> 00:03:07,720
+your first name". Tại sao không chứ? Và nó
+
+46
+00:03:07,720 --> 00:03:10,200
+cần được căn giữa trong phần tử cha nữa. Vì thế
+
+47
+00:03:10,200 --> 00:03:12,040
+ta sẽ gõ anchors.centerIn,
+
+48
+00:03:12,040 --> 00:03:15,820
+parent. Và nó nên có tiêu điểm (focus)
+
+49
+00:03:15,820 --> 00:03:20,140
+nên ta phải đặt "focus: true". Nếu bạn
+
+50
+00:03:20,140 --> 00:03:22,510
+nhìn vào TextInput, hãy xem nó
+
+51
+00:03:22,510 --> 00:03:25,420
+tài liệu. Ta chọn nó, nhấn F1. Nó
+
+52
+00:03:25,420 --> 00:03:28,090
+sẽ mở ra. Trong phần trợ giúp ở bên phải
+
+53
+00:03:28,090 --> 00:03:30,790
+ở đây, bấm vào nút này trên đầu trang. Mở ra
+
+54
+00:03:30,790 --> 00:03:33,130
+chế độ trợ giúp để nó hiển thị ở chế độ
+
+55
+00:03:33,130 --> 00:03:35,709
+toàn màn hình. Hãy nhìn vào tất cả
+
+56
+00:03:35,709 --> 00:03:38,579
+thành phần bao gồm cả các thành phần được kế thừa. Và
+
+57
+00:03:38,579 --> 00:03:41,110
+nếu nhìn xuống, ta sẽ thấy
+
+58
+00:03:41,110 --> 00:03:44,380
+thuộc tính được gọi là "focus" và thuộc tính này
+
+59
+00:03:44,380 --> 00:03:46,569
+quy định thành phần có được tập trung
+
+60
+00:03:46,569 --> 00:03:49,569
+trong phạm vi tiêu điểm hay không, ok?
+
+61
+00:03:49,569 --> 00:03:51,380
+Về cơ bản nó thể hiện
+
+62
+00:03:51,380 --> 00:03:53,570
+hệ thống có tiêu điểm hay không. Ta sẽ không đi
+
+63
+00:03:53,570 --> 00:03:55,970
+vào phạm vi tiêu điểm ngay bây giờ. Chúng ta
+
+64
+00:03:55,970 --> 00:03:59,510
+hãy xem xét điều đó sau trong chương này. Nhưng ta
+
+65
+00:03:59,510 --> 00:04:02,960
+có TextInput ngay bây giờ. Và chúng ta có thể chạy
+
+66
+00:04:02,960 --> 00:04:04,340
+để xem nó hoạt động như thế nào.
+
+67
+00:04:04,340 --> 00:00:00,000
+Mm-hmm bạn thấy rằng ...
+

@@ -1,0 +1,520 @@
+1
+00:00:00,000 --> 00:00:01,860
+Trong bài giảng này, ta sẽ xem xét
+
+2
+00:00:01,860 --> 00:00:05,130
+tín hiệu (signal) và khe cắm (slot) trong QT quick. Tín hiệu (signal)
+
+3
+00:00:05,130 --> 00:00:07,710
+và khe cắm (slot) cho phép ta giao tiếp
+
+4
+00:00:07,710 --> 00:00:10,559
+giữa các đối tượng khác nhau. Về cơ bản
+
+5
+00:00:10,559 --> 00:00:12,660
+ta có một đối tượng có một phần
+
+6
+00:00:12,660 --> 00:00:14,940
+thông tin. Và ta có một đối tượng khác
+
+7
+00:00:14,940 --> 00:00:17,279
+quan tâm đến phần thông tin
+
+8
+00:00:17,279 --> 00:00:20,640
+đó. Và những gì Qt cho phép ta
+
+9
+00:00:20,640 --> 00:00:23,970
+làm là cho phép chuyển phần 
+
+10
+00:00:23,970 --> 00:00:25,830
+thông tin đó giữa các đối tượng bằng
+
+11
+00:00:25,830 --> 00:00:28,650
+cơ chế tín hiệu (signal) và khe cắm (slot). Cơ chế
+
+12
+00:00:28,650 --> 00:00:31,380
+này dựa trên trình quan sát (observer),
+
+13
+00:00:31,380 --> 00:00:34,170
+mẫu thiết kế phần mềm (design pattern). Và trong mô hình này,
+
+14
+00:00:34,170 --> 00:00:36,360
+về cơ bản ta có một đối tượng đón nhận (listen)
+
+15
+00:00:36,360 --> 00:00:38,579
+một phần thông tin đến từ
+
+16
+00:00:38,579 --> 00:00:41,010
+một đối tượng khác. Được rồi, giả dụ ta có
+
+17
+00:00:41,010 --> 00:00:43,829
+một đối tượng thông báo có thông tin
+
+18
+00:00:43,829 --> 00:00:46,559
+để chia sẻ. Và ta có một đối tượng phía nhận
+
+19
+00:00:46,559 --> 00:00:48,890
+quan tâm đến thông tin. Trong
+
+20
+00:00:48,890 --> 00:00:51,780
+thực tế và cụ thể là trong QML,
+
+21
+00:00:51,780 --> 00:00:54,270
+ta thực hiện kết nối bằng cách sử dụng câu lệnh
+
+22
+00:00:54,270 --> 00:00:56,969
+như chúng ta sẽ thấy. Và khi
+
+23
+00:00:56,969 --> 00:00:58,680
+ta thực hiện xong kết nối và
+
+24
+00:00:58,680 --> 00:01:01,649
+trình thông báo gửi tín hiệu (signal) phía nhận
+
+25
+00:01:01,649 --> 00:01:04,080
+sẽ nhận tín hiệu (signal) và thực hiện
+
+26
+00:01:04,080 --> 00:01:06,570
+nó. Và nếu muốn tìm hiểu thêm về
+
+27
+00:01:06,570 --> 00:01:08,729
+khái niệm này bạn có thể truy cập liên kết này
+
+28
+00:01:08,729 --> 00:01:12,330
+tại đây. Nhưng cuốn sách của nó được giải thích
+
+29
+00:01:12,330 --> 00:01:14,610
+ở đây. Về cơ bản ta có hai đối tượng. Phía gửi
+
+30
+00:01:14,610 --> 00:01:16,799
+phát tín hiệu (signal) và gửi nó để
+
+31
+00:01:16,799 --> 00:01:19,350
+được nhận bởi các đối tượng quan tâm. Và
+
+32
+00:01:19,350 --> 00:01:21,930
+phía nhận lắng nghe tín hiệu (signal)
+
+33
+00:01:21,930 --> 00:01:24,390
+và đó là những gì khi tín hiệu (signal)
+
+34
+00:01:24,390 --> 00:01:27,000
+được phát ra. Đừng lo lắng nếu điều này chưa có
+
+35
+00:01:27,000 --> 00:01:28,439
+ý nghĩa. Bây giờ tôi sẽ cho bạn thấy
+
+36
+00:01:28,439 --> 00:01:30,299
+cách chúng ta làm việc với nhau trong
+
+37
+00:01:30,299 --> 00:01:32,759
+QML. Được rồi,tôi muốn bạn
+
+38
+00:01:32,759 --> 00:01:35,790
+khai báo tín hiệu (signal) của bạn. Ở đây bạn sẽ thấy rằng
+
+39
+00:01:35,790 --> 00:01:38,460
+tôi có một đối tượng "Rectangle". Ta đã có
+
+40
+00:01:38,460 --> 00:01:40,680
+tính chất thông thường nhưng ta muốn có một cái gì đó
+
+41
+00:01:40,680 --> 00:01:43,799
+mới ở đây. Ta có từ khóa "signal". Và
+
+42
+00:01:43,799 --> 00:01:45,540
+sau đó ta có một thứ trông giống như
+
+43
+00:01:45,540 --> 00:01:47,909
+một hàm (Function). Đây là cách ta khai báo
+
+44
+00:01:47,909 --> 00:01:50,490
+tín hiệu (signal). Ta đang khai báo tín hiệu (signal)
+
+45
+00:01:50,490 --> 00:01:53,030
+được gọi là "greet" và nó có một tham số.
+
+46
+00:01:53,030 --> 00:01:55,500
+Lưu ý rằng hiện ta chỉ có một tham số
+
+47
+00:01:55,500 --> 00:01:58,950
+nhưng ta có thể có nhiều tham số nếu như ta
+
+48
+00:01:58,950 --> 00:02:01,500
+muốn. Khi ta khai báo một tín hiệu (signal) như thế này
+
+49
+00:02:01,500 --> 00:02:03,770
+một trình xử lý cho tín hiệu (signal) đó sẽ
+
+50
+00:02:03,770 --> 00:02:06,270
+tự động được tạo ra cho ta. Nó
+
+51
+00:02:06,270 --> 00:02:08,750
+xảy ra theo cùng một cách mà ta có
+
+52
+00:02:08,750 --> 00:02:11,760
+các trình xử lý khi các thuộc tính mà ta
+
+53
+00:02:11,760 --> 00:02:13,090
+có ở đây thay đổi. Ví dụ
+
+54
+00:02:13,090 --> 00:02:14,800
+khi màu sắc thay đổi ta có thể
+
+55
+00:02:14,800 --> 00:02:17,950
+được thông báo bằng màu sắc trên, thay đổi
+
+56
+00:02:17,950 --> 00:02:19,870
+thiết lập. Ta đã sử dụng điều này khá nhiều.
+
+57
+00:02:19,870 --> 00:02:22,330
+Đó là điều tương tự cho tín hiệu (signal)
+
+58
+00:02:22,330 --> 00:02:24,670
+nhưng cách đặt tên xử lý có một chút
+
+59
+00:02:24,670 --> 00:02:27,040
+khác biệt. Trình xử lý cho cái này là
+
+60
+00:02:27,040 --> 00:02:29,650
+sẽ được đọc là onGreet và nó sẽ không
+
+61
+00:02:29,650 --> 00:02:31,900
+thay đổi. Bạn chỉ cần biết điều này
+
+62
+00:02:31,900 --> 00:02:34,299
+phần còn lại tương tự như những gì
+
+63
+00:02:34,299 --> 00:02:37,000
+chúng ta sẽ thấy. Bây giờ ta đã biết cách
+
+64
+00:02:37,000 --> 00:02:39,370
+khai báo tín hiệu (signal). Điều tiếp theo ta
+
+65
+00:02:39,370 --> 00:02:41,620
+cần biết là làm thế nào để phát tín hiệu (signal)
+
+66
+00:02:41,620 --> 00:02:44,470
+mà ta đã khai báo. Và cách ta
+
+67
+00:02:44,470 --> 00:02:46,599
+làm điều đó, ta chỉ cần gọi nó như một hàm.
+
+68
+00:02:46,599 --> 00:02:48,940
+Trong thông báo slide trước
+
+69
+00:02:48,940 --> 00:02:51,250
+ta đã xác định tín hiệu (signal) của mình là
+
+70
+00:02:51,250 --> 00:02:54,069
+greet(). Đó là một tham số
+
+71
+00:02:54,069 --> 00:02:56,890
+mạnh. Và lưu ý rằng ta phải
+
+72
+00:02:56,890 --> 00:02:58,989
+xác định loại tham số ở đây.
+
+73
+00:02:58,989 --> 00:03:01,200
+Và khi ta muốn phát nó ra. Ví dụ
+
+74
+00:03:01,200 --> 00:03:04,000
+ở đây ta muốn phát nó ra. Khi ai đó
+
+75
+00:03:04,000 --> 00:03:06,760
+nhấp vào MouseArea này , ta gọi một
+
+76
+00:03:06,760 --> 00:03:10,569
+tín hiệu (signal) tuyệt vời nằm trong hình chữ nhật
+
+77
+00:03:10,569 --> 00:03:13,540
+được xác định bởi RectangleId. Và
+
+78
+00:03:13,540 --> 00:03:15,519
+nếu ta quay trở lại ta thấy rằng
+
+79
+00:03:15,519 --> 00:03:18,310
+hình chữ nhật ở đây là RectangleId. Và đây
+
+80
+00:03:18,310 --> 00:03:20,470
+là tất cả nhu cầu cần phải phát ra
+
+81
+00:03:20,470 --> 00:03:23,170
+tín hiệu (signal). Ta thực hiện điều đó như ta gọi một
+
+82
+00:03:23,170 --> 00:03:26,160
+Hàm JavaScript cơ bản trong QML . Cool?
+
+83
+00:03:26,160 --> 00:03:29,139
+Được rồi, chúng tôi đã khai báo một tín hiệu (signal).
+
+84
+00:03:29,139 --> 00:03:31,720
+Ta đã phát nó để gửi thông tin.
+
+85
+00:03:31,720 --> 00:03:34,750
+Bây giờ ta cần kết nối máy thu
+
+86
+00:03:34,750 --> 00:03:36,819
+để nó biết về tín hiệu (signal) và
+
+87
+00:03:36,819 --> 00:03:38,620
+nó có thể làm gì đó khi tín hiệu (signal)
+
+88
+00:03:38,620 --> 00:03:41,440
+phát ra hoặc bị phát ra. Điều đầu tiên ta
+
+89
+00:03:41,440 --> 00:03:44,260
+cần làm là xác định vị trí và
+
+90
+00:03:44,260 --> 00:03:47,169
+khe cắm tạo một hàm JavaScript bình thường. Nhưng
+
+91
+00:03:47,169 --> 00:03:49,900
+nó có một tính chất có khả năng
+
+92
+00:03:49,900 --> 00:03:53,560
+được liên kết với một tín hiệu (signal). Nếu nhìn
+
+93
+00:03:53,560 --> 00:03:55,359
+vào đây ta có một hàm JavaScript bình thường
+
+94
+00:03:55,359 --> 00:03:57,730
+được gọi là myGreeting. Nó
+
+95
+00:03:57,730 --> 00:04:00,040
+có một tham số là mMessage và
+
+96
+00:04:00,040 --> 00:04:04,120
+nó có nội dung thân hàm. Trong JavaScript mỗi hàm 
+
+97
+00:04:04,120 --> 00:04:07,329
+ta định nghĩa đều có thể hoạt động như một khe cắm (slot).
+
+98
+00:04:07,329 --> 00:04:10,200
+Đây là một hành vi đặc biệt trong QML và
+
+99
+00:04:10,200 --> 00:04:12,489
+ta cần phải lưu ý về nó. Mỗi
+
+100
+00:04:12,489 --> 00:04:15,010
+hàm JavaScript có thể hoạt động như một khe cắm (slot).
+
+101
+00:04:15,010 --> 00:04:17,470
+Nói cách khác, ta có thể kết nối nó với một
+
+102
+00:04:17,470 --> 00:04:19,660
+tín hiệu (signal). Và làm thế nào để ta thực hiện kết nối?
+
+103
+00:04:19,660 --> 00:04:22,570
+ta sử dụng cú pháp này, chúng ta có ở đây. Chúng ta
+
+104
+00:04:22,570 --> 00:04:24,800
+kết nối tín hiệu (signal) với khe cắm (slot) trong
+
+105
+00:04:24,800 --> 00:04:27,590
+phương thức chưa hoàn thành của thành phần. Và đây là
+
+106
+00:04:27,590 --> 00:04:30,400
+cách ta làm điều đó, ta nhập tên của
+
+107
+00:04:30,400 --> 00:04:32,810
+tín hiệu (signal), ta nhập một dấu chấm (.) và ta nhập
+
+108
+00:04:32,810 --> 00:04:35,389
+"connect". Và sau đó ta nhập tên của
+
+109
+00:04:35,389 --> 00:04:38,419
+hàm slot mà ta đã xác định.
+
+110
+00:04:38,419 --> 00:04:41,539
+Trong trường hợp này, tín hiệu (signal) là greet
+
+111
+00:04:41,539 --> 00:04:44,900
+và vị trí của nó là myGreeting tại đây. Lưu ý rằng
+
+112
+00:04:44,900 --> 00:04:47,000
+ta không vượt qua các tham số ở đây.
+
+113
+00:04:47,000 --> 00:04:49,280
+Nhưng khi ta muốn sử dụng các tham số
+
+114
+00:04:49,280 --> 00:04:51,680
+trong khe cắm (slot) của mình, ta chỉ cần sử dụng tên tham số
+
+115
+00:04:51,680 --> 00:04:54,080
+mà ta đã sử dụng khi ta khai báo
+
+116
+00:04:54,080 --> 00:04:56,240
+hàm. Ví dụ ở đây nếu ta muốn
+
+117
+00:04:56,240 --> 00:04:58,310
+sử dụng thông số được truyền bởi
+
+118
+00:04:58,310 --> 00:05:00,860
+tín hiệu (signal) ta sẽ đề cập đến việc sử dụng
+
+119
+00:05:00,860 --> 00:05:03,169
+mMessage ở đây. Và ta đã làm
+
+120
+00:05:03,169 --> 00:05:05,840
+điều đó ở đây trong console.log(message) tại
+
+121
+00:05:05,840 --> 00:05:08,810
+khe cắm (slot). Được rồi, đây chính là tất cả những gì ta
+
+122
+00:05:08,810 --> 00:05:10,520
+cần biết để bắt đầu làm việc với
+
+123
+00:05:10,520 --> 00:05:12,409
+tín hiệu (signal) và khe cắm (slot). Trong QML,
+
+124
+00:05:12,409 --> 00:05:14,449
+khi code ta cần biết cách khai báo
+
+125
+00:05:14,449 --> 00:05:16,789
+tín hiệu (signal) của mình, ta cần biết cách kích hoạt
+
+126
+00:05:16,789 --> 00:05:18,949
+nó và ta cần biết cách kết nối
+
+127
+00:05:18,949 --> 00:05:21,590
+nó vào một khe cắm (slot). Trong bài giảng tiếp theo, chúng ta
+
+128
+00:05:21,590 --> 00:05:24,050
+sẽ mở một dự án sáng tạo QT và
+
+129
+00:05:24,050 --> 00:05:26,190
+thực sự bắt đầu chơi với chúng. Hẹn gặp lại
+
+130
+00:05:26,190 --> 00:00:00,000
+tại đó.
+

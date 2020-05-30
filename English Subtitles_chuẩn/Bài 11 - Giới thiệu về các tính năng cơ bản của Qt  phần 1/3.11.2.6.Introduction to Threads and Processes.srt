@@ -1,0 +1,139 @@
+WEBVTT
+
+00:00.710 --> 00:08.700
+Hello welcome to section two. Multithreading and multiprocessing. In this section we are first to get
+
+00:08.710 --> 00:19.510
+to know threads and processes then some hands on practices to use threads and processes in Qt. In the first
+
+00:19.530 --> 00:26.100
+video of this section. An introduction to threads and processes we will be given.
+
+00:26.150 --> 00:33.380
+We are also going to take a look at the differences between a thread and a process.
+
+00:33.380 --> 00:37.100
+Let's first introduce process. A process
+
+00:37.140 --> 00:45.180
+is fairly easy to understand. When you start a program the instance of that program has all the execution
+
+00:45.180 --> 00:49.920
+code and states and the resources it currently holds.
+
+00:50.160 --> 00:52.710
+We call that instance a process.
+
+00:53.100 --> 00:58.160
+For example you can check all running processes in your system
+
+00:58.170 --> 00:59.860
+task manager.
+
+01:00.000 --> 01:02.490
+Let's take a real life example here.
+
+01:02.910 --> 01:09.510
+When you have your browser and audio player running at the same time so you can listen to music while
+
+01:09.510 --> 01:11.770
+checking messages and the news.
+
+01:12.060 --> 01:16.410
+The audio player and the browser are running at different process.
+
+01:16.440 --> 01:25.320
+And if we take a closer look some browsers such as Google Chrome have multiple processes. Meanwhile a
+
+01:25.320 --> 01:27.960
+typical audio player has multiple threads
+
+01:31.240 --> 01:38.240
+by definition a thread is the smallest sequence of instructions that can be managed independently
+
+01:38.600 --> 01:41.110
+by scheduler. By sequence
+
+01:41.120 --> 01:50.170
+it means a thread has beginning and end. In addition to sequential instructions that a thread includes. But
+
+01:50.320 --> 01:54.200
+and you cannot start a thread without a program.
+
+01:54.220 --> 01:58.180
+Threads can only be started within the computer program.
+
+01:58.180 --> 02:06.220
+In the example of an audio player it has the GUI thread running to keep user interface responsive and
+
+02:06.220 --> 02:13.800
+response to user interactions while another thread working with audio driver to play sound. Threads
+
+02:13.810 --> 02:16.710
+can only be started within the computer program.
+
+02:16.990 --> 02:24.250
+In the example of an audio player it has a GUI thread running to keep user interface responsive and
+
+02:24.250 --> 02:32.190
+response to user interactions while another thread working with audio driver to play sound.
+
+02:32.360 --> 02:39.080
+Although in some contexts it's also called like lightweight process and a thread is similar to a process
+
+02:39.110 --> 02:40.370
+in some way.
+
+02:40.790 --> 02:45.010
+Some significant differences exist between the two.
+
+02:45.350 --> 02:53.030
+Typically thread exist inside a process and they share the resources like the memory that is allocated
+
+02:53.090 --> 02:54.920
+to the process.
+
+02:55.130 --> 03:01.080
+However processes are independent and they don't share those resources.
+
+03:01.190 --> 03:08.600
+On the other hand a crash inside of a thread leads to the crash of whole process but a process crashes.
+
+03:08.660 --> 03:12.690
+Other processes are normally not affected.
+
+03:12.920 --> 03:19.800
+In the meantime it's much easier to communicate among threads since they are sharing resources.
+
+03:19.910 --> 03:28.640
+Meanwhile the interprocess communication is often limited and tricky. By harnessing multithreading
+
+03:28.710 --> 03:36.210
+or multiprocessing which is called parallelization. Programmers can utilize modern multicore and the modern 
+
+03:36.210 --> 03:39.210
+CPU devices more effectively.
+
+03:39.210 --> 03:46.050
+This can help us reduce processing time and improve responsiveness of the application.
+
+03:46.110 --> 03:52.770
+What's more important for graphical user interface application is that by separating the UI thread and
+
+03:52.770 --> 03:57.810
+the logic heavy lifting thread the user interface can stay responsive
+
+03:58.080 --> 04:06.210
+rather than getting frozen. In Qt, there are a range of classes provided to help developers to use threads
+
+04:06.360 --> 04:14.400
+and processes in their applications. From low level Qthread to high level QConcurrent.
+
+04:14.470 --> 04:21.970
+It's fair to say that threading is getting easier despite it's a complicated topic.
+
+04:22.010 --> 04:28.540
+Now we've learned some theoretical parts. In the next video we are going to play with threads in the
+
+04:28.550 --> 04:29.330
+Qt world.

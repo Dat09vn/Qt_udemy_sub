@@ -1,0 +1,356 @@
+1
+00:00:00,000 --> 00:00:02,070
+trong bài học này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,070 --> 00:00:05,190
+một thành phần QT Quick khác đó 
+
+3
+00:00:05,190 --> 00:00:08,790
+là RangerSlide, nó căn bản là công cụ cho phép bạn
+
+4
+00:00:08,790 --> 00:00:11,580
+chọn trong một khoảng với giá trị nhỏ nhất
+
+5
+00:00:11,580 --> 00:00:14,519
+và giá trị lớn nhất được định sẵn, nào hãy 
+
+6
+00:00:14,519 --> 00:00:17,369
+mở Qt Creator và xem nó, rồi chúng ta
+
+7
+00:00:17,369 --> 00:00:20,189
+đã đang ở trong QT creator, chúng ta sẽ 
+
+8
+00:00:20,189 --> 00:00:24,119
+tạo mới project QT Quick Application
+
+9
+00:00:24,119 --> 00:00:26,670
+và đặt tên cho nó là
+
+10
+00:00:26,670 --> 00:00:29,939
+RangerSliderDemo, lưu nó vào đường 
+
+11
+00:00:29,939 --> 00:00:33,719
+dẫn thường lệ và chọn phiên bản Qt
+
+12
+00:00:33,719 --> 00:00:39,300
+rồi chọn bộ kit bạn sử dụng và ta
+
+13
+00:00:39,300 --> 00:00:41,460
+thay đổi tiêu đề ở đây thành RangerSliderDemo
+
+14
+00:00:41,460 --> 00:00:47,700
+và khai báo thư viện QT quick controls 2.4
+
+15
+00:00:47,700 --> 00:00:54,210
+cho chương trình này, tiếp theo 
+
+16
+00:00:54,210 --> 00:00:56,219
+trước khi chúng ta làm tiếp, tôi muốn
+
+17
+00:00:56,219 --> 00:00:58,410
+mở phần hướng dẫn sử dụng 
+
+18
+00:00:58,410 --> 00:01:03,140
+để cho bạn xem, ta gõ RangerSlide
+
+19
+00:01:03,140 --> 00:01:07,950
+và nếu bạn xem ở đây bạn sẽ thấy nó là một phần tử 
+
+20
+00:01:07,950 --> 00:01:11,189
+trong Quick Controls, vậy nó làm đượcgì, nó được
+
+21
+00:01:11,189 --> 00:01:13,320
+sử dụng để chọn một khoảng giá trị 
+
+22
+00:01:13,320 --> 00:01:16,439
+bằng cách kéo mỗi hướng lại
+
+23
+00:01:16,439 --> 00:01:17,310
+trên một trục
+
+24
+00:01:17,310 --> 00:01:19,070
+Căn bản là bạn có thứ giống thế này
+
+25
+00:01:19,070 --> 00:01:22,710
+Và giờ trở lại code, thêm một thành phần
+
+26
+00:01:22,710 --> 00:01:24,750
+row là đối tượng sẽ chứa 
+
+27
+00:01:24,750 --> 00:01:28,140
+RangerSlide của chúng ta, và ta chỉnh thông số
+
+28
+00:01:28,140 --> 00:01:33,240
+spacing là 40, độ rộng thì sẽ bằng với
+
+29
+00:01:33,240 --> 00:01:38,009
+độ rộng đối tượng cha, không chờ đợi nữa, bên trong này
+
+30
+00:01:38,009 --> 00:01:40,619
+ta để một RangerSlider
+
+31
+00:01:40,619 --> 00:01:44,070
+nếu bạn xem lại phần hướng dẫn và
+
+32
+00:01:44,070 --> 00:01:46,619
+xem các thuộc tính của nó, bạn sẽ thấy rằng
+
+33
+00:01:46,619 --> 00:01:49,649
+ta có thể khai báo giá trị khởi đầu
+
+34
+00:01:49,649 --> 00:01:51,930
+và giá trị thứ hai, giá trị khởi đầu 
+
+35
+00:01:51,930 --> 00:01:53,820
+đơn giản là giá trị bắt đầu cho phạm vi của bạn
+
+36
+00:01:53,820 --> 00:01:56,700
+và giá trị thứ 2 là giá trị kết thúc
+
+37
+00:01:56,700 --> 00:01:59,729
+ta đặt giá trị khởi đầu là
+
+38
+00:01:59,729 --> 00:02:06,420
+25 và giá trị thứ 2 là
+
+39
+00:02:06,420 --> 00:02:12,000
+75, sau đó chúng ta cũng phải xác định
+
+40
+00:02:12,000 --> 00:02:14,310
+giá trị from và giá trị to
+
+41
+00:02:14,310 --> 00:02:17,310
+bởi vì hai giá trị này cho biết
+
+42
+00:02:17,310 --> 00:02:20,190
+phạm vi mà nó sẽ trượt, okay chúng ta
+
+43
+00:02:20,190 --> 00:02:28,340
+cho from là 1 và to là 100, nào chạy chương 
+
+44
+00:02:28,340 --> 00:02:35,010
+trình lên bạn sẽ thấy RangerSlider ở đây
+
+45
+00:02:35,010 --> 00:02:37,140
+và bạn di chuyển nó, ta sẽ thay đổi
+
+46
+00:02:37,140 --> 00:02:39,330
+giá trị của cái chốt đầ tiên và 
+
+47
+00:02:39,330 --> 00:02:41,640
+thay đổi giá trị của cái chốt
+
+48
+00:02:41,640 --> 00:02:44,250
+thứ 2 bằng cách kéo các chốt này
+
+49
+00:02:44,250 --> 00:02:46,830
+nếu bạn muốn biết
+
+50
+00:02:46,830 --> 00:02:49,260
+giá trị nó thay đổi như thế nào
+
+51
+00:02:49,260 --> 00:02:55,170
+bạn có thể làm thế này, gõ first.onValueChanged
+
+52
+00:02:55,170 --> 00:03:09,840
+và bạn có thể xuất nó ra console, rồi
+
+53
+00:03:09,840 --> 00:03:12,030
+bạn có thể làm tương tự cho
+
+54
+00:03:12,030 --> 00:03:35,579
+giá trị thứ 2, và chạy thử nào mm-hmm, bạn thấy
+
+55
+00:03:35,579 --> 00:03:37,260
+là khi bạn chạy lần đầu tiên
+
+56
+00:03:37,260 --> 00:03:38,190
+chương trình
+
+57
+00:03:38,190 --> 00:03:42,410
+tín hiệu đã được phát ra ở đây, rồi nếu bạn kéo
+
+58
+00:03:42,410 --> 00:03:45,180
+cái chốt đầu tiên, bạn sẽ thấy 
+
+59
+00:03:45,180 --> 00:03:49,190
+giá trị thay đổi, và khi kéo nó tới cái 
+
+60
+00:03:49,190 --> 00:03:53,180
+chốt thứ 2 thì không thể kéo qua nó,
+
+61
+00:03:53,180 --> 00:03:56,310
+cái chốt thứ 2 thì không thể kéo quá
+
+62
+00:03:56,310 --> 00:03:59,819
+giá trị 100 là giá trị lớn nhất, còn nếu kéo
+
+63
+00:03:59,819 --> 00:04:04,139
+nó xuống thì không qua được cái chốt thứ 1, đây
+
+64
+00:04:04,139 --> 00:04:06,810
+là mục đích của cái thành phần này, nếu bạn 
+
+65
+00:04:06,810 --> 00:04:09,930
+cần sử dụng thì nó sẵn có cho bạn. Một thứ
+
+66
+00:04:09,930 --> 00:04:11,459
+khác mà bạn nên xem đó là bạn có thể
+
+67
+00:04:11,459 --> 00:04:14,040
+để nó theo chiều dọc, được rồi, bạn có thể
+
+68
+00:04:14,040 --> 00:04:17,390
+sử dụng thuộc tính orientation
+
+69
+00:04:17,390 --> 00:04:20,389
+cho nó thành vertical
+
+70
+00:04:20,389 --> 00:04:22,669
+còn mặc định là nó sẽ nằm theo chiều ngang
+
+71
+00:04:22,669 --> 00:04:29,419
+chúng ta sẽ copy cái này và trở lại
+
+72
+00:04:29,419 --> 00:04:34,939
+trong code và gõ orientation rồi
+
+73
+00:04:34,939 --> 00:04:38,539
+dán vào, ta chạy lại chương 
+
+74
+00:04:38,539 --> 00:04:43,729
+trình, đây là RangerSlider theo chiều dọc
+
+75
+00:04:43,729 --> 00:04:45,860
+Khi nó theo chiều dọc, cái chốt
+
+76
+00:04:45,860 --> 00:04:49,699
+đầu tiên thì ở bên dưới như bạn thấy
+
+77
+00:04:49,699 --> 00:04:52,490
+ở đây ta kéo nó thì thấy giá trị đầu tiên
+
+78
+00:04:52,490 --> 00:04:55,580
+thay đổi thành số khác, và cái chốt thứ 2
+
+79
+00:04:55,580 --> 00:04:59,840
+thì ở phía trên, okay cái này thì hơi lạ
+
+80
+00:04:59,840 --> 00:05:02,389
+tôi nghĩ chốt đầu tiên thì nên nằm 
+
+81
+00:05:02,389 --> 00:05:05,330
+ở trên còn chốt thứ hai nên nằm
+
+82
+00:05:05,330 --> 00:05:07,669
+dưới nhưng bạn có thể thay đổi nó và
+
+83
+00:05:07,669 --> 00:05:10,580
+thiết kế lại nếu như bạn muốn, oke video 
+
+84
+00:05:10,580 --> 00:05:12,259
+này tôi đã nói tất cả về rangerSlider
+
+85
+00:05:12,259 --> 00:05:14,210
+nó thì có sẵn để bạn dùng
+
+86
+00:05:14,210 --> 00:05:16,009
+khi cần. Trong bài kế tiếp
+
+87
+00:05:16,009 --> 00:05:18,259
+chúng ta sẽ tìm hiểu cách làm việc với
+
+88
+00:05:18,259 --> 00:05:21,110
+thành phần Flickable và ScrollBar,
+
+89
+00:05:21,110 --> 00:00:00,000
+Hẹn gặp bạn ở bài kế tiếp.
+

@@ -1,0 +1,420 @@
+1
+00:00:00,000 --> 00:00:02,220
+Trong bài giảng này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,220 --> 00:00:04,350
+thành phần SplitView, nó là một Qt Quick Control.
+
+3
+00:00:04,350 --> 00:00:06,839
+Nó là thành phần chỉ 
+
+4
+00:00:06,839 --> 00:00:09,719
+có trong Qt Quick Control seri 1
+
+5
+00:00:09,719 --> 00:00:12,780
+bởi vì nó là thành phần hướng đến chương trình Desktop
+
+6
+00:00:12,780 --> 00:00:15,030
+nó cho phép bạn chia giao diện
+
+7
+00:00:15,030 --> 00:00:18,990
+người dùng thành những phần 
+
+8
+00:00:18,990 --> 00:00:22,320
+nội dung có thể thay đổi kích cỡ. Nào hãy vào Qt Creator và
+
+9
+00:00:22,320 --> 00:00:22,680
+thử với tôi
+
+10
+00:00:22,680 --> 00:00:25,529
+Được rồi, chúng ta đang ở trong Qt Creator, chúng ta
+
+11
+00:00:25,529 --> 00:00:27,869
+sẽ đi tạo project mới, nó sẽ là dạng
+
+12
+00:00:27,869 --> 00:00:30,269
+Qt Quick Application. Chúng ta sẽ
+
+13
+00:00:30,269 --> 00:00:33,510
+đặt tên nó là SplitViewDemo và lưu nó vào
+
+14
+00:00:33,510 --> 00:00:40,129
+đường dẫn quen thuộc, chọn phiên bản QT và 
+
+15
+00:00:40,129 --> 00:00:44,730
+chọn Kit, nhấn Finish, nếu ta vào
+
+16
+00:00:44,730 --> 00:00:49,160
+tài liệu hướng dẫn và tìm về SplitView,
+
+17
+00:00:49,160 --> 00:00:52,079
+đây là phần tài liệu về
+
+18
+00:00:52,079 --> 00:00:55,620
+nó, và tôi lưu ý là phần khai báo import
+
+19
+00:00:55,620 --> 00:00:59,820
+được gợi ý ở đây là cho QT 5.11, vì vậy
+
+20
+00:00:59,820 --> 00:01:02,489
+ở đây nói rằng nó là thuộc về phiên bản Qt Quick
+
+21
+00:01:02,489 --> 00:01:06,000
+controls phiên bản 1 và thành phần này
+
+22
+00:01:06,000 --> 00:01:07,950
+cho phép bạn có thể thiết kế một thứ giống thế này
+
+23
+00:01:07,950 --> 00:01:11,580
+chúng ta có các mảnh có thể thay đổi kích thước này
+
+24
+00:01:11,580 --> 00:01:14,850
+trên giao diện và bạn có thể click vào
+
+25
+00:01:14,850 --> 00:01:16,890
+đường ranh giữa hai phần và
+
+26
+00:01:16,890 --> 00:01:19,049
+nó hiện biểu tượng cho phép 
+
+27
+00:01:19,049 --> 00:01:21,450
+bạn có thể kéo để thay đổi kích thước
+
+28
+00:01:21,450 --> 00:01:25,470
+nội dung. Nó thì thật sự dễ hiểu khi nhìn
+
+29
+00:01:25,470 --> 00:01:27,869
+hơn là nói nên vì thế ta sẽ đi làm thử
+
+30
+00:01:27,869 --> 00:01:30,659
+nó trong code của chúng ta, nếu bạn xuống phía dưới này
+
+31
+00:01:30,659 --> 00:01:32,759
+họ có để một ví dụ hướng dẫn cách để thực hiện
+
+32
+00:01:32,759 --> 00:01:35,250
+như thế nào, ta sẽ 
+
+33
+00:01:35,250 --> 00:01:38,939
+sử dụng lại nó, ta 
+
+34
+00:01:38,939 --> 00:01:43,680
+copy nó và quay trở lại code và thử 
+
+35
+00:01:43,680 --> 00:01:46,530
+nó, bạn thấy là có một số
+
+36
+00:01:46,530 --> 00:01:48,750
+thứ không được nhận như
+
+37
+00:01:48,750 --> 00:01:51,030
+SplitView chẳng hạn,
+
+38
+00:01:51,030 --> 00:01:56,030
+chúng ta phải khai báo thư viện Qt Quick Controls
+
+39
+00:01:59,479 --> 00:02:04,200
+phiên bản 1.4, đây là phiên bản mới nhất
+
+40
+00:02:04,200 --> 00:02:07,140
+mà ta có thể sử dụng. Bây giờ bạn thấy Layout
+
+41
+00:02:07,140 --> 00:02:09,899
+cũng không được nhận, vì thế ta đi
+
+42
+00:02:09,899 --> 00:02:13,099
+khai báo thư viện Qt quick layout
+
+43
+00:02:13,099 --> 00:02:17,999
+ta chỉ có thể sử dụng bản 1.3 và 
+
+44
+00:02:17,999 --> 00:02:20,939
+khi khai báo xong ta thấy các lỗi đã 
+
+45
+00:02:20,939 --> 00:02:25,049
+hết, ta sẽ thay đổi tiêu đề, để là
+
+46
+00:02:25,049 --> 00:02:30,239
+SplitView Demo, sau đó chạy chương 
+
+47
+00:02:30,239 --> 00:02:32,670
+trình, nhưng trước khi ta chạy nó, hãy
+
+48
+00:02:32,670 --> 00:02:34,889
+xem lại nó, chúng ta có một thành phần SplitView
+
+49
+00:02:34,889 --> 00:02:38,069
+nó sẽ tràn hết cửa sổ
+
+50
+00:02:38,069 --> 00:02:41,340
+Trong này chúng ta có một vài hình chữ nhật, ta
+
+51
+00:02:41,340 --> 00:02:45,419
+có hình chữ nhật màu xanh nhạt, màu 
+
+52
+00:02:45,419 --> 00:02:48,139
+xám nhạt và một cái màu xanh lá cây nhạt
+
+53
+00:02:48,139 --> 00:02:51,060
+Ok, ta chỉnh chiều rộng tối đa
+
+54
+00:02:51,060 --> 00:02:54,449
+cho hình chữ nhật này, vì thế nên ta không thể
+
+55
+00:02:54,449 --> 00:02:57,449
+kế thừa đối tượng cha của nó
+
+56
+00:02:57,449 --> 00:02:59,849
+ta cấu trúc hình chữ nhật thứ 2
+
+57
+00:02:59,849 --> 00:03:02,669
+cho tràn đầy hết chiều rộng có thể có
+
+58
+00:03:02,669 --> 00:03:07,260
+và chiều rộng tối thiểu của nó sẽ là 50, trong này
+
+59
+00:03:07,260 --> 00:03:11,579
+ta có thuộc tính text được căn giữa và
+
+60
+00:03:11,579 --> 00:03:14,939
+hình chữ nhật thứ 3 có chiều rộng là 200,
+
+61
+00:03:14,939 --> 00:03:18,840
+có thành phần text bên trong, nào giờ
+
+62
+00:03:18,840 --> 00:03:22,319
+hãy chạy chương trình và xem ta thấy gì, ok
+
+63
+00:03:22,319 --> 00:03:24,780
+đây là thứ ta có theo code trong tài liệu
+
+64
+00:03:24,780 --> 00:03:29,250
+hướng dẫn, nếu bạn để con trỏ chuột 
+
+65
+00:03:29,250 --> 00:03:32,419
+vào đây bạn sẽ thấy nó xuất hiện biểu tượng
+
+66
+00:03:32,419 --> 00:03:37,229
+và nó cho phép ta co giãn kích thước như thế này,
+
+67
+00:03:37,229 --> 00:03:41,009
+hình chữ nhật thứ 2 thì không thể bị kéo nhỏ hơn nữa,
+
+68
+00:03:41,009 --> 00:03:44,250
+bề rộng tối thiểu của nó là 15 như ta
+
+69
+00:03:44,250 --> 00:03:46,680
+đã khai báo trong code
+
+70
+00:03:46,680 --> 00:03:51,150
+Hãy xem hình chữ nhật thứ 1, và 
+
+71
+00:03:51,150 --> 00:03:56,069
+nó có chiều rộng tối đa là 400, nếu 
+
+72
+00:03:56,069 --> 00:04:00,090
+ta giảm cái này và tiếp tục kéo các cái kia sang
+
+73
+00:04:00,090 --> 00:04:04,500
+bạn thấy là bề rộng của nó không thê vượt qua chỗ này, okay
+
+74
+00:04:04,500 --> 00:04:06,959
+đó là chiều rộng tối đa của nó, và bạn có thể
+
+75
+00:04:06,959 --> 00:04:10,199
+thấy hình chữ nhật thứ 3 có màu xanh lá ở đây,
+
+76
+00:04:10,199 --> 00:04:14,370
+nó không có giới hạn về kích thước
+
+77
+00:04:14,370 --> 00:04:17,310
+chiều rộng mà nó có thể giãn hay co nên nó có thể co giãn tùy ý
+
+78
+00:04:17,310 --> 00:04:19,858
+và bạn thấy chúng 
+
+79
+00:04:19,858 --> 00:04:23,250
+chỉ có thể co giãn theo chiều ngang, bạn hoàn 
+
+80
+00:04:23,250 --> 00:04:24,370
+toàn có thể chỉnh cho chúng
+
+81
+00:04:24,370 --> 00:04:26,949
+co giãn theo chiều dọc, và cách 
+
+82
+00:04:26,949 --> 00:04:28,600
+làm là bạn sẽ chỉnh 
+
+83
+00:04:28,600 --> 00:04:32,229
+hướng cho đối tượng của bạn, okay và nếu tôi
+
+84
+00:04:32,229 --> 00:04:35,220
+thay đổi hướng này thành Vertical,
+
+85
+00:04:35,220 --> 00:04:43,889
+ta sẽ gõ orientation là Qt.Vertical, và
+
+86
+00:04:44,310 --> 00:04:46,780
+ta cần chỉnh gì nữa, ta cần thay đổi
+
+87
+00:04:46,780 --> 00:04:49,479
+tất cả thuộc tính width thành
+
+88
+00:04:49,479 --> 00:04:55,410
+height, và ta gõ ở đây
+
+89
+00:04:55,410 --> 00:05:05,110
+Layout.maximumHeight và để 400
+
+90
+00:05:05,110 --> 00:05:07,600
+ta cũng xuống dưới này và chú thích 
+
+91
+00:05:07,600 --> 00:05:17,760
+2 dòng layout này lại và gõ Layout.minimumHeight
+
+92
+00:05:17,760 --> 00:05:23,669
+để nó là 50, và gõ Layout.fillHeight
+
+93
+00:05:23,669 --> 00:05:28,270
+là true, chúng ta cũng phải đổi cái này
+
+94
+00:05:28,270 --> 00:05:31,090
+thành height thay vì width, chú thích
+
+95
+00:05:31,090 --> 00:05:32,740
+nó lại để bạn có thể
+
+96
+00:05:32,740 --> 00:05:34,539
+tham khảo nó, tôi không thích xóa những thứ
+
+97
+00:05:34,539 --> 00:05:37,780
+trong bài giảng như cái này, rồi ta sẽ
+
+98
+00:05:37,780 --> 00:05:43,919
+để height là 200, rồi chúng ta có cái width khác
+
+99
+00:05:43,919 --> 00:05:49,120
+ở đây, đổi thành height và cho nó 200
+
+100
+00:05:49,120 --> 00:05:52,990
+Rồi giờ chạy lại chương trình và đây là chương trình
+
+101
+00:05:52,990 --> 00:05:57,010
+Ta có thể co lên co xuống các hình chữ nhật
+
+102
+00:05:57,010 --> 00:05:59,919
+như ta thấy đây. Nó là tất cả nội dung
+
+103
+00:05:59,919 --> 00:06:01,750
+tôi muốn trình bày trong bài này, trong bài kế
+
+104
+00:06:01,750 --> 00:06:04,210
+chúng ta sẽ tìm hiểu về đối tượng Drawer trong Qt Quick
+
+105
+00:06:04,210 --> 00:00:00,000
+Hẹn gặp lại.
+

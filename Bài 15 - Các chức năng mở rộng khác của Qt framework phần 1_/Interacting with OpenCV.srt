@@ -1,0 +1,632 @@
+﻿1
+00:00:00,910 --> 00:00:05,670
+Chào mừng đến với video 4.3 Quản lý đa phương tiện về tương tác với thư viện open computer vision
+
+2
+00:00:05,670 --> 00:00:11,610
+Trong video này ta sẽ tìm hiểu về liên kết hoặc bao hàm open computer vision trong các project của Qt,
+
+3
+00:00:11,840 --> 00:00:15,820
+cascade classifiers cho nhận diện khuôn mặt và vẽ trên ảnh.
+
+4
+00:00:15,840 --> 00:00:18,260
+Ta cùng bắt đầu nhé.
+
+5
+00:00:18,300 --> 00:00:23,460
+Trước hết ta phải đảm bảo IncludePath và
+
+6
+00:00:23,460 --> 00:00:27,560
+các thư viện của opencv được liên kết với nhau một cách phù hợp trong file project.
+
+7
+00:00:27,690 --> 00:00:33,840
+Đối với Linux tôi đã liên kết xong rồi, hay trong trường hợp này là Unix như trong file .pro, bởi vì với Linux
+
+8
+00:00:33,870 --> 00:00:39,780
+và Unix đây là những đường dẫn tiêu chuẩn, nhưng với người dùng Windows, ta phải đưa vào thư viện
+
+9
+00:00:39,780 --> 00:00:44,070
+open computer vision rồi thêm đường dẫn phù hợp.
+
+10
+00:00:44,070 --> 00:00:50,700
+Tôi đã thêm một đường dẫn nho nhỏ nhưng các bạn vẫn phải thêm đường dẫn phù hợp cho cài đặt của riêng mình.
+
+11
+00:00:50,730 --> 00:00:54,090
+Và ta phải thêm cả INCLUDEPATH như các bạn có thể thấy ở đây,
+
+12
+00:00:54,120 --> 00:00:59,900
+như vậy người dùng Windows sẽ phải uncomment dòng này, và đường dẫn phù hợp. Thực ra ta phải thêm vào
+
+13
+00:00:59,910 --> 00:01:03,340
+LIBS như các bạn có thể thấy ở đây.
+
+14
+00:01:03,390 --> 00:01:08,810
+Ta sẽ phải tìm cả 3 LIBS đó và đảm bảo tất cả đều được kết nối một cách phù hợp trong file project.
+
+15
+00:01:09,060 --> 00:01:12,660
+Sau khi đã thiết lập xong toàn bộ, ta sẽ xét đến mã.
+
+16
+00:01:12,660 --> 00:01:14,570
+Nhìn rất quen phải không?
+
+17
+00:01:14,580 --> 00:01:20,790
+Về cơ bản đây cũng là mã chúng ta đã áp dụng với bề mặt video tuỳ biến.
+
+18
+00:01:20,790 --> 00:01:26,190
+Điểm khác biệt duy nhất là ta lại quay về với QCamera. Nhưng nếu nhìn vào file thực hiện,
+
+19
+00:01:26,190 --> 00:01:31,470
+cuộn xuống dưới cùng và quan sát vị trí ta đặt camera.
+
+20
+00:01:31,470 --> 00:01:37,050
+Các bạn có thể thấy thay vì thiết lập Viewfinder thành cái gì đó khác, ta lại đặt thành
+
+21
+00:01:37,050 --> 00:01:38,020
+bề mặt video tuỳ biến.
+
+22
+00:01:38,160 --> 00:01:43,260
+Gần như giống y hệt với lần trước.
+
+23
+00:01:43,260 --> 00:01:45,030
+Và hãy nhìn vào VideoWidget.
+
+24
+00:01:45,060 --> 00:01:45,300
+Thấy chứ?
+
+25
+00:01:45,300 --> 00:01:49,440
+Không có gì thay đổi cả, ta triển khai lại cả paintEvent và resizeEvent.
+
+26
+00:01:49,440 --> 00:01:54,840
+Và trong file thực hiện, ta tạo QPainter, thiết lập RenderHint và
+
+27
+00:01:54,840 --> 00:02:00,960
+đưa vào video_surface. Tương tự đối với resizeEvent, ta gọi phần parent bổ sung rồi
+
+28
+00:02:00,960 --> 00:02:03,390
+đưa vào video_surface.
+
+29
+00:02:03,390 --> 00:02:09,960
+Bây giờ nhìn vào video_surface và kéo xuống dưới cùng, các bạn sẽ thấy
+
+30
+00:02:09,960 --> 00:02:12,060
+ta có một thành viên dữ liệu private mới ở đây.
+
+31
+00:02:12,330 --> 00:02:17,400
+Computer vision CascadeClassifier. Cascade Classifier là công nghệ mà ta sẽ
+
+32
+00:02:17,400 --> 00:02:23,510
+sử dụng để nhận diện khuôn mặt. Cascade Classifiers có khả năng phát hiện object rất hiệu quả
+
+33
+00:02:23,550 --> 00:02:28,560
+và thư viện open computer vision library có pre-trained classifiers giả lập giúp nhận diện khuôn mặt.
+
+34
+00:02:28,580 --> 00:02:28,980
+Ừ thì
+
+35
+00:02:28,980 --> 00:02:32,090
+cascade classifiers không phải là công nghệ chính xác nhất.
+
+36
+00:02:32,100 --> 00:02:36,060
+Hiện đó là một trong những phương pháp nhận diện khuôn mặt nhanh chóng, đó là lý do vì sao ta sẽ
+
+37
+00:02:36,060 --> 00:02:36,640
+áp dụng vào đây.
+
+38
+00:02:36,750 --> 00:02:41,940
+Như các bạn thấy ta đã tạo được một instance ở vị trí này. Nhưng nếu ta không tải file dữ liệu pre-trained
+
+39
+00:02:41,940 --> 00:02:44,610
+thì classifier sẽ không hoạt động.
+
+40
+00:02:44,610 --> 00:02:49,830
+Vì vậy chúng ta sẽ tải một file và chuyển sang hàm triển khai,
+
+41
+00:02:49,830 --> 00:02:53,220
+kéo lên trên đây và các bạn sẽ thấy một số thứ khá hay ho.
+
+42
+00:02:53,220 --> 00:02:58,980
+Nếu ta quay lại file .pro và quan sát phần dưới cùng, dòng mã này khá thú vị.
+
+43
+00:02:58,980 --> 00:03:06,000
+Nó sẽ sao chép haarcascade_frontalface_default.xml từ thư mục mã nguồn
+
+44
+00:03:06,000 --> 00:03:08,310
+vào thư viện cài đặt.
+
+45
+00:03:08,310 --> 00:03:13,460
+Nguyên nhân là bởi cascade classifier phải có một C string,
+
+46
+00:03:13,470 --> 00:03:16,710
+nên ta phải đưa vào bằng cách thủ công.
+
+47
+00:03:16,710 --> 00:03:18,030
+Giờ chúng ta sẽ thực hiện luôn.
+
+48
+00:03:18,030 --> 00:03:23,430
+Vì đã sao chép dữ liệu đó rồi nên ta hoàn toàn có thể sử dụng QCoreApplication applicationDirPath để
+
+49
+00:03:23,430 --> 00:03:27,510
+xuất executable_directory, sau đó ta sẽ biết đó là tên file của mình.
+
+50
+00:03:27,510 --> 00:03:32,360
+Nếu kết hợp cả 2 thì ta sẽ xuất được toàn bộ đường dẫn, đúng hơn là toàn bộ đường dẫn file.
+
+51
+00:03:32,370 --> 00:03:33,880
+Giờ ta sẽ tiến hành luôn.
+
+52
+00:03:34,930 --> 00:03:35,320
+Tuyệt vời.
+
+53
+00:03:35,320 --> 00:03:36,840
+Sau khi đã xuất được đường dẫn file,
+
+54
+00:03:36,860 --> 00:03:40,840
+ta sẽ gọi hàm load trên face_classifier.
+
+55
+00:03:40,840 --> 00:03:45,340
+Một lần nữa điều duy nhất kỳ lạ là ta phải đưa vào C string vào hàm load này
+
+56
+00:03:45,340 --> 00:03:46,940
+bởi đó là thao tác cần thiết.
+
+57
+00:03:46,960 --> 00:03:52,720
+Sau đó các bạn sẽ thấy ta có red_pen, nếu ta quay lại phần triển khai dữ liệu thì đó chỉ là một
+
+58
+00:03:52,720 --> 00:03:53,860
+QPen.
+
+59
+00:03:53,860 --> 00:03:59,650
+Nó chỉ có công dụng vẽ hộp xung quanh nên ta thiết lập màu sắc là đỏ và chiều rộng 10.
+
+60
+00:03:59,680 --> 00:04:00,210
+Tuyệt vời.
+
+61
+00:04:00,220 --> 00:04:06,040
+Sau khi đã tải xong xuôi lên face_classifier, hàm mà ta cần sử dụng là
+
+62
+00:04:06,040 --> 00:04:09,460
+detectMultiScale và đây sẽ là đảm nhận công việc nhận diện khuôn mặt.
+
+63
+00:04:09,460 --> 00:04:14,560
+Vấn đề duy nhất là ta phải đưa vào một computer vision mat vào hàm để có thể hoạt động, điều đó
+
+64
+00:04:14,560 --> 00:04:18,430
+có nghĩa là ta phải chuyển đổi từ QImage thành CV mat.
+
+65
+00:04:18,430 --> 00:04:25,300
+Ta cùng kéo xuống hàm paint. Và ngay sau khi tạo QImage từ video_frame
+
+66
+00:04:25,450 --> 00:04:26,860
+ở ngay chỗ này đây,
+
+67
+00:04:26,980 --> 00:04:32,650
+ta sẽ sử dụng current_video_frame. Hãy nhớ rằng đó là video_frame mà ta đã lưu trữ. Các bạn cũng sẽ thấy ở đây
+
+68
+00:04:32,650 --> 00:04:34,700
+ta có một hàm hỗ trợ.
+
+69
+00:04:34,720 --> 00:04:39,490
+Ta cũng đang tạo một biến có tên cv Mat gray_mat_image ở vị trí này.
+
+70
+00:04:39,520 --> 00:04:42,890
+Và ta gọi một hàm get để xuất biến.
+
+71
+00:04:42,950 --> 00:04:44,800
+Ta cùng quan sát nhé.
+
+72
+00:04:44,800 --> 00:04:51,010
+Nếu kéo xuống dưới các bạn sẽ thấy ta đang lặp lại trên QImage Format. Ngoài ra ta có
+
+73
+00:04:51,010 --> 00:04:52,240
+mệnh đề switch ở đây.
+
+74
+00:04:52,300 --> 00:04:55,650
+Ta có cả format và một đống case nữa.
+
+75
+00:04:55,720 --> 00:05:02,680
+Về cơ bản nếu kéo xuống dưới cùng ta sẽ thấy một hàm khác
+
+76
+00:05:02,800 --> 00:05:10,170
+có chứa qimage_to_matt với qimage và một enum computer vision.
+
+77
+00:05:10,290 --> 00:05:14,190
+Và enum mà hàm cần được dựa trên định dạng ảnh sẵn có.
+
+78
+00:05:14,260 --> 00:05:19,610
+Những case này là phần duy nhất bị thay đổi khi ta đưa vào
+
+79
+00:05:19,660 --> 00:05:23,490
+các enum khác nhau để đảm bảo chúng được khởi tạo một cách phù hợp.
+
+80
+00:05:23,620 --> 00:05:29,590
+Và nếu các bạn muốn một hàm như vậy thì nó ở ngay trên cùng, đó là hàm qimage_to_mat mà ta vừa nhập
+
+81
+00:05:29,600 --> 00:05:33,870
+chiều cao, chiều rộng, định dạng ảnh và thông tin dữ liệu.
+
+82
+00:05:33,970 --> 00:05:38,990
+Sau đó là static_cast bytesPerLine. Xử lý dữ liệu tiêu chuẩn.
+
+83
+00:05:39,010 --> 00:05:43,340
+Chúng ta sẽ không đi vào quá sâu vì còn rất nhiều thứ hay ho khác để làm
+
+84
+00:05:43,350 --> 00:05:45,920
+Tuyệt vời.
+
+85
+00:05:45,920 --> 00:05:47,020
+Ta cùng kéo xuống một chút.
+
+86
+00:05:47,020 --> 00:05:49,330
+Nếu ta đi được đến cuối cùng,
+
+87
+00:05:49,370 --> 00:05:56,720
+tức là ta đã tạo thành công CV Mat và tên biến là mat_image.
+
+88
+00:05:56,720 --> 00:05:59,450
+Điều quan trọng ta cần biết về mat_image này.
+
+89
+00:05:59,450 --> 00:06:04,090
+Ta không thể thay đổi được biến này vì như vậy ta sẽ tác động tới ảnh gốc.
+
+90
+00:06:04,100 --> 00:06:06,840
+Đó là điều quan trọng mà các bạn cần nắm được.
+
+91
+00:06:06,980 --> 00:06:13,220
+Và chính vì không muốn tác động tới ảnh gốc, nên ta sẽ tạo một instance mới
+
+92
+00:06:13,280 --> 00:06:18,530
+có tên cv Mat gray_mat_image, đó sẽ là instance mà ta
+
+93
+00:06:18,530 --> 00:06:19,500
+thực hiện các thay đổi.
+
+94
+00:06:19,520 --> 00:06:20,040
+Tuyệt vời.
+
+95
+00:06:20,060 --> 00:06:23,610
+Như vậy cascade classifier hoạt động hiệu quả nhất với màu xám.
+
+96
+00:06:23,690 --> 00:06:30,770
+Vì thế ta sẽ chuyển ảnh gốc thành grayscale bằng hàm cvtColor. Và ta cần phải
+
+97
+00:06:30,770 --> 00:06:34,720
+xác định rõ mat gốc nơi dữ liệu xuất,
+
+98
+00:06:34,760 --> 00:06:35,610
+mat hệ quả
+
+99
+00:06:35,720 --> 00:06:40,160
+nơi dữ liệu nhập và những thay đổi màu sắc xuất hiện trong tương lai.
+
+100
+00:06:41,260 --> 00:06:46,570
+Ta sẽ sử dụng mat_image được liên kết với tài liệu gốc mà ta không muốn thay đổi.
+
+101
+00:06:46,840 --> 00:06:50,650
+Và đây là input, output là gray_mat_image.
+
+102
+00:06:50,650 --> 00:06:57,520
+Sau đó chúng ta sẽ chuyển từ BGR, bảng màu openCV thường sử dụng, thành gray.
+
+103
+00:06:57,520 --> 00:07:03,490
+Sau khi có được bức ảnh nền xám, chúng ta sẽ cân bằng các biểu đồ tần số.
+
+104
+00:07:03,490 --> 00:07:09,000
+Điều này sẽ giúp làm tăng độ tương phản cho bức ảnh để các nét mặt được nổi bật hơn.
+
+105
+00:07:09,000 --> 00:07:14,300
+Giờ đây khi đã có được gray_mat_image, chúng ta sẽ thiết lập một số thay đổi.
+
+106
+00:07:14,380 --> 00:07:19,540
+Như vậy ta sẽ gọi hàm cv equalizeHist. Cuối cùng ta cần phải
+
+107
+00:07:19,540 --> 00:07:23,230
+trả lại gray_mat_image, và thế là xong.
+
+108
+00:07:23,260 --> 00:07:31,600
+Đó là cách ta chuyển từ QImage sang cv Mat với hàm hỗ trợ qimage_to_mat
+
+109
+00:07:31,960 --> 00:07:36,180
+và ta dựa đúng trên những gì QImage Format đưa vào.
+
+110
+00:07:36,250 --> 00:07:42,070
+Sau đó ta có hàm hỗ trợ ở trên cùng với chiều cao, chiều rộng, định dạng mà ta
+
+111
+00:07:42,070 --> 00:07:45,130
+đã nhập cùng thông tin dữ liệu thực.
+
+112
+00:07:45,130 --> 00:07:52,200
+Và cuối cùng bytesPerLine. Sau khi đã xuất được hình ảnh, chúng ta kéo xuống dưới cùng.
+
+113
+00:07:52,240 --> 00:07:58,150
+Ta sẽ thay đổi màu sắc thành xám vì cascade classifier hoạt động hiệu quả hơn với màu xám. Ta
+
+114
+00:07:58,150 --> 00:08:03,370
+sử dụng hàm equalizehist này để làm sắc nét thêm gương mặt, giúp tăng độ tương phản.
+
+115
+00:08:03,370 --> 00:08:08,570
+Sau đó ta trả lại ảnh màu xám, ngay tại vị trí này.
+
+116
+00:08:08,800 --> 00:08:15,190
+Sau khi đã xong gray_mat_image, ta sẽ sử dụng hàm detectMultiScale.
+
+117
+00:08:15,340 --> 00:08:21,160
+Hai điều quan trọng mà ta cần đưa vào bao gồm mat_image và thứ gì đó để ghi lại vị trí
+
+118
+00:08:21,160 --> 00:08:26,950
+của hàm nhận diện khuôn mặt, trong trường hợp này là vector tiêu chuẩn ngay đây, đó chỉ là một vector
+
+119
+00:08:26,950 --> 00:08:30,000
+của cv rectangles mà ta sẽ gọi là faces.
+
+120
+00:08:30,160 --> 00:08:37,430
+Ta cũng xác định rằng để có thể nhận diện được thì khuôn mặt phải có kích thước nhất định.
+
+121
+00:08:37,480 --> 00:08:45,070
+Trong trường hợp này chúng ta sẽ sử dụng image size columns chia cho 4 và rows chia cho 4.
+
+122
+00:08:45,070 --> 00:08:50,050
+Như vậy về cơ bản một khuôn mặt phải chiếm ít nhất 1/4 màn hình để
+
+123
+00:08:50,050 --> 00:08:50,730
+có thể được nhận diện.
+
+124
+00:08:50,730 --> 00:08:55,040
+Việc đưa vào min_face_size này sẽ giúp đẩy nhanh tốc độ các phép toán.
+
+125
+00:08:55,060 --> 00:08:58,930
+Ta tiếp tục xác định vị trí khuôn mặt
+
+126
+00:08:58,930 --> 00:09:00,850
+bằng hàm detectMultiScale.
+
+127
+00:09:05,060 --> 00:09:08,760
+Ta cũng cần nhập vào đây một số dữ liệu thành viên khác nữa.
+
+128
+00:09:08,810 --> 00:09:11,190
+Cơ bản những dữ liệu này sẽ giúp ta điều chỉnh việc nhận diện.
+
+129
+00:09:11,210 --> 00:09:13,600
+Có vẻ hơi đi quá phạm vi của bài học này một chút.
+
+130
+00:09:13,610 --> 00:09:18,890
+Nhưng các bạn có thể tự do tìm hiểu về detectMultiScale và điều chỉnh các biến dựa trên
+
+131
+00:09:18,890 --> 00:09:20,140
+trường hợp cụ thể của bản thân.
+
+132
+00:09:20,180 --> 00:09:24,710
+Nhưng đây là một trường hợp khá tổng quát. Nếu các bạn cần ví dụ phức tạp hơn thì
+
+133
+00:09:24,710 --> 00:09:26,470
+cứ tự nhiên.
+
+134
+00:09:26,480 --> 00:09:31,340
+Về cơ bản sau khi hoàn thành hàm detectMultiScale, ta sẽ đưa vào gray_mat_images và nó sẽ
+
+135
+00:09:31,340 --> 00:09:37,340
+đẩy toàn bộ thông tin vào vector cv rect faces.
+
+136
+00:09:37,340 --> 00:09:45,740
+Cuối cùng chúng ta phải tạo một painter và vẽ trực tiếp lên hình ảnh.
+
+137
+00:09:45,740 --> 00:09:50,070
+Ta sẽ quay về với phương pháp của Qt.
+
+138
+00:09:51,150 --> 00:09:51,540
+Hoàn hảo.
+
+139
+00:09:51,540 --> 00:09:55,830
+Sau khi tạo xong painter và thông báo ta sẽ vẽ trực tiếp lên hình ảnh
+
+140
+00:09:55,830 --> 00:10:01,140
+bằng cách nhập dữ liệu, chúng ta sẽ vẽ hình chữ nhật cho từng khuôn mặt.
+
+141
+00:10:01,140 --> 00:10:05,230
+Ta cần chuyển từ cv rect sang QRect.
+
+142
+00:10:05,250 --> 00:10:09,450
+Tôi đã hoàn thành 2 bước đầu tiên với điểm top_left point và điểm bottom_right.
+
+143
+00:10:09,510 --> 00:10:11,220
+Ta tiếp tục sử dụng 2 điểm đó,
+
+144
+00:10:11,220 --> 00:10:16,470
+điểm top_left và điểm bottom_right rồi tạo QRectangle, sau đso đưa vào
+
+145
+00:10:16,470 --> 00:10:20,470
+image_painter để vẽ. Tuyệt vời.
+
+146
+00:10:20,540 --> 00:10:26,000
+Vậy là ta đã tạo hình ảnh thành công. Tất cả những thứ còn lại, tất cả những mã này đều
+
+147
+00:10:26,000 --> 00:10:27,390
+y hệt như trước.
+
+148
+00:10:27,440 --> 00:10:32,220
+Được rồi giờ chúng ta sẽ kiểm tra để đảm bảo scanLine xem có thoả mãn BottomToTop không.
+
+149
+00:10:32,350 --> 00:10:36,050
+Có một dòng Debug nho nhỏ ở đây giúp đếm số khuôn mặt ta có thể nhận diện.
+
+150
+00:10:36,080 --> 00:10:41,990
+Và cuối cùng, sau khi vẽ xong QImage, ta phải đảm bảo đã bỏ liên kết
+
+151
+00:10:41,990 --> 00:10:42,530
+dữ liệu.
+
+152
+00:10:42,530 --> 00:10:44,360
+Ta chạy thử chương trình xem sao.
+
+153
+00:10:51,880 --> 00:10:54,850
+Các bạn có thể thấy nếu tôi tiến lại gần camera,
+
+154
+00:10:54,850 --> 00:10:57,900
+một hình chữ nhật sẽ xuất hiện xung quanh khuôn mặt.
+
+155
+00:10:57,910 --> 00:11:03,260
+Như vậy ta đã thành công trong việc sử dụng thư viện computer vision để nhận diện khuôn mặt.
+
+156
+00:11:03,460 --> 00:11:06,520
+Cùng với đó ta đã tìm hiểu xong cách nhận diện khuôn mặt,
+
+157
+00:11:06,520 --> 00:11:13,680
+cách vẽ hình chữ nhật xung quanh khuôn mặt đã nhận diện và liên kết open computer vision với một project. Hãy theo dõi video tiếp theo
+
+158
+00:11:13,680 --> 00:11:16,620
+của tôi về làm việc với Qt 3D.
+

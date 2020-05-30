@@ -1,0 +1,268 @@
+1
+00:00:00,000 --> 00:00:02,070
+In this lecture we are going to look at
+
+2
+00:00:02,070 --> 00:00:05,370
+the text input element of QT quick. To
+
+3
+00:00:05,370 --> 00:00:07,290
+show of its powers, we are going to build
+
+4
+00:00:07,290 --> 00:00:09,750
+the contact panel like this, where the
+
+5
+00:00:09,750 --> 00:00:11,730
+user is going to be allowed to type in
+
+6
+00:00:11,730 --> 00:00:14,460
+the first name and last name. Let's go to
+
+7
+00:00:14,460 --> 00:00:17,730
+QT creator and do this. Here we are in QT
+
+8
+00:00:17,730 --> 00:00:19,680
+creator. We are going to create our
+
+9
+00:00:19,680 --> 00:00:23,699
+project. It is a "QT Quick Application". We
+
+10
+00:00:23,699 --> 00:00:25,859
+are going to name it "TextInputDemo",
+
+11
+00:00:25,859 --> 00:00:29,609
+save it in the usual location. We want to
+
+12
+00:00:29,609 --> 00:00:31,740
+use this as the default location because
+
+13
+00:00:31,740 --> 00:00:37,920
+this is a new chapter. Let's choose our
+
+14
+00:00:37,920 --> 00:00:41,550
+Kit, choose "Desktop". And we have our
+
+15
+00:00:41,550 --> 00:00:44,550
+project here. The title is going to say
+
+16
+00:00:44,550 --> 00:00:48,960
+"TextInput...". We are going to specify our
+
+17
+00:00:48,960 --> 00:00:56,879
+Row. Give it the next Y location, specify
+
+18
+00:00:56,879 --> 00:00:58,260
+the spacing of 10.
+
+19
+00:00:58,260 --> 00:01:00,989
+You probably remember the "Row" component
+
+20
+00:01:00,989 --> 00:01:03,480
+from previous lectures. It is used to
+
+21
+00:01:03,480 --> 00:01:06,780
+layout things from left to right. Inside
+
+22
+00:01:06,780 --> 00:01:09,570
+we are going to put a Rectangle. This is
+
+23
+00:01:09,570 --> 00:01:16,350
+for the first name. Inside we are going
+
+24
+00:01:16,350 --> 00:01:18,990
+to put in a Text element for the text.
+
+25
+00:01:18,990 --> 00:01:34,220
+This is going to work like a label. And
+
+26
+00:01:34,220 --> 00:01:38,070
+it should be centered in the parent.
+
+27
+00:01:38,070 --> 00:01:40,930
+Now we want to specify the width and
+
+28
+00:01:40,930 --> 00:01:43,180
+height of this rectangle in relation to
+
+29
+00:01:43,180 --> 00:01:46,750
+the size of the text. That is in here. The
+
+30
+00:01:46,750 --> 00:01:49,000
+way we do that you probably know all
+
+31
+00:01:49,000 --> 00:01:52,030
+this from the previous lectures. The width
+
+32
+00:01:52,030 --> 00:01:57,130
+equals firstNameLabelId.implicitWidth.
+
+33
+00:01:57,130 --> 00:02:03,270
+We add a margin of 20. Let's type
+
+34
+00:02:03,270 --> 00:02:10,950
+width well. Height is going to be the same.
+
+35
+00:02:15,030 --> 00:02:18,480
+Let's run this to see what it looks like.
+
+36
+00:02:18,480 --> 00:02:23,200
+Mm-hmm we have a label saying FirstName.
+
+37
+00:02:23,200 --> 00:02:24,340
+This looks good.
+
+38
+00:02:24,340 --> 00:02:27,070
+We want to add a TextInput element
+
+39
+00:02:27,070 --> 00:02:29,440
+that is inside the rectangle as well. So
+
+40
+00:02:29,440 --> 00:02:32,350
+that things look a little bit consistent.
+
+41
+00:02:32,350 --> 00:02:34,180
+So we are going to add the rectangle
+
+42
+00:02:34,180 --> 00:02:46,330
+again. Inside we are going to put a
+
+43
+00:02:46,330 --> 00:02:54,580
+TextInput element. The ID is going to be
+
+44
+00:02:54,580 --> 00:03:01,269
+firstName... Text is going to be: "Type in
+
+45
+00:03:01,269 --> 00:03:07,720
+your first name". Why not? And it is going
+
+46
+00:03:07,720 --> 00:03:10,120
+to be centered in the parent as well. So
+
+47
+00:03:10,120 --> 00:03:12,040
+we're going to say anchors.centerIn,
+
+48
+00:03:12,040 --> 00:03:15,820
+parent. And it should have the focus so
+
+49
+00:03:15,820 --> 00:03:20,140
+we should set "focus: true". If you
+
+50
+00:03:20,140 --> 00:03:22,510
+look at TextInput, let's look at it in
+
+51
+00:03:22,510 --> 00:03:25,420
+the documentation. We select it, hit F1. It
+
+52
+00:03:25,420 --> 00:03:28,090
+is going to open. In help to the right
+
+53
+00:03:28,090 --> 00:03:30,790
+here, click on this button on top. Open in
+
+54
+00:03:30,790 --> 00:03:33,130
+help mode to have it shown in
+
+55
+00:03:33,130 --> 00:03:35,709
+full-screen. Let's look at all the
+
+56
+00:03:35,709 --> 00:03:38,579
+members including inherited members. And
+
+57
+00:03:38,579 --> 00:03:41,110
+if you look down we're going to find a
+
+58
+00:03:41,110 --> 00:03:44,380
+property called "focus" and this property
+
+59
+00:03:44,380 --> 00:03:46,569
+holds whether the item has focused
+
+60
+00:03:46,569 --> 00:03:49,569
+within the enclosing focused scope, okay?
+
+61
+00:03:49,569 --> 00:03:51,380
+It basically says if
+
+62
+00:03:51,380 --> 00:03:53,570
+sytem has focus. We are not going to go
+
+63
+00:03:53,570 --> 00:03:55,970
+into focus scope by now. We are going to
+
+64
+00:03:55,970 --> 00:03:59,510
+look at that later in the chapter. But we
+
+65
+00:03:59,510 --> 00:04:02,960
+have our TextInput now. And we can run
+
+66
+00:04:02,960 --> 00:04:04,340
+to see it in action.
+
+67
+00:04:04,340 --> 00:00:00,000
+Mm-hmm you see that...
+

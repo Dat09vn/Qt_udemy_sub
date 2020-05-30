@@ -1,0 +1,916 @@
+1
+00:00:00,000 --> 00:00:01,620
+In this chapter we're going to look at
+
+2
+00:00:01,620 --> 00:00:03,540
+different ways you can store your data
+
+3
+00:00:03,540 --> 00:00:06,359
+in your QT quick application. We are
+
+4
+00:00:06,359 --> 00:00:08,370
+going to look at two ways: settings and
+
+5
+00:00:08,370 --> 00:00:11,250
+SQL mainly, but I want to bring it to our
+
+6
+00:00:11,250 --> 00:00:13,559
+attention that you can do all kinds of
+
+7
+00:00:13,559 --> 00:00:16,949
+crazy things from the C++ side and send
+
+8
+00:00:16,949 --> 00:00:20,490
+the data to Qt quick or QML using the
+
+9
+00:00:20,490 --> 00:00:22,470
+available channels of communication
+
+10
+00:00:22,470 --> 00:00:25,890
+between c++ and QML. We are not going to
+
+11
+00:00:25,890 --> 00:00:27,660
+talk about how you communicate between
+
+12
+00:00:27,660 --> 00:00:30,179
+C++ & QML because that's not the
+
+13
+00:00:30,179 --> 00:00:32,700
+subject of this course, but I am planning
+
+14
+00:00:32,700 --> 00:00:35,190
+to do a course about that so stay tuned
+
+15
+00:00:35,190 --> 00:00:36,960
+if you need to know more about this
+
+16
+00:00:36,960 --> 00:00:39,540
+subject. So a takeaway is that we are
+
+17
+00:00:39,540 --> 00:00:42,239
+going to look at settings and SQL. There
+
+18
+00:00:42,239 --> 00:00:44,340
+is a QML type that is called settings
+
+19
+00:00:44,340 --> 00:00:46,260
+that you used to save your data. We're
+
+20
+00:00:46,260 --> 00:00:47,969
+going to look at that. But the first
+
+21
+00:00:47,969 --> 00:00:50,250
+thing you have to do when using it: you
+
+22
+00:00:50,250 --> 00:00:52,320
+have to set the information for your
+
+23
+00:00:52,320 --> 00:00:54,780
+application, and you usually do that in
+
+24
+00:00:54,780 --> 00:00:58,320
+your main.cpp file, and you do it
+
+25
+00:00:58,320 --> 00:01:00,329
+like this: you have a 
+
+26
+00:01:00,329 --> 00:01:03,120
+QGuiApplication class that you instantiate,
+
+27
+00:01:03,120 --> 00:01:05,700
+and inside you put your organization
+
+28
+00:01:05,700 --> 00:01:08,610
+name, organization domain, and application
+
+29
+00:01:08,610 --> 00:01:11,040
+name. So for different applications, this
+
+30
+00:01:11,040 --> 00:01:13,470
+information should be different. This is
+
+31
+00:01:13,470 --> 00:01:15,450
+the first thing you want to do when you
+
+32
+00:01:15,450 --> 00:01:17,369
+are working with settings. Don't forget
+
+33
+00:01:17,369 --> 00:01:20,490
+this. After that you have to import 
+
+34
+00:01:20,490 --> 00:01:23,040
+Qt.labs.settings. So to use this thing, you
+
+35
+00:01:23,040 --> 00:01:24,990
+define a Settings component in your qml
+
+36
+00:01:24,990 --> 00:01:27,270
+file like this, and then you parse in the
+
+37
+00:01:27,270 --> 00:01:28,829
+data that you want to save using
+
+38
+00:01:28,829 --> 00:01:31,409
+property alias like this, ok. In this
+
+39
+00:01:31,409 --> 00:01:33,570
+case we are saving location data for a
+
+40
+00:01:33,570 --> 00:01:36,299
+window, we want to save the x coordinate,
+
+41
+00:01:36,299 --> 00:01:38,299
+the y coordinate, the width and height
+
+42
+00:01:38,299 --> 00:01:40,890
+information, and we save that like this.
+
+43
+00:01:40,890 --> 00:01:43,170
+And when you do this you don't need to
+
+44
+00:01:43,170 --> 00:01:44,549
+do anything else, your data is
+
+45
+00:01:44,549 --> 00:01:47,220
+automatically saved and loaded. And all
+
+46
+00:01:47,220 --> 00:01:49,470
+this might not make sense yet, but we are
+
+47
+00:01:49,470 --> 00:01:51,840
+going to do a full demo about this, and
+
+48
+00:01:51,840 --> 00:01:53,970
+you are going to see this in action. You
+
+49
+00:01:53,970 --> 00:01:56,100
+can also split your settings in
+
+50
+00:01:56,100 --> 00:01:58,380
+categories like this: you see we have a
+
+51
+00:01:58,380 --> 00:02:01,200
+category to save window data, and we have
+
+52
+00:02:01,200 --> 00:02:04,770
+a category to save color data like this.
+
+53
+00:02:04,770 --> 00:02:06,540
+You can split your settings into
+
+54
+00:02:06,540 --> 00:02:09,209
+categories. This is how you do it if you
+
+55
+00:02:09,209 --> 00:02:11,519
+want to save your settings automatically.
+
+56
+00:02:11,519 --> 00:02:13,319
+There is another way if you don't want
+
+57
+00:02:13,319 --> 00:02:16,260
+to save the data automatically. Saving
+
+58
+00:02:16,260 --> 00:02:19,049
+the data automatically imposes a cost on
+
+59
+00:02:19,049 --> 00:02:21,480
+you of saving the data whenever
+
+60
+00:02:21,480 --> 00:02:23,879
+something changes, so whenever I move the
+
+61
+00:02:23,879 --> 00:02:26,519
+window or whenever these color changes
+
+62
+00:02:26,519 --> 00:02:28,290
+we are going to save it, and sometimes
+
+63
+00:02:28,290 --> 00:02:30,840
+this can be heavy in terms of
+
+64
+00:02:30,840 --> 00:02:33,359
+performance. If you don't want this, you
+
+65
+00:02:33,359 --> 00:02:36,090
+can use custom settings. And what this
+
+66
+00:02:36,090 --> 00:02:38,250
+allows you to do is to save the data
+
+67
+00:02:38,250 --> 00:02:40,349
+whenever you want. The way you do that is
+
+68
+00:02:40,349 --> 00:02:42,150
+you define the settings component like
+
+69
+00:02:42,150 --> 00:02:44,430
+this, you put in the property that you
+
+70
+00:02:44,430 --> 00:02:47,700
+want to save, then you give it a default
+
+71
+00:02:47,700 --> 00:02:50,010
+value like this.. you see "spring" here is a
+
+72
+00:02:50,010 --> 00:02:53,310
+default value... In this case we are trying
+
+73
+00:02:53,310 --> 00:02:56,280
+to save state data, we looked at states
+
+74
+00:02:56,280 --> 00:02:58,980
+and transitions in the last chapter, if
+
+75
+00:02:58,980 --> 00:03:01,470
+you remember... we are trying to save the
+
+76
+00:03:01,470 --> 00:03:03,959
+spring state in one of the demos that we
+
+77
+00:03:03,959 --> 00:03:06,480
+did. After you define your settings
+
+78
+00:03:06,480 --> 00:03:08,939
+component, you have to fit the property
+
+79
+00:03:08,939 --> 00:03:10,950
+in your application. Your application has
+
+80
+00:03:10,950 --> 00:03:13,799
+to read the property from the Settings
+
+81
+00:03:13,799 --> 00:03:15,900
+component here, and this is what we are
+
+82
+00:03:15,900 --> 00:03:18,510
+doing: the state of our rectangle is
+
+83
+00:03:18,510 --> 00:03:20,639
+coming from the Settings component, and
+
+84
+00:03:20,639 --> 00:03:22,769
+whenever the state changes in your
+
+85
+00:03:22,769 --> 00:03:25,500
+application, you update the state here.
+
+86
+00:03:25,500 --> 00:03:27,720
+And after you do that, you have to decide
+
+87
+00:03:27,720 --> 00:03:30,180
+on when to save your data. In this case
+
+88
+00:03:30,180 --> 00:03:31,769
+we are saving the data when the
+
+89
+00:03:31,769 --> 00:03:34,500
+component dies, but you can do it
+
+90
+00:03:34,500 --> 00:03:36,720
+whenever you want. For example, you can do
+
+91
+00:03:36,720 --> 00:03:38,669
+it when a user presses a button or
+
+92
+00:03:38,669 --> 00:03:41,310
+whenever, really, in your QML application.
+
+93
+00:03:41,310 --> 00:03:43,829
+Okay, settings is one way to save your
+
+94
+00:03:43,829 --> 00:03:46,650
+data, but we can also use an embedded
+
+95
+00:03:46,650 --> 00:03:49,560
+SQLite database that is going to be on
+
+96
+00:03:49,560 --> 00:03:52,049
+your computer. To use that, you have to
+
+97
+00:03:52,049 --> 00:03:55,620
+import QT quick local storage 2.0. This
+
+98
+00:03:55,620 --> 00:03:57,810
+is what we have at the time of recording
+
+99
+00:03:57,810 --> 00:04:00,120
+this video. Database is already available
+
+100
+00:04:00,120 --> 00:04:02,189
+on your system so you don't need to set
+
+101
+00:04:02,189 --> 00:04:04,739
+it up or connect to it, you just need to
+
+102
+00:04:04,739 --> 00:04:06,930
+create and manage your databases and
+
+103
+00:04:06,930 --> 00:04:09,030
+tables and we're going to do that in a
+
+104
+00:04:09,030 --> 00:04:10,650
+moment. You're going to see exactly how
+
+105
+00:04:10,650 --> 00:04:13,349
+this works. Okay here we see the table
+
+106
+00:04:13,349 --> 00:04:15,239
+that we are going to design for in our
+
+107
+00:04:15,239 --> 00:04:18,209
+demo. We want to save location data and
+
+108
+00:04:18,209 --> 00:04:20,459
+color data, the same thing we did with
+
+109
+00:04:20,459 --> 00:04:23,280
+settings, but we are saving that
+
+110
+00:04:23,280 --> 00:04:25,650
+as a json object in a table that we
+
+111
+00:04:25,650 --> 00:04:27,750
+are going to define. The table is going
+
+112
+00:04:27,750 --> 00:04:30,360
+to have two fields: the name of the
+
+113
+00:04:30,360 --> 00:04:32,790
+setting that we want to save, and the
+
+114
+00:04:32,790 --> 00:04:35,639
+value of that setting. We try to make
+
+115
+00:04:35,639 --> 00:04:37,650
+things very simple for you to understand,
+
+116
+00:04:37,650 --> 00:04:42,090
+but if you know SQLite, you can quickly
+
+117
+00:04:42,090 --> 00:04:44,580
+see that you can use this to do all
+
+118
+00:04:44,580 --> 00:04:47,160
+kinds of crazy things. We're not going to
+
+119
+00:04:47,160 --> 00:04:49,919
+cover SQLite in this lecture, you have to
+
+120
+00:04:49,919 --> 00:04:52,380
+consult other pieces of documentation
+
+121
+00:04:52,380 --> 00:04:55,740
+for that, but it is not very difficult to
+
+122
+00:04:55,740 --> 00:04:58,440
+understand. Here you see that you can
+
+123
+00:04:58,440 --> 00:05:00,690
+also show the location of the database
+
+124
+00:05:00,690 --> 00:05:02,910
+on your system, it really is a file that
+
+125
+00:05:02,910 --> 00:05:04,710
+you're going to find, and you're going to
+
+126
+00:05:04,710 --> 00:05:06,330
+see this in a demo that we're going to
+
+127
+00:05:06,330 --> 00:05:09,090
+do, okay. This is how you connect to the
+
+128
+00:05:09,090 --> 00:05:11,640
+database and create your tables. You see
+
+129
+00:05:11,640 --> 00:05:14,100
+localStorage,openDatabaseSync, you parse
+
+130
+00:05:14,100 --> 00:05:17,700
+in the identifier for the database, you
+
+131
+00:05:17,700 --> 00:05:20,300
+parse in the version, you parse in the
+
+132
+00:05:20,300 --> 00:05:22,590
+description, and you parse in the
+
+133
+00:05:22,590 --> 00:05:24,960
+estimated size of the database. After
+
+134
+00:05:24,960 --> 00:05:27,210
+that you can do transactions on your
+
+135
+00:05:27,210 --> 00:05:29,630
+database. For example, here we are
+
+136
+00:05:29,630 --> 00:05:32,190
+executing the query to create a table.
+
+137
+00:05:32,190 --> 00:05:34,860
+The table name is this, and these are the
+
+138
+00:05:34,860 --> 00:05:36,990
+fields that we have. When you have your
+
+139
+00:05:36,990 --> 00:05:38,970
+database and your tables, the next thing
+
+140
+00:05:38,970 --> 00:05:40,919
+you usually want to do is to stuff in
+
+141
+00:05:40,919 --> 00:05:43,770
+some data. Here I have shown a simple
+
+142
+00:05:43,770 --> 00:05:46,110
+function that we created in our demo to
+
+143
+00:05:46,110 --> 00:05:48,600
+store some data. We are checking to see
+
+144
+00:05:48,600 --> 00:05:50,820
+if the database exists. If it doesn't
+
+145
+00:05:50,820 --> 00:05:53,550
+exist, we'll return. And we do a
+
+146
+00:05:53,550 --> 00:05:57,690
+transaction to store the data. We want to
+
+147
+00:05:57,690 --> 00:06:00,780
+see that we have our value in the table,
+
+148
+00:06:00,780 --> 00:06:03,600
+so we are selecting everything from
+
+149
+00:06:03,600 --> 00:06:06,600
+SQLitedemotable where the name equals
+
+150
+00:06:06,600 --> 00:06:09,960
+SQLite demo, remember that our table has
+
+151
+00:06:09,960 --> 00:06:12,750
+a field called sqlitedemo, this is what
+
+152
+00:06:12,750 --> 00:06:14,550
+we are checking for. Here we are
+
+153
+00:06:14,550 --> 00:06:16,800
+preparing the data that we want to save
+
+154
+00:06:16,800 --> 00:06:17,940
+in our database,
+
+155
+00:06:17,940 --> 00:06:20,340
+okay, we are stuffing the data from our
+
+156
+00:06:20,340 --> 00:06:22,919
+UI components... you see... we are capturing X
+
+157
+00:06:22,919 --> 00:06:25,680
+Y, width and height information, and we
+
+158
+00:06:25,680 --> 00:06:27,570
+capture the components of the color
+
+159
+00:06:27,570 --> 00:06:29,610
+that we want to save, and we save that
+
+160
+00:06:29,610 --> 00:06:32,250
+in our JSON object here. Next we
+
+161
+00:06:32,250 --> 00:06:34,500
+look at the result. If we got one result
+
+162
+00:06:34,500 --> 00:06:36,320
+it means that we had some thing
+
+163
+00:06:36,320 --> 00:06:39,920
+in our table, and we update, we don't want to
+
+164
+00:06:39,920 --> 00:06:42,110
+put in something new... that's why our
+
+165
+00:06:42,110 --> 00:06:44,960
+transaction here is update, we update the
+
+166
+00:06:44,960 --> 00:06:48,020
+table and we want to set the value where
+
+167
+00:06:48,020 --> 00:06:50,960
+the name equals sqlitedemo and we want
+
+168
+00:06:50,960 --> 00:06:53,630
+to put in our JSON objects that we
+
+169
+00:06:53,630 --> 00:06:58,040
+created. We are just stringifying it. If
+
+170
+00:06:58,040 --> 00:07:00,770
+we don't have the element already, we
+
+171
+00:07:00,770 --> 00:07:03,920
+insert in the database and we put it in
+
+172
+00:07:03,920 --> 00:07:06,530
+like this. This is really plain SQLite
+
+173
+00:07:06,530 --> 00:07:09,500
+knowledge, so if you are rusty on that
+
+174
+00:07:09,500 --> 00:07:11,600
+you should read on that, you're going to
+
+175
+00:07:11,600 --> 00:07:13,400
+understand these queries that we are
+
+176
+00:07:13,400 --> 00:07:15,980
+parsing in here. This thing you have in
+
+177
+00:07:15,980 --> 00:07:18,410
+brackets like this replaces what you
+
+178
+00:07:18,410 --> 00:07:21,530
+have with this question mark. This is
+
+179
+00:07:21,530 --> 00:07:23,900
+the only thing that is special here, okay,
+
+180
+00:07:23,900 --> 00:07:25,550
+this is how you store data, we're
+
+181
+00:07:25,550 --> 00:07:27,380
+going to do that in a demo, if you don't
+
+182
+00:07:27,380 --> 00:07:28,790
+understand this yet,
+
+183
+00:07:28,790 --> 00:07:31,190
+please don't worry. And this is how you
+
+184
+00:07:31,190 --> 00:07:33,740
+read the data. You also check to see if
+
+185
+00:07:33,740 --> 00:07:36,320
+the database is there, you have a
+
+186
+00:07:36,320 --> 00:07:38,810
+transaction here, inside you want to
+
+187
+00:07:38,810 --> 00:07:42,530
+execute this SQL query, we want to select
+
+188
+00:07:42,530 --> 00:07:44,600
+everything, we really are doing the same
+
+189
+00:07:44,600 --> 00:07:47,330
+thing. If we have a result, we want to
+
+190
+00:07:47,330 --> 00:07:50,270
+capture the value in that result, okay,
+
+191
+00:07:50,270 --> 00:07:53,150
+this is how you capture it. We parse the
+
+192
+00:07:53,150 --> 00:07:55,940
+JSON in the value that we got, and then
+
+193
+00:07:55,940 --> 00:07:58,040
+we read the data, okay. This is a JSON
+
+194
+00:07:58,040 --> 00:08:00,560
+object that we have in obj. So we
+
+195
+00:08:00,560 --> 00:08:02,480
+captured the data that we want and we
+
+196
+00:08:02,480 --> 00:08:05,450
+put that in our UI components: X, Y, width,
+
+197
+00:08:05,450 --> 00:08:08,600
+height, and we construct our color for
+
+198
+00:08:08,600 --> 00:08:10,550
+the components like this. This method
+
+199
+00:08:10,550 --> 00:08:13,550
+rgba is available in our Qt global
+
+200
+00:08:13,550 --> 00:08:15,740
+object as we have seen before. And
+
+201
+00:08:15,740 --> 00:08:17,960
+everything we've talked about here is
+
+202
+00:08:17,960 --> 00:08:20,600
+documented in the local storage
+
+203
+00:08:20,600 --> 00:08:23,870
+documentation either online or in 
+
+204
+00:08:23,870 --> 00:08:25,700
+Qt Creator. We'd like to go to QT creator
+
+205
+00:08:25,700 --> 00:08:28,640
+and look at that, okay. Here we are in QT
+
+206
+00:08:28,640 --> 00:08:31,220
+creator. If you go to the documentation
+
+207
+00:08:31,220 --> 00:08:36,370
+and type in local storage like this,
+
+208
+00:08:37,210 --> 00:08:39,890
+you're going to find QT quick local
+
+209
+00:08:39,890 --> 00:08:41,809
+storage, click on that and you are going
+
+210
+00:08:41,809 --> 00:08:44,210
+to fall here. And they say that this is a
+
+211
+00:08:44,210 --> 00:08:45,940
+singleton for reading and writing
+
+212
+00:08:45,940 --> 00:08:49,490
+SQLite databases. If you click on this,
+
+213
+00:08:49,490 --> 00:08:53,510
+they tell you what the sqlite environment
+
+214
+00:08:53,510 --> 00:08:56,360
+they have is made of, they show you the
+
+215
+00:08:56,360 --> 00:08:58,460
+methods that you can call, open database,
+
+216
+00:08:58,460 --> 00:09:01,340
+they really tell you everything we just
+
+217
+00:09:01,340 --> 00:09:04,160
+talked about, and even more. So if you are
+
+218
+00:09:04,160 --> 00:09:06,710
+in doubt about something, this is what
+
+219
+00:09:06,710 --> 00:09:09,200
+you should read. Down here they also have
+
+220
+00:09:09,200 --> 00:09:11,570
+an example that you can look at. I do
+
+221
+00:09:11,570 --> 00:09:14,270
+recommend to look at this later when you
+
+222
+00:09:14,270 --> 00:09:17,210
+are finished with this course, because it
+
+223
+00:09:17,210 --> 00:09:18,980
+is a good way to practice your knowledge.
+
+224
+00:09:18,980 --> 00:09:21,050
+Okay this is all we're going to look at
+
+225
+00:09:21,050 --> 00:09:22,490
+in this chapter. We're going to look at
+
+226
+00:09:22,490 --> 00:09:24,320
+settings, and we are going to look at how
+
+227
+00:09:24,320 --> 00:09:27,110
+you work with SQLite in your QML
+
+228
+00:09:27,110 --> 00:09:29,300
+application. The last lecture, we're
+
+229
+00:09:29,300 --> 00:00:00,000
+going to look at settings I'll see you there.
+

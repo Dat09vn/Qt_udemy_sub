@@ -1,0 +1,644 @@
+﻿1
+00:00:00,000 --> 00:00:01,650
+Trong bài này chúng ta sẽ tìm hiểu cách
+
+2
+00:00:01,650 --> 00:00:03,929
+các bạn có thể làm việc với màu gradient
+
+3
+00:00:03,929 --> 00:00:06,660
+bên trong hàm chuyển trạng thái. Đây là một nội dung
+
+4
+00:00:06,660 --> 00:00:09,000
+gây ra rất nhiều thắc mắc với rất nhiều học viên nên tôi nghĩ
+
+5
+00:00:09,000 --> 00:00:11,040
+đó là ý tưởng hay khi bao gồm nó như một
+
+6
+00:00:11,040 --> 00:00:13,349
+bài học và khiến mọi thứ dễ hiểu hơn
+
+7
+00:00:13,349 --> 00:00:15,780
+một chút. Chúng ta sẽ đi tới qt creator và
+
+8
+00:00:15,780 --> 00:00:17,910
+tìm hiểu nó. Chúng ta sẽ bắt đầu từ
+
+9
+00:00:17,910 --> 00:00:20,010
+trạng thái chúng ta có từ bài trước nhưng
+
+10
+00:00:20,010 --> 00:00:22,109
+tôi sẽ làm cái này như một
+
+11
+00:00:22,109 --> 00:00:24,390
+dự án riêng biệt để có thể phân biệt cho
+
+12
+00:00:24,390 --> 00:00:26,130
+dễ dàng. Tôi sẽ tạo một dự án mới
+
+13
+00:00:26,130 --> 00:00:30,630
+file - new project,
+
+14
+00:00:30,630 --> 00:00:33,600
+nó là một ứng dụng qt quick chúng ta gọi nó
+
+15
+00:00:33,600 --> 00:00:37,620
+là StatesWithGradientsDemo, chọn phiên bản qt,
+
+16
+00:00:37,620 --> 00:00:43,530
+chọn bộ công cụ, ấn next và
+
+17
+00:00:43,530 --> 00:00:49,309
+finish. Hãy nói điều chúng ta muốn làm. Tôi
+
+18
+00:00:53,120 --> 00:00:55,890
+sẽ quay lại dự án trước và
+
+19
+00:00:55,890 --> 00:00:58,199
+chép bất cứ thứ gì chúng ta có ở đó và sử dụng nó
+
+20
+00:00:58,199 --> 00:01:01,230
+ở đây. Cách mà tôi làm thế, tôi sẽ
+
+21
+00:01:01,230 --> 00:01:04,110
+quay lại đây, các bạn nên đến chỗ để
+
+22
+00:01:04,110 --> 00:01:08,670
+dự án và chép mọi thứ ở
+
+23
+00:01:08,670 --> 00:01:13,170
+bên trong thành phần window. Chúng ta nên
+
+24
+00:01:13,170 --> 00:01:15,710
+làm như thế này. Tôi nghĩ là đúng rồi đó.
+
+25
+00:01:15,710 --> 00:01:19,380
+Hãy kiểm tra lại, đúng rồi, ấn copy chúng ta
+
+26
+00:01:19,380 --> 00:01:21,479
+quay lại dự án ở đây, cái mới và
+
+27
+00:01:21,479 --> 00:01:25,350
+chúng ta dán vào những gì chúng ta có. Chúng ta cũng phải
+
+28
+00:01:25,350 --> 00:01:27,180
+mang các file tài nguyên bằng không
+
+29
+00:01:27,180 --> 00:01:29,000
+chúng ta sẽ không tìm thấy cái cây.
+
+30
+00:01:29,000 --> 00:01:33,360
+Chúng ta sẽ đi tới chỗ bài học trước đó
+
+31
+00:01:33,360 --> 00:01:36,299
+được tạo ấn lên file ở đây,
+
+32
+00:01:36,299 --> 00:01:41,790
+file main của nó - show in explorer. Chúng ta tìm
+
+33
+00:01:41,790 --> 00:01:43,710
+thư mực images. Chúng ta sẽ
+
+34
+00:01:43,710 --> 00:01:47,729
+chép nó, đóng lại, quay lại dự án
+
+35
+00:01:47,729 --> 00:01:51,119
+hiện tại của chúng ta - show in Explorer,
+
+36
+00:01:51,119 --> 00:01:54,780
+điều tương tự. Và chúng ta sẽ
+
+37
+00:01:54,780 --> 00:01:58,590
+dán vào thư mục images này. Ok chúng ta
+
+38
+00:01:58,590 --> 00:02:01,680
+có mấy cái cây. Bây giờ chúng ta có thể thêm các file
+
+39
+00:02:01,680 --> 00:02:06,930
+tài nguyên, resources - add new - qt - resource file,
+
+40
+00:02:06,930 --> 00:02:10,700
+gọi nó là resource.
+
+41
+00:02:13,230 --> 00:02:17,920
+Các bạn muốn thêm vào gợi ý tiên tố, bỏ
+
+42
+00:02:17,920 --> 00:02:22,480
+cái này đi, ấn enter, add file. Và các bạn sẽ
+
+43
+00:02:22,480 --> 00:02:25,150
+tìm thấy hai hình nahr ở đây. Các bạn
+
+44
+00:02:25,150 --> 00:02:28,650
+muốn nạp chúng, lưu các thứ của bạn,
+
+45
+00:02:28,650 --> 00:02:31,990
+quay lại file main.qml. Chúng ta có thể
+
+46
+00:02:31,990 --> 00:02:35,140
+đóng cái này, hãy xem có gì ở đây,
+
+47
+00:02:35,140 --> 00:02:38,080
+đống tất cả bởi vì tôi không muốn
+
+48
+00:02:38,080 --> 00:02:40,150
+những thứ này làm mình rối, mở dự án
+
+49
+00:02:40,150 --> 00:02:42,550
+của tôi lại. Okay đây là điều chúng ta có,
+
+50
+00:02:42,550 --> 00:02:45,459
+chúng ta chạy nó, chúng ta sẽ có mọi thứ
+
+51
+00:02:45,459 --> 00:02:51,760
+trong bài trước. Okay đây là
+
+52
+00:02:51,760 --> 00:02:54,280
+những gì chúng ta có. Điều tôi muốn cho các bạn xem là
+
+53
+00:02:54,280 --> 00:02:57,310
+điều gì sẽ xảy ra nếu các bạn xác định, lấy ví dụ,
+
+54
+00:02:57,310 --> 00:03:00,580
+màu của nền trời hay
+
+55
+00:03:00,580 --> 00:03:02,230
+màu của nền đất bằng một màu gradient.
+
+56
+00:03:02,230 --> 00:03:04,720
+Okay hãy bỏ cái này vào bình luận, làm ví dụ,
+
+57
+00:03:04,720 --> 00:03:08,190
+và đưa thuộc tính gradient vào như thế này.
+
+58
+00:03:08,190 --> 00:03:11,650
+Màu gradient là một cặp màu dịch chuyển từ màu này
+
+59
+00:03:11,650 --> 00:03:13,870
+sang màu kí. Các bạn muốn đặt màu sắc
+
+60
+00:03:13,870 --> 00:03:16,810
+cho màu gradient, ví dụ, để nó dịch chuyển
+
+61
+00:03:16,810 --> 00:03:19,269
+thật mượt mà giữa hai màu, ví dụ như,
+
+62
+00:03:19,269 --> 00:03:21,190
+từ đỏ sang xanh lam. Các bạn sẽ
+
+63
+00:03:21,190 --> 00:03:22,959
+thấy ý của tôi nếu các bạn chạy
+
+64
+00:03:22,959 --> 00:03:25,930
+ứng dụng này bây giờ, hãy xem chuyện gì xảy ra.
+
+65
+00:03:25,930 --> 00:03:28,989
+Okay các bạn thấy là màu của nền trời
+
+66
+00:03:28,989 --> 00:03:32,650
+thì như thế này, nó chuyển từ màu lam đậm
+
+67
+00:03:32,650 --> 00:03:35,620
+sang màu lam nhật hơn. Đây chính là
+
+68
+00:03:35,620 --> 00:03:38,290
+màu gradient. Nếu các bạn muốn sử dụng cái này
+
+69
+00:03:38,290 --> 00:03:40,720
+trong ứng dụng chúng ta sẽ có vấn đề
+
+70
+00:03:40,720 --> 00:03:43,959
+nến chúng ta thứ viết như này trong hàm chuyển
+
+71
+00:03:43,959 --> 00:03:46,540
+bằng các chuyền vào màu gradient như thế này. Tôi sẽ
+
+72
+00:03:46,540 --> 00:03:47,920
+cho các bạn thấy ý mình. Tôi sẽ đặt một
+
+73
+00:03:47,920 --> 00:03:50,560
+màu gradient khác cho nền đất. Hãy
+
+74
+00:03:50,560 --> 00:03:53,530
+bỏ cái này vào bình luận và bỏ vào một màu gradient
+
+75
+00:03:53,530 --> 00:03:59,410
+và đi vào hàm chuyển của mùa hè. Điều
+
+76
+00:03:59,410 --> 00:04:01,959
+mà nhiều học viên làm là khai báo một
+
+77
+00:04:01,959 --> 00:04:04,720
+màu gradient như thế này, okay, như thể họ
+
+78
+00:04:04,720 --> 00:04:08,160
+khai báo một màu nên họ viết gradient và
+
+79
+00:04:08,160 --> 00:04:10,780
+đặt nó như thế này, ví dụ vậy,
+
+80
+00:04:10,780 --> 00:04:13,360
+đặt một màu gradient nữa, chà
+
+81
+00:04:13,360 --> 00:04:16,000
+đây sẽ trở thành thảm họa.
+
+82
+00:04:16,000 --> 00:04:20,769
+Hãy chạy thử. Ứng dụng của các bạn còn không thể
+
+83
+00:04:20,769 --> 00:04:22,930
+chạy được bởi vì có những
+
+84
+00:04:22,930 --> 00:04:23,830
+thành phần
+
+85
+00:04:23,830 --> 00:04:27,189
+không thể nạp được. Đây là lỗi
+
+86
+00:04:27,189 --> 00:04:30,460
+cú pháp và nó có thể rất khó hiểu đối với
+
+87
+00:04:30,460 --> 00:04:33,069
+nhiều học viên nếu học làm như thế này. Cách để
+
+88
+00:04:33,069 --> 00:04:35,169
+các bạn làm điều này, các bạn không nên truyền vào
+
+89
+00:04:35,169 --> 00:04:37,479
+một thành phần gradient hoàn chỉnh như thế này.
+
+90
+00:04:37,479 --> 00:04:40,240
+Các bạn nên xem lại thành phần gradient, các bạn thấy
+
+91
+00:04:40,240 --> 00:04:43,389
+rằng nó có một id và nó có
+
+92
+00:04:43,389 --> 00:04:45,969
+thuộc tính nên các bạn có thể nhắm đến
+
+93
+00:04:45,969 --> 00:04:49,210
+những thứ này và thây đổi màu của nó. Okay
+
+94
+00:04:49,210 --> 00:04:51,009
+điều các bạn nên làm là không làm
+
+95
+00:04:51,009 --> 00:04:52,360
+như thế này, chúng ta sẽ bỏ chỗ này vào bình luận.
+
+96
+00:04:52,360 --> 00:04:56,530
+Thay vào đó các bạn sẽ làm một hàm chuyển
+
+97
+00:04:56,530 --> 00:04:59,110
+thuộc tính tách riêng mà nhắm vào
+
+98
+00:04:59,110 --> 00:05:01,500
+màu gradient, ctrl+a crtl+i để cân chỉnh.
+
+99
+00:05:01,500 --> 00:05:05,110
+các bạn thấy rằng chúng ta đang nhắm vào
+
+100
+00:05:05,110 --> 00:05:08,919
+màu bắt đầu của nền trời và chúng ta thay đổi
+
+101
+00:05:08,919 --> 00:05:11,440
+cái này thành màu mà chúng ta muốn. Và chúng ta
+
+102
+00:05:11,440 --> 00:05:13,539
+có thể làm điều tương tự cho màu kết của
+
+103
+00:05:13,539 --> 00:05:16,960
+nền trời, crtl+a crtl+i để cân chỉnh.
+
+104
+00:05:16,960 --> 00:05:20,199
+Sau đó chúng ta hoạt họa chuyển đổi của
+
+105
+00:05:20,199 --> 00:05:22,330
+màu bắt đẩu và màu kết trong màu
+
+106
+00:05:22,330 --> 00:05:26,139
+gradient. Okay đây là các bạn bạn nên làm
+
+107
+00:05:26,139 --> 00:05:28,690
+nó khi các bạn muốn truyền vào hàm chuyển
+
+108
+00:05:28,690 --> 00:05:31,449
+màu gradient của mình. Chúng ta sẽ
+
+109
+00:05:31,449 --> 00:05:35,050
+làm tương tự với mùa xuân thụa ra thì
+
+110
+00:05:35,050 --> 00:05:37,990
+thay đổi chúng ta làm ở đây là cho mùa xuân.
+
+111
+00:05:37,990 --> 00:05:41,199
+Nên chúng ta sẽ chép chúng, tôi
+
+111
+00:05:41,199 --> 00:05:43,479
+xin lỗi vì điều này nếu nó làm các bạn băn khoăn.
+
+112
+00:05:43,479 --> 00:05:48,039
+Chúng ta sẽ bỏ nó vào trong mùa xuân và ở trên
+
+113
+00:05:48,039 --> 00:05:49,960
+đây chúng ta sẽ làm cho mùa hè
+
+114
+00:05:49,960 --> 00:05:52,839
+và trong mùa hè nó sẽ như thế này,
+
+115
+00:05:52,839 --> 00:05:55,629
+crtl+a crtl+i. Nó không phải thực sự
+
+116
+00:05:55,629 --> 00:05:58,000
+mới chúng ta chỉ thây đổi màu
+
+117
+00:05:58,000 --> 00:06:01,690
+ở đây hãy chạy và xem chúng ta có gì.
+
+118
+00:06:01,690 --> 00:06:04,629
+Lần này nó sẽ hoạt động chính xác. Các bạn thấy
+
+119
+00:06:04,629 --> 00:06:06,969
+rằng chúng ta thấy mọi thứ ở đây. Chúng ta sẽ thấy
+
+120
+00:06:06,969 --> 00:06:09,669
+một màu gradient trên nền đất và nền trời
+
+121
+00:06:09,669 --> 00:06:12,879
+và nếu chúng ta ấn các bạn thấy màu trời
+
+122
+00:06:12,879 --> 00:06:16,389
+thay đổi một cách mượt mà. Đây là điều chúng ta
+
+123
+00:06:16,389 --> 00:06:19,690
+muốn và nó là một màu gradient và nó thêm một chút
+
+124
+00:06:19,690 --> 00:06:22,300
+anh sáng vào khung cảnh ở đây. Tôi
+
+125
+00:06:22,300 --> 00:06:24,819
+không biết là các bạn có thấy được không. Chúng ta
+
+126
+00:06:24,819 --> 00:06:27,190
+sẽ làm điều tương tự với nền đất.
+
+127
+00:06:27,190 --> 00:06:27,940
+Bên trong phần mùa hè,
+
+128
+00:06:27,940 --> 00:06:31,300
+nền đất sẽ chuyển màu vang chanh, chúng ta
+
+129
+00:06:31,300 --> 00:06:32,979
+muốn bỏ màu này đi bởi vì
+
+130
+00:06:32,979 --> 00:06:35,979
+đây không phải là cái chúng ta muốn đổi, chúng ta
+
+131
+00:06:35,979 --> 00:06:37,480
+bỏ cái này vào phần bình luận
+
+132
+00:06:37,480 --> 00:06:40,540
+và chúng ta bỏ vào một màu gradient mà chuyển
+
+133
+00:06:40,540 --> 00:06:44,230
+màu nền đất, crtl+a crtl+i. Đây là
+
+134
+00:06:44,230 --> 00:06:47,230
+điều chúng ta muốn trong mùa hè, chúng ta sẽ làm điều
+
+135
+00:06:47,230 --> 00:06:51,310
+tương tự trong mùa xuân. Hãy đi xuống tìm đến
+
+136
+00:06:51,310 --> 00:06:54,490
+phần nền đất, chúng ta sẽ bỏ cái này đi bởi vì
+
+137
+00:06:54,490 --> 00:06:57,640
+chúng ta không thay đổi màu này chúng ta sẽ
+
+138
+00:06:57,640 --> 00:06:59,770
+thay đổi màu gradient, crtl+a crtl+i
+
+139
+00:06:59,770 --> 00:07:03,060
+để căn chỉnh. Và chúng ta thay đổi màu gradient
+
+140
+00:07:03,060 --> 00:07:05,770
+của nền đất như thế này, chúng ta thay đổi màu
+
+141
+00:07:05,770 --> 00:07:08,250
+bắt đầu và màu kết thúc.
+
+142
+00:07:08,250 --> 00:07:13,660
+Hãy chạy các bạn thấy rằng nền đất cũng
+
+143
+00:07:13,660 --> 00:07:16,270
+thay đổi theo màu gradient
+
+144
+00:07:16,270 --> 00:07:18,550
+như chúng ta nói. Và đây là
+
+145
+00:07:18,550 --> 00:07:20,380
+tất cả những thứ tôi muốn cho các bạn xem trong bài này.
+
+146
+00:07:20,380 --> 00:07:22,720
+Nếu các bạn muốn truyền vào màu gradient
+
+147
+00:07:22,720 --> 00:07:25,000
+chuyển đổi vào thuộc tính chuyển của mình các bạn
+
+148
+00:07:25,000 --> 00:07:26,920
+không nên làm như thế này, nó sẽ
+
+149
+00:07:26,920 --> 00:07:29,290
+không hoạt động, ứng dụng của các bạn sẽ không
+
+150
+00:07:29,290 --> 00:07:31,870
+cả chạy. Thay vào đó các bạn nên
+
+151
+00:07:31,870 --> 00:07:34,690
+xác định màu gradient như thế này, cho
+
+152
+00:07:34,690 --> 00:07:38,380
+gradientstop một id và nhắm vào các
+
+153
+00:07:38,380 --> 00:07:41,140
+id này để thay đổi nàu xác đây là cách các bạn
+
+154
+00:07:41,140 --> 00:07:43,570
+làm việc. Đây là tất cả cho bài này. Trong
+
+155
+00:07:43,570 --> 00:07:45,520
+chương tiếp theo chúng ta sẽ
+
+156
+00:07:45,520 --> 00:07:47,860
+bắt đầu làm việc với hệ thống mạng trong
+
+157
+00:07:47,860 --> 00:07:49,900
+qml và chúng ta sẽ làm nhiều trò
+
+158
+00:07:49,900 --> 00:07:53,110
+vui như tìm REST API và sử dụng
+
+159
+00:07:53,110 --> 00:07:55,570
+chúng trong ứng dụng qt quick. Tôi sẽ gặp lại
+
+160
+00:07:55,570 --> 00:00:00,000
+các bạn ở đó.
+

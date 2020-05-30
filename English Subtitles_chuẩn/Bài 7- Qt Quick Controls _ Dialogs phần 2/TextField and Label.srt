@@ -1,0 +1,372 @@
+1
+00:00:00,000 --> 00:00:02,460
+you use a text field when you want to
+
+2
+00:00:02,460 --> 00:00:05,520
+collect one-liner pieces of text from
+
+3
+00:00:05,520 --> 00:00:07,950
+the user we're going to go to QT creator
+
+4
+00:00:07,950 --> 00:00:09,630
+or and play with this Qt quick
+
+5
+00:00:09,630 --> 00:00:14,490
+component, in QT create or we create our
+
+6
+00:00:14,490 --> 00:00:18,740
+new project we call it text field demo
+
+7
+00:00:18,740 --> 00:00:22,650
+save it in usual location, choose our QT
+
+8
+00:00:22,650 --> 00:00:29,340
+version and choose our kit we want to
+
+9
+00:00:29,340 --> 00:00:32,930
+include our QT quick controls module and
+
+10
+00:00:32,930 --> 00:00:36,149
+we want to state what we are doing in
+
+11
+00:00:36,149 --> 00:00:42,210
+this lecture. A text field is really
+
+12
+00:00:42,210 --> 00:00:44,430
+something like this you see here it's a
+
+13
+00:00:44,430 --> 00:00:47,329
+step in your first name I can say Daniel
+
+14
+00:00:47,329 --> 00:00:51,449
+and I can do something with the data in
+
+15
+00:00:51,449 --> 00:00:53,370
+here for example can collect it when the
+
+16
+00:00:53,370 --> 00:00:56,039
+user hits this button so right now we're
+
+17
+00:00:56,039 --> 00:00:57,570
+going to do the structure like this
+
+18
+00:00:57,570 --> 00:01:00,410
+we're going to go back to our code and
+
+19
+00:01:00,410 --> 00:01:07,170
+put a column component inside we'll put
+
+20
+00:01:07,170 --> 00:01:12,840
+a spacing of 20 and we want to Center
+
+21
+00:01:12,840 --> 00:01:14,869
+this in the parent so we're going to say
+
+22
+00:01:14,869 --> 00:01:18,689
+the usual instead. We want to put another
+
+23
+00:01:18,689 --> 00:01:23,280
+row component put some spacing of 30 and
+
+24
+00:01:23,280 --> 00:01:27,270
+give it a width of 300 and this row
+
+25
+00:01:27,270 --> 00:01:28,860
+component is going to have a Label
+
+26
+00:01:28,860 --> 00:01:31,530
+component that says first name and we're
+
+27
+00:01:31,530 --> 00:01:33,780
+going to have a text field element to
+
+28
+00:01:33,780 --> 00:01:36,840
+capture that first name from the user so
+
+29
+00:01:36,840 --> 00:01:38,700
+we're going to put in a Label component
+
+30
+00:01:38,700 --> 00:01:41,930
+like this, Ctrl A Ctrl I to align
+
+31
+00:01:41,930 --> 00:01:45,750
+it basically has a width and height we
+
+32
+00:01:45,750 --> 00:01:48,329
+specified the wrap mode and we align
+
+33
+00:01:48,329 --> 00:01:50,990
+tents in the center and the text says
+
+34
+00:01:50,990 --> 00:01:53,729
+first name if you want to know about the
+
+35
+00:01:53,729 --> 00:01:55,799
+Label component you can come to the
+
+36
+00:01:55,799 --> 00:01:58,170
+documentation and look at it the label
+
+37
+00:01:58,170 --> 00:02:00,810
+extends Text with styling and font
+
+38
+00:02:00,810 --> 00:02:04,200
+inheritance, okay add some features to
+
+39
+00:02:04,200 --> 00:02:07,409
+detect what we have seen now we can add
+
+40
+00:02:07,409 --> 00:02:10,970
+in our text field
+
+41
+00:02:12,530 --> 00:02:16,730
+we can give it an id
+
+42
+00:02:17,030 --> 00:02:20,280
+they better width of 200 for
+
+43
+00:02:20,280 --> 00:02:24,480
+example give it a height of 50 I think
+
+44
+00:02:24,480 --> 00:02:28,560
+it has a placeholder - yes it does so
+
+45
+00:02:28,560 --> 00:02:34,650
+you can say first name or type in your
+
+46
+00:02:34,650 --> 00:02:36,450
+first name invite the user to do
+
+47
+00:02:36,450 --> 00:02:42,840
+something and if you look at this
+
+48
+00:02:42,840 --> 00:02:45,300
+component in the documentation let's go
+
+49
+00:02:45,300 --> 00:02:51,060
+to f1 you see that it inherits TextInput
+
+50
+00:02:51,060 --> 00:02:53,880
+component we have seen before if
+
+51
+00:02:53,880 --> 00:02:56,010
+you go to it you're going to see some
+
+52
+00:02:56,010 --> 00:02:58,770
+signals that this thing has, and one of
+
+53
+00:02:58,770 --> 00:03:01,110
+them is added and finished that is
+
+54
+00:03:01,110 --> 00:03:03,180
+emitted when they returned key is
+
+55
+00:03:03,180 --> 00:03:06,660
+pressed or when this component loses
+
+56
+00:03:06,660 --> 00:03:10,380
+focus so you can use it to know when to
+
+57
+00:03:10,380 --> 00:03:13,290
+capture the text that is inside because
+
+58
+00:03:13,290 --> 00:03:17,840
+you can say onEditingFinished
+
+59
+00:03:17,840 --> 00:03:26,370
+console.log text edit finished and show
+
+60
+00:03:26,370 --> 00:03:29,190
+the new text which is going to be
+
+61
+00:03:29,190 --> 00:03:32,280
+available in the text property of this
+
+62
+00:03:32,280 --> 00:03:36,480
+thing here so down here below there are
+
+63
+00:03:36,480 --> 00:03:40,160
+component we're going to put a button
+
+64
+00:03:40,880 --> 00:03:44,460
+remember that this is a column component
+
+65
+00:03:44,460 --> 00:03:46,470
+that we are inside so we can keep adding
+
+66
+00:03:46,470 --> 00:03:50,760
+stuff to it the text is going to say
+
+67
+00:03:50,760 --> 00:03:57,510
+click and then the on click event we are
+
+68
+00:03:57,510 --> 00:03:59,640
+going to capture the text that is in the
+
+69
+00:03:59,640 --> 00:04:07,830
+text field we can do this and we pass in
+
+70
+00:04:07,830 --> 00:04:11,250
+the textfieldID and capture the text
+
+71
+00:04:11,250 --> 00:04:14,040
+property let's run the application and
+
+72
+00:04:14,040 --> 00:04:17,040
+see what we have so far ok we have our
+
+73
+00:04:17,040 --> 00:04:20,579
+thing here and you see that this click
+
+74
+00:04:20,579 --> 00:04:23,460
+button is not centered but that's not to
+
+75
+00:04:23,460 --> 00:04:23,889
+be deal
+
+76
+00:04:23,889 --> 00:04:29,740
+I type in Daniel and when I click this
+
+77
+00:04:29,740 --> 00:04:33,129
+you see that I am capturing the two
+
+78
+00:04:33,129 --> 00:04:36,669
+signals one is coming from the fact that
+
+79
+00:04:36,669 --> 00:04:40,629
+the text field is losing focus and 
+
+80
+00:04:40,629 --> 00:04:42,789
+onEditingFinished is being emitted and
+
+81
+00:04:42,789 --> 00:04:46,780
+inside we are type in text edit finished
+
+82
+00:04:46,780 --> 00:04:53,080
+ok we should say finished and the other
+
+83
+00:04:53,080 --> 00:04:55,060
+one is when we click on this button and
+
+84
+00:04:55,060 --> 00:04:57,729
+it says text is Daniel you can use
+
+85
+00:04:57,729 --> 00:05:00,310
+whatever way you find more convenient to
+
+86
+00:05:00,310 --> 00:05:02,770
+capture your text. And ladies and
+
+87
+00:05:02,770 --> 00:05:04,779
+gentlemen this is all you need to know
+
+88
+00:05:04,779 --> 00:05:06,939
+about the text field component it really
+
+89
+00:05:06,939 --> 00:05:09,509
+is very easy and you use it to capture
+
+90
+00:05:09,509 --> 00:05:12,849
+one-liner pieces of text from the user
+
+91
+00:05:12,849 --> 00:05:14,860
+and the next lecture we're going to look
+
+92
+00:05:14,860 --> 00:05:18,189
+at the split view in Qt Quick Control I
+
+93
+00:05:18,189 --> 00:00:00,000
+see you there
+

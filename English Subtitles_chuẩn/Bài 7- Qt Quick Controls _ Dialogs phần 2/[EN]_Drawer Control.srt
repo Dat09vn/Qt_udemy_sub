@@ -1,0 +1,897 @@
+1
+00:00:00,000 --> 00:00:02,220
+In this lecture we are looking at the
+
+2
+00:00:02,220 --> 00:00:05,009
+Drawer Qt Quick component. This is a
+
+3
+00:00:05,009 --> 00:00:07,259
+component that allows you to have a
+
+4
+00:00:07,259 --> 00:00:10,500
+sliding panel like this.  
+
+5
+00:00:10,500 --> 00:00:12,719
+You see that when we click, it would have something
+
+6
+00:00:12,719 --> 00:00:16,109
+sliding again. A drawer allows you to
+
+7
+00:00:16,109 --> 00:00:18,779
+build something like this. So we're going
+
+8
+00:00:18,779 --> 00:00:20,760
+to create a new project in Qt creator
+
+9
+00:00:20,760 --> 00:00:22,230
+and play with this.
+
+10
+00:00:22,230 --> 00:00:26,779
+Click File -> New project -> Qt Quick Application.
+
+11
+00:00:26,779 --> 00:00:29,250
+We're going to call it “Drawer Demo”,
+
+12
+00:00:29,250 --> 00:00:35,160
+save it in the usual location, choose our
+
+13
+00:00:35,160 --> 00:00:38,570
+version of Qt and choose our kit, and
+
+14
+00:00:38,570 --> 00:00:41,520
+we're going to have a project here. We
+
+15
+00:00:41,520 --> 00:00:44,809
+should change this title to say “Drawer Demo”,
+
+16
+00:00:44,809 --> 00:00:55,469
+import our Qt Quick Controls. Let's
+
+17
+00:00:55,469 --> 00:00:58,309
+go down and change the last number, and
+
+18
+00:00:58,309 --> 00:01:01,559
+while we are here, we should import 
+
+19
+00:01:01,559 --> 00:01:03,210
+Qt Quick layouts because we're going to
+
+20
+00:01:03,210 --> 00:01:09,570
+need that. Layouts 1.4 is
+
+21
+00:01:09,570 --> 00:01:12,090
+available for us and another thing we
+
+22
+00:01:12,090 --> 00:01:14,280
+want to do is to change this to
+
+23
+00:01:14,280 --> 00:01:17,130
+ApplicationWindow. This is a
+
+24
+00:01:17,130 --> 00:01:20,820
+component that is available from Qt
+
+25
+00:01:20,820 --> 00:01:22,500
+Quick controls. We are actually going
+
+26
+00:01:22,500 --> 00:01:24,630
+to look at this in detail. If you want to
+
+27
+00:01:24,630 --> 00:01:26,159
+know more about it right now, you can
+
+28
+00:01:26,159 --> 00:01:28,860
+click on F1 and you're going to have a
+
+29
+00:01:28,860 --> 00:01:31,860
+bunch of things you can know about it. It
+
+30
+00:01:31,860 --> 00:01:34,170
+basically is a window which makes it
+
+31
+00:01:34,170 --> 00:01:37,740
+convenient to add menu bars, status bars
+
+32
+00:01:37,740 --> 00:01:40,259
+and things like that. We want to give an
+
+33
+00:01:40,259 --> 00:01:42,990
+id to our Window here, we're going to say 
+
+34
+00:01:42,990 --> 00:01:46,590
+rootID and we want to change its
+
+35
+00:01:46,590 --> 00:01:50,159
+width and height so that it looks like a
+
+36
+00:01:50,159 --> 00:01:57,600
+mobile application. We're going to change
+ 
+0:01:53.280,0:02:00.299
+this to 520. We are going to specify a
+
+37
+00:01:57,600 --> 00:02:00,299
+header property for this Application
+
+38
+00:02:00,299 --> 00:02:02,729
+Window and we are going to put in a
+
+39
+00:02:02,729 --> 00:02:07,229
+Toolbar. The toolbar can contain a bunch
+
+40
+00:02:07,229 --> 00:02:11,099
+of things. We give it a height of 50, why
+
+41
+00:02:11,099 --> 00:02:13,540
+not? and we give it a 
+
+42
+00:02:13,540 --> 00:02:20,200
+background: Rectangle. We give it a color: 
+
+43
+00:02:20,200 --> 00:02:22,840
+mintcream. If you want to know what this
+
+44
+00:02:22,840 --> 00:02:25,840
+color looks like, just hover on top of it
+
+45
+00:02:25,840 --> 00:02:28,359
+and it looks like this. Inside the
+
+46
+00:02:28,359 --> 00:02:30,730
+Toolbar we are going to have a
+
+47
+00:02:30,730 --> 00:02:34,989
+Rowlayout component. It's going to have a
+
+48
+00:02:34,989 --> 00:02:38,530
+spacing of 20 and it's going to fill its
+
+49
+00:02:38,530 --> 00:02:41,980
+parent. Its parent happens to be this
+
+50
+00:02:41,980 --> 00:02:44,769
+ToolBar component here and inside we're
+
+51
+00:02:44,769 --> 00:02:47,280
+going to have a ToolButton component, a
+
+52
+00:02:47,280 --> 00:02:50,439
+thing that is clickable by the user, and
+
+53
+00:02:50,439 --> 00:02:53,859
+we're going to have a little piece of
+
+54
+00:02:53,859 --> 00:02:57,400
+text. The ToolButton can also have a
+
+55
+00:02:57,400 --> 00:03:00,189
+background. We're going to change it to
+
+56
+00:03:00,189 --> 00:03:03,189
+the same background as the “ToolBar” so
+
+57
+00:03:03,189 --> 00:03:08,019
+that things look the same. It also
+
+58
+00:03:08,019 --> 00:03:11,079
+supports providing an image that is
+
+59
+00:03:11,079 --> 00:03:13,359
+going to be shown in that “ToolButton”
+
+60
+00:03:13,359 --> 00:03:17,069
+and you provide that through the icon
+
+61
+00:03:17,069 --> 00:03:21,220
+source group property and we are going
+
+62
+00:03:21,220 --> 00:03:24,340
+to specify the path to the image here. So
+
+63
+00:03:24,340 --> 00:03:27,220
+what I want to do is to add in another
+
+64
+00:03:27,220 --> 00:03:31,150
+resource file. You already know how to do
+
+65
+00:03:31,150 --> 00:03:31,629
+this.
+
+66
+00:03:31,629 --> 00:03:34,900
+So I'm going to go pretty quick. I call
+
+67
+00:03:34,900 --> 00:03:40,239
+it resource, hit Next and add it here. 
+
+68
+00:03:40,239 --> 00:03:43,239
+I am going to add a prefix and take
+
+69
+00:03:43,239 --> 00:03:45,669
+out everything because I want my files
+
+70
+00:03:45,669 --> 00:03:50,109
+to be where they are, and I am going to
+
+71
+00:03:50,109 --> 00:03:55,030
+show this in an Explorer to open where my
+
+72
+00:03:55,030 --> 00:03:58,750
+project is stored on my drive. You can do
+
+73
+00:03:58,750 --> 00:04:03,189
+the same thing or similar thing on a Mac
+
+74
+00:04:03,189 --> 00:04:06,010
+and Linux computers. I am going to create
+
+75
+00:04:06,010 --> 00:04:08,909
+a new folder in here and call it images, and
+
+76
+00:04:08,909 --> 00:04:12,639
+I am going to open it and put in an
+
+77
+00:04:12,639 --> 00:04:15,849
+image that I had prepared. I'm going to
+
+78
+00:04:15,849 --> 00:04:18,310
+come back to my resource file and add
+
+79
+00:04:18,310 --> 00:04:22,630
+files, and if I go in, I am going to see
+
+80
+00:04:22,630 --> 00:04:25,990
+my drawer image provider. I want to save
+
+81
+00:04:25,990 --> 00:04:27,070
+this
+
+82
+00:04:27,070 --> 00:04:31,840
+and if I go back in the toolbar of ours,
+
+83
+00:04:31,840 --> 00:04:37,720
+I can say “images/ drawer.png” and I
+
+84
+00:04:37,720 --> 00:04:40,960
+am going to have my icon here. I also
+
+85
+00:04:40,960 --> 00:04:42,940
+want to know when this ToolButton is
+
+86
+00:04:42,940 --> 00:04:46,320
+clicked so I'm going to say console.log
+
+87
+00:04:46,320 --> 00:04:51,580
+Toolbutton clicked and we are going to do
+
+88
+00:04:51,580 --> 00:04:53,410
+something else. So we are going to
+
+89
+00:04:53,410 --> 00:04:57,480
+open the drawer, let's flag this here.
+
+90
+00:04:58,410 --> 00:05:01,060
+Now we should put some information in
+
+91
+00:05:01,060 --> 00:05:03,220
+the label here. I am just going to paste
+
+92
+00:05:03,220 --> 00:05:07,030
+in some code that I have and I am going
+
+93
+00:05:07,030 --> 00:05:11,380
+to try and explain it. ctrl A -> ctrl I to
+
+94
+00:05:11,380 --> 00:05:14,980
+align. It basically is a label and it has
+
+95
+00:05:14,980 --> 00:05:17,740
+some text to show and a few properties,
+
+96
+00:05:17,740 --> 00:05:20,530
+and we want this Label component to fill
+
+97
+00:05:20,530 --> 00:05:24,310
+any word that is available in this 
+
+98
+00:05:24,310 --> 00:05:26,800
+RowLayout component. Now that we have our
+
+99
+00:05:26,800 --> 00:05:30,190
+ToolBar, which is slightly complicated to
+
+100
+00:05:30,190 --> 00:05:33,640
+be honest, we should provide our Drawer
+
+101
+00:05:33,640 --> 00:05:37,960
+component, I'm going to say “Drawer” and we
+
+102
+00:05:37,960 --> 00:05:39,970
+should look at this documentation to see
+
+103
+00:05:39,970 --> 00:05:42,460
+what they have to say about it. So we say
+
+104
+00:05:42,460 --> 00:05:47,770
+Drawer provides the
+
+105
+00:05:47,770 --> 00:05:50,980
+swipe-based side panel, similar to those
+
+106
+00:05:50,980 --> 00:05:53,320
+often used in touch interfaces to
+
+107
+00:05:53,320 --> 00:05:55,230
+provide a central location for
+
+108
+00:05:55,230 --> 00:05:58,060
+navigation. This is what it is and they
+
+109
+00:05:58,060 --> 00:06:01,410
+have it here. So we should give it an ID
+
+110
+00:06:01,410 --> 00:06:03,610
+we call it “drawerId”.
+
+111
+00:06:03,610 --> 00:06:08,770
+Its width is going to be the
+
+112
+00:06:08,770 --> 00:06:11,190
+minimum. So we're going to say Math.min
+
+113
+00:06:11,190 --> 00:06:15,130
+We can do this from JavaScript
+
+114
+00:06:15,130 --> 00:06:17,590
+if you remember and it's going to be
+
+115
+00:06:17,590 --> 00:06:20,200
+the minimum between the width and the
+
+116
+00:06:20,200 --> 00:06:22,390
+height of this Application Window
+
+117
+00:06:22,390 --> 00:06:25,120
+element. We want to take into account if
+
+118
+00:06:25,120 --> 00:06:28,360
+the user interface is rotated. 
+
+119
+00:06:28,360 --> 00:06:30,070
+That's why we're doing this. So we're
+
+120
+00:06:30,070 --> 00:06:34,690
+going to say: rootId.width, rootId.height
+
+121
+00:06:34,690 --> 00:06:39,700
+So we want to
+
+122
+00:06:39,700 --> 00:06:42,250
+have the minimum of these two things and
+
+123
+00:06:42,250 --> 00:06:45,280
+make the width of this drawer equal to
+
+124
+00:06:45,280 --> 00:06:48,760
+two-thirds of them.
+
+125
+00:06:48,760 --> 00:06:51,610
+The height is going to be the same
+
+126
+00:06:51,610 --> 00:06:54,460
+as the root element. So we're going to
+
+127
+00:06:54,460 --> 00:06:58,630
+say rootId.height and we want it to be
+
+128
+00:06:58,630 --> 00:07:00,730
+interactive. We want the user to interact
+
+129
+00:07:00,730 --> 00:07:03,280
+with it. Now that we have the drawer,
+
+130
+00:07:03,280 --> 00:07:06,070
+we need a way to lay out components
+
+131
+00:07:06,070 --> 00:07:08,890
+inside of it. We defined it, now we
+
+132
+00:07:08,890 --> 00:07:10,870
+want to put some content inside. If you
+
+133
+00:07:10,870 --> 00:07:12,370
+remember what we had when we started
+
+134
+00:07:12,370 --> 00:07:15,280
+this lecture, we had a few buttons inside
+
+135
+00:07:15,280 --> 00:07:18,430
+the drawer so we're going to do the same.
+
+136
+00:07:18,430 --> 00:07:22,260
+We're going to put a ColumnLayout.
+
+137
+00:07:24,480 --> 00:07:29,970
+Spacing is going to be 20 and
+
+138
+00:07:29,970 --> 00:07:34,360
+we want it to fill its parent which is
+
+139
+00:07:34,360 --> 00:07:37,510
+this drawer here and inside we can put
+
+140
+00:07:37,510 --> 00:07:39,820
+in a few buttons. I'm going to put in the
+
+141
+00:07:39,820 --> 00:07:43,360
+first one. Control A -> control I to align.
+
+142
+00:07:43,360 --> 00:07:46,120
+It basically is a normal button. It has
+
+143
+00:07:46,120 --> 00:07:48,010
+the width of its parent, it's hard to
+
+144
+00:07:48,010 --> 00:07:51,250
+hide, it says item 1. It has a font size,
+
+145
+00:07:51,250 --> 00:07:53,920
+It has a color for the background. It
+
+146
+00:07:53,920 --> 00:07:55,990
+basically isn't nothing you haven't seen
+
+147
+00:07:55,990 --> 00:07:59,740
+already and we are going to copy it and
+
+148
+00:07:59,740 --> 00:08:03,400
+paste it a couple of times. So we're
+
+149
+00:08:03,400 --> 00:08:07,330
+going to paste it here and paste it here
+
+150
+00:08:07,330 --> 00:08:11,350
+again. The second one is going to say
+
+151
+00:08:11,350 --> 00:08:17,380
+Item2, the color is going to be “yellowgreen”.
+
+152
+00:08:17,380 --> 00:08:21,100
+You can put in whatever you want.
+
+153
+00:08:21,100 --> 00:08:27,100
+“Clicked on item2”. The third one is going
+
+154
+00:08:27,100 --> 00:08:30,460
+to say Item3, the color is going to be
+
+155
+00:08:30,460 --> 00:08:32,159
+dodgerblue
+
+156
+00:08:32,159 --> 00:08:39,849
+and it says Clicked on item3.
+
+157
+00:08:39,849 --> 00:08:43,320
+And you see that whenever we click on
+
+158
+00:08:43,320 --> 00:08:46,300
+any of these buttons, we close the drawer.
+
+159
+00:08:46,300 --> 00:08:48,520
+Let's go back and see that we call it
+
+160
+00:08:48,520 --> 00:08:54,000
+drawer. We should say drawerId.close 
+
+161
+00:08:57,029 --> 00:09:00,760
+và lặp lại.
+
+162
+00:09:00,760 --> 00:09:09,640
+Copy, paste and paste here. So we
+
+163
+00:09:09,640 --> 00:09:12,190
+should go back to the ToolButton for
+
+164
+00:09:12,190 --> 00:09:16,750
+the ToolBar here and when we click, we
+
+165
+00:09:16,750 --> 00:09:18,670
+want to open the drawer, so we should say
+
+166
+00:09:18,670 --> 00:09:24,490
+drawerId.open and before we run the
+
+167
+00:09:24,490 --> 00:09:26,410
+application, I know you want to run to
+
+168
+00:09:26,410 --> 00:09:29,140
+see what is available, but we need to
+
+169
+00:09:29,140 --> 00:09:32,709
+provide the main content for our user
+
+170
+00:09:32,709 --> 00:09:35,649
+interface and you put it in the root
+
+171
+00:09:35,649 --> 00:09:38,200
+element right here. So when you run
+
+172
+00:09:38,200 --> 00:09:40,149
+the application, the drawer is not going
+
+173
+00:09:40,149 --> 00:09:43,079
+to be visible. It is invisible by default.
+
+174
+00:09:43,079 --> 00:09:46,420
+You show it by calling the open method
+
+175
+00:09:46,420 --> 00:09:49,300
+and you hide it by calling the close
+
+176
+00:09:49,300 --> 00:09:52,450
+method. Our main content is going to be
+
+177
+00:09:52,450 --> 00:09:55,899
+nothing but the good old Rectangle, it's
+
+178
+00:09:55,899 --> 00:09:57,910
+going to fill the available width and
+
+179
+00:09:57,910 --> 00:10:02,350
+height, and it's going to have this color:
+
+180
+00:10:02,350 --> 00:10:05,290
+lightsteelblue. And if you want to see
+
+181
+00:10:05,290 --> 00:10:08,560
+what it looks like, 
+ 
+0:10:06.430,0:10:11.320
+hover over it and you're going to see
+
+182
+00:10:08,560 --> 00:10:11,320
+this. Now I think we are ready to run
+
+183
+00:10:11,320 --> 00:10:14,100
+this thing and see what it looks like.
+
+184
+00:10:14,100 --> 00:10:17,230
+We have our thing here, if we click
+
+185
+00:10:17,230 --> 00:10:20,670
+here, you see that our drawer opens and
+
+186
+00:10:20,670 --> 00:10:24,730
+it says Toolbutton clicked. If we click
+
+187
+00:10:24,730 --> 00:10:28,149
+on item one, the
+
+188
+00:10:28,149 --> 00:10:32,770
+drawer closes and you see the same
+ 
+0:10:30.100,0:10:36.640
+effect if you click on any of the
+
+189
+00:10:32,770 --> 00:10:36,640
+buttons in here. The only problem is that
+
+190
+00:10:36,640 --> 00:10:38,740
+we have too much space between the
+
+191
+00:10:38,740 --> 00:10:41,140
+elements in here. So we're going to go
+
+192
+00:10:41,140 --> 00:10:44,290
+back to our code and examine what we
+
+193
+00:10:44,290 --> 00:10:47,949
+have in our drawer. We basically don't
+
+194
+00:10:47,949 --> 00:10:51,519
+want it to fill the parent. We want it to
+
+195
+00:10:51,519 --> 00:10:53,769
+have the same width as the parent. So
+
+196
+00:10:53,769 --> 00:10:59,010
+We're going to say width: parent.width and
+
+197
+00:10:59,010 --> 00:11:03,399
+let's put this spacing at 0. Let's see
+
+198
+00:11:03,399 --> 00:11:06,670
+what we get. We have our app here.
+
+199
+00:11:06,670 --> 00:11:09,550
+Click here and you see that this is what we
+
+200
+00:11:09,550 --> 00:11:12,940
+set out to do. Click and you see the
+
+201
+00:11:12,940 --> 00:11:16,350
+drawer goes away and if you click in the
+
+202
+00:11:16,350 --> 00:11:19,390
+Tool button here, you see that the drawer
+
+203
+00:11:19,390 --> 00:11:21,510
+opens. And you can close it by clicking
+
+204
+00:11:21,510 --> 00:11:24,370
+outside of it as well. We can do
+
+205
+00:11:24,370 --> 00:11:27,520
+something more interesting when we close
+
+206
+00:11:27,520 --> 00:11:30,520
+it. We can actually change the color of
+
+207
+00:11:30,520 --> 00:11:33,760
+this rectangle here. So we're going to
+
+208
+00:11:33,760 --> 00:11:41,530
+give an id: contentRectId and when
+
+209
+00:11:41,530 --> 00:11:43,870
+we click, before we close the drawer,
+
+210
+00:11:43,870 --> 00:11:49,090
+we're going to say contentRectId.color,
+
+211
+00:11:49,090 --> 00:11:56,320
+change this to red for the first
+
+212
+00:11:56,320 --> 00:12:01,570
+button, change it to green for the
+
+213
+00:12:01,570 --> 00:12:04,810
+second button, let's steal that, and
+
+214
+00:12:04,810 --> 00:12:10,740
+change it to blue for the third button.
+
+215
+00:12:10,740 --> 00:12:14,860
+Let's run and see if our thing works. We
+
+216
+00:12:14,860 --> 00:12:17,860
+have our application, click on first item and
+
+217
+00:12:17,860 --> 00:12:24,550
+the background turns red, green. Click
+
+218
+00:12:24,550 --> 00:12:28,180
+again, and blue. And ladies and gentlemen
+
+219
+00:12:28,180 --> 00:12:30,310
+this is how you work with a Drawer
+
+220
+00:12:30,310 --> 00:12:32,830
+component. In the next lecture we're
+
+221
+00:12:32,830 --> 00:12:35,320
+going to look at the Spin box QT quick
+
+222
+00:12:35,320 --> 00:00:00,000
+control. I'll see you there. 
+

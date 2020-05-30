@@ -1,0 +1,1633 @@
+1
+00:00:00,000 --> 00:00:01,740
+In this lecture, we're going to look at
+
+2
+00:00:01,740 --> 00:00:04,560
+XmlListModel, the component that allows
+
+3
+00:00:04,560 --> 00:00:07,500
+you to parse data in an XML file and
+
+4
+00:00:07,500 --> 00:00:10,679
+feed it your views in Qt Quick.
+
+5
+00:00:10,679 --> 00:00:12,750
+This component has a few properties
+
+6
+00:00:12,750 --> 00:00:15,179
+that you need to be aware of.
+
+7
+00:00:15,179 --> 00:00:17,670
+This first property allows you to link to an XML file
+
+8
+00:00:17,670 --> 00:00:19,920
+that is going to provide the data.
+
+9
+00:00:19,920 --> 00:00:22,590
+The 'query' property allows you to specify the data
+
+10
+00:00:22,590 --> 00:00:25,800
+that you want to extract from the XML file.
+
+11
+00:00:25,800 --> 00:00:28,260
+The 'roles' property allows you to
+
+12
+00:00:28,260 --> 00:00:30,599
+specify the attributes that you want in the role
+
+13
+00:00:30,599 --> 00:00:33,420
+that you queried from the query property.
+
+14
+00:00:33,420 --> 00:00:36,600
+And the 'status' property updates
+
+15
+00:00:36,600 --> 00:00:38,550
+you on the status of loading your data.
+
+16
+00:00:38,550 --> 00:00:41,879
+So if there is an error, if the loading is successful,
+
+17
+00:00:41,879 --> 00:00:44,430
+you can note that from the
+
+18
+00:00:44,430 --> 00:00:46,800
+'status' property here.
+
+19
+00:00:46,800 --> 00:00:48,960
+And down here you see an example of how you can link to an XML file.
+
+20
+00:00:48,960 --> 00:00:52,579
+The XML file can be local,
+
+21
+00:00:52,579 --> 00:00:55,469
+living in a resource file and you can
+
+22
+00:00:55,469 --> 00:00:58,890
+link to act using qrc like this
+
+23
+00:00:58,890 --> 00:01:01,800
+or you can get the XML data from the internet
+
+24
+00:01:01,800 --> 00:01:04,979
+using some XML API's.
+
+25
+00:01:04,979 --> 00:01:08,430
+Here we have an example of an XML file 
+
+26
+00:01:08,430 --> 00:01:10,830
+and the XmlListModel that is going to read data from this XML file.
+
+27
+00:01:10,830 --> 00:01:13,979
+Okay, we specify the
+
+28
+00:01:13,979 --> 00:01:18,060
+'source' to be an XML file that is located
+
+29
+00:01:18,060 --> 00:01:21,330
+in the resource file in our project.
+
+30
+00:01:21,330 --> 00:01:24,390
+The 'query' property allows you to specify
+
+31
+00:01:24,390 --> 00:01:27,119
+what you want,
+
+32
+00:01:27,119 --> 00:01:30,509
+what is going to be your role in your XML file.
+
+33
+00:01:30,509 --> 00:01:33,270
+In this case, we want to retrieve all the courses.
+
+34
+00:01:33,270 --> 00:01:36,030
+Ok, you see we have a tag for courses and
+
+35
+00:01:36,030 --> 00:01:38,520
+inside we have a bunch of courses and
+
+36
+00:01:38,520 --> 00:01:41,009
+each 'course' has child elements in structure
+
+37
+00:01:41,009 --> 00:01:44,310
+'year' and 'coursename' here.
+
+38
+00:01:44,310 --> 00:01:46,680
+So, we specify that we want to get courses
+
+39
+00:01:46,680 --> 00:01:49,649
+in this 'query' property that is in the XmlListModel.
+
+40
+00:01:49,649 --> 00:01:53,009
+Now that we have a course,
+
+41
+00:01:53,009 --> 00:01:55,979
+we may want to fetch further data from the course.
+
+42
+00:01:55,979 --> 00:01:58,020
+For example we may want to
+
+43
+00:01:58,020 --> 00:02:00,810
+get this 'hot' attribute here,
+
+44
+00:02:00,810 --> 00:02:02,759
+we may also want to read the elements
+
+45
+00:02:02,759 --> 00:02:05,610
+that are children to this course element here.
+
+46
+00:02:05,610 --> 00:02:09,810
+That's where these XmlRole come in.
+
+47
+00:02:09,810 --> 00:02:11,489
+The first one here is reading
+
+48
+00:02:11,489 --> 00:02:13,110
+this 'instructor' element.
+
+49
+00:02:13,110 --> 00:02:15,960
+You specify the role for whatever it is
+
+50
+00:02:15,960 --> 00:02:18,330
+you are trying to read and you pass in a
+
+51
+00:02:18,330 --> 00:02:21,300
+query that fetches what you want.
+
+52
+00:02:21,300 --> 00:02:23,400
+Okay, we want to get the instructor.
+
+53
+00:02:23,400 --> 00:02:25,650
+This 'instructor' here has to match the tag
+
+54
+00:02:25,650 --> 00:02:27,600
+that you have in your 'course' element here,
+
+55
+00:02:27,600 --> 00:02:29,760
+and you pass in a method that
+
+56
+00:02:29,760 --> 00:02:32,610
+denotes the data type that you want to
+
+57
+00:02:32,610 --> 00:02:35,310
+read that piece of data as.
+
+58
+00:02:35,310 --> 00:02:37,710
+We want to read this as a string in this case.
+
+59
+00:02:37,710 --> 00:02:39,750
+We also want to read year.
+
+60
+00:02:39,750 --> 00:02:42,450
+It really is the same thing but we want to read that as a number.
+
+61
+00:02:42,450 --> 00:02:45,000
+And in the third one we want to
+
+62
+00:02:45,000 --> 00:02:47,550
+read the course name here.
+
+63
+00:02:47,550 --> 00:02:50,610
+We want to read that as a string.
+
+64
+00:02:50,610 --> 00:02:54,470
+In the fourth XmlRole here, we want to read 
+
+65
+00:02:54,470 --> 00:02:57,660
+this 'hot' attribute here and this @ symbol here
+
+66
+00:02:57,660 --> 00:03:00,150
+specifies that what you want to read is an attribute.
+
+67
+00:03:00,150 --> 00:03:03,360
+It is not an element.
+
+68
+00:03:03,360 --> 00:03:04,890
+And if you want to read an element,
+
+69
+00:03:04,890 --> 00:03:07,200
+you just pass it in like this.
+
+70
+00:03:07,200 --> 00:03:09,840
+All this gibberish that I am typing here to fetch data is
+
+71
+00:03:09,840 --> 00:03:12,330
+really specified in the standard
+
+72
+00:03:12,330 --> 00:03:12,720
+that is called XPath.
+
+73
+00:03:12,720 --> 00:03:16,020
+It is a standard that allows you
+
+74
+00:03:16,020 --> 00:03:20,400
+to parse an XML file to get
+
+75
+00:03:20,400 --> 00:03:22,560
+specific pieces of data that you are interested
+
+76
+00:03:22,560 --> 00:03:24,900
+in and that what we are exactly doing here.
+
+77
+00:03:24,900 --> 00:03:27,930
+Reading the XML files to fetch
+
+78
+00:03:27,930 --> 00:03:31,530
+these elements or attributes here
+
+79
+00:03:31,530 --> 00:03:33,870
+and in this case we want to feed that data to
+
+80
+00:03:33,870 --> 00:03:35,190
+an XML List model.
+
+81
+00:03:35,190 --> 00:03:37,680
+I hope this made sense.
+
+82
+00:03:37,680 --> 00:03:39,959
+If this is not clear yet, we wait to run an example in a moment
+
+83
+00:03:39,959 --> 00:03:41,700
+and you're going to understand how this works.
+
+84
+00:03:41,700 --> 00:03:44,370
+Okay, we just looked at an overall example of
+
+85
+00:03:44,370 --> 00:03:47,100
+how you read the data
+
+86
+00:03:47,100 --> 00:03:50,130
+from your XML file and feed it to the XML list model.
+
+87
+00:03:50,130 --> 00:03:52,860
+Now we want to focus on the syntax
+
+88
+00:03:52,860 --> 00:03:55,170
+that you can use to pass this query here.
+
+89
+00:03:55,170 --> 00:03:58,200
+The query that is in the XML list model.
+
+90
+00:03:58,200 --> 00:04:00,780
+Notice that we have two queries:
+
+91
+00:04:00,780 --> 00:04:03,180
+one is this one in the XmlListModel
+
+92
+00:04:03,180 --> 00:04:05,940
+and the other is this query
+
+93
+00:04:05,940 --> 00:04:08,790
+that is inside the XmlRole here.
+
+94
+00:04:08,790 --> 00:04:11,100
+We're going to focus on this one, the first one.
+
+95
+00:04:11,100 --> 00:04:13,080
+Okay, these are different things you can do to read the data.
+
+96
+00:04:13,080 --> 00:04:15,360
+You can specify that you
+
+97
+00:04:15,360 --> 00:04:18,390
+want to read a course by passing a slash
+
+98
+00:04:18,390 --> 00:04:21,089
+and passing the path that leads to the
+
+99
+00:04:21,089 --> 00:04:23,520
+tag that you want to read.
+
+100
+00:04:23,520 --> 00:04:26,850
+For example, here courses course.
+We specify that we want to read the course
+
+101
+00:04:26,850 --> 00:04:29,460
+You can pass in double slashes here
+
+102
+00:04:29,460 --> 00:04:32,100
+and specify the tag name
+
+103
+00:04:32,100 --> 00:04:34,950
+for whatever it is you want to read.
+
+104
+00:04:34,950 --> 00:04:37,050
+This is also going to be equivalent to
+
+105
+00:04:37,050 --> 00:04:39,690
+the first syntax here. You can also pass
+
+106
+00:04:39,690 --> 00:04:41,820
+in the @ symbol to specify that you
+
+107
+00:04:41,820 --> 00:04:44,100
+want to read an attribute. You can also
+
+108
+00:04:44,100 --> 00:04:46,620
+specify that you want to read the first course.
+
+109
+00:04:46,620 --> 00:04:49,740
+Okay. Then we fetch courses here
+
+110
+00:04:49,740 --> 00:04:52,500
+we get all the courses that are in the XML file
+
+111
+00:04:52,500 --> 00:04:54,930
+but you can say that
+
+112
+00:04:54,930 --> 00:04:56,820
+you want to get the first course and you can do that like this.
+
+113
+00:04:56,820 --> 00:04:59,600
+If you are a C or C++ programmer,
+
+114
+00:04:59,600 --> 00:05:02,790
+or any language that is based on C,
+
+115
+00:05:02,790 --> 00:05:06,240
+you know that arrays start at 0.
+
+116
+00:05:06,240 --> 00:05:08,580
+This is going to tip you off because
+
+117
+00:05:08,580 --> 00:05:11,880
+this indexes start at 1 and you need to be careful about that.
+
+118
+00:05:11,880 --> 00:05:14,370
+Now we want to look at a few examples.
+
+119
+00:05:14,370 --> 00:05:17,040
+Okay, we have the example here.
+
+120
+00:05:17,040 --> 00:05:19,200
+It is the same file we had.
+
+121
+00:05:19,200 --> 00:05:22,200
+You can pass the query to read all the courses.
+
+122
+00:05:22,200 --> 00:05:24,390
+You can pass in another query
+
+123
+00:05:24,390 --> 00:05:26,550
+that is going to read all the courses.
+
+124
+00:05:26,550 --> 00:05:29,490
+The double slash notation here you can
+
+125
+00:05:29,490 --> 00:05:31,830
+pass this array notation to specify the element that you want.
+
+126
+00:05:31,830 --> 00:05:34,440
+You can fetch all the courses
+
+127
+00:05:34,440 --> 00:05:37,290
+that have the 'hot' attribute.
+
+128
+00:05:37,290 --> 00:05:39,930
+You can fetch the courses that have the
+
+129
+00:05:39,930 --> 00:05:41,970
+'hot' attribute and the 'required' attribute.
+
+130
+00:05:41,970 --> 00:05:44,400
+If you happen to have that,
+
+131
+00:05:44,400 --> 00:05:47,280
+you can also query the courses that have the
+
+132
+00:05:47,280 --> 00:05:49,440
+'hot' attribute or the 'required' attribute.
+
+133
+00:05:49,440 --> 00:05:51,810
+Okay, you can do all these operations.
+
+134
+00:05:51,810 --> 00:05:53,970
+The next thing we want to look at is
+
+135
+00:05:53,970 --> 00:05:56,250
+the syntax that you use in
+
+136
+00:05:56,250 --> 00:06:00,660
+your XmlRole to specify the data that
+
+137
+00:06:00,660 --> 00:06:03,510
+you want to get in each course.
+
+138
+00:06:03,510 --> 00:06:09,390
+Okay to repeat, you can get the attribute or you
+ 
+0:06:06.240,0:06:12.870
+can get the elements inside here.
+
+139
+00:06:09,390 --> 00:06:12,870
+To read the elements you pass in the name of the
+
+140
+00:06:12,870 --> 00:06:15,990
+element that you want to read.
+
+141
+00:06:15,990 --> 00:06:18,450
+Okay, so, if we want to read 'instructor' here, we just
+
+142
+00:06:18,450 --> 00:06:21,120
+pass an 'instructor' here and we specify
+
+143
+00:06:21,120 --> 00:06:23,490
+the datatype for whatever we want to read.
+
+144
+00:06:23,490 --> 00:06:26,010
+If you want to read an attribute,
+
+145
+00:06:26,010 --> 00:06:28,770
+you pass in the @ symbol here and you
+
+146
+00:06:28,770 --> 00:06:31,440
+also specify the data type that you want
+
+147
+00:06:31,440 --> 00:06:34,650
+to read this as and it is the same for the 'year'.
+
+148
+00:06:34,650 --> 00:06:36,330
+We want to read this as a number.
+
+149
+00:06:36,330 --> 00:06:38,880
+Now we want to go to Qt Creator
+
+150
+00:06:38,880 --> 00:06:40,630
+create a project and play with it.
+
+151
+00:06:40,630 --> 00:06:43,750
+Okay here we are in Qt Creator.
+
+152
+00:06:43,750 --> 00:06:45,100
+We're going to create our project.
+
+153
+00:06:45,100 --> 00:06:48,580
+It's Qt Quick Application.
+
+154
+00:06:48,580 --> 00:06:52,690
+We call it 'XMLListModelDemo',
+
+155
+00:06:52,690 --> 00:06:53,940
+choose our Qt Version,
+
+156
+00:06:53,940 --> 00:06:58,630
+choose our kit and finish.
+
+157
+00:06:58,630 --> 00:07:01,060
+We want to change the title here and specify what we are doing.
+
+158
+00:07:01,060 --> 00:07:04,930
+The first thing we want to do
+
+159
+00:07:04,930 --> 00:07:07,690
+we want to specify the XML file that we want to read.
+
+160
+00:07:07,690 --> 00:07:10,300
+So we're going to add 
+
+161
+00:07:10,300 --> 00:07:12,490
+a resource file that is going to point to that XML file.
+
+162
+00:07:12,490 --> 00:07:17,520
+Hit 'resources' here, 'add new'
+
+163
+00:07:17,520 --> 00:07:21,460
+choose Qt resource file, I want to name this 'resource'.
+
+164
+00:07:21,460 --> 00:07:24,400
+We have done this quite a lot.
+
+165
+00:07:24,400 --> 00:07:28,980
+By now I want to add the prefix
+
+166
+00:07:28,980 --> 00:07:32,830
+take this out, hit enter.
+
+167
+00:07:32,830 --> 00:07:36,280
+Now we want to go where we have saved this 'main.qml' file.
+
+168
+00:07:36,280 --> 00:07:40,090
+You right click on it, choose 'Show in Explorer'.
+
+169
+00:07:40,090 --> 00:07:42,190
+It's going to open that location in a moment.
+
+170
+00:07:42,190 --> 00:07:45,180
+Here we are.
+
+171
+00:07:45,180 --> 00:07:50,590
+Add a new folder call it 'XML'.
+
+172
+00:07:50,590 --> 00:07:53,890
+I want to open this 'XML' folder and paste in a file
+
+173
+00:07:53,890 --> 00:07:56,680
+that I have prepared.
+
+174
+00:07:56,680 --> 00:07:59,260
+This is basically the same XML file you have seen in the slides.
+
+175
+00:07:59,260 --> 00:08:01,600
+I am going to go back to my project,
+
+176
+00:08:01,600 --> 00:08:07,290
+add files to my resource file,
+
+177
+00:08:07,290 --> 00:08:10,830
+choose this file here and I can save it
+
+178
+00:08:10,830 --> 00:08:14,830
+because it is now in my resource but qrc file.
+
+179
+00:08:14,830 --> 00:08:18,160
+I can double click it to show it in
+
+180
+00:08:18,160 --> 00:08:20,860
+Qt Creator and you see that it is the same file.
+
+181
+00:08:20,860 --> 00:08:23,710
+We have our courses inside
+
+182
+00:08:23,710 --> 00:08:26,530
+and you see that we have instructor, year, and course name.
+
+183
+00:08:26,530 --> 00:08:29,140
+Now we can go back to 'main.qml'.
+
+184
+00:08:29,140 --> 00:08:31,720
+I want to define my 'XmlListModel'
+
+185
+00:08:31,720 --> 00:08:36,870
+I give it an ID
+
+186
+00:08:38,450 --> 00:08:42,769
+I want to give it a 'source' property and
+
+187
+00:08:42,769 --> 00:08:45,230
+it is going to specify the location of my XML file.
+
+188
+00:08:45,230 --> 00:08:48,889
+I want to use a local file
+
+189
+00:08:48,889 --> 00:08:54,380
+so I'm going to say qrc, three slashes
+
+190
+00:08:54,380 --> 00:08:57,170
+say the folder where the file is located
+
+191
+00:08:57,170 --> 00:09:00,019
+and say the name of the file.
+
+192
+00:09:00,019 --> 00:09:06,500
+It's called 'employees.xml'.
+
+193
+00:09:06,500 --> 00:09:11,199
+You can also specify a remote file using HTTP
+
+194
+00:09:11,199 --> 00:09:15,500
+just like an API to fetch some XML data from the internet.
+
+195
+00:09:15,500 --> 00:09:18,170
+I flagged this here so
+
+196
+00:09:18,170 --> 00:09:19,820
+that you know we're not going to do that
+
+197
+00:09:19,820 --> 00:09:22,370
+in this lecture, but if you have an API
+
+198
+00:09:22,370 --> 00:09:25,250
+that gives you an XML file you can just
+
+199
+00:09:25,250 --> 00:09:28,699
+stuff in the HTTP URL to the XML file
+
+200
+00:09:28,699 --> 00:09:31,850
+and it is just going to work.
+
+201
+00:09:31,850 --> 00:09:33,829
+You just need to pass in the correct queries to
+
+202
+00:09:33,829 --> 00:09:36,560
+fetch your XML data.
+Now we want to pass
+
+203
+00:09:36,560 --> 00:09:38,690
+in our 'query' property. So, we're going to
+
+204
+00:09:38,690 --> 00:09:41,829
+say 'query' here and we are going to say
+
+205
+00:09:41,829 --> 00:09:46,579
+'courses/course' because that's what we
+
+206
+00:09:46,579 --> 00:09:49,130
+want to get from the XML file here.
+
+207
+00:09:49,130 --> 00:09:51,949
+We want to read all these courses and you
+
+208
+00:09:51,949 --> 00:09:54,680
+pass in a query like this to get it.
+
+209
+00:09:54,680 --> 00:09:57,199
+This is one way to do it.
+
+210
+00:09:57,199 --> 00:09:58,940
+When we have run the application, I am going to show you 
+
+211
+00:09:58,940 --> 00:10:01,250
+the other syntaxes so that you can play with them.
+
+212
+00:10:01,250 --> 00:10:04,610
+Okay, now, I want to pass in my 'XmlRole'
+
+213
+00:10:04,610 --> 00:10:10,279
+to parse the data that I want to
+
+214
+00:10:10,279 --> 00:10:13,370
+read in each item, that is returned by
+
+215
+00:10:13,370 --> 00:10:16,190
+this query here, that we did.
+
+216
+00:10:16,190 --> 00:10:18,709
+This query is going to return the list of all the courses
+
+217
+00:10:18,709 --> 00:10:21,290
+that we have in here and we need
+
+218
+00:10:21,290 --> 00:10:23,720
+to be able to read the data from each
+
+219
+00:10:23,720 --> 00:10:26,569
+course that we have. This is the purpose
+
+220
+00:10:26,569 --> 00:10:29,660
+of this XML role here. I want to pass in
+
+221
+00:10:29,660 --> 00:10:34,100
+the 'name' attribute and it's going to be
+
+222
+00:10:34,100 --> 00:10:36,850
+'instructor'
+
+223
+00:10:38,390 --> 00:10:40,880
+because this is what I want to read and
+
+224
+00:10:40,880 --> 00:10:44,150
+I'm going to pass in the 'query' property
+
+225
+00:10:44,150 --> 00:10:48,280
+and here, I am going to say 'instructor',
+
+226
+00:10:48,280 --> 00:10:51,680
+this and it's going to be a string.
+
+227
+00:10:51,680 --> 00:10:54,280
+This is what I want to read it as.
+
+228
+00:10:54,280 --> 00:10:57,410
+The first thing here specifies the role
+
+229
+00:10:57,410 --> 00:11:00,920
+that this is going to be available as.
+
+230
+00:11:00,920 --> 00:11:03,650
+So if I want to use this data in a delegate
+
+231
+00:11:03,650 --> 00:11:06,350
+,for example, I am going to use the name
+
+232
+00:11:06,350 --> 00:11:09,920
+that I have here as this. It doesn't have
+
+233
+00:11:09,920 --> 00:11:13,430
+to be like what we have here in the XML file.
+
+234
+00:11:13,430 --> 00:11:17,360
+But what we have here in the query
+
+235
+00:11:17,360 --> 00:11:20,330
+has to match exactly what we have in here
+
+236
+00:11:20,330 --> 00:11:23,030
+for us to be able to read the data.
+
+237
+00:11:23,030 --> 00:11:25,400
+So we have 'instructor' here, you should
+
+238
+00:11:25,400 --> 00:11:27,830
+copy this and come here and make sure
+
+239
+00:11:27,830 --> 00:11:30,650
+that we also have 'instructor' here.
+
+240
+00:11:30,650 --> 00:11:34,100
+This has to match the XML file. This has to
+
+241
+00:11:34,100 --> 00:11:36,350
+match what you have in the delegate.
+
+242
+00:11:36,350 --> 00:11:39,500
+Okay, we have read the 'instructor', we can also
+
+243
+00:11:39,500 --> 00:11:43,490
+read the 'year'. Let's do that. We can pass
+
+244
+00:11:43,490 --> 00:11:51,440
+in 'year' and 'year' here and we're going to
+
+245
+00:11:51,440 --> 00:11:57,710
+read this as in number. We also want to
+
+246
+00:11:57,710 --> 00:12:00,950
+read the course name. Let's look at how
+
+247
+00:12:00,950 --> 00:12:03,770
+it is spelled here, 'coursename', I can
+
+248
+00:12:03,770 --> 00:12:08,750
+copy this to improve on not getting the
+
+249
+00:12:08,750 --> 00:12:11,780
+error so course name is going to be a
+
+250
+00:12:11,780 --> 00:12:14,690
+string as well. I also want to read the
+
+251
+00:12:14,690 --> 00:12:21,110
+attribute whether or not it's hot.
+
+252
+00:12:21,110 --> 00:12:27,560
+So I'm going to copy this paste down here and
+
+253
+00:12:27,560 --> 00:12:31,940
+say 'hot' because that's the name of the
+
+254
+00:12:31,940 --> 00:12:34,520
+attribute if I'm correct. Yes it is.
+
+255
+00:12:34,520 --> 00:12:38,360
+And we want to specify '@hot' here and we
+
+256
+00:12:38,360 --> 00:12:40,730
+want to read that as a string.
+
+257
+00:12:40,730 --> 00:12:42,590
+And now we should have our model ready to be
+
+258
+00:12:42,590 --> 00:12:45,590
+linked to a list view or a grid view
+
+259
+00:12:45,590 --> 00:12:47,930
+whatever you say. But before we do that,
+
+260
+00:12:47,930 --> 00:12:50,750
+I want to look at this data.
+
+261
+00:12:50,750 --> 00:12:51,570
+I want to show you a way to see
+
+262
+00:12:51,570 --> 00:12:53,670
+what's going on when your model is
+
+263
+00:12:53,670 --> 00:12:56,670
+reading the data from the XML file.
+
+264
+00:12:56,670 --> 00:13:00,240
+We want to handle the 'onStatusChanged' signal handler
+
+265
+00:13:00,240 --> 00:13:03,240
+and decide we are going
+
+266
+00:13:03,240 --> 00:13:05,070
+to do something like this. Ctrl+A, Ctrl+I to align.
+
+267
+00:13:05,070 --> 00:13:08,540
+We are basically
+
+268
+00:13:08,540 --> 00:13:12,150
+defining a 'pre' that says 'XmlListModel'
+
+269
+00:13:12,150 --> 00:13:16,230
+and we are saying if status equals
+
+270
+00:13:16,230 --> 00:13:19,320
+ready, we print ready and we showed the
+
+271
+00:13:19,320 --> 00:13:22,080
+count of the elements that we read from
+
+272
+00:13:22,080 --> 00:13:25,350
+the XML file. If it is loading, we say
+
+273
+00:13:25,350 --> 00:13:27,420
+that it is loading. If we have an error,
+
+274
+00:13:27,420 --> 00:13:30,180
+we say that and if it is 'null', they also
+
+275
+00:13:30,180 --> 00:13:33,240
+say that. This is a good way to debug and
+
+276
+00:13:33,240 --> 00:13:36,390
+see what is happening as your model is
+
+277
+00:13:36,390 --> 00:13:39,810
+reading the data from your XML file.
+
+278
+00:13:39,810 --> 00:13:41,610
+Now that we have the model, we can go down
+
+279
+00:13:41,610 --> 00:13:46,110
+here define a ListView. This is going to be a quick.
+
+280
+00:13:46,110 --> 00:13:48,840
+ID is going to be 'mListViewId',
+
+281
+00:13:48,840 --> 00:13:56,220
+model is going to be 'mXmlListModelId',
+
+282
+00:13:56,220 --> 00:13:59,550
+we want it to fill the parent
+
+283
+00:13:59,550 --> 00:14:03,390
+so we say 'anchors.fill: parent' and we
+
+284
+00:14:03,390 --> 00:14:08,220
+want to give it a nice delegate that we have prepared.
+
+285
+00:14:08,220 --> 00:14:11,100
+Ctrl+A, Ctrl+I to align.
+
+286
+00:14:11,100 --> 00:14:14,610
+And our delegate is nothing new to you
+
+287
+00:14:14,610 --> 00:14:18,810
+as of now we have a row that has two
+
+288
+00:14:18,810 --> 00:14:21,510
+text components one is going to say the
+
+289
+00:14:21,510 --> 00:14:23,940
+instructor and notice that we are using
+
+290
+00:14:23,940 --> 00:14:27,720
+the same thing that we had in our XmlRole here.
+
+291
+00:14:27,720 --> 00:14:30,090
+So 'instructor' here should
+
+292
+00:14:30,090 --> 00:14:33,150
+match 'instructor' here and we have 'coursename'
+
+293
+00:14:33,150 --> 00:14:36,780
+that matches 'coursename' here. We
+
+294
+00:14:36,780 --> 00:14:41,880
+have 'year' that matches 'year' here and we
+
+295
+00:14:41,880 --> 00:14:43,050
+have 'hot'
+
+296
+00:14:43,050 --> 00:14:46,590
+that matches 'hot' that we have here and
+
+297
+00:14:46,590 --> 00:14:48,720
+we are reading 'hot' as an attribute
+
+298
+00:14:48,720 --> 00:14:51,030
+because we have the @ symbol here.
+
+299
+00:14:51,030 --> 00:14:53,520
+You should know that. And we are checking to
+
+300
+00:14:53,520 --> 00:14:56,670
+see if it is 'hot'. Okay if it is 'hot', it
+
+301
+00:14:56,670 --> 00:14:59,910
+is going to return true here. If it
+
+302
+00:14:59,910 --> 00:15:02,280
+returns true, the text is going to be
+
+303
+00:15:02,280 --> 00:15:05,400
+bold for the course name and the year
+
+304
+00:15:05,400 --> 00:15:08,010
+and if it is not 'hot', it's not going to
+
+305
+00:15:08,010 --> 00:15:10,110
+be bold here. And we have a 'MouseArea'
+
+306
+00:15:10,110 --> 00:15:12,510
+that shows whether we have a 'hot'
+
+307
+00:15:12,510 --> 00:15:15,360
+attribute and this value when we click
+
+308
+00:15:15,360 --> 00:15:18,540
+on the item in the ListView here.
+
+309
+00:15:18,540 --> 00:15:20,520
+Okay our application should be ready now but
+
+310
+00:15:20,520 --> 00:15:23,430
+there are a few things we forgot.
+
+311
+00:15:23,430 --> 00:15:25,620
+If you go to the documentation for XmlListModel,
+
+312
+00:15:25,620 --> 00:15:28,020
+you're going to see that to use
+
+313
+00:15:28,020 --> 00:15:30,090
+this element you need to import the
+
+314
+00:15:30,090 --> 00:15:32,790
+module with the following line. We need
+
+315
+00:15:32,790 --> 00:15:34,800
+to import that so we're going to copy
+
+316
+00:15:34,800 --> 00:15:38,850
+this and put that here to import this
+
+317
+00:15:38,850 --> 00:15:40,950
+component here, to be able to use it and
+
+318
+00:15:40,950 --> 00:15:43,710
+I notice that we made a mistake here by
+
+319
+00:15:43,710 --> 00:15:46,440
+putting this @ symbols here.
+
+320
+00:15:46,440 --> 00:15:49,470
+We shouldn't have them here. Okay so remove them.
+
+321
+00:15:49,470 --> 00:15:53,550
+Again I'm sorry for this. And we
+
+322
+00:15:53,550 --> 00:15:55,160
+should be able to run our application.
+
+323
+00:15:55,160 --> 00:15:57,750
+Make sure that you don't have any @ symbol here
+
+324
+00:15:57,750 --> 00:16:00,180
+and make sure that you have
+
+325
+00:16:00,180 --> 00:16:03,030
+this XML list model imported. Run the application.
+
+326
+00:16:03,030 --> 00:16:05,850
+Okay you see that we have
+
+327
+00:16:05,850 --> 00:16:07,650
+the names for the instructors, we have
+
+328
+00:16:07,650 --> 00:16:09,360
+the name of the course and the year and
+
+329
+00:16:09,360 --> 00:16:12,810
+you see that the course for Matt Kabwe
+
+330
+00:16:12,810 --> 00:16:17,700
+is bolded because it has a hot attribute on it.
+
+331
+00:16:17,700 --> 00:16:20,760
+Okay this is the course here and
+
+332
+00:16:20,760 --> 00:16:23,070
+this is the name, this is the year.
+
+333
+00:16:23,070 --> 00:16:24,750
+If you look down you see that we have another
+
+334
+00:16:24,750 --> 00:16:27,420
+course that has a hot attribute but
+
+335
+00:16:27,420 --> 00:16:30,420
+because it is not true, we are not making
+
+336
+00:16:30,420 --> 00:16:34,080
+it bold in what we have here.
+
+337
+00:16:34,080 --> 00:16:38,610
+Okay the course is by Lillian here and it is not bold.
+
+338
+00:16:38,610 --> 00:16:41,040
+And this is really how you read
+
+339
+00:16:41,040 --> 00:16:43,830
+your data from an XML file, put it in an
+
+340
+00:16:43,830 --> 00:16:46,550
+XML List Model and fit it to a List View.
+
+341
+00:16:46,550 --> 00:16:49,500
+Now I want to try a few syntaxes that
+
+342
+00:16:49,500 --> 00:16:52,020
+we have seen before. Another way you can
+
+343
+00:16:52,020 --> 00:16:55,140
+query the elements. You can comment this out
+
+344
+00:16:55,140 --> 00:16:59,010
+so that you have it. I'm going to say
+
+345
+00:16:59,010 --> 00:17:06,150
+'query' and passing double slashes and say
+
+346
+00:17:06,150 --> 00:17:07,450
+'course'
+
+347
+00:17:07,450 --> 00:17:10,619
+and if I run, I should see the same thing.
+
+348
+00:17:10,619 --> 00:17:14,020
+They are effectively the same thing and
+
+349
+00:17:14,020 --> 00:17:17,230
+you see that I have my data and I am
+
+350
+00:17:17,230 --> 00:17:19,859
+seeing my debug output. It is saying
+
+351
+00:17:19,859 --> 00:17:23,020
+loading and when it's ready I know that.
+
+352
+00:17:23,020 --> 00:17:25,450
+I have five elements and if you count
+
+353
+00:17:25,450 --> 00:17:29,200
+what we have in the XML file, we have
+
+354
+00:17:29,200 --> 00:17:32,170
+one course here, two courses, three courses,
+
+355
+00:17:32,170 --> 00:17:36,460
+four courses and five courses.
+
+356
+00:17:36,460 --> 00:17:38,770
+Okay this is what we are successfully reading.
+
+357
+00:17:38,770 --> 00:17:42,400
+Let's go back to the QML file and if I
+
+358
+00:17:42,400 --> 00:17:45,190
+wanted to only retrieve the first course,
+
+359
+00:17:45,190 --> 00:17:48,220
+we also saw this syntax, I can pass in
+
+360
+00:17:48,220 --> 00:17:50,920
+brackets like this and pass in the index
+
+361
+00:17:50,920 --> 00:17:53,830
+of the course that I want. If I run this,
+
+362
+00:17:53,830 --> 00:17:56,620
+I am only going to read one course from
+
+363
+00:17:56,620 --> 00:17:59,500
+the XML file. You see the number here, the
+
+364
+00:17:59,500 --> 00:18:02,200
+count and you see that it is only the
+
+365
+00:18:02,200 --> 00:18:05,110
+course by Matt Kabwe here. I can also
+
+366
+00:18:05,110 --> 00:18:07,330
+specify the other courses, for example
+
+367
+00:18:07,330 --> 00:18:10,180
+can pass in two and I am going to read
+
+368
+00:18:10,180 --> 00:18:14,860
+the second course. Okay we have the
+
+369
+00:18:14,860 --> 00:18:17,410
+course here. This is all I have to say in
+
+370
+00:18:17,410 --> 00:18:19,480
+this lecture. I hope you have a better idea
+
+371
+00:18:19,480 --> 00:18:22,510
+of how you work with XML list model
+
+372
+00:18:22,510 --> 00:18:25,420
+to read the data from the XML file.
+
+373
+00:18:25,420 --> 00:18:28,000
+It is really easy and the bulk of it is ready
+
+374
+00:18:28,000 --> 00:18:30,070
+to be able to work with these queries.
+
+375
+00:18:30,070 --> 00:18:32,950
+The first query is in the XmlListModel here
+
+376
+00:18:32,950 --> 00:18:35,650
+and the second one is in the XmlRole
+
+377
+00:18:35,650 --> 00:18:38,680
+that specifies whatever specific data
+
+378
+00:18:38,680 --> 00:18:41,800
+that you want to get from the items
+
+379
+00:18:41,800 --> 00:18:44,980
+that these first query returned.
+
+380
+00:18:44,980 --> 00:18:47,380
+And if you want to learn more on these queries
+
+381
+00:18:47,380 --> 00:18:49,570
+and the way you do that you can come to
+
+382
+00:18:49,570 --> 00:18:51,850
+the documentation. I think they have good examples
+
+383
+00:18:51,850 --> 00:18:53,830
+on how you work with these things.
+
+384
+00:18:53,830 --> 00:18:56,200
+You can go through these examples.
+
+385
+00:18:56,200 --> 00:18:59,470
+They have an XML file, they have the query here,
+
+386
+00:18:59,470 --> 00:19:01,750
+they have its role. You can look at this
+
+387
+00:19:01,750 --> 00:19:03,940
+and if you keep going down,
+
+388
+00:19:03,940 --> 00:19:06,850
+you going to see more examples of things
+
+389
+00:19:06,850 --> 00:19:09,100
+you can do with these things. If you come to
+
+390
+00:19:09,100 --> 00:19:11,260
+this location, they are going to tell you
+
+391
+00:19:11,260 --> 00:19:15,550
+to see xml role query, click on that and
+
+392
+00:19:15,550 --> 00:19:17,470
+if you keep going down, they're going to
+
+393
+00:19:17,470 --> 00:19:19,480
+show you a link where you can go and
+
+394
+00:19:19,480 --> 00:19:23,260
+read about the XPath specification which
+
+395
+00:19:23,260 --> 00:19:26,170
+is a standard that defines these things
+
+396
+00:19:26,170 --> 00:19:28,180
+we are doing here in the queries.
+
+397
+00:19:28,180 --> 00:19:31,300
+You are going to see everything about it.
+
+398
+00:19:31,300 --> 00:19:33,280
+If you are in the mode for tutorials, you can
+
+399
+00:19:33,280 --> 00:19:35,860
+come to this link here. This is one
+
+400
+00:19:35,860 --> 00:19:38,470
+tutorial found online that goes through
+
+401
+00:19:38,470 --> 00:19:41,530
+the standard of XPath and how it works.
+
+402
+00:19:41,530 --> 00:19:43,390
+If you need a refresher or an
+
+403
+00:19:43,390 --> 00:19:45,580
+introduction to it, this is a good thing to look at.
+
+404
+00:19:45,580 --> 00:19:48,910
+Ok this is all I have to say in this lecture
+
+405
+00:19:48,910 --> 00:19:51,100
+and the next lecture we're
+
+406
+00:19:51,100 --> 00:19:52,360
+going to look at how you work with
+
+407
+00:19:52,360 --> 00:00:00,000
+animations in Qt Quick. I'll see you there.
+

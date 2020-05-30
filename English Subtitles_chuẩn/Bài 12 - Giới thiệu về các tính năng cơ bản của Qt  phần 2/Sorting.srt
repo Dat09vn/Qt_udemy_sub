@@ -1,0 +1,581 @@
+WEBVTT
+
+00:00.960 --> 00:06.180
+This is section 2, Diving into Model View section, which covers sorting. In this  video, we're going to cover
+
+00:06.360 --> 00:11.400
+Qt's Model/View paradigm, including both the origins and responsibilities, establishing a need for sorting
+
+00:11.400 --> 00:16.890
+with a real life problem before diving into Qt's two methods of sorting, sorting by a proxy model and
+
+00:16.890 --> 00:19.230
+programmatically sorting our original model.
+
+00:19.230 --> 00:25.170
+So let's go ahead and get started with the model-view-controller or Qt's rebrand of that model view. The
+
+00:25.170 --> 00:29.440
+model view controller architecture is a design paradigm used for building user interfaces.
+
+00:29.460 --> 00:31.340
+It helps separate the way data is stored
+
+00:31.340 --> 00:36.810
+from the way it is presented to the user. You can see it's a typical diagram with the separation of concerns
+
+00:36.810 --> 00:37.990
+on the screen.
+
+00:38.000 --> 00:43.590
+Qt uses a special construct of the model-view-controller framework called the Model/View. The Model/
+
+00:43.590 --> 00:50.130
+vView framework is the same as the model-view-controller framework. You just combine the view with the
+
+00:50.130 --> 00:50.930
+ccontroller.
+
+00:51.000 --> 00:56.500
+SSo the view in Qt is responsible for both showing the data and responding to user input.
+
+00:56.520 --> 00:59.010
+YYou can see a diagram of the model view framework here.
+
+00:59.280 --> 01:04.270
+SSo why is this important? Separation of concerns helps promote code reuse.
+
+01:04.290 --> 01:09.510
+IIt makes it possible to display the same data in both different views and implement new types of views
+
+01:09.750 --> 01:11.400
+wwhile leaving the data untouched.
+
+01:11.520 --> 01:16.020
+UUnderstanding them all of view paradigm also helps when designing our gooeys so that we can leverage the
+
+01:16.020 --> 01:19.440
+cQt framework instead of fighting against it. With such a mature framework
+
+01:19.440 --> 01:21.840
+Tthere's often a prescribed way to do something.
+
+01:21.870 --> 01:25.330
+FFor example there are two prescribed ways to do sorting in cute.
+
+01:25.350 --> 01:26.940
+SSo what do we want to sort?
+
+01:27.240 --> 01:30.050
+WWell let's say that we have an application that shows pictures.
+
+01:30.090 --> 01:34.410
+WWe want the pictures to be arranged in the most aesthetically pleasing manner possible, which in this
+
+01:34.410 --> 01:36.740
+eexample, we'll be doing by color sorting.
+
+01:36.870 --> 01:41.280
+WWe're going to leverage our perceptually uniform color map pictures to help highlight just how effective
+
+01:41.280 --> 01:42.030
+tthis can be.
+
+01:42.030 --> 01:47.510
+NNow please note that for other non-trivial examples, color sorting is a much more difficult task.
+
+01:47.550 --> 01:50.130
+LLet's take a look at the code that we already have at this point.
+
+01:51.010 --> 01:56.350
+IIf we open the project by selecting the correct .pro file and configure it using the default desktop configuration,
+
+01:56.410 --> 01:57.850
+wwe can take a look.
+
+01:58.150 --> 02:03.950
+OOpening the main.cpp, we can see that we create a custom MainWindow and show it before running the exec
+
+02:04.040 --> 02:07.200
+eevent loop. Pulling open the header file and the mainwindow,
+
+02:07.210 --> 02:09.850
+Wwe can start seeing some of the meat and potatoes of this code.
+
+02:09.850 --> 02:14.050
+WWe're going to have 2 views, a QListView and a QTableView.
+
+02:14.200 --> 02:17.300
+WWe use each view to demonstrate a different way of sorting
+
+02:17.300 --> 02:17.980
+Ain Qt.
+
+02:17.980 --> 02:20.770
+II've also got a custom model to help drive our views,
+
+02:20.770 --> 02:23.030
+Iin this case the PhotoItemModel.
+
+02:23.050 --> 02:28.200
+AAdditionally, we're creating a tab widget, which will allow the user to flip between the two views.
+
+02:28.210 --> 02:34.570
+NNow if we pull open our PhotoItemModel, what we'll find is a large for loop that go ahead and creates
+
+02:34.570 --> 02:40.900
+oour icons, creates an item, and sets the item with the icon that we just created before finally setting
+
+02:40.900 --> 02:42.700
+the item in the model.
+
+02:42.820 --> 02:48.370
+TThe only weird bit about this code is that I'm actually creating a second column here using the last
+
+02:48.370 --> 02:51.910
+iicon, and then setting it in the column of one.
+
+02:51.940 --> 02:57.090
+TThis is to help show exactly how effective sorting is on our QTableView.
+
+02:57.250 --> 03:00.840
+SSo let's go ahead and run and see what we're working with right now.
+
+03:02.200 --> 03:06.570
+TThe first tab is our QListView and the second is the QTableView.
+
+03:06.910 --> 03:10.750
+AAs I mentioned before, there are two prescribed methods of sorting in Qt and you can see I've already
+
+03:10.750 --> 03:13.530
+llabeled which method we are going to use on which view.
+
+03:13.570 --> 03:19.480
+SSo in the QListView, which is this one, we'll be using a proxy model. In the QTableView, which
+
+03:19.480 --> 03:22.200
+iis this one, we'll actually be sorting this programmatically.
+
+03:22.270 --> 03:27.820
+NNow you might be surprised, but the proxy method using a QSortFilter proxy model is actually the easier
+
+03:27.820 --> 03:29.650
+oof the two methods to implement.
+
+03:29.650 --> 03:32.160
+SSo let's go ahead and start with that.
+
+03:32.470 --> 03:37.760
+WWe'll need to look at our mainwindow.cpp file. In the constructor of our MainWindow,
+
+03:37.780 --> 03:43.090
+Yyou can see that we create an instance of our model, an instance of our QListView before setting
+
+03:43.150 --> 03:45.830
+oour model that we created on our list_view.
+
+03:45.910 --> 03:51.620
+NNow this is going to be really dumb, but let's go ahead and put a QSortFilterProxyModel in.
+
+03:51.670 --> 03:55.840
+SSo you can get a view of how the class is used at high level.
+
+03:55.840 --> 04:02.560
+SSo what we'll go ahead and do is in between the creation of our list_view, we'll create an instance and
+
+04:02.560 --> 04:04.760
+II've already got a sort proxy model.
+
+04:04.810 --> 04:11.320
+WWe'll just go ahead and create a new QSortFilterProxyModel. As part of this, we'll be going to
+
+04:11.320 --> 04:14.750
+ggo ahead and set the source model on our proxy model.
+
+04:14.770 --> 04:20.950
+SSo we'll go ahead and call that function and pass in our original model, which we've created up here,
+
+04:20.950 --> 04:23.250
+iinto our sort proxy filter.
+
+04:23.290 --> 04:27.640
+AAnd the last thing that we need to do is instead of passing in our original model, we're going to go
+
+04:27.640 --> 04:33.680
+aahead and pass in our sort_proxy_model to our list_view instead. Semi-colons.
+
+04:33.850 --> 04:39.880
+SSo high level this is how you use a QSortFilterProxyModel, create an instance, set the source model,
+
+04:40.000 --> 04:43.400
+aand then pass the proxy model into our view instead of the original.
+
+04:43.420 --> 04:47.600
+BBut this currently won't color sort our pictures like we want because we haven't coded it yet.
+
+04:47.680 --> 04:49.490
+SSo let's go ahead and do that now.
+
+04:49.510 --> 04:54.640
+NNow I've already created the base framework as part of this example, so we'll just move to that, which
+
+04:54.640 --> 04:57.580
+iis labeled the sortproxymodel header file.
+
+04:57.730 --> 05:03.070
+SSo in order to enable basic sorting, all we need to do is implement a lessThan function which, as you
+
+05:03.070 --> 05:06.610
+can see from the method call, takes in 2 QModelIndexes,
+
+05:06.640 --> 05:10.240
+Oone is the left and one is the right, and returns back a boolean.
+
+05:10.240 --> 05:16.300
+NNow you might be thinking "then how are we going to go from a QModelIndex to finding a luminosity value
+
+05:16.300 --> 05:17.090
+oof a picture"?
+
+05:17.090 --> 05:17.820
+II've got to be honest.
+
+05:17.830 --> 05:22.660
+GGetting luminosity value of a picture out of the Qt framework is a difficult task.
+
+05:22.670 --> 05:24.250
+WWe're not going to go into it too much.
+
+05:24.250 --> 05:28.810
+WWhat we're going to talk about instead is how to get data values out of a queue model index, because
+
+05:28.810 --> 05:33.100
+oonce you know how to get your hands on the data, you can figure everything else out relatively simply
+
+05:33.100 --> 05:35.410
+ddepending on your specific use case.
+
+05:35.410 --> 05:41.680
+SSo for the QSortFilterProxyModel, I happen to know that the function is going to return a QVariant.
+
+05:41.680 --> 05:45.710
+LLet's go ahead and declare a QVariant and we'll go ahead and call this left_data.
+
+05:45.990 --> 05:52.810
+AAnd what we want to do is get a pointer to our sourceModel so that we can call the data function on that.
+
+05:52.890 --> 05:57.670
+aAnd the data function takes in two variables, one of which is our QModelIndex which we've got.
+
+05:57.670 --> 06:01.100
+SSo we're going pass in the source_left. And the second is the role.
+
+06:01.110 --> 06:02.870
+NNow the role is a little special.
+
+06:02.890 --> 06:04.760
+WWe should take a second to talk about that.
+
+06:05.080 --> 06:11.440
+SSo roles in Qt are used by the view to indicate to the model which type of data it needs.
+
+06:11.440 --> 06:16.570
+SSo in this case, we want to get some sort of color or decoration information. So if we take a look at
+
+06:16.570 --> 06:22.750
+tthis table, we can see that's most best represented by the DecorationRole. And this table will go
+
+06:22.750 --> 06:24.280
+oahead and tell us what types it's going to return.
+
+06:24.280 --> 06:27.400
+SSo the data'll be rendered as a decoration in the form of an icon,
+
+06:27.400 --> 06:30.050
+QQColor, QIcon or QPixmap.
+
+06:30.130 --> 06:35.080
+TThe other important role that you'll often see is the Qt DisplayRole, which I can see from this table,
+
+06:35.110 --> 06:37.420
+wwill go ahead and return a QString.
+
+06:37.510 --> 06:42.910
+SSo now that we've figured out what role that we need, we'll go ahead and go back to our code and plug that
+
+06:42.910 --> 06:43.740
+rrole in.
+
+06:43.740 --> 06:46.180
+SSo QtDecoration.
+
+06:47.450 --> 06:52.740
+SSo now that we've got the left, the only thing that we need is the right. So we'll do some modifications
+
+06:52.760 --> 06:56.480
+Rhere real quick to get our right.
+
+06:56.680 --> 07:01.820
+AAnd now that we've got our 2 QVariants, next question we need to answer is how do we wrangle pixel,
+
+07:01.820 --> 07:05.500
+ppicture, or color information out of a QVariant?
+
+07:05.540 --> 07:11.690
+WWell if we look at the QVariant documentation, what we're going to see is the QVariant contains a lot
+
+07:11.690 --> 07:17.090
+oof to functions which helps it convert to specific types of data. So we can see like a toBitArray,
+
+07:17.120 --> 07:18.990
+ttoBool, toByteArray.
+
+07:19.130 --> 07:24.290
+BBut what we won't find is any type of color information or anything like that.
+
+07:24.350 --> 07:29.600
+BBut there is, in the documentation, a note here which says QVariant can't get these things but you can
+
+07:29.600 --> 07:34.880
+uuse the value function to actually wrangle out some of this information, which is exactly what we're
+
+07:34.880 --> 07:35.760
+ggoing to do.
+
+07:35.780 --> 07:44.050
+SSo if we go back to our code, we want to grab our QIcon information, so just go ahead and call the left_icon. And
+
+07:44.060 --> 07:49.250
+wwhat we're going to do is on the left data, we're going to call the value function. And we're going to pass in the type we
+
+07:49.250 --> 07:53.670
+wwant, which in this case is a QIcon and that is all we need to do.
+
+07:53.810 --> 07:58.490
+SSo let's make sure that we do the same thing for the right. Call this on the right data,
+
+07:58.490 --> 08:06.290
+Tthe value function, and we'll pass in the QIcon type and that is it. From here
+
+08:06.290 --> 08:10.230
+Wwe'll just call a helper function I included, which is luminosity_less_than.
+
+08:10.310 --> 08:15.880
+NNow under the hood of this function, it gets a QPixmap from the QIcon, changes the QPixmap
+
+08:15.880 --> 08:21.690
+minto a QImage, grabs a pixel from the QImage before finally converting it from the
+
+08:21.740 --> 08:25.680
+cRGBColorSpace to the LABColorSpace, which contains the luminosity.
+
+08:25.700 --> 08:28.370
+SSo the calculations are all in the luminousty_calc.h.
+
+08:28.370 --> 08:29.640
+YYou'll want to see the implementation.
+
+08:29.660 --> 08:36.500
+BBut for our case and purposes, all we need to do is return the luminosity_less_than function passing in both
+
+08:36.500 --> 08:40.880
+tthe left icon and the right icon.
+
+08:40.880 --> 08:43.400
+SSo now we've finished the implementation,
+
+08:43.400 --> 08:46.510
+Aall we need to do is actually include it. So if you remember,
+
+08:46.580 --> 08:49.750
+Rright now we've got a QSortFilterProxyModel.
+
+08:49.760 --> 08:55.160
+SSo let's go ahead and remove that and we'll go ahead and pass in our instance, which is a
+
+08:55.160 --> 08:55.640
+mSortProxyModel.
+
+08:55.710 --> 08:59.620
+AAnd now if we run this, we're actually not going to see what you're thinking.
+
+08:59.620 --> 09:04.420
+SSo instead of having all the information sorted correctly, we're still going to see it unsorted.
+
+09:04.430 --> 09:06.480
+SSo there's one more thing that we have to do here.
+
+09:06.620 --> 09:09.830
+AAnd that is we need to actually call the sort
+
+09:09.830 --> 09:10.970
+Oon model.
+
+09:10.970 --> 09:16.790
+SSo we're going to sort_proxy_model and call the sort function and we pass in the first column here. It will
+
+09:16.790 --> 09:18.780
+aactually sort the information for us.
+
+09:18.790 --> 09:23.800
+AAnd normally what we do is we have a button or something and you click the button and it would sort
+
+09:23.810 --> 09:27.560
+sstuff. All it does is an implementation up to the viewer.
+
+09:27.560 --> 09:30.950
+TThis is a quick and easy way to demonstrate this functionality.
+
+09:30.950 --> 09:36.230
+SSo with that sort function and if we rerun this code, what we can see now is we have all our data sorted,
+
+09:36.620 --> 09:41.140
+iin terms of luminosity from darkest to lightest. Cool.
+
+09:41.150 --> 09:46.780
+SSo let's get to the second way to do a sort where we sort the data programmatically.
+
+09:46.790 --> 09:51.530
+NNow please note that this means that we're going to be changing our original model, where with these
+
+09:51.530 --> 09:56.360
+ssort_proxy_model we didn't actually have to do that with the second way of programmatically sorting
+
+09:56.360 --> 09:57.050
+ithat we will.
+
+09:57.050 --> 10:02.760
+SSo we'll go ahead and change this back to our model. So we can kind of demonstrate the effects of that.
+
+10:02.810 --> 10:08.660
+NNow if you look at the model, we're using a QStandardItemModel. And the easiest way to do this is to
+
+10:08.660 --> 10:15.200
+go ahead and implement our own custom item type based on QStandardItem and re-implement the lessThan
+
+10:15.200 --> 10:15.940
+ooperator.
+
+10:16.040 --> 10:22.190
+II'm going to go ahead and paste the framework for this in, and we'll call our custom item type, the photo
+
+10:22.190 --> 10:22.690
+iitem.
+
+10:26.300 --> 10:29.740
+aAgain this code is going to be very similar to what we've done before.
+
+10:29.900 --> 10:35.520
+SSo the first thing that we need to do is go ahead and get our data out in the terms of QVariant. So
+
+10:35.520 --> 10:40.140
+wwe'll create a QVariant, and we'll call this the left_data.
+
+10:40.210 --> 10:42.870
+WWe're just going to be able to call that data method directly.
+
+10:42.910 --> 10:48.080
+TThen we're going to go ahead and pass in our DecorationRole as the role that we want. And we'll do
+
+10:48.080 --> 10:50.350
+tthe same thing for our right_data.
+
+10:50.450 --> 10:56.710
+AAnd this time we're going to call this on the other, which is described in our actual method Decoration
+
+10:56.960 --> 10:58.630
+aand do the same thing.
+
+10:59.730 --> 11:00.270
+PPerfect.
+
+11:00.300 --> 11:02.670
+OOnce we've got that, we need to grab the QIcon out.
+
+11:02.670 --> 11:09.630
+SSo we'll call this the left_icon, and we're going to use the same thing. We'll use the value function and pass
+
+11:09.710 --> 11:11.190
+tin the type that we want.
+
+11:11.190 --> 11:15.680
+PPerfect. The same thing for the right using the right_data.
+
+11:16.960 --> 11:24.220
+AAnd then we've got our helper function, the luminosity_less_than, which will pass in our left_icon and
+
+11:24.280 --> 11:25.640
+oour right_icon.
+
+11:25.870 --> 11:30.310
+NNow with this one, we'll actually need to change the constructor a little bit and include a semicolon
+
+11:30.310 --> 11:31.100
+hhere.
+
+11:31.210 --> 11:35.410
+SSo with this one we'll actually need to change the constructor a little bit.
+
+11:35.410 --> 11:41.450
+SSo instead of calling or creating a QStandardItem right here, instead we're going to like change
+
+11:41.450 --> 11:43.320
+tthis for our PhotoItem.
+
+11:43.450 --> 11:45.660
+AAnd again for the second item as well.
+
+11:46.660 --> 11:53.020
+BBoth the types and the instances. The last thing that we need to do is if we switch back to our
+
+11:53.020 --> 11:58.270
+wMainWWindow, we need to make sure that we've actually enabled sorting. So if we go here, I've actually commented
+
+11:58.270 --> 12:00.990
+iit out, it's in the setup_table_view_ui.
+
+12:01.180 --> 12:03.040
+TThere's a method that says setSortingEnabled.
+
+12:03.070 --> 12:05.720
+SSo I want to make sure that that is set to true.
+
+12:05.740 --> 12:13.530
+NNow if we run this, we can see that by clicking the columns, we can actually change how our data is sorted.
+
+12:13.650 --> 12:16.830
+aAnd you can see the effect this has on the second column.
+
+12:16.830 --> 12:21.640
+NNow what I want you to also notice is that this changes our other view that we have.
+
+12:21.660 --> 12:21.990
+RRight?
+
+12:21.990 --> 12:28.230
+SSo our other view is now sorted by luminosity as well. And we can a second column to kind of see what
+
+12:28.230 --> 12:30.680
+iit looks like without the luminosity sorted.
+
+12:30.720 --> 12:36.780
+SSo as we make changes here in our table view, we're actually making changes in our secondary view, which
+
+12:36.780 --> 12:42.080
+iis the downside of programmatically sorting our model instead of using a QProxyModel.
+
+12:42.090 --> 12:47.090
+SSo with that we've successfully learned how to programmatically sort. We've learned how to use a proxy model.
+
+12:47.100 --> 12:53.130
+WWe've touched on Qt's model/view paradigm, and why it's important as well as establishing a real use case
+
+12:53.130 --> 12:55.770
+ffor some advance sorting.
+
+12:55.810 --> 12:59.320
+PPlease join us for the next video where we continue our dive into the
+
+12:59.320 --> 13:02.080
+Amodel/view paradigm by discussing filtering.
+

@@ -1,0 +1,728 @@
+1
+00:00:00,000 --> 00:00:01,560
+In this lecture we're going to talk
+
+2
+00:00:01,560 --> 00:00:04,080
+about property binding in qml.
+
+3
+00:00:04,080 --> 00:00:06,450
+This is actually easier to show than
+
+4
+00:00:06,450 --> 00:00:08,639
+talk about so I'm going to go to QT
+
+5
+00:00:08,639 --> 00:00:10,710
+creator, create a project and show you
+
+6
+00:00:10,710 --> 00:00:13,500
+this concept. Okay so here we are in qt
+
+7
+00:00:13,500 --> 00:00:15,269
+creator, I'm going to create a new
+
+8
+00:00:15,269 --> 00:00:17,699
+project, it's going to be a QT quick
+
+9
+00:00:17,699 --> 00:00:19,770
+application as we've been doing before,
+
+10
+00:00:19,770 --> 00:00:22,289
+we're going to call it property binding
+
+11
+00:00:22,289 --> 00:00:24,529
+demo and store it in the usual location
+
+12
+00:00:24,529 --> 00:00:29,220
+hit next choose the latest version of
+
+13
+00:00:29,220 --> 00:00:32,340
+qt that we have installed, choose ok.
+
+14
+00:00:32,340 --> 00:00:36,090
+And we have our project here, we want to
+
+15
+00:00:36,090 --> 00:00:39,410
+change this title to the property
+
+16
+00:00:39,410 --> 00:00:44,910
+binding demo. We are going to put in a
+
+17
+00:00:44,910 --> 00:00:50,960
+rectangle, id is going to be redRectId.
+
+18
+00:00:50,960 --> 00:00:55,289
+It's going to have a width of 50
+
+19
+00:00:55,289 --> 00:01:00,170
+and a height that depends on the width
+
+20
+00:01:00,170 --> 00:01:07,409
+so we're going to say width * 1.5. This
+
+21
+00:01:07,409 --> 00:01:10,890
+will do we want to give it a color of
+
+22
+00:01:10,890 --> 00:01:15,930
+red. This is what property binding really
+
+23
+00:01:15,930 --> 00:01:19,080
+is it is to define one property to
+
+24
+00:01:19,080 --> 00:01:22,200
+depend on another property. In this case
+
+25
+00:01:22,200 --> 00:01:25,170
+the height of this rectangle depends on
+
+26
+00:01:25,170 --> 00:01:25,890
+its width.
+
+27
+00:01:25,890 --> 00:01:27,960
+I know this looks like a simple
+
+28
+00:01:27,960 --> 00:01:30,840
+assignment of a property but in qml
+
+29
+00:01:30,840 --> 00:01:33,090
+this is a contract between the width and
+
+30
+00:01:33,090 --> 00:01:35,220
+the height of this rectangle.
+
+31
+00:01:35,220 --> 00:01:37,470
+Whenever the width is going to change the
+
+32
+00:01:37,470 --> 00:01:39,060
+height is going to change accordingly
+
+33
+00:01:39,060 --> 00:01:41,189
+according to this expression here. And
+
+34
+00:01:41,189 --> 00:01:44,100
+this is what we call property binding.
+
+35
+00:01:44,100 --> 00:01:47,909
+The height is bound to the width with
+
+36
+00:01:47,909 --> 00:01:50,460
+this expression here. To show this off
+
+37
+00:01:50,460 --> 00:01:51,840
+I'm going to add a few other components.
+
+38
+00:01:51,840 --> 00:02:00,899
+I'm going to add another rectangle, you
+
+39
+00:02:00,899 --> 00:02:02,520
+might have guessed that the color of
+
+40
+00:02:02,520 --> 00:02:06,060
+this rectangle is going to be blue. It's
+
+41
+00:02:06,060 --> 00:02:10,020
+going to have a width of 100, a height of
+
+42
+00:02:10,020 --> 00:02:12,010
+100
+
+43
+00:02:12,010 --> 00:02:14,170
+and inside we're going to put a
+
+44
+00:02:14,170 --> 00:02:18,659
+mouseArea and when this thing is clicked
+
+45
+00:02:18,659 --> 00:02:22,269
+we're going to do something. We want to
+
+46
+00:02:22,269 --> 00:02:25,569
+add 10 to the current width of the red
+
+47
+00:02:25,569 --> 00:02:28,090
+rectangle. The way you do that, you'd say
+
+48
+00:02:28,090 --> 00:02:35,459
+redRectId.width = redRectId.width + 10.
+
+49
+00:02:35,459 --> 00:02:38,859
+We also want to make this
+
+50
+00:02:38,859 --> 00:02:41,620
+mouseArea filled the rectangle here
+
+51
+00:02:41,620 --> 00:02:43,450
+so we're going to come on top here and
+
+52
+00:02:43,450 --> 00:02:48,250
+say anchors.fill: parent. And we want this
+
+53
+00:02:48,250 --> 00:02:50,409
+rectangle here to be to the bottom of
+
+54
+00:02:50,409 --> 00:02:53,230
+the window the way we do that we going
+
+55
+00:02:53,230 --> 00:02:56,500
+to anchor it to the bottom. We want the
+
+56
+00:02:56,500 --> 00:02:59,829
+bottom line of it to be aligned with the
+
+57
+00:02:59,829 --> 00:03:02,349
+bottom line of the window. We're going to
+
+58
+00:03:02,349 --> 00:03:12,849
+say anchor.bottom: parent.bottom. Let's run the
+
+59
+00:03:12,849 --> 00:03:15,670
+application and see what we get. Mm-hmm
+
+60
+00:03:15,670 --> 00:03:20,410
+we have a red rectangle which is 50 in
+
+61
+00:03:20,410 --> 00:03:25,419
+width and 75 in height and we have
+
+62
+00:03:25,419 --> 00:03:29,260
+another rectangle down which is blue. And
+
+63
+00:03:29,260 --> 00:03:31,349
+when you click on this blue rectangle
+
+64
+00:03:31,349 --> 00:03:35,500
+the width of the red rectangle increases.
+
+65
+00:03:35,500 --> 00:03:39,040
+So we should expect to click and see
+
+66
+00:03:39,040 --> 00:03:40,870
+this thing increasing in width and
+
+67
+00:03:40,870 --> 00:03:43,030
+height. And this is happening this is
+
+68
+00:03:43,030 --> 00:03:46,090
+what we want. This is property binding in
+
+69
+00:03:46,090 --> 00:03:48,579
+action notice that we didn't do anything
+
+70
+00:03:48,579 --> 00:03:51,280
+to have this updating happening when the
+
+71
+00:03:51,280 --> 00:03:53,349
+width changes. This is done automatically
+
+72
+00:03:53,349 --> 00:03:56,139
+by qml and this is what is called
+
+73
+00:03:56,139 --> 00:03:58,510
+property binding you bind two properties
+
+74
+00:03:58,510 --> 00:04:00,879
+together and you define an expression
+
+75
+00:04:00,879 --> 00:04:03,489
+that is going to be used to bind them
+
+76
+00:04:03,489 --> 00:04:06,250
+together. But there is a problem when you
+
+77
+00:04:06,250 --> 00:04:08,500
+try to change this binding it is going
+
+78
+00:04:08,500 --> 00:04:11,400
+to break. Let's add another rectangle
+
+79
+00:04:11,400 --> 00:04:16,530
+we're going to call it green rectangle
+
+80
+00:04:17,180 --> 00:04:27,520
+Id, the color is going to be green,
+
+81
+00:04:28,600 --> 00:04:33,889
+the width and height and anchor
+
+82
+00:04:33,889 --> 00:04:35,900
+properties are going to be exactly the
+
+83
+00:04:35,900 --> 00:04:43,130
+same but its left side it's going to be
+
+84
+00:04:43,130 --> 00:04:46,280
+anchored to the right side of the blue
+
+85
+00:04:46,280 --> 00:04:50,419
+rectangle. So I'm going to say 
+
+86
+00:04:50,419 --> 00:04:53,630
+blueRectId.right. And inside we're going to
+
+87
+00:04:53,630 --> 00:04:55,850
+put a mouse area so we're going to just
+
+88
+00:04:55,850 --> 00:04:59,780
+copy this and modify its on clicked
+
+89
+00:04:59,780 --> 00:05:02,210
+method to have a different effect. So
+
+90
+00:05:02,210 --> 00:05:05,139
+we're going to say redRectId.height and
+
+91
+00:05:05,139 --> 00:05:08,389
+change this to static value, let's
+
+92
+00:05:08,389 --> 00:05:12,080
+change this to 100, for example. Run the
+
+93
+00:05:12,080 --> 00:05:15,710
+application and show you what I mean. So
+
+94
+00:05:15,710 --> 00:05:18,650
+if we click on the blue rectangle things
+
+95
+00:05:18,650 --> 00:05:20,870
+are normal the width is changing and the
+
+96
+00:05:20,870 --> 00:05:23,300
+height is changing. If you click on the
+
+97
+00:05:23,300 --> 00:05:25,400
+green rectangle the height is going to
+
+98
+00:05:25,400 --> 00:05:28,460
+be reset to 100 notice that the width
+
+99
+00:05:28,460 --> 00:05:31,190
+doesn't change but what is even worse is
+
+100
+00:05:31,190 --> 00:05:32,750
+that if you click on the blue rectangle
+
+101
+00:05:32,750 --> 00:05:36,680
+you see that only the width is changing
+
+102
+00:05:36,680 --> 00:05:39,020
+and the height is not changing with that.
+
+103
+00:05:39,020 --> 00:05:41,870
+That is because we broke the contract by
+
+104
+00:05:41,870 --> 00:05:44,570
+setting the height to a static value.
+
+105
+00:05:44,570 --> 00:05:48,260
+Okay so we set the height to 100 and
+
+106
+00:05:48,260 --> 00:05:52,070
+broke the contract that was binding the
+
+107
+00:05:52,070 --> 00:05:55,610
+height to the width here. That's why when
+
+108
+00:05:55,610 --> 00:05:58,789
+you click on the blue rectangle only the
+
+109
+00:05:58,789 --> 00:06:01,460
+width is changing. You might think that
+
+110
+00:06:01,460 --> 00:06:03,680
+you can fix this by ammm
+
+111
+00:06:03,680 --> 00:06:07,030
+for example copying this thing here and
+
+112
+00:06:07,030 --> 00:06:09,860
+changing this to an expression. This
+
+113
+00:06:09,860 --> 00:06:13,190
+should fix things right. Let's make this
+
+114
+00:06:13,190 --> 00:06:16,789
+two so that when we click on the green
+
+115
+00:06:16,789 --> 00:06:19,550
+rectangle the height becomes 2 times the
+
+116
+00:06:19,550 --> 00:06:22,220
+width. Let's run the application and see
+
+117
+00:06:22,220 --> 00:06:26,719
+if this works. Actually we click on the
+
+118
+00:06:26,719 --> 00:06:29,389
+blue rectangle things are normal,
+
+119
+00:06:29,389 --> 00:06:30,680
+we click on the
+
+120
+00:06:30,680 --> 00:06:33,050
+green rectangle you see that things
+
+121
+00:06:33,050 --> 00:06:35,479
+change a little bit but if you click on
+
+122
+00:06:35,479 --> 00:06:36,949
+the blue rectangle things are not
+
+123
+00:06:36,949 --> 00:06:38,750
+working as we expect.
+
+124
+00:06:38,750 --> 00:06:42,229
+We are still seeing that the width is
+
+125
+00:06:42,229 --> 00:06:44,449
+changing but the height is not changing
+
+126
+00:06:44,449 --> 00:06:46,490
+with the width which means that the
+
+127
+00:06:46,490 --> 00:06:48,949
+expression here is really not working. So
+
+128
+00:06:48,949 --> 00:06:50,780
+what is really happening when you assign
+
+129
+00:06:50,780 --> 00:06:53,180
+a property like this when it has been
+
+130
+00:06:53,180 --> 00:06:55,669
+assigned before and bound to another
+
+131
+00:06:55,669 --> 00:06:58,669
+property the binding still breaks. It is
+
+132
+00:06:58,669 --> 00:07:00,440
+actually taking the result of this
+
+133
+00:07:00,440 --> 00:07:04,250
+expression and assigning it as a static
+
+134
+00:07:04,250 --> 00:07:06,800
+value to the height here. And this is no
+
+135
+00:07:06,800 --> 00:07:09,289
+different than what we did by assigning
+
+136
+00:07:09,289 --> 00:07:11,690
+a static value like this. If you want
+
+137
+00:07:11,690 --> 00:07:13,430
+your expression like this to take effect
+
+138
+00:07:13,430 --> 00:07:16,190
+when you click on this green button, you
+
+139
+00:07:16,190 --> 00:07:18,740
+need to do a little bit more work. So
+
+140
+00:07:18,740 --> 00:07:20,660
+what we are going to do is copy this
+
+141
+00:07:20,660 --> 00:07:23,229
+thing because we are going to use it and
+
+142
+00:07:23,229 --> 00:07:29,270
+say Qt.binding(). And inside we need to
+
+143
+00:07:29,270 --> 00:07:31,070
+pass in a function that is going to
+
+144
+00:07:31,070 --> 00:07:33,860
+return our expression. So what we're
+
+145
+00:07:33,860 --> 00:07:36,610
+going to say, we're going to say function,
+
+146
+00:07:36,610 --> 00:07:40,280
+you give it a parameter list and we give
+
+147
+00:07:40,280 --> 00:07:42,979
+it a body like this. I like to separate
+
+148
+00:07:42,979 --> 00:07:46,039
+things on different lines so it is
+
+149
+00:07:46,039 --> 00:07:49,849
+easier to read. And return
+
+150
+00:07:49,849 --> 00:07:53,900
+redRectId.width and multiply this by 2. We
+
+151
+00:07:53,900 --> 00:07:56,479
+are using this ID here because we are
+
+152
+00:07:56,479 --> 00:07:59,090
+trying to access this rectangle from
+
+153
+00:07:59,090 --> 00:08:01,250
+another element which is this rectangle
+
+154
+00:08:01,250 --> 00:08:04,639
+here. Let's run the application see if
+
+155
+00:08:04,639 --> 00:08:07,039
+our logic works and then I'm going to
+
+156
+00:08:07,039 --> 00:08:09,620
+try and explain it again. You click on
+
+157
+00:08:09,620 --> 00:08:11,090
+the blue rectangle, you see the width
+
+158
+00:08:11,090 --> 00:08:13,580
+changing and the height changing, click
+
+159
+00:08:13,580 --> 00:08:16,580
+on the green rectangle and click on the
+
+160
+00:08:16,580 --> 00:08:17,870
+blue rectangle again.
+
+161
+00:08:17,870 --> 00:08:19,759
+You see that where things are updating
+
+162
+00:08:19,759 --> 00:08:23,630
+now. So how is this working, this is
+
+163
+00:08:23,630 --> 00:08:26,090
+working because we are wrapping our
+
+164
+00:08:26,090 --> 00:08:29,539
+logic into this qt.binding thing. What it's
+
+165
+00:08:29,539 --> 00:08:32,510
+really doing, it is notifying the qt
+
+166
+00:08:32,510 --> 00:08:35,779
+system that we want this binding here to
+
+167
+00:08:35,779 --> 00:08:38,179
+replace the binding that we had here
+
+168
+00:08:38,179 --> 00:08:41,659
+if you don't wrap your code into this
+
+169
+00:08:41,659 --> 00:08:44,580
+qt.binding thing it's going to be like
+
+170
+00:08:44,580 --> 00:08:46,710
+you are assigning aesthetic value and it's
+
+171
+00:08:46,710 --> 00:08:49,350
+not going to update as you want. I hope
+
+172
+00:08:49,350 --> 00:08:52,140
+this really makes it clear how you work
+
+173
+00:08:52,140 --> 00:08:54,480
+with property bindings. And you saw the
+
+174
+00:08:54,480 --> 00:08:57,210
+need to use this qt.binding when you
+
+175
+00:08:57,210 --> 00:08:59,370
+need to update your binding that you are
+
+176
+00:08:59,370 --> 00:09:02,010
+defined before in your QT application.
+
+177
+00:09:02,010 --> 00:09:03,990
+And the next lecture we are going to
+
+178
+00:09:03,990 --> 00:09:06,660
+talk about the qt global object which
+
+179
+00:09:06,660 --> 00:09:09,240
+we have touched on right now by calling
+
+180
+00:09:09,240 --> 00:09:11,970
+qt.binding. This is the qt global
+
+181
+00:09:11,970 --> 00:09:14,280
+object and we are going to tackle it in
+
+182
+00:09:14,280 --> 00:00:00,000
+the next lecture. I'll see you there.
+

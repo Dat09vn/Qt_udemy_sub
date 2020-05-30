@@ -1,0 +1,256 @@
+1
+00:00:00,000 --> 00:00:02,550
+in this lecture we are looking at the
+
+2
+00:00:02,550 --> 00:00:05,879
+slider QT quick control component, it
+
+3
+00:00:05,879 --> 00:00:08,069
+basically works the same as the range
+
+4
+00:00:08,069 --> 00:00:10,110
+slider that we have looked at in a
+
+5
+00:00:10,110 --> 00:00:12,840
+previous lecture but we only have one
+
+6
+00:00:12,840 --> 00:00:15,719
+handle with this control let's go to
+
+7
+00:00:15,719 --> 00:00:18,150
+Qt Creator and play with that okay
+
+8
+00:00:18,150 --> 00:00:20,039
+here we are in Qt creator we're going
+
+9
+00:00:20,039 --> 00:00:23,039
+to create a new project it's going to be
+
+10
+00:00:23,039 --> 00:00:26,099
+a QT quick application we call it slider
+
+11
+00:00:26,099 --> 00:00:35,630
+demo save it in the usual location and
+
+12
+00:00:35,630 --> 00:00:40,680
+finish we want to import QT quick
+
+13
+00:00:40,680 --> 00:00:54,449
+controls 2.4, change the title
+
+14
+00:00:54,449 --> 00:01:00,030
+here to say slider demo and we want to
+
+15
+00:01:00,030 --> 00:01:03,510
+put the Row component here the width is
+
+16
+00:01:03,510 --> 00:01:06,380
+going to be the same as the parent and
+
+17
+00:01:06,380 --> 00:01:09,930
+we're going to have some space and let's
+
+18
+00:01:09,930 --> 00:01:13,350
+do 20 inside we're going to have a
+
+19
+00:01:13,350 --> 00:01:17,610
+slider component it's going to start
+
+20
+00:01:17,610 --> 00:01:23,640
+from 1 and end at 100 and the value is
+
+21
+00:01:23,640 --> 00:01:28,530
+going to be let's do a 40 and we want to
+
+22
+00:01:28,530 --> 00:01:32,369
+know when the value changed ok so you're
+
+23
+00:01:32,369 --> 00:01:44,040
+going to say console.log before we run
+
+24
+00:01:44,040 --> 00:01:45,810
+we should come to the top and correct
+
+25
+00:01:45,810 --> 00:01:49,740
+here I always met this mistake the width
+
+26
+00:01:49,740 --> 00:01:52,820
+equals to the width of the parent
+
+27
+00:01:52,820 --> 00:01:58,950
+let's run mm-hmm we have a slider here
+
+28
+00:01:58,950 --> 00:02:02,219
+and as we move it to the right we
+
+29
+00:02:02,219 --> 00:02:05,280
+increase in volume and as we move it to
+
+30
+00:02:05,280 --> 00:02:08,160
+the left we decrease in value until we
+
+31
+00:02:08,160 --> 00:02:10,139
+reach the minimum value which is the
+
+32
+00:02:10,139 --> 00:02:12,989
+from value here to make things a little
+
+33
+00:02:12,989 --> 00:02:13,780
+bit interest
+
+34
+00:02:13,780 --> 00:02:16,000
+then I'm going to change this to the
+
+35
+00:02:16,000 --> 00:02:21,340
+column and below the slider I'm going to
+
+36
+00:02:21,340 --> 00:02:23,860
+put a progress bar we have worked with
+
+37
+00:02:23,860 --> 00:02:27,940
+this before it is a matter of changes
+
+38
+00:02:27,940 --> 00:02:32,140
+this to progress bar okay and when the
+
+39
+00:02:32,140 --> 00:02:35,140
+value changes in the slider we want to
+
+40
+00:02:35,140 --> 00:02:37,120
+change the value in the progress bar
+
+41
+00:02:37,120 --> 00:02:42,180
+okay let's say progress bar ID here
+
+42
+00:02:44,340 --> 00:02:47,350
+should start with the lower case letter
+
+43
+00:02:47,350 --> 00:02:49,930
+we don't want to know when the value
+
+44
+00:02:49,930 --> 00:02:52,300
+changes in the progress bar we just want
+
+45
+00:02:52,300 --> 00:02:55,120
+to see it but when the value changes in
+
+46
+00:02:55,120 --> 00:02:58,720
+the slider we want to change the volume
+
+47
+00:02:58,720 --> 00:03:00,850
+in the progress bar so we're going to
+
+48
+00:03:00,850 --> 00:03:04,800
+say progress bar ID value equals value
+
+49
+00:03:04,800 --> 00:03:08,670
+something like this from 2 and volume
+
+50
+00:03:08,670 --> 00:03:12,700
+should be like this this is okay if we
+
+51
+00:03:12,700 --> 00:03:17,230
+run and move this around you're going to
+
+52
+00:03:17,230 --> 00:03:20,230
+see that we move this slider and the
+
+53
+00:03:20,230 --> 00:03:22,810
+value in the progress bar also changes
+
+54
+00:03:22,810 --> 00:03:24,910
+and this is really all there is to
+
+55
+00:03:24,910 --> 00:03:27,459
+working with the slider but this is not
+
+56
+00:03:27,459 --> 00:03:30,459
+centered and I want my bars to always be
+
+57
+00:03:30,459 --> 00:03:34,410
+centered so I'm going to anchor.horizontalCenter
+
+58
+00:03:34,410 --> 00:03:39,850
+parent.horizontalCenter to
+
+59
+00:03:39,850 --> 00:03:42,609
+Center and do the same for the progress
+
+60
+00:03:42,609 --> 00:03:53,560
+bar run again this is better this covers
+
+61
+00:03:53,560 --> 00:03:55,510
+all we had to say in this lecture and
+
+62
+00:03:55,510 --> 00:03:57,220
+the next one we're going to look at
+
+63
+00:03:57,220 --> 00:03:59,290
+another Qt Quick control component
+
+64
+00:03:59,290 --> 00:00:00,000
+and that is switch I see you there
+

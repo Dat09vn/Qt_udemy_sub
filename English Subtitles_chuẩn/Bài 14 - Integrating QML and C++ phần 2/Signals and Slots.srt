@@ -1,0 +1,298 @@
+WEBVTT
+
+00:00.890 --> 00:06.370
+This is video 5.2 communicating with Qt Which covers signals and slots in this video.
+
+00:06.390 --> 00:13.440
+We're going to cover C++ signals to QML Slots, QML signals to QML slots before finally finishing
+
+00:13.440 --> 00:15.940
+up with QML signals to C++ slots.
+
+00:15.960 --> 00:18.110
+So let's go ahead and get started.
+
+00:18.270 --> 00:22.460
+Now we're going to start with the least amount of code we have to write and then go to the most.
+
+00:22.490 --> 00:27.800
+So the least amount of code we need to write is to connect an already existing C++ signal to a
+
+00:27.820 --> 00:28.750
+QML slot.
+
+00:28.830 --> 00:30.100
+So go ahead and do that.
+
+00:30.120 --> 00:33.980
+Our photo model is going to have two types of data changed events.
+
+00:34.110 --> 00:38.150
+One where we change a single index and one or we change the entire model.
+
+00:38.160 --> 00:41.300
+So let's set up something to tell us which is which.
+
+00:41.310 --> 00:47.640
+So we're going to go ahead and define a function called my data change slot and we're going to do this
+
+00:47.730 --> 00:51.120
+oncompleted signal as part of our list view.
+
+00:51.570 --> 00:56.190
+So those three variables that we're going to take in an upper index a lower index and the rolls which
+
+00:56.190 --> 00:58.010
+is what the signal is going to give us.
+
+00:59.440 --> 01:01.040
+And we want to do two things.
+
+01:01.060 --> 01:07.290
+So if we are only have one index that we're changing we want to go ahead and log that.
+
+01:07.450 --> 01:10.920
+And if we have two indexes that are changed go ahead and log that as well.
+
+01:13.900 --> 01:14.230
+Perfect.
+
+01:14.230 --> 01:18.880
+So once you've got that slot defined Let's go ahead and connect that up in the signal that we're going
+
+01:18.880 --> 01:24.760
+to connect it to is our data change signal on our model and we'll just call the connect method on the
+
+01:24.760 --> 01:32.850
+data change signal perfect So that's an example of connecting a C++ signal to a QML slot.
+
+01:32.860 --> 01:38.200
+Notice that QML slots are literally just javascript functions so we just defined a new javascript
+
+01:38.200 --> 01:40.780
+function and then went ahead and connected that up.
+
+01:40.780 --> 01:44.370
+So how do we connect QML signal to a QML slot.
+
+01:44.560 --> 01:47.390
+Well we first need to define a Khumalo signal.
+
+01:47.410 --> 01:51.930
+Note that while javascript is a weakly type, our signals are actually strongly type.
+
+01:52.060 --> 01:56.770
+So as part of the signal definition we are going to have to define argument types in addition to the
+
+01:56.770 --> 01:57.440
+argument.
+
+01:57.550 --> 02:03.500
+Let's go ahead and create a new request for new colors which is going to be our signal in QML.
+
+02:03.520 --> 02:10.090
+And now we're going to find this in the roots here and going to say signal then request new
+
+02:10.090 --> 02:15.670
+colors and then we'll type pass in our type which is going to be a stream type and then we'll pass in
+
+02:15.670 --> 02:21.320
+our unit which we're just going to call our urgency and it's how you define a QML signal.
+
+02:21.350 --> 02:26.580
+So with our signal and with QML in general things are likely to go wrong at some point.
+
+02:26.590 --> 02:32.860
+So when we're doing QML to QML connections Let's go ahead and connect our signal to some working
+
+02:32.860 --> 02:37.260
+on the QML side, to the window we're passing to the C plus plus side.
+
+02:37.270 --> 02:42.070
+So we'll set up a signal function that logs the signal that we emmit and we'll go ahead and call this
+
+02:42.070 --> 02:47.950
+log_the_urgency it's going to take in one urgency which is actually the urgency in you know we're just
+
+02:47.950 --> 02:54.550
+going to call console.log perfect and then we'll go ahead and connect this up and we'll use the
+
+02:54.640 --> 03:03.380
+onCompleted callback again to get that set on and we'll just use the connect method and pass in our
+
+03:03.380 --> 03:05.140
+function that we want to connect to.
+
+03:05.230 --> 03:10.430
+There we go when we've successfully connected our QML signal to our QML slot which is just
+
+03:10.430 --> 03:11.870
+a javascript function.
+
+03:12.010 --> 03:18.130
+So now that we've done that let's go ahead and wire up a QML signal to a C++ slot.
+
+03:18.290 --> 03:23.180
+Specifically we've got this request new colors signal that we defined so we want to connect it to the
+
+03:23.180 --> 03:27.780
+corresponding slot which we've actually implemented in our photo models.
+
+03:27.780 --> 03:31.280
+If you look here we've got a public slot which is randomized Corelli's.
+
+03:31.310 --> 03:37.550
+So you want to go ahead and connect our request news colour's signal up to our randomized color value
+
+03:37.550 --> 03:38.510
+slot.
+
+03:38.510 --> 03:43.520
+Now one thing that we did is we went ahead and defined the signal at the roots and it's very important
+
+03:43.520 --> 03:48.520
+that we do that because it makes it easier to access on the C plus plus side.
+
+03:48.530 --> 03:53.840
+So the first thing that we need to do is go ahead and get a reference out to our root object and we'll
+
+03:53.840 --> 04:02.060
+do that using the engine the Cucumis application engine that we created earlier has a root objects and
+
+04:02.060 --> 04:04.940
+we'll go ahead and grab out an instance of the first one.
+
+04:05.800 --> 04:10.250
+So are root objects is actually a list.
+
+04:10.270 --> 04:15.280
+And so we go ahead and grab the value of the first one which is actual Our root object.
+
+04:15.310 --> 04:21.190
+Now our signal is already connected to this root object so the signal that we defined are requests new
+
+04:21.190 --> 04:25.500
+colors is actually already attached to this Root objects.
+
+04:25.510 --> 04:30.430
+The only thing that we need to do is go ahead and connect it just like we would to any other C++ signal
+
+04:30.490 --> 04:31.450
+and slot.
+
+04:31.450 --> 04:35.320
+Now one thing is we have to use the old style signal and slot connection connections that's a little
+
+04:35.320 --> 04:37.980
+bit more verbose but that's the same thing.
+
+04:40.170 --> 04:40.540
+Awesome.
+
+04:40.560 --> 04:45.010
+Now one thing to note is that we need to actually pass in the typesetting interiors for our custom colors.
+
+04:45.010 --> 04:46.050
+What are you doing here.
+
+04:46.110 --> 04:46.800
+You.
+
+04:47.070 --> 04:48.600
+But the last thing actually isn't going to.
+
+04:48.660 --> 04:51.330
+We're not handling the urgency value currently.
+
+04:51.480 --> 04:58.050
+So we're currently just calling this but the urgency is going to be dropped here in our handling.
+
+04:58.050 --> 05:01.410
+But that's how we've successfully connected up our signal to our slot.
+
+05:01.410 --> 05:07.370
+The only thing that we're missing is we haven't actually emitted our signal here requesting the colors.
+
+05:07.380 --> 05:09.800
+Let's go ahead and do that.
+
+05:10.230 --> 05:17.400
+And what we're going to do here is if you look at this list view code we get as part of our actual header
+
+05:17.410 --> 05:18.230
+value.
+
+05:18.420 --> 05:19.520
+So we created a header.
+
+05:19.560 --> 05:20.550
+It's a rectangle.
+
+05:20.550 --> 05:22.830
+It's got a high to 50 and width the parent.
+
+05:22.990 --> 05:23.970
+And we've got a couple things here.
+
+05:23.970 --> 05:26.240
+We've got a timer and a MouseArea.
+
+05:26.400 --> 05:34.410
+So if we click the mouse area you can see that we actually call this change_header_text() function which all
+
+05:34.410 --> 05:39.780
+it does is tells our user that we're going to go and change the color and then sets our timer equal
+
+05:39.780 --> 05:43.180
+to running and our timer whenever it's triggered.
+
+05:43.200 --> 05:49.840
+We're going to go ahead and admit our request new colors signal and we'll go in passing and urgency
+
+05:49.840 --> 05:52.540
+which to say we want that to happen now.
+
+05:52.650 --> 05:59.600
+And then once that is actually finished that's going to go ahead and trigger or emit our signal and
+
+05:59.670 --> 06:01.140
+is going to pass everything in.
+
+06:01.140 --> 06:02.730
+So let's go ahead and run this now.
+
+06:04.440 --> 06:04.900
+Perfect.
+
+06:04.910 --> 06:10.800
+You see at the top here we've got our new header that we've created which has just says clicking the item
+
+06:10.810 --> 06:11.670
+changes color.
+
+06:11.670 --> 06:14.940
+And if we click this top one says it's changing the colors now.
+
+06:15.090 --> 06:21.030
+And you see we have successfully changed all of the colors in our list so every time we click that we
+
+06:21.040 --> 06:28.050
+go ahead and do that and you see that we've got our debugging enabled right so our function which actually
+
+06:28.050 --> 06:35.020
+allowed us to see if we've changed many indexes go ahead and fires.
+
+06:35.020 --> 06:38.550
+And so saying to index of change we say many indexes change.
+
+06:39.530 --> 06:45.570
+And then you can also see if we click and change a single value you'll only get one index change.
+
+06:45.620 --> 06:51.710
+So with that we've successfully learned how to connect C++ signals to QML slots, QML signals
+
+06:51.710 --> 06:59.670
+to QML slots and QML signals to C++ slots, so join us next time and we cover how to define QML
+
+06:59.710 --> 07:01.350
+types and modules.

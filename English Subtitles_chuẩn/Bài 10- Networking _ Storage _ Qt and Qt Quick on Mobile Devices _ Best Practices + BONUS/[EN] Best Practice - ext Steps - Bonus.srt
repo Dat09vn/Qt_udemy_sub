@@ -1,0 +1,571 @@
+1
+00:00:00,000 --> 00:00:04,440
+I'd like to give you a few guidelines
+
+2
+00:00:01,680 --> 00:00:06,930
+that are going to help you write qml
+
+3
+00:00:04,440 --> 00:00:08,519
+code that is readable. On this
+
+4
+00:00:06,930 --> 00:00:11,130
+documentation length you're going to
+
+5
+00:00:08,519 --> 00:00:13,469
+find some qml coding conventions and
+
+6
+00:00:11,130 --> 00:00:15,210
+they say that they are giving the coding
+
+7
+00:00:13,469 --> 00:00:18,240
+conventions they follow in the
+
+8
+00:00:15,210 --> 00:00:21,090
+documentation, and they do recommend us
+
+9
+00:00:18,240 --> 00:00:24,660
+to follow that. because the code is going
+
+10
+00:00:21,090 --> 00:00:27,210
+to be much more readable by others. Okay
+
+11
+00:00:24,660 --> 00:00:30,960
+so in your qml file, you're going to
+
+12
+00:00:27,210 --> 00:00:30,960
+start by the ID. You learn to follow that
+
+13
+00:00:30,960 --> 00:00:34,440
+with the property declarations. And down
+
+14
+00:00:34,440 --> 00:00:39,629
+here they have an example, so you see an
+
+15
+00:00:36,480 --> 00:00:42,110
+ID. Here we have a qml component. It has
+
+16
+00:00:39,629 --> 00:00:44,940
+an ID that is shown here.
+
+17
+00:00:42,110 --> 00:00:47,070
+You follow that with the properties. If
+
+18
+00:00:44,940 --> 00:00:47,789
+you have any properties, you have to put
+
+19
+00:00:47,070 --> 00:00:50,989
+them here.
+
+20
+00:00:47,789 --> 00:00:53,610
+You follow that will signal declarations.
+
+21
+00:00:50,989 --> 00:00:56,309
+After that you're going to put in your
+
+22
+00:00:53,610 --> 00:00:58,800
+JavaScript functions, any JavaScript
+
+23
+00:00:56,309 --> 00:01:01,680
+function that is embedded in your
+
+24
+00:00:58,800 --> 00:01:04,140
+qml file should come here. And then
+
+25
+00:01:01,680 --> 00:01:06,840
+you have the properties for the object.
+
+26
+00:01:04,140 --> 00:01:09,540
+Okay, things like X line width and height
+
+27
+00:01:06,840 --> 00:01:12,420
+should come here. If you have a lot of
+
+28
+00:01:09,540 --> 00:01:15,299
+JavaScript that you want to assign to a
+
+29
+00:01:12,420 --> 00:01:18,000
+property, you should wrap that in a block
+
+30
+00:01:15,299 --> 00:01:20,670
+like this, and then after all this, you're
+
+31
+00:01:18,000 --> 00:01:23,430
+going to put your child objects. You see
+
+32
+00:01:20,670 --> 00:01:26,850
+this rectangle here is a child rectangle
+
+33
+00:01:23,430 --> 00:01:29,250
+of the parent rectangle here . Down below
+
+34
+00:01:26,850 --> 00:01:31,680
+you put your states. This is basically
+
+35
+00:01:29,250 --> 00:01:34,200
+what we did when we looked at states and
+
+36
+00:01:31,680 --> 00:01:37,140
+transitions. And you end with the
+
+37
+00:01:34,200 --> 00:01:39,689
+transitions that your element might have.
+
+38
+00:01:37,140 --> 00:01:42,659
+This is the recommended way: you start
+
+39
+00:01:39,689 --> 00:01:45,979
+with IDs, property declarations, signal
+
+40
+00:01:42,659 --> 00:01:49,140
+declarations, JavaScript functions,
+
+41
+00:01:45,979 --> 00:01:51,930
+object properties, child objects, states
+
+42
+00:01:49,140 --> 00:01:55,649
+and transitions. This is really how your
+
+43
+00:01:51,930 --> 00:01:57,030
+qml code should be organized. Down below
+
+44
+00:01:55,649 --> 00:01:59,430
+to show you how you should use your
+
+45
+00:01:57,030 --> 00:02:01,560
+group properties. You really shouldn't do
+
+46
+00:01:59,430 --> 00:02:03,360
+something like this, anchors left, anchors
+
+47
+00:02:01,560 --> 00:02:06,119
+top, anchors bottom and things
+
+48
+00:02:03,360 --> 00:02:08,489
+like that. You should group them like
+
+49
+00:02:06,119 --> 00:02:11,250
+this and say anchors and specify the
+
+50
+00:02:08,489 --> 00:02:13,900
+properties inside the brackets here. We
+
+51
+00:02:11,250 --> 00:02:16,420
+looked at this syntax before.
+
+52
+00:02:13,900 --> 00:02:19,390
+This is the recommended way to make you
+
+53
+00:02:16,420 --> 00:02:22,120
+qml more readable. If a list only
+
+54
+00:02:19,390 --> 00:02:25,060
+contains one element you can omit this
+
+55
+00:02:22,120 --> 00:02:27,849
+square bracket, something like this. Okay.
+
+56
+00:02:25,060 --> 00:02:31,120
+Instead of doing something like this you
+
+57
+00:02:27,849 --> 00:02:33,700
+see we have states, we have one state, and
+
+58
+00:02:31,120 --> 00:02:35,560
+we put that inside these brackets. You
+
+59
+00:02:33,700 --> 00:02:38,290
+can do something like this, and put your
+
+60
+00:02:35,560 --> 00:02:41,440
+state inside directly, if it happens to be
+
+61
+00:02:38,290 --> 00:02:43,660
+only one state. Down here they talk about
+
+62
+00:02:41,440 --> 00:02:46,450
+things you should be careful about when
+
+63
+00:02:43,660 --> 00:02:48,940
+writing some JavaScript in your QML code.
+
+64
+00:02:46,450 --> 00:02:51,489
+If the script is a single expression
+
+65
+00:02:48,940 --> 00:02:53,709
+they recommend writing that in line,
+
+66
+00:02:51,489 --> 00:02:56,019
+something like this. You see here, there
+
+67
+00:02:53,709 --> 00:02:58,599
+is a binding to the width property of
+
+68
+00:02:56,019 --> 00:03:01,900
+this rectangle here. If the script is a
+
+69
+00:02:58,599 --> 00:03:04,329
+couple of lines, wrap that in a block. And
+
+70
+00:03:01,900 --> 00:03:07,989
+if it is much longer you need to wrap
+
+71
+00:03:04,329 --> 00:03:10,599
+that in a function and call that when
+
+72
+00:03:07,989 --> 00:03:13,510
+you want to assign something to a QML
+
+73
+00:03:10,599 --> 00:03:16,360
+property like this. And if javascript is
+
+74
+00:03:13,510 --> 00:03:18,819
+really too long, you need to put that in
+
+75
+00:03:16,360 --> 00:03:21,250
+an external Javascript file and import
+
+76
+00:03:18,819 --> 00:03:23,260
+that in your QML file and we look at
+
+77
+00:03:21,250 --> 00:03:26,620
+this before. Okay these are the
+
+78
+00:03:23,260 --> 00:03:29,260
+guidelines to help you write Qml code,
+
+79
+00:03:26,620 --> 00:03:32,709
+that other people are going to be able
+
+80
+00:03:29,260 --> 00:03:35,349
+to read very easily, and that adds value
+
+81
+00:03:32,709 --> 00:03:37,630
+to the code that you write. If you write
+
+82
+00:03:35,349 --> 00:03:39,700
+code that only you can read or that
+
+83
+00:03:37,630 --> 00:03:41,799
+other people really find difficult to
+
+84
+00:03:39,700 --> 00:03:45,180
+read, it is not a good thing for your
+
+85
+00:03:41,799 --> 00:03:47,739
+piece of code. Okay so keep this in mind.
+
+86
+00:03:45,180 --> 00:03:49,690
+This being the last lecture of the
+
+87
+00:03:47,739 --> 00:03:51,940
+course, there are two things I would like
+
+88
+00:03:49,690 --> 00:03:54,819
+to recommend. If you want to push your
+
+89
+00:03:51,940 --> 00:03:57,250
+QT Quick knowledge further. One is
+
+90
+00:03:54,819 --> 00:04:00,310
+ready to consult the documentation and
+
+91
+00:03:57,250 --> 00:04:02,380
+QT itself the documentation includes. It's
+
+92
+00:04:00,310 --> 00:04:04,209
+very good and you saw that in the course.
+
+93
+00:04:02,380 --> 00:04:06,579
+Every time we needed something, we just
+
+94
+00:04:04,209 --> 00:04:08,799
+looked at the documentation and we had
+
+95
+00:04:06,579 --> 00:04:11,260
+turned to tons of information just by
+
+96
+00:04:08,799 --> 00:04:14,650
+looking at the documentation in QT
+
+97
+00:04:11,260 --> 00:04:16,358
+create tour or or online. So every time you
+
+98
+00:04:14,650 --> 00:04:17,089
+need to learn about something, going to
+
+99
+00:04:16,358 --> 00:04:19,850
+documentation
+
+100
+00:04:17,089 --> 00:04:22,220
+and see what you can find in there. This
+
+101
+00:04:19,850 --> 00:04:24,740
+is the documentation for Qt Quick itself.
+
+102
+00:04:22,220 --> 00:04:26,300
+You see here they talk about some of the
+
+103
+00:04:24,740 --> 00:04:29,540
+things we even talked about in the
+
+104
+00:04:26,300 --> 00:04:32,419
+course, user input, positioning, states, and
+
+105
+00:04:29,540 --> 00:04:34,729
+transitions, data models, views and data
+
+106
+00:04:32,419 --> 00:04:36,500
+storage. We have looked at these things,
+
+107
+00:04:34,729 --> 00:04:38,300
+but if you want to read about the
+
+108
+00:04:36,500 --> 00:04:41,270
+canvas, you can read about this.
+
+109
+00:04:38,300 --> 00:04:43,100
+They have particles and graphical effects.
+
+110
+00:04:41,270 --> 00:04:45,710
+If you want to do some advanced
+
+111
+00:04:43,100 --> 00:04:49,790
+animations you can look at this. If you
+
+112
+00:04:45,710 --> 00:04:52,370
+want to extend your qml with C++, these
+
+113
+00:04:49,790 --> 00:04:55,490
+are good things to look at. One is
+
+114
+00:04:52,370 --> 00:04:57,260
+QT, the other is the book that we
+
+115
+00:04:55,490 --> 00:04:59,840
+had a chance to look at in the course.
+
+116
+00:04:57,260 --> 00:05:02,479
+And this is a very good book and
+
+117
+00:04:59,840 --> 00:05:04,460
+knowledge is presented in a very good
+
+118
+00:05:02,479 --> 00:05:06,229
+structure. And in fact if you have
+
+119
+00:05:04,460 --> 00:05:08,419
+finished this course, you really have
+
+120
+00:05:06,229 --> 00:05:09,260
+good grounds to start looking at some of
+
+121
+00:05:08,419 --> 00:05:12,500
+these things.
+
+122
+00:05:09,260 --> 00:05:16,010
+This book has one downside is that it
+
+123
+00:05:12,500 --> 00:05:18,860
+tries and combines C++ and QT quick in
+
+124
+00:05:16,010 --> 00:05:21,440
+one go. If you don't have a C++
+
+125
+00:05:18,860 --> 00:05:24,440
+background, you're not going to find this
+
+126
+00:05:21,440 --> 00:05:27,380
+very understandable. But if you want to
+
+127
+00:05:24,440 --> 00:05:29,570
+get started with the C++ side of QT,
+
+128
+00:05:27,380 --> 00:05:32,210
+happen to have a course on that. So if
+
+129
+00:05:29,570 --> 00:05:34,849
+you are interested be sure to check it
+
+130
+00:05:32,210 --> 00:05:37,460
+out. And this is really all I have to
+
+131
+00:05:34,849 --> 00:05:39,470
+offer in terms of tips and tricks on how
+
+132
+00:05:37,460 --> 00:05:41,810
+to push your knowledge in QT quick
+
+133
+00:05:39,470 --> 00:05:44,840
+further. Consult the Qt Quick
+
+134
+00:05:41,810 --> 00:05:47,300
+documentation, look at this book and try
+
+135
+00:05:44,840 --> 00:05:50,000
+to look if you can learn something from
+
+136
+00:05:47,300 --> 00:05:51,710
+this balance. Okay this brings us to the
+
+137
+00:05:50,000 --> 00:05:54,050
+end of this course. I'd like to thank you
+
+138
+00:05:51,710 --> 00:05:56,360
+for enrolling. If you like the course
+
+139
+00:05:54,050 --> 00:05:59,150
+please consider leaving your honest
+
+140
+00:05:56,360 --> 00:06:01,490
+review. It helps a lot. And on top of all
+
+141
+00:05:59,150 --> 00:06:03,800
+I'm wishing you well on your journey as
+
+142
+00:06:01,490 --> 00:06:07,539
+the QTquick user interface developer.
+
+143
+00:06:03,800 --> 00:06:07,539
+Till next time. Bye

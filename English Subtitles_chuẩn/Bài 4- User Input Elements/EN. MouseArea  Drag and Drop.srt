@@ -1,0 +1,1140 @@
+1
+00:00:00,000 --> 00:00:01,740
+In this lecture we're going to look at
+
+2
+00:00:01,740 --> 00:00:04,529
+the MouseArea and how you capture mouse
+
+3
+00:00:04,529 --> 00:00:07,140
+events using it. We're also going to look
+
+4
+00:00:07,140 --> 00:00:09,480
+at how you can build the drag and drop
+
+5
+00:00:09,480 --> 00:00:11,880
+features in your QML elements.
+
+6
+00:00:11,880 --> 00:00:14,790
+Let's go to Qt Creator and play with it.
+
+7
+00:00:14,790 --> 00:00:17,640
+Here we are in QT creator. We're going to
+
+8
+00:00:17,640 --> 00:00:19,130
+start a new project.
+
+9
+00:00:19,130 --> 00:00:23,460
+It's a Qt Quick application. We are going
+
+10
+00:00:23,460 --> 00:00:26,580
+to call it MouseAreaDemo, store it in
+
+11
+00:00:26,580 --> 00:00:30,359
+the usual location. Hit "Next", choose our
+
+12
+00:00:30,359 --> 00:00:35,399
+"Build System" and make it "qmake", choose
+
+13
+00:00:35,399 --> 00:00:41,280
+your QT version and choose your Kit. We
+
+14
+00:00:41,280 --> 00:00:43,530
+are going to change the title to "MouseArea
+
+15
+00:00:43,530 --> 00:00:49,020
+Demo". And inside we are going to put
+
+16
+00:00:49,020 --> 00:00:53,579
+a Rectangle. It's going to have the same
+
+17
+00:00:53,579 --> 00:00:56,309
+width as the parent and its parent is
+
+18
+00:00:56,309 --> 00:00:58,770
+this window here so it's going to be 640
+
+19
+00:00:58,770 --> 00:00:59,640
+in width.
+
+20
+00:00:59,640 --> 00:01:04,290
+Let's give it height of 200, a color of
+
+21
+00:01:04,290 --> 00:01:07,290
+"beige". Inside this rectangle we're going
+
+22
+00:01:07,290 --> 00:01:09,659
+to put a MouseArea like we've been
+
+23
+00:01:09,659 --> 00:01:12,720
+doing all along. It's going to fill its
+
+24
+00:01:12,720 --> 00:01:17,630
+parent which is this rectangle here. And
+
+25
+00:01:19,970 --> 00:01:23,490
+we should give it an id, this rectangle.
+
+26
+00:01:23,490 --> 00:01:29,820
+Let's call it containerRectId. And in
+
+27
+00:01:29,820 --> 00:01:31,049
+the onClicked
+
+28
+00:01:31,049 --> 00:01:34,020
+handler, we're going to use something. We
+
+29
+00:01:34,020 --> 00:01:36,720
+want to move this rectangle to the
+
+30
+00:01:36,720 --> 00:01:39,420
+location where the user clicked the
+
+31
+00:01:39,420 --> 00:01:42,930
+mouse on the x coordinate. So to do that
+
+32
+00:01:42,930 --> 00:01:45,509
+you need to capture the parameter of
+
+33
+00:01:45,509 --> 00:01:48,119
+this MouseEvent. Okay that's what I want
+
+34
+00:01:48,119 --> 00:01:50,970
+you to see. Let's visit this MouseArea
+
+35
+00:01:50,970 --> 00:01:52,680
+component. We haven't really talked about
+
+36
+00:01:52,680 --> 00:01:55,680
+it so much. Let's go to the documentation,
+
+37
+00:01:55,680 --> 00:02:01,110
+type in "MouseArea", look at the
+
+38
+00:02:01,110 --> 00:02:03,450
+documentation. And it is "an invisible
+
+39
+00:02:03,450 --> 00:02:05,640
+item that is typically used in
+
+40
+00:02:05,640 --> 00:02:09,239
+conjunction with a visible item". We have
+
+41
+00:02:09,239 --> 00:02:12,780
+been using it inside rectangles in order
+
+42
+00:02:12,780 --> 00:02:13,980
+to provide mouse
+
+43
+00:02:13,980 --> 00:02:16,409
+handling for that item. Okay that's what
+
+44
+00:02:16,409 --> 00:02:18,480
+we've been doing. But what I want you to
+
+45
+00:02:18,480 --> 00:02:22,290
+see is the signals that this MouseArea
+
+46
+00:02:22,290 --> 00:02:25,230
+can emit and among those signals there
+
+47
+00:02:25,230 --> 00:02:27,569
+is one that we have been using a lot
+
+48
+00:02:27,569 --> 00:02:30,629
+which is called "clicked". Let's click on
+
+49
+00:02:30,629 --> 00:02:33,870
+it. You see that it has a parameter that
+
+50
+00:02:33,870 --> 00:02:36,930
+is called MouseEvent. Let's click on
+
+51
+00:02:36,930 --> 00:02:39,900
+this MouseEvent. And you can see that it
+
+52
+00:02:39,900 --> 00:02:43,280
+has a few properties: two of them are the
+
+53
+00:02:43,280 --> 00:02:45,599
+x-coordinate where the user clicked on
+
+54
+00:02:45,599 --> 00:02:48,060
+the mouse and the y-coordinate where the
+
+55
+00:02:48,060 --> 00:02:51,060
+user click on the mouse. Okay this is
+
+56
+00:02:51,060 --> 00:02:52,769
+what we want. There are other things you
+
+57
+00:02:52,769 --> 00:02:54,540
+can work with, all these properties are
+
+58
+00:02:54,540 --> 00:02:57,060
+there for you to use. But we are going to
+
+59
+00:02:57,060 --> 00:03:00,359
+focus on x and y here. This MouseEvent is
+
+60
+00:03:00,359 --> 00:03:03,299
+available to you under an object called
+
+61
+00:03:03,299 --> 00:03:07,530
+"Mouse". So we can actually say the
+
+62
+00:03:07,530 --> 00:03:10,290
+location where they use a click by doing
+
+63
+00:03:10,290 --> 00:03:17,940
+console.log(mouse.x), for example. Let's
+
+64
+00:03:17,940 --> 00:03:25,650
+run the application. You can see that it
+
+65
+00:03:25,650 --> 00:03:28,079
+shows the location where we click and
+
+66
+00:03:28,079 --> 00:03:32,579
+this rectangle here. So let's try and go
+
+67
+00:03:32,579 --> 00:03:39,989
+to the top. And it's 1. And it still. I'm
+
+68
+00:03:39,989 --> 00:03:41,609
+trying to get... Oh, I got a 0.
+
+69
+00:03:41,609 --> 00:03:43,919
+I was trying to get a 0. You now know
+
+70
+00:03:43,919 --> 00:03:45,840
+that we can capture the x and
+
+71
+00:03:45,840 --> 00:03:46,769
+y coordinates
+
+72
+00:03:46,769 --> 00:03:49,650
+in the MouseEvent. So what we want to do
+
+73
+00:03:49,650 --> 00:03:51,419
+is put another rectangle inside this
+
+74
+00:03:51,419 --> 00:03:54,060
+rectangle here and move it in a location
+
+75
+00:03:54,060 --> 00:03:56,879
+where we clicked the mouse, on the x
+
+76
+00:03:56,879 --> 00:03:59,370
+coordinates. Let me show you what I mean.
+
+77
+00:03:59,370 --> 00:04:03,319
+We are going to put a rectangle inside.
+
+78
+00:04:03,319 --> 00:04:08,840
+"id" is going to be movingRectangleId.
+
+79
+00:04:09,199 --> 00:04:14,160
+The width is going to be 50 and the
+
+80
+00:04:14,160 --> 00:04:16,048
+height is going to be the same as the
+
+81
+00:04:16,048 --> 00:04:20,298
+width. So it's also going to be 50. 
+
+82
+00:04:20,298 --> 00:04:23,980
+We're going to give it a color of blue.
+
+83
+00:04:23,980 --> 00:04:26,410
+So what we want to do when we click on
+
+84
+00:04:26,410 --> 00:04:30,610
+this MouseArea is to move the moving
+
+85
+00:04:30,610 --> 00:04:34,150
+rect to a location where we click the
+
+86
+00:04:34,150 --> 00:04:37,320
+mouse. And that location is stored and
+
+87
+00:04:37,320 --> 00:04:41,470
+the Mouse object that comes with this onClicked
+
+88
+00:04:41,470 --> 00:04:46,150
+event. And the x property of it. So
+
+89
+00:04:46,150 --> 00:04:48,490
+if we run this application the blue
+
+90
+00:04:48,490 --> 00:04:50,650
+rectangle is going to be in the top left
+
+91
+00:04:50,650 --> 00:04:53,200
+of this rectangle, which is the top left
+
+92
+00:04:53,200 --> 00:04:58,270
+of the window object here. Let's run. Okay
+
+93
+00:04:58,270 --> 00:05:01,150
+we see our blue rectangle here. If we
+
+94
+00:05:01,150 --> 00:05:03,640
+click on the outside here, in the white
+
+95
+00:05:03,640 --> 00:05:06,190
+space, we are not going to see anything.
+
+96
+00:05:06,190 --> 00:05:09,610
+Why is that? The MouseArea is attached
+
+97
+00:05:09,610 --> 00:05:12,400
+to this rectangle. And it has a height of
+
+98
+00:05:12,400 --> 00:05:16,720
+200 and this space is out of this
+
+99
+00:05:16,720 --> 00:05:19,420
+Clickable area. The Clickable area is
+
+100
+00:05:19,420 --> 00:05:21,820
+this beige area here, which is this
+
+101
+00:05:21,820 --> 00:05:25,390
+rectangle that we defined. And we set
+
+102
+00:05:25,390 --> 00:05:27,670
+this MouseArea to fill this rectangle.
+
+103
+00:05:27,670 --> 00:05:31,420
+So the area outside this rectangle is
+
+104
+00:05:31,420 --> 00:05:34,030
+not going to be Clickable. At least it's
+
+105
+00:05:34,030 --> 00:05:36,160
+not going to be handled by this MouseArea
+
+106
+00:05:36,160 --> 00:05:38,560
+that we defined here. But if we
+
+107
+00:05:38,560 --> 00:05:40,960
+click inside. See what happens? The blue
+
+108
+00:05:40,960 --> 00:05:44,800
+rectangle moves to our new location. Okay
+
+109
+00:05:44,800 --> 00:05:47,020
+so this is how you can capture Mouse
+
+110
+00:05:47,020 --> 00:05:49,660
+events, capture the location where they
+
+111
+00:05:49,660 --> 00:05:51,910
+use a click and use that in your
+
+112
+00:05:51,910 --> 00:05:54,760
+application. Okay so this is working fine
+
+113
+00:05:54,760 --> 00:05:57,130
+and correct. One thing I want to point
+
+114
+00:05:57,130 --> 00:05:59,050
+out is that the location of this MouseArea
+
+115
+00:05:59,050 --> 00:06:02,020
+is very critical. I have seen many
+
+116
+00:06:02,020 --> 00:06:04,780
+students doing something like this. I'm
+
+117
+00:06:04,780 --> 00:06:07,300
+going to copy this MouseArea, put it
+
+118
+00:06:07,300 --> 00:06:09,910
+inside this rectangle, it will do
+
+119
+00:06:09,910 --> 00:06:12,430
+something like this. If you do this, this
+
+120
+00:06:12,430 --> 00:06:14,830
+MouseArea is not going to handle this
+
+121
+00:06:14,830 --> 00:06:16,960
+parent rectangle. It's going to handle
+
+122
+00:06:16,960 --> 00:06:20,140
+this blue rectangle. So let's run the
+
+123
+00:06:20,140 --> 00:06:24,370
+application. If you click on the outside
+
+124
+00:06:24,370 --> 00:06:26,590
+in the beige rectangle you're not going
+
+125
+00:06:26,590 --> 00:06:29,350
+to get any MouseEvent because the MouseArea
+
+126
+00:06:29,350 --> 00:06:31,780
+is attached to this blue rectangle
+
+127
+00:06:31,780 --> 00:06:34,600
+here. And one thing I want you to see is
+
+128
+00:06:34,600 --> 00:06:37,150
+that the mouse coordinates. Now
+
+129
+00:06:37,150 --> 00:06:37,840
+I'm working
+
+130
+00:06:37,840 --> 00:06:39,970
+inside this blue rectangle because
+
+131
+00:06:39,970 --> 00:06:41,860
+that's where the MouseArea is attached.
+
+132
+00:06:41,860 --> 00:06:45,370
+So if you click to the top here you're
+
+133
+00:06:45,370 --> 00:06:55,479
+going to see 0, ok? The coordinates are
+
+134
+00:06:55,479 --> 00:06:58,180
+inside this blue rectangle. They are not
+
+135
+00:06:58,180 --> 00:07:00,940
+in this beige rectangle. So you really
+
+136
+00:07:00,940 --> 00:07:02,680
+need to be careful where you put your
+
+137
+00:07:02,680 --> 00:07:05,949
+MouseAreas and know the coordinates
+
+138
+00:07:05,949 --> 00:07:07,600
+that you are working in. I hope this
+
+139
+00:07:07,600 --> 00:07:10,510
+makes sense. So I am going to take this
+
+140
+00:07:10,510 --> 00:07:14,050
+MouseArea back and put it where it
+
+141
+00:07:14,050 --> 00:07:14,770
+should be.
+
+142
+00:07:14,770 --> 00:07:17,169
+This is going to be fine. Run the
+
+143
+00:07:17,169 --> 00:07:25,960
+application. And this is what we want. The
+
+144
+00:07:25,960 --> 00:07:27,580
+other signal we're going to look at is
+
+145
+00:07:27,580 --> 00:07:30,430
+WheelEvent which is "emitted in
+
+146
+00:07:30,430 --> 00:07:33,340
+response to mouse wheel and trackpad
+
+147
+00:07:33,340 --> 00:07:36,310
+scroll gestures". We are going to use it
+
+148
+00:07:36,310 --> 00:07:38,680
+for the mouse wheel for now. So let's
+
+149
+00:07:38,680 --> 00:07:40,870
+look at the properties that this event
+
+150
+00:07:40,870 --> 00:07:45,940
+has. You can see the x and y position. We
+
+151
+00:07:45,940 --> 00:07:48,760
+also have a property called angleDelta
+
+152
+00:07:48,760 --> 00:07:51,550
+which indicates if you are rotating the
+
+153
+00:07:51,550 --> 00:07:54,880
+wheel in the positive direction or in the
+
+154
+00:07:54,880 --> 00:07:57,160
+negative direction. We're going to try
+
+155
+00:07:57,160 --> 00:07:59,940
+this out. Let's go back to our code and
+
+156
+00:07:59,940 --> 00:08:04,560
+capture another event. Say onWheel,
+
+157
+00:08:04,560 --> 00:08:07,840
+console.log some properties about this
+
+158
+00:08:07,840 --> 00:08:11,560
+wheel event. The x-coordinate is going to
+
+159
+00:08:11,560 --> 00:08:15,880
+be wheel.x, the y-coordinate is going to
+
+160
+00:08:15,880 --> 00:08:24,210
+be wheel.y. And the angle is going to be
+
+161
+00:08:24,210 --> 00:08:27,970
+angleDelta. Let's run the application.
+
+162
+00:08:27,970 --> 00:08:33,039
+I roll it upwards, and you see that the
+
+163
+00:08:33,039 --> 00:08:35,529
+second parameter of the point is 
+
+164
+00:08:35,529 --> 00:08:38,110
++100. I roll it
+
+165
+00:08:38,110 --> 00:08:40,570
+downwards, you see that it is negative. If
+
+166
+00:08:40,570 --> 00:08:43,089
+it is positive you are rotating upwards.
+
+167
+00:08:43,089 --> 00:08:45,130
+If it's negative you are rotating
+
+168
+00:08:45,130 --> 00:08:47,800
+downwards. And you can do some processing
+
+169
+00:08:47,800 --> 00:08:49,470
+based on this in
+
+170
+00:08:49,470 --> 00:08:52,050
+QML application. The other thing I want
+
+171
+00:08:52,050 --> 00:08:53,910
+you to see is how to work with hover
+
+172
+00:08:53,910 --> 00:08:57,030
+events in this MouseArea. You first have
+
+173
+00:08:57,030 --> 00:08:59,820
+to enable hover by setting this property
+
+174
+00:08:59,820 --> 00:09:02,430
+to "true", hoverEnabled and then handle
+
+175
+00:09:02,430 --> 00:09:05,400
+the hover event. So how do we do that? We
+
+176
+00:09:05,400 --> 00:09:07,950
+are going to set a property hoverEnabled,
+
+177
+00:09:07,950 --> 00:09:13,460
+set this to "true" and do onHoverChanged
+
+178
+00:09:13,460 --> 00:09:17,520
+inside. We are going to test for
+
+179
+00:09:17,520 --> 00:09:19,080
+something. There is another property we
+
+180
+00:09:19,080 --> 00:09:21,570
+can use. There is this property that is
+
+181
+00:09:21,570 --> 00:09:24,720
+"true" when the MouseArea contains the
+
+182
+00:09:24,720 --> 00:09:26,820
+mouse and it is false when the MouseArea
+
+183
+00:09:26,820 --> 00:09:29,070
+doesn't contain the mouse. So we can
+
+184
+00:09:29,070 --> 00:09:31,470
+use this we are going to say if containsMouse
+
+185
+00:09:31,470 --> 00:09:39,030
+equals to "true". We want to change
+
+186
+00:09:39,030 --> 00:09:42,230
+the color of the movingRect to red,
+
+187
+00:09:42,230 --> 00:09:50,010
+movingRectId.color. And if it doesn't
+
+188
+00:09:50,010 --> 00:09:52,410
+contain the mouse we are going to set
+
+189
+00:09:52,410 --> 00:10:01,020
+its color to green. Let's run the
+
+190
+00:10:01,020 --> 00:10:03,090
+application. So when it starts it's going
+
+191
+00:10:03,090 --> 00:10:05,610
+to be blue. When we hover on it, it's
+
+192
+00:10:05,610 --> 00:10:08,400
+going to turn red because it's going to
+
+193
+00:10:08,400 --> 00:10:10,530
+contain the mouse. When we take the mouse
+
+194
+00:10:10,530 --> 00:10:13,770
+out it's going to turn green. Okay so
+
+195
+00:10:13,770 --> 00:10:14,160
+blue.
+
+196
+00:10:14,160 --> 00:10:17,280
+And hover on it, it turns red. When I go
+
+197
+00:10:17,280 --> 00:10:23,120
+out it doesn't turn green. Why is that?
+
+198
+00:10:26,810 --> 00:10:31,500
+The MouseArea is in the beige space
+
+199
+00:10:31,500 --> 00:10:35,850
+here. Now you see how not getting clear
+
+200
+00:10:35,850 --> 00:10:38,430
+where your MouseArea is operating can
+
+201
+00:10:38,430 --> 00:10:40,980
+become a problem. Okay so if I want this
+
+202
+00:10:40,980 --> 00:10:43,590
+behavior to only affect this rectangle I
+
+203
+00:10:43,590 --> 00:10:45,270
+have no choice but to move the MouseArea
+
+204
+00:10:45,270 --> 00:10:48,540
+back inside this rectangle. But now
+
+205
+00:10:48,540 --> 00:10:50,640
+you get the idea of what we are trying
+
+206
+00:10:50,640 --> 00:10:53,280
+to do. But to make things less confusing
+
+207
+00:10:53,280 --> 00:10:55,620
+I'm going to affect this beige rectangle
+
+208
+00:10:55,620 --> 00:10:58,440
+and not this blue rectangle. Let's go
+
+209
+00:10:58,440 --> 00:11:00,240
+back to our code.
+
+210
+00:11:00,240 --> 00:11:02,670
+This is going to be a fast change. So
+
+211
+00:11:02,670 --> 00:11:06,000
+it's going to be containerRectId that
+
+212
+00:11:06,000 --> 00:11:09,630
+we affect. Change this to the correct
+
+213
+00:11:09,630 --> 00:11:12,149
+rectangle, change this to the correct
+
+214
+00:11:12,149 --> 00:11:18,570
+rectangle. Run again. We go into this, it
+
+215
+00:11:18,570 --> 00:11:21,000
+turns red. We go back it turns green. And
+
+216
+00:11:21,000 --> 00:11:23,550
+you can see that our onClick event is
+
+217
+00:11:23,550 --> 00:11:26,640
+still working as it should. Now that we
+
+218
+00:11:26,640 --> 00:11:28,110
+have worked with this I want to show you
+
+219
+00:11:28,110 --> 00:11:30,990
+how you can drag and drop. We have done
+
+220
+00:11:30,990 --> 00:11:33,300
+quite a lot in this rectangle here. So I
+
+221
+00:11:33,300 --> 00:11:34,920
+think it's a good idea to actually
+
+222
+00:11:34,920 --> 00:11:37,589
+create another one. Let's do that. I'm
+
+223
+00:11:37,589 --> 00:11:39,959
+going to copy this. I'm going to go down
+
+224
+00:11:39,959 --> 00:11:44,250
+here and paste in this thing and create
+
+225
+00:11:44,250 --> 00:11:46,830
+a new rectangle. Inside we are going to
+
+226
+00:11:46,830 --> 00:11:49,470
+put another rectangle. So I'm going to
+
+227
+00:11:49,470 --> 00:11:56,820
+copy this we give it an id of draggableRect
+
+228
+00:11:56,820 --> 00:11:57,570
+
+
+229
+00:11:57,570 --> 00:12:00,540
+because we want to drag it. But we want
+
+230
+00:12:00,540 --> 00:12:05,160
+this to be on a y-coordinate of 250 so
+
+231
+00:12:05,160 --> 00:12:07,020
+that they don't overlap. So we're going
+
+232
+00:12:07,020 --> 00:12:11,670
+to say y equals 250. Let's run the
+
+233
+00:12:11,670 --> 00:12:16,260
+application. We have our new rectangle. So
+
+234
+00:12:16,260 --> 00:12:18,770
+what we want to do is to enable the
+
+235
+00:12:18,770 --> 00:12:21,950
+dragging of this contained Rectangle.
+
+236
+00:12:21,950 --> 00:12:24,839
+To do that we are going to put
+
+237
+00:12:24,839 --> 00:12:27,089
+in a MouseArea. You probably guessed
+
+238
+00:12:27,089 --> 00:12:32,850
+this. It's going to fill its parent. So
+
+239
+00:12:32,850 --> 00:12:35,160
+the way you enable dragging, we want to
+
+240
+00:12:35,160 --> 00:12:38,250
+only drag on the x-axis. But you can drag
+
+241
+00:12:38,250 --> 00:12:41,880
+in whatever direction you want, x or y. We
+
+242
+00:12:41,880 --> 00:12:48,500
+are going to specify our drag target. And
+
+243
+00:12:48,500 --> 00:12:51,630
+it is going to be this draggableRect 
+
+244
+00:12:51,630 --> 00:12:56,130
+here. We specify its id. We are going to
+
+245
+00:12:56,130 --> 00:12:59,910
+specify the access that we want to drag
+
+246
+00:12:59,910 --> 00:13:00,390
+on.
+
+247
+00:13:00,390 --> 00:13:04,910
+So we specify it like this.
+
+248
+00:13:05,250 --> 00:13:09,820
+This axis, you can specify x, y, or x and
+
+249
+00:13:09,820 --> 00:13:12,820
+y. We are going to use x right now. The
+
+250
+00:13:12,820 --> 00:13:14,560
+last thing we need to do is to specify
+
+251
+00:13:14,560 --> 00:13:20,520
+the drag maximum and minimum. So drag.
+
+252
+00:13:20,520 --> 00:13:26,280
+minimumX is going to be 0.
+
+253
+00:13:26,280 --> 00:13:33,790
+drag.maximumX is going to be the
+
+254
+00:13:33,790 --> 00:13:37,390
+width of this container rectangle minus
+
+255
+00:13:37,390 --> 00:13:40,540
+the width of this contained rectangle.
+
+256
+00:13:40,540 --> 00:13:47,580
+We're going to say dragContainerId.width
+
+257
+00:13:47,580 --> 00:13:55,630
+- draggableRect.width. To really show the
+
+258
+00:13:55,630 --> 00:13:58,360
+effects of this dragging we want to handle
+
+259
+00:13:58,360 --> 00:14:01,210
+the event that is fired when the x
+
+260
+00:14:01,210 --> 00:14:04,750
+position of this rectangle is changed. We
+
+261
+00:14:04,750 --> 00:14:07,630
+want to do something like onExchanged.
+
+262
+00:14:07,630 --> 00:14:13,720
+And we are going to output the
+
+263
+00:14:13,720 --> 00:14:18,070
+x-coordinate. We are going to output it
+
+264
+00:14:18,070 --> 00:14:20,490
+here. If you run this application
+
+265
+00:14:20,490 --> 00:14:23,110
+dragging is going to be enabled for this
+
+266
+00:14:23,110 --> 00:14:26,080
+drag container rectangle. And we are
+
+267
+00:14:26,080 --> 00:14:29,290
+going to be able to drag the contained
+
+268
+00:14:29,290 --> 00:14:31,990
+rectangle. Whenever it's moving it is
+
+269
+00:14:31,990 --> 00:14:34,420
+going to tell us where it moves that. And
+
+270
+00:14:34,420 --> 00:14:37,000
+these are the properties that enable our
+
+271
+00:14:37,000 --> 00:14:40,150
+dragging behavior. Let's run the
+
+272
+00:14:40,150 --> 00:14:44,980
+application. Mm-hmm you see that we can
+
+273
+00:14:44,980 --> 00:14:48,640
+drag from left to right. The minimum is 0.
+
+274
+00:14:48,640 --> 00:14:51,040
+The maximum is the width of this
+
+275
+00:14:51,040 --> 00:14:53,670
+rectangle minus the width of this one.
+
+276
+00:14:53,670 --> 00:14:56,050
+This covers all the set up to do in this
+
+277
+00:14:56,050 --> 00:14:58,840
+lecture. I hope you now have a better
+
+278
+00:14:58,840 --> 00:15:01,000
+idea of what you can do with the MouseArea
+
+279
+00:15:01,000 --> 00:15:03,490
+and how you can drag and drop your
+
+280
+00:15:03,490 --> 00:15:06,640
+contain rectangles. In the next lecture
+
+281
+00:15:06,640 --> 00:15:07,990
+we're going to look at how you can
+
+282
+00:15:07,990 --> 00:15:10,600
+handle key events in your QML 
+
+283
+00:15:10,600 --> 00:15:13,120
+applications using the keys attached
+
+284
+00:15:13,120 --> 00:15:15,100
+property. I'll see you in the next
+
+285
+00:15:15,100 --> 00:00:00,000
+lecture.
+

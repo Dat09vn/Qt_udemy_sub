@@ -1,0 +1,68 @@
+1
+00:00:00,000 --> 00:00:03,149
+This chapter is all about user input. We
+
+2
+00:00:03,149 --> 00:00:05,069
+are going to look at the elements that
+
+3
+00:00:05,069 --> 00:00:07,649
+allow the user to type in some text like
+
+4
+00:00:07,649 --> 00:00:10,320
+TextInput and TextEdit. We are going to
+
+5
+00:00:10,320 --> 00:00:12,599
+look more on the MouseArea that we've
+
+6
+00:00:12,599 --> 00:00:15,179
+been using and look at some more of its
+
+7
+00:00:15,179 --> 00:00:17,640
+signals. We are also going to look at how
+
+8
+00:00:17,640 --> 00:00:19,650
+you can know which key on your keyboard
+
+9
+00:00:19,650 --> 00:00:22,260
+was clicked. The other thing we'll see is
+
+10
+00:00:22,260 --> 00:00:24,900
+how you transfer focus between you or UI
+
+11
+00:00:24,900 --> 00:00:27,300
+components using KeyNavigation and how
+
+12
+00:00:27,300 --> 00:00:30,179
+you make sure that focus is transferred
+
+13
+00:00:30,179 --> 00:00:33,030
+correctly in your custom components. In 
+
+14
+00:00:33,030 --> 00:00:35,130
+the next lectures we are going to tackle
+
+15
+00:00:35,130 --> 00:00:37,559
+these subjects, starting with TextInput
+
+16
+00:00:37,559 --> 00:00:39,540
+in the next one. I'll see you in the
+
+17
+00:00:39,540 --> 00:00:00,000
+next lecture.
+

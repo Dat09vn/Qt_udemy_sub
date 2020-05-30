@@ -1,0 +1,848 @@
+1
+00:00:00,000 --> 00:00:01,979
+Trong bài này chúng ta sẽ cùng tìm hiểu về
+
+2
+00:00:01,979 --> 00:00:05,100
+các kiểu dữ liệu trong qml. Trước khi chúng ta bắt đầu tìm hiểu
+
+3
+00:00:05,100 --> 00:00:07,680
+các kiểu dữ liệu trong qml tôi muốn đi tới
+
+4
+00:00:07,680 --> 00:00:09,719
+phần tài liệu trong qt creator
+
+5
+00:00:09,719 --> 00:00:12,269
+và cho các xem vài thứ. Các bạn đi tới
+
+6
+00:00:12,269 --> 00:00:14,519
+phần tài liệu bằng cách ấn vào thẻ giúp đỡ
+
+7
+00:00:14,519 --> 00:00:18,810
+ở đây. Và ở thanh tìm kiến hãy đảm bảo
+
+8
+00:00:18,810 --> 00:00:21,119
+rằng các bạn chọn phần chỉ mục giống như
+
+9
+00:00:21,119 --> 00:00:23,189
+của tôi ở đây nếu các bạn muốn thấy chính xác 
+
+10
+00:00:23,189 --> 00:00:25,920
+những gì tôi đang nói. Và ở đâu gõ
+
+11
+00:00:25,920 --> 00:00:30,119
+qml basic type. okay các bạn sẽ nhìn thấy
+
+12
+00:00:30,119 --> 00:00:31,320
+vài lựa chọn ở đây.
+
+13
+00:00:31,320 --> 00:00:33,030
+Chúng ta sẽ chọn cái thứ hai
+
+14
+00:00:33,030 --> 00:00:35,130
+ở đây và chúng ta sẽ quan sát nó. Nếu
+
+15
+00:00:35,130 --> 00:00:38,520
+các bạn xem tiêu đề nói là aml basic types
+
+16
+00:00:38,520 --> 00:00:41,399
+các ở dưới đây họ cho các bạn xem các dạng
+
+17
+00:00:41,399 --> 00:00:43,020
+cơ bản mà chúng ta sẽ tìm hiểu.
+
+18
+00:00:43,020 --> 00:00:45,570
+Có kiểu dữ liệu boolean, có kiểu
+
+19
+00:00:45,570 --> 00:00:48,059
+double, enumeration, interger và list
+
+20
+00:00:48,059 --> 00:00:50,850
+real, string và tất cả những thứ ở đây.
+
+21
+00:00:50,850 --> 00:00:52,980
+Bây giờ chúng ta sẽ tạo một dự án qml
+
+22
+00:00:52,980 --> 00:00:55,860
+và chơi với những thứ này. Chúng ta sẽ
+
+23
+00:00:55,860 --> 00:00:58,829
+bắt đàu tạo một dự án mới, nó sẽ là một
+
+24
+00:00:58,829 --> 00:01:01,590
+ứng dụng qt quick một cái trắng. Chúng ta
+
+25
+00:01:01,590 --> 00:01:04,049
+sẽ gọi nó là qmlDatatypesDemo.
+
+26
+00:01:04,049 --> 00:01:06,479
+chúng ta sẽ lưu nó trên
+
+27
+00:01:06,479 --> 00:01:09,450
+ổ đĩa, ấn next, chọn qmake làm
+
+28
+00:01:09,450 --> 00:01:14,310
+cấu trúc hệ thống và các bạn chọn
+
+29
+00:01:14,310 --> 00:01:17,820
+phiên bản mới nhất của qt đã cài đặt. Chúng ta
+
+30
+00:01:17,820 --> 00:01:21,720
+chọn bộ ứng dụng cho desktop và finish. Sau đây
+
+31
+00:01:21,720 --> 00:01:23,580
+chúng ta sẽ có dự án khởi điểm.
+
+32
+00:01:23,580 --> 00:01:25,710
+Chúng ta sẽ thay đổi tiêu đề
+
+33
+00:01:25,710 --> 00:01:29,610
+ở đây và đổi nó thành QML Datatypes Demo.
+
+34
+00:01:29,610 --> 00:01:31,650
+bởi vì chúng ta không muốn có một dự án trống,
+
+35
+00:01:31,650 --> 00:01:33,900
+chúng ta sẽ bỏ một chữ nhật vào
+
+36
+00:01:33,900 --> 00:01:38,520
+chính giữa. Chúng ta sẽ đặt chiều rộng của nó là
+
+37
+00:01:38,520 --> 00:01:45,470
+200 và chiều cao là 100, tại sao không.
+
+38
+00:01:45,470 --> 00:01:47,790
+Ở bên trong chữ nhật chúng ta sẽ đặt một
+
+39
+00:01:47,790 --> 00:01:50,220
+đối tượng văn tự, id sẽ là
+
+40
+00:01:50,220 --> 00:01:54,180
+mTextId và văn tự hiện thị sẽ là
+
+41
+00:01:54,180 --> 00:01:57,329
+Hello World. Nếu các bạn quan sát ở đây các bạn sẽ thấy
+
+42
+00:01:57,329 --> 00:02:01,200
+văn tự được bao bởi hàm qsTr này,
+
+43
+00:02:01,200 --> 00:02:04,110
+nó là một hàn giúp khi các bạn
+
+44
+00:02:04,110 --> 00:02:05,969
+muốn phiên dịch ứng dụng của mình sang
+
+45
+00:02:05,969 --> 00:02:08,459
+đa ngôn ngữ. Chúng ta sẽ không tìm hiểu
+
+46
+00:02:08,459 --> 00:02:12,420
+nó ngay bây giờ chỉ coi nó như
+
+47
+00:02:12,420 --> 00:02:13,270
+là một
+
+48
+00:02:13,270 --> 00:02:15,820
+mẫu văn tự chúng ta để ở đây. Chúng ta muốn
+
+49
+00:02:15,820 --> 00:02:18,310
+đặt nó ở chính giữa chữ nhật cha
+
+50
+00:02:18,310 --> 00:02:22,060
+nên chúng ta sẽ viết anchors.centerIn: parent.
+
+51
+00:02:22,060 --> 00:02:26,500
+Và chúng ta muốn cho nó có màu vàng
+
+52
+00:02:26,500 --> 00:02:31,570
+để có thể dễ quan sát. Chúng ta cũng
+
+53
+00:02:31,570 --> 00:02:34,330
+muốn đặt đoạn văn tự này vào chính giữa
+
+54
+00:02:34,330 --> 00:02:36,850
+chữ nhật để mọi thứ được sắp xếp 
+
+55
+00:02:36,850 --> 00:02:40,600
+gon gàng hãy làm thế chúng ta sẽ
+
+56
+00:02:40,600 --> 00:02:43,030
+chép thuộc tính này và dán nó vào đây, chúng ta 
+
+57
+00:02:43,030 --> 00:02:45,250
+có thể làm thế. Hãy chạy chương trình
+
+58
+00:02:45,250 --> 00:02:48,430
+và xem nó trông thế nào. Mm-hmm, các bạn thấy
+
+59
+00:02:48,430 --> 00:02:50,200
+chúng ta có Hello World ở chính giữa
+
+60
+00:02:50,200 --> 00:02:52,960
+đây là thiết kế của chúng ta. Từ bài học lần trước
+
+61
+00:02:52,960 --> 00:02:55,060
+các bạn chắc hẳn đã quen với 
+
+62
+00:02:55,060 --> 00:02:57,490
+thứ này. Đây là các thuộc tính cho
+
+63
+00:02:57,490 --> 00:03:00,010
+thành phần cửa sổ, bên trong chúng ta có một
+
+64
+00:03:00,010 --> 00:03:02,500
+chữ nhật và chữ nhật có một console
+
+65
+00:03:02,500 --> 00:03:05,020
+của riêng nó chính là thành phần văn tự
+
+66
+00:03:05,020 --> 00:03:07,930
+ở đây. Okay các bạn có thể đưa vào bất cứ thuộc tính
+
+67
+00:03:07,930 --> 00:03:10,660
+vào mà thành phần này hỗ trợ, và nếu các bạn
+
+68
+00:03:10,660 --> 00:03:12,490
+muốn xem tài liệu về
+
+69
+00:03:12,490 --> 00:03:16,420
+bất cứ thành phần nào. Các bạn có thể lựa chọn nó ấn F1 và
+
+70
+00:03:16,420 --> 00:03:19,060
+các bạn sẽ được đưa đến phần
+
+71
+00:03:19,060 --> 00:03:22,060
+tài liệu ngay đây. Nếu các bạn muốn
+
+72
+00:03:22,060 --> 00:03:26,110
+hiển thị phần trợ giúp ở chế độ hoàn chỉnh, các bạn
+
+73
+00:03:26,110 --> 00:03:28,420
+có thể ấn lên nút này "Open in Help mode"
+
+74
+00:03:28,420 --> 00:03:30,310
+và nó sẽ hiển thị
+
+75
+00:03:30,310 --> 00:03:33,070
+tài liệu cho thành phần đó. Trong trường hợp
+
+76
+00:03:33,070 --> 00:03:35,320
+này nó là thành phần văn tự. Nhưng chúng ta
+
+77
+00:03:35,320 --> 00:03:36,760
+sẽ xem xét thứ này sau trong
+
+78
+00:03:36,760 --> 00:03:40,780
+khóa học. Hãy quay lại dự án. Việc
+
+79
+00:03:40,780 --> 00:03:42,520
+đầu tiên tôi muốn làm đó là tạo một
+
+80
+00:03:42,520 --> 00:03:45,160
+biến dữ liệu kiểu xâu, tôi sẽ làm thế nào,
+
+81
+00:03:45,160 --> 00:03:50,620
+tôi viết property string, tôi sẽ gọi
+
+82
+00:03:50,620 --> 00:03:56,770
+cái này là mString và hãy đặt giá trị là Hello World,
+
+83
+00:03:56,770 --> 00:04:02,980
+tại sao không. Một việc tôi có thể làm với
+
+84
+00:04:02,980 --> 00:04:05,560
+xâu đó là gán nó cho bất cứ thứ gì.
+
+85
+00:04:05,560 --> 00:04:08,140
+Okay việc đâu tiên tôi có thể làm là
+
+86
+00:04:08,140 --> 00:04:10,959
+gán nó như là văn tự cho thành phần
+
+87
+00:04:10,959 --> 00:04:15,489
+văn tự này. Hãy làm thế, tôi có thể
+
+88
+00:04:15,489 --> 00:04:17,910
+làm như thế này.
+
+89
+00:04:17,910 --> 00:04:22,660
+Xin lỗi và nếu tôi chạy nó đoán xem chúng ta 
+
+90
+00:04:22,660 --> 00:04:26,620
+sẽ thấy gì ở chính giữa, Hello World.
+
+91
+00:04:26,620 --> 00:04:29,380
+Một biến ở đây thid được gán cho
+
+92
+00:04:29,380 --> 00:04:32,530
+thành phần văn tự ngay đây. Một việc khác
+
+93
+00:04:32,530 --> 00:04:35,199
+chúng ta có thể làm là hiển thị thứ này trong một đoạn
+
+94
+00:04:35,199 --> 00:04:38,110
+nhật ký khi thành phần cửa sổ ở đây
+
+95
+00:04:38,110 --> 00:04:41,139
+được nạp. Chúng ta sẽ viết
+
+96
+00:04:41,139 --> 00:04:44,729
+Component, chúng ta đã làm thế này trước đây,
+
+97
+00:04:44,820 --> 00:04:51,870
+.onCompleted và chúng ta sẽ gọi console.log
+
+98
+00:04:51,990 --> 00:04:59,949
+"The value of mString is" và sau đó
+
+99
+00:04:59,949 --> 00:05:02,680
+chúng ta sẽ gọi tới mString. Nếu 
+
+100
+00:05:02,680 --> 00:05:04,810
+chạy chương trình chúng ta sẽ thấy
+
+101
+00:05:04,810 --> 00:05:07,840
+tin nhắn này ở đây và giá trị sẽ
+
+102
+00:05:07,840 --> 00:05:09,850
+làm Hello World và chúng ta cũng sẽ
+
+103
+00:05:09,850 --> 00:05:11,860
+thấy Hello World trong thành phần văn tự
+
+104
+00:05:11,860 --> 00:05:15,699
+ở đây. Hãy chạy chương trình, Hello World,
+
+105
+00:05:15,699 --> 00:05:18,789
+the value of mString is Hello World
+
+106
+00:05:18,789 --> 00:05:22,240
+trong khung đầu ra của chương trình.
+
+107
+00:05:22,240 --> 00:05:25,449
+Okay các bạn có lẽ để ý
+
+108
+00:05:25,449 --> 00:05:28,960
+về console.log nó là một cách
+
+109
+00:05:28,960 --> 00:05:32,289
+JavaScript cho các bạn để hiển thị tin nhắn
+
+110
+00:05:32,289 --> 00:05:34,570
+nhật ký. Có một cách khác các bạn có thể
+
+111
+00:05:34,570 --> 00:05:36,910
+sử dụng được gọi là print và chúng ta có thể viết
+
+112
+00:05:36,910 --> 00:05:42,460
+print("The value of mString is :"+mString). Và nếu chúng ta chạy chúng ta
+
+113
+00:05:42,460 --> 00:05:43,599
+sẽ thấy điều tương tự.
+
+114
+00:05:43,599 --> 00:05:47,320
+Okay the value of mString is Hello World.
+
+115
+00:05:47,320 --> 00:05:49,690
+Bây giờ các bạn đã thấy cách nó hoạt động
+
+116
+00:05:49,690 --> 00:05:51,639
+với kiểu dữ liệu xâu chúng ta có thể thử
+
+117
+00:05:51,639 --> 00:05:53,800
+với những cái khác. Hãy thử một số nguyên
+
+118
+00:05:53,800 --> 00:05:57,729
+chúng ta sẽ viết property int nó sẽ
+
+119
+00:05:57,729 --> 00:05:59,550
+được gọi là
+
+120
+00:05:59,550 --> 00:06:05,139
+mInt và hãy gán giá trị 45 cho nó. Các bạn có thể
+
+121
+00:06:05,139 --> 00:06:09,250
+hiển thị nó bằng console.log ("The value ò mInt:"+mInt).
+
+122
+00:06:09,250 --> 00:06:12,370
+Nếu chúng ta chạy ứng dụng chúng ta sẽ
+
+123
+00:06:12,370 --> 00:06:16,030
+thấy nó, Okay nó là 45. Và các bạn có thể
+
+124
+00:06:16,030 --> 00:06:18,099
+làm việc với giá trị này trong ứng dụng của mình
+
+125
+00:06:18,099 --> 00:06:20,020
+bất cứ khi nào các bạn cần một giá trị nguyên. Ví dụ
+
+126
+00:06:20,020 --> 00:06:22,720
+chúng ta có thể thêm nó vào chiều cao của
+
+127
+00:06:22,720 --> 00:06:25,710
+chữ nhật ở đây. Chúng ta sẽ viết
+
+128
+00:06:25,710 --> 00:06:30,520
+mInt và cộng với cái này. Nếu chúng ta chạy
+
+129
+00:06:30,520 --> 00:06:32,740
+chúng ta sẽ thấy chữ nhật trở nên
+
+130
+00:06:32,740 --> 00:06:36,159
+cao hơn một chút. Một kiểu dữ liệu khác
+
+131
+00:06:36,159 --> 00:06:37,960
+chúng ta muốn tìm hiểu đó là 
+
+132
+00:06:37,960 --> 00:06:40,480
+kiểu dữ liệu boolean - lô-gic. Chúng ta
+
+133
+00:06:40,480 --> 00:06:44,470
+sẽ viết property bool hãy gọi nó
+
+134
+00:06:44,470 --> 00:06:50,140
+là isFemale và đặt là false. Trong phương thức
+
+135
+00:06:50,140 --> 00:06:52,480
+onCompleted chúng ta sẽ làm vài
+
+136
+00:06:52,480 --> 00:06:59,080
+kiểm tra. Hãy viết if (isFemale) thực hiện một lần console.log
+
+137
+00:06:59,080 --> 00:07:04,540
+làm ví dụ và viết else nếu như không phải
+
+138
+00:07:04,540 --> 00:07:10,500
+là phụ nữ chúng ta sẽ viết 
+
+139
+00:07:10,500 --> 00:07:17,470
+console.log ("You may wear a suit"). Okay hãy chạy 
+
+140
+00:07:17,470 --> 00:07:20,650
+ứng dụng "You may wear a suit" bởi vì
+
+141
+00:07:20,650 --> 00:07:23,920
+các bạn không phải là phụ nữ. Hãy nhớ isFemale
+
+142
+00:07:23,920 --> 00:07:26,410
+đặt ở false nên hãy đổi nó thành true,
+
+143
+00:07:26,410 --> 00:07:30,220
+chạy lại lần nữa và "You may wear a dress"
+
+144
+00:07:30,220 --> 00:07:33,220
+bởi vì các bạn là phụ nữ, isFemale đặt ở true.
+
+145
+00:07:33,220 --> 00:07:35,920
+Các bạn có thể sử dụng thuộc tính này
+
+146
+00:07:35,920 --> 00:07:39,250
+trong code của mình. Hãy thay đoạn văn tự này
+
+147
+00:07:39,250 --> 00:07:42,250
+thành in đậm nrrus chúng ta đang làm việc với phụ nữ,
+
+148
+00:07:42,250 --> 00:07:43,990
+chúng ta sẽ làm như thế nào.
+
+149
+00:07:43,990 --> 00:07:47,140
+Chúng ta có thể viết font.bold, nó là một thuộc tính
+
+150
+00:07:47,140 --> 00:07:50,770
+của thành phần text và chúng ta có thể đặt
+
+151
+00:07:50,770 --> 00:07:53,710
+một giá trị ở đây ví dụ như true để làm
+
+152
+00:07:53,710 --> 00:07:54,340
+cho nó in đậm.
+
+153
+00:07:54,340 --> 00:07:56,560
+Nếu các bạn chạy chúng ta sẽ thấy đoạn văn tự
+
+154
+00:07:56,560 --> 00:08:00,790
+được in đậm. Nó đã in đậm nhưng chúng ta có thể
+
+155
+00:08:00,790 --> 00:08:03,580
+khiên nó phụ thuộc vài thuộc tính boolean
+
+156
+00:08:03,580 --> 00:08:06,250
+mà chúng ta có ở đây. Chúng ta sẽ
+
+157
+00:08:06,250 --> 00:08:11,950
+viết isFemale? nếu đó là một phụ nữ
+
+158
+00:08:11,950 --> 00:08:17,830
+chúng ta sẽ để nó in đậm, nếu không
+
+159
+00:08:17,830 --> 00:08:20,860
+chúng ta sẽ không để nó in đậm. Đây là
+
+160
+00:08:20,860 --> 00:08:24,010
+một phép toàn ba ngôi trong ngôn ngữ
+
+161
+00:08:24,010 --> 00:08:25,980
+lập trình các bạn có lẽ đã gặp nó
+
+162
+00:08:25,980 --> 00:08:29,110
+trước đây. Okay chúng ta đang có tiến bộ.
+
+163
+00:08:29,110 --> 00:08:31,480
+Chúng ta cũng có thể làm việc với giá trị
+
+164
+00:08:31,480 --> 00:08:37,750
+vô tỷ, các bạn có thể viết property double
+
+165
+00:08:37,750 --> 00:08:40,140
+mDouble.
+
+166
+00:08:40,140 --> 00:08:45,370
+Hãy cho là ai đó 77.5 làm ví dụ và
+
+167
+00:08:45,370 --> 00:08:49,170
+các bạn có thể hiển thị giá trị này. Hãy làm thế
+
+168
+00:08:49,170 --> 00:08:52,870
+console.log okay nó được gọi là mDouble?
+
+169
+00:08:52,870 --> 00:08:54,330
+Đúng thế.
+
+170
+00:08:54,330 --> 00:08:58,270
+Hãy hạy chương trình chúng ta sẽ thấy giá trị của
+
+171
+00:08:58,270 --> 00:09:01,270
+mDouble là 77.5. Okay
+
+172
+00:09:01,270 --> 00:09:04,060
+Chúng ta đã làm việc với xâu, số nguyên,
+
+173
+00:09:04,060 --> 00:09:06,550
+boolean và số vô tỉ. Một loại dữ liệu khác
+
+174
+00:09:06,550 --> 00:09:08,890
+mà chúng ta hay sử dụng là dữ liệu dạng
+
+175
+00:09:08,890 --> 00:09:12,130
+URL ở đây nên hãy thử nó. Nó có
+
+176
+00:09:12,130 --> 00:09:14,529
+nhiều điểm giống nhau với kiểu xâu
+
+177
+00:09:14,529 --> 00:09:17,770
+nhưng nó chỉ được sử dụng cho url.
+
+178
+00:09:17,770 --> 00:09:23,080
+Hãy viết property url và tôi gọi
+
+179
+00:09:23,080 --> 00:09:28,600
+nó là mUrl và bên trong hãy ghi địa chỉ website của chúng ta,
+
+180
+00:09:28,600 --> 00:09:38,140
+tại sao không. Chúng ta có thể hiển thị nó như chúng ta
+
+181
+00:09:38,140 --> 00:09:42,850
+đã đang làm trước đây console.log "The value of mUrl:"+mUrl.
+
+182
+00:09:42,850 --> 00:09:56,140
+Và nếu chúng ta chạy chúng ta sẽ nhìn thấy ở đây.Để cho
+
+183
+00:09:56,140 --> 00:09:58,390
+các bạn các này rất khác so với
+
+184
+00:09:58,390 --> 00:10:02,470
+một xâu về phần kiểu dữ liệu, hãy lấy
+
+185
+00:10:02,470 --> 00:10:07,120
+địa chỉ url ở đây và dán nó vào trong phần văn tự
+
+186
+00:10:07,120 --> 00:10:12,160
+của chúng ta ở đây và dưới này chúng ta sẽ làm một
+
+187
+00:10:12,160 --> 00:10:16,410
+kiểm tra. Chúng ta sẽ viết if (mString===mUrl)
+
+188
+00:10:16,410 --> 00:10:20,020
+chúng ta sử dụng 3 dấu "=" bởi vì
+
+189
+00:10:20,020 --> 00:10:23,140
+cái này trong JavaScript kiểm tra cả giá trị
+
+190
+00:10:23,140 --> 00:10:25,720
+và kiểu dữ liệu, nó kiểm tra để xem nếu 
+
+191
+00:10:25,720 --> 00:10:28,149
+dữ liệu giống nhau, nó cũng kiểm tra luôn
+
+192
+00:10:28,149 --> 00:10:30,070
+kiểu dữ liệu để đảm bảo là chúng
+
+193
+00:10:30,070 --> 00:10:33,040
+tương tự. Chúng ta sẽ đi so với
+
+194
+00:10:33,040 --> 00:10:36,220
+mUrl và nếu chúng tương tự
+
+195
+00:10:36,220 --> 00:10:38,440
+cả về giá trị và kiểu dữ liệu, chúng ta sẽ viết
+
+196
+00:10:38,440 --> 00:10:47,079
+console.log, hãy chép cái này. Và nếu chúng
+
+197
+00:10:47,079 --> 00:10:49,959
+không tương tự chúng ta sẽ viết
+
+198
+00:10:49,959 --> 00:10:53,380
+"They are not the same".
+
+199
+00:10:53,380 --> 00:10:57,020
+Hãy chạy thử ứng dụng. Mmm "They are not the same"
+
+200
+00:10:57,020 --> 00:10:59,780
+nhưng nếu các bạn sử dụng 2 dấu "="
+
+201
+00:10:59,780 --> 00:11:03,700
+chỉ để kiểm tra giá trị,
+
+202
+00:11:03,700 --> 00:11:06,170
+các bạn sẽ thấy là "They are equal"
+
+203
+00:11:06,170 --> 00:11:08,600
+bởi vì chúng ta chỉ kiểm tra xem
+
+204
+00:11:08,600 --> 00:11:11,750
+giá trị có giống nhau và các sẽ thấy
+
+205
+00:11:11,750 --> 00:11:14,000
+"They are equal". Nây giờ các bạn đã biết một chút
+
+206
+00:11:14,000 --> 00:11:15,830
+về điểm khác nhay những kiểu dữ liệu xâu
+
+207
+00:11:15,830 --> 00:11:18,410
+và kiểu dữ liệu url và chúng ta sẽ
+
+208
+00:11:18,410 --> 00:11:19,760
+có thêm cơ hội để sử dụng những
+
+209
+00:11:19,760 --> 00:11:21,440
+thứ này sau trong kháo học.
+
+210
+00:11:21,440 --> 00:11:23,750
+Bài này sẽ khá dài nên 
+
+211
+00:11:23,750 --> 00:11:25,480
+chúng ta sẽ dừng ở đây và tiếp tục
+
+212
+00:11:25,480 --> 00:00:00,000
+tìm hiểu về vấn đề này trong bài tiếp theo.
+

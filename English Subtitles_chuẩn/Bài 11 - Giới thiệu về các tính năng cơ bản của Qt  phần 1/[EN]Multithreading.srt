@@ -1,0 +1,368 @@
+1
+00:00:00,829 --> 00:00:04,310
+Hello everyone, welcome back.
+
+2
+00:00:04,310 --> 00:00:07,049
+Multi-threading. In this video we are
+
+3
+00:00:07,049 --> 00:00:09,030
+going to get our hands on QThread to
+
+4
+00:00:09,030 --> 00:00:11,309
+make use of threads in Qt application.
+
+5
+00:00:11,309 --> 00:00:14,490
+To cover the most of the used cases, we are going
+
+6
+00:00:14,490 --> 00:00:17,730
+to take a look at how to create a worker
+
+7
+00:00:17,730 --> 00:00:20,430
+thread and use QThread class to make
+
+8
+00:00:20,430 --> 00:00:23,580
+an application threaded. So let's do a
+
+9
+00:00:23,580 --> 00:00:27,510
+small exercise. Say we want to listen to
+
+10
+00:00:27,510 --> 00:00:29,670
+user input in the console application,
+
+11
+00:00:29,670 --> 00:00:32,210
+and a generator vector of random numbers.
+
+12
+00:00:32,210 --> 00:00:35,250
+Of course the size is determined from the
+
+13
+00:00:35,250 --> 00:00:38,430
+user input. To avoid blocking input
+
+14
+00:00:38,430 --> 00:00:40,649
+listening, we will have to create a
+
+15
+00:00:40,649 --> 00:00:43,170
+thread to put the random generation job
+
+16
+00:00:43,170 --> 00:00:45,840
+in a different thread, and also because
+
+17
+00:00:45,840 --> 00:00:47,910
+we could not do loop with a block event loop,
+
+18
+00:00:47,910 --> 00:00:50,039
+we will have to put it in a separate
+
+19
+00:00:50,039 --> 00:00:52,949
+thread as well. This is to meet the
+
+20
+00:00:52,949 --> 00:00:55,110
+last requirement that the application needs
+
+21
+00:00:55,110 --> 00:00:58,440
+to be responsive at all time. That means
+
+22
+00:00:58,440 --> 00:01:00,449
+the main thread where the main event
+
+23
+00:01:00,449 --> 00:01:04,920
+loop is cannot be blocked. Now let's open
+
+24
+00:01:04,920 --> 00:01:08,490
+Qt creator. First, let's create an InputWorker
+
+25
+00:01:08,490 --> 00:01:12,479
+It is a derived class from the
+
+26
+00:01:12,479 --> 00:01:16,229
+QObject. Here we define a signal input
+
+27
+00:01:16,229 --> 00:01:19,970
+available, and a slot function startWork.
+
+28
+00:01:19,970 --> 00:01:22,920
+We're going to use QTextString to
+
+29
+00:01:22,920 --> 00:01:25,470
+get input.
+
+30
+00:01:25,470 --> 00:01:27,990
+Yes, as you noticed, we are making use of
+
+31
+00:01:27,990 --> 00:01:30,720
+Qt signals and slots here. You can
+
+32
+00:01:30,720 --> 00:01:33,480
+imagine signals as events that a QObject
+
+33
+00:01:33,480 --> 00:01:36,780
+can trigger or emit. A slot function is a
+
+34
+00:01:36,780 --> 00:01:39,750
+handler to handle signals which have the
+
+35
+00:01:39,750 --> 00:01:42,180
+certain same signatures.
+
+36
+00:01:42,180 --> 00:01:44,730
+We will elaborate them in a future video,
+
+37
+00:01:44,730 --> 00:01:47,610
+for now let's focus on QThread in
+
+38
+00:01:47,610 --> 00:01:50,910
+this video. So in this input worker class,
+
+39
+00:01:50,910 --> 00:01:53,940
+we use the standard input to construct
+
+40
+00:01:53,940 --> 00:01:58,350
+that QTextString and then we're
+
+41
+00:01:58,350 --> 00:02:00,390
+going to use the QtextString object
+
+42
+00:02:00,390 --> 00:02:04,770
+"is" to read user input. Every time we read
+
+43
+00:02:04,770 --> 00:02:07,050
+the input from the user we are going to
+
+44
+00:02:07,050 --> 00:02:09,600
+emit a signal inputAvailable with the
+
+45
+00:02:09,600 --> 00:02:13,290
+input are the arguments. Another class
+
+46
+00:02:13,290 --> 00:02:15,060
+we're going to construct is random
+
+47
+00:02:15,060 --> 00:02:19,530
+vector worker. This class handles user
+
+48
+00:02:19,530 --> 00:02:21,480
+input and it generates randomized
+
+49
+00:02:21,480 --> 00:02:29,280
+vectors. In the input handler we will use
+
+50
+00:02:29,280 --> 00:02:31,590
+the current time at the feed to
+
+51
+00:02:31,590 --> 00:02:33,480
+initialize the random number generator,
+
+52
+00:02:33,480 --> 00:02:37,110
+and for each number in the vector we
+
+53
+00:02:37,110 --> 00:02:38,820
+will assign it with the new random
+
+54
+00:02:38,820 --> 00:02:42,300
+number. After this operation we are
+
+55
+00:02:42,300 --> 00:02:46,620
+output Randomized. Now let's go back to
+
+56
+00:02:46,620 --> 00:02:52,590
+main.cpp. To use two threads we simply
+
+57
+00:02:52,590 --> 00:02:56,030
+construct thread1 and thread2.
+
+58
+00:02:56,030 --> 00:02:59,910
+They are objects of QThread, and each of
+
+59
+00:02:59,910 --> 00:03:02,880
+them represents a separate thread. To
+
+60
+00:03:02,880 --> 00:03:05,420
+move our workers into their own thread,
+
+61
+00:03:05,420 --> 00:03:08,040
+we just need to call movetoThread
+
+62
+00:03:08,040 --> 00:03:10,590
+method with QThread address on the
+
+63
+00:03:10,590 --> 00:03:13,950
+argument. That's how simple it is to make
+
+64
+00:03:13,950 --> 00:03:16,620
+use of threads in Qt. So so to make use of
+
+65
+00:03:16,620 --> 00:03:19,860
+signal and slot here we connect inputAvailable
+
+66
+00:03:19,860 --> 00:03:23,820
+signal with the slot inputHandler, 
+
+67
+00:03:23,820 --> 00:03:26,220
+so every time inputAvailable
+
+68
+00:03:26,220 --> 00:03:29,400
+is emitted, inputHandler will be
+
+69
+00:03:29,400 --> 00:03:32,820
+triggered, which will generate random numbers
+
+70
+00:03:32,820 --> 00:03:38,190
+for us. Lastly make sure the event loop
+
+71
+00:03:38,190 --> 00:03:41,430
+is running and stop the work of input
+
+72
+00:03:41,430 --> 00:03:45,750
+worker before we return a.exec. Now
+
+73
+00:03:45,750 --> 00:03:47,910
+let's build this application and test it
+
+74
+00:03:47,910 --> 00:03:50,030
+out!
+
+75
+00:03:53,900 --> 00:03:57,629
+As you can see we've already seen input
+
+76
+00:03:57,629 --> 00:04:01,170
+worker thread address and now let's give
+
+77
+00:04:01,170 --> 00:04:06,060
+it a vector, say ten. The operation is
+
+78
+00:04:06,060 --> 00:04:08,579
+instantly done but we can already see
+
+79
+00:04:08,579 --> 00:04:12,030
+the random vector worker exist in a
+
+80
+00:04:12,030 --> 00:04:14,909
+different thread. Now if we give a very
+
+81
+00:04:14,909 --> 00:04:20,030
+large number, say 200 million
+
+82
+00:04:20,980 --> 00:04:23,350
+it will take a while but at the same
+
+83
+00:04:23,350 --> 00:04:25,870
+time the application is not blocked
+
+84
+00:04:25,870 --> 00:04:28,680
+because the user input is immediately
+
+85
+00:04:28,680 --> 00:04:32,760
+entered in the Qt console application.
+
+86
+00:04:32,760 --> 00:04:35,650
+Note if your application is not started
+
+87
+00:04:35,650 --> 00:04:37,300
+in the terminal, you may need to
+
+88
+00:04:37,300 --> 00:04:42,070
+configure your projects, and make sure
+
+89
+00:04:42,070 --> 00:04:45,820
+Run in terminal is checked. In the next
+
+90
+00:04:45,820 --> 00:04:47,860
+video we are going to talk about multi-processing
+
+91
+00:04:47,860 --> 00:04:51,010
+and see how it is different
+
+92
+00:04:51,010 --> 00:00:00,000
+to use different threads in Qt.
+

@@ -1,0 +1,490 @@
+WEBVTT
+
+00:00.800 --> 00:06.770
+This is video 4.4 of controlling multimedia which covers Qt 3D. In this video we're going to cover
+
+00:07.070 --> 00:13.630
+that Qt 3-D FrameGraph, Entity-Component-System before finishing up with lighting and camera control.
+
+00:13.640 --> 00:18.530
+So what is the Qt3D module? Qt does 3D graphics programming for a long time.
+
+00:18.530 --> 00:23.820
+But up until Qt 5.7 it didn't have any high level means for controlling open GL. With a Qt
+
+00:23.950 --> 00:24.900
+3D module
+
+00:24.920 --> 00:30.910
+there is now a high level module that can be used to provide a more data driven approach for 3D rendering.
+
+00:31.250 --> 00:37.070
+Now there's two important concepts in the Qt3D module that we need to understand in order to navigate
+
+00:37.070 --> 00:37.430
+it.
+
+00:37.430 --> 00:41.870
+The first is the framegraph and the second is the entity-component-system.
+
+00:41.870 --> 00:47.030
+So let's go ahead and get started with the framegraph. The framegraph defines how the rendering will
+
+00:47.030 --> 00:48.820
+take place. By default
+
+00:48.830 --> 00:53.890
+Qt3D uses forward rendering. In forward rendering, everything gets rendered to the back buffer,
+
+00:53.900 --> 00:59.860
+one object at a time, shading each object as it is rendered without any interaction.
+
+00:59.900 --> 01:03.690
+The other common rendering scheme is deferred rendering. In deferred rendering
+
+01:03.700 --> 01:08.360
+each object is rendered to an intermediate buffer before the shading is actually applied.
+
+01:08.370 --> 01:13.490
+You can see an example of deferred rendering here, and the difference between deferred rendering and immediate
+
+01:13.490 --> 01:18.530
+is in deferred rendering with these nice shadows because we can see our objects here are interacting
+
+01:18.800 --> 01:23.050
+with the four objects here whereas intermediate we wouldn't get shadows at all.
+
+01:23.060 --> 01:26.050
+We would just get the components themselves.
+
+01:26.060 --> 01:31.400
+So the reason that is important to understand what the framegraph is is because if you need to switch
+
+01:31.400 --> 01:37.210
+to a deferred rendering that is where you actually have to do it, it's in the framegraph definition.
+
+01:37.210 --> 01:40.350
+Now we're just going to be using the default framegraph for this example.
+
+01:40.350 --> 01:43.750
+So let's go ahead and get started and access that now.
+
+01:44.240 --> 01:49.580
+And the first thing we're going to do is we're going to open up our main.cpp and we're going to go ahead
+
+01:49.670 --> 01:55.940
+and create the window and grab a reference to the QForwardRenderer.
+
+01:58.110 --> 01:58.620
+Awesome.
+
+01:58.620 --> 02:05.670
+So now that we've got access to our default ForwardRenderer, let's go ahead and set the ClearColor which
+
+02:05.670 --> 02:07.220
+for us will be the background color.
+
+02:08.620 --> 02:09.530
+Perfect.
+
+02:09.580 --> 02:14.590
+Note that we can always set our own renderer if we don't want to use the default one, and the method to do that is
+
+02:14.590 --> 02:18.120
+just the setActiveFrameGraph method.
+
+02:18.180 --> 02:23.730
+So you go ahead and add your own framegraph definition in here if you wanted to do a different one.
+
+02:23.730 --> 02:25.320
+Cool so we've got the window created.
+
+02:25.320 --> 02:27.440
+We've got forward_renderer, we set the ClearColor.
+
+02:27.450 --> 02:30.450
+Let's go ahead and embed our window into a QWidget.
+
+02:30.450 --> 02:35.580
+So the QWidget can control the geometry and the visibility for us.
+
+02:35.810 --> 02:40.670
+And if we look at the very end of this code, we'll scroll down to the bottom, and you see we're actually calling
+
+02:40.670 --> 02:47.660
+the show method right there when we call the container.show. Awesome. So now that we understand how
+
+02:47.660 --> 02:54.110
+to access and set our framegraph, let's go ahead and talk about the second important aspect of Qt3D, the
+
+02:54.110 --> 02:56.990
+entity-component-system. Entity-component-system
+
+02:57.050 --> 03:02.270
+is an architectural pattern that addresses some of the shortfalls of inheritance overuse. Specifically
+
+03:02.270 --> 03:07.880
+the entity-component-system fixes issues with deep and wide inheritance and helps tamp down on the tendency
+
+03:07.880 --> 03:10.860
+for shared codes to rise up the object hierarchy.
+
+03:10.880 --> 03:14.180
+It stresses composition over inheritance.
+
+03:14.210 --> 03:19.370
+Now to go ahead and define each of these pieces of the entity-component-system, entities are general
+
+03:19.370 --> 03:20.650
+purpose objects.
+
+03:20.660 --> 03:26.960
+They are the tag for every object. Components represent the raw data for an aspect of the object and
+
+03:26.960 --> 03:33.080
+show how it interacts with the world, and system perform global actions on every entity that possess
+
+03:33.140 --> 03:36.560
+a component of the same aspect of that system.
+
+03:36.560 --> 03:41.330
+Now I realize this is slightly confusing but it's important to remember that as you dig through the
+
+03:41.330 --> 03:46.850
+Qt3D module, now I realize slightly confusing but it's important to remember this concept, because as you
+
+03:46.850 --> 03:51.720
+dig through the Qt3D module it'll help you figure out what classes are supposed to do.
+
+03:51.770 --> 03:55.730
+If you're looking at some of the documentation you can see that a class that you're looking at inherits from
+
+03:55.730 --> 04:00.870
+QComponent. Then that should be a hint that you need to graph this class onto an entity,
+
+04:00.950 --> 04:08.000
+the two provided aspects or systems because it's interesting Qt actually change it from the entity-component-system
+
+04:08.000 --> 04:14.620
+into the component aspects, but the two provided aspects to the module are the Qt 3DRender and
+
+04:14.620 --> 04:16.490
+the Qt 3DInput.
+
+04:16.490 --> 04:22.390
+Now let's go ahead and look at this. This is an abstract example of how this would fit into the Qt sense.
+
+04:22.440 --> 04:23.820
+We've got our QEntity.
+
+04:23.960 --> 04:30.620
+We've got various QComponents, a mesh which provides us some volume and material which provides kind of how
+
+04:30.620 --> 04:35.720
+it looks, a transform which should go ahead and move our object around, and a couple other aspects that we won't
+
+04:35.720 --> 04:41.660
+get into, but you can see like you could have audio, you could have a rigid body, you could have collision volume and
+
+04:41.670 --> 04:47.090
+AI tagged on here. And on the far right hand column here
+
+04:47.150 --> 04:53.950
+these are all our aspects, or this kind of shows how the groups in each aspect so we have a QEntity.
+
+04:53.960 --> 04:59.030
+In our case it's going to be a sphere where we're going to attach a mesh, so the mesh is going to describe
+
+04:59.030 --> 05:04.160
+the actual sphere volume, attach material which defines how it's going to get rendered, and then
+
+05:04.160 --> 05:09.610
+we will go ahead and put a transform on one of them to get them to rotate around each other.
+
+05:09.770 --> 05:13.180
+So let's go ahead and take this and apply it.
+
+05:13.190 --> 05:18.620
+So like I said we'll create a sphere entity and we're going to add three components to our sphere,
+
+05:18.680 --> 05:21.460
+a mesh, a transform, and a material.
+
+05:21.490 --> 05:24.860
+There are several sets of steps that we need to do between now and then.
+
+05:24.860 --> 05:32.060
+So first thing we need to do is go ahead and create a RootEntity. And we're going to go ahead and set
+
+05:32.060 --> 05:34.200
+this to be the root on our window.
+
+05:35.160 --> 05:39.000
+Now that we've got the RootEntity set, let's go ahead and grab our camera out.
+
+05:42.880 --> 05:49.540
+And we're going to go ahead and set a bunch of defaults on here which include the PerspectiveProjection
+
+05:49.600 --> 05:52.900
+of the UpVectors and of the ViewCenter.
+
+05:53.080 --> 05:53.470
+Perfect.
+
+05:53.470 --> 05:55.360
+So let's go ahead and create a light.
+
+05:55.370 --> 06:01.760
+You know we're going to tag our light at the same position that our camera is. And the important thing
+
+06:01.760 --> 06:06.770
+whenever we're creating new entities, they are going to be parented back to the RootEntity somehow so we're creating this
+
+06:06.770 --> 06:07.520
+new light_entity.
+
+06:07.530 --> 06:10.670
+But it is the child of our RootEntity.
+
+06:10.850 --> 06:16.970
+Now QPointLight our light_entity is just an entity, doesn't have any functionality, so if we want this
+
+06:16.970 --> 06:22.100
+to actually act as a light, we need to go ahead and add that component. So we'll do that using the
+
+06:22.100 --> 06:22.680
+QPointLight.
+
+06:22.670 --> 06:24.620
+So go ahead and create that now.
+
+06:26.070 --> 06:30.890
+And once we created that we'll go ahead and set some variables on here.
+
+06:31.160 --> 06:34.910
+So the variables that I've got set is going to set the color to be white and we're going to set the
+
+06:35.000 --> 06:36.540
+intensity to be 1.
+
+06:36.660 --> 06:41.660
+And once we've set everything up for our component, which is the point_light_component, let's go ahead and add it
+
+06:41.660 --> 06:49.590
+back to our entity. Again our entities are just descriptions, so the description is usually
+
+06:49.590 --> 06:52.800
+just an integer. In order for us to get actual functionality
+
+06:52.790 --> 06:59.280
+we need to actually create components and add them back onto our entities. That's very important step for
+
+06:59.280 --> 07:01.980
+the Qt3D module. Awesome.
+
+07:01.980 --> 07:07.720
+So let's go ahead and create a transform and position it with our camera position and then go ahead
+
+07:07.750 --> 07:11.240
+and add that up into our light_entity as well.
+
+07:14.500 --> 07:20.110
+So now our light_entity that we've created has a PointLine and a Transform that had been associated with
+
+07:20.110 --> 07:25.060
+the addComponent. The last bit of setup stuff that we need to do before we add our spheres in is to
+
+07:25.060 --> 07:28.480
+go ahead and set up our first person camera controller.
+
+07:28.480 --> 07:31.970
+So go ahead and create that here.
+
+07:32.170 --> 07:37.100
+And again we're going to make sure that this inherits from the RootEntity. And once we've got that
+
+07:37.100 --> 07:41.640
+instantiated we're just going to go ahead and call the setCamera method and pass in our camera entity.
+
+07:43.200 --> 07:45.750
+Perfect. So we got all these set up done.
+
+07:45.750 --> 07:49.910
+Now let's go ahead and create some of our objects so we're going to create two spheres.
+
+07:49.910 --> 07:54.910
+One's going to sit in the center and the other is going to rotate around the center sphere.
+
+07:54.960 --> 07:57.170
+So let's create the first sphere that sits in the center.
+
+07:57.180 --> 07:59.600
+So we'll create an entity.
+
+07:59.630 --> 08:02.690
+Now again the entity isn't going to give us anything to look at.
+
+08:02.690 --> 08:04.450
+We need to add some components to it.
+
+08:04.450 --> 08:06.380
+So let's start with our mesh.
+
+08:06.380 --> 08:13.810
+We're going to use a QSphereMesh class from the Qt3DExtras module to give it some volume. And
+
+08:13.810 --> 08:19.660
+then we're going to set the number of rings, slices and radius on our QSphereMesh.
+
+08:22.950 --> 08:23.830
+Perfect.
+
+08:24.000 --> 08:29.190
+So that's fully instantiated. So let's go ahead and add that back up into our sphere_entity by using
+
+08:29.190 --> 08:33.170
+the addComponent method.
+
+08:33.180 --> 08:41.560
+Next let's give it a way to combine and diffuse and specialize using the QPhongMaterial class.
+
+08:41.590 --> 08:43.580
+So go ahead and create our instance here.
+
+08:46.750 --> 08:48.700
+And then we're going to go ahead and set the Diffuse.
+
+08:48.700 --> 08:54.400
+So this is going to go ahead and set the color, and it's just a semi pleasing color that I've come up with.
+
+08:54.460 --> 08:57.150
+That's the only two things we need to do to set this up.
+
+08:57.340 --> 09:02.800
+So the only other thing that we can do is go ahead and add this back to our sphere_entity using the
+
+09:02.800 --> 09:09.780
+addComponent. Awesome. Now that we've got one sphere, let's go ahead and create our second one which we're
+
+09:09.780 --> 09:17.530
+going to have rotate around. So we're going to create a new QEntity. And let's go ahead and add the same material
+
+09:17.590 --> 09:21.170
+and mesh that we just created for our last shpere
+
+09:21.170 --> 09:24.620
+to this one. Awesome.
+
+09:24.610 --> 09:26.720
+So right now our spheres are identical.
+
+09:26.720 --> 09:31.370
+They're sitting at the origin and they have the same mesh and the same material.
+
+09:31.390 --> 09:34.800
+So let's go ahead and add in a transform.
+
+09:34.960 --> 09:37.990
+So we need to have this rotate over time.
+
+09:37.990 --> 09:42.790
+We're going to combine a QTransform with a QPropertyAnimation, the transform
+
+09:42.790 --> 09:43.630
+I've already included.
+
+09:43.630 --> 09:49.380
+So it's this RotateTransform. And if you see the header file here, and the big thing about this is we needed
+
+09:49.390 --> 09:53.050
+to expose a user_angle property.
+
+09:53.200 --> 09:56.650
+So this directly gets subclass from the QTransform.
+
+09:56.710 --> 10:01.510
+And the only thing that's really different is it exposes this user_angle property which we're going
+
+10:01.510 --> 10:08.260
+to use to vary, with our QPropertyAnimation, so we can change the user_angle from 0 to 360 to
+
+10:08.250 --> 10:12.280
+get it rotate in a full circle around our original object.
+
+10:12.400 --> 10:17.470
+And if you look at this class, it's basically the implementation ,is this private slot right here which
+
+10:17.470 --> 10:23.650
+is called rotate which we create a matrix. We rotate it based on the emule we translated, you
+
+10:23.650 --> 10:30.730
+know, 20 units and then we set the matrix on our actual instance here to be the matrix that we just created
+
+10:30.730 --> 10:31.390
+there.
+
+10:31.390 --> 10:34.210
+So that's kind of how that works behind the scenes.
+
+10:34.210 --> 10:39.280
+The biggest thing that we need to do is just go ahead and set up this QPropertyAnimation. So let's
+
+10:39.280 --> 10:41.470
+go ahead and create this real quick.
+
+10:41.470 --> 10:44.080
+There are two things that we need as part of this constructor.
+
+10:44.080 --> 10:47.260
+The first will be the target and the second will be the property name.
+
+10:47.260 --> 10:53.390
+So our target is going to be the rotate_transform and then the property name is going to be user_angle.
+
+10:53.390 --> 10:56.350
+So let's go ahead and create this QPropertyAnimation now.
+
+11:00.390 --> 11:08.530
+Perfect. So let's go ahead and set the duration to be 10 seconds and have it vary from 0 to 360 degrees.
+
+11:12.520 --> 11:18.430
+And then we use the setLoopCount to -1 to go ahead and enable us to loop infinite times and
+
+11:18.430 --> 11:22.740
+then go ahead and start it. And the last thing that we need to do
+
+11:22.740 --> 11:29.440
+now we've got that set up is go ahead and add our transform, our rotate_transform up to our rotating_sphere
+
+11:29.530 --> 11:34.680
+entity. Perfect. So let's go ahead and run this.
+
+11:34.820 --> 11:39.740
+Looks like I've been in business to my name. So let's rename this widget_container to be a window_container.
+
+11:42.900 --> 11:43.910
+And now let's run this.
+
+11:47.640 --> 11:52.500
+Perfect. So you can see we've got our two spheres. They're the same color, same size since they both have
+
+11:52.500 --> 11:54.410
+the same mesh and material.
+
+11:54.420 --> 11:59.190
+And then we've got one that's actually rotating around. And if you click and hold you can actually track
+
+11:59.190 --> 12:00.180
+it as it moves.
+
+12:00.270 --> 12:05.270
+And that is our second sphere which has the rotation_animation applied to it.
+
+12:05.280 --> 12:10.580
+So with that we've covered a quick example showing some simple lighting and camera controls.
+
+12:10.590 --> 12:17.460
+We've covered the entity-component-system and covered why the Qt3D framegraph is important.
+
+12:18.690 --> 12:22.080
+So join us in the next section where we'll cover communicating with Qt.

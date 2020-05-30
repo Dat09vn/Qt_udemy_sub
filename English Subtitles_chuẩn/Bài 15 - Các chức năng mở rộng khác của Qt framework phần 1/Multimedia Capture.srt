@@ -1,0 +1,457 @@
+WEBVTT
+
+00:00.920 --> 00:06.380
+This is Section 4 of mastering Qt programming which covers controlling multimedia. So let's go ahead
+
+00:06.410 --> 00:09.890
+and get started with the multimedia capture. In this video
+
+00:09.890 --> 00:15.110
+we're going to cover how to capture images, how to capture videos and finally how to configure our settings
+
+00:15.110 --> 00:16.000
+for capture.
+
+00:16.130 --> 00:19.490
+So let's go ahead and start with our image capture.
+
+00:19.490 --> 00:24.200
+Now in this example we want our users to be able to select the cameras dynamically
+
+00:24.200 --> 00:29.870
+in the case that our users have multiple cameras. Now we haven't gotten into memory management very much
+
+00:29.900 --> 00:34.090
+since we've been leaning on Qt's parent child ownership model to do this for us.
+
+00:34.100 --> 00:38.540
+But in this case since we're dynamically allocating the camera, we're going to have a couple of members
+
+00:38.540 --> 00:42.060
+that are going to fall outside of the parent child ownership model.
+
+00:42.140 --> 00:47.720
+So we're going to use a scope pointer to automatically delete objects for us whenever they go out of
+
+00:47.720 --> 00:53.780
+scope. And the class we are going to be using to do this is QScopedPointer. Specifically will be managing
+
+00:53.780 --> 00:57.000
+the QCamera and the QImageCapture this way.
+
+00:57.290 --> 01:00.170
+So let's go ahead and create those member instances real quick.
+
+01:01.760 --> 01:09.350
+So our QCamera instance right here controls the camera, the QImageCamera, the QImageCapture class
+
+01:09.730 --> 01:16.160
+or instance is actually the high level image recording class which translates from the camera into an
+
+01:16.160 --> 01:23.240
+actual file and the QCameraViewfinder here is going to go ahead and display whatever our QCamera
+
+01:23.240 --> 01:27.050
+sees for us so that we know what we're taking a picture of.
+
+01:27.050 --> 01:30.260
+So let's go ahead and switch into the implementation file.
+
+01:30.260 --> 01:35.030
+And the first thing that we want to do is go ahead and create our views so that our users know what
+
+01:35.030 --> 01:36.760
+we're taking a picture of.
+
+01:37.760 --> 01:38.320
+Awesome.
+
+01:38.330 --> 01:44.900
+So our UI is going to be this actual view which is going to show what we're taking a picture of and
+
+01:44.900 --> 01:49.000
+a push button which will be used to go ahead and tell when to take the image.
+
+01:49.130 --> 01:51.100
+So we create this blank QWidget.
+
+01:51.170 --> 01:56.900
+And if you look at this set up UI function you can see that we create a layout and add both our camera_view
+
+01:56.900 --> 02:02.640
+and our QPushButton to this layout before sending it to this widget.
+
+02:02.660 --> 02:08.540
+So now that we've got the user interface set up, let's go ahead and grab all of the cameras so that our
+
+02:08.540 --> 02:11.050
+users can select them dynamically.
+
+02:11.120 --> 02:15.850
+So we'll do this using a static method available cameras.
+
+02:15.950 --> 02:22.030
+Now the easiest way to give our users an option is to add all of this information up to a menu bar. So
+
+02:22.080 --> 02:27.530
+our QMainWindow already has a menu bar built in so let's grab a reference to it. And then let's go
+
+02:27.530 --> 02:33.710
+ahead and add a specific menu which will call devices to our menu bar. Perfect.
+
+02:33.710 --> 02:40.400
+So we want to go ahead and iterate through each one of our QCameraInfos that we created as part of
+
+02:40.400 --> 02:41.930
+this QList right here.
+
+02:43.710 --> 02:49.890
+And I'm not going to get too much in the code to do this but basically we go ahead and create a
+
+02:49.890 --> 02:50.710
+QAction.
+
+02:50.730 --> 02:53.430
+We set this action to be checkable.
+
+02:53.430 --> 02:59.940
+We set it to be the actual QCameraInfo so that every time a user selects this, this is the actual value
+
+02:59.940 --> 03:03.120
+that will get passed whenever our user triggers something new.
+
+03:03.210 --> 03:09.470
+And then we check to see if the camera info that we're iterating through is the default camera.
+
+03:09.630 --> 03:12.450
+And if it is we go ahead and set that to be checked.
+
+03:12.450 --> 03:17.820
+So we set it to be checkable here and then set to be checked here and then we go ahead and add each
+
+03:17.880 --> 03:23.520
+action that we've created as part of this first line to the device menu that we created up here.
+
+03:23.640 --> 03:28.650
+So the only thing that we're missing from all of this code right now is an action group. An action
+
+03:28.650 --> 03:34.140
+group will help manage all of our actions for us though we have a single interface that we can use to
+
+03:34.140 --> 03:35.550
+actually change things.
+
+03:35.550 --> 03:37.390
+Let's go ahead and create that now.
+
+03:38.870 --> 03:39.400
+Perfect.
+
+03:39.410 --> 03:44.990
+So now that we've got this camera_group which is a QActionGroup, what we want is every time our user
+
+03:44.990 --> 03:50.000
+selects a new camera_action here we want that to be passed to our
+
+03:50.000 --> 03:51.400
+set_camera_action slot.
+
+03:51.440 --> 03:58.270
+So let's go ahead and connect the QActionGroup's triggered signal up to the set_camera_action slot.
+
+03:59.450 --> 04:00.040
+Awesome.
+
+04:00.050 --> 04:06.680
+So we've successfully added the ability for our user to change which camera that we want to use with
+
+04:06.770 --> 04:08.620
+only a couple of lines of code.
+
+04:08.690 --> 04:10.930
+So let's go ahead and scroll back up.
+
+04:10.940 --> 04:14.920
+Now the one thing that we didn't do is we haven't actually set any of the cameras.
+
+04:14.960 --> 04:23.120
+So let's go ahead and set the camera to be the default camera and our CameraInfo class has a static
+
+04:23.120 --> 04:28.830
+method called defaultCamera which we can use to go ahead and set the default camera.
+
+04:29.150 --> 04:31.710
+So we haven't implemented these cameras slots.
+
+04:31.700 --> 04:34.320
+Let's go ahead and scroll down and implement that.
+
+04:34.320 --> 04:39.880
+So the first thing that we're going to want to do in here is actually create a new instance of our camera.
+
+04:39.890 --> 04:47.450
+Now remember that these are the QScopedPointer that QCamera and the QCameraImageCapture are
+
+04:47.450 --> 04:51.950
+all wrapped in this QScopedPointer so the interface is going to look a little bit different.
+
+04:52.020 --> 04:55.120
+But let's go ahead and create our instance here.
+
+04:56.400 --> 05:03.140
+And then once we've actually created our instance, let's go ahead and set our new image capture.
+
+05:03.210 --> 05:09.560
+And what the QImageCapture class actually needs a reference to the specific camera.
+
+05:09.570 --> 05:11.230
+So we're going to pass that in as well.
+
+05:12.450 --> 05:12.890
+Perfect.
+
+05:12.890 --> 05:19.470
+So let's make sure that our camera is set for actual image capture real quick and we can do this using
+
+05:19.500 --> 05:22.190
+the setCaptureMode method.
+
+05:23.150 --> 05:26.000
+And we'll change it to CaptureStillimages.
+
+05:26.430 --> 05:33.210
+And the last thing that we need to do as part of this method is set our viewfinder or reset our viewfinder
+
+05:33.240 --> 05:37.410
+so that it's capturing the data from this class specifically.
+
+05:37.410 --> 05:41.900
+So we'll go ahead and do that now using the setViewfinder method.
+
+05:43.270 --> 05:43.920
+Perfect.
+
+05:43.930 --> 05:50.960
+So the last thing that we need to do as part of this application is go ahead and wire up our PushButton.
+
+05:51.200 --> 05:56.150
+So we've set the camera and we've set up all the camera devices we've set up the UI.
+
+05:56.260 --> 06:01.570
+So now whenever we push our QPushButton let's make sure we actually take an image.
+
+06:01.570 --> 06:07.990
+Now since we're dynamically resetting the image capture which is the class that uses to actually save
+
+06:08.110 --> 06:14.800
+a file here, we're going to use a functor rather than connecting directly to the instance that's part
+
+06:14.800 --> 06:15.800
+of this class.
+
+06:17.340 --> 06:20.760
+Cool. So let's go ahead and run this and take a picture.
+
+06:21.500 --> 06:23.850
+Looks like I missed a semi colon here.
+
+06:23.960 --> 06:26.670
+So now let's go ahead and run this and take a picture.
+
+06:27.420 --> 06:27.950
+Awesome.
+
+06:27.990 --> 06:33.510
+So you can see we've got our actual viewfinder here and we've got our push button and if we click this
+
+06:33.660 --> 06:36.090
+and then change in here
+
+06:40.810 --> 06:47.550
+and look at the most recent one you can see that we've successfully managed to capture an image. Awesome.
+
+06:47.550 --> 06:52.200
+So now that we've got pictures working, let's go ahead and record some video.
+
+06:52.200 --> 06:56.130
+So we'll open the record project here and we'll take a look.
+
+06:56.160 --> 07:02.250
+Now all the code should look very similar but the one thing is that instead of using a QCameraImageCapture
+
+07:02.250 --> 07:09.300
+we're going to use a QMediaRecorder instead, so let's go ahead and create that. Perfect and
+
+07:09.300 --> 07:16.540
+then we'll switch to implementation file and we'll go down to the set_camera function or slot here.
+
+07:16.590 --> 07:22.650
+We need to actually initialize this QMediaRecorder just like we did our QImageCapture by passing
+
+07:22.710 --> 07:24.690
+in a reference to the camera.
+
+07:26.250 --> 07:26.860
+Awesome.
+
+07:26.890 --> 07:33.220
+Now that the QMediaRecorder is initialized, let's set up the record and stop recording slots as part
+
+07:33.220 --> 07:34.480
+of the MainWindow.
+
+07:34.480 --> 07:39.940
+Remember we're not going to connect our signals directly to the instance member which in this case is
+
+07:39.940 --> 07:40.910
+media_recorder.
+
+07:40.930 --> 07:46.840
+Since we're replacing it every time we change the device so we're going to put the slots on the parent
+
+07:46.840 --> 07:49.900
+widget instead which in this case is the MainWindow.
+
+07:50.020 --> 07:55.360
+So in order to record the function that we want to call is just record in order to stop recording the
+
+07:55.360 --> 07:57.110
+function that we want to call is
+
+07:57.130 --> 07:58.000
+Stop.
+
+07:58.000 --> 07:58.330
+Cool.
+
+07:58.330 --> 08:00.210
+So let's go ahead and scroll up to the top.
+
+08:00.250 --> 08:03.000
+You can see that we're creating 2 QPushButtons.
+
+08:03.010 --> 08:09.400
+One is called the record_button which has the words record in it and the other is the stop_record. And
+
+08:09.400 --> 08:14.200
+you see at the bottom of this class we're actually connecting those to the slots that we just created
+
+08:14.240 --> 08:19.870
+server, the clicked signal gets connected to the record slot and the stop_record_button and clicked signal gets
+
+08:19.870 --> 08:22.810
+connected to the stop_recording slot.
+
+08:22.810 --> 08:27.730
+The only thing that we don't have implemented here that's different is we actually want to dynamically
+
+08:27.730 --> 08:33.190
+change these buttons so that the only ones that are unable are things you can do.
+
+08:33.210 --> 08:38.530
+So example while we're recording we don't want our users to be able to hit the record button anymore.
+
+08:38.530 --> 08:43.450
+And similarly when we're not recording we don't want our users to be able to hit the stop recording
+
+08:43.450 --> 08:48.680
+button and the slot that we've set up to do this is the update_recorder_state slot.
+
+08:48.760 --> 08:51.290
+And scroll down you can see the implementation here.
+
+08:51.340 --> 08:57.610
+We've got two cases here, the RecordingState and the StoppedState. And whenever we are actually recording
+
+08:57.670 --> 09:00.760
+we make sure that our users can't select our record button.
+
+09:00.760 --> 09:06.460
+And similarly whenever we are not recording we make sure that our users can't select our stop recording.
+
+09:06.520 --> 09:13.930
+So let's go ahead and connect up the signal which is on the QMediaRecorder instance and the signal
+
+09:13.930 --> 09:21.710
+that we want is the actual stateChanged signal. I'll go and connect that to our slot. Perfect. So we've
+
+09:21.710 --> 09:27.370
+successfully connected that up, so now every time our QMediaRecorder state gets changed,
+
+09:27.380 --> 09:33.440
+we'll be able to update the recorder state in our actual function which is just going to change the
+
+09:33.440 --> 09:41.080
+buttons here, and we're just iterating through or switching on an enum which is the actual
+
+09:41.090 --> 09:41.960
+QMediaRecorderState.
+
+09:43.410 --> 09:48.840
+So the very last thing that we need to do here is we need to check to make sure that we can actually
+
+09:48.840 --> 09:53.150
+record video on our default camera.
+
+09:53.250 --> 10:02.240
+So if we can we want to go ahead and set the capture mode to be CaptureVideo. And if we can actually
+
+10:02.240 --> 10:06.210
+do this we want to let our users know. Perfect.
+
+10:06.210 --> 10:11.030
+So let's go ahead and run this and capture some video.
+
+10:13.270 --> 10:18.900
+So you can see our 2 buttons here, down the bottom, and if we hit record we can see that the record actually
+
+10:18.900 --> 10:26.820
+fades out and if we hit stop recording we successfully created that and we can show this is the case
+
+10:27.040 --> 10:32.850
+by go ahead and opening up this clip, which you can actually see we have managed to successfully record
+
+10:32.850 --> 10:33.870
+video there.
+
+10:36.970 --> 10:41.410
+So the one thing that you might not know is you might want to actually change the file format that you're
+
+10:41.410 --> 10:42.470
+recording in.
+
+10:42.520 --> 10:45.520
+So right now it's just recording in whatever the default is.
+
+10:45.520 --> 10:52.700
+So the way to check to see what we've got is there's actually a function on our media recorder. And that's
+
+10:52.700 --> 10:54.940
+the supportedAudioCodecs.
+
+10:55.130 --> 11:00.140
+So this would actually get you out a StringList of everything and then you could you know display
+
+11:00.140 --> 11:06.980
+that to your users and whatever you could have them pick it and have them actually set it as well.
+
+11:07.370 --> 11:12.800
+And you could either use you know supported_audio, you've got a ContainerFormat and the EncodingSettings
+
+11:12.800 --> 11:18.800
+too, you've got default methods to select each of these and the set methods that actually set
+
+11:18.800 --> 11:19.070
+those.
+
+11:19.070 --> 11:24.890
+So I would encourage you to play around with those on your own to see what's available on your system.
+
+11:25.010 --> 11:31.280
+But with that we've successfully learned how to capture images, how to capture videos and briefly touched
+
+11:31.280 --> 11:34.780
+on how to configure images and videos.
+
+11:35.870 --> 11:39.200
+Please join us next time where we cover multimedia playback.

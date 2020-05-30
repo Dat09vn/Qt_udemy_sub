@@ -1,0 +1,1299 @@
+1
+00:00:02,570 --> 00:00:04,950
+Một kiểu dữ liệu khác mà chúng ta muốn tìm hiểu
+
+2
+00:00:04,950 --> 00:00:07,770
+là kiểu dữ liệu var. Nếu các bạn quan sát
+
+3
+00:00:07,770 --> 00:00:10,440
+nó, kiểu var là một thuộc tính chung
+
+4
+00:00:10,440 --> 00:00:14,009
+mà có thể thay thế cho bất cứ kiểu dữ liệu nào.
+
+5
+00:00:14,009 --> 00:00:15,960
+Về cơ bản điều các bạn có thể làm là gì, các bạn có thể
+
+6
+00:00:15,960 --> 00:00:19,230
+dùng một biến var để chứa interger-số nguyên, các bạn có thể
+
+7
+00:00:19,230 --> 00:00:21,779
+dùng 1 biến var để chứa một dữ liệu kiểu boolean-logic,
+
+8
+00:00:21,779 --> 00:00:24,539
+các bạn có thể dùng biến var để chứ bất cứ giá trị nào
+
+9
+00:00:24,539 --> 00:00:26,760
+và nó sẽ hoạt động. Nó rất là hữu dụng
+
+10
+00:00:26,760 --> 00:00:28,859
+khi các bạn không biết kiểu dữ liệu mà
+
+11
+00:00:28,859 --> 00:00:31,560
+mình đang phải đối mặt. Để nghịch nó
+
+12
+00:00:31,560 --> 00:00:34,860
+tôi sẽ chép những ví dụ ở đây
+
+13
+00:00:34,860 --> 00:00:36,960
+trong tài liệu và chơi với chúng
+
+14
+00:00:36,960 --> 00:00:39,840
+trong phần code của chúng ta. Okay Tôi sẽ chép
+
+15
+00:00:39,840 --> 00:00:42,300
+cái này. Đây chính là nét đẹp khi làm việc với
+
+16
+00:00:42,300 --> 00:00:45,570
+Qt creator. Có hàng tấn
+
+17
+00:00:45,570 --> 00:00:48,719
+các mẩu code mà các bạn có thể chép và sử dụng trong
+
+18
+00:00:48,719 --> 00:00:50,940
+ứng dụng của mình. Và đây không phải là một điều xấu.
+
+19
+00:00:50,940 --> 00:00:53,670
+Nếu các bạn thắc mắc làm sao tôi cân chỉnh
+
+20
+00:00:53,670 --> 00:00:58,260
+chỗ này thì tôi chỉ ấn Ctrl+A và Ctrl+I để
+
+21
+00:00:58,260 --> 00:01:00,629
+thứ này được cân chỉnh. Và nếu bạn quan sát ở đây
+
+22
+00:01:00,629 --> 00:01:03,690
+các bạn thấy rằng có cảnh báo nói với
+
+23
+00:01:03,690 --> 00:01:05,909
+chúng ta rằng chúng ta nên sử dụng kiểu dữ liệu
+
+24
+00:01:05,909 --> 00:01:08,729
+chính xác thay vì sử dụng kiểu dữ liệu var.
+
+25
+00:01:08,729 --> 00:01:11,159
+Okay Nó bảo chúng ta nên sử dụng int
+
+26
+00:01:11,159 --> 00:01:14,810
+hoặc real-số thực thay vì var, bool thay vì var,
+
+27
+00:01:14,810 --> 00:01:18,270
+string thay vì var. Nhưng các bạn có thể thấy
+
+28
+00:01:18,270 --> 00:01:20,939
+là var có thể chứa số nguyên, boolean,
+
+29
+00:01:20,939 --> 00:01:23,790
+xâu. Các bạn có thể thấy rằng chúng ta có thể định nghĩa
+
+30
+00:01:23,790 --> 00:01:27,110
+xâu của riêng chúng ta sử dụng cấu trúc
+
+31
+00:01:27,110 --> 00:01:30,930
+JavaScript này. Chúng ta có thể định nghĩa màu sắc chúng ta
+
+32
+00:01:30,930 --> 00:01:32,759
+sẽ chơi cùng với những biến này và
+
+33
+00:01:32,759 --> 00:01:34,619
+thử hiển thị một vài thông tin về
+
+34
+00:01:34,619 --> 00:01:36,299
+chúng, chúng ta sẽ bắt đầu với
+
+35
+00:01:36,299 --> 00:01:38,130
+con số ở đây và cho các bạn thấy các bạn có thể
+
+36
+00:01:38,130 --> 00:01:40,320
+hiển thị nó như các bạn đã làm với
+
+37
+00:01:40,320 --> 00:01:44,820
+những số ở đây. Hãy làm thế, chúng ta
+
+38
+00:01:44,820 --> 00:01:49,140
+sẽ viết console.log hãy để cách
+
+39
+00:01:49,140 --> 00:01:51,840
+ra một chút, chúng ta sẽ
+
+40
+00:01:51,840 --> 00:01:56,040
+viết console.log("The value of aNumber is:"+aNumber)
+
+41
+00:01:56,040 --> 00:01:56,610
+nó được gọi là gì ấy nhỉ.
+
+42
+00:01:56,610 --> 00:02:05,460
+Hãy cùng xem lại - aNumber. Và nếu
+
+43
+00:02:05,460 --> 00:02:07,979
+chúng ta chạy cái này chúng ta sẽ thấy giá trị mà
+
+44
+00:02:07,979 --> 00:02:12,530
+được chứa ở đây là 100,
+
+45
+00:02:12,830 --> 00:02:15,110
+ở đây cũng 100. Chúng ta có thể làm tương tự
+
+46
+00:02:15,110 --> 00:02:17,900
+với bool, xâu và xâu này ở đây
+
+47
+00:02:17,900 --> 00:02:19,760
+Tôi sẽ làm thế này và quay trở lại và
+
+48
+00:02:19,760 --> 00:02:21,770
+cho các bạn xem những thứ này được chạy. Okay tôi
+
+49
+00:02:21,770 --> 00:02:24,140
+đã đi gõ hết những thứ này để tiết kiệm thời gian
+
+50
+00:02:24,140 --> 00:02:25,040
+cho các bạn.
+
+51
+00:02:25,040 --> 00:02:28,190
+Chúng ta sẽ hiển thị dữ liệu kiểu boolean,
+
+52
+00:02:28,190 --> 00:02:31,430
+xâu và một xâu khác mà chúng ta đã 
+
+53
+00:02:31,430 --> 00:02:34,370
+khai báo sử dụng bộ thiết kế ở đây.
+
+54
+00:02:34,370 --> 00:02:38,210
+Hãy chạy ứng dụng, mm-hmm các bạn thấy là
+
+55
+00:02:38,210 --> 00:02:42,020
+the bool is false, the value of aString
+
+56
+00:02:42,020 --> 00:02:44,750
+is hello world chính là ở đây và xâu
+
+57
+00:02:44,750 --> 00:02:47,330
+còn lại giống nhau ở đây và ở đây và các bạn
+
+58
+00:02:47,330 --> 00:02:50,150
+thấy rằng chúng ta hiển thị nó mà không có vấn đề gì.
+
+59
+00:02:50,150 --> 00:02:53,570
+Var cũng có thể được sử dụng để chứa
+
+60
+00:02:53,570 --> 00:02:56,030
+các kiểu dữ liệu phức tạp hơn ví dụ như một màu sắc.
+
+61
+00:02:56,030 --> 00:02:58,820
+Đây là một màu sắc để làm ví dụ và chúng ta
+
+62
+00:02:58,820 --> 00:03:02,060
+đang lưu nó dưới dạng 1 biến var. Các bạn có thể thấy rằng
+
+63
+00:03:02,060 --> 00:03:04,400
+chúng đưa ra cảnh báo rằng chúng ta
+
+64
+00:03:04,400 --> 00:03:07,850
+nên sử dụng kiểu dữ liệu color they cho
+
+65
+00:03:07,850 --> 00:03:11,180
+var nhưng var có thể lưu cả cái này nữa nên nó
+
+66
+00:03:11,180 --> 00:03:13,880
+có thể được sử dụng nếu các bạn cần sử dụng nó theo
+
+67
+00:03:13,880 --> 00:03:14,540
+cách này.
+
+68
+00:03:14,540 --> 00:03:16,340
+Để cho các bạn thấy rằng các bạn có thể sử dụng màu này
+
+69
+00:03:16,340 --> 00:03:18,560
+chúng ta sẽ sử dụng nó để đặt
+
+70
+00:03:18,560 --> 00:03:22,070
+làm màu nền cho chữ nhật ở đây. Chúng ta có thể
+
+71
+00:03:22,070 --> 00:03:24,530
+bỏ màu vàng đi và thay bằng aColor
+
+72
+00:03:24,530 --> 00:03:28,160
+và nó sẽ hoạt động. Hãy chạy
+
+73
+00:03:28,160 --> 00:03:30,709
+chương trình, chúng ta sẽ thấy màu
+
+74
+00:03:30,709 --> 00:03:34,640
+này. Mm-hmm chính là màu này. Chúng ta
+
+75
+00:03:34,640 --> 00:03:36,350
+có thể thay đổi nó một lần nữa chúng ta có thể nghịch
+
+76
+00:03:36,350 --> 00:03:38,840
+những con số này. Điều mà nó thực hiện
+
+77
+00:03:38,840 --> 00:03:41,150
+là nó thay đôi các thành phần màu sắc,
+
+78
+00:03:41,150 --> 00:03:43,940
+đây là màu đỏ, đây là 
+
+79
+00:03:43,940 --> 00:03:46,489
+màu xanh lá, đây là màu xanh lam
+
+80
+00:03:46,489 --> 00:03:48,890
+và đây là độ đục. Các bạn
+
+81
+00:03:48,890 --> 00:03:50,959
+xem tài liệu về kiểu
+
+82
+00:03:50,959 --> 00:03:53,660
+màu sắc của qml để có thêm thông tin
+
+83
+00:03:53,660 --> 00:03:58,810
+về vấn đề này. Hãy đổi những số khác thành 0
+
+84
+00:04:00,160 --> 00:04:04,790
+và để độ đục bằng 1 để khiến nó
+
+85
+00:04:04,790 --> 00:04:07,600
+mờ hoàn toàn và để cho nó đỏ
+
+86
+00:04:07,600 --> 00:04:13,459
+hoàn toàn. Chạy ứng dụng, chúng ta sẽ có 
+
+87
+00:04:13,459 --> 00:04:16,880
+màu đỏ lamf nền cho phần văn tự ở đây, chính là
+
+88
+00:04:16,880 --> 00:04:19,190
+thứ mà chúng ta có. Ok hãy đổi nó lại
+
+89
+00:04:19,190 --> 00:04:21,310
+vì màu đỏ này nhìn thật khó chịu.
+
+90
+00:04:21,310 --> 00:04:24,169
+Có một kiểu dữ liệu khác gọi là
+
+91
+00:04:24,169 --> 00:04:26,620
+rect mà các bạn sử dụng để đại diện cho
+
+92
+00:04:26,620 --> 00:04:28,750
+hình chữ nhật hãy quay lại tài liệu và
+
+93
+00:04:28,750 --> 00:04:35,889
+cho các bạn xem thứ này, rect. Kiểu rect
+
+94
+00:04:35,889 --> 00:04:38,979
+đề cập đến một giá trị vơi X. Y, rộng
+
+95
+00:04:38,979 --> 00:04:41,260
+và cao. Nó thực chất đạo diện một
+
+96
+00:04:41,260 --> 00:04:43,780
+hình chữ nhật. Để cho các bạn thấy các thuộc tính
+
+97
+00:04:43,780 --> 00:04:45,820
+ở trong thứ này tôi sẽ hiển thị
+
+98
+00:04:45,820 --> 00:04:48,520
+thành phần này. Okay hãy quay lại
+
+99
+00:04:48,520 --> 00:04:54,810
+phương thức oncompleted ở đây và viết
+
+100
+00:04:54,810 --> 00:05:00,729
+console.log - a rect height - okay các bạn có thể
+
+101
+00:05:00,729 --> 00:05:03,550
+truy cập những thứ này tôi nghĩ đây là 
+
+102
+00:05:03,550 --> 00:05:07,330
+đúng rồi. Và hãy thay đổi giá trị để
+
+103
+00:05:07,330 --> 00:05:12,340
+khiến nó không phải là hình vuông. Hãy
+
+104
+00:05:12,340 --> 00:05:16,800
+thay cái này thành 17, thay cái này thành 56,
+
+105
+00:05:16,800 --> 00:05:22,180
+thay cái này thành 46, thay cái này... hãy để
+
+106
+00:05:22,180 --> 00:05:24,760
+nguyên nó là 10, không có vấn đề gì cả. Hãy chạy
+
+107
+00:05:24,760 --> 00:05:27,310
+ứng dụng, đây là X, đây là Y, đây là
+
+108
+00:05:27,310 --> 00:05:30,370
+chiều rộng, đây là chiều cao. Okay và các bạn
+
+109
+00:05:30,370 --> 00:05:37,479
+có thể thấy X là 17, Y là 56, rộng là 46
+
+110
+00:05:37,479 --> 00:05:40,330
+và cao là 10 chính là những thứ chúng ta
+
+111
+00:05:40,330 --> 00:05:42,250
+đã đặt. Các bạn có thể truy cập những giá trị này.
+
+112
+00:05:42,250 --> 00:05:44,550
+Có một kiểu dữ liệu khác mà được goi là
+
+113
+00:05:44,550 --> 00:05:47,950
+point - điểm. Hãy đi tới phần tài liệu
+
+114
+00:05:47,950 --> 00:05:52,870
+và xem nó là gì. Okay nó đề cập tới
+
+115
+00:05:52,870 --> 00:05:55,510
+một giá trị có thuộc tính X và Y các bạn có thể 
+
+116
+00:05:55,510 --> 00:05:58,990
+sử dụng nó để chứa các đôi giá trị với 1 cái
+
+117
+00:05:58,990 --> 00:06:01,840
+là X và một cái là Y. Tôi sẽ không
+
+118
+00:06:01,840 --> 00:06:03,729
+cho các bạn xem cách hiển thị thứ
+
+119
+00:06:03,729 --> 00:06:07,510
+này bởi vì nó thực sự tương tự nhau. Rồi
+
+120
+00:06:07,510 --> 00:06:09,970
+size - kichs thước - là một dạng dữ liệu khác mà
+
+121
+00:06:09,970 --> 00:06:13,300
+đề cập tới giá trị với rộng và dài.
+
+122
+00:06:13,300 --> 00:06:16,919
+Và nếu bạn xem ở đây các bạn có thể thấy rằng
+
+123
+00:06:16,919 --> 00:06:21,789
+chữ nhật thực ra là tập hợp điểm và kích thước
+
+124
+00:06:21,789 --> 00:06:24,580
+vào một thứ. Đây là một vài kiểu dữ liệu mà
+
+125
+00:06:24,580 --> 00:06:26,530
+các bạn có thể sử dụng. Các bạn có thể kiểm tra chúng
+
+126
+00:06:26,530 --> 00:06:29,020
+nếu các bạn quan tâm nhưng bây giờ chúng ta
+
+127
+00:06:29,020 --> 00:06:31,570
+sẽ nghịch kiểu dữ liệu array - dãy -
+
+128
+00:06:31,570 --> 00:06:34,150
+và hàm này ở đây. Nếu các bạn quan sát
+
+129
+00:06:34,150 --> 00:06:36,580
+dãy này nó chứa các lại dữ liệu khác nhau
+
+130
+00:06:36,580 --> 00:06:40,210
+có số nguyên, có cả xâu.
+
+131
+00:06:40,210 --> 00:06:43,389
+Okay nếu các bạn quan sát ở đây, đây là một 
+
+132
+00:06:43,389 --> 00:06:45,840
+hàm các bạn có thể làm như thế này trong
+
+133
+00:06:45,840 --> 00:06:48,759
+JavaScript nếu các bạn đã lập trình
+
+134
+00:06:48,759 --> 00:06:51,880
+bằng ngôn ngữ như C, C++ hay Java. Các bạn sẽ
+
+135
+00:06:51,880 --> 00:06:54,580
+thấy rằng nó hơi lạ
+
+136
+00:06:54,580 --> 00:06:57,190
+bởi vì thường thì các bạn không bỏ các kiểu
+
+137
+00:06:57,190 --> 00:06:59,680
+dữ liệu khác nhay vào một dãy nhưng các bạn có thể làm thế này
+
+138
+00:06:59,680 --> 00:07:02,050
+trong JavaScript. Vậy chúng ta sẽ làm gì,
+
+139
+00:07:02,050 --> 00:07:04,780
+Chúng ta sẽ chơi với dãy này. Ví dụ
+
+140
+00:07:04,780 --> 00:07:07,870
+chúng ta có thể hiển thị chiều dày nếu các bạn
+
+141
+00:07:07,870 --> 00:07:11,020
+nhìn vào các đối tượng của nó, đây là 1 - 2 -
+
+142
+00:07:11,020 --> 00:07:14,289
+3 - 4 - 5 - 6 đối tượng trong
+
+143
+00:07:14,289 --> 00:07:18,190
+dãy. Nếu chúng ta muốn hiển thị chúng ta
+
+144
+00:07:18,190 --> 00:07:23,650
+có thể lầm như thế này console.log ("The
+
+145
+00:07:23,650 --> 00:07:29,530
+length of the array is, nó được gọi là gì nhỉ
+
+146
+00:07:29,530 --> 00:07:35,099
+tôi quên mất rồi, anArray. Hãy làm thế này
+
+147
+00:07:35,099 --> 00:07:39,849
+và các bạn có thể thấy các bạn có thể hiển thị
+
+148
+00:07:39,849 --> 00:07:43,360
+chiều dài của nó. Hãy chạy chương trình. Hmm 
+
+149
+00:07:43,360 --> 00:07:45,789
+chiều dài là 6, chúng ta có 6 đối tượng trong
+
+150
+00:07:45,789 --> 00:07:48,759
+dãy. Vậy nếu các bạn muốn hiển thị các
+
+151
+00:07:48,759 --> 00:07:51,639
+đối tượng trong dãy thì sao? Điều là các bạn có thể làm là
+
+152
+00:07:51,639 --> 00:07:53,650
+lặp qua tất cả các phần tử này và 
+
+153
+00:07:53,650 --> 00:07:56,830
+hiển thị chúng. Cách mà các bạn làm thế, thực ra đây là kiến thức
+
+154
+00:07:56,830 --> 00:07:59,169
+của JavaScript, nên nếu các bạn
+
+155
+00:07:59,169 --> 00:08:01,030
+thấy nó hơi khó hiểu các bạn 
+
+156
+00:08:01,030 --> 00:08:06,490
+có thể cân nhắc xem qua vài bài
+ 
+0:08:03.570,0:08:08.409
+hướng dẫn của javascript để có được những thứ cơ bản,
+
+157
+00:08:06,490 --> 00:08:08,409
+nhưng nếu các bạn để có kinh nghiệm
+
+158
+00:08:08,409 --> 00:08:10,479
+lập trình thì nó không phải là mới.
+
+159
+00:08:10,479 --> 00:08:15,849
+Điều các bạn có thể làm là viết anArray.forEach
+
+160
+00:08:15,849 --> 00:08:19,509
+và bên trong đưa vào một hàm
+
+161
+00:08:19,509 --> 00:08:22,060
+gọi. Cách các bạn làm thế là các bạn viết
+
+162
+00:08:22,060 --> 00:08:26,169
+function(value) value sẽ là 
+
+163
+00:08:26,169 --> 00:08:28,719
+giá trị mà các bạn sẽ sử dụng.
+
+164
+00:08:28,719 --> 00:08:32,130
+Chúng ta bỏ cái này vào một dòng riêng và
+
+165
+00:08:32,130 --> 00:08:35,679
+chúng ta có thể làm gì ở bên, chúng ta có thể hiển thị
+
+166
+00:08:35,679 --> 00:08:38,078
+giá trị ở đây. Việc mà cái nài đang làm là
+
+167
+00:08:38,078 --> 00:08:40,750
+lặp qua các phần tử trong dãy và ở 
+
+168
+00:08:40,750 --> 00:08:43,659
+mỗi lần lặp nó sẽ lưu lại giá trị của
+
+169
+00:08:43,659 --> 00:08:46,899
+phần tử chúng ta đang dừng lại trên dãy
+
+170
+00:08:46,899 --> 00:08:49,480
+trong biến này mà được gọi là value để chúng ta
+
+171
+00:08:49,480 --> 00:08:52,540
+có thể hiện thị nó. Để chứng minh trường hợp của chúng ta hãy thực hiện
+
+172
+00:08:52,540 --> 00:08:53,380
+console.log(value).
+
+173
+00:08:53,380 --> 00:08:57,940
+Chỉ để cho các bạn xem chúng ta
+
+174
+00:08:57,940 --> 00:09:00,970
+thu về các giá trị trong dãy. Nếu chúng ta
+
+175
+00:09:00,970 --> 00:09:03,460
+chạy ứng dụng chúng ta sẽ thấy chúng
+
+176
+00:09:03,460 --> 00:09:07,780
+1 - 2 - 3 - four - five và chúng ta có hàm ở đây,
+
+177
+00:09:07,780 --> 00:09:10,180
+tại sao lại như thế này? Chúng ta thấy hàm ở đây
+
+178
+00:09:10,180 --> 00:09:12,430
+vì phần tử cuối cùng trong
+
+179
+00:09:12,430 --> 00:09:15,250
+dãy là một hàm. Nếu chúng ta chúng hàm này
+
+180
+00:09:15,250 --> 00:09:18,160
+hiển thị giá trị trả về ở đây
+
+181
+00:09:18,160 --> 00:09:20,800
+mà là six chúng ta sẽ cần gọi đến
+
+182
+00:09:20,800 --> 00:09:24,040
+nó như là một hàm và cách chúng ta có thể
+
+183
+00:09:24,040 --> 00:09:27,490
+làm thế là thêm vào index như là
+
+184
+00:09:27,490 --> 00:09:30,150
+tham số thứ 2 trong hàm của chúng ta. Và
+
+185
+00:09:30,150 --> 00:09:40,840
+viết là if (index === 5) console.log (value())
+
+186
+00:09:40,840 --> 00:09:44,770
+và gội đến nó như một hàm, nếu nó không
+
+187
+00:09:44,770 --> 00:09:47,230
+phải là 5 chúng ta sẽ làm như bình thường
+
+188
+00:09:47,230 --> 00:09:51,210
+chúng ta đã làm trước đây console.log(value).
+
+189
+00:09:51,210 --> 00:09:55,620
+Tôi biết là cái này hơi khó hiểu
+
+190
+00:09:55,620 --> 00:09:58,570
+cho những bạn không quen với
+
+191
+00:09:58,570 --> 00:10:01,300
+JavaScript nhưng nếu các bạn tham gia vài kháo hướng dẫn
+
+192
+00:10:01,300 --> 00:10:03,340
+hay vài kháo học về JavaScript thì nó
+
+193
+00:10:03,340 --> 00:10:05,650
+sẽ khá dễ hiểu. Chúng ta thực ra
+
+194
+00:10:05,650 --> 00:10:08,470
+đang kiểm tra xem chúng ta có đang ở
+
+195
+00:10:08,470 --> 00:10:11,170
+giá trị này không, nếu chúng ta đang ở giá trị này
+
+196
+00:10:11,170 --> 00:10:13,540
+chúng ta sẽ gọi đến nó như một hàm
+
+197
+00:10:13,540 --> 00:10:16,870
+chú ý đến đôi ngoặc đơn chúng ta để
+
+198
+00:10:16,870 --> 00:10:19,390
+ở đây và nếu nó là một đối tượng khác chúng ta chỉ
+
+199
+00:10:19,390 --> 00:10:22,600
+cần hiển thị nó. Neesus chúng ta chạy lại lần nữa chúng ta sẽ
+
+200
+00:10:22,600 --> 00:10:25,810
+nhìn thấy phần hiển thị như mong muốn từ 1 dến six.
+
+201
+00:10:25,810 --> 00:10:28,480
+Và các bạn thấy là six được hiển thị ở đây.
+
+202
+00:10:28,480 --> 00:10:31,900
+Đây là một cách để hiển thị các phần tử của
+
+203
+00:10:31,900 --> 00:10:34,450
+dãy mà các bạn có, nếu các bạn không
+
+204
+00:10:34,450 --> 00:10:37,260
+thích cách này chúng ta có thể sử dụng một
+
+205
+00:10:37,260 --> 00:10:41,050
+vong lặp for bình thường mà các bạn đã gặp trong các
+
+206
+00:10:41,050 --> 00:10:44,020
+ngôn ngữ lập trình khác. Tôi cũng nắm lấy
+
+207
+00:10:44,020 --> 00:10:45,670
+cơ hội này để cho các bạn thấy các bạn có thể thực hiện
+
+208
+00:10:45,670 --> 00:10:48,900
+bình luận trong qml. Okay đây là
+
+209
+00:10:48,900 --> 00:10:52,000
+bình luân nhiều dòng các bạn cũng có thể làm
+
+210
+00:10:52,000 --> 00:10:53,920
+những bình luân như thế này ví dụ các bạn
+
+211
+00:10:53,920 --> 00:10:55,390
+muốn đưa dòng này vào phần bình luận các bạn có thể sử dụng
+
+212
+00:10:55,390 --> 00:10:58,120
+hai dấu "/" như thế này để đưa nó
+
+213
+00:10:58,120 --> 00:11:00,040
+vào phần bình luận. Okay nó sẽ không được
+
+214
+00:11:00,040 --> 00:11:02,890
+thực hiện khi ứng dụng được
+
+215
+00:11:02,890 --> 00:11:07,120
+dịch, Chúng ta có thể bỏ chỗ này vào phần bình luận
+
+216
+00:11:07,120 --> 00:11:14,130
+và chúng ta có thể viết for (var i = 0; I < anArray.length; i++)
+
+217
+00:11:14,130 --> 00:11:17,620
+vì i nhỏ hơn độ dài của dãy nên
+
+218
+00:11:17,620 --> 00:11:22,410
+chúng ta sẽ dùng anArray.length và 
+
+219
+00:11:22,410 --> 00:11:28,600
+tăng cái này và nếu chúng ta ở vào
+
+220
+00:11:28,600 --> 00:11:30,700
+vì trí thứ 5 chúng ta sẽ thu về 
+
+221
+00:11:30,700 --> 00:11:33,460
+đối tượng hiện tại. Đây là cách các bạn thu nó về
+
+222
+00:11:33,460 --> 00:11:35,380
+các bạn đưa vào tên của dãy
+
+223
+00:11:35,380 --> 00:11:37,540
+các bạn sử dụng ngoặc vuông và bên trong
+
+224
+00:11:37,540 --> 00:11:40,660
+các bạn đưa vào số hiệu và các bạn gọi đến nó như là
+
+225
+00:11:40,660 --> 00:11:43,450
+một hàm cũng bằng cách đưa vào đôi ngoặc kép
+
+226
+00:11:43,450 --> 00:11:45,940
+như chúng ta làm ở trên kia. Và nếu chúng ta 
+
+227
+00:11:45,940 --> 00:11:48,310
+không phải ở vì trí thứ 5 chúng ta
+
+228
+00:11:48,310 --> 00:11:50,920
+chỉ làm như bình thường và hiển thị 
+
+229
+00:11:50,920 --> 00:11:54,610
+phần tử của dãy ở vị trí này. Nếu chúng ta chạy
+
+230
+00:11:54,610 --> 00:11:56,260
+ứng dụng chúng ta sẽ thấy điều
+
+231
+00:11:56,260 --> 00:11:59,770
+tương tự. Ok 1 đến six. Các bạn có thể sử dụng
+
+232
+00:11:59,770 --> 00:12:02,290
+bất cứ cách nào các bạn thấy hợp lý
+
+233
+00:12:02,290 --> 00:12:03,970
+nhiều bạn sẽ thích cái này 
+
+234
+00:12:03,970 --> 00:12:06,820
+bởi vì nó quen thuộc hơn nhưng cái này có thể thuận tiện
+
+235
+00:12:06,820 --> 00:12:09,310
+và rất dể hiểu
+
+236
+00:12:09,310 --> 00:12:11,410
+nếu các bạn bắt đầu làm quen với
+
+237
+00:12:11,410 --> 00:12:14,470
+JavaScript. Tôi hiện tại thích dùng cách này.
+
+238
+00:12:14,470 --> 00:12:17,589
+Ok cho đến hiện tại chúng ta đã thấy nhiều cách dùng
+
+239
+00:12:17,589 --> 00:12:21,100
+của kiểu dữ liệu var nhưng có 2 kiểu 
+
+240
+00:12:21,100 --> 00:12:23,470
+dữ liệu khác mà tôi muốn các bạn tìm hiểu
+
+241
+00:12:23,470 --> 00:12:26,470
+một là kiểu dữ liệu font mà các bạn sử dụng để
+
+242
+00:12:26,470 --> 00:12:29,440
+lưu thông cho font cho văn tự của mình.
+
+243
+00:12:29,440 --> 00:12:32,170
+Nếu các bạn muốn tìm hiểu thêm về kiểu
+
+244
+00:12:32,170 --> 00:12:34,270
+dữ liệu font các bạn có thể đi tới
+
+245
+00:12:34,270 --> 00:12:37,150
+phần tài liệu và tìm font. Nó 
+
+246
+00:12:37,150 --> 00:12:39,790
+đơn giản vậy thôi. Nếu các bạn kéo xuống các bạn sẽ
+
+247
+00:12:39,790 --> 00:12:44,950
+tìm thấy kiểu dữ liệu fone trong qml và các bạn có thể
+
+248
+00:12:44,950 --> 00:12:47,320
+thấy tất cả tông tin về nó và các
+
+249
+00:12:47,320 --> 00:12:49,270
+thuộc tính mà các bạn có thể đặt cho chúng.
+
+250
+00:12:49,270 --> 00:12:51,940
+Nếu các bạn muốn đặt font này cho
+
+251
+00:12:51,940 --> 00:12:54,760
+văn tự của các bạn các bạn có thể làm thế
+
+252
+00:12:54,760 --> 00:12:57,400
+rất đơn giản. Các bạn có thể bỏ cái này vào bình luận
+
+253
+00:12:57,400 --> 00:13:03,959
+làm ví dụ và viết font : aFont.
+
+254
+00:13:06,550 --> 00:13:10,630
+Hãy chạy lại và các bạn thấy là font
+
+255
+00:13:10,630 --> 00:13:13,510
+đã thay đổi. Đây là font mà chúng ta 
+
+256
+00:13:13,510 --> 00:13:15,790
+đã định nghĩa ở đây mà chúng ta đang sử dụng.
+
+257
+00:13:15,790 --> 00:13:18,820
+okay các bạn có thể quyết định kiểu chữ,
+
+258
+00:13:18,820 --> 00:13:22,120
+kích thước của nó hay nó có in đậm hay không. Ví dụ
+
+259
+00:13:22,120 --> 00:13:24,420
+nếu chúng ta thay đổi chỗ này thành false và
+
+260
+00:13:24,420 --> 00:13:26,019
+chạy lại.
+
+261
+00:13:26,019 --> 00:13:30,399
+Nó sẽ không còn được in đậm nữa. Okay các bạn
+
+262
+00:13:30,399 --> 00:13:32,950
+đã thấy cái này. Một kiểu dữ liệu khác mà các bạn có thể
+
+263
+00:13:32,950 --> 00:13:35,170
+sử dụng trong qml là thuộc tính date.
+
+264
+00:13:35,170 --> 00:13:37,779
+Các bạn sử dụng nó để làm việc với
+
+265
+00:13:37,779 --> 00:13:40,990
+trong tin về thời gian và các bạn có thể chỉ định một
+
+266
+00:13:40,990 --> 00:13:44,230
+ngày như thế này. Okay ví dụ nếu chúng ta quay lại
+
+267
+00:13:44,230 --> 00:13:47,790
+phương thức oncompleted của chúng ta ở đây,
+
+268
+00:13:47,790 --> 00:14:02,260
+chúng ta có thể viết console.log mDate. Hãy chạy
+
+269
+00:14:02,260 --> 00:14:05,230
+và xem chúng ta sẽ thấy gì. Các bạn thấy là
+
+270
+00:14:05,230 --> 00:14:08,529
+nó hiển thị đầy đủ thông tin của
+
+271
+00:14:08,529 --> 00:14:11,350
+ngày giờ ở chỗ tôi. Okay nó hiển thị
+
+272
+00:14:11,350 --> 00:14:13,779
+bằng tiếng Trung vì vị trí của tôi đang ở Trung Quốc
+
+273
+00:14:13,779 --> 00:14:17,079
+nhưng điều tôi muốn cho các bạn thấy là
+
+274
+00:14:17,079 --> 00:14:19,060
+các bạn có thể gọi nhiều phương thức
+
+275
+00:14:19,060 --> 00:14:22,300
+đối với đối tượng date này. Ví dụ các bạn có thể
+
+276
+00:14:22,300 --> 00:14:26,350
+.getDate, .getDay, .getFullyear, đây là những
+
+277
+00:14:26,350 --> 00:14:29,320
+phương thứ mà được ghi lại trong dữ liệu
+
+278
+00:14:29,320 --> 00:14:33,010
+đối tượng trong tài liệu JavaScript. Tôi
+
+279
+00:14:33,010 --> 00:14:35,680
+sẽ nói nhiều hơn về cách các bạn sử dụng
+
+280
+00:14:35,680 --> 00:14:38,200
+JavaScript trong code của mình khi tôi nói về
+
+281
+00:14:38,200 --> 00:14:40,510
+JavaScript kết hợp với qml
+
+282
+00:14:40,510 --> 00:14:42,670
+nhưng bây giờ tôi chỉ muốn các bạn có nhận thức
+
+283
+00:14:42,670 --> 00:14:45,430
+về những thứ có sẵn và cách các bạn
+
+284
+00:14:45,430 --> 00:14:47,860
+sử dụng chúng. Và nó thực sự không khả thi
+
+285
+00:14:47,860 --> 00:14:50,560
+để nói về qml mà không sử dụng
+
+286
+00:14:50,560 --> 00:14:52,839
+JavaScript, nó sẽ được thực hiện
+
+287
+00:14:52,839 --> 00:14:55,270
+các bạn cần thấy một chút JavaScript kể cả khi
+
+288
+00:14:55,270 --> 00:14:57,459
+chúng ta chưa tìm hiểu về JavaScript
+
+289
+00:14:57,459 --> 00:14:59,949
+trong qml. Điều cuối cùng chúng ta
+
+290
+00:14:59,949 --> 00:15:02,410
+sẽ tìm hiểu là cái hàm ở đây, các bạn
+
+291
+00:15:02,410 --> 00:15:05,560
+có thể gán một hàm cho một
+
+292
+00:15:05,560 --> 00:15:09,430
+biến và gọi đến nó như một hàm.
+
+293
+00:15:09,430 --> 00:15:13,000
+Điều chúng ta có thể làm là xuống dưới này và viết
+
+294
+00:15:13,000 --> 00:15:15,690
+console.log
+
+295
+00:15:16,170 --> 00:15:20,820
+và gọi đến nó. Okay chúng ta sẽ viết
+
+296
+00:15:20,820 --> 00:15:25,380
+aFunction và gọi đến nó như thế này. Nếu các bạn
+
+297
+00:15:25,380 --> 00:15:28,200
+không bỏ thêm dôi ngoặc đơn các bạn sẽ
+
+298
+00:15:28,200 --> 00:15:30,720
+thấy điều tương tự chúng ta thấy khi chúng ta
+
+299
+00:15:30,720 --> 00:15:34,079
+gọi đến đối tượng cuối cùng của dãy,
+
+300
+00:15:34,079 --> 00:15:36,930
+mà cũng là một hàm. Các bạn sẽ thấy
+
+301
+00:15:36,930 --> 00:15:38,850
+là nó là một hàm nhưng nó sẽ không
+
+302
+00:15:38,850 --> 00:15:41,100
+hiển thị cho bạn giá trị nên bạn cần bỏ thêm
+
+303
+00:15:41,100 --> 00:15:43,110
+vào đôi ngoặc đơn để thực sự làm cho
+
+304
+00:15:43,110 --> 00:15:45,440
+hàm đó thực hiện những gì nó vốn phải làm.
+
+305
+00:15:45,440 --> 00:15:48,630
+Hãy chạy ứng dụng lần nữa và
+
+306
+00:15:48,630 --> 00:15:49,800
+các bạn sẽ thấy là giá trị của
+
+307
+00:15:49,800 --> 00:15:52,949
+hàm là one mà chúng là thứ được
+
+308
+00:15:52,949 --> 00:15:56,310
+trả về ở đây. Ví dụ nếu chúng ta trả về
+
+309
+00:15:56,310 --> 00:16:02,279
+Seven và chạy lại lần nữa nó sẽ nó là 
+
+310
+00:16:02,279 --> 00:16:06,570
+the function value is Seven. Và hãy chứ ý đến
+
+311
+00:16:06,570 --> 00:16:08,760
+cú pháp ở đây nó có thể đúng với
+
+312
+00:16:08,760 --> 00:16:11,639
+vài bạn nhưng nó chỉ là một cách 
+
+313
+00:16:11,639 --> 00:16:13,980
+để nhét mọi thứ vào một dòng và làm nó
+
+314
+00:16:13,980 --> 00:16:16,709
+dẽ quan sát hơn một chút. Bây giờ
+
+315
+00:16:16,709 --> 00:16:18,690
+đây đã hoàn thiện những gì chúng ta đề ra trong
+
+316
+00:16:18,690 --> 00:16:20,699
+bài học này. Tôi mong các bạn bây giờ
+
+317
+00:16:20,699 --> 00:16:23,100
+đã khá rõ về các kiểu dữ liệu mà
+
+318
+00:16:23,100 --> 00:16:25,560
+có sẵn cho các bạn làm việc trong
+
+319
+00:16:25,560 --> 00:16:28,260
+qml và cách các bạn sử dụng một vài
+
+320
+00:16:28,260 --> 00:16:30,870
+kiểu dữ liệu này để tạo ảnh hưởng đến code và
+
+321
+00:16:30,870 --> 00:16:33,630
+khiến vài thứ trong ngăn nắp hơn. Trong bài
+
+322
+00:16:33,630 --> 00:16:35,579
+tiếp theo chúng ta sẽ tìm hiểu về
+
+323
+00:16:35,579 --> 00:16:39,120
+một khái niệm cực kỳ quan trọng trong qml mà chính là
+
+324
+00:16:39,120 --> 00:00:00,000
+liên kết thuộc tính. Tôi sẽ gặp lịa các bạn tong bài tiếp theo.
+

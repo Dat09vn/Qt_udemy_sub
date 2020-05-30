@@ -1,0 +1,868 @@
+1
+00:00:00,000 --> 00:00:02,399
+In this lecture we're going to do a demo
+
+2
+00:00:02,399 --> 00:00:05,100
+on working with translation, rotation and scaling.
+
+3
+00:00:05,100 --> 00:00:08,099
+And let's go to Qt Creator and do that.
+
+4
+00:00:08,099 --> 00:00:11,010
+Okay, here we are, in Qt Creator.
+
+5
+00:00:11,010 --> 00:00:13,530
+We're going to create a new project.
+
+6
+00:00:13,530 --> 00:00:15,570
+it's going to be a Qt Quick Application as usual.
+
+7
+00:00:15,570 --> 00:00:18,000
+we're going to call it 'TransformsDemo',
+
+8
+00:00:18,000 --> 00:00:22,789
+save it in a location on our drive,
+
+9
+00:00:22,789 --> 00:00:27,230
+choose our Qt Version, choose our kit and finish.
+
+10
+00:00:27,230 --> 00:00:30,900
+So, what we want to do is put
+
+11
+00:00:30,900 --> 00:00:32,700
+a set of rectangles in this window here,
+
+12
+00:00:32,700 --> 00:00:35,940
+and apply the transforms when you click
+
+13
+00:00:35,940 --> 00:00:37,739
+on the rectangle. We are going to do
+
+14
+00:00:37,739 --> 00:00:40,710
+translation, rotation and scaling.
+
+15
+00:00:40,710 --> 00:00:42,180
+Because we don't want to be repeating ourselves,
+
+16
+00:00:42,180 --> 00:00:45,090
+we want to create a component and use it all over again.
+
+17
+00:00:45,090 --> 00:00:47,550
+So we want to come here
+
+18
+00:00:47,550 --> 00:00:52,559
+to this QML resource file, add new, Qt,
+
+19
+00:00:52,559 --> 00:00:57,030
+we want to add the QML file and we want
+
+20
+00:00:57,030 --> 00:01:03,120
+to call it 'ClickableRect'
+
+21
+00:01:03,120 --> 00:01:05,159
+because that's what it is. We don't want to do
+
+22
+00:01:05,159 --> 00:01:08,460
+anything fancy here. We want to change
+
+23
+00:01:08,460 --> 00:01:12,299
+this 'import' to import the latest version
+
+24
+00:01:12,299 --> 00:01:14,880
+of Qt Quick and we want to turn this into
+
+25
+00:01:14,880 --> 00:01:16,830
+a rectangle. We don't want to do anything fancy.
+
+26
+00:01:16,830 --> 00:01:19,530
+We want to give it an ID.
+
+27
+00:01:19,530 --> 00:01:22,020
+Let's call this 'root' and we are going to
+
+28
+00:01:22,020 --> 00:01:25,439
+declare a 'signal' here to notify us when
+
+29
+00:01:25,439 --> 00:01:27,780
+the Mouse Area inside this rectangle is
+
+30
+00:01:27,780 --> 00:01:30,180
+clicked and we want to define
+
+31
+00:01:30,180 --> 00:01:34,350
+our MouseArea. Notice that we didn't put
+
+32
+00:01:34,350 --> 00:01:37,200
+any parentheses on the signal here. This
+
+33
+00:01:37,200 --> 00:01:40,110
+is possible in QML. We want the MouseArea
+
+34
+00:01:40,110 --> 00:01:44,670
+to fill the 'parent' and when it is
+
+35
+00:01:44,670 --> 00:01:48,509
+clicked, we want to emit this signal and
+
+36
+00:01:48,509 --> 00:01:50,729
+you already know how to emit a signal,
+
+37
+00:01:50,729 --> 00:01:53,729
+we call it like we call another JavaScript function.
+
+38
+00:01:53,729 --> 00:01:56,899
+So we're going to say a
+
+39
+00:01:56,899 --> 00:02:00,540
+'root.clicked()' like this.
+
+40
+00:02:00,540 --> 00:02:03,149
+Okay, our component here is done. We can
+
+41
+00:02:03,149 --> 00:02:05,850
+come back to main QML and start
+
+42
+00:02:05,850 --> 00:02:08,128
+working with that. We want to change the
+
+43
+00:02:08,128 --> 00:02:11,250
+title here to 'Transform Demo'.
+
+44
+00:02:11,250 --> 00:02:13,060
+We want to put in a rectangle
+
+45
+00:02:13,060 --> 00:02:17,080
+that is going to fill the window.
+
+46
+00:02:17,080 --> 00:02:23,500
+Inside this is going to be container. We wanted to
+
+47
+00:02:23,500 --> 00:02:27,250
+fill the parent and we wanted to have a
+
+48
+00:02:27,250 --> 00:02:31,120
+colour. Let's put in 'beige' and inside we
+
+49
+00:02:31,120 --> 00:02:33,880
+want to have a MouseArea that is going
+
+50
+00:02:33,880 --> 00:02:39,730
+to fill this rectangle. Let's say 'parent'
+
+51
+00:02:39,730 --> 00:02:42,370
+because it is the parent of this mouse
+
+52
+00:02:42,370 --> 00:02:45,330
+area and we want to know when it is clicked.
+
+53
+00:02:45,330 --> 00:02:49,120
+And this is where we are going to do a
+
+54
+00:02:49,120 --> 00:02:51,610
+few changes to the rectangles that we
+
+55
+00:02:51,610 --> 00:02:54,190
+are about to define. So we are going to
+
+56
+00:02:54,190 --> 00:02:57,730
+go down here and define our rectangles.
+
+57
+00:02:57,730 --> 00:03:01,060
+We are going to use 'ClickableRect',
+
+58
+00:03:01,060 --> 00:03:03,940
+the type that we just defined in here.
+
+59
+00:03:03,940 --> 00:03:08,319
+The ID is going to be 'rect1Id'. We want the
+
+60
+00:03:08,319 --> 00:03:14,049
+width to be 100 same as height. We wanted to
+
+61
+00:03:14,049 --> 00:03:18,310
+start at the x position of 50 and the
+
+62
+00:03:18,310 --> 00:03:21,670
+y position of 100. And when the
+
+63
+00:03:21,670 --> 00:03:23,920
+rectangle is clicked, notice that we can
+
+64
+00:03:23,920 --> 00:03:27,880
+say onclicked because we declared this
+
+65
+00:03:27,880 --> 00:03:30,430
+signal here, in the component here. We can
+
+66
+00:03:30,430 --> 00:03:33,150
+define a handler of this signal here.
+
+67
+00:03:33,150 --> 00:03:36,010
+Okay this is the convenience of using component.
+
+68
+00:03:36,010 --> 00:03:38,950
+So when you click on this
+
+69
+00:03:38,950 --> 00:03:42,370
+rectangle, the first one, we want to
+
+70
+00:03:42,370 --> 00:03:45,549
+translate on the x-axis. We are going to
+
+71
+00:03:45,549 --> 00:03:47,769
+increase the x-coordinate of this
+
+72
+00:03:47,769 --> 00:03:49,540
+rectangle here. So we're going to say x
+
+73
+00:03:49,540 --> 00:03:55,269
++=, let's add 20 for example.
+
+74
+00:03:55,269 --> 00:03:58,150
+Okay, we should also give it a colour so that
+
+75
+00:03:58,150 --> 00:04:01,959
+we can differentiate them by just
+
+76
+00:04:01,959 --> 00:04:05,079
+looking at them. The colour is going to be
+
+77
+00:04:05,079 --> 00:04:09,060
+'red'. We want to copy this rectangle
+
+78
+00:04:09,060 --> 00:04:11,639
+because it's going to be mostly the same.
+
+79
+00:04:11,639 --> 00:04:15,639
+We are just changing the transforms that
+
+80
+00:04:15,639 --> 00:04:18,668
+we do when we click. Here we are doing a
+
+81
+00:04:18,668 --> 00:04:21,480
+translation
+
+82
+00:04:21,480 --> 00:04:26,990
+on x. This is going to be 'rect2Id'.
+
+83
+00:04:26,990 --> 00:04:31,080
+We want to put this at the x of 250
+
+84
+00:04:31,080 --> 00:04:34,050
+by default and when you click it we want
+
+85
+00:04:34,050 --> 00:04:37,560
+to add on its rotation property. Okay, we
+
+86
+00:04:37,560 --> 00:04:40,710
+want to add to the rotation angle, we're
+
+87
+00:04:40,710 --> 00:04:43,020
+going to add 15. We are going to see how
+
+88
+00:04:43,020 --> 00:04:45,210
+this works and the colour is going to be
+
+89
+00:04:45,210 --> 00:04:49,920
+'green'. Let's copy, put in our third
+
+90
+00:04:49,920 --> 00:04:54,180
+rectangle. By the way we should flag here
+
+91
+00:04:54,180 --> 00:05:00,240
+that we are working on rotation. Here we
+
+92
+00:05:00,240 --> 00:05:05,160
+are going to work on scaling. It should
+
+93
+00:05:05,160 --> 00:05:08,580
+be a 'rect3Id' here. And it's going to
+
+94
+00:05:08,580 --> 00:05:11,880
+start at the x location of 450.
+
+95
+00:05:11,880 --> 00:05:14,400
+Here we are going to add on this scale property
+
+96
+00:05:14,400 --> 00:05:18,030
+so we're going to say scale +=
+
+97
+00:05:18,030 --> 00:05:22,410
+let's add 0.05. We're going to see
+
+98
+00:05:22,410 --> 00:05:23,220
+how this looks.
+
+99
+00:05:23,220 --> 00:05:25,620
+These are the rectangles that are going
+
+100
+00:05:25,620 --> 00:05:28,800
+to be contained in the window here and
+
+101
+00:05:28,800 --> 00:05:30,690
+the widow is going to have a background
+
+102
+00:05:30,690 --> 00:05:34,470
+of this rectangle here. That is 'beige'.
+
+103
+00:05:34,470 --> 00:05:36,810
+We want to know when the user clicks
+
+104
+00:05:36,810 --> 00:05:39,420
+outside of these rectangles and we want
+
+105
+00:05:39,420 --> 00:05:41,220
+to put the rectangles back to the
+
+106
+00:05:41,220 --> 00:05:42,600
+starting position.
+
+107
+00:05:42,600 --> 00:05:45,180
+When you click here rect1 should go
+
+108
+00:05:45,180 --> 00:05:47,540
+back to x 50 so we're going to say
+
+109
+00:05:47,540 --> 00:05:52,530
+rect1Id.x equals 50. This is how
+
+110
+00:05:52,530 --> 00:05:58,710
+you bring them back. rect2Id.rotation
+
+111
+00:05:58,710 --> 00:06:01,440
+the rotation should go back to zero, so
+
+112
+00:06:01,440 --> 00:06:04,580
+we're going to say rotation equals zero.
+
+113
+00:06:04,580 --> 00:06:08,610
+rect3Id is going to go back to
+
+114
+00:06:08,610 --> 00:06:11,970
+the scale of 1 because this is the
+
+115
+00:06:11,970 --> 00:06:16,590
+default scale of our component. And these
+
+116
+00:06:16,590 --> 00:06:19,770
+properties, rotation and scale, I don't
+
+117
+00:06:19,770 --> 00:06:21,840
+think we talked about them before but
+
+118
+00:06:21,840 --> 00:06:24,120
+you can find them in the documentation.
+
+119
+00:06:24,120 --> 00:06:27,950
+Let's look at the 'rectangle' for example.
+
+120
+00:06:27,950 --> 00:06:32,760
+Click to find it, look at properties.
+
+121
+00:06:32,760 --> 00:06:35,400
+Okay, you see that it inherited item,
+
+122
+00:06:35,400 --> 00:06:37,530
+and if we look at properties that we
+
+123
+00:06:37,530 --> 00:06:41,580
+have here we are going to find, let's
+
+124
+00:06:41,580 --> 00:06:43,830
+scroll down a little bit, you can find
+
+125
+00:06:43,830 --> 00:06:47,669
+rotation, you can find scale here. And if
+
+126
+00:06:47,669 --> 00:06:48,990
+you click, they are going to tell you
+
+127
+00:06:48,990 --> 00:06:51,000
+exactly what they do. This property holds
+
+128
+00:06:51,000 --> 00:06:53,130
+the rotation of the item in degrees
+
+129
+00:06:53,130 --> 00:06:57,300
+clockwise around its transformOrigin.
+
+130
+00:06:57,300 --> 00:06:59,759
+We're going to look at transformOrigin
+
+131
+00:06:59,759 --> 00:07:02,610
+in a moment. But for now we just want to
+
+132
+00:07:02,610 --> 00:07:05,630
+run the application and see how it looks.
+
+133
+00:07:05,630 --> 00:07:08,729
+Okay, our app is here. The third rectangle,
+
+134
+00:07:08,729 --> 00:07:11,340
+we should change the colour. But if we
+
+135
+00:07:11,340 --> 00:07:13,110
+click on the red rectangle, you see that
+
+136
+00:07:13,110 --> 00:07:17,460
+it moves to the right. Okay if we click
+
+137
+00:07:17,460 --> 00:07:19,350
+on the green rectangle, you see that it
+
+138
+00:07:19,350 --> 00:07:22,229
+rotates around. And if we click on the
+
+139
+00:07:22,229 --> 00:07:24,449
+third rectangle, you see that it grows in size.
+
+140
+00:07:24,449 --> 00:07:29,099
+This is scaling in action. Okay if
+
+141
+00:07:29,099 --> 00:07:30,780
+you click outside, you see that they go
+
+142
+00:07:30,780 --> 00:07:35,639
+back to where they're belong. Okay, click
+
+143
+00:07:35,639 --> 00:07:37,979
+outside, they go back. We should go back
+
+144
+00:07:37,979 --> 00:07:39,690
+and change the colour of the third
+
+145
+00:07:39,690 --> 00:07:42,479
+rectangle to be 'blue', so that we can
+
+146
+00:07:42,479 --> 00:07:46,470
+differentiate these things. Okay now I
+
+147
+00:07:46,470 --> 00:07:48,050
+want you to see how you can work with
+
+148
+00:07:48,050 --> 00:07:50,789
+transformOrigin. This really makes sense
+
+149
+00:07:50,789 --> 00:07:54,449
+on rotation and scaling. If you look at
+
+150
+00:07:54,449 --> 00:07:56,970
+the second rectangle, if we click on it
+
+151
+00:07:56,970 --> 00:07:59,940
+you see that it is rotating and the
+
+152
+00:07:59,940 --> 00:08:02,400
+centre of the rotation is in the middle
+
+153
+00:08:02,400 --> 00:08:04,680
+of the rectangle. You click on the third rectangle,
+
+154
+00:08:04,680 --> 00:08:06,479
+you see also that it is
+
+155
+00:08:06,479 --> 00:08:09,560
+scaling but the centre of these scaling
+
+156
+00:08:09,560 --> 00:08:12,389
+behaviour is in the centre here. You can
+
+157
+00:08:12,389 --> 00:08:15,210
+actually modify this centre of the
+
+158
+00:08:15,210 --> 00:08:17,940
+transform by changing the transformOrigin property.
+
+159
+00:08:17,940 --> 00:08:20,729
+I think we can also look at this here.
+
+160
+00:08:20,729 --> 00:08:23,820
+This is the property that
+
+161
+00:08:23,820 --> 00:08:26,099
+holds the origin point around which
+
+162
+00:08:26,099 --> 00:08:29,639
+scale and rotation transform.
+
+163
+00:08:29,639 --> 00:08:31,949
+Okay, you can specify your transform to happen around
+
+164
+00:08:31,949 --> 00:08:34,979
+the top left, the top, top right
+
+165
+00:08:34,979 --> 00:08:39,000
+you can specify any of this enumerations here.
+
+166
+00:08:39,000 --> 00:08:41,520
+So we're going to go back to our code.
+
+167
+00:08:41,520 --> 00:08:45,480
+Look at the rotation transform that
+
+168
+00:08:45,480 --> 00:08:48,230
+we did here and say transformOrigin.
+
+169
+00:08:48,230 --> 00:08:51,860
+This is how you influence it.
+
+170
+00:08:51,860 --> 00:08:54,810
+Let's look at the documentation and see
+
+171
+00:08:54,810 --> 00:08:59,430
+what we can pass it here. We can say 
+
+172
+00:08:59,430 --> 00:09:01,920
+'Item.BottomRight' for example. Why not copy
+
+173
+00:09:01,920 --> 00:09:05,490
+this and try it in our code. This is
+
+174
+00:09:05,490 --> 00:09:06,740
+great, right?
+
+175
+00:09:06,740 --> 00:09:11,310
+Okay our rectangle, the green one, is
+
+176
+00:09:11,310 --> 00:09:14,220
+going to rotate around the bottom right point.
+
+177
+00:09:14,220 --> 00:09:19,350
+Let's run the application.
+
+178
+00:09:19,350 --> 00:09:22,290
+Okay the bottom right point is here. If we click,
+
+179
+00:09:22,290 --> 00:09:25,200
+you see that our rotation happens around them.
+
+180
+00:09:25,200 --> 00:09:28,920
+Let's bring it back to the start by
+
+181
+00:09:28,920 --> 00:09:31,830
+clicking the beige rectangle. We can keep
+
+182
+00:09:31,830 --> 00:09:34,170
+playing with it. Come back to our code.
+
+183
+00:09:34,170 --> 00:09:36,810
+Let's say top right. Why's not
+
+184
+00:09:36,810 --> 00:09:41,190
+top right? If we run again, it's going to
+
+185
+00:09:41,190 --> 00:09:43,800
+rotate around the top right corner of
+
+186
+00:09:43,800 --> 00:09:46,620
+the rectangle. And this is what we have.
+
+187
+00:09:46,620 --> 00:09:48,720
+You can also do the same on the third rectangle,
+
+188
+00:09:48,720 --> 00:09:51,900
+where we apply is scaling transform.
+
+189
+00:09:51,900 --> 00:09:55,850
+So let's copy this for example.
+
+190
+00:09:55,850 --> 00:10:04,850
+Put it down here and say bottom left.
+
+191
+00:10:04,850 --> 00:10:13,140
+Why not? Let's run. And see our scaling
+
+192
+00:10:13,140 --> 00:10:15,600
+happening here. You see that the bottom
+
+193
+00:10:15,600 --> 00:10:20,100
+left is fixed and we are scaling in the
+
+194
+00:10:20,100 --> 00:10:22,590
+other directions. I hope this makes sense
+
+195
+00:10:22,590 --> 00:10:24,930
+and if you happen to need to do these
+
+196
+00:10:24,930 --> 00:10:27,480
+kind of changes, you can play with this
+
+197
+00:10:27,480 --> 00:10:31,410
+transformOrigin property of your item
+
+198
+00:10:31,410 --> 00:10:35,040
+in your QML code. Okay, and you can really
+
+199
+00:10:35,040 --> 00:10:38,070
+see that the transformOrigin is the
+
+200
+00:10:38,070 --> 00:10:40,740
+point around which your transform is
+
+201
+00:10:40,740 --> 00:10:43,470
+going to pivot. This brings us to the end
+
+202
+00:10:43,470 --> 00:10:45,540
+of this lecture. I hope it shed some
+
+203
+00:10:45,540 --> 00:10:47,100
+light on how you can work with these
+
+204
+00:10:47,100 --> 00:10:49,680
+kinds of transforms and really nothing
+
+205
+00:10:49,680 --> 00:10:51,960
+prevents you from mixing and matching
+
+206
+00:10:51,960 --> 00:10:56,100
+them. For example you can take the third
+
+207
+00:10:56,100 --> 00:10:58,890
+rectangle and also apply a rotation
+
+208
+00:10:58,890 --> 00:11:02,100
+property. Okay so that these things happen
+
+209
+00:11:02,100 --> 00:11:06,269
+together. Let's run and if you click, you
+
+210
+00:11:06,269 --> 00:11:09,870
+see that it is rotating and scaling at
+
+211
+00:11:09,870 --> 00:11:13,139
+the same time. Of course, if you click on
+
+212
+00:11:13,139 --> 00:11:15,389
+the beige rectangle, things go back to
+
+213
+00:11:15,389 --> 00:11:17,490
+normal, because we are resetting
+
+214
+00:11:17,490 --> 00:11:20,459
+everything here. In the next lecture, we
+
+215
+00:11:20,459 --> 00:11:22,199
+are going to introduce you to the
+
+216
+00:11:22,199 --> 00:11:24,720
+fascinating world of working with
+
+217
+00:11:24,720 --> 00:00:00,000
+animations in QML. I'll see you there.
+

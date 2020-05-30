@@ -1,0 +1,400 @@
+1
+00:00:00,199 --> 00:00:04,350
+models and views in this section we will
+
+2
+00:00:04,350 --> 00:00:07,319
+learn an important architecture in cute
+
+3
+00:00:07,319 --> 00:00:11,400
+it's called model view then we'll go get
+
+4
+00:00:11,400 --> 00:00:13,639
+our hands on the table motor under view
+
+5
+00:00:13,639 --> 00:00:18,690
+then the lace to model under view models
+
+6
+00:00:18,690 --> 00:00:22,859
+and views in killed in this video you
+
+7
+00:00:22,859 --> 00:00:24,600
+are going to learn the concept of the
+
+8
+00:00:24,600 --> 00:00:28,230
+Model View architecture then you'll get
+
+9
+00:00:28,230 --> 00:00:30,300
+to know what the buting models and views
+
+10
+00:00:30,300 --> 00:00:34,739
+cute has provided you may have heard of
+
+11
+00:00:34,739 --> 00:00:37,739
+MVC which stands for Model View
+
+12
+00:00:37,739 --> 00:00:41,760
+controller it originates from small talk
+
+13
+00:00:41,760 --> 00:00:45,059
+that is usually used when building user
+
+14
+00:00:45,059 --> 00:00:48,180
+interfaces the idea is to increase
+
+15
+00:00:48,180 --> 00:00:51,719
+flexibility and code reuse in the MVC
+
+16
+00:00:51,719 --> 00:00:54,649
+world there are three kinds of objects
+
+17
+00:00:54,649 --> 00:00:58,590
+Model View controller in the book design
+
+18
+00:00:58,590 --> 00:01:01,680
+patterns it rains the model is the
+
+19
+00:01:01,680 --> 00:01:04,470
+application model the view is the screen
+
+20
+00:01:04,470 --> 00:01:07,200
+presentation and the controller defines
+
+21
+00:01:07,200 --> 00:01:10,290
+the way that the user interface reacts
+
+22
+00:01:10,290 --> 00:01:15,060
+to the user input before MVC these
+
+23
+00:01:15,060 --> 00:01:17,850
+objects tend to be lumped together if
+
+24
+00:01:17,850 --> 00:01:19,950
+you combine the controller and the view
+
+25
+00:01:19,950 --> 00:01:22,320
+objects then you get the Model View
+
+26
+00:01:22,320 --> 00:01:29,909
+architecture the idea is the same to
+
+27
+00:01:29,909 --> 00:01:31,920
+separate the data model and the
+
+28
+00:01:31,920 --> 00:01:35,670
+Princeton tation but with Model View
+
+29
+00:01:35,670 --> 00:01:37,530
+architecture the framework is
+
+30
+00:01:37,530 --> 00:01:40,049
+effectively simpler cute has also
+
+31
+00:01:40,049 --> 00:01:44,640
+introduced a new kind of object towards
+
+32
+00:01:44,640 --> 00:01:47,790
+delegate to handle user input more
+
+33
+00:01:47,790 --> 00:01:51,600
+flexibly the delegate sits between the
+
+34
+00:01:51,600 --> 00:01:54,750
+view and the model and it makes data
+
+35
+00:01:54,750 --> 00:01:59,280
+rendering and editing customized in cute
+
+36
+00:01:59,280 --> 00:02:02,040
+these three components are defined by
+
+37
+00:02:02,040 --> 00:02:04,829
+abstract classes that provide common
+
+38
+00:02:04,829 --> 00:02:06,840
+interfaces and some default
+
+39
+00:02:06,840 --> 00:02:09,720
+implementations since they are abstract
+
+40
+00:02:09,720 --> 00:02:12,580
+classes you can create your homes
+
+41
+00:02:12,580 --> 00:02:16,180
+the models mused and delegates how did
+
+42
+00:02:16,180 --> 00:02:18,880
+they communicate naturally in a very
+
+43
+00:02:18,880 --> 00:02:23,920
+cute way signals and slots now let's
+
+44
+00:02:23,920 --> 00:02:26,080
+take a look at what beauty models we
+
+45
+00:02:26,080 --> 00:02:29,320
+have in cute all item models are based
+
+46
+00:02:29,320 --> 00:02:32,440
+on the cue abstract item bundle class
+
+47
+00:02:32,440 --> 00:02:34,930
+the model defines how the news and
+
+48
+00:02:34,930 --> 00:02:40,360
+dedicates access data however the model
+
+49
+00:02:40,360 --> 00:02:42,520
+doesn't have to store the data the data
+
+50
+00:02:42,520 --> 00:02:44,560
+can be stored in the database or
+
+51
+00:02:44,560 --> 00:02:47,590
+provided by another class no matter what
+
+52
+00:02:47,590 --> 00:02:50,980
+the underlying data structure may be all
+
+53
+00:02:50,980 --> 00:02:53,830
+subclasses of q abstract item model
+
+54
+00:02:53,830 --> 00:02:57,160
+represents the data as a hierarchical
+
+55
+00:02:57,160 --> 00:03:00,330
+structure thus contains tables of items
+
+56
+00:03:00,330 --> 00:03:03,580
+this is required because of the view
+
+57
+00:03:03,580 --> 00:03:05,980
+uses this convention to access these
+
+58
+00:03:05,980 --> 00:03:10,420
+items by referencing data indices cute
+
+59
+00:03:10,420 --> 00:03:13,270
+has provided some ready-made models from
+
+60
+00:03:13,270 --> 00:03:15,760
+the simple q string list a model to
+
+61
+00:03:15,760 --> 00:03:19,930
+full-featured q SQL table model it's
+
+62
+00:03:19,930 --> 00:03:21,940
+also quite common to create your own
+
+63
+00:03:21,940 --> 00:03:24,580
+model class by sub classing one of the
+
+64
+00:03:24,580 --> 00:03:29,680
+abstract model classes as for News the
+
+65
+00:03:29,680 --> 00:03:32,260
+standard review interface is provided by
+
+66
+00:03:32,260 --> 00:03:35,050
+Q abstract item view as the name
+
+67
+00:03:35,050 --> 00:03:37,390
+suggests it works with the model
+
+68
+00:03:37,390 --> 00:03:40,360
+interface provided by Q abstract item
+
+69
+00:03:40,360 --> 00:03:43,840
+model in the spirit of separation of the
+
+70
+00:03:43,840 --> 00:03:47,530
+model and the view the view may present
+
+71
+00:03:47,530 --> 00:03:51,910
+the data in a very different way from
+
+72
+00:03:51,910 --> 00:03:55,090
+the underlying data structure Muse can
+
+73
+00:03:55,090 --> 00:03:57,940
+render individual items of data directly
+
+74
+00:03:57,940 --> 00:04:00,520
+or use dedicates to handle both
+
+75
+00:04:00,520 --> 00:04:04,030
+rendering and editing ready-made views
+
+76
+00:04:04,030 --> 00:04:07,060
+Franky's include cue list view cue table
+
+77
+00:04:07,060 --> 00:04:11,860
+view and a cute tree view lastly let's
+
+78
+00:04:11,860 --> 00:04:15,130
+take a look up delegate in the model
+
+79
+00:04:15,130 --> 00:04:17,560
+view architecture cue abstract item
+
+80
+00:04:17,560 --> 00:04:21,548
+delegate is the abstract class for
+
+81
+00:04:21,548 --> 00:04:23,590
+delegate the default in
+
+82
+00:04:23,590 --> 00:04:26,620
+limitation is provided by cue styled
+
+83
+00:04:26,620 --> 00:04:29,500
+item delegate and used by standard muse
+
+84
+00:04:29,500 --> 00:04:33,220
+by default delegates control how the
+
+85
+00:04:33,220 --> 00:04:36,280
+input is obtained from the user as well
+
+86
+00:04:36,280 --> 00:04:39,760
+as how individual items are rendered but
+
+87
+00:04:39,760 --> 00:04:42,220
+unlike the model-view-controller pattern
+
+88
+00:04:42,220 --> 00:04:46,330
+a delegate does not manage interaction
+
+89
+00:04:46,330 --> 00:04:49,570
+completely the view is responsible for
+
+90
+00:04:49,570 --> 00:04:52,180
+processing user input as well as the
+
+91
+00:04:52,180 --> 00:04:54,729
+layout of the whole model the subtle
+
+92
+00:04:54,729 --> 00:04:57,040
+difference however gives the Model View
+
+93
+00:04:57,040 --> 00:05:00,100
+architecture more flexibility and keep
+
+94
+00:05:00,100 --> 00:05:05,530
+it simple you may find default delegates
+
+95
+00:05:05,530 --> 00:05:07,840
+are good enough in quite a lot of common
+
+96
+00:05:07,840 --> 00:05:10,810
+cases though we will instead focus on
+
+97
+00:05:10,810 --> 00:05:13,540
+two typical models and the views later
+
+98
+00:05:13,540 --> 00:05:17,310
+in following videos in the next video
+
+99
+00:05:17,310 --> 00:05:19,539
+you will learn how to use the table
+
+100
+00:05:19,539 --> 00:00:00,000
+model and the view
+

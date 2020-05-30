@@ -1,0 +1,468 @@
+1
+00:00:00,000 --> 00:00:01,829
+In this lecture, we are looking at
+
+2
+00:00:01,829 --> 00:00:04,620
+functions and scope in JavaScript used
+
+3
+00:00:04,620 --> 00:00:08,790
+in QML. Here we are in QT creator. We're
+
+4
+00:00:08,790 --> 00:00:10,889
+going to do the usual and create our
+
+5
+00:00:10,889 --> 00:00:13,500
+project. We're going to call it functions
+
+6
+00:00:13,500 --> 00:00:22,109
+and scope demo. Hit "Next", choose our
+
+7
+00:00:22,109 --> 00:00:26,010
+desktop kit and finish. Let's change this
+
+8
+00:00:26,010 --> 00:00:29,160
+to functions. We are going to do the
+
+9
+00:00:29,160 --> 00:00:33,780
+usual, create a rectangle inside, give it
+
+10
+00:00:33,780 --> 00:00:41,550
+an ID. Give it a width of 300, give it a
+
+11
+00:00:41,550 --> 00:00:48,260
+height of 100, put it in the center and
+
+12
+00:00:48,260 --> 00:00:53,309
+give it a color of blue this time. On the
+
+13
+00:00:53,309 --> 00:00:56,780
+root level, I want to define a function
+
+14
+00:00:56,780 --> 00:01:02,750
+that computes the minimum of two numbers.
+
+15
+00:01:05,030 --> 00:01:10,830
+And it's going to return. There is a math
+
+16
+00:01:10,830 --> 00:01:14,670
+object that is available to you globally
+
+17
+00:01:14,670 --> 00:01:17,700
+in JavaScript and we can use it to
+
+18
+00:01:17,700 --> 00:01:19,920
+compute the minimum of two numbers and
+
+19
+00:01:19,920 --> 00:01:22,320
+we are just going to pass in a and b
+
+20
+00:01:22,320 --> 00:01:24,990
+here. It's going to return the minimum.
+
+21
+00:01:24,990 --> 00:01:27,930
+Okay. So what we can do now is use this
+
+22
+00:01:27,930 --> 00:01:30,270
+function to compute, for example, the
+
+23
+00:01:30,270 --> 00:01:33,920
+width of this rectangle. We can say
+
+24
+00:01:33,920 --> 00:01:39,000
+minimum, for example, 300 and 400. This is
+
+25
+00:01:39,000 --> 00:01:41,400
+just a silly example of showing you how
+
+26
+00:01:41,400 --> 00:01:43,020
+you can use a function. It's really not
+
+27
+00:01:43,020 --> 00:01:45,509
+that useful here, but the point is to
+
+28
+00:01:45,509 --> 00:01:47,970
+show you how you can use functions in QML.
+
+29
+00:01:47,970 --> 00:01:51,720
+Run the application. Nothing
+
+30
+00:01:51,720 --> 00:01:53,670
+is going to change. It's going to be 300,
+
+31
+00:01:53,670 --> 00:01:57,420
+but if, for example, you pass in 500 here
+
+32
+00:01:57,420 --> 00:02:02,880
+let's do a component on completed signal
+
+33
+00:02:02,880 --> 00:02:08,220
+handler and console.log the width of
+
+34
+00:02:08,220 --> 00:02:10,229
+this rectangle so that we can improve
+
+35
+00:02:10,229 --> 00:02:12,560
+this.
+
+36
+00:02:15,150 --> 00:02:19,420
+we use its ID. Let's run the application.
+
+37
+00:02:19,420 --> 00:02:24,460
+It should show 400 and it's 400 here. So
+
+38
+00:02:24,460 --> 00:02:26,490
+our function here is working correctly.
+
+39
+00:02:26,490 --> 00:02:29,350
+one thing I want you to know is that the
+
+40
+00:02:29,350 --> 00:02:31,780
+function that you define on the root
+
+41
+00:02:31,780 --> 00:02:35,170
+level is callable anywhere in that
+
+42
+00:02:35,170 --> 00:02:37,630
+element. Okay, for example, we can call
+
+43
+00:02:37,630 --> 00:02:39,970
+this function here in rectangle, we can
+
+44
+00:02:39,970 --> 00:02:42,580
+call this function here in component
+
+45
+00:02:42,580 --> 00:02:45,100
+onCompleted. To prove that to you, we're
+
+46
+00:02:45,100 --> 00:02:47,650
+going to take out this here and say
+
+47
+00:02:47,650 --> 00:02:53,670
+min. The same thing we did there, 500, 400.
+
+48
+00:02:53,670 --> 00:02:57,520
+Run the application. It works the same.
+
+49
+00:02:57,520 --> 00:02:59,980
+Okay, you can call this function anywhere. 
+
+50
+00:02:59,980 --> 00:03:02,860
+But if we put a MouseArea, for example,
+
+51
+00:03:02,860 --> 00:03:04,480
+here, I'm going to show you something.
+
+52
+00:03:04,480 --> 00:03:09,630
+That is not very obvious. Let's make it
+
+53
+00:03:09,630 --> 00:03:16,120
+fill the parent and onClicked, 
+
+54
+00:03:16,120 --> 00:03:18,250
+we're going to do something that's usual.
+
+55
+00:03:18,250 --> 00:03:26,470
+We want to give this an ID and define a
+
+56
+00:03:26,470 --> 00:03:29,680
+function down here. So going to say
+
+57
+00:03:29,680 --> 00:03:37,660
+function and it's going to say something
+
+58
+00:03:37,660 --> 00:03:40,870
+to the console, for example, "hello world" or
+
+59
+00:03:40,870 --> 00:03:45,220
+"hello there". This is better. When we click
+
+60
+00:03:45,220 --> 00:03:51,010
+here, we're going to say sayMessage. Okay,
+
+61
+00:03:51,010 --> 00:03:53,260
+we define a function in this MouseArea
+
+62
+00:03:53,260 --> 00:03:55,750
+and then we call it when we click on the
+
+63
+00:03:55,750 --> 00:03:58,180
+MouseArea. If we run the application, it
+
+64
+00:03:58,180 --> 00:04:01,330
+is going to work as usual. Click here
+
+65
+00:04:01,330 --> 00:04:04,030
+"hello there". This is a message that is
+
+66
+00:04:04,030 --> 00:04:07,060
+coming from this function here. But one
+
+67
+00:04:07,060 --> 00:04:09,130
+thing I want to show you is that you
+
+68
+00:04:09,130 --> 00:04:11,790
+cannot call this same message function
+
+69
+00:04:11,790 --> 00:04:15,490
+anywhere outside without using the ID of
+
+70
+00:04:15,490 --> 00:04:18,670
+this MouseArea. So for example, in the
+
+71
+00:04:18,670 --> 00:04:21,880
+component.onCompleted method, we cannot
+
+72
+00:04:21,880 --> 00:04:24,580
+say sayMessage.
+
+73
+00:04:24,580 --> 00:04:26,750
+Okay, you see that it's not even
+
+74
+00:04:26,750 --> 00:04:30,410
+recognized. But even if we run, because
+
+75
+00:04:30,410 --> 00:04:33,050
+sometimes QT creator doesn't recognize
+
+76
+00:04:33,050 --> 00:04:36,860
+if invalid stuff, mm-hmm
+
+77
+00:04:36,860 --> 00:04:39,500
+sayMessage is not defined. To be able to
+
+78
+00:04:39,500 --> 00:04:42,140
+call this method that is nested in and
+
+79
+00:04:42,140 --> 00:04:44,660
+never sibling element, you have to use
+
+80
+00:04:44,660 --> 00:04:48,080
+the ID. So if we use the ID of this MouseArea,
+
+81
+00:04:48,080 --> 00:04:53,870
+let's copy and put it here and I
+
+82
+00:04:53,870 --> 00:04:55,970
+put a dot, you're going to see that it is
+
+83
+00:04:55,970 --> 00:04:56,930
+recognized
+
+84
+00:04:56,930 --> 00:04:59,210
+I think QT creator is going to
+
+85
+00:04:59,210 --> 00:05:02,390
+recognize that. Okay, you see that it
+
+86
+00:05:02,390 --> 00:05:05,060
+recognizes it and we have autocomplete
+
+87
+00:05:05,060 --> 00:05:08,510
+available. Okay. If we run when the
+
+88
+00:05:08,510 --> 00:05:11,150
+component is loaded, we're going to see
+
+89
+00:05:11,150 --> 00:05:13,610
+the message here "hello there" even if we
+
+90
+00:05:13,610 --> 00:05:15,800
+didn't click on this blue rectangle. It
+
+91
+00:05:15,800 --> 00:05:18,440
+is coming from this place when the
+
+92
+00:05:18,440 --> 00:05:20,810
+component is loaded successfully.
+
+93
+00:05:20,810 --> 00:05:23,420
+I hope this drives home the point that
+
+94
+00:05:23,420 --> 00:05:26,450
+to call a method it either has to be
+
+95
+00:05:26,450 --> 00:05:29,150
+defined in that element, for example, here
+
+96
+00:05:29,150 --> 00:05:31,460
+in the MouseArea, we define this method
+
+97
+00:05:31,460 --> 00:05:34,630
+and we called it. Okay. And any other
+
+98
+00:05:34,630 --> 00:05:38,510
+child items of MouseArea here are going
+
+99
+00:05:38,510 --> 00:05:41,420
+to see this function. But you cannot call
+
+100
+00:05:41,420 --> 00:05:44,810
+this method outside this MouseArea. To
+
+101
+00:05:44,810 --> 00:05:46,640
+be able to call a method, it has to be
+
+102
+00:05:46,640 --> 00:05:50,150
+defined in the root level of the parent
+
+103
+00:05:50,150 --> 00:05:54,200
+item or inside that particular element
+
+104
+00:05:54,200 --> 00:05:55,760
+where you are calling the method.
+
+105
+00:05:55,760 --> 00:05:58,460
+Otherwise, you're not going to be able to
+
+106
+00:05:58,460 --> 00:06:00,530
+call it and you're going to have to use
+
+107
+00:06:00,530 --> 00:06:03,980
+IDs to target the element where the
+
+108
+00:06:03,980 --> 00:06:07,160
+method is defined. This is what we mean
+
+109
+00:06:07,160 --> 00:06:09,710
+when we say function and scope. It really
+
+110
+00:06:09,710 --> 00:06:11,690
+means where we can use this function
+
+111
+00:06:11,690 --> 00:06:13,340
+without having an error.
+
+112
+00:06:13,340 --> 00:06:16,010
+Okay. This covers all we set out to do in
+
+113
+00:06:16,010 --> 00:06:17,750
+this lecture. In the next one, we're going
+
+114
+00:06:17,750 --> 00:06:19,880
+to see how we can import some external
+
+115
+00:06:19,880 --> 00:06:23,120
+javascript code and use it in our QML
+
+116
+00:06:23,120 --> 00:06:25,400
+file here. I'll see you in the next
+
+117
+00:06:25,400 --> 00:00:00,000
+lecture.
+

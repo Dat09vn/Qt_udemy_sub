@@ -1,0 +1,197 @@
+00:01.630 --> 00:10.000
+Widgets and the layouts. In this section we will talk about different widgets and layouts, from display
+
+00:10.000 --> 00:18.130
+widgets such as label to editable widgets like a line edit. Then we will talk about layouts and
+
+00:18.130 --> 00:18.640
+tabs
+
+00:21.660 --> 00:30.540
+In the video 2.1, display widgets, you are going to learn how to display text in a label and text browser
+
+00:30.670 --> 00:35.290
+ widgets then how to display images in the label widget.
+
+00:35.760 --> 00:39.900
+Lastly you're learning how to make use of a progress bar.
+
+00:39.900 --> 00:41.460
+Now let's get started.
+
+00:43.860 --> 00:45.990
+Create a new Qt widgets
+
+00:46.050 --> 01:02.860
+application project.
+
+01:02.970 --> 01:05.580
+It should be a Q main window based project
+
+01:10.310 --> 01:14.640
+if you remember what we did in previous videos.
+
+01:14.650 --> 01:19.080
+Double-click the mainwindow.ui file to the design mode.
+
+01:19.290 --> 01:22.770
+Now we're going to design the user interface.
+
+01:22.770 --> 01:25.950
+Now we're going to drag a label widget into the view
+
+01:30.620 --> 01:34.100
+then we're going to drag  and drop a text browser widget
+
+01:36.910 --> 01:45.640
+change the layout of that central widget to lay out horizontally because we're going to send the same
+
+01:45.640 --> 01:48.660
+text to source for these two widgets.
+
+01:48.760 --> 01:50.590
+We would do it in the source code
+
+03:33.090 --> 03:37.470
+with the default properties label widgets doesn’t wrap the text,
+
+03:37.500 --> 03:40.690
+that's why you see the widgets gets awkwardly long.
+
+03:40.950 --> 03:50.610
+By contrast text browser will make a scroll panel and embed the text displaying widgets, inside the
+
+03:50.610 --> 03:57.690
+text get wrapped automatically in text browser and it walks like a read only editor. You can select
+
+03:58.080 --> 04:05.520
+and copy the selection. You may wish to take a look at text browsers documentation and check the property 
+
+04:05.520 --> 04:07.780
+panel in design mode.
+
+04:12.240 --> 04:16.990
+You'll see what properties you have to tweak this widget.
+
+04:18.540 --> 04:22.470
+Now let's go to the fun part, showing an image in label widget
+
+04:26.750 --> 04:31.090
+so I will use a cat picture to demo.
+
+04:31.820 --> 04:34.070
+So I will use a cat picture to demo this
+
+04:41.390 --> 04:44.630
+Let’s first remove the text browser widgets from the view
+
+04:49.930 --> 04:51.840
+back to mainwindow.cpp
+
+04:58.240 --> 04:59.910
+we are use Qpixmap
+
+05:05.150 --> 05:10.250
+it's so simple that's all you need to do is to load pictures from the file
+
+05:33.080 --> 05:36.870
+Then call set Pixmap method of the label widget
+
+05:46.770 --> 05:50.270
+This method will display the pixmap on the screen.
+
+05:50.280 --> 05:52.080
+Now if you give your application a run, 
+
+05:57.680 --> 06:02.690
+you will see the image is shown on the screen in the label widget as we expect.
+
+06:10.250 --> 06:14.000
+The last debate of this video is about the progress bar.
+
+06:14.060 --> 06:17.600
+Go back to the UI design.
+
+06:17.600 --> 06:19.690
+Remove all the widgets.
+
+06:19.690 --> 06:23.210
+Now we drag a progress bar into the view.
+
+06:23.810 --> 06:28.440
+If you check the property panel by default it has a value 24.
+
+06:28.670 --> 06:31.100
+Here we're going to set it back to zero.
+
+06:31.700 --> 06:34.760
+So the initial states makes more sense.
+
+06:37.850 --> 06:46.970
+Also by default the state value range is from 0 to 100 as you can see here.
+
+06:46.990 --> 06:48.270
+You might want to change it 
+
+06:48.280 --> 06:49.540
+if you have special need
+
+06:55.570 --> 07:02.970
+we will make use of the progress bar built-in slot function call it setvalue but in this demo,
+
+07:03.040 --> 07:10.180
+we will just use it as a regular member function and I'll use a q timer to update the progress bar
+
+07:10.270 --> 07:11.770
+every half second.
+
+07:12.190 --> 07:14.740
+So firstly let's create a slot
+
+07:30.160 --> 07:34.270
+then we are going to create a Q timer that times up every half second
+
+07:46.980 --> 07:48.840
+we set interval to half second
+
+07:52.440 --> 07:54.710
+then we connect to the time out signal.
+
+08:08.450 --> 08:10.850
+After the second non-connected we start the timer
+
+08:15.050 --> 08:19.080
+by default the Q timer emits timeout signal repeatly
+
+08:19.130 --> 08:28.310
+after the interval time but if you want to only emits the signal once and then a stop afterwards you need to
+
+08:28.310 --> 08:37.530
+set the single shot to true.
+
+08:37.700 --> 08:39.420
+Now let's get to the slot part
+
+08:42.650 --> 08:45.360
+we first get the values from the progress bar
+
+08:53.530 --> 08:57.130
+we check the value if it's greater than a hundred
+
+09:00.480 --> 09:08.710
+if is greater or equal to 100 than what you can halt it because progress bar has already been full.
+
+09:10.080 --> 09:18.630
+Otherwise we increment the value by one and set it back to the UI progress bar.
+
+09:26.200 --> 09:27.810
+If you run the application now
+
+09:49.620 --> 09:55.860
+you can see the progress bar increment in the value every half seconds. In real life,
+
+09:55.860 --> 10:02.140
+This should of course reflect some meaningful process. In the next video,
+
+10:02.210 --> 10:04.590
+we will talk about editable widgets.

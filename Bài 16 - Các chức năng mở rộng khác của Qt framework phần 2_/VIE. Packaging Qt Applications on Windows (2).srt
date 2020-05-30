@@ -1,0 +1,204 @@
+﻿1
+00:00:00,810 --> 00:00:07,040
+Đây là video 7.1: Qt trên máy tính nói về đóng gói trên Windows. Và trong video này chúng ta sẽ học cách
+
+2
+00:00:07,040 --> 00:00:10,440
+Xây dựng để phát hành , Xây dựng trình cài đặt
+
+3
+00:00:10,580 --> 00:00:13,990
+Và cuối cùng học cách cài đặt và gỡ cài đặt một package.
+
+4
+00:00:14,050 --> 00:00:17,720
+Điều đầu tiên chúng ta cần làm là tạo một bản phát hành(a release build)
+
+5
+00:00:17,930 --> 00:00:23,810
+chúng ta cần mở file colors.pro, sau đó kéo xuống dưới,
+
+6
+00:00:23,810 --> 00:00:28,330
+bấm vào đây, và chúng ta sẽ chuyển build từ debug sang release.
+
+7
+00:00:28,490 --> 00:00:31,630
+Và chờ một chút để chương trình chạy chuyển đổi.
+
+8
+00:00:31,760 --> 00:00:35,560
+Chờ cho tới khi icon sáng trở lại chúng ta lại click vào tạo project.
+
+9
+00:00:35,600 --> 00:00:40,490
+Bây giờ chúng ta nhấn vào tab project, chúng ta có thể nhìn thấy thư mục mà chúng ta vừa tạo.
+
+10
+00:00:40,490 --> 00:00:44,050
+Chúng ta sẽ tiến hành thay đổi thư mục này.
+
+11
+00:00:45,580 --> 00:00:48,860
+Chúng ta cũng cần chuyển đổi nó thành thư mục phát hành.
+
+12
+00:00:48,870 --> 00:00:58,300
+Bây giờ chúng ta cần chạy Window.qt trên file color.pro của chúng ta. Nếu nó chưa được build xong thì nó sẽ vẫn tiếp tục việc biên dịch
+
+13
+00:00:58,330 --> 00:01:03,370
+Chúng ta cần nhập lệnh windeployqt trên colors.exe
+
+14
+00:01:03,370 --> 00:01:04,830
+Chúng ta hãy làm điều đó ngay bây giờ.
+
+15
+00:01:05,950 --> 00:01:09,830
+Và chương trình tiếp tục chạy và tạo ra những file nền (background files) mà chúng ta cần
+
+16
+00:01:09,970 --> 00:01:14,390
+Bây giờ, tôi có windeployqt được liên kết với biến môi trường (environmental variable) đường dẫn của tôi
+
+17
+00:01:14,410 --> 00:01:17,460
+Nhưng có lẽ bạn sẽ không cần phải chạy biến này từ nguồn thực tế.
+
+18
+00:01:17,530 --> 00:01:26,210
+Ví dụ như, windeployqt của tôi sẽ nằm trong đường dẫn này
+
+19
+00:01:26,230 --> 00:01:28,620
+C:\Qt\Qt5.10.0\5.10.0\mingw53_32\bin\windeployedqt.exe.
+
+20
+00:01:28,780 --> 00:01:32,650
+Đường link sẽ phụ thuộc vào nơi bạn cài đặt nó trong thư mục, bạn cần phải tìm ra đường link ấy
+
+21
+00:01:32,680 --> 00:01:36,540
+Tiếp tục chạy để có thể tạo ra các folder và file mà chúng ta cần.
+
+22
+00:01:36,670 --> 00:01:41,890
+Và bây giờ chúng ta đã hoàn thành xong công việc và tiếp theo sẽ đi tới phần xây dựng trình cài đặt
+
+23
+00:01:41,890 --> 00:01:43,810
+Chúng ta mở Visual Studio và tạo một project mới.
+
+24
+00:01:44,050 --> 00:01:49,060
+Thực ra điều mà chúng ta cần phải làm bây giờ là tạo một trình cài đặt visual studio mới.
+
+25
+00:01:49,090 --> 00:01:54,600
+Nó nên được đặt ở Installed> Other project types> Visual Studio installer
+
+26
+00:01:54,790 --> 00:02:00,670
+Nếu không, bạn sẽ cần phải chạy cài đặt chuyên biệt Visual Studio debility và cài đặt nó trong máy tính của bạn
+
+27
+00:02:00,670 --> 00:02:07,440
+để làm được việc đó.  Chúng ta tiếp tục thay đổi tên và đổi nó thành "Colors". Tốt rồi!
+
+28
+00:02:07,490 --> 00:02:13,300
+Chúng ta tiếp tục và kéo tất cả các file mà chúng ta vừa tạo vào thư mục này.
+
+29
+00:02:13,490 --> 00:02:15,650
+Làm luôn bây giờ nào.
+
+30
+00:02:16,010 --> 00:02:23,750
+Về cơ bản, chúng ta cần lấy tất cả các file ngoại trừ các file đối tượng- các file .o và moc.
+
+31
+00:02:23,790 --> 00:02:25,130
+Vậy chúng ta lấy hết các file ngoại trừ các file kể trên.
+
+32
+00:02:25,130 --> 00:02:30,350
+Sau đó chúng ta sẽ kéo nó vào thư mục ứng dụng của chúng ta.
+
+33
+00:02:31,380 --> 00:02:31,740
+Tốt rồi.
+
+34
+00:02:31,800 --> 00:02:35,810
+Điều cuối cùng mà chúng ta cần phải làm là tạo ra một shortcut trên máy tính của chúng ta.
+
+35
+00:02:35,820 --> 00:02:40,680
+Click chuột phải vào colors.exe, nhấn vào create a shortcut sau đó kéo nó vào User's desktop
+
+36
+00:02:40,680 --> 00:02:44,740
+desktop chúng ta tiếp tục thay đổi tên của nó thành "Colors"
+
+37
+00:02:44,760 --> 00:02:49,920
+Điều cuối cùng có thể hữu ích là thay đổi một số tên mặc định cho sản phẩm của chúng ta,
+
+38
+00:02:49,920 --> 00:02:53,730
+Vì vậy tôi sẽ thay đổi tên tác giả(author) và nhà sản xuất(manufacturer).
+
+39
+00:02:53,910 --> 00:02:58,500
+Tôi sẽ thay đổi tên tác giả thành tên tôi và nhà sản xuất sẽ là tên khóa học
+
+40
+00:02:58,500 --> 00:03:03,270
+Tiếp đó chúng ta thay đổi Debug thành Release, tiếp đó chúng ta build chương trình.
+
+41
+00:03:06,690 --> 00:03:12,070
+Tuyệt vời. Và ngay khi chúng ta build thành công, chúng ta thay đổi repo, đi vào mục release
+
+42
+00:03:12,130 --> 00:03:16,880
+và chạy trình cài đặt của chúng ta. Tốt rồi!
+
+43
+00:03:16,880 --> 00:03:22,100
+Bây giờ nếu chúng ta hạn chế tối đa mọi thứ, chúng ta nên sử dụng shortcut trên máy tính của chúng ta và nếu chạy nó
+
+44
+00:03:22,100 --> 00:03:28,640
+và chúng ta có thể thấy chúng ta đã cài đặt thành công chương trình này, chúng ta có thể thay đổi các màu mà chúng ta cần
+
+45
+00:03:28,640 --> 00:03:29,230
+Bây giờ thì đi tới
+
+46
+00:03:29,240 --> 00:03:29,930
+phần gỡ cài đặt.
+
+47
+00:03:29,930 --> 00:03:36,460
+. Chúng ta click vào trình cài đặt một lần nữa, chúng ta chọn gỡ bỏ các màu và chúng ta đã gỡ bỏ thành công
+
+48
+00:03:36,460 --> 00:03:36,890
+nó.
+
+49
+00:03:36,910 --> 00:03:42,190
+Qua đây chúng ta đã học được làm thế nào để cài đặt và gỡ cài đặt một project, xây dựng một trình cài đặt Windows
+
+50
+00:03:42,190 --> 00:03:46,910
+và cũng đã tạo được một project Qt sẵn sàng để phát hành.
+
+51
+00:03:46,990 --> 00:03:50,920
+Hãy theo dõi video tiếp theo, chúng tôi sẽ nói về việc đóng gói trên GNU / Linux.
+

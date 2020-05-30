@@ -1,0 +1,974 @@
+1
+00:00:00,000 --> 00:00:01,800
+In this lecture, we're going to talk
+
+2
+00:00:01,800 --> 00:00:04,950
+about QT quick layouts. These layouts
+
+3
+00:00:04,950 --> 00:00:10,740
+work like row, column and grid - the 
+0:00:08.220,0:00:13.290
+components we've seen before, but they
+
+4
+00:00:10,740 --> 00:00:13,290
+add the capability to resize your user
+
+5
+00:00:13,290 --> 00:00:15,839
+interface when the parent window is
+
+6
+00:00:15,839 --> 00:00:18,779
+resized. We're going to go to QT creator
+
+7
+00:00:18,779 --> 00:00:21,840
+and play with this. Here we are in QT
+
+8
+00:00:21,840 --> 00:00:23,760
+creator. We're going to create a new
+
+9
+00:00:23,760 --> 00:00:24,980
+project.
+
+10
+00:00:24,980 --> 00:00:29,730
+It's a QT quick application, we're going
+
+11
+00:00:29,730 --> 00:00:36,420
+to call it "layouts demo", hit "Next", choose
+
+12
+00:00:36,420 --> 00:00:39,180
+the latest version of QT have installed
+
+13
+00:00:39,180 --> 00:00:45,059
+here and choose your kit. We are going to
+
+14
+00:00:45,059 --> 00:00:49,820
+change the title here. It's going to say
+
+15
+00:00:50,809 --> 00:00:55,079
+"layouts demo". To use QT quick layouts, you
+
+16
+00:00:55,079 --> 00:00:57,840
+have to import them first, okay, they are
+
+17
+00:00:57,840 --> 00:01:00,870
+not part of QT quick. We're going to say
+
+18
+00:01:00,870 --> 00:01:09,420
+import QTQuick.Layouts, and we're going
+
+19
+00:01:09,420 --> 00:01:11,939
+to select 1.3 here. And if we look
+
+20
+00:01:11,939 --> 00:01:16,970
+in the documentation and search for,
+
+21
+00:01:18,259 --> 00:01:20,909
+we're going to find an entry that says
+
+22
+00:01:20,909 --> 00:01:23,939
+QT quick layouts...Let's select this one,
+
+23
+00:01:23,939 --> 00:01:27,119
+and they say that it is a set of qml
+
+24
+00:01:27,119 --> 00:01:30,000
+types that you used to arrange items in
+
+25
+00:01:30,000 --> 00:01:32,869
+a user interface. And unlike regular
+
+26
+00:01:32,869 --> 00:01:35,420
+positioners that we have seen row,
+
+27
+00:01:35,420 --> 00:01:39,090
+column and grid, QT quick layouts can
+
+28
+00:01:39,090 --> 00:01:41,520
+also resize their items.
+
+29
+00:01:41,520 --> 00:01:42,930
+This makes them well-suited for
+
+30
+00:01:42,930 --> 00:01:46,079
+resizable user interfaces. This is really
+
+31
+00:01:46,079 --> 00:01:49,290
+one of their strengths. They resize the
+
+32
+00:01:49,290 --> 00:01:51,540
+user interface when the parent window
+
+33
+00:01:51,540 --> 00:01:54,750
+resizes, so there are different layouts
+
+34
+00:01:54,750 --> 00:01:56,640
+that you can use in here. We're going to
+
+35
+00:01:56,640 --> 00:01:59,969
+look at rowlayout, columnlayout and
+
+36
+00:01:59,969 --> 00:02:02,579
+gridlayout. You can click on this list
+
+37
+00:02:02,579 --> 00:02:05,399
+to learn more on this UI components.
+
+38
+00:02:05,399 --> 00:02:10,069
+We're going to start with a GridLayout.
+
+39
+00:02:10,848 --> 00:02:15,439
+We're going to give it an ID. We are
+
+40
+00:02:15,439 --> 00:02:19,730
+going to make it fill the parent. We
+
+41
+00:02:19,730 --> 00:02:23,060
+wanted to have three columns, so we're
+
+42
+00:02:23,060 --> 00:02:26,230
+going to choose the columns property and
+
+43
+00:02:26,230 --> 00:02:28,730
+specify that we want three of them. And
+
+44
+00:02:28,730 --> 00:02:31,310
+we are going to put some contents inside.
+
+45
+00:02:31,310 --> 00:02:35,590
+We are going to put in a few rectangles.
+
+46
+00:02:36,040 --> 00:02:40,150
+This is going to be the top left
+
+47
+00:02:40,150 --> 00:02:45,579
+rectangle. Its width is going to be 70.
+
+48
+00:02:45,579 --> 00:02:48,439
+Its height is going to be equal to its
+
+49
+00:02:48,439 --> 00:02:54,049
+width. It's going to have a color of
+
+50
+00:02:54,049 --> 00:02:58,129
+green. We are going to copy this a few
+
+51
+00:02:58,129 --> 00:03:04,069
+times. Let's do the first row first. This
+
+52
+00:03:04,069 --> 00:03:19,970
+is topCenter, this is topRight. The
+
+53
+00:03:19,970 --> 00:03:23,989
+colors will change, so we're going to put
+
+54
+00:03:23,989 --> 00:03:34,220
+the second row, then we're going to call
+
+55
+00:03:34,220 --> 00:03:43,639
+this centerLeft. I am taking you through
+
+56
+00:03:43,639 --> 00:03:45,739
+the process of typing this because I
+
+57
+00:03:45,739 --> 00:03:47,750
+don't want you to be lost. Sometimes,
+
+58
+00:03:47,750 --> 00:03:49,489
+students don't see where things are
+
+59
+00:03:49,489 --> 00:03:52,519
+coming from. So if this is lengthy for
+
+60
+00:03:52,519 --> 00:03:55,639
+you, please be patient. Here we're going
+
+61
+00:03:55,639 --> 00:04:04,310
+to say Center and this is going to say
+
+62
+00:04:04,310 --> 00:04:09,220
+centerRight.
+
+63
+00:04:09,610 --> 00:04:12,650
+Okay, we are trying to build the great
+
+64
+00:04:12,650 --> 00:04:15,860
+structure we have closed before with
+
+65
+00:04:15,860 --> 00:04:19,519
+nine rectangles inside. This should bring
+
+66
+00:04:19,519 --> 00:04:23,360
+us to the third row and we put our three
+
+67
+00:04:23,360 --> 00:04:30,310
+rectangles here. We say bottomLeft,
+
+68
+00:04:30,310 --> 00:04:46,370
+bottomCenter and bottomRight. We should change the
+
+69
+00:04:46,370 --> 00:04:55,670
+colors, so green, red, blue, beige, pink, for
+
+70
+00:04:55,670 --> 00:05:09,200
+example, say yellow, say magenta, say
+
+71
+00:05:09,200 --> 00:05:19,670
+yellow-green, and say dodger. Okay, this
+
+72
+00:05:19,670 --> 00:05:21,830
+should do it. And the other thing I want
+
+73
+00:05:21,830 --> 00:05:23,660
+to do is to change the width and height
+
+74
+00:05:23,660 --> 00:05:27,710
+for the other rectangles except the
+
+75
+00:05:27,710 --> 00:05:30,230
+first one. You're going to see why. Okay, we
+
+76
+00:05:30,230 --> 00:05:37,010
+change this to 100. Copy this and paste
+
+77
+00:05:37,010 --> 00:05:51,260
+in all the other places: 100, 100, okay.
+
+78
+00:05:51,260 --> 00:05:53,720
+By now, we have a grid layout inside our
+
+79
+00:05:53,720 --> 00:05:56,630
+window here, and inside we have nine
+
+80
+00:05:56,630 --> 00:05:57,530
+rectangles.
+
+81
+00:05:57,530 --> 00:06:00,560
+The first one is 70, 70 in width and
+
+82
+00:06:00,560 --> 00:06:03,500
+height. And all the others are 100 in
+
+83
+00:06:03,500 --> 00:06:05,090
+width and height, and they have different
+
+84
+00:06:05,090 --> 00:06:08,570
+colors as you see here. Before we run, we
+
+85
+00:06:08,570 --> 00:06:11,860
+want to adjust the width and height of
+
+86
+00:06:11,860 --> 00:06:15,590
+this window to adjust through the
+
+87
+00:06:15,590 --> 00:06:17,840
+contents of this grid layout, so we're
+
+88
+00:06:17,840 --> 00:06:21,300
+going to say its width equals 
+
+89
+00:06:21,300 --> 00:06:27,030
+mGridLayoutId.implicitWidth and its height
+
+90
+00:06:27,030 --> 00:06:35,639
+should be... And you should notice that we
+
+91
+00:06:35,639 --> 00:06:38,729
+also set this to have three columns. Now
+
+92
+00:06:38,729 --> 00:06:41,930
+we should run our thing and see how it looks.
+
+93
+00:06:41,930 --> 00:06:45,569
+Mm-hmm, you see that we have nine
+
+94
+00:06:45,569 --> 00:06:49,889
+rectangles inside. When we resize the
+
+95
+00:06:49,889 --> 00:06:54,030
+window, the layout is trying to resize
+
+96
+00:06:54,030 --> 00:06:56,940
+with this window here. This is a behavior
+
+97
+00:06:56,940 --> 00:06:59,250
+you don't have with row and column
+
+98
+00:06:59,250 --> 00:07:02,759
+components. You can also turn this into a
+
+99
+00:07:02,759 --> 00:07:05,969
+row or column layout. We're going to try
+
+100
+00:07:05,969 --> 00:07:12,169
+that actually. Let's say RowLayout and
+
+101
+00:07:12,169 --> 00:07:14,940
+you automatically see that the row
+
+102
+00:07:14,940 --> 00:07:18,090
+doesn't have these columns property, so
+
+103
+00:07:18,090 --> 00:07:20,039
+we should comment it out if we want to
+
+104
+00:07:20,039 --> 00:07:24,599
+run our code. It's going to be on one row
+
+105
+00:07:24,599 --> 00:07:28,289
+from left to right. Okay, you've seen this.
+
+106
+00:07:28,289 --> 00:07:37,889
+We can also do ColumnLayout, mm-hmm, it
+
+107
+00:07:37,889 --> 00:07:41,279
+is in one column. Let's turn this to a
+
+108
+00:07:41,279 --> 00:07:44,849
+grid component so that you can see the
+
+109
+00:07:44,849 --> 00:07:47,960
+difference. Let's uncomment the column
+
+110
+00:07:47,960 --> 00:07:53,370
+here and run, and hopefully you see the
+
+111
+00:07:53,370 --> 00:07:55,590
+difference between a grid component and
+
+112
+00:07:55,590 --> 00:07:59,400
+a grid layout component. The grid layout
+
+113
+00:07:59,400 --> 00:08:03,659
+allows you to resize the contents of the
+
+114
+00:08:03,659 --> 00:08:07,080
+cells when the parent window resizes,
+
+115
+00:08:07,080 --> 00:08:09,690
+okay. This is the behavior we have here.
+
+116
+00:08:09,690 --> 00:08:11,819
+Another thing I want you to see is that
+
+117
+00:08:11,819 --> 00:08:15,180
+you can set how the contents of the cell
+
+118
+00:08:15,180 --> 00:08:19,020
+behave when the current window resizes.
+
+119
+00:08:19,020 --> 00:08:21,569
+Okay, for example, we can instruct this
+
+120
+00:08:21,569 --> 00:08:24,599
+green rectangle to fill the available
+
+121
+00:08:24,599 --> 00:08:27,270
+width and height. And the way you do that, 
+
+122
+00:08:27,270 --> 00:08:30,000
+you come into this rectangle because it
+
+123
+00:08:30,000 --> 00:08:32,190
+is an element of this grid layout now,
+
+124
+00:08:32,190 --> 00:08:35,219
+and you use an attached property of
+
+125
+00:08:35,219 --> 00:08:40,740
+layout, so you say "Layout.fillWidth", set
+
+126
+00:08:40,740 --> 00:08:45,420
+this to "true", say "Layout.fillHeight", set
+
+127
+00:08:45,420 --> 00:08:51,689
+this "true". Run again, mm-hmm, you see
+
+128
+00:08:51,689 --> 00:08:53,910
+that the grid is now filling the
+
+129
+00:08:53,910 --> 00:08:55,709
+available width and height even if it
+
+130
+00:08:55,709 --> 00:09:00,000
+was 70 in width and height while others
+
+131
+00:09:00,000 --> 00:09:03,990
+will 100 in width and high. And notice what
+
+132
+00:09:03,990 --> 00:09:07,860
+happens when we resize our window. Okay,
+
+133
+00:09:07,860 --> 00:09:10,730
+you see that the green rectangle is
+
+134
+00:09:10,730 --> 00:09:13,439
+doing its best to fill the available
+
+135
+00:09:13,439 --> 00:09:16,199
+width and height. Okay, so these are
+
+136
+00:09:16,199 --> 00:09:18,209
+properties you want in all of your
+
+137
+00:09:18,209 --> 00:09:21,209
+rectangles if you want to have a uniform
+
+138
+00:09:21,209 --> 00:09:23,550
+look and grid layout. So we're going to
+
+139
+00:09:23,550 --> 00:09:45,420
+paste them in every place in here. Okay,
+
+140
+00:09:45,420 --> 00:09:48,329
+let's run, and we shouldn't see a
+
+141
+00:09:48,329 --> 00:09:51,660
+difference in what we see when we run
+
+142
+00:09:51,660 --> 00:09:54,089
+the application, but if you resize, all
+
+143
+00:09:54,089 --> 00:09:57,300
+the windows now are resizing to the some
+
+144
+00:09:57,300 --> 00:10:00,059
+width and height because they all are
+
+145
+00:10:00,059 --> 00:10:03,779
+instructed to fill the available width and 
+
+146
+00:10:03,779 --> 00:10:06,839
+high. Another thing you can do is specify
+
+147
+00:10:06,839 --> 00:10:10,740
+the maximum width or height that a cell
+
+148
+00:10:10,740 --> 00:10:13,199
+can have. And we're going to try this on
+
+149
+00:10:13,199 --> 00:10:15,720
+the yellow rectangle here, so we can say
+
+150
+00:10:15,720 --> 00:10:22,470
+Layout.maximumWidth. Let's say that we
+
+151
+00:10:22,470 --> 00:10:26,399
+own the yellow it to be 200 in width
+
+152
+00:10:26,399 --> 00:10:31,829
+and Layout.maximumHeight and I want to
+
+153
+00:10:31,829 --> 00:10:37,850
+be only 150 high. Let's run again and
+
+154
+00:10:37,850 --> 00:10:41,370
+watch the yellow rectangle, which is here.
+
+155
+00:10:41,370 --> 00:10:46,529
+If we resize in this direction, you see
+
+156
+00:10:46,529 --> 00:10:49,050
+that it goes at some distance
+
+157
+00:10:49,050 --> 00:10:51,300
+and stops growing, and you see that
+
+158
+00:10:51,300 --> 00:10:54,000
+the blue rectangle here is now trying to
+
+159
+00:10:54,000 --> 00:10:57,149
+occupied space. If you try to expand in
+
+160
+00:10:57,149 --> 00:11:00,600
+height, it's going to get to 150, and it's
+
+161
+00:11:00,600 --> 00:11:03,180
+not going to grow anymore. And you see
+
+162
+00:11:03,180 --> 00:11:05,459
+that there is space around it because it
+
+163
+00:11:05,459 --> 00:11:09,660
+can't go beyond 150 in height. Another
+
+164
+00:11:09,660 --> 00:11:12,510
+thing you might specify is the alignment
+
+165
+00:11:12,510 --> 00:11:15,510
+of your components in the grid layout.
+
+166
+00:11:15,510 --> 00:11:18,480
+Let me show you what I mean. I am going
+
+167
+00:11:18,480 --> 00:11:22,620
+to turn off the filling of the available
+
+168
+00:11:22,620 --> 00:11:25,980
+width and height, and run again. You see
+
+169
+00:11:25,980 --> 00:11:29,250
+the green rectangle is 70 in width and
+
+170
+00:11:29,250 --> 00:11:31,890
+height and it is aligned to the left,
+
+171
+00:11:31,890 --> 00:11:34,050
+okay. If you want it to be to the right
+
+172
+00:11:34,050 --> 00:11:37,170
+here, the way you could do that, you could
+
+173
+00:11:37,170 --> 00:11:45,470
+say Layout.alignment and say Qt.AlignRight,
+
+174
+00:11:45,470 --> 00:11:51,060
+okay. If you run, you can specify
+
+175
+00:11:51,060 --> 00:11:54,540
+the top bottom left horizontal Center or
+
+176
+00:11:54,540 --> 00:11:57,120
+vertical Center. If you want to see all
+
+177
+00:11:57,120 --> 00:11:58,740
+the possible options, you can actually
+
+178
+00:11:58,740 --> 00:12:02,839
+come here, click on Qt and say Align
+
+179
+00:12:02,839 --> 00:12:06,750
+and you're going to see different
+
+180
+00:12:06,750 --> 00:12:09,240
+options you can use. You can use AlignBottom,
+
+181
+00:12:09,240 --> 00:12:12,420
+AlignCenter, AlignHorizontalCenter, 
+
+182
+00:12:12,420 --> 00:12:16,490
+AlignLeft, AlignRight, AlignTop,
+
+183
+00:12:16,490 --> 00:12:19,170
+AlignVerticalCenter. You can use all
+
+184
+00:12:19,170 --> 00:12:21,209
+this things if you are in the mood for
+
+185
+00:12:21,209 --> 00:12:24,240
+that. For example, if we say AlignCenter,
+
+186
+00:12:24,240 --> 00:12:30,690
+it is going to be in the center and here it
+
+187
+00:12:30,690 --> 00:12:32,970
+is in the center. Another thing you can
+
+188
+00:12:32,970 --> 00:12:36,300
+specify is the row span or column span
+
+189
+00:12:36,300 --> 00:12:39,690
+for a contained item in the grid layout.
+
+190
+00:12:39,690 --> 00:12:42,600
+For example, if we took out this blue
+
+191
+00:12:42,600 --> 00:12:45,899
+rectangle here, we could instruct the red
+
+192
+00:12:45,899 --> 00:12:48,630
+rectangle here to fill these two cells.
+
+193
+00:12:48,630 --> 00:12:51,240
+And the way we do that, we go back to
+
+194
+00:12:51,240 --> 00:12:54,779
+our code, find the blue rectangle, comment
+
+195
+00:12:54,779 --> 00:12:56,910
+it down. You don't want to delete it
+
+196
+00:12:56,910 --> 00:12:58,860
+because you might want to use it later.
+
+197
+00:12:58,860 --> 00:13:02,550
+And we come to the red rectangle and say
+
+198
+00:13:02,550 --> 00:13:03,980
+layout
+
+199
+00:13:03,980 --> 00:13:09,330
+Layout.columnSpan and say 2, okay. We want
+
+200
+00:13:09,330 --> 00:13:13,050
+this red rectangle to go across two
+
+201
+00:13:13,050 --> 00:13:15,230
+columns, this column and this column.
+
+202
+00:13:15,230 --> 00:13:19,140
+Let's run the application, mm-hmm, two
+
+203
+00:13:19,140 --> 00:13:21,300
+columns. You can do the same thing, for
+
+204
+00:13:21,300 --> 00:13:23,600
+example, we can take out this pink
+
+205
+00:13:23,600 --> 00:13:26,730
+rectangle and instruct the beige
+
+206
+00:13:26,730 --> 00:13:30,330
+rectangle here to span two rows. We're
+
+207
+00:13:30,330 --> 00:13:33,690
+going to do that. Center left red, we want
+
+208
+00:13:33,690 --> 00:13:45,350
+to say Layout.rowSpan and say 2, and
+
+209
+00:13:45,350 --> 00:13:49,470
+take out the bottom left rectangle which
+
+210
+00:13:49,470 --> 00:13:52,680
+is magenta. It's not that. I'm sorry for
+
+211
+00:13:52,680 --> 00:13:55,040
+that.
+
+212
+00:13:56,720 --> 00:14:00,720
+If we run, the beige rectangle should be
+
+213
+00:14:00,720 --> 00:14:04,080
+going down and fill in the available
+
+214
+00:14:04,080 --> 00:14:06,870
+space. Now you know how to use row span
+
+215
+00:14:06,870 --> 00:14:09,870
+and column span to suit your needs.
+
+216
+00:14:09,870 --> 00:14:12,300
+The other property we want to look at is
+
+217
+00:14:12,300 --> 00:14:14,790
+layout direction. What is the layout
+
+218
+00:14:14,790 --> 00:14:15,720
+direction?
+
+219
+00:14:15,720 --> 00:14:17,940
+It holds the layout direction of the
+
+220
+00:14:17,940 --> 00:14:20,310
+grid layout. It controls whether items
+
+221
+00:14:20,310 --> 00:14:23,490
+are laid out from left to right or right
+
+222
+00:14:23,490 --> 00:14:26,970
+to left. If we were starting from right
+
+223
+00:14:26,970 --> 00:14:29,700
+to left, the green rectangle should be up
+
+224
+00:14:29,700 --> 00:14:31,470
+to the right here. So let's try this.
+
+225
+00:14:31,470 --> 00:14:34,170
+We're going to go back to our code and
+
+226
+00:14:34,170 --> 00:14:39,990
+on top here, add layoutDirection and say
+
+227
+00:14:39,990 --> 00:14:45,450
+Qt.RightToLeft. Let's run the
+
+228
+00:14:45,450 --> 00:14:48,030
+application. The green rectangle should
+
+229
+00:14:48,030 --> 00:14:50,460
+be to the right now because the layout
+
+230
+00:14:50,460 --> 00:14:53,010
+direction is reversed. Things are
+
+231
+00:14:53,010 --> 00:14:55,470
+starting from the right, and you see that
+
+232
+00:14:55,470 --> 00:14:57,570
+our beige rectangle here also goes to
+
+233
+00:14:57,570 --> 00:14:59,220
+the right. I hope this makes sense.
+
+234
+00:14:59,220 --> 00:15:01,530
+Okay, this covers all I had to say in
+
+235
+00:15:01,530 --> 00:15:03,360
+this lecture, I hope you have a better
+
+236
+00:15:03,360 --> 00:15:06,000
+idea of how you can use QT quick layouts
+
+237
+00:15:06,000 --> 00:15:08,040
+to your advantage. And they really
+
+238
+00:15:08,040 --> 00:15:11,130
+provide resizing capabilities for your
+
+239
+00:15:11,130 --> 00:15:11,990
+contained
+
+240
+00:15:11,990 --> 00:15:14,180
+items. In the next lecture, we're going to
+
+241
+00:15:14,180 --> 00:15:15,649
+look at the last component of this
+
+242
+00:15:15,649 --> 00:15:18,709
+chapter and that one is flow. I see you
+
+243
+00:15:18,709 --> 00:00:00,000
+there.
+

@@ -1,0 +1,88 @@
+WEBVTT
+
+00:08.440 --> 00:14.310
+I'm Ben Hoff and welcome to 'Mastering Qt 5 GUI Programming' by Packt publishing.
+
+00:14.310 --> 00:20.160
+As a brief introduction to myself, I actually have a lot of experience with Qt, having started programming with both C++ and
+
+00:20.160 --> 00:23.400
+Qt, developing realtime graphical simulations.
+
+00:23.400 --> 00:29.820
+I also have extensive experience with PyQt, creating Chat GUIs and have had success integrating
+
+00:29.880 --> 00:33.990
+OpenCV and Qt to provide facial recognition applications.
+
+00:34.140 --> 00:39.720
+If you'd like to start me on the web feel free to visit my blog, YouTube channel or follow me on
+
+00:39.720 --> 00:40.560
+Github.
+
+00:40.770 --> 00:45.990
+This course will provide you an in-depth view of the Qt framework, covering both the traditional C++
+
+00:45.990 --> 00:52.780
+aspects as well as exploring the newer QML options. To provide a little more depth,
+
+00:52.800 --> 00:58.320
+we'll look into moving beyond GUI applications which covers both how the make command line programs
+
+00:58.380 --> 01:05.420
+as well as exploring and utilizing some of the network capability to create a simple supercomputing framework.
+
+01:05.460 --> 01:10.870
+Once you're done with that, we move on to the model view where we'll explore in depth Qt model view
+
+01:10.950 --> 01:15.010
+framework and tease out some of its inner workings.
+
+01:15.030 --> 01:21.420
+We'll also look into interacting with the web, showing how to embed web pages in our application as well
+
+01:21.420 --> 01:25.120
+as reaching out and interacting with JavaScript on the pages.
+
+01:25.290 --> 01:32.310
+Once we're done with Web, we'll move onto the world of multimedia covering recording video, audio and
+
+01:32.310 --> 01:34.540
+photos in our applications.
+
+01:34.740 --> 01:41.310
+Additionally adding in open computer vision and the Qt 3D module, we will then move on to our first
+
+01:41.310 --> 01:49.900
+Qt section covering communicating between QML and C++ as well as creating our own modules and types.
+
+01:49.920 --> 01:57.950
+Once we're done introducing QML, we will go more in depth coverage charts, animation, particles and 3D in
+
+01:57.960 --> 02:00.000
+visual representations.
+
+02:00.180 --> 02:05.640
+We'll start to round out the last of that course covering compiling and distributing for both desktop
+
+02:05.700 --> 02:13.470
+and mobile. We will cover Windows, Linux and stack distributions on the desktop and cover how to set up and
+
+02:13.470 --> 02:16.860
+distribute apps for Google on mobile.
+
+02:17.220 --> 02:23.340
+I expect users to have a basic understanding of Qt and C++ but I'm confident that if you're willing to
+
+02:23.340 --> 02:26.830
+learn, you can understand all of the material from this course.
+
+02:26.970 --> 02:31.830
+By the end of this course you should have an in-depth knowledge and experience to distribute your
+
+02:31.830 --> 02:34.780
+applications on any platform.
+
+02:34.950 --> 02:37.860
+So let's go ahead and get started.

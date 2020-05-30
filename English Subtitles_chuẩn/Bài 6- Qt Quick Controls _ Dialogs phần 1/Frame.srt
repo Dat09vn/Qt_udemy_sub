@@ -1,0 +1,224 @@
+1
+00:00:00,650 --> 00:00:04,110
+you use a frame control when you want to
+
+2
+00:00:04,110 --> 00:00:07,649
+have a visual group and of your qml
+
+3
+00:00:07,649 --> 00:00:10,290
+components let's go to Qt creator
+
+4
+00:00:10,290 --> 00:00:13,559
+and quickly play with this control okay
+
+5
+00:00:13,559 --> 00:00:15,509
+here we are we're going to create a new
+
+6
+00:00:15,509 --> 00:00:16,820
+project
+
+7
+00:00:16,820 --> 00:00:20,250
+it's a QT quick application we call it
+
+8
+00:00:20,250 --> 00:00:22,380
+FrameDemo save it in the usual
+
+9
+00:00:22,380 --> 00:00:28,199
+location choose our QT version choose
+
+10
+00:00:28,199 --> 00:00:30,510
+our kit if you want to run this on
+
+11
+00:00:30,510 --> 00:00:32,910
+Android you can choose this kit and use
+
+12
+00:00:32,910 --> 00:00:36,300
+it as we have seen before I am NOT going
+
+13
+00:00:36,300 --> 00:00:40,920
+to use it now so I uncheck it we are
+
+14
+00:00:40,920 --> 00:00:42,899
+going to change this title to frame a
+
+15
+00:00:42,899 --> 00:00:50,120
+demo and import our QT quick controls
+
+16
+00:00:53,719 --> 00:00:58,469
+2.4 our version I want to have a frame
+
+17
+00:00:58,469 --> 00:01:03,059
+control inside here inside I want to
+
+18
+00:01:03,059 --> 00:01:08,549
+have a column layout you see that column
+
+19
+00:01:08,549 --> 00:01:11,130
+layout is not recognized can you know
+
+20
+00:01:11,130 --> 00:01:14,610
+why we didn't import the layout
+
+21
+00:01:14,610 --> 00:01:19,640
+components so we should say QT quick
+
+22
+00:01:19,640 --> 00:01:25,110
+layout and I choose one and four as our
+
+23
+00:01:25,110 --> 00:01:28,650
+version inside we are going to put three
+
+24
+00:01:28,650 --> 00:01:36,860
+buttons this is going to be button one
+
+25
+00:01:36,860 --> 00:01:38,420
+to copy
+
+26
+00:01:38,420 --> 00:01:41,880
+let's past two times to have three
+
+27
+00:01:41,880 --> 00:01:46,829
+buttons button 2 and button 3 and before
+
+28
+00:01:46,829 --> 00:01:48,689
+we run this application we want this
+
+29
+00:01:48,689 --> 00:01:51,210
+frame centered in the parent so we're
+
+30
+00:01:51,210 --> 00:01:53,610
+going to say Anchorage Center in parent
+
+31
+00:01:53,610 --> 00:01:59,509
+and if you run this you wait to have a
+
+32
+00:01:59,509 --> 00:02:03,090
+rectangle around these buttons this is
+
+33
+00:02:03,090 --> 00:02:06,390
+what really this frame control is all
+
+34
+00:02:06,390 --> 00:02:09,690
+about giving you a visual representation
+
+35
+00:02:09,690 --> 00:02:11,810
+of the group and
+
+36
+00:02:11,810 --> 00:02:13,790
+qml components and you can do
+
+37
+00:02:13,790 --> 00:02:15,800
+normal stuff with your controls for
+
+38
+00:02:15,800 --> 00:02:17,540
+example you can handle clicks on these
+
+39
+00:02:17,540 --> 00:02:20,390
+buttons or really do whatever you like
+
+40
+00:02:20,390 --> 00:02:24,140
+with these buttons let's look at the
+
+41
+00:02:24,140 --> 00:02:27,069
+documentation to have an official
+
+42
+00:02:27,069 --> 00:02:30,080
+statement of what this does so we're
+
+43
+00:02:30,080 --> 00:02:33,800
+going to click f1 while having Frame
+
+44
+00:02:33,800 --> 00:02:37,430
+selected here let's close this up and
+
+45
+00:02:37,430 --> 00:02:40,940
+help in full mode and what it does it is
+
+46
+00:02:40,940 --> 00:02:43,190
+used to layout a logical group of
+
+47
+00:02:43,190 --> 00:02:46,459
+controls together with them a visual
+
+48
+00:02:46,459 --> 00:02:50,030
+frame ok frame does not provide a
+
+49
+00:02:50,030 --> 00:02:52,850
+layouts of its own but requires you to
+
+50
+00:02:52,850 --> 00:02:55,280
+position its contents for instance by
+
+51
+00:02:55,280 --> 00:02:57,830
+creating your own layout or column
+
+52
+00:02:57,830 --> 00:03:00,080
+layout which is what we did here and
+
+53
+00:03:00,080 --> 00:03:02,870
+this is really all there is to this
+
+54
+00:03:02,870 --> 00:03:05,450
+frame control in the next lecture we
+
+55
+00:03:05,450 --> 00:03:07,970
+need to look at group box radio button
+
+56
+00:03:07,970 --> 00:00:00,000
+and check boxes I'll see you there
+

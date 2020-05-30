@@ -1,0 +1,1116 @@
+1
+00:00:00,000 --> 00:00:01,979
+Trong bài này chúng ta sẽ tạo
+
+2
+00:00:01,979 --> 00:00:04,680
+ứng dụng qml đầu tiên và chạy nó nó trong
+
+3
+00:00:04,680 --> 00:00:07,080
+Qt creator. Và trong quá trình chúng ta sẽ
+
+4
+00:00:07,080 --> 00:00:10,260
+xem qua một vài gợi ý khi xây dựng
+
+5
+00:00:10,260 --> 00:00:12,690
+ứng dụng Qt khi sử dụng Qt quick.
+
+6
+00:00:12,690 --> 00:00:15,619
+Hãy mở Qt creator lên và làm thôi.
+
+7
+00:00:15,619 --> 00:00:18,390
+Chúng ta đang ở trong Qt creator, chúng ta
+
+8
+00:00:18,390 --> 00:00:19,949
+sẽ tạo một dự án mới. Chúng ta
+
+9
+00:00:19,949 --> 00:00:23,850
+sẽ đi tới file - new file ỏ project.
+
+10
+00:00:23,850 --> 00:00:28,470
+Chúng ta sẽ chọn ứng dụng. Chúng ta
+
+11
+00:00:28,470 --> 00:00:30,830
+sẽ chọn ứng dụng Qt quick.
+
+12
+00:00:30,830 --> 00:00:33,270
+Chúng ta muốn bắt đầu với một mẫu
+
+13
+00:00:33,270 --> 00:00:35,989
+trống nên chúng ta sẽ ấn vào nó,
+
+14
+00:00:35,989 --> 00:00:40,469
+chọn next, chúng ta sẽ gọi nó là QTQuickAppDemo.
+
+15
+00:00:40,469 --> 00:00:43,200
+Chúng ta muốn dùng thư mục này
+
+16
+00:00:43,200 --> 00:00:47,180
+làm thư mục mặc định của dự án. Chúng ta ấn next
+
+17
+00:00:47,180 --> 00:00:49,739
+các bạn muốn dùng phiên bản qt mới nhất
+
+18
+00:00:49,739 --> 00:00:53,190
+mà các bạn đã cài đặt. Của tôi
+
+19
+00:00:53,190 --> 00:00:57,750
+hiện nay là 5.11. Ấn next các bạn sắp chọn
+
+20
+00:00:57,750 --> 00:01:00,000
+bộ công cụ mà mình sẽ sử dụng cho
+
+21
+00:01:00,000 --> 00:01:02,820
+dự án. Trong trường hợp này chúng ta muốn
+
+22
+00:01:02,820 --> 00:01:05,159
+phát triển cho desktop - máy vi tính. Tôi sẽ cho các bạn xem
+
+23
+00:01:05,159 --> 00:01:06,750
+các chạy ứng dụng Qt quick
+
+24
+00:01:06,750 --> 00:01:09,240
+trên các thiết bị di động, trên
+
+25
+00:01:09,240 --> 00:01:12,119
+hệ điều hành Android sau. Bây giờ chúng ta chọn
+
+26
+00:01:12,119 --> 00:01:13,920
+desktop vì chúng ta chỉ muốn khởi
+
+27
+00:01:13,920 --> 00:01:19,380
+động. Ấn next và ấn finish. Điều
+
+28
+00:01:19,380 --> 00:01:20,970
+đầu tiên tôi muốn là đó là duyệt
+
+29
+00:01:20,970 --> 00:01:23,250
+các file đã được tạo ra cho
+
+30
+00:01:23,250 --> 00:01:25,439
+chúng ta. Duyệt qua chúng để chỉ ra vài
+
+31
+00:01:25,439 --> 00:01:28,710
+thứ chúng có thể giúp chúng ta. Thứ đầu tiên
+
+32
+00:01:28,710 --> 00:01:31,200
+là file dự án nếu các bạn có
+
+33
+00:01:31,200 --> 00:01:33,479
+làm việc với Qt trước đây các bạn biết rằng
+
+34
+00:01:33,479 --> 00:01:35,640
+đây là file mà sẽ kết nối tất cả các
+
+35
+00:01:35,640 --> 00:01:37,380
+dile của bạn trong dự án với nhau.
+
+36
+00:01:37,380 --> 00:01:40,110
+Nó cho thấy những file nào nằm trong dự án của bạn,
+
+37
+00:01:40,110 --> 00:01:41,909
+bây giờ các bạn thấy là chúng ta chỉ có một file
+
+38
+00:01:41,909 --> 00:01:45,450
+nguồn là main.cpp mà là một file chứa code C++.
+
+39
+00:01:45,450 --> 00:01:48,720
+Chúng ta có một file khác chứa các tài nguyên
+
+40
+00:01:48,720 --> 00:01:51,689
+của chúng ta mà được gọi là qml mà Qt
+
+41
+00:01:51,689 --> 00:01:54,090
+hỗ trợ. Chúng ta sẽ bỏ qua những
+
+42
+00:01:54,090 --> 00:01:56,040
+thứ ở dưới này cho giai đoạn này.
+
+43
+00:01:56,040 --> 00:01:58,710
+Và nếu bạn nhìn vào các file chúng ta
+
+44
+00:01:58,710 --> 00:02:01,259
+có ở bên trái đây các bạn sẽ thấy chúng ta
+
+45
+00:02:01,259 --> 00:02:03,899
+có một thư mục nguồn, bên trong chúng ta có
+
+46
+00:02:03,899 --> 00:02:06,869
+file CPP chính. Nếu các bạn mở nó lên các bạn sẽ thấy
+
+47
+00:02:06,869 --> 00:02:10,500
+nó là một file C++ kể cả khi chúng ta
+
+48
+00:02:10,500 --> 00:02:13,020
+sẽ làm việc với Qt quick, Qt
+
+49
+00:02:13,020 --> 00:02:13,930
+quick hoạt động
+
+50
+00:02:13,930 --> 00:02:17,140
+cùng với C++ trên nền tảng và nó cần
+
+51
+00:02:17,140 --> 00:02:19,900
+cách gì đấy để chạy. Và chúng ta sử dụng cái
+
+52
+00:02:19,900 --> 00:02:22,569
+goi là QmlApplicationEngine ở đây để
+
+53
+00:02:22,569 --> 00:02:26,079
+nạp file qml lên mà chúng ta hiển thị khi chúng ta
+
+54
+00:02:26,079 --> 00:02:27,730
+chạy ứng dụng. Chúng ta sẽ chạy
+
+55
+00:02:27,730 --> 00:02:29,909
+nó trong chốt lát nhưng tôi chỉ muốn các bạn
+
+56
+00:02:29,909 --> 00:02:32,709
+biết qua về những gì đã có sắn trong dự án
+
+57
+00:02:32,709 --> 00:02:35,230
+của mình. Nếu các bạn nhìn xuống dưới này chúng ta có
+
+58
+00:02:35,230 --> 00:02:38,290
+một thư mục khác gọi là resources, đây là
+
+59
+00:02:38,290 --> 00:02:40,689
+thư mục sẽ chứa những
+
+60
+00:02:40,689 --> 00:02:43,299
+file mà ứng dụng của các bạn sẽ
+
+61
+00:02:43,299 --> 00:02:46,299
+cần. Chúng được gói trong phần resources ở đây
+
+62
+00:02:46,299 --> 00:02:49,930
+vì resources được đóng gói cùng với
+
+63
+00:02:49,930 --> 00:02:52,000
+phần thực thi cùng ứng dụng của bạn khi bạn
+
+64
+00:02:52,000 --> 00:02:53,439
+phân phối nó tới người dùng,
+
+65
+00:02:53,439 --> 00:02:55,989
+đàm bảo rằng những file
+
+66
+00:02:55,989 --> 00:02:58,209
+quan trọng cho ứng dụng để chạy
+
+67
+00:02:58,209 --> 00:03:00,519
+luôn có sẵn. Bên trong các file
+
+68
+00:03:00,519 --> 00:03:03,459
+resource chúng ta có ở đây là main.qml và đây là
+
+69
+00:03:03,459 --> 00:03:05,349
+phàn chính của code và đây là nơi
+
+70
+00:03:05,349 --> 00:03:07,480
+chúng ta sẽ dành phần lớn thời gian trong
+
+71
+00:03:07,480 --> 00:03:10,540
+khóa học. Ok, qml code sẽ
+
+72
+00:03:10,540 --> 00:03:13,329
+trong như thế này. OK bây giờ chúng ta đã biết
+
+73
+00:03:13,329 --> 00:03:15,519
+có sẵn những gì trong dự án hãy cùng chạy
+
+74
+00:03:15,519 --> 00:03:20,129
+ứng dụng. Và đây là những gì chúng ta có một
+
+75
+00:03:20,129 --> 00:03:23,889
+một cửa sổ đơn giản mà là Hello World ở trên
+
+76
+00:03:23,889 --> 00:03:27,129
+tiêu đề. Đây là ứng dụng qml
+
+77
+00:03:27,129 --> 00:03:29,889
+đơn giản nhất hãy cùng làm gì đó
+
+78
+00:03:29,889 --> 00:03:31,959
+thú vị bên trong đó để chúng ta không phải
+
+79
+00:03:31,959 --> 00:03:33,879
+nhìn một cái cửa sổ trống. Chúng ta sẽ
+
+80
+00:03:33,879 --> 00:03:36,459
+viết Text và điều đó tạo ta một thành phần
+
+81
+00:03:36,459 --> 00:03:39,220
+kí tự bên trong của sổ của chúng ta ở đây.
+
+82
+00:03:39,220 --> 00:03:41,849
+Chúng ta sẽ hiển thị các kí tự
+
+83
+00:03:41,849 --> 00:03:48,310
+hãy để là: Hello World. Chúng ta muốn nó nắm
+
+84
+00:03:48,310 --> 00:03:50,680
+ở giữa cửa sổ, cách làm thế là
+
+85
+00:03:50,680 --> 00:03:54,939
+chúng ta sử dụng anchors.centerIn: parent. Tôi
+
+86
+00:03:54,939 --> 00:03:58,479
+không mong các bạn hiểu
+0:03:56.919,0:04:00.489
+mọi thứ ngay lúc này tôi chỉ muốn các bạn
+
+87
+00:03:58,479 --> 00:04:00,489
+có vài thứ để hiển thị trên của sổ. 
+
+88
+00:04:00,489 --> 00:04:02,590
+Tôi sẽ có cơ hội giải thích tất cả
+
+89
+00:04:02,590 --> 00:04:05,259
+những thứ này trong khóa học. Ok chúng ta muốn
+
+90
+00:04:05,259 --> 00:04:07,629
+đặt màu cho dòng chữ. Tôi muốn 
+
+91
+00:04:07,629 --> 00:04:12,269
+nó có màu đỏ làm ví dụ. Tôi muốn 
+
+92
+00:04:12,269 --> 00:04:15,310
+font chứ to hơn chút nên tôi
+
+93
+00:04:15,310 --> 00:04:18,728
+sẽ sử dụng font.size hãy để nó
+
+94
+00:04:18,728 --> 00:04:20,480
+ở 20.
+
+95
+00:04:20,480 --> 00:04:25,760
+Hãy chạy ứng dụng. Và các bạn có thể thấy
+
+96
+00:04:25,760 --> 00:04:27,590
+ở giữa chúng ta có mọt dòng chữ
+
+97
+00:04:27,590 --> 00:04:31,220
+Hello World. Đây chính là qml code
+
+98
+00:04:31,220 --> 00:04:33,230
+các bạn có vài lệnh import ở trên đầu
+
+99
+00:04:33,230 --> 00:04:35,180
+để đưa vào những thành phần mà
+
+100
+00:04:35,180 --> 00:04:37,460
+các bạn sẽ sử dụng. Đây là chỗ mà tất cả
+
+101
+00:04:37,460 --> 00:04:39,290
+các thành phần được lấy,
+
+102
+00:04:39,290 --> 00:04:41,870
+chỗ các kí tự được lấy, chỗ cửa sổ Qt quick
+
+103
+00:04:41,870 --> 00:04:44,510
+được tạo ra, cửa sổ Qt quick ở đây.
+
+104
+00:04:44,510 --> 00:04:46,160
+Nếu bạn không tin tôi hãy đưa chúng vào
+
+105
+00:04:46,160 --> 00:04:48,650
+phần bình luận. Các bạn sẽ thấy là
+
+106
+00:04:48,650 --> 00:04:51,470
+chúng ta có lỗi. Nó không
+
+107
+00:04:51,470 --> 00:04:53,750
+hiểu những thứ như là cửa sổ, kí tự.
+
+108
+00:04:53,750 --> 00:04:55,550
+Chúng ta không biết chúng là gì nên
+
+109
+00:04:55,550 --> 00:04:58,070
+chúng ta cần thêm những thứ này để
+
+110
+00:04:58,070 --> 00:05:01,550
+bộ dịch hiểu chúng là gì. Okay
+
+111
+00:05:01,550 --> 00:05:03,950
+bây giờ các bạn đã thấy một cách để chạy ứng dụng
+
+112
+00:05:03,950 --> 00:05:06,590
+Qt quick mà chạy qua
+
+113
+00:05:06,590 --> 00:05:09,170
+lớp máy ứng dụng qml. Hãy quay lại
+
+114
+00:05:09,170 --> 00:05:11,600
+Qt creator và phân tích nó thêm
+
+115
+00:05:11,600 --> 00:05:14,150
+chút nữa. Nếu các bạn nhìn mà file
+
+116
+00:05:14,150 --> 00:05:16,820
+main.CPP các bạn sẽ thấy chúng ta có một
+
+117
+00:05:16,820 --> 00:05:19,490
+hàm main mà chính là điểm bắt đầu cho
+
+118
+00:05:19,490 --> 00:05:22,100
+ứng dụng của chúng ta. Khi ứng dụng
+
+119
+00:05:22,100 --> 00:05:24,920
+chạy nó bắt đầy ở đây trong hàm main.
+
+120
+00:05:24,920 --> 00:05:28,160
+Chúng ta khai báo một biến GuiApplications như thế này
+
+121
+00:05:28,160 --> 00:05:29,950
+mà công việc chính là chứa ứng dụng
+
+122
+00:05:29,950 --> 00:05:33,170
+của chúng ta. Và bên trong chúng ta tạo một
+
+123
+00:05:33,170 --> 00:05:36,020
+đối tượng qmlapplicationengine mà chúng ta sử dụng
+
+124
+00:05:36,020 --> 00:05:39,800
+để nạp file qml của chúng ta. Đây là dòng code
+
+125
+00:05:39,800 --> 00:05:42,830
+thực hiện việc nạp file qml và
+
+126
+00:05:42,830 --> 00:05:46,010
+hiển thị nó lên cửa siir như chúng ta thấy khi
+
+127
+00:05:46,010 --> 00:05:48,470
+chúng ta chạy ứng dụng. Cách thứ hai là
+
+128
+00:05:48,470 --> 00:05:51,800
+sử dụng một vài công cụ điều khiển được cung cấp
+
+129
+00:05:51,800 --> 00:05:54,860
+mà các bạn có thể sử dụng để chạy file qml
+
+130
+00:05:54,860 --> 00:05:57,950
+từng cái một. Các bạn rõ ràng không muốn
+
+131
+00:05:57,950 --> 00:05:59,960
+phải khởi động dự án Qt khi mà các bạn có vài
+
+132
+00:05:59,960 --> 00:06:02,120
+file qml các bạn muốn chạy chỉ để
+
+133
+00:06:02,120 --> 00:06:04,370
+xem nó như thế nào. Chúng ta sẽ sử dụng
+
+134
+00:06:04,370 --> 00:06:06,740
+nhưng công cụ này. Điều đầu tiên mà các bạn
+
+135
+00:06:06,740 --> 00:06:09,260
+sẽ hỏi là tôi tìm đâu ra những công cụ này.
+
+136
+00:06:09,260 --> 00:06:11,780
+Các bạn đi đến chỗ các bạn cài đặt Qt
+
+137
+00:06:11,780 --> 00:06:14,210
+của mình, trong trường hợp này chúng ta sẽ đi
+
+138
+00:06:14,210 --> 00:06:16,490
+đến ổ C bởi vì đó là nơi tôi đã cài đặt
+
+139
+00:06:16,490 --> 00:06:19,700
+nó. Các bạn thấy rằng tôi có một thư mục Qt QT5.11.1.
+
+140
+00:06:19,700 --> 00:06:24,200
+Tôi chọn phiên bản mingw của bản cài
+
+141
+00:06:24,200 --> 00:06:26,210
+QT của tôi. Tôi vào thu mục bin.
+
+142
+00:06:26,210 --> 00:06:29,510
+Và nếu tôi cuộn xuống các bạn
+
+143
+00:06:29,510 --> 00:06:32,000
+sẽ thấy rằng tôi sắp nhìn đến một
+
+144
+00:06:32,000 --> 00:06:33,650
+công cụ gọi là QML
+
+145
+00:06:33,650 --> 00:06:36,500
+và một cái khác goi là qmlscene. Đây
+
+146
+00:06:36,500 --> 00:06:39,259
+là các công cụ chúng ta có thể sử dụng để chạy
+
+147
+00:06:39,259 --> 00:06:41,810
+ứng dụng. Okay điều tôi sắp làm là
+
+148
+00:06:41,810 --> 00:06:43,910
+tôi sẽ chép đường dẫn của những 
+
+149
+00:06:43,910 --> 00:06:47,780
+công cụ này và tôi sẽ đo tới chỗ file
+
+150
+00:06:47,780 --> 00:06:51,050
+qml của mình. Tôi sẽ chọn 
+
+151
+00:06:51,050 --> 00:06:56,690
+show this in explorer. Nếu các bạn sử dụng Mac
+
+152
+00:06:56,690 --> 00:06:58,460
+hay hệ điều hành Linux
+
+153
+00:06:58,460 --> 00:07:00,229
+các bạn có thể tìm được những các tương tự để
+
+154
+00:07:00,229 --> 00:07:02,449
+thực hiện nó. Nó sẽ đưa tôi đến chỗ
+
+155
+00:07:02,449 --> 00:07:05,150
+dự án của tôi được lưu. Tôi sẽ giữ 
+
+156
+00:07:05,150 --> 00:07:07,460
+Shift và ấn chuột phải và
+
+157
+00:07:07,460 --> 00:07:10,520
+nó sẽ cho tôi lựa chọn mở
+
+158
+00:07:10,520 --> 00:07:13,460
+bảng điều khiển ở đây. Okay
+
+159
+00:07:13,460 --> 00:07:16,340
+các bạn thấy là nó đã mở ra ở đây. Nếu tôi thực hiện
+
+160
+00:07:16,340 --> 00:07:18,979
+dir tôi sẽ xem được các file có
+
+161
+00:07:18,979 --> 00:07:21,320
+trong dự án của mình và nếu bạn nhìn
+
+162
+00:07:21,320 --> 00:07:23,810
+vào trong các bạn sẽ thấy rôi có một file
+
+163
+00:07:23,810 --> 00:07:27,530
+main.qml. Điều tôi muốn làm là dán vào đây
+
+164
+00:07:27,530 --> 00:07:32,210
+đường dẫn tới thư mục chứa công cụ qml của mình
+
+165
+00:07:32,210 --> 00:07:35,599
+trong thư mực cài đặt Qt và tôi
+
+166
+00:07:35,599 --> 00:07:38,090
+sẽ haong thiện đường dẫn bằng cách viết thêm
+
+167
+00:07:38,090 --> 00:07:40,520
+qml tool. Và tôi sẽ xác định rằng tôi
+
+168
+00:07:40,520 --> 00:07:44,750
+muốn chạy file main.qml. Ok
+
+169
+00:07:44,750 --> 00:07:48,260
+khi tôi ấn enter để ý diều xảy ra, các bạn
+
+170
+00:07:48,260 --> 00:07:50,210
+thấy rằng ứng dụng hello world được
+
+171
+00:07:50,210 --> 00:07:52,789
+hiển thị. Đây là một cách các bạn có thể chạy
+
+172
+00:07:52,789 --> 00:07:55,699
+file qml của mình. Hãy sẻ dụng công cụ
+
+173
+00:07:55,699 --> 00:07:59,090
+qmlscene và làm tương tự. Tôi sẽ viết
+
+174
+00:07:59,090 --> 00:08:02,449
+ở đây là qmlscene và tôi sẽ
+
+175
+00:08:02,449 --> 00:08:04,909
+chỉ rõ main.qml như chúng ta làm lúc trước.
+
+176
+00:08:04,909 --> 00:08:08,120
+Các bạn sẽ thấy là nó tương tự
+
+177
+00:08:08,120 --> 00:08:13,430
+chúng ta làm ứng dụng
+0:08:10.220,0:08:16.580
+qml chạy theo các tương tự khi nó chạy trong
+
+178
+00:08:13,430 --> 00:08:16,580
+Qt creator. Nếu các bạn cũng giống như tôi các bạn
+
+179
+00:08:16,580 --> 00:08:18,740
+có lẽ nghĩ rằng gõ tất cả những thứ này
+
+180
+00:08:18,740 --> 00:08:20,900
+để chạy một file qml là rất rườm rà
+
+181
+00:08:20,900 --> 00:08:23,810
+và khá khó làm. Nhưng có một cách
+
+182
+00:08:23,810 --> 00:08:27,050
+các bạn có thể thêm đường dẫn đến các công cụ qml
+
+183
+00:08:27,050 --> 00:08:29,960
+vào trong các biến của môi trường và tất cả
+
+184
+00:08:29,960 --> 00:08:32,950
+các bạn phải làm là viết qml main.qml.
+
+185
+00:08:32,950 --> 00:08:38,000
+Và nó sẽ chạy.
+
+186
+00:08:38,000 --> 00:08:40,760
+Tại sao nó lại chạy nếu các bạn làm thế này
+
+187
+00:08:40,760 --> 00:08:43,610
+có lẽ nó sẽ không chạy. Với rối nó
+
+188
+00:08:43,610 --> 00:08:46,290
+chạy bởi vì tôi đã thêm đường dẫn này
+
+189
+00:08:46,290 --> 00:08:48,149
+vào biến môi trường và tôi sẽ
+
+190
+00:08:48,149 --> 00:08:50,040
+cho các bạn xem cách làm thế trên Windows.
+
+191
+00:08:50,040 --> 00:08:52,259
+Cũng có cách tương tự để làm thế này
+
+192
+00:08:52,259 --> 00:08:55,079
+trên Linux và Mac. Những gì các bạn
+
+193
+00:08:55,079 --> 00:08:57,779
+phải làm là tìm cách thêm
+
+194
+00:08:57,779 --> 00:08:59,610
+biến môi trường vào hệ điều hành
+
+195
+00:08:59,610 --> 00:09:02,279
+và Google sẽ cho các bạn nhiều
+
+196
+00:09:02,279 --> 00:09:05,730
+lựa chọn hơn bất cứ ai khác. Chúng ta sẽ
+
+197
+00:09:05,730 --> 00:09:11,569
+đi tời My computer, chọn properties,
+
+198
+00:09:11,569 --> 00:09:16,470
+chọn advanced system settings, đi tới
+
+199
+00:09:16,470 --> 00:09:18,839
+environment variables. Các bạn sẽ
+
+200
+00:09:18,839 --> 00:09:23,880
+tìm tới đường dẫn biến như thế này
+
+201
+00:09:23,880 --> 00:09:26,069
+các bạn ấn vào nó. Và các bạn sẽ
+
+202
+00:09:26,069 --> 00:09:31,079
+thêm đường dẫn tới công cụ như tôi làm
+
+203
+00:09:31,079 --> 00:09:33,000
+ở đây. Các bạn có thể thấy đường đẫn đầy đủ tới đó
+
+204
+00:09:33,000 --> 00:09:35,579
+và khi các bạn thêm nó vào như thế này và
+
+205
+00:09:35,579 --> 00:09:38,149
+nhớ đặt một dấu ; ở cuối.
+
+206
+00:09:38,149 --> 00:09:42,300
+Confirm, confirm, và đóng lại. Và nếu 
+
+207
+00:09:42,300 --> 00:09:44,399
+các bạn đóng bảng điều khiển lại và mở nó
+
+208
+00:09:44,399 --> 00:09:47,069
+lên lần nữa như thế này các bạn sẽ
+
+209
+00:09:47,069 --> 00:09:50,220
+có thể chạy các công cụ của mình nên hãy xóa chỗ này đi.
+
+210
+00:09:50,220 --> 00:09:52,620
+Tôi muốn đóng ừng dụng này bởi vì
+
+211
+00:09:52,620 --> 00:09:54,990
+nó bị treo ở đây. Tôi muốn xóa sạch
+
+212
+00:09:54,990 --> 00:09:59,040
+và cho các bạn xem tôi có thể làm tương tự
+
+213
+00:09:59,040 --> 00:10:05,639
+khi sử dụng qmlscene main.qml.
+
+214
+00:10:05,639 --> 00:10:08,339
+Các bạn thấy là ứng dụng đang chạy.
+
+215
+00:10:08,339 --> 00:10:10,649
+Có một cách khác các bạn có thể chạy
+
+216
+00:10:10,649 --> 00:10:13,410
+file qml nếu các bạn thực sự không thích
+
+217
+00:10:13,410 --> 00:10:15,930
+sử dụng bảng điều khiển, thực ra nó là một
+
+218
+00:10:15,930 --> 00:10:19,110
+tiện ích sử dụng công cụ qmlscene. Các bạn
+
+219
+00:10:19,110 --> 00:10:21,540
+tạo một file mẫu thử trong Qt creator
+
+220
+00:10:21,540 --> 00:10:24,000
+và chạy nó. Hãy quay lại Qt creator
+
+221
+00:10:24,000 --> 00:10:26,519
+và thử nó. Điều đầu tiên tôi muốn
+
+222
+00:10:26,519 --> 00:10:30,060
+làm là chép lại những file của tôi bởi vì tôi
+
+223
+00:10:30,060 --> 00:10:33,350
+sẽ dán nó vào chỗ khác. Hãy 
+
+224
+00:10:33,350 --> 00:10:38,370
+đóng cái này xuống, lưu mọi thứ và đóng
+
+225
+00:10:38,370 --> 00:10:42,560
+lại. Tôi sẽ chọn file - new other project
+
+226
+00:10:42,560 --> 00:10:45,209
+và ở phía bên phải đây các bạn sẽ 
+
+227
+00:10:45,209 --> 00:10:47,970
+thấy lựa chọn Qt quick UI protype. Tôi
+
+228
+00:10:47,970 --> 00:10:51,480
+muốn các bạn lựa chọn cái này - ấn next. Chúng ta
+
+229
+00:10:51,480 --> 00:10:55,529
+gọi nó là PrototypeTest. Các bạn có thể chọn
+
+230
+00:10:55,529 --> 00:10:57,420
+chỗ mình muốn lưu trên thiết bị
+
+231
+00:10:57,420 --> 00:10:59,270
+tiếp theo lại chọn next, chọn
+
+232
+00:10:59,270 --> 00:11:01,520
+phiên bản mới nhất của Qt đã được
+
+233
+00:11:01,520 --> 00:11:05,060
+cài đặt. Cuối cùng các bạn thấy rằng
+
+234
+00:11:05,060 --> 00:11:08,710
+các bạn có một file qml được gọi là
+
+235
+00:11:08,710 --> 00:11:11,420
+PrototypeTest. Nó lấy tên của
+
+236
+00:11:11,420 --> 00:11:13,520
+dự án mà bạn đặt. Tôi sẽ
+
+237
+00:11:13,520 --> 00:11:15,890
+sẽ xóa hết đi và dán vào phần
+
+238
+00:11:15,890 --> 00:11:18,370
+code chúng ta có và tôi có thể chạy nó trực tiếp.
+
+239
+00:11:18,370 --> 00:11:21,920
+Okay và các bạn thấy là nó vẫn giống
+
+240
+00:11:21,920 --> 00:11:23,150
+như cái chúng ta làm trước đây.
+
+241
+00:11:23,150 --> 00:11:25,720
+Điều mà cái này thực sự làm là nó
+
+242
+00:11:25,720 --> 00:11:29,150
+thực hiện việc gọi qmlscene cho các bạn.
+
+243
+00:11:29,150 --> 00:11:31,190
+Đến đây chúng ta đã có 4 cách cho các bạn
+
+244
+00:11:31,190 --> 00:11:34,130
+chạy file qml: các bạn có thể sử dụng
+
+245
+00:11:34,130 --> 00:11:36,890
+QmlApplicationEngine như chúng ta làm ở đây, các bạn
+
+246
+00:11:36,890 --> 00:11:39,620
+có thể sử dụng công cụ điều khiển được
+
+247
+00:11:39,620 --> 00:11:42,290
+cung cấp, các bạn có thể gọi qmlscene để chạy
+
+248
+00:11:42,290 --> 00:11:44,810
+ứng dụng của mình học các bạn có thể gọi
+
+249
+00:11:44,810 --> 00:11:48,830
+qml để chạy file qml và cái cuối cùng
+
+250
+00:11:48,830 --> 00:11:52,310
+là tạo một file mãu thử mà
+
+251
+00:11:52,310 --> 00:11:54,110
+bạn có thể chạy trực tiếp bằng cách ấn vào
+
+252
+00:11:54,110 --> 00:11:56,240
+nút màu xanh ở đây nếu đó là cách các bạn
+
+253
+00:11:56,240 --> 00:11:59,930
+thấy dễ. Trước khi chúng ta kêt thúc video này tôi
+
+254
+00:11:59,930 --> 00:12:02,270
+muốn cho các bạn xem các hiển thị
+
+255
+00:12:02,270 --> 00:12:03,950
+nhật ký máy bởi vì đó là thứ
+
+256
+00:12:03,950 --> 00:12:07,130
+rất quan trọng cần biết trong bất cứ
+
+257
+00:12:07,130 --> 00:12:09,800
+công nghệ lập trình nào mà bạn đang
+
+258
+00:12:09,800 --> 00:12:11,900
+sử dụng. Chúng ta sẽ nạp
+
+259
+00:12:11,900 --> 00:12:14,330
+cái gì đó khi mà các thành phần ở đây được
+
+260
+00:12:14,330 --> 00:12:16,340
+nạp. Cách các bạn thực hiện việc đó là dùng
+
+261
+00:12:16,340 --> 00:12:20,240
+code này Component.onCompleted. Một lần nữa đừng load
+
+262
+00:12:20,240 --> 00:12:21,920
+nếu các bạn không hiểu gì tôi
+
+263
+00:12:21,920 --> 00:12:23,750
+sẽ có cơ hội để giải thích về cái này sau. Tôi
+
+264
+00:12:23,750 --> 00:12:26,060
+chỉ muốn cho các bạn biết các bạn có thể thực hiện
+
+265
+00:12:26,060 --> 00:12:31,070
+console.log như ở trên JavaScript để
+
+266
+00:12:31,070 --> 00:12:34,400
+hiện thị những tin nhắn sửa lỗi. Ở trông đây chúng ta
+
+267
+00:12:34,400 --> 00:12:36,670
+có thể viết là ví dụ: "Component loaded"
+
+268
+00:12:36,670 --> 00:12:41,750
+và khi các bạn chạy ứng dụng các bạn
+
+269
+00:12:41,750 --> 00:12:43,250
+sẽ thấy là trong phần thông tin kết quả
+
+270
+00:12:43,250 --> 00:12:46,730
+của chương tình. Đây đã kết thúc tất cả các cài đặt
+
+271
+00:12:46,730 --> 00:12:48,440
+phải làm trong bài học. Tôi mong các bạn thích
+
+272
+00:12:48,440 --> 00:12:51,110
+phần giới thiệu về Qt quick. Và các bạn có trong 
+
+273
+00:12:51,110 --> 00:12:53,000
+tay các cách khác nhau để chạy
+
+274
+00:12:53,000 --> 00:12:55,460
+một file qml. Trong bài tiếp theo chúng ta
+
+275
+00:12:55,460 --> 00:12:57,350
+sẽ đi tìm hiểu một vài cú pháp qml
+
+276
+00:12:57,350 --> 00:12:59,750
+và tìm hiểu thêm về về vài thứ chúng ta 
+
+277
+00:12:59,750 --> 00:13:01,490
+đã nói trong bài này.
+
+278
+00:13:01,490 --> 00:00:00,000
+Tôi sẽ gặp lại các bạn trong phần sau.
+

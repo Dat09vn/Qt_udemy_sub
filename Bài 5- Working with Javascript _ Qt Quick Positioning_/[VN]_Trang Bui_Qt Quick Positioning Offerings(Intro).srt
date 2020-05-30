@@ -1,0 +1,148 @@
+1
+00:00:00,030 --> 00:00:01,829
+Trong bài này, ta sẽ tìm hiểu 
+
+2
+00:00:01,829 --> 00:00:04,920
+các cách bố trí phần tử (component) 
+
+3
+00:00:04,920 --> 00:00:07,049
+trong giao diện trong Qt Quick. 
+
+4
+00:00:07,049 --> 00:00:09,750
+Thực, ta đã được tìm hiểu qua  
+
+5
+00:00:09,750 --> 00:00:12,900
+một số các cách rồi. Một trong số đó là  
+
+6
+00:00:12,900 --> 00:00:15,330
+đặt trực tiếp phần tử, ở đó ta cần xác định rõ 
+
+7
+00:00:15,330 --> 00:00:17,760
+tọa độ x và tọa độ y của phần tử. 
+
+8
+00:00:17,760 --> 00:00:20,250
+Cách này được gọi là bố trí trực tiếp, 
+
+9
+00:00:20,250 --> 00:00:22,680
+Ta cũng đã được thấy cách này. Ta cũng có thể 
+
+10
+00:00:22,680 --> 00:00:26,250
+đặt các phần tử dựa vào vị trí 
+
+11
+00:00:26,250 --> 00:00:29,160
+của những phần tử khác. Ví dụ ở đây ta thấy, 
+
+12
+00:00:29,160 --> 00:00:31,700
+vị trí của hình chữ nhật 2 được đặt 
+
+13
+00:00:31,700 --> 00:00:34,590
+dựa trên vị trí của hình chữ nhật 1. 
+
+14
+00:00:34,590 --> 00:00:38,190
+Cạnh trên của hình 2 gắn vào 
+
+15
+00:00:38,190 --> 00:00:40,739
+cạnh dưới của hình 1. 
+
+16
+00:00:40,739 --> 00:00:44,489
+Còn cạnh bên trái của hình 2 thì gắn với  
+
+17
+00:00:44,489 --> 00:00:47,280
+cạnh bên phải của hình 1. 
+
+18
+00:00:47,280 --> 00:00:50,489
+Ta sẽ dùng các anchor (neo) để làm được điều này. 
+
+19
+00:00:50,489 --> 00:00:54,000
+Thực tế thì ta đã sử dụng anchor khá nhiều lần, 
+
+20
+00:00:54,000 --> 00:00:56,039
+tuy nhiên, trong lần này, ta sẽ cùng nhau tìm hiểu kỹ hơn 
+
+21
+00:00:56,039 --> 00:00:59,280
+về các anchor. Trong QML, ta cũng có các phần tử hàng, 
+
+22
+00:00:59,280 --> 00:01:01,739
+cột, cùng với các phần tử khung lưới. 
+
+23
+00:01:01,739 --> 00:01:03,989
+Ta có thể sử dụng các phần tử này để đặt 
+
+24
+00:01:03,989 --> 00:01:06,689
+các vị trí cho các phần tử mà mình có từ trái qua phải, 
+
+25
+00:01:06,689 --> 00:01:10,020
+từ trên xuống dưới, hoặc ở trong các khung lưới, 
+
+26
+00:01:10,020 --> 00:01:12,600
+giống như thế này chẳng hạn. Các phần tử bố cục này bao gồm:
+
+27
+00:01:12,600 --> 00:01:15,299
+RowLayout (bố cục hàng), ColumnLayout (bố cục cột) và 
+
+28
+00:01:15,299 --> 00:01:18,509
+GridLayout (bố cục khung lưới). Các layout này có các chức năng giống với 
+
+29
+00:01:18,509 --> 00:01:21,420
+hàng, cột và khung lưới, tuy nhiên bên cạnh đó, chúng cũng có 
+
+30
+00:01:21,420 --> 00:01:23,790
+những tiện ích khác, như thay đổi kích thước 
+
+31
+00:01:23,790 --> 00:01:27,060
+của cửa sổ (window) khi cử sổ cha (parent) 
+
+32
+00:01:27,060 --> 00:01:28,829
+thay đổi kích thước. Ta sẽ tìm hiểu phần này sau. 
+
+33
+00:01:28,829 --> 00:01:31,140
+Trong các bài giảng tiếp, ta sẽ cùng nhau 
+
+34
+00:01:31,140 --> 00:01:33,030
+thảo luận chi tiết hơn nữa   
+
+35
+00:01:33,030 --> 00:01:35,400
+về những chủ đề trên. Bắt đầu bằng bài tiếp theo. 
+
+36
+00:01:35,400 --> 00:01:37,170
+Hẹn gặp lại các bạn trong bài giảng
+
+37
+00:01:37,170 --> 00:00:00,000
+lần tới. 
+

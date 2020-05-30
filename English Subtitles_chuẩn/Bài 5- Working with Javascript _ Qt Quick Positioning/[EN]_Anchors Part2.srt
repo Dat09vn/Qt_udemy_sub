@@ -1,0 +1,552 @@
+1
+00:00:00,810 --> 00:00:03,970
+Now I want to introduce a concept of
+
+2
+00:00:03,970 --> 00:00:04,960
+margins.
+
+3
+00:00:04,960 --> 00:00:07,809
+You can specify top margin to your
+
+4
+00:00:07,809 --> 00:00:12,100
+element, a left margin, right margin and a
+
+5
+00:00:12,100 --> 00:00:15,040
+bottom margin, and you use this syntax
+
+6
+00:00:15,040 --> 00:00:18,400
+here. So for example, we can come to our
+
+7
+00:00:18,400 --> 00:00:21,730
+grid here and look at the centerCenterRec,
+
+8
+00:00:21,730 --> 00:00:24,970
+which is here. It is positioned
+
+9
+00:00:24,970 --> 00:00:27,670
+to the bottom side of the top right
+
+10
+00:00:27,670 --> 00:00:30,520
+rectangle. So for example, if we wanted to
+
+11
+00:00:30,520 --> 00:00:34,239
+add the margin to the top of it, we could
+
+12
+00:00:34,239 --> 00:00:39,760
+say "anchors.topMargin" and say for
+
+13
+00:00:39,760 --> 00:00:47,319
+example, 10, why not? If we run it, mm-hmm,
+
+14
+00:00:47,319 --> 00:00:50,920
+you see that it moves down by 10 on the
+
+15
+00:00:50,920 --> 00:00:54,489
+top side here. Okay, one thing I want you
+
+16
+00:00:54,489 --> 00:00:57,309
+to see is that if you don't have an
+
+17
+00:00:57,309 --> 00:01:00,609
+anchor property on that anchor line, it is
+
+18
+00:01:00,609 --> 00:01:03,219
+not going to be possible to set the
+
+19
+00:01:03,219 --> 00:01:06,460
+margin. Margin here worked because we had
+
+20
+00:01:06,460 --> 00:01:10,060
+a top anchor set. Okay. Let's try to do a
+
+21
+00:01:10,060 --> 00:01:14,710
+right margin. What we want is to add the
+
+22
+00:01:14,710 --> 00:01:17,980
+margin to the right here, but notice that
+
+23
+00:01:17,980 --> 00:01:20,860
+we don't have it right anchor, so it's
+
+24
+00:01:20,860 --> 00:01:23,410
+not going to work. But let's try it so
+
+25
+00:01:23,410 --> 00:01:25,720
+that you can see that. So let's say
+
+26
+00:01:25,720 --> 00:01:30,600
+"anchors.rightMargin" and say 10 as usual.
+
+27
+00:01:30,600 --> 00:01:34,390
+Run the application. You see that our
+
+28
+00:01:34,390 --> 00:01:36,880
+margin is not being applied. And this is
+
+29
+00:01:36,880 --> 00:01:39,220
+a source of confusion for many students,
+
+30
+00:01:39,220 --> 00:01:45,510
+so I am going to note that here: To have...
+
+31
+00:01:59,170 --> 00:02:02,600
+okay, this is crucial. Let's comment this
+
+32
+00:02:02,600 --> 00:02:06,170
+out and do a margin that actually works.
+
+33
+00:02:06,170 --> 00:02:11,209
+So say anchors.topMargin and do it 10, 
+
+34
+00:02:11,209 --> 00:02:26,299
+and say that: ...top margin set. Okay. I
+
+35
+00:02:26,299 --> 00:02:30,049
+want this to be clear to you. Let's run
+
+36
+00:02:30,049 --> 00:02:33,349
+again. Top margin is working. And I want
+
+37
+00:02:33,349 --> 00:02:35,690
+you to see that the green rectangle
+
+38
+00:02:35,690 --> 00:02:38,410
+moved to the bottom and any other
+
+39
+00:02:38,410 --> 00:02:40,849
+rectangle that was positioned in
+
+40
+00:02:40,849 --> 00:02:43,370
+relation to that moves too. So we applied
+
+41
+00:02:43,370 --> 00:02:45,530
+the margin to the green rectangle here,
+
+42
+00:02:45,530 --> 00:02:47,480
+but you see that all the bottom
+
+43
+00:02:47,480 --> 00:02:49,370
+rectangle, bottom left, bottom Center,
+
+44
+00:02:49,370 --> 00:02:50,209
+bottom right,
+
+45
+00:02:50,209 --> 00:02:52,670
+they also moved to the bottom. So I want
+
+46
+00:02:52,670 --> 00:02:56,030
+you to know this. Your margin properties
+
+47
+00:02:56,030 --> 00:02:59,000
+are going to affect all the other
+
+48
+00:02:59,000 --> 00:03:02,000
+elements that are anchored to the
+
+49
+00:03:02,000 --> 00:03:05,150
+element where you apply your margins. I
+
+50
+00:03:05,150 --> 00:03:07,459
+hope this makes sense. Another thing you
+
+51
+00:03:07,459 --> 00:03:10,870
+can do is use offsets and they allow the
+
+52
+00:03:10,870 --> 00:03:13,660
+position of your element to be
+
+53
+00:03:13,660 --> 00:03:16,310
+manipulated using center anchor lines.
+
+54
+00:03:16,310 --> 00:03:19,549
+Let's come back to our green rectangle
+
+55
+00:03:19,549 --> 00:03:24,349
+here and comment this out, and say 
+
+56
+00:03:24,349 --> 00:03:30,319
+anchors.horizontalCenterOffset, say 10. 
+
+57
+00:03:30,319 --> 00:03:36,079
+Let's run. You see that nothing
+
+58
+00:03:36,079 --> 00:03:41,799
+happens. But if we comment these out and
+
+59
+00:03:41,799 --> 00:03:44,980
+position our elements using the
+
+60
+00:03:44,980 --> 00:03:48,680
+horizontal and vertical center lines, the
+
+61
+00:03:48,680 --> 00:03:51,040
+way we do that, we say 
+
+62
+00:03:51,040 --> 00:03:56,659
+anchors.horizontalCenter: parent.horizontalCenter, 
+
+63
+00:03:56,659 --> 00:04:01,550
+and say anchors.verticalCenter.
+
+64
+00:04:01,550 --> 00:04:05,800
+It's going to be "parent.verticalCenter", and
+
+65
+00:04:05,800 --> 00:04:11,930
+run again. Okay, you see that this works.
+
+66
+00:04:11,930 --> 00:04:14,300
+This is the same as for anchor
+
+67
+00:04:14,300 --> 00:04:17,630
+properties, we try to set an anchor for
+
+68
+00:04:17,630 --> 00:04:20,810
+horizontal center offset, but we didn't
+
+69
+00:04:20,810 --> 00:04:23,120
+have an anchor to the horizontalCenter
+
+70
+00:04:23,120 --> 00:04:25,280
+and it didn't work. I really want you to
+
+71
+00:04:25,280 --> 00:04:27,080
+understand this because this is critical.
+
+72
+00:04:27,080 --> 00:04:29,840
+You can see that if you don't pay
+
+73
+00:04:29,840 --> 00:04:32,750
+attention, you can see your elements not
+
+74
+00:04:32,750 --> 00:04:35,120
+working as you wish, and don't know the
+
+75
+00:04:35,120 --> 00:04:37,310
+reason. This is the reason to set a
+
+76
+00:04:37,310 --> 00:04:39,950
+margin or enough set and have it work.
+
+77
+00:04:39,950 --> 00:04:42,380
+You have to have an anchor property on
+
+78
+00:04:42,380 --> 00:04:45,050
+that line where you are trying to set a
+
+79
+00:04:45,050 --> 00:04:47,870
+margin or an offset. Okay, so the offset
+
+80
+00:04:47,870 --> 00:04:50,890
+property also can work in vertical
+
+81
+00:04:50,890 --> 00:04:54,050
+direction. We can say "anchors.verticalCenterOffset",
+
+82
+00:04:54,050 --> 00:04:58,850
+and do it 10. And it's
+
+83
+00:04:58,850 --> 00:05:00,800
+going to work. Okay, it's going to go to
+
+84
+00:05:00,800 --> 00:05:03,710
+the bottom a little bit. This is what I
+
+85
+00:05:03,710 --> 00:05:06,770
+mean. Okay, it moves to the right and push
+
+86
+00:05:06,770 --> 00:05:09,500
+the blue rectangle here. It moved to the
+
+87
+00:05:09,500 --> 00:05:12,740
+bottom and pushed the bottom rectangles
+
+88
+00:05:12,740 --> 00:05:15,140
+because they all depend on it. And if you
+
+89
+00:05:15,140 --> 00:05:18,050
+look to the blue rectangle here, the
+
+90
+00:05:18,050 --> 00:05:20,630
+centre-right rectangle, its left side
+
+91
+00:05:20,630 --> 00:05:23,150
+must be anchored to the right side of
+
+92
+00:05:23,150 --> 00:05:25,460
+the green rectangle here. Let's prove
+
+93
+00:05:25,460 --> 00:05:28,790
+this. You can see, its left side is
+
+94
+00:05:28,790 --> 00:05:31,250
+anchored to the right side of the centerCenterRec, 
+
+95
+00:05:31,250 --> 00:05:34,010
+The last point I want
+
+96
+00:05:34,010 --> 00:05:36,080
+to make is that you can only use these
+
+97
+00:05:36,080 --> 00:05:37,820
+anchors properties that we've been
+
+98
+00:05:37,820 --> 00:05:40,370
+talking about between siblings or
+
+99
+00:05:40,370 --> 00:05:43,490
+between parent and child. Let me show you
+
+100
+00:05:43,490 --> 00:05:46,040
+what I mean. I'm going to come to the
+
+101
+00:05:46,040 --> 00:05:48,350
+bottom here, to the bottom of the
+
+102
+00:05:48,350 --> 00:05:51,800
+containerRec. I am going to define
+
+103
+00:05:51,800 --> 00:05:56,390
+another rectangle. Width is going to be
+
+104
+00:05:56,390 --> 00:06:01,940
+200, height is going to be 200 also. Color
+
+105
+00:06:01,940 --> 00:06:09,950
+is going to be black. Its ID is going to
+
+106
+00:06:09,950 --> 00:06:12,880
+be "siblingRecId"
+
+107
+00:06:13,660 --> 00:06:16,870
+and it is going to be positioned to the
+
+108
+00:06:16,870 --> 00:06:20,140
+left side of the container, right. So
+
+109
+00:06:20,140 --> 00:06:23,050
+we're going to say "anchors.right", the
+
+110
+00:06:23,050 --> 00:06:25,030
+right side of it is going to be pinned
+
+111
+00:06:25,030 --> 00:06:31,830
+to the ContainerRec...left. If we run, 
+
+112
+00:06:31,830 --> 00:06:34,750
+we're going to see our black rectangle
+
+113
+00:06:34,750 --> 00:06:37,660
+here. And as you move, you see that our
+
+114
+00:06:37,660 --> 00:06:41,140
+anchors are respected. The right side of
+
+115
+00:06:41,140 --> 00:06:44,560
+it is pinned to this container rectangle
+
+116
+00:06:44,560 --> 00:06:47,050
+here. So what I want to show you is that
+
+117
+00:06:47,050 --> 00:06:50,830
+you cannot anchor one rectangle inside
+
+118
+00:06:50,830 --> 00:06:54,040
+this containerRec to this black
+
+119
+00:06:54,040 --> 00:06:57,340
+rectangle because it's not a parent or a
+
+120
+00:06:57,340 --> 00:07:00,610
+sibling. Anchoring can only work between
+
+121
+00:07:00,610 --> 00:07:02,880
+siblings or between parent and child.
+
+122
+00:07:02,880 --> 00:07:05,560
+Okay, for example, if we try and take
+
+123
+00:07:05,560 --> 00:07:08,590
+these top left rectangle, the magento on
+
+124
+00:07:08,590 --> 00:07:12,190
+and try to anchor it to the bottom of
+
+125
+00:07:12,190 --> 00:07:14,530
+the black rectangle. It's not going to
+
+126
+00:07:14,530 --> 00:07:16,390
+work. Let's try this. We're going to say
+
+127
+00:07:16,390 --> 00:07:22,500
+"anchors.top" It goes to siblingRec
+
+128
+00:07:22,500 --> 00:07:25,500
+...bottom. 
+
+129
+00:07:25,500 --> 00:07:30,630
+If we try to run this, hmm, you see that
+
+130
+00:07:30,630 --> 00:07:33,250
+cannot anchor to an item that isn't
+
+131
+00:07:33,250 --> 00:07:36,490
+parent or sibling. Anchoring can only be
+
+132
+00:07:36,490 --> 00:07:39,460
+done between siblings or between parent
+
+133
+00:07:39,460 --> 00:07:40,270
+and child.
+
+134
+00:07:40,270 --> 00:07:42,730
+Okay, discovers all we have to say in
+
+135
+00:07:42,730 --> 00:07:44,410
+this lecture. And the next one, we're
+
+136
+00:07:44,410 --> 00:07:46,240
+going to talk about position also like a
+
+137
+00:07:46,240 --> 00:07:48,970
+row column and grid. I'll see you in the
+
+138
+00:07:48,970 --> 00:00:00,000
+next lecture.
+

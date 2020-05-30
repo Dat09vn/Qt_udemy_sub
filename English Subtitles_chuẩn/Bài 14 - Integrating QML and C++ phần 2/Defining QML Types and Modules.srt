@@ -1,0 +1,388 @@
+WEBVTT
+
+00:01.040 --> 00:07.050
+This is the video 5.3 of communicating with Qt Which covers Qml Types and Modules. In this video, we're
+
+00:07.050 --> 00:13.710
+going to cover: creating Qml types, creating Qml modules and finishing up with the finding Qml modules
+
+00:13.770 --> 00:16.350
+and types from C++.
+
+00:16.380 --> 00:22.590
+So if we change into our project and look at our "main.qml" right now we've got 130 lines of code
+
+00:22.860 --> 00:25.980
+with no real logical breakdown of what's going on here.
+
+00:26.010 --> 00:31.380
+So someone else who is trying to make changes has to currently read all 130 lines in order to understand
+
+00:31.440 --> 00:32.610
+what's going on.
+
+00:32.790 --> 00:35.310
+That's a little rude to whoever comes in behind us.
+
+00:35.310 --> 00:38.310
+So let's go ahead and break this code up into chunks.
+
+00:38.310 --> 00:43.330
+Let's start by breaking our dialogue into its own object type using a new file.
+
+00:43.380 --> 00:50.880
+So we go to File, New File or Project, Qt and then we'll go to QML File. Click Choose. We're going
+
+00:50.880 --> 00:57.360
+to go ahead name this the "ColorChangeDialog" and then hit Next and then hit Finish.
+
+00:57.360 --> 01:00.980
+Now we need to delete and move all of our dialog code over.
+
+01:01.110 --> 01:02.260
+So let's go and do that.
+
+01:04.540 --> 01:07.250
+And then we need an indented one.
+
+01:07.270 --> 01:12.030
+And then lastly we need to get our imports. So go to the top.
+
+01:12.120 --> 01:16.100
+All three of these will be snagged. Perfect.
+
+01:16.100 --> 01:20.960
+So the last thing, go ahead and remove this "id" property while we're at it so that we can define it
+
+01:20.960 --> 01:25.940
+when we're using our new type. we'll change back to our main document, scroll down to the bottom here
+
+01:25.970 --> 01:32.550
+and just recreate our "ColorChangeDialog" using its type name which is "ColorChangeDialog" and go and
+
+01:32.550 --> 01:34.970
+set the "id" here and that's it.
+
+01:34.970 --> 01:40.160
+Types define this manner are automatically available to all other Qml files within the same directory
+
+01:40.430 --> 01:41.890
+which is super easy.
+
+01:41.890 --> 01:46.430
+Now eventually you're going to have some Qml code that you want to share between two projects.
+
+01:46.520 --> 01:50.860
+Right now we only know how to define a type from within the same directory.
+
+01:50.900 --> 01:56.580
+So in order to share code between the two projects we'd have to copy the file over in both projects.
+
+01:56.720 --> 02:02.330
+And as we made changes in one of those projects it wouldn't automatically get changed into the other
+
+02:02.870 --> 02:04.120
+which is bad.
+
+02:04.250 --> 02:09.620
+So this is where modules come into play when we're sharing Qml types between different projects.
+
+02:09.680 --> 02:12.830
+Now to create a new module we need three things.
+
+02:12.890 --> 02:17.420
+First a new directory which is a folder for your windows types.
+
+02:17.450 --> 02:22.060
+Second a new Qml type located in the directory we just mentioned.
+
+02:22.130 --> 02:27.200
+It's probably easier to think of a new Qml type as a new Qml file because that's typically how
+
+02:27.200 --> 02:28.360
+they're defined.
+
+02:28.370 --> 02:32.280
+So to reiterate the second thing that we need is a new Qml file.
+
+02:32.450 --> 02:39.770
+Lastly slash Thirdly we need a qmldir there which is a special text file located in our new directory.
+
+02:39.860 --> 02:44.930
+So let's go out and create a new module and to do this we will go ahead and create a new directory.
+
+02:44.930 --> 02:51.290
+First, let's go to File, New file or Project, Qt, we will do a QML File.
+
+02:51.280 --> 02:56.420
+Click Choose, and then the first thing will do is to go to this Path and select Browse, go to where you want
+
+02:56.420 --> 02:58.350
+to create our new directory.
+
+02:58.580 --> 03:03.380
+And we'll actually create two files, so the first is going to be called the "imports" folder.
+
+03:03.770 --> 03:09.290
+And once we have our "imports" folder, we're going to create another folder, which we are going to call
+
+03:09.290 --> 03:15.290
+"blue_elephants", which is going to be the name of our module. Now, we'll go ahead and select OK and then we'll
+
+03:15.290 --> 03:25.040
+select our "blue_elephants" file or directory as our path and then we want to create our actual Qml file
+
+03:25.430 --> 03:31.010
+which is the second piece and will go to name this "MyModuleType" because again this is our new type
+
+03:31.100 --> 03:34.580
+and it's in our new module which is going to be named "blue_elephants".
+
+03:34.580 --> 03:35.930
+So we hit Next.
+
+03:36.020 --> 03:40.040
+And then one thing is we want to make sure that we don't add it to our current project. So, we're going
+
+03:40.040 --> 03:41.870
+to change this to "None".
+
+03:41.870 --> 03:46.860
+And keep that version control if you want or not, doesn't matter and click Finish.
+
+03:47.060 --> 03:53.900
+And then in our actual new "MyModuleType", let's go ahead and create a function here.
+
+03:54.050 --> 03:56.870
+Just a simple hello world that logs out.
+
+03:58.350 --> 04:03.250
+And then we'll just call this function whenever the object is instantiated by using the "onCompleted"
+
+04:03.270 --> 04:09.210
+handler. Perfect. So, we've created our new folder or directory, we've created our type.
+
+04:09.210 --> 04:11.420
+The last thing that we need is the Qml.
+
+04:11.450 --> 04:18.260
+So go to File, New File or Project and then we just need "General" here and create an empty file because
+
+04:18.270 --> 04:20.810
+Qml is just an empty file.
+
+04:20.810 --> 04:25.390
+Here we want to make sure that we're still in our "blue elephants" path which you can see from here.
+
+04:25.490 --> 04:27.590
+And then the name and you must get this correct.
+
+04:27.590 --> 04:30.120
+It's qmldir and we hit Next.
+
+04:30.150 --> 04:35.840
+Let's make sure this isn't part of our project, since this will be in a separate, its own little project
+
+04:35.840 --> 04:37.760
+there and we hit Next.
+
+04:38.090 --> 04:43.910
+And then we'll go ahead and name our module, which is the module name here and the module name of the
+
+04:43.910 --> 04:48.830
+folder must be the same thing so since it's called blue_elephants the folders called blue_elephants.
+
+04:48.870 --> 04:51.710
+Our module name in Qml will be "blue_elephants".
+
+04:51.740 --> 04:58.970
+And then we need to actually name the type, define a version number before defining the file name.
+
+04:59.030 --> 05:01.840
+So we've only got one type which is my module type.
+
+05:01.850 --> 05:06.490
+So let's go ahead and define the type, the version number and the file name.
+
+05:08.080 --> 05:10.830
+So this is going to be the type name in our module.
+
+05:10.840 --> 05:14.520
+This is the version which is 1.0 and then this is the actual file name.
+
+05:14.560 --> 05:18.760
+So I deliberately didn't match these names to show you where you can customize.
+
+05:18.760 --> 05:22.080
+Typically instead of naming you'll keep the actual same name.
+
+05:22.090 --> 05:25.870
+So "MyModuleType" would be the actual type name that you declare here
+
+05:25.900 --> 05:30.130
+and the file name, but I just wanted to show your customisation that's possible in case that's useful
+
+05:30.130 --> 05:31.110
+for you.
+
+05:31.480 --> 05:33.930
+Now that's all we need for our actual modules.
+
+05:33.930 --> 05:40.270
+So we have created the directory, we've created an actual type which is MyModuleType and we created
+
+05:40.270 --> 05:41.760
+the qmldir file.
+
+05:41.770 --> 05:45.390
+So let's go ahead and import this into our project here.
+
+05:45.640 --> 05:52.060
+So you need to go to the "main.cpp" and the first thing we're going to do is to add the module to the import path.
+
+05:52.060 --> 05:55.590
+There are multiple ways to do this but we're going to add it using the "engine".
+
+05:55.630 --> 05:57.220
+Now this is important.
+
+05:57.220 --> 06:03.180
+We need to add the absolute path to the parent directory to the module not the module itself.
+
+06:03.490 --> 06:08.860
+So instead of passing in the absolute path to the blue_elephants directory, we're going to pass in the
+
+06:08.860 --> 06:13.180
+absolute path to the parent directory of the blue_elephants directory.
+
+06:13.180 --> 06:18.210
+So if you followed along with me right that'll just be the import path.
+
+06:18.220 --> 06:22.180
+So going to cheat here quick and go ahead and snag that
+
+06:25.860 --> 06:30.770
+and we can add this to the "engine" using the "addImportPath" method. Awesome.
+
+06:30.770 --> 06:37.930
+So now if we change to our Qml code and go to the top we can now import our blue_elephants module.
+
+06:37.930 --> 06:42.540
+Note that we will have to provide the version number that we want which in our case will be 1.0 and then
+
+06:42.540 --> 06:47.280
+let's scroll all the way to the bottom and go ahead and instantiate this.
+
+06:47.520 --> 06:48.510
+And that's all we need.
+
+06:48.510 --> 06:50.960
+Note that this just brushes the surface of what's possible.
+
+06:50.960 --> 06:54.010
+Qml modules and I encourage you to dig further.
+
+06:54.030 --> 06:59.600
+I would also say with some painful experience the importing of Qml modules is not very robust.
+
+06:59.610 --> 07:04.710
+So if you have an error within the code in your module you're likely to import error rather than what
+
+07:04.710 --> 07:06.710
+is actually wrong with your module.
+
+07:06.900 --> 07:08.720
+So just be careful with that.
+
+07:08.760 --> 07:15.210
+The last thing that we want to do is go ahead and create a new type from our C++ code.
+
+07:15.210 --> 07:17.060
+So how do we do that.
+
+07:17.370 --> 07:23.610
+Well if we look at our "colorpicker" code, we can see an example of how to integrate C++ code into our
+
+07:23.610 --> 07:24.970
+Qml code.
+
+07:24.960 --> 07:28.030
+So notice a couple of things here with this header file.
+
+07:28.050 --> 07:29.980
+The first is that we're subclassing
+
+07:29.980 --> 07:31.550
+"QQuickPaintedItem".
+
+07:31.590 --> 07:36.570
+This class allows us to use the Qt raster engine to create some of our graphics by overriding the
+
+07:36.570 --> 07:38.070
+paint function.
+
+07:38.070 --> 07:41.160
+The other thing to note in this class is the use of the macro
+
+07:41.170 --> 07:47.540
+"Q_INVOKABLE". In order to expose method Qml we need to either decorate our functions with the
+
+07:47.540 --> 07:53.550
+"Q_INVOKABLE" macro, make them public slots or use the properties macro for this particular code.
+
+07:53.550 --> 07:56.890
+The easiest thing to do was just to use the "Q_INVOKABLE".
+
+07:56.890 --> 08:02.190
+Now note if you do want to extend some C++ code into Qml you don't actually have to subclass the
+
+08:02.190 --> 08:06.980
+"QQuickPaintedItem". Any subclass of queue object will do. So,
+
+08:06.990 --> 08:13.540
+Once we have our implementation finished we just need to navigate to wherever we instantiate the 
+
+08:13.570 --> 08:18.020
+QML application engine and call "qmlRegisterType".
+
+08:18.240 --> 08:21.630
+So we'll go ahead and pass into that function.
+
+08:21.630 --> 08:24.910
+The namespace, version and type number.
+
+08:24.990 --> 08:27.590
+So let's go ahead and do that right now.
+
+08:32.280 --> 08:36.150
+Note that we've already been using this code as part of the implementation.
+
+08:36.300 --> 08:42.780
+So if we change into our color dialog "ColorChangeDialog" you can see the actual module name that we've
+
+08:42.780 --> 08:49.350
+defined in our "main.cpp" so we defined the module name here as "ColorPicker" and the type as actual
+
+08:49.350 --> 08:50.430
+"ColorPicker".
+
+08:50.430 --> 08:55.980
+So again if you change and you'll see "import ColorPickers 1.0".
+
+08:55.980 --> 08:59.640
+So let's go ahead and hit Play and make sure we get everything correct.
+
+09:01.740 --> 09:10.550
+Now see that we actually got our "hello world!" so our module was correctly imported and use just as expected.
+
+09:10.580 --> 09:17.210
+So with that we successfully generated and demonstrated how to create Qml type and module from
+
+09:17.210 --> 09:18.410
+C++,
+
+09:18.620 --> 09:25.500
+In addition to creating a new Qml module as well as demoing how to create a new Qml type.
+
+09:25.650 --> 09:29.110
+Join us in the next section where we cover Visual Representations.

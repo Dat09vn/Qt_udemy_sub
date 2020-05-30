@@ -1,0 +1,216 @@
+﻿1
+00:00:01,610 --> 00:00:02,060
+Tab.
+
+2
+00:00:07,100 --> 00:00:12,060
+Trong video này, ta sẽ học thêm một class mới đó là QTabWidget.
+
+3
+00:00:12,320 --> 00:00:17,690
+Sau đó ta sẽ học lập trình để chuyển đổi giữa các tab.
+
+4
+00:00:17,690 --> 00:00:24,860
+Ta sẽ vừa học vừa thực hành làm một màn hình có các tab bằng class QTabWidget.
+
+5
+00:00:24,860 --> 00:00:28,800
+Nếu bạn đã sẵn sàng thì ta bắt đầu học về QTabWidget.
+
+6
+00:00:28,800 --> 00:00:35,430
+Bật Qt Creator lên vào tạo một project QWidget.
+
+7
+00:00:35,440 --> 00:00:42,600
+Click đúp vào file mainwindow.ui để chuyển sang chế độ thiết kế giao diện UI.
+
+8
+00:00:42,640 --> 00:00:46,880
+Bạn sẽ tìm thấy Tab Widget ở mục container.
+
+9
+00:00:47,120 --> 00:00:54,450
+Kéo thả nó vào centralWidget(đối tượng widget chính của màn hình) và thay đổi bố cục của centralWidget thành một trong hai kiểu của BoxLayout(dàn ngang hoặc dọc)
+
+10
+00:00:55,190 --> 00:00:58,350
+để Tab Widget sẽ có độ rộng bằng với centralWidget.
+
+11
+00:00:58,760 --> 00:01:03,680
+Một tab widget gồm có một thanh tab, và một page area (trang hiển thị).
+
+12
+00:01:07,780 --> 00:01:15,450
+Khi để mặc định, thanh tab sẽ được hiển thị ở bên trên trang hiển thị. Ta dùng thanh tab để chuyển giữa các trang(page).
+
+13
+00:01:15,460 --> 00:01:23,130
+Mỗi trang sẽ hiển thị nội dung tương ứng cho một tab.
+
+14
+00:01:23,260 --> 00:01:28,750
+Để thiết kế cửa sổ tab(tab window) bạn có thể dùng chế độ thiết kế để kéo thả các widget
+
+15
+00:01:38,610 --> 00:01:41,640
+như bình thường.
+
+16
+00:01:42,120 --> 00:01:47,680
+Như các bạn thấy trong cây đối tượng ở đây, mỗi trang(page) là một QWidget.
+
+17
+00:01:49,700 --> 00:01:52,540
+Bạn không thể đổi tiêu đề của tab
+
+18
+00:01:52,540 --> 00:01:54,140
+bằng cách click đúp vào nó được.
+
+19
+00:01:55,670 --> 00:01:56,810
+Mà phải
+
+20
+00:01:57,040 --> 00:02:02,050
+nhấn vào để chọn tab, rồi sang bên bảng thuộc tính,
+
+21
+00:02:02,970 --> 00:02:09,760
+kéo xuống tìm mục currentTabText.
+
+22
+00:02:09,930 --> 00:02:11,940
+Đổi chữ trong mục currentTabText thì tiêu đề của tab khi hiển thị sẽ thay đổi.
+
+23
+00:02:15,460 --> 00:02:24,450
+Khi chọn sang tab thứ hai, nếu bạn kéo thả thêm widget vào thì
+
+24
+00:02:24,470 --> 00:02:25,110
+nó sẽ chỉ hiển thị khi chọn tab hai.
+
+25
+00:02:33,200 --> 00:02:35,870
+Giờ build và chạy chương trình.
+
+26
+00:02:44,120 --> 00:02:51,570
+Bạn sẽ thấy màn hình tab(tab window) sẽ được hiển thị như thế nào.
+
+27
+00:02:51,710 --> 00:02:56,410
+Ta đã biết cách dùng chế độ thiết kế để thiết kế giao diện cho tab.
+
+28
+00:02:56,490 --> 00:03:04,790
+Giờ chuyển sang kỹ thuật thiết kế giao diện bằng code.
+
+29
+00:03:04,800 --> 00:03:10,600
+Mở file mainwindow.cpp lên. Ta phải có một class kiểu QWidget để làm trang hiển thị(page area)
+
+30
+00:03:10,790 --> 00:03:16,030
+cho tab.
+
+31
+00:03:16,570 --> 00:03:24,640
+Để làm ví dụ, ta sẽ dùng một nhãn dán(label) để làm trang hiển thị cho tab.
+
+32
+00:03:27,900 --> 00:03:31,330
+Khởi tạo một đối tượng kiểu QLabel mới chuỗi hiển thị "Hello New Tab".
+
+33
+00:03:31,530 --> 00:03:42,070
+Ta gọi hàm addTab() để thêm một tab mới hiển thị nhãn dán(label) này
+
+34
+00:03:42,070 --> 00:03:43,680
+với tiêu đề là "New Tab".
+
+35
+00:03:47,250 --> 00:03:49,280
+Giờ build và chạy chương trình.
+
+36
+00:03:53,810 --> 00:03:55,640
+Ta phải include QLabel header file để
+
+37
+00:03:55,640 --> 00:03:58,490
+dùng được class QLabel.
+
+38
+00:04:14,760 --> 00:04:20,840
+Đó, Ta đã thêm được một tab mới hiển thị nhãn dán(label) được khởi tạo trong code.
+
+39
+00:04:25,480 --> 00:04:35,290
+Qt cung cấp hai hàm để ta có thể lập trình chuyển đổi giữa các tab.
+
+40
+00:04:35,520 --> 00:04:48,520
+Ta có thể dùng hàm setCurrentWidget(), tham số truyền vào là một pointer của widget.
+
+41
+00:04:48,520 --> 00:04:53,080
+hoặc dùng hàm setCurrentindex().
+
+42
+00:04:53,080 --> 00:04:58,000
+Nếu dùng hàm setCurrentindex(), ta không truyền vào pointer của widget mà truyền vào chỉ mục(index) của tab.
+
+43
+00:05:11,160 --> 00:05:17,610
+Do ta đã định nghĩa tab đang hiển thị trong hàm khởi tạo(constructor) của MainWindow
+
+44
+00:05:17,610 --> 00:05:22,020
+nên tab "New Tab" sẽ mặc định được chọn khi màn hình hiển thị.
+
+45
+00:05:22,140 --> 00:05:27,250
+Trong ví dụ này, cả hai hàm(setCurrentindex() và setCurrentWidget()) xử lý tương tự nhau.
+
+46
+00:05:33,810 --> 00:05:36,090
+Build và chạy chương trình.
+
+47
+00:05:36,280 --> 00:05:38,580
+Chương trình chạy ngon.
+
+48
+00:05:46,660 --> 00:05:51,550
+Còn nếu bạn muốn xóa bỏ tab đi
+
+49
+00:05:51,730 --> 00:05:53,120
+thì cần truyền chỉ mục(index) của tab( cho hàm removeTab()).
+
+50
+00:05:53,200 --> 00:05:55,530
+Ví dụ xóa bỏ tab thứ hai đi.
+
+51
+00:06:03,880 --> 00:06:05,420
+Chạy chương trình lại.
+
+52
+00:06:06,660 --> 00:06:16,190
+Tab thứ hai đã bị xóa. Trong phần này, bạn đã được học về các widget dùng để hiển thị( Display widget), widget để nhận thông tin người dùng( Editable widget), bố cục(Layout) và Tab.
+
+53
+00:06:16,400 --> 00:06:24,540
+Bạn đã có thể áp dụng chúng để làm ứng dụng có giao diện thận thiện với người dùng hơn rồi.
+
+54
+00:06:26,130 --> 00:06:29,500
+Ta sẽ học về Models và Views trong bài tiếp theo.
+

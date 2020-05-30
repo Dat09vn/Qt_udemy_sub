@@ -1,0 +1,523 @@
+WEBVTT
+
+00:00.800 --> 00:06.550
+This is video which covers building a supercomputing application. In this video we're going to cover a simple
+
+00:06.550 --> 00:12.760
+supercomputing architecture, network coding in Qt, and a full implementation of a supercomputing application.
+
+00:12.760 --> 00:16.900
+Let's talk briefly about the architecture of our supercomputing application.
+
+00:17.020 --> 00:22.180
+We want to create a couple of simple interfaces to help us scale our workload by parallelizing it. To
+
+00:22.180 --> 00:27.310
+do this, we're going to create two TCP servers and a bunch of workers that sit between them as seen
+
+00:27.310 --> 00:32.170
+in the diagram. One server is going to be the push server which is going to distribute the workload out
+
+00:32.170 --> 00:33.370
+to our workers.
+
+00:33.370 --> 00:38.440
+The other server is going to be the pull server which is going to get the results of our computations. Now
+
+00:38.450 --> 00:40.770
+in between these servers will be the workers.
+
+00:40.870 --> 00:46.090
+Workers will connect to the pull server, grab work, run some calculations, and then dumped the results
+
+00:46.180 --> 00:47.430
+into the pull server.
+
+00:47.620 --> 00:53.030
+This setup is nice because it's simple, and we can always add workers to get our work finished faster.
+
+00:53.110 --> 00:58.580
+Just make sure that the calculations take longer than the delays associated with the networking.
+
+00:58.630 --> 01:02.860
+Now our example code is actually going to simplify the architecture a little bit, so that we don't have
+
+01:02.860 --> 01:05.440
+to start four different processes at once.
+
+01:05.470 --> 01:10.570
+We'll do this by combining the push and pull servers in a single process and simulating the workers
+
+01:10.570 --> 01:15.870
+with a single process that leverages the event loop and QTimers to simulate multiple workers.
+
+01:15.880 --> 01:20.650
+Once we've implemented the example, we'll review a full of architecture that I'd recommend for this type
+
+01:20.650 --> 01:21.660
+of application.
+
+01:21.790 --> 01:27.040
+So let's start implementing. You're going to have to open up both the server project file and the client project
+
+01:27.040 --> 01:27.550
+file.
+
+01:27.580 --> 01:32.770
+And if you go in the server file to the push server and scroll all the way down, you can see that we've got two
+
+01:32.770 --> 01:36.570
+member variables, a QTcpServer and a QStringList.
+
+01:36.580 --> 01:42.820
+So we're going to use our QTcpServer to go ahead and push out our operations one string at a time.
+
+01:42.850 --> 01:46.420
+And in this example we're going actually to do 101 operations.
+
+01:46.540 --> 01:51.760
+So if we move over to the implementation of this file and look at the constructor of this class, you'll
+
+01:51.760 --> 01:58.260
+see that we actually have our server, listen, on the LocalHost, port 5000.
+
+01:58.480 --> 02:03.820
+And then we go ahead and initialize our operations, using the number_operations which basically just
+
+02:03.970 --> 02:05.960
+adding in a string to every number.
+
+02:05.980 --> 02:11.920
+And then lastly and most importantly, we take our QTcpServer, specifically the signal newConnection,
+
+02:11.980 --> 02:14.550
+and connect it to our send_work slot.
+
+02:14.560 --> 02:19.830
+So if we scroll down into our send_work slot, we can see how we're going to implement this.
+
+02:19.840 --> 02:22.400
+The first thing that we need to do is go ahead and grab the socket out.
+
+02:22.450 --> 02:26.990
+And the way we'll do that is using the nextPendingConnection method on our server.
+
+02:27.400 --> 02:27.850
+Awesome.
+
+02:27.850 --> 02:31.840
+Now we want to actually check to make sure that we've still got work to do. And the way we're going to
+
+02:31.840 --> 02:35.590
+do that is calling the isEmpty method on our operations.
+
+02:35.590 --> 02:42.880
+Now if the operations are empty, then let's go ahead and we'll emit the finished signal and return from
+
+02:42.880 --> 02:43.770
+this method.
+
+02:43.900 --> 02:47.280
+If the operations are not empty, that means we've still got work to do.
+
+02:47.320 --> 02:52.750
+So let's go ahead and grab our first operation out. When we grab the socket out, we want to make sure
+
+02:52.750 --> 02:55.650
+that it doesn't that it gets cleaned up in a timely manner.
+
+02:55.840 --> 03:00.310
+So what we're going to go ahead and do is connect the disconnected signal to the deleteLater slot,
+
+03:00.340 --> 03:04.450
+all on the QTcpSocket.
+
+03:04.470 --> 03:08.910
+So one thing I forgot to do is we need to actually make sure that this QTcpSocket that we pulled
+
+03:08.910 --> 03:13.410
+up gets cleaned out. And the way that we're going to do that is make sure that we call the disconnected
+
+03:13.410 --> 03:18.830
+signal to the deleteLater slot on the actual QTcpSocket.
+
+03:18.840 --> 03:22.380
+Next thing you need to remember is data over the network is actually pretty expensive.
+
+03:22.380 --> 03:24.770
+So we want to make sure that's compressed as possible.
+
+03:24.810 --> 03:27.600
+Luckily Qt provides a helper method to do that in
+
+03:27.630 --> 03:28.820
+QDataStreams.
+
+03:28.830 --> 03:35.030
+Let's go ahead and use that. So the QDataStream input operation,
+
+03:35.030 --> 03:39.110
+the QDataStream input operator, which you can see right here on this line, is actually going to
+
+03:39.110 --> 03:43.430
+compress our operation data, which is this QString, into our block
+
+03:43.430 --> 03:49.840
+QByteArray, which is called block here, that we pass into the constructor for our QDataStream.
+
+03:49.850 --> 03:54.120
+Now the QByteArray block is what we actually want to send over the wire.
+
+03:54.230 --> 03:57.540
+So let's go ahead and send it using the write function.
+
+03:57.620 --> 04:02.000
+We'll then disconnect our QTcpSocket using that disconnectFromHost method.
+
+04:03.350 --> 04:07.640
+So now we've gone ahead and grabbed our client_connection.
+
+04:07.640 --> 04:10.180
+We've made sure that it'll go ahead and get cleaned up.
+
+04:10.190 --> 04:16.590
+We grabbed our first operation and we've compressed it and gone ahead and written that compressed
+
+04:16.670 --> 04:20.590
+QByteArray over the wire so that we send it to one of our workers.
+
+04:20.600 --> 04:22.610
+So what is the worker going to do with it?
+
+04:22.640 --> 04:24.310
+Well let's go ahead and take a look.
+
+04:24.320 --> 04:29.300
+So we'll have to get into our client project and what we're going to head to is our socket_manager implementation
+
+04:29.300 --> 04:30.010
+file.
+
+04:30.260 --> 04:33.250
+Now the constructor for this class is very simple.
+
+04:33.560 --> 04:35.810
+We just called the setup_sockets method.
+
+04:35.870 --> 04:37.440
+Now for our workers,
+
+04:37.460 --> 04:43.250
+each worker needs two sockets, one for connecting to the push server and one for connecting to the pull
+
+04:43.250 --> 04:49.070
+server. Socket pair, which you can see here, creates two sockets just for this purpose, an input and an
+
+04:49.070 --> 04:49.940
+output.
+
+04:50.120 --> 04:53.420
+We'll go ahead and connect the output right away to the pull server.
+
+04:53.420 --> 04:58.020
+So in this case, it'll be the LocalHost on port 5001.
+
+04:58.070 --> 05:02.550
+Now since we compressed the data before we sent it, we'll have to decompress it here.
+
+05:02.660 --> 05:09.370
+So we go ahead and create a QDataStream and associate it with the input socket pair, or the input
+
+05:09.370 --> 05:14.060
+QTcpSocket using the setDevice method on our QDataStream.
+
+05:14.060 --> 05:19.910
+Now the signal that our QTcpSocket is going to admit that we're most interested in is the
+
+05:19.910 --> 05:23.260
+readyRead signal, which lets us know that we have data to read.
+
+05:23.390 --> 05:26.670
+We'll use a functor-based slot to streamline the code a little.
+
+05:26.720 --> 05:33.410
+Now since the signal is just readyRead and not something like "Hey all the data is here now and you
+
+05:33.410 --> 05:34.490
+can start working on it"
+
+05:34.490 --> 05:37.980
+we have to implement a check to make sure that all the data has arrived.
+
+05:38.030 --> 05:43.850
+We do this using two methods on the data_stream object, startTransaction and commitTransaction. We'll
+
+05:43.850 --> 05:48.260
+call start transaction first.
+
+05:48.270 --> 05:54.270
+So in this code, if commitTransaction here returns false, that means that we still have data left to
+
+05:54.270 --> 05:55.350
+receive.
+
+05:55.470 --> 06:01.110
+Now the commit transaction method is smart enough to roll the internal state of data_stream back to
+
+06:01.110 --> 06:03.180
+where we called Start transaction.
+
+06:03.270 --> 06:06.030
+If this doesn't make sense, I wouldn't worry about it.
+
+06:06.030 --> 06:09.870
+This is basically all implementation details of QDataStream.
+
+06:09.870 --> 06:14.410
+The important thing to understand is that this work right here is actually decompressing the data.
+
+06:14.430 --> 06:19.710
+So especially right here where we create our QString instance called work, and go ahead and use the
+
+06:19.710 --> 06:20.820
+output operators,
+
+06:20.820 --> 06:25.550
+that's going to go ahead and put all the data over the wire into this variable called work.
+
+06:25.560 --> 06:29.850
+So if we make it pas this method call right here, and the data_stream
+
+06:29.850 --> 06:31.560
+commitTransaction returns true,
+
+06:31.560 --> 06:36.810
+that means our QString variable called work will actually have the decompressed data that we sent
+
+06:36.810 --> 06:37.920
+over the push server.
+
+06:37.920 --> 06:42.750
+So let's go ahead and call a method to simulate the work.
+
+06:42.760 --> 06:48.130
+Now if we look at our function doing the work, you're going to see that we're not actually going to do
+
+06:48.130 --> 06:49.130
+work at all.
+
+06:49.150 --> 06:53.680
+So you can see this note here "in real code, work calculations would happen before we compress the data
+
+06:53.680 --> 06:54.240
+again".
+
+06:54.250 --> 06:59.560
+But since we're just going to simulate doing work, we're going to be compressing the data away, because
+
+06:59.560 --> 07:03.230
+we're just going to simulate work where we're just going to go ahead and compress the data again.
+
+07:03.340 --> 07:09.160
+Now it might seem silly to decompress the data just to compress again, but remember, missing packets is
+
+07:09.160 --> 07:10.240
+expensive.
+
+07:10.240 --> 07:13.870
+Now if we look at the function doing the work, you're going to see that we're not actually going to
+
+07:13.870 --> 07:14.980
+do anything.
+
+07:14.980 --> 07:20.110
+So in this note here "in real code, work calculations would happen before we compress the data back again".
+
+07:20.410 --> 07:22.000
+Since we're just simulating this,
+
+07:22.000 --> 07:24.960
+we're going to just go ahead and compress the data back again.
+
+07:25.000 --> 07:27.710
+And the code is very similar. So we create a QByteArray,
+
+07:27.760 --> 07:34.650
+we create a QDataStream and pass our QByteArray in, and then go ahead and using the input operator.
+
+07:34.660 --> 07:36.940
+So our QString's actually our work variable.
+
+07:36.940 --> 07:42.730
+We're going to write that into our data_stream, which means that this block is ready for us to send over
+
+07:42.730 --> 07:43.450
+the wire.
+
+07:43.540 --> 07:49.050
+So let's go ahead and do that. And we want to make sure that our output socket is actually connected,
+
+07:49.050 --> 07:50.640
+so we're going to check that first.
+
+07:50.680 --> 07:55.990
+But if that is actually successful, then we'll go ahead and send our work back, using the write method.
+
+07:56.960 --> 08:00.840
+Now we need to simulate some calculation time here.
+
+08:00.860 --> 08:05.900
+Otherwise we're just looking to see how fast the LocalHost loopback is. And the way that we're going
+
+08:05.900 --> 08:09.590
+to do this is using the random method, bounded.
+
+08:09.590 --> 08:15.140
+So we'll get a number between 0 and 500, and we'll go ahead and plug our simulated_work_time into a
+
+08:15.140 --> 08:21.800
+QTimer. And this QTimer is hooked up to another functor. And it's actually going to call the get_more_work
+
+08:21.800 --> 08:28.460
+method, which actually goes ahead and reconnects our input socket back up to our push socket to
+
+08:28.460 --> 08:30.530
+go ahead and get more work.
+
+08:30.530 --> 08:35.530
+So the last thing to do, now that we've sent our work, which we did right here.
+
+08:35.540 --> 08:39.150
+So we've sent our work from our workers back to our pull server,
+
+08:39.230 --> 08:42.830
+so let's go ahead and take a look at our pull server.
+
+08:42.870 --> 08:48.440
+And if you look at the constructor of our pull server, you'll see that we go ahead and listen on the
+
+08:48.440 --> 08:51.080
+LocalHost port 5001.
+
+08:51.110 --> 08:57.020
+And then just like we did for our push server, we connect our server, which is the QTcpServer, specifically
+
+08:57.020 --> 09:03.020
+the newConnection method, to our receive_work slot. So our receive_work slot looks identical to our
+
+09:03.020 --> 09:03.900
+send_work slot.
+
+09:03.930 --> 09:04.250
+Right?
+
+09:04.280 --> 09:09.560
+We use the nextPendingConnection on our server to go ahead and get a client_connection out.
+
+09:09.560 --> 09:15.530
+We create a QDataStream. And we go ahead and associate our client connection with our data_stream.
+
+09:15.680 --> 09:17.810
+And then we want to make sure that we get all the works,
+
+09:17.810 --> 09:22.870
+we'll use the startTransaction and commitTransaction to make sure that we get all the information.
+
+09:22.940 --> 09:26.030
+But in the end of the day, all the data is going into our variable
+
+09:26.030 --> 09:31.790
+QString, which we called result here. And we actually use the output operator in this line here to pass
+
+09:32.120 --> 09:34.720
+our QDataStream information into our result.
+
+09:34.760 --> 09:38.480
+And then what we're going to do is we're going to check to make sure that we actually get some informations, we check
+
+09:38.480 --> 09:41.470
+to see if the result. which is the QString, is empty.
+
+09:41.490 --> 09:44.720
+And then we go ahead and print it out into the terminal.
+
+09:45.020 --> 09:50.860
+So let's go ahead and run these two projects. We'll start the server first, and then the clients.
+
+09:50.990 --> 09:55.850
+So go ahead and change the server and then go ahead and run the client.
+
+09:56.050 --> 10:00.070
+Looks like it took us 4.9 to 8 seconds to run.
+
+10:00.070 --> 10:06.820
+Now note that we could go into our clients and actually change the number of workers here, and go ahead
+
+10:06.820 --> 10:10.610
+and simulate the fact that we have more run workers and run that again.
+
+10:10.720 --> 10:13.020
+And that is exactly what we do in real life.
+
+10:13.030 --> 10:16.670
+If we needed to get something faster just increase the number of workers.
+
+10:16.690 --> 10:18.820
+So it's a very simple process to do this.
+
+10:18.820 --> 10:23.590
+Now this is nice in theory but if I were implementing this in practice this is what I would actually
+
+10:23.590 --> 10:24.330
+do.
+
+10:24.700 --> 10:28.590
+So the first thing I would want is to remove the event loop out of our worker.
+
+10:28.600 --> 10:30.430
+Workers would be very simple,
+
+10:30.430 --> 10:32.870
+much like the pseudo code displayed here.
+
+10:33.130 --> 10:35.700
+The worker would basically run an infinite loop.
+
+10:35.710 --> 10:40.900
+It would get the work from the push server, run the calculations, and then send the result back to the
+
+10:40.900 --> 10:41.820
+pull server.
+
+10:41.950 --> 10:47.140
+And the reason workers would be so simple is because we would leverage the process manager, much like
+
+10:47.140 --> 10:50.000
+we created in the last video.
+
+10:50.200 --> 10:55.750
+And basically I would create as many workers as I had cores on my server. By making these workers so
+
+10:55.750 --> 10:56.710
+simple,
+
+10:56.710 --> 11:02.170
+we go ahead and let the operating system manage task switching rather than manually programming the
+
+11:02.170 --> 11:05.200
+task switching ourselves, however we want to do that.
+
+11:05.200 --> 11:08.630
+Operating systems by design are pretty awesome at switching tasks.
+
+11:08.650 --> 11:13.980
+So it only makes sense to leverage that strength rather than try to manually program it ourselves.
+
+11:14.260 --> 11:19.840
+And with that we've effectively covered a full implementation of a supercomputing app, worked on network
+
+11:19.840 --> 11:24.850
+coding in Qt, and walked through a simple architecture of a supercomputing application.
+
+11:25.820 --> 11:30.080
+Join us next time where we go over an introduction to the diving into model/views.

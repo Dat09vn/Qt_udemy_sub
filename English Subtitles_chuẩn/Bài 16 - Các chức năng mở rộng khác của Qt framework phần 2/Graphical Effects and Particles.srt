@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00.950 --> 00:06.590
+This is the video 6.3 visual representations which covers Graphical Effects and Particles. In
+
+00:06.590 --> 00:12.170
+this video, we're going to cover types of Qt: Graphical Effects, Using gradients before finishing up
+
+00:12.170 --> 00:13.600
+with creating particles.
+
+00:13.610 --> 00:15.680
+So let's go ahead and get started.
+
+00:15.680 --> 00:20.000
+Qt has a large amount of graphical effects that are available for creating graphics.
+
+00:20.010 --> 00:24.180
+The best way to know what's available is just run through them all and see what they do.
+
+00:24.200 --> 00:26.110
+Let's go into that right now.
+
+00:26.240 --> 00:33.290
+Some of the graphical effects that kit has available include Blending, Color Effects, Gradient Effects,
+
+00:33.680 --> 00:41.760
+Distortion, Drops Shadows, Blurs, Motion Blurs, and finally Glows and Masks.
+
+00:41.780 --> 00:48.440
+So as you might have noticed most of these are actually used for pictures with the exceptions of gradients.
+
+00:48.440 --> 00:52.900
+So let's go ahead and we'll go back to our loading screen application that we created the last time.
+
+00:53.000 --> 00:59.360
+And let's go ahead and use a gradient instead of a white background so that we can demonstrate how to
+
+00:59.360 --> 01:00.890
+use gradients effectively.
+
+01:00.900 --> 01:06.820
+So I added in this "Rectangle" and basically it fills the entire window and fills everything else that
+
+01:06.820 --> 01:09.610
+we've got our blue ball right beneath it.
+
+01:09.680 --> 01:13.440
+And if we scroll down we had our button that went ahead and wiggle back and forth.
+
+01:13.460 --> 01:15.530
+So the "Rectangle" will encompasses both of those.
+
+01:15.530 --> 01:19.120
+So let's go ahead and add a "gradient" to this "Rectangle".
+
+01:19.430 --> 01:24.120
+So the way to use gradients is we go ahead and create an instance of our gradient.
+
+01:24.140 --> 01:27.410
+And then we go ahead and put in a couple of "GradientStop".
+
+01:27.410 --> 01:34.220
+So for us we're going to use two gradientStops: one at the zero position and one at the 1.0 position
+
+01:34.310 --> 01:38.580
+and we go ahead and have this make a gradient from black to blue.
+
+01:40.420 --> 01:47.100
+So now if we run this again we can see we've got this nice gradient that starts at the bottom and goes
+
+01:47.100 --> 01:51.230
+all the way to the top from black to blue just like we said.
+
+01:51.330 --> 01:55.460
+Now we've been using this bouncing ball to let our users know that everything is working.
+
+01:55.470 --> 01:57.840
+But let's use something a little more subtle.
+
+01:57.900 --> 02:01.350
+So what we could use instead is a particle system.
+
+02:01.350 --> 02:05.900
+So let's go ahead and create our particle system.
+
+02:06.010 --> 02:11.260
+So go ahead and create this right in our "Rectangle", below our "gradient" so the type is called "ParticleSystem" 
+
+02:11.260 --> 02:16.150
+and we need to make sure this "fill" is "parent". Now, for every particle system
+
+02:16.150 --> 02:19.930
+there's three things that we need to fill in for our particle system to work.
+
+02:19.930 --> 02:25.270
+We need an "ImageParticle" and "Emitter" and a "Wander" instance.
+
+02:25.270 --> 02:30.980
+So our image particle instance is going to lower the image for us and control its opacity.
+
+02:31.010 --> 02:37.930
+Qt comes with 3D thought image particles: a star, a glow dot and a fuzzy dot. When you use the glow dot since
+
+02:37.930 --> 02:41.050
+that works best with a lower opacity.
+
+02:41.050 --> 02:44.870
+So let's go ahead and we'll create an instance of our image particle.
+
+02:44.950 --> 02:50.870
+We'll set the source to be the stuff that Qt comes bundled with and we'll set the opacity.
+
+02:52.670 --> 02:53.100
+Perfect.
+
+02:53.120 --> 02:59.360
+Now that we defined what our particle is. Let's go ahead and define how it gets emitted by defining the
+
+02:59.360 --> 03:00.000
+"Emitter".
+
+03:00.000 --> 03:04.490
+Right now I'm just going to find a bunch of stuff really quickly and then we'll talk about what each
+
+03:04.490 --> 03:05.480
+of it does.
+
+03:11.400 --> 03:14.120
+Perfect. So we go ahead and defined our "Emitter".
+
+03:14.130 --> 03:21.570
+So obviously with the actual emitter "height" defines how far up our particles will go. We're anchoring this to
+
+03:21.570 --> 03:24.540
+the bottom. Anchor 3 pixels above the bottom.
+
+03:24.540 --> 03:29.050
+So this "lifeSpan" is how many milliseconds each particle should last.
+
+03:29.250 --> 03:35.940
+And the "startTime" is when we originally started our application that says how far in advance as you
+
+03:35.940 --> 03:36.250
+go.
+
+03:36.240 --> 03:42.540
+So if your "startTime" and your "lifeSpan" are the same that means that it will start fully initialize
+
+03:42.600 --> 03:45.570
+and "emitRate" is the number of particles per second.
+
+03:45.570 --> 03:49.430
+"Size" is the size of the particle, "sizeVariation" gives us some variation.
+
+03:49.470 --> 03:54.450
+And then this "acceleration", this is the point variation, for this point direction, rather.
+
+03:54.450 --> 03:58.660
+So this basically varies our X and varies our y.
+
+03:58.740 --> 04:03.890
+As far as our "acceleration" goes and tells our particles that we want to go up.
+
+04:03.900 --> 04:07.200
+So last thing that we need is a "Wander" instance.
+
+04:07.210 --> 04:11.700
+So we want our particles to wander side to side as they go up.
+
+04:11.700 --> 04:16.390
+So we're going to create the instance and go ahead and set the experience.
+
+04:17.220 --> 04:22.270
+Perfect. So let's go ahead and more remove our bouncing ball since we don't need this anymore.
+
+04:23.590 --> 04:25.730
+And let's run this and see what it looks like.
+
+04:27.310 --> 04:30.940
+So now you can see we've got these particles that are coming up from the bottom.
+
+04:30.940 --> 04:32.920
+We've got our button that is wiggling.
+
+04:32.920 --> 04:34.510
+So it's a little less distracting.
+
+04:34.510 --> 04:41.410
+It's much more casual than our bouncing ball was, which is important because animations can become distracting
+
+04:41.410 --> 04:43.230
+if you've got too many of them.
+
+04:43.540 --> 04:48.940
+So with that, we successfully learned how to get a particle system moving in the background to let our
+
+04:48.940 --> 04:50.890
+user know that everything is still working.
+
+04:50.890 --> 04:56.230
+We demonstrated using a gradient system to remove just a single color in the background to have that
+
+04:56.230 --> 04:58.360
+actual nice fade in the background.
+
+04:58.510 --> 05:05.480
+And when we reviewed specs in graphical effects. So, join us in the next video recovered a 3D in Qt
+
+05:05.530 --> 05:06.010
+Quick.

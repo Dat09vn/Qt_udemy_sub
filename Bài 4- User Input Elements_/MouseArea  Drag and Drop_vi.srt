@@ -1,0 +1,1139 @@
+1
+00:00:00,000 --> 00:00:01,740
+Trong bài giảng này, ta sẽ xem xét
+
+2
+00:00:01,740 --> 00:00:04,529
+MouseArea và cách bắt
+
+3
+00:00:04,529 --> 00:00:07,140
+sự kiện nhấp chuột bằng cách sử dụng nó nó. Ta cũng sẽ xem xét
+
+4
+00:00:07,140 --> 00:00:09,480
+cách xây dựng tính năng kéo (drag) và thả (drop)
+
+5
+00:00:09,480 --> 00:00:11,880
+trong các thành phần QML.
+
+6
+00:00:11,880 --> 00:00:14,790
+Hãy đến Qt Creator và khám phá nó.
+
+7
+00:00:14,790 --> 00:00:17,640
+Ở đây ta đang ở trong Qt Creator. Ta sẽ
+
+8
+00:00:17,640 --> 00:00:19,130
+bắt đầu một dự án mới
+
+9
+00:00:19,130 --> 00:00:23,460
+Đây là một ứng dụng Qt Quick. Ta sẽ
+
+10
+00:00:23,460 --> 00:00:26,580
+gọi nó là MouseAreaDemo, lưu nó ở
+
+11
+00:00:26,580 --> 00:00:30,359
+vị trí thông thường. Nhấn "Next", chọn
+
+12
+00:00:30,359 --> 00:00:35,399
+"Build System" và gán cho nó là "qmake", chọn
+
+13
+00:00:35,399 --> 00:00:41,280
+phiên bản Qt và chọn Kit. Ta
+
+14
+00:00:41,280 --> 00:00:43,530
+sẽ thay đổi tiêu đề thành "MouseArea
+
+15
+00:00:43,530 --> 00:00:49,020
+Demo". Và bên trong ta sẽ đặt
+
+16
+00:00:49,020 --> 00:00:53,579
+một Rectangle. Nó sẽ có
+
+17
+00:00:53,579 --> 00:00:56,309
+chiều rộng như phần tử cah và phần tử cha của nó là
+
+18
+00:00:56,309 --> 00:00:58,770
+cửa sổ này ở đây nên nó sẽ là 640
+
+19
+00:00:58,770 --> 00:00:59,640
+theo chiều rộng.
+
+20
+00:00:59,640 --> 00:01:04,290
+Hãy gán cho nó chiều cao 200, gán màu
+
+21
+00:01:04,290 --> 00:01:07,290
+"beige". Bên trong Rectangle này, ta sẽ
+
+22
+00:01:07,290 --> 00:01:09,659
+đặt một MouseArea như ta đã từng
+
+23
+00:01:09,659 --> 00:01:12,720
+làm từ trước tới giờ. Nó sẽ lấp đầy
+
+24
+00:01:12,720 --> 00:01:17,630
+thành phần cha, cũng là hình chữ nhật ở đây. Và
+
+25
+00:01:19,970 --> 00:01:23,490
+ta nên cấp cho nó một id, Rectangle này.
+
+26
+00:01:23,490 --> 00:01:29,820
+Hãy gọi nó là containerRectId. Và trong
+
+27
+00:01:29,820 --> 00:01:31,049
+trình xử lý onClicked
+
+28
+00:01:31,049 --> 00:01:34,020
+ta sẽ sử dụng một cái gì đó. Ta
+
+29
+00:01:34,020 --> 00:01:36,720
+muốn di chuyển hình chữ nhật này đến
+
+30
+00:01:36,720 --> 00:01:39,420
+vị trí mà người dùng nhấp chuột
+
+31
+00:01:39,420 --> 00:01:42,930
+trên tọa độ x. Vì vậy, để làm điều đó
+
+32
+00:01:42,930 --> 00:01:45,509
+ta cần nắm bắt thông số của
+
+33
+00:01:45,509 --> 00:01:48,119
+MouseEvent này. Ok, đó là những gì tôi muốn
+
+34
+00:01:48,119 --> 00:01:50,970
+bạn nhìn thấy. Hãy xem thành phần MouseArea này
+
+35
+00:01:50,970 --> 00:01:52,680
+Ta chưa thực sự nói về
+
+36
+00:01:52,680 --> 00:01:55,680
+nó nhiều. Hãy mở tài liệu.
+
+37
+00:01:55,680 --> 00:02:01,110
+gõ vào "MouseArea", nhìn vào
+
+38
+00:02:01,110 --> 00:02:03,450
+tài liệu. Và đó là "Item
+
+39
+00:02:03,450 --> 00:02:05,640
+ẩn, thường được sử dụng trong
+
+40
+00:02:05,640 --> 00:02:09,239
+kết hợp với một Item hiện". Ta
+
+41
+00:02:09,239 --> 00:02:12,780
+đang sử dụng nó bên trong Rectangle theo thứ tự
+
+42
+00:02:12,780 --> 00:02:13,980
+để cung cấp tính năng xử lý chuột
+
+43
+00:02:13,980 --> 00:02:16,409
+cho Item đó. Ok, đó là những gì
+
+44
+00:02:16,409 --> 00:02:18,480
+ta đang làm. Nhưng những gì tôi muốn các bạn
+
+45
+00:02:18,480 --> 00:02:22,290
+thấy là những tín hiệu (signal) mà MouseArea này
+
+46
+00:02:22,290 --> 00:02:25,230
+phát ra và trong số những tín hiệu (signal) đó
+
+47
+00:02:25,230 --> 00:02:27,569
+có một tính hiệu ta đã sử dụng rất nhiều
+
+48
+00:02:27,569 --> 00:02:30,629
+tên là "clicked". Hãy nhấp vào
+
+49
+00:02:30,629 --> 00:02:33,870
+nó. Ta thấy rằng nó có một tham số
+
+50
+00:02:33,870 --> 00:02:36,930
+được gọi là MouseEvent. Hãy nhấp vào
+
+51
+00:02:36,930 --> 00:02:39,900
+MouseEvent này. Và ta có thể thấy rằng nó
+
+52
+00:02:39,900 --> 00:02:43,280
+có một vài thuộc tính: hai trong số đó là
+
+53
+00:02:43,280 --> 00:02:45,599
+tọa độ x nơi người dùng nhấp
+
+54
+00:02:45,599 --> 00:02:48,060
+chuột và tọa độ y nơi
+
+55
+00:02:48,060 --> 00:02:51,060
+người dùng nhấp chuột. Ok, đây là
+
+56
+00:02:51,060 --> 00:02:52,769
+những gì ta muốn. Có những thứ khác ta
+
+57
+00:02:52,769 --> 00:02:54,540
+có thể làm việc cùng, tất cả các thuộc tính
+
+58
+00:02:54,540 --> 00:02:57,060
+ở đó cho ta sử dụng. Nhưng ta sẽ
+
+59
+00:02:57,060 --> 00:03:00,359
+tập trung vào x và y ở đây. MouseEvent này
+
+60
+00:03:00,359 --> 00:03:03,299
+có sẵn trong đối tượng
+
+61
+00:03:03,299 --> 00:03:07,530
+"Mouse". Vì vậy, ta thực sự có thể biết
+
+62
+00:03:07,530 --> 00:03:10,290
+vị trí nơi người dùng nhấp chuột bằng cách thực hiện
+
+63
+00:03:10,290 --> 00:03:17,940
+console.log(mouse.x). Hãy
+
+64
+00:03:17,940 --> 00:03:25,650
+chạy ứng dụng. Ta có thể thấy rằng nó
+
+65
+00:03:25,650 --> 00:03:28,079
+hiển thị vị trí nơi ta nhấp và
+
+66
+00:03:28,079 --> 00:03:32,579
+hình chữ nhật này đây. Vì vậy, hãy thử và lên
+
+67
+00:03:32,579 --> 00:03:41,609
+đầu trang. Và đó là 1. Và nó vẫn còn. Tôi đang
+  
+0:03:39.989,0:03:43.919
+cố gắng để có được ... Ồ, tôi thấy 0 rồi.
+
+68
+00:03:41,609 --> 00:03:43,919
+Tôi đã cố gắng để có được giá trị 0. Bây giờ ta biết
+
+69
+00:03:43,919 --> 00:03:45,840
+rằng ta có thể biết x và
+
+70
+00:03:45,840 --> 00:03:46,769
+tọa độ y
+
+71
+00:03:46,769 --> 00:03:49,650
+trong MouseEvent. Vì vậy, những gì ta muốn làm
+
+72
+00:03:49,650 --> 00:03:51,419
+được đặt một Rectangle khác bên trong
+
+73
+00:03:51,419 --> 00:03:54,060
+Rectangle này ở đây và di chuyển nó ở một vị trí
+
+74
+00:03:54,060 --> 00:03:56,879
+nơi ta nhấp chuột, trên tọa độ x.
+
+75
+00:03:56,879 --> 00:03:59,370
+Để tôi chỉ rõ ý của tôi là gì.
+
+76
+00:03:59,370 --> 00:04:03,319
+Ta sẽ đặt một Rectangle bên trong.
+
+77
+00:04:03,319 --> 00:04:08,840
+"id" sẽ là movingRectangleId.
+
+78
+00:04:09,199 --> 00:04:14,160
+Chiều rộng sẽ là 50 và
+
+79
+00:04:14,160 --> 00:04:16,048
+chiều cao sẽ giống như
+
+80
+00:04:16,048 --> 00:04:20,298
+chiều rộng. Vì vậy, nó cũng sẽ là 50.
+
+81
+00:04:20,298 --> 00:04:23,980
+Ta cho nó màu blue.
+
+82
+00:04:23,980 --> 00:04:26,410
+Vì vậy, những gì ta muốn làm khi ta nhấp vào
+
+83
+00:04:26,410 --> 00:04:30,610
+MouseArea này là di chuyển
+
+84
+00:04:30,610 --> 00:04:34,150
+rect đến một vị trí nơi ta nhấp vào
+
+85
+00:04:34,150 --> 00:04:37,320
+chuột. Và vị trí đó được lưu trữ và
+
+86
+00:04:37,320 --> 00:04:41,470
+đối tượng Mouse đi kèm với sự kiện onClicked này.
+
+87
+00:04:41,470 --> 00:04:46,150
+và thuộc tính x của nó. Như vậy
+
+88
+00:04:46,150 --> 00:04:48,490
+nếu ta chạy ứng dụng này hình chữ nhật
+
+89
+00:04:48,490 --> 00:04:50,650
+màu xanh sẽ ở phía trên bên trái
+
+90
+00:04:50,650 --> 00:04:53,200
+của hình chữ nhật này, phía trên bên trái
+
+91
+00:04:53,200 --> 00:04:58,270
+của đối tượng cửa sổ ở đây. Hãy chạy chương trình.
+
+92
+00:04:58,270 --> 00:05:01,150
+Ok, ta thấy hình chữ nhật màu xanh ở đây. Nếu ta
+
+93
+00:05:01,150 --> 00:05:03,640
+bấm vào bên ngoài ở đây, trong phần
+
+94
+00:05:03,640 --> 00:05:06,190
+màu trắng, ta sẽ không thấy bất cứ điều gì.
+
+95
+00:05:06,190 --> 00:05:09,610
+Tại sao vậy? MouseArea được đính kèm
+
+96
+00:05:09,610 --> 00:05:12,400
+với hình chữ nhật này. Và nó có chiều cao
+
+97
+00:05:12,400 --> 00:05:16,720
+200 và chỗ này nằm ngoài
+
+98
+00:05:16,720 --> 00:05:19,420
+vùng có thể nhấp. Vùng có thể nhấp là
+
+99
+00:05:19,420 --> 00:05:21,820
+vùng màu be ở đây, đây là
+
+100
+00:05:21,820 --> 00:05:25,390
+hình chữ nhật mà ta xác định. Và ta thiết lập
+
+101
+00:05:25,390 --> 00:05:27,670
+MouseArea để phủ kín hình chữ nhật này.
+
+102
+00:05:27,670 --> 00:05:31,420
+Vì vậy, vùng bên ngoài hình chữ nhật này
+
+103
+00:05:31,420 --> 00:05:34,030
+sẽ không thể nhấp được. Ít nhất là nó
+
+104
+00:05:34,030 --> 00:05:36,160
+sẽ không được xử lý bởi MouseArea
+
+105
+00:05:36,160 --> 00:05:38,560
+mà ta đã định nghĩa ở đây. Nhưng nếu ta
+
+106
+00:05:38,560 --> 00:05:40,960
+bấm vào bên trong. Xem điều gì xảy ra? Hình chữ nhật
+
+107
+00:05:40,960 --> 00:05:44,800
+màu xanh di chuyển đến vị trí mới. Ok,
+
+108
+00:05:44,800 --> 00:05:47,020
+như vậy, đây là cách ta có thể bắt sự kiện
+
+109
+00:05:47,020 --> 00:05:49,660
+nhấp chuột, nắm bắt vị trí nơi người dùng
+
+110
+00:05:49,660 --> 00:05:51,910
+nhấp chuột và sử dụng nó trong ứng dụng
+
+111
+00:05:51,910 --> 00:05:54,760
+của mình. Ok, cái này đang hoạt động tốt
+
+112
+00:05:54,760 --> 00:05:57,130
+và chính xác. Một điều nữa tôi muốn chỉ ra
+
+113
+00:05:57,130 --> 00:05:59,050
+đó là vị trí của MouseArea này
+
+114
+00:05:59,050 --> 00:06:02,020
+rất quan trọng. Tôi đã thấy nhiều
+
+115
+00:06:02,020 --> 00:06:04,780
+sinh viên làm một thứ đó tương tự như sau. Tôi
+
+116
+00:06:04,780 --> 00:06:07,300
+sao chép MouseArea này, đặt nó
+
+117
+00:06:07,300 --> 00:06:09,910
+bên trong hình chữ nhật này, nó sẽ làm
+
+118
+00:06:09,910 --> 00:06:12,430
+điều gì đó tương tự. Nếu ta làm như vậy,
+
+119
+00:06:12,430 --> 00:06:14,830
+MouseArea này sẽ không xử lý ở
+
+120
+00:06:14,830 --> 00:06:16,960
+hình chữ nhật cha này. Nó sẽ xử lý
+
+121
+00:06:16,960 --> 00:06:20,140
+hình chữ nhật màu xanh. Vì vậy, hãy chạy
+
+122
+00:06:20,140 --> 00:06:24,370
+ứng dụng. Nếu ta nhấp vào bên ngoài
+
+123
+00:06:24,370 --> 00:06:26,590
+hình chữ nhật màu be ta sẽ không
+
+124
+00:06:26,590 --> 00:06:29,350
+để có được bất kỳ MouseEvent nào vì MouseArea
+
+125
+00:06:29,350 --> 00:06:31,780
+được gắn vào hình chữ nhật màu xanh này
+
+126
+00:06:31,780 --> 00:06:34,600
+ở đây. Và một điều tôi muốn các bạn thấy là
+
+127
+00:06:34,600 --> 00:06:37,150
+tọa độ chuột. Giờ
+
+128
+00:06:37,150 --> 00:06:37,840
+tôi đang làm việc
+
+129
+00:06:37,840 --> 00:06:39,970
+bên trong hình chữ nhật màu xanh này bởi vì
+
+130
+00:06:39,970 --> 00:06:41,860
+đó là nơi MouseArea được đính kèm.
+
+131
+00:06:41,860 --> 00:06:45,370
+Vì vậy, nếu ta nhấp vào đầu ở đây, ta
+
+132
+00:06:45,370 --> 00:06:55,479
+sẽ thấy 0, ok? Các tọa độ nằm
+
+133
+00:06:55,479 --> 00:06:58,180
+bên trong hình chữ nhật màu xanh. Chúng không nằm
+
+134
+00:06:58,180 --> 00:07:00,940
+trong hình chữ nhật màu be. Như vậy, ta thực sự
+
+135
+00:07:00,940 --> 00:07:02,680
+cần phải lựa chọn cẩn thận nơi đặt
+
+136
+00:07:02,680 --> 00:07:05,949
+MouseArea và biết ta đang làm việc
+
+137
+00:07:05,949 --> 00:07:07,600
+với tọa độ nào. Tôi hy vọng điều này
+
+138
+00:07:07,600 --> 00:07:10,510
+dễ hiểu. Vì vậy, tôi sẽ lấy lại
+
+139
+00:07:10,510 --> 00:07:14,050
+MouseArea này và đặt nó ở chỗ
+
+140
+00:07:14,050 --> 00:07:14,770
+nên được đặt vào.
+
+141
+00:07:14,770 --> 00:07:17,169
+Điều này sẽ ổn thôi. Chạy
+
+142
+00:07:17,169 --> 00:07:25,960
+ứng dụng. Và đây là những gì ta muốn. Một
+
+143
+00:07:25,960 --> 00:07:27,580
+tín hiệu khác ta sẽ xem xét là
+
+144
+00:07:27,580 --> 00:07:30,430
+WheelEvent được "phát ra khi
+
+145
+00:07:30,430 --> 00:07:33,340
+phản ứng với thao tác lăn chuột và 
+
+146
+00:07:33,340 --> 00:07:36,310
+cử chỉ cuộn ". Giờ ta sẽ sử dụng nó
+
+147
+00:07:36,310 --> 00:07:38,680
+cho việc lăn chuột. Hãy
+
+148
+00:07:38,680 --> 00:07:40,870
+nhìn vào các thuộc tính mà sự kiện này
+
+149
+00:07:40,870 --> 00:07:45,940
+có. Ta có thể thấy vị trí x và y. Ta
+
+150
+00:07:45,940 --> 00:07:48,760
+cũng có một thuộc tính tên là angleDelta
+
+151
+00:07:48,760 --> 00:07:51,550
+cho biết nếu ta đang lăn
+
+152
+00:07:51,550 --> 00:07:54,880
+chuột theo chiều xuôi hoặc
+
+153
+00:07:54,880 --> 00:07:57,160
+ngược chiều. Ta sẽ thử
+
+154
+00:07:57,160 --> 00:07:59,940
+cái này. Hãy quay trở lại code và
+
+155
+00:07:59,940 --> 00:08:04,560
+bắt một sự kiện khác. Gõ onWheel,
+
+156
+00:08:04,560 --> 00:08:07,840
+console.log ra một số thuộc tính về
+
+157
+00:08:07,840 --> 00:08:11,560
+sự kiện lăn chuột này. Tọa độ x sẽ
+
+158
+00:08:11,560 --> 00:08:15,880
+là wheel.x, tọa độ y sẽ
+
+159
+00:08:15,880 --> 00:08:24,210
+được wheel.y. Và góc sẽ là
+
+160
+00:08:24,210 --> 00:08:27,970
+angleDelta. Hãy chạy ứng dụng.
+
+161
+00:08:27,970 --> 00:08:33,039
+Ta lăn nó lên trên và thấy rằng
+
+162
+00:08:33,039 --> 00:08:35,529
+tham số thứ hai của điểm là
+
+163
+00:08:35,529 --> 00:08:38,110
++100. Tôi lăn nó
+
+164
+00:08:38,110 --> 00:08:40,570
+xuống dưới, ta thấy rằng nó là ngược chiều. Nếu
+
+165
+00:08:40,570 --> 00:08:43,089
+nó là xuôi chiều ta sẽ lăn lên trên.
+
+166
+00:08:43,089 --> 00:08:45,130
+Nếu nó ngược chiều thì ta lại lắn
+
+167
+00:08:45,130 --> 00:08:47,800
+xuống dưới. Và ta có thể thực hiện một số xử lý
+
+168
+00:08:47,800 --> 00:08:49,470
+dựa trên điều này trong
+
+169
+00:08:49,470 --> 00:08:52,050
+QML Application. Mặt khác tôi muốn
+
+170
+00:08:52,050 --> 00:08:53,910
+các bạn thấy cách làm việc với sự kiện hover
+
+171
+00:08:53,910 --> 00:08:57,030
+trong MouseArea này. Trước tiên ta có
+
+172
+00:08:57,030 --> 00:08:59,820
+để bật di chuột bằng cách đặt thuộc tính này
+
+173
+00:08:59,820 --> 00:09:02,430
+thành "true", hoverEnabled và sau đó xử lý
+
+174
+00:09:02,430 --> 00:09:05,400
+sự kiện di chuột. Như vậy, làm sao để thực hiện điều đó? Ta
+
+175
+00:09:05,400 --> 00:09:07,950
+sẽ thiết lập thuộc tính hoverEnabled,
+
+176
+00:09:07,950 --> 00:09:13,460
+đặt cái này thành "true" và thực hiện onHoverChanged
+
+177
+00:09:13,460 --> 00:09:17,520
+ở trong. Ta sẽ kiểm tra
+
+178
+00:09:17,520 --> 00:09:19,080
+điều đó. Một thuộc tính khác ta
+
+179
+00:09:19,080 --> 00:09:21,570
+có thể sử dụng, nó có giá trị
+
+180
+00:09:21,570 --> 00:09:24,720
+"true" khi MouseArea chứa
+
+181
+00:09:24,720 --> 00:09:26,820
+chuột và "false" khi MouseArea
+
+182
+00:09:26,820 --> 00:09:29,070
+không chứa chuột. Vì vậy ta có thể
+
+183
+00:09:29,070 --> 00:09:31,470
+sử dụng cái này, ta sẽ viết nếu containsMouse
+
+184
+00:09:31,470 --> 00:09:39,030
+bằng "true". Ta muốn thay đổi
+
+185
+00:09:39,030 --> 00:09:42,230
+màu của movingRect sang màu đỏ,
+
+186
+00:09:42,230 --> 00:09:50,010
+movingRectId.color. Và nếu nó không
+
+187
+00:09:50,010 --> 00:09:52,410
+chứa chuột ta sẽ thiết lập
+
+188
+00:09:52,410 --> 00:10:01,020
+màu của nó thành màu xanh lá cây. Hãy chạy
+
+189
+00:10:01,020 --> 00:10:03,090
+ứng dụng. Như vậy, khi nó bắt đầu, nó sẽ
+
+190
+00:10:03,090 --> 00:10:05,610
+có màu xanh. Khi ta di chuột lên nó, nó
+
+191
+00:10:05,610 --> 00:10:08,400
+sẽ chuyển sang màu đỏ bởi vì nó
+
+192
+00:10:08,400 --> 00:10:10,530
+chứa chuột. Khi ta di chuột ra
+
+193
+00:10:10,530 --> 00:10:13,770
+nó sẽ chuyển sang màu xanh. Ok, như vậy
+
+194
+00:10:13,770 --> 00:10:14,160
+màu xanh da trời.
+
+195
+00:10:14,160 --> 00:10:17,280
+Và di qua đó, nó chuyển sang màu đỏ. Khi tôi di chuột ra
+
+196
+00:10:17,280 --> 00:10:23,120
+nó không chuyển sang màu xanh. Tại sao vậy?
+
+197
+00:10:26,810 --> 00:10:31,500
+MouseArea nằm trong không gian màu be
+
+198
+00:10:31,500 --> 00:10:35,850
+đây. Bây giờ ta thấy sự không rõ ràng
+
+199
+00:10:35,850 --> 00:10:38,430
+về vị trí MouseArea của ta đang hoạt động có thể
+
+200
+00:10:38,430 --> 00:10:40,980
+trở thành một vấn đề. Được rồi nếu ta muốn hành vi
+
+201
+00:10:40,980 --> 00:10:43,590
+này chỉ ảnh hưởng đến hình chữ nhật (rectangle) này ta
+
+202
+00:10:43,590 --> 00:10:45,270
+không có lựa chọn nào khác ngoài việc di chuyển MouseArea
+
+203
+00:10:45,270 --> 00:10:48,540
+trở lại bên trong hình chữ nhật (rectangle) này. Nhưng hiện tại
+
+204
+00:10:48,540 --> 00:10:50,640
+ta lại đang có ý tưởng về những gì sắp
+
+205
+00:10:50,640 --> 00:10:53,280
+làm. Để làm cho mọi thứ bớt khó hiểu,
+
+206
+00:10:53,280 --> 00:10:55,620
+ta sẽ ảnh hưởng đến hình chữ nhật (rectangle) màu be này
+
+207
+00:10:55,620 --> 00:10:58,440
+chứ không phải hình chữ nhật (rectangle) màu xanh này. Trở lại
+
+208
+00:10:58,440 --> 00:11:00,240
+với đoạn code của chúng ta
+
+209
+00:11:00,240 --> 00:11:02,670
+Đây sẽ là một sự thay đổi nhanh chóng. Vì vậy
+
+210
+00:11:02,670 --> 00:11:06,000
+nó sẽ là containerRectId
+
+211
+00:11:06,000 --> 00:11:09,630
+mà ta ảnh hưởng. Đổi cái này thành
+
+212
+00:11:09,630 --> 00:11:12,149
+hình chữ nhật (rectangle) đúng, đổi cái này thành
+
+213
+00:11:12,149 --> 00:11:18,570
+hình chữ nhật (rectangle) đúng. Chạy lại. Ta đi vào đây, nó
+
+214
+00:11:18,570 --> 00:11:21,000
+Chuyển sang màu đỏ. Ta quay trở lại nó chuyển sang màu xanh lá. Và
+
+215
+00:11:21,000 --> 00:11:23,550
+ta có thể thấy onClick
+
+216
+00:11:23,550 --> 00:11:26,640
+vẫn hoạt động bình thường. Bây giờ ta
+
+217
+00:11:26,640 --> 00:11:28,110
+đã làm việc với điều này. Ta xem
+
+218
+00:11:28,110 --> 00:11:30,990
+làm thế nào ta có thể kéo và thả. Ta đã làm
+
+219
+00:11:30,990 --> 00:11:33,300
+khá nhiều trong hình chữ nhật (rectangle) này ở đây. Vì đây
+
+220
+00:11:33,300 --> 00:11:34,920
+là một ý tưởng tốt để
+
+221
+00:11:34,920 --> 00:11:37,589
+tạo ra một cái gì khác. Làm thôi. Ta
+
+222
+00:11:37,589 --> 00:11:39,959
+sẽ sao chép thứ này. Tôi sẽ xuống
+
+223
+00:11:39,959 --> 00:11:44,250
+đây và dán vào thứ này và tạo
+
+224
+00:11:44,250 --> 00:11:46,830
+một hình chữ nhật (rectangle) mới. Bên trong ta sẽ
+
+225
+00:11:46,830 --> 00:11:49,470
+đặt một hình chữ nhật (rectangle) khác. Vì vậy ta sẽ
+
+226
+00:11:49,470 --> 00:11:56,820
+sao chép cái này, ta cung cấp cho nó một id của draggableRect
+
+227
+00:11:56,820 --> 00:11:57,570
+
+
+228
+00:11:57,570 --> 00:12:00,540
+vì ta muốn kéo nó. Nhưng chúng ta muốn
+
+229
+00:12:00,540 --> 00:12:05,160
+cái này nằm trên tọa độ y là 250
+
+230
+00:12:05,160 --> 00:12:07,020
+để họ không chồng chéo. Vậy, ta sẽ
+
+231
+00:12:07,020 --> 00:12:11,670
+gõ y bằng 250. Hãy chạy
+
+232
+00:12:11,670 --> 00:12:16,260
+ứng dụng. Ta đã có hình chữ nhật (rectangle) mới. Vì
+
+233
+00:12:16,260 --> 00:12:18,770
+những gì ta muốn làm là cho phép
+
+234
+00:12:18,770 --> 00:12:21,950
+kéo hình chữ nhật (rectangle) có chứa này.
+
+235
+00:12:21,950 --> 00:12:24,839
+Để làm điều đó, ta đưa vào
+
+236
+00:12:24,839 --> 00:12:27,089
+MouseArea. Ta có thể hình dung
+
+237
+00:12:27,089 --> 00:12:32,850
+điều này. Nó sẽ lấp đầy phần tử cha của nó. Vì thế
+
+238
+00:12:32,850 --> 00:12:35,160
+cách ta kích hoạt kéo, ta
+
+239
+00:12:35,160 --> 00:12:38,250
+chỉ nên kéo trên trục x. Nhưng thực sự có thể kéo
+
+240
+00:12:38,250 --> 00:12:41,880
+theo bất cứ hướng nào ta muốn, x hoặc y. Chúng ta
+
+241
+00:12:41,880 --> 00:12:48,500
+sẽ xác định mục tiêu kéo của mình. Và
+
+242
+00:12:48,500 --> 00:12:51,630
+nó sẽ là draggableRect này
+
+243
+00:12:51,630 --> 00:12:56,130
+đây. Chúng ta xác định id của nó. Chúng ta sắp
+
+244
+00:12:56,130 --> 00:12:59,910
+xác định quyền truy cập mà ta muốn kéo
+
+245
+00:12:59,910 --> 00:13:00,390
+lên.
+
+246
+00:13:00,390 --> 00:13:04,910
+Vì vậy, ta xác định nó như thế này.
+
+247
+00:13:05,250 --> 00:13:09,820
+Trục này, bạn có thể xác định x, y hoặc x và
+
+248
+00:13:09,820 --> 00:13:12,820
+y. Chúng ta sẽ sử dụng x ngay bây giờ. Các
+
+249
+00:13:12,820 --> 00:13:14,560
+điều cuối cùng chúng ta cần làm là xác định
+
+250
+00:13:14,560 --> 00:13:20,520
+lực kéo tối đa và tối thiểu. Thế là kéo.
+
+251
+00:13:20,520 --> 00:13:26,280
+MinimalX sẽ là 0.
+
+252
+00:13:26,280 --> 00:13:33,790
+drag.maximumX sẽ là
+
+253
+00:13:33,790 --> 00:13:37,390
+chiều rộng của hình chữ nhật (rectangle) container này trừ
+
+254
+00:13:37,390 --> 00:13:40,540
+chiều rộng của hình chữ nhật (rectangle) chứa này.
+
+255
+00:13:40,540 --> 00:13:47,580
+Chúng ta sẽ gõ dragContainerId.width
+
+256
+00:13:47,580 --> 00:13:55,630
+- draggableRect.width. Để thực sự hiển thị
+
+257
+00:13:55,630 --> 00:13:58,360
+các hiệu ứng của việc kéo này, ta muốn xử lý
+
+258
+00:13:58,360 --> 00:14:01,210
+sự kiện được kích hoạt khi vị trí x
+
+259
+00:14:01,210 --> 00:14:04,750
+của hình chữ nhật (rectangle) này bị thay đổi. Ta
+
+260
+00:14:04,750 --> 00:14:07,630
+sẽ làm một cái gì đó như onExchanged.
+
+261
+00:14:07,630 --> 00:14:13,720
+Và chúng ta sẽ xuất ra
+
+262
+00:14:13,720 --> 00:14:18,070
+tọa độ x. Chúng tôi sẽ xuất ra nó
+
+263
+00:14:18,070 --> 00:14:20,490
+ở đây. Nếu chạy ứng dụng này
+
+264
+00:14:20,490 --> 00:14:23,110
+tính năng kéo sẽ được kích hoạt cho
+
+265
+00:14:23,110 --> 00:14:26,080
+hình chữ nhật (rectangle) chứa container này. Và chúng ta
+
+266
+00:14:26,080 --> 00:14:29,290
+sẽ có thể kéo
+
+267
+00:14:29,290 --> 00:14:31,990
+hình chữ nhật (rectangle) contained. Bất cứ khi nào nó di chuyển nó 
+
+268
+00:14:31,990 --> 00:14:34,420
+sẽ cho ta biết nơi nó di chuyển đến. Và
+
+269
+00:14:34,420 --> 00:14:37,000
+đây là những thuộc tính cho phép
+
+270
+00:14:37,000 --> 00:14:40,150
+hành vi kéo của chúng ta. Hãy chạy
+
+271
+00:14:40,150 --> 00:14:44,980
+ứng dụng. Mm-hmm ta có thể thấy rằng chúng ta có thể
+
+272
+00:14:44,980 --> 00:14:48,640
+kéo từ trái sang phải. Tối thiểu là 0.
+
+273
+00:14:48,640 --> 00:14:51,040
+Tối đa là chiều rộng của
+
+274
+00:14:51,040 --> 00:14:53,670
+hình chữ nhật (rectangle) này trừ chiều rộng của cái này
+
+275
+00:14:53,670 --> 00:14:56,050
+Điều này bao gồm tất cả các thiết lập để làm trong
+
+276
+00:14:56,050 --> 00:14:58,840
+bài học này. Tôi hy vọng bây giờ bạn có
+
+277
+00:14:58,840 --> 00:15:01,000
+ý tưởng tốt hơn về những gì bạn có thể làm với MouseArea
+
+278
+00:15:01,000 --> 00:15:03,490
+và cách bạn có thể kéo và thả
+
+279
+00:15:03,490 --> 00:15:06,640
+hình chữ nhật (rectangle) container. Trong bài giảng tiếp theo
+
+280
+00:15:06,640 --> 00:15:07,990
+chúng ta sẽ xem xét làm thế nào để có thể
+
+281
+00:15:07,990 --> 00:15:10,600
+xử lý các sự kiện chính trong các ứng dụng QML
+
+282
+00:15:10,600 --> 00:15:13,120
+bằng cách sử dụng các thuộc tính
+
+283
+00:15:13,120 --> 00:15:15,100
+đi kèm. Tôi sẽ gặp bạn trong 
+
+284
+00:15:15,100 --> 00:00:00,000
+bài học tiếp theo.
+

@@ -1,0 +1,1132 @@
+1
+00:00:00,000 --> 00:00:01,860
+Trong bài này, ta sẽ cùng nhau tìm hiểu cách 
+
+2
+00:00:01,860 --> 00:00:04,830
+sử dụng các CustomDialog (hộp thoại tùy chỉnh)
+
+3
+00:00:04,830 --> 00:00:06,990
+với các thiết bị di động. 
+
+4
+00:00:06,990 --> 00:00:09,719
+Lần này, ta sẽ thực hiện 
+
+5
+00:00:09,719 --> 00:00:11,490
+hơi khác một chút, so với 
+
+6
+00:00:11,490 --> 00:00:14,070
+những gì ta đã làm ở các bài trước. 
+
+7
+00:00:14,070 --> 00:00:16,949
+Tôi muốn các bạn mở tab Welcome trong Qt Creator, 
+
+8
+00:00:16,949 --> 00:00:19,109
+đi đến đây, 
+
+9
+00:00:19,109 --> 00:00:21,300
+vào tab tìm kiếm và gõ chữ "Gallery" ("Phòng trưng bày/sản phẩm mẫu) 
+
+10
+00:00:21,300 --> 00:00:25,380
+ta sẽ nhìn thấy một vài ứng dụng mẫu
+
+11
+00:00:25,380 --> 00:00:28,170
+ở đây. Tôi muốn click 
+
+12
+00:00:28,170 --> 00:00:31,769
+vào ứng dụng này, ứng dụng có màu xanh lá. 
+
+13
+00:00:31,769 --> 00:00:33,780
+Ta sẽ chạy ứng dụng này và xem xem có thể học được gì từ đó. 
+
+14
+00:00:33,780 --> 00:00:38,370
+Ok, ta thấy ứng dụng được mở ở đây. 
+
+15
+00:00:38,370 --> 00:00:41,010
+Tôi muốn các bạn đóng cửa sổ này lại. 
+
+16
+00:00:41,010 --> 00:00:43,469
+Và các bạn sẽ thấy một phần về 
+
+17
+00:00:43,469 --> 00:00:46,340
+thiết lập cấu hình cho dự án ở đây. Về cơ bản, phần này  
+
+18
+00:00:46,340 --> 00:00:49,410
+muốn ta tạo cấu hình cho bộ kit dùng trong 
+
+19
+00:00:49,410 --> 00:00:51,360
+dự án, ta có thể click vào đây 
+
+20
+00:00:51,360 --> 00:00:54,210
+và chạy ứng dụng trực tiếp bằng Qt Creator.  
+
+21
+00:00:54,210 --> 00:00:57,170
+Tôi sẽ chọn bộ kit desktop, 
+
+22
+00:00:57,170 --> 00:01:00,210
+tuy nhiên tôi cũng muốn khuyên là các bạn nên chạy thử 
+
+23
+00:01:00,210 --> 00:01:02,010
+trên thiết bị di động, do nó khá đẹp trên 
+
+24
+00:01:02,010 --> 00:01:04,500
+nền tảng đó. Như vậy tôi đã chọn được bộ kit rồi, 
+
+25
+00:01:04,500 --> 00:01:07,460
+tiếp theo tôi sẽ thiết lập cấu hình cho dự án. 
+
+26
+00:01:07,460 --> 00:01:11,760
+Cấu hình cho phần này. 
+
+27
+00:01:11,760 --> 00:01:14,520
+Ta vừa thấy vài lỗi ở đây,
+
+28
+00:01:14,520 --> 00:01:16,890
+giờ chúng đã biến mất do Qt đã thiết lập 
+
+29
+00:01:16,890 --> 00:01:19,110
+cấu hình cho ta. Các bạn sẽ thấy 
+
+30
+00:01:19,110 --> 00:01:21,270
+một dự án mới được mở ra ở đây, bên tay trái, 
+
+31
+00:01:21,270 --> 00:01:23,790
+dự án này được gọi là "Gallery". Đi vào đây, 
+
+32
+00:01:23,790 --> 00:01:26,220
+ta sẽ tìm được các "resources" (các file nguồn). 
+
+33
+00:01:26,220 --> 00:01:28,259
+Đi xuống dưới, ta sẽ thấy các nguồn. 
+
+34
+00:01:28,259 --> 00:01:31,259
+Đây là nơi chứa các file QML, tuy nhiên, 
+
+35
+00:01:31,259 --> 00:01:33,450
+tôi không biết vì sao mà Qt Creator lại không 
+
+36
+00:01:33,450 --> 00:01:35,970
+cho xem nội dung trong các file QML. 
+
+37
+00:01:35,970 --> 00:01:39,479
+Không phải bận tâm điều đó, Thực tế, ta có thể click 
+
+38
+00:01:39,479 --> 00:01:42,899
+vào file gallery.cpp ở đây, chọn "Show in Explorer", 
+
+39
+00:01:42,899 --> 00:01:47,159
+ta sẽ mở ra được thư mục chứa dự án này. 
+
+40
+00:01:47,159 --> 00:01:49,350
+Ở đây, ta thấy một thư mục 
+
+41
+00:01:49,350 --> 00:01:49,799
+có tên là 
+
+42
+00:01:49,799 --> 00:01:52,049
+"Pages", trong đó chứa các trang giao diện khác nhau 
+
+43
+00:01:52,049 --> 00:01:54,960
+mà ta có thể hiển thị. Tôi sẽ 
+
+44
+00:01:54,960 --> 00:02:00,719
+chạy ứng dụng này. Ta thấy, 
+
+45
+00:02:00,719 --> 00:02:02,820
+ta có một ứng dụng như thế này. 
+
+46
+00:02:02,820 --> 00:02:07,020
+Trông đẹp đó chứ. Ok, ta thấy, nếu click 
+
+47
+00:02:07,020 --> 00:02:09,389
+vào đây, sẽ có một danh sách dài hiện ra, 
+
+48
+00:02:09,389 --> 00:02:11,970
+chính là các button (nút) 
+
+49
+00:02:11,970 --> 00:02:13,980
+mà khi click vào các button này, ta sẽ thấy 
+
+50
+00:02:13,980 --> 00:02:15,840
+nhiều thứ khác. Ví dụ, ta có thể click 
+
+51
+00:02:15,840 --> 00:02:18,599
+vào GroupBox này. Về cơ bản, trong này chứa 
+
+52
+00:02:18,599 --> 00:02:20,879
+các Qt Quick Controls khác nhau mà ta có thể 
+
+53
+00:02:20,879 --> 00:02:24,209
+sử dụng ở đây. Ta đã thấy rất nhiều những thứ như này rồi, 
+
+54
+00:02:24,209 --> 00:02:27,629
+nếu không phải là tất cả. Tuy nhiên, thứ mà tôi muốn các bạn 
+
+55
+00:02:27,629 --> 00:02:30,780
+tìm hiểu chính là các hộp thoại (dialog), 
+
+56
+00:02:30,780 --> 00:02:33,420
+có rất nhiều hộp thoại tiện dụng mà ta có thể tìm hiểu. 
+
+57
+00:02:33,420 --> 00:02:36,379
+Click vào "Dialog", 
+
+58
+00:02:36,379 --> 00:02:39,060
+trong đây có một vài mục mà ta có thể thử. 
+
+59
+00:02:39,060 --> 00:02:41,549
+Click vào "Message" (tin nhắn), một hộp thoại với 
+
+60
+00:02:41,549 --> 00:02:43,530
+tin nhắn sẽ hiện ra. Hộp thoại này phù hợp 
+
+61
+00:02:43,530 --> 00:02:46,129
+đối với các thiết bị di động. 
+
+62
+00:02:46,129 --> 00:02:48,569
+Click vào "Confirmation" (xác nhận), ta cũng có một hộp thoại. 
+
+63
+00:02:48,569 --> 00:02:51,209
+Hộp thoại này có tiêu đề, có tin nhắn bên trong,
+
+64
+00:02:51,209 --> 00:02:53,400
+và người dùng có thể check lựa chọn này này.
+
+65
+00:02:53,400 --> 00:02:55,440
+Ta có thể chấp nhận hoặc bỏ qua hộp thoại. 
+
+66
+00:02:55,440 --> 00:02:58,470
+Ta có hộp thoại "Content". 
+
+67
+00:02:58,470 --> 00:03:01,140
+Ta dùng hộp thoại này để hiển thị một vài nội dung, 
+
+68
+00:03:01,140 --> 00:03:04,170
+người dùng phải kéo lên và kéo xuống để xem, sau đó đóng lại  
+
+69
+00:03:04,170 --> 00:03:06,209
+khi đã xem xong. Ta cũng có
+
+70
+00:03:06,209 --> 00:03:08,519
+một hộp thoại khác, dùng cho người dùng nhập dữ liệu.  
+
+71
+00:03:08,519 --> 00:03:11,220
+Tôi thấy các hộp thoại này khá hay, 
+
+72
+00:03:11,220 --> 00:03:12,870
+ta sẽ thử chúng trong ứng dụng mà mình có. 
+
+73
+00:03:12,870 --> 00:03:15,720
+Tuy nhiên, trước khi thử, 
+
+74
+00:03:15,720 --> 00:03:17,519
+ta cần hiểu được mã code 
+
+75
+00:03:17,519 --> 00:03:19,849
+tạo ra những hộp thoại này. Như ta thấy ở đây,
+
+76
+00:03:19,849 --> 00:03:22,530
+thật không may khi những mã code này không xuất hiện trong 
+
+77
+00:03:22,530 --> 00:03:24,750
+Qt Creator, tuy nhiên ta có thể tự đi đến đó
+
+78
+00:03:24,750 --> 00:03:27,329
+và tìm kiếm. Click vào 
+
+79
+00:03:27,329 --> 00:03:35,370
+gallery.cpp, chọn "Show in Explorer", đi đến 
+
+80
+00:03:35,370 --> 00:03:37,950
+thư mục "Pages", ta thấy 
+
+81
+00:03:37,950 --> 00:03:41,459
+có một file tên là "DialogPage". Tôi muốn các bạn 
+
+82
+00:03:41,459 --> 00:03:45,720
+mở file này với trình soạn thảo nào đó. 
+
+83
+00:03:45,720 --> 00:03:47,700
+Thực ra các bạn cũng có thể mở file bằng Qt Creator, 
+
+84
+00:03:47,700 --> 00:03:51,090
+tôi đoán vậy, các bạn có thể chọn 
+
+85
+00:03:51,090 --> 00:03:53,190
+một ứng dụng mà các bạn muốn mở file cùng. 
+
+86
+00:03:53,190 --> 00:03:57,389
+Tôi chọn Qt Creator, và 
+
+87
+00:03:57,389 --> 00:03:59,879
+nó sẽ mở ở đây. Hiện tại, ta đang muốn biết 
+
+88
+00:03:59,879 --> 00:04:02,489
+các button kia được tạo ra như thế nào. 
+
+89
+00:04:02,489 --> 00:04:04,169
+Ta thấy có một phần tử Label (Nhãn) ở đây, 
+
+90
+00:04:04,169 --> 00:04:07,169
+trong đó viết dialog..blah..blah..blah. Ta có một button ở đây. 
+
+91
+00:04:07,169 --> 00:04:11,220
+và button này tạo ra hộp thoại. 
+
+92
+00:04:11,220 --> 00:04:13,470
+Ok, khi click vào, ta mở ra được 
+
+93
+00:04:13,470 --> 00:04:16,199
+hộp thoại ở đây. Những gì ta có thể làm là 
+
+94
+00:04:16,199 --> 00:04:19,199
+copy những thứ này lại, và làm cho chúng chạy trong 
+
+95
+00:04:19,199 --> 00:04:22,079
+ứng dụng mà mình có. Do vậy, tôi sẽ
+
+96
+00:04:22,079 --> 00:04:24,659
+để file "DialogPage" này ở đây, 
+
+97
+00:04:24,659 --> 00:04:25,349
+mở file đó ở đó, 
+
+98
+00:04:25,349 --> 00:04:27,870
+tôi sẽ đóng thư mục "Gallery" này lại 
+
+99
+00:04:27,870 --> 00:04:30,690
+do ta không cần dùng đến nữa, và ta tạo 
+
+100
+00:04:30,690 --> 00:04:33,660
+một dự án mới. 
+
+101
+00:04:33,660 --> 00:04:36,210
+Chọn "Qt Quick Application", ta gọi dự án này là 
+
+102
+00:04:36,210 --> 00:04:38,910
+"CustomDialogDemo", lưu vào vị trí mà ta thường lưu 
+
+103
+00:04:38,910 --> 00:04:41,280
+trong ổ đĩa. Chọn "Next", 
+
+104
+00:04:41,280 --> 00:04:44,220
+vẫn như mọi khi ta thường làm, chọn phiên bản Qt, 
+
+105
+00:04:44,220 --> 00:04:49,820
+chọn bộ kit desktop, 
+
+106
+00:04:49,820 --> 00:04:53,160
+và "Finish". Ok, ta đã có dự án ở đây. 
+
+107
+00:04:53,160 --> 00:04:59,250
+Ta đổi tiêu đề thành "Custom Dialogs Demo". Ta cũng muốn 
+
+108
+00:04:59,250 --> 00:05:02,039
+thực hiện các import. Ta sẽ import 
+
+109
+00:05:02,039 --> 00:05:04,800
+QtQquick.controls và QtQquick.Layouts
+
+110
+00:05:04,800 --> 00:05:07,020
+để về sau còn sử dụng. 
+
+111
+00:05:07,020 --> 00:05:11,900
+Ta đặt phần tử Column (cột) vào đây. 
+
+112
+00:05:11,990 --> 00:05:15,720
+Đặt spacing là 40. 
+
+113
+00:05:15,720 --> 00:05:18,360
+Cột có chiều rộng bằng với chiều rộng của parent (phần tử cha). 
+
+114
+00:05:18,360 --> 00:05:21,690
+do đó ta viết "parent.width". 
+
+115
+00:05:21,690 --> 00:05:24,389
+Bây giờ, ta sẽ đi đến DialogPage, 
+
+116
+00:05:24,389 --> 00:05:27,449
+và copy hai phần tử này, 
+
+117
+00:05:27,449 --> 00:05:30,870
+Label và Button. 
+
+118
+00:05:30,870 --> 00:05:37,200
+Chọn, sao chép, quay trở lại main.qml, 
+
+119
+00:05:37,200 --> 00:05:40,169
+và dán vào đây. Đây là phần tử cột, 
+
+120
+00:05:40,169 --> 00:05:42,000
+do đó, mọi thứ sẽ được đặt 
+
+121
+00:05:42,000 --> 00:05:44,130
+từ trên xuống dưới. Ta sẽ thấy  
+
+122
+00:05:44,130 --> 00:05:46,680
+Label này và Button này, 
+
+123
+00:05:46,680 --> 00:05:49,320
+và khi click vào button thì hộp thoại 
+
+124
+00:05:49,320 --> 00:05:53,789
+sẽ mở ra. Có một thuộc tính ở đây 
+
+125
+00:05:53,789 --> 00:05:55,590
+ckhông được định nghĩa, 
+
+126
+00:05:55,590 --> 00:05:58,410
+thuộc tính chiều rộng của button 
+
+127
+00:05:58,410 --> 00:06:00,900
+không được định nghĩa. Nếu ta chạy ứng dụng 
+
+128
+00:06:00,900 --> 00:06:04,199
+khi thuộc tính chưa được định nghĩa, 
+
+129
+00:06:04,199 --> 00:06:06,810
+ta sẽ gặp vấn đề. Do đó, ta đi lên phần trên này, 
+
+130
+00:06:06,810 --> 00:06:13,889
+gõ "property int", gõ "buttonWidth". 
+
+131
+00:06:13,889 --> 00:06:17,580
+Ta gọi như vậy, buttonWidth.  
+
+132
+00:06:17,580 --> 00:06:20,010
+Tôi nghĩ là đúng rồi, ta sẽ đặt chiều rộng 
+
+133
+00:06:20,010 --> 00:06:24,060
+là 300. Một thứ nữa ta có thể làm 
+
+134
+00:06:24,060 --> 00:06:26,220
+để tăng tính an toàn, đó là ta có thể 
+
+135
+00:06:26,220 --> 00:06:30,710
+đặt thuộc tính readonly (chỉ đọc) trong Qt. Ta có thể dùng cách này. 
+
+136
+00:06:30,710 --> 00:06:33,210
+Dùng thuộc readonly (chỉ đọc). 
+
+137
+00:06:33,210 --> 00:06:38,099
+Ok, những thứ mà ta muốn đã ở đây. 
+
+138
+00:06:38,099 --> 00:06:39,659
+Ta có Label. Tôi nghĩ là 
+
+139
+00:06:39,659 --> 00:06:41,670
+mình không cần nói thêm gì về Label nữa, 
+
+140
+00:06:41,670 --> 00:06:44,520
+các bạn đã biết cách dùng với Label rồi. 
+
+141
+00:06:44,520 --> 00:06:47,310
+Với button ở đây, có một dòng chữ sẽ được 
+
+142
+00:06:47,310 --> 00:06:49,380
+hiển thị trong button. Button có chiều rộng như này.  
+
+143
+00:06:49,380 --> 00:06:51,210
+Và khi click vào button, ta sẽ mở được 
+
+144
+00:06:51,210 --> 00:06:54,840
+hộp thoại mà ta đã định nghĩa ở đây. 
+
+145
+00:06:54,840 --> 00:06:57,930
+Hộp thoại có một Id. Ok, nhìn vào vị trí 
+
+146
+00:06:57,930 --> 00:07:00,060
+đặt hộp thoại, ta muốn hộp thoại nằm ở chính giữa 
+
+147
+00:07:00,060 --> 00:07:02,730
+phần tử cha. Hộp thoại này cũng có tên, 
+
+148
+00:07:02,730 --> 00:07:06,090
+có cả Label (nhãn) bên trong. 
+
+149
+00:07:06,090 --> 00:07:08,070
+Ta chạy ứng dụng để xem hộp thoại 
+
+150
+00:07:08,070 --> 00:07:10,170
+như thế nào. Ok, 
+
+151
+00:07:10,170 --> 00:07:13,890
+ta thấy có thứ này ở đây. Nếu click 
+
+152
+00:07:13,890 --> 00:07:16,560
+vào đây, ta có tin nhắn ở đây. 
+
+153
+00:07:16,560 --> 00:07:19,020
+Việc này rất dễ dàng để thực hiện, 
+
+154
+00:07:19,020 --> 00:07:21,720
+ta vừa thấy nó trong ví dụ trong Qt. 
+
+155
+00:07:21,720 --> 00:07:23,040
+Button tiếp theo sẽ là 
+
+156
+00:07:23,040 --> 00:07:26,010
+button xác nhận (confirmation). 
+
+157
+00:07:26,010 --> 00:07:31,430
+Ta sẽ sao chép toàn bộ phần này. 
+
+158
+00:07:31,430 --> 00:07:37,440
+Ta đi đến main.qml, xuống dưới phần button
+
+159
+00:07:37,440 --> 00:07:41,640
+mà mở hộp thoại tin nhắn, dán những dòng code 
+
+160
+00:07:41,640 --> 00:07:46,440
+tạo button xác nhận. Ok, button này cũng 
+
+161
+00:07:46,440 --> 00:07:49,740
+có chiều rộng, có hộp thoại để mở, 
+
+162
+00:07:49,740 --> 00:07:53,430
+ta cũng có một vài thuộc tính cho hộp thoại này. 
+
+163
+00:07:53,430 --> 00:08:00,090
+Ta có thể chạy, click vào 
+
+164
+00:08:00,090 --> 00:08:02,670
+confirmation (xác nhận), ta thấy có tiêu đề ở đây, 
+
+165
+00:08:02,670 --> 00:08:05,370
+có nội dung ở đây, và ta có 
+
+166
+00:08:05,370 --> 00:08:08,190
+checkbox trong đây. Dưới này  
+
+167
+00:08:08,190 --> 00:08:10,980
+ta có hai button "yes" và "no". Click vào "yes", 
+
+168
+00:08:10,980 --> 00:08:13,500
+tức là ta chấp nhận. Click vào "no", 
+
+169
+00:08:13,500 --> 00:08:16,470
+tức là ta bỏ qua. Hãy xem ta có những gì 
+
+170
+00:08:16,470 --> 00:08:19,650
+trong đây. Đây là cách mà ta tạo ra 
+
+171
+00:08:19,650 --> 00:08:21,720
+các nút. Ok, ta dùng standardButtons, 
+
+172
+00:08:21,720 --> 00:08:24,990
+và ta đặt các giá trị vào trong đây. 
+
+173
+00:08:24,990 --> 00:08:27,060
+Ta muốn có button "yes" và button "no". 
+
+174
+00:08:27,060 --> 00:08:29,310
+Đây là cách ta tạo 
+
+175
+00:08:29,310 --> 00:08:32,970
+nội dung nằm trong hộp thoại. Ta có Label này, 
+
+176
+00:08:32,970 --> 00:08:35,490
+ta có CheckBox này, 
+
+177
+00:08:35,490 --> 00:08:38,580
+và các button thì nằm dưới 
+
+178
+00:08:38,580 --> 00:08:40,620
+những phần tử mà ta tạo ở đây. 
+
+179
+00:08:40,620 --> 00:08:43,409
+Hộp thoại cũng sẽ nằm ở 
+
+180
+00:08:43,409 --> 00:08:48,660
+vị trí chính giữa trong phần tử cha. 
+
+181
+00:08:48,660 --> 00:08:51,420
+Ta quay trở lại DialogPage, và xem 
+
+182
+00:08:51,420 --> 00:08:53,430
+nội dung tiếp theo ta có là gì. 
+
+183
+00:08:53,430 --> 00:09:02,779
+Ta sao chép button này, 
+
+184
+00:09:03,200 --> 00:09:06,930
+quay trở lại main.qml, xuống phía dưới 
+
+185
+00:09:06,930 --> 00:09:13,860
+button này, dán vào đó. Ok, phần này khá là dài. 
+
+186
+00:09:13,860 --> 00:09:17,550
+Ta tạo button "close" (đóng) như thế này. 
+
+187
+00:09:17,550 --> 00:09:21,020
+Đây là hộp thoại theo kiểu Modal. 
+
+188
+00:09:21,020 --> 00:09:23,520
+Ở bên trong, ta có phần tử Flickable (phần tử kéo lên/xuống được) 
+
+189
+00:09:23,520 --> 00:09:27,000
+do ta muốn có thể kéo lên/kéo xuống để xem 
+
+190
+00:09:27,000 --> 00:09:30,839
+toàn bộ nội dung có trong hộp thoại. 
+
+191
+00:09:30,839 --> 00:09:33,209
+Chú ý là ta đã đặt
+
+192
+00:09:33,209 --> 00:09:35,880
+thuộc tính chiều cao ở đây. Lý do bởi vì 
+
+193
+00:09:35,880 --> 00:09:39,209
+có thể có nhiều nội dung được hiển thị,  
+
+194
+00:09:39,209 --> 00:09:42,300
+và cửa sổ thì không thể hiển thị hết được. 
+
+195
+00:09:42,300 --> 00:09:43,440
+Do đó, ta cần kéo nội dung lên/xuống 
+
+196
+00:09:43,440 --> 00:09:46,020
+để có thể đọc được tất cả nội dung. 
+
+197
+00:09:46,020 --> 00:09:48,630
+Vậy nên, ta có phần tử "Flickable" ở đây,  
+
+198
+00:09:48,630 --> 00:09:51,510
+cho phép ta đi hiển thị toàn bộ nội dung. 
+
+199
+00:09:51,510 --> 00:09:53,550
+Ở bên trong, ta có môt phần tử Column (cột), 
+
+200
+00:09:53,550 --> 00:09:56,880
+trong đó chứa một hình ảnh và 
+
+201
+00:09:56,880 --> 00:09:59,339
+một Label (nhãn) với các dòng chữ. Ta cần phải 
+
+202
+00:09:59,339 --> 00:10:02,550
+đưa hình ảnh đó vào đây. Cách làm như sau, 
+
+203
+00:10:02,550 --> 00:10:04,709
+tôi sẽ thêm hình ảnh đó 
+
+204
+00:10:04,709 --> 00:10:07,620
+dưới dạng một file resource (nguồn). 
+
+205
+00:10:07,620 --> 00:10:11,130
+Tôi sẽ chọn dự án ở đây, và chọn "Add New". 
+
+206
+00:10:11,130 --> 00:10:14,190
+Chọn Qt Resource File. 
+
+207
+00:10:14,190 --> 00:10:21,240
+Tôi sẽ gõ "resource" ở đây. 
+
+208
+00:10:21,240 --> 00:10:23,190
+Tôi sẽ thêm tiền tố (prefix) và bỏ tróng tiền tố 
+
+209
+00:10:23,190 --> 00:10:27,089
+do tôi không muốn dùng nó. 
+
+210
+00:10:27,089 --> 00:10:29,880
+Tôi sẽ đi đến thư mục chứa file main.qml 
+
+211
+00:10:29,880 --> 00:10:32,790
+Ta làm điều này khá nhiều lần rồi. 
+
+212
+00:10:32,790 --> 00:10:36,450
+Tôi sẽ thêm một thư mục hình ảnh. 
+
+213
+00:10:36,450 --> 00:10:39,150
+Tôi sẽ mở thư mục đó ở đây, 
+
+214
+00:10:39,150 --> 00:10:42,930
+và đưa logo mà tôi đã chuẩn bị từ trước vào. 
+
+215
+00:10:42,930 --> 00:10:47,270
+Hình này có tên là "LearnQtLogo", 
+
+216
+00:10:47,270 --> 00:10:49,800
+Quay trở lại dự án đang làm, 
+
+217
+00:10:49,800 --> 00:10:53,220
+chọn "Add File", thêm vào đó hình ảnh. 
+
+218
+00:10:53,220 --> 00:10:55,860
+Tôi sẽ tìm được logo của mình ở trong đây. 
+
+219
+00:10:55,860 --> 00:10:59,010
+Lưu lại, quay trở lại main.qml, 
+
+220
+00:10:59,010 --> 00:11:04,290
+không phải main.cpp. Ở đây, 
+
+221
+00:11:04,290 --> 00:11:07,250
+tôi viết "images...
+
+222
+00:11:07,250 --> 00:11:11,370
+LearnQtLogo.png". Chạy ứng dụng 
+
+223
+00:11:11,370 --> 00:11:16,110
+và xem đó là gì. Okay, 
+
+224
+00:11:16,110 --> 00:11:22,640
+ta có nút "Content" ở đây. Nếu click vào, ta thấy...
+
+225
+00:11:23,990 --> 00:11:27,019
+Nút này đang không được hiển thị đúng cách. 
+
+226
+00:11:27,019 --> 00:11:29,910
+Tại sao lại vậy nhỉ? Nhìn vào lỗi này, 
+
+227
+00:11:29,910 --> 00:11:34,230
+dòng 92, lỗi này nói rằng phần tử "page" không được định nghĩa. 
+
+228
+00:11:34,230 --> 00:11:38,040
+Ta cần thay đổi cái này thành "parent" 
+
+229
+00:11:38,040 --> 00:11:41,100
+bởi ta không có phần tử "page" được định nghĩa. 
+
+230
+00:11:41,100 --> 00:11:47,760
+Ta muốn hiển thị hộp thoại này 
+
+231
+00:11:47,760 --> 00:11:50,700
+ở đây, có liên hệ với phần tử cha của nó, 
+
+232
+00:11:50,700 --> 00:11:55,670
+là button ở đây. Chạy lại lần nữa, 
+
+233
+00:11:57,170 --> 00:12:01,970
+click vào đây, ta thấy nội dung 
+
+234
+00:12:01,970 --> 00:12:05,640
+xuất hiện ở đây. Ok, ta có thể kéo lên/xuống để xem nội dung. 
+
+235
+00:12:05,640 --> 00:12:10,110
+Ta có thể đóng và mở hộp thoại lần nữa. 
+
+236
+00:12:10,110 --> 00:12:12,570
+Đây là tính năng mà ta có. Trên thực tế, 
+
+237
+00:12:12,570 --> 00:12:15,120
+hộp thoại này được dùng trên các thiết bị di động. 
+
+238
+00:12:15,120 --> 00:12:18,180
+Khá là phù hợp. Ta sẽ quay trở lại 
+
+239
+00:12:18,180 --> 00:12:22,050
+file DialogPage.qml và copy
+
+240
+00:12:22,050 --> 00:12:24,660
+button cuối cùng mà ta có. 
+
+241
+00:12:24,660 --> 00:12:26,130
+Đây là button mà ta sẽ tìm hiểu ngay đây. 
+
+242
+00:12:26,130 --> 00:12:28,949
+Đây là hộp thoại mà ta 
+
+243
+00:12:28,949 --> 00:12:32,670
+có thể dùng để người dùng nhập dữ liệu. 
+
+244
+00:12:32,670 --> 00:12:38,579
+Ta đi xuống dưới này, dán vào đây, 
+
+245
+00:12:38,579 --> 00:12:42,029
+xem xem ta có lỗi nào ở trong không. 
+
+246
+00:12:42,029 --> 00:12:44,250
+Nhìn thế này thì khó phát hiện được lỗi. 
+
+247
+00:12:44,250 --> 00:12:46,310
+Ta cần phải chạy để xem mọi thứ hoạt động ra sao,  
+
+248
+00:12:46,310 --> 00:12:51,240
+và để QML bắt lỗi cho ta. Ok, 
+
+249
+00:12:51,240 --> 00:12:54,300
+trông như thế này. Hộp thoại có tên là "Input" (nhập)
+
+250
+00:12:54,300 --> 00:12:57,440
+ta có thể gõ thứ gì đó vào đây, 
+
+251
+00:12:57,440 --> 00:13:02,250
+John Doe, ví dụ như này, và ta có thể chuyển ô nhập
+
+252
+00:13:02,250 --> 00:13:05,010
+thông qua phím "tab". Thiết kế ở đây 
+
+253
+00:13:05,010 --> 00:13:07,380
+khá đẹp. Nếu ta xem cách tạo ra
+
+254
+00:13:07,380 --> 00:13:10,380
+hộp thoại này, thì cũng không khác gì 
+
+255
+00:13:10,380 --> 00:13:12,990
+so với trước. Ta có button, 
+
+256
+00:13:12,990 --> 00:13:15,149
+ta có hộp thoại ở trong. Hộp thoại này được đặt vào chính giữa 
+
+257
+00:13:15,149 --> 00:13:18,089
+phần tử cha. Nó được đặt "focus" là "true", có tiêu đề. 
+
+258
+00:13:18,089 --> 00:13:19,080
+Hộp thoại có một loạt các button 
+
+259
+00:13:19,080 --> 00:13:21,570
+mà ta có thể hiển thị trong đó, 
+
+260
+00:13:21,570 --> 00:13:23,850
+Hộp thoại cũng có layout chứa những thứ mà 
+
+261
+00:13:23,850 --> 00:13:26,190
+ta muốn hiển thị. Ok, đây là layout cho 
+
+262
+00:13:26,190 --> 00:13:30,030
+TextField (trường nhập thông tin), ta có Label, 
+
+263
+00:13:30,030 --> 00:13:33,780
+ta có TextField cho username (tên người dùng), 
+
+264
+00:13:33,780 --> 00:13:36,060
+và TextField cho password (mật khẩu). 
+
+265
+00:13:36,060 --> 00:13:39,540
+Trông thì không đặc biệt lắm, tuy nhiên 
+
+266
+00:13:39,540 --> 00:13:42,180
+hộp thoại lại rất hữu dụng trên các thiết bị di động. 
+
+267
+00:13:42,180 --> 00:13:44,010
+Tôi nghĩ cần chỉ cho các bạn 
+
+268
+00:13:44,010 --> 00:13:44,970
+những thứ này. 
+
+269
+00:13:44,970 --> 00:13:47,760
+Tôi không muốn gõ hết những thứ này ra. 
+
+270
+00:13:47,760 --> 00:13:49,980
+Tôi có thể làm được, tuy nhiên, tôi muốn các bạn 
+
+271
+00:13:49,980 --> 00:13:52,050
+tự tìm hiểu thông tin bằng cách xem các ví dụ, 
+
+272
+00:13:52,050 --> 00:13:54,870
+tìm kiếm một vài thứ, 
+
+273
+00:13:54,870 --> 00:13:56,970
+từ đó các bạn có thể học được nhiều thứ, 
+
+274
+00:13:56,970 --> 00:13:59,130
+ngay cả những thứ mà tôi chưa 
+
+275
+00:13:59,130 --> 00:14:00,900
+chia sẻ với các bạn trong khóa học này. 
+
+276
+00:14:00,900 --> 00:14:03,390
+Ok, đây là những gì mà tôi cần nói trong 
+
+277
+00:14:03,390 --> 00:14:05,190
+bài này. Tôi hy vọng các bạn đã biết cách 
+
+278
+00:14:05,190 --> 00:14:08,580
+hiển thị những hộp thoại vừa đẹp, 
+
+279
+00:14:08,580 --> 00:14:10,350
+vừa hữu dụng, và những hộp thoại này có thể được dùng 
+
+280
+00:14:10,350 --> 00:14:13,830
+trên các thiết bị di động. Ở bài tiếp theo, 
+
+281
+00:14:13,830 --> 00:14:16,110
+ta sẽ cùng nhau tìm hiểu một chủ đề vô cùng thú vị 
+
+282
+00:14:16,110 --> 00:14:19,320
+trong kiến trúc Model View sử dụng Qt Quick.
+
+283
+00:14:19,320 --> 00:00:00,000
+Hẹn gặp lại các bạn. 
+

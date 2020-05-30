@@ -1,0 +1,604 @@
+1
+00:00:00,000 --> 00:00:01,800
+Trong bài này, ta cùng nhau nghiên cứu 
+
+2
+00:00:01,800 --> 00:00:05,130
+về một thành phần khác trong QML, đó là "Flow" (dòng). 
+
+3
+00:00:05,130 --> 00:00:07,770
+Trong tài liệu, phần tử flow bố trí 
+
+4
+00:00:07,770 --> 00:00:11,059
+các phần tử con, giống như cách sắp xếp các từ trong một đoạn văn bản, 
+
+5
+00:00:11,059 --> 00:00:13,650
+các phần tử xếp thành hàng hoặc cột. 
+
+6
+00:00:13,650 --> 00:00:16,800
+Đây là tất cả những gì mà 
+
+7
+00:00:16,800 --> 00:00:19,199
+phần tử này thực hiện. Ta sẽ tạo một 
+
+8
+00:00:19,199 --> 00:00:23,119
+dự án mới và tìm phần này. Vào File, 
+
+9
+00:00:23,119 --> 00:00:24,960
+new project (dự án mới),
+
+10
+00:00:24,960 --> 00:00:27,539
+Đây là QT Quick Application. Ta gọi 
+
+11
+00:00:27,539 --> 00:00:30,300
+dự án này là "FlowDemo" ("Thực hành phần tử dòng"), lưu dự án vào trong 
+
+12
+00:00:30,300 --> 00:00:33,469
+nơi ta hay lưu. Chọn "Next", 
+
+13
+00:00:33,469 --> 00:00:37,110
+chọn phiên bản Qt mới nhất, chọn bộ công cụ. 
+
+14
+00:00:37,110 --> 00:00:42,360
+Ta có dự án ở đây. Ta đổi tiêu đề  
+
+15
+00:00:42,360 --> 00:00:44,850
+ở đây thành 
+
+16
+00:00:44,850 --> 00:00:49,079
+"Flow Demo". Ở bên trong, ta tạo một 
+
+17
+00:00:49,079 --> 00:00:52,440
+phần tử flow. Id sẽ là 
+
+18
+00:00:52,440 --> 00:01:00,090
+container (phần tử chứa). Chiều rộng sẽ là...
+
+19
+00:01:00,090 --> 00:01:04,619
+ta gõ lại "width" (chiều rộng) cho đúng. 
+
+20
+00:01:04,619 --> 00:01:09,869
+Chiều cao sẽ là chiều cao của phần tử cha. 
+
+21
+00:01:09,869 --> 00:01:11,909
+Để tiết kiệm thời gian, tôi sẽ đặt 
+
+22
+00:01:11,909 --> 00:01:14,310
+vào đây một hình chữ nhật mà tôi đã từ trước. 
+
+23
+00:01:14,310 --> 00:01:19,530
+Đây là một hình chữ nhật 
+
+24
+00:01:19,530 --> 00:01:22,500
+có các thuộc tính id, chiều rộng, chiều cao và màu. 
+
+25
+00:01:22,500 --> 00:01:24,869
+Bên trong hình chữ nhật, ta đặt vào đó phần tử Text (chữ, văn bản) 
+
+26
+00:01:24,869 --> 00:01:28,110
+vào chính giữa hình. Text sẽ có 
+
+27
+00:01:28,110 --> 00:01:31,229
+màu đen, font chữ là 30, 
+
+28
+00:01:31,229 --> 00:01:34,049
+chữ hiển thị bên trong
+
+29
+00:01:34,049 --> 00:01:36,960
+sẽ là "1". Ta ấn Control + A và 
+
+30
+00:01:36,960 --> 00:01:40,170
+Control + I để căn chỉnh lại đoạn code.
+
+31
+00:01:40,170 --> 00:01:42,299
+Ta thêm một vài hình chữ nhật như thế này nữa. 
+
+32
+00:01:42,299 --> 00:01:44,759
+Tôi muốn làm một cấu trúc lưới, giống như
+
+33
+00:01:44,759 --> 00:01:47,040
+những gì mà ta đã làm trong các bài trước đó. 
+
+34
+00:01:47,040 --> 00:01:50,790
+Ta tạo một hình chữ nhật nằm trên-giữa
+
+35
+00:01:50,790 --> 00:01:51,540
+như thế này.
+
+36
+00:01:51,540 --> 00:01:55,920
+Hình có màu be, kích thước 
+
+37
+00:01:55,920 --> 00:01:58,350
+chiều rộng và chiều cao là 100, 100. Chữ xuất hiện trong hình sẽ là "2". 
+
+38
+00:01:58,350 --> 00:02:02,460
+Control + A, Control + I để căn chỉnh code. 
+
+39
+00:02:02,460 --> 00:02:06,689
+Ta tạo thêm hình chữ nhật nằm ở trên-phải, 
+
+40
+00:02:06,689 --> 00:02:10,739
+hình chữ nhật giữa-trái, 
+
+41
+00:02:10,739 --> 00:02:13,410
+hình nằm ở giữa-giữa, hình nằm ở giữa-phải, 
+
+42
+00:02:13,410 --> 00:02:17,400
+hình nằm ở dưới-trái, 
+
+43
+00:02:17,400 --> 00:02:20,520
+hình nằm dưới-giữa, và hình bên 
+
+44
+00:02:20,520 --> 00:02:23,880
+dưới-phải. Ta ấn Control + A, 
+
+45
+00:02:23,880 --> 00:02:27,420
+Control + I để căn chỉnh lại đoạn code. 
+
+46
+00:02:27,420 --> 00:02:30,750
+Tôi sẽ làm gọn đoạn code của các hình chữ nhật này lại 
+
+47
+00:02:30,750 --> 00:02:33,870
+để ta có thể thấy rõ hơn những gì ta có ở đây. Rất đơn giản, 
+
+48
+00:02:33,870 --> 00:02:36,540
+ta có phần tử Flow, và các hình chữ nhật 
+
+49
+00:02:36,540 --> 00:02:39,240
+nằm bên trong, có chín
+
+50
+00:02:39,240 --> 00:02:41,850
+hình chữ nhật. Ta có thể chạy ứng dụng 
+
+51
+00:02:41,850 --> 00:02:45,090
+để xem ứng dụng trông ra sao. mm-hmm.
+
+52
+00:02:45,090 --> 00:02:48,900
+Ta thấy các hình chữ nhật được đặt 
+
+53
+00:02:48,900 --> 00:02:53,130
+từ trái qua phải. Khi chiều rộng 
+
+54
+00:02:53,130 --> 00:02:56,430
+không đủ để chứa các hình chữ nhật, các hình 
+
+55
+00:02:56,430 --> 00:03:00,630
+được sắp xếp ở dòng dưới, giống như cách mà chữ xuống dòng 
+
+56
+00:03:00,630 --> 00:03:02,310
+trong một đoạn văn bản. Đây là một so sánh khá hay, 
+
+57
+00:03:02,310 --> 00:03:05,490
+dựa vào đó ta có thể hiểu được 
+
+58
+00:03:05,490 --> 00:03:08,790
+cách mà Flow hoạt động. Ok, nếu ta thử 
+
+59
+00:03:08,790 --> 00:03:11,550
+tăng chiều rộng, ta thấy các hình chữ nhật được 
+
+60
+00:03:11,550 --> 00:03:14,240
+bố trí lại để lấp đầy khoảng trống theo chiều rộng. 
+
+61
+00:03:14,240 --> 00:03:17,850
+Khi ta thu hẹp chiều rộng, thì các hình 
+
+62
+00:03:17,850 --> 00:03:22,020
+sẽ lần lượt xuống dòng. Nếu tiếp tục thu hẹp 
+
+63
+00:03:22,020 --> 00:03:24,390
+chiều rộng, ta sẽ 
+
+64
+00:03:24,390 --> 00:03:26,340
+có cấu trúc lưới như những gì mà ta đã thấy 
+
+65
+00:03:26,340 --> 00:03:29,130
+trong các bài trước. Ta thấy các hình được trải
+
+66
+00:03:29,130 --> 00:03:32,510
+từ trái qua phải và từ trên xuống dưới. 
+
+67
+00:03:32,510 --> 00:03:35,520
+Ok, có một thuộc tính mà ta có thể đặt ở bên trong 
+
+68
+00:03:35,520 --> 00:03:38,780
+phần tử Flow, đó là thuộc tính flow, 
+
+69
+00:03:38,780 --> 00:03:46,140
+tức là tràn theo hướng từ trái qua phải (LeftToRight). 
+
+70
+00:03:46,140 --> 00:03:49,230
+Ok, đây là giá trị mặc định. 
+
+71
+00:03:49,230 --> 00:03:52,470
+Ta sẽ không thấy có gì khác biệt ở đây, LeftToRight, 
+
+72
+00:03:52,470 --> 00:03:57,200
+ta cũng có thể dùng TopToBottom (trên xuống dưới). 
+
+73
+00:03:57,200 --> 00:04:01,410
+Ok, đại loại là như này. Chạy ứng dụng, 
+
+74
+00:04:01,410 --> 00:04:03,840
+ta thấy hình 1, 2, 3 chạy theo hướng từ trên xuống dưới, 
+
+75
+00:04:03,840 --> 00:04:05,970
+các hình chữ nhật lần lượt chuyển sang cột khác 
+
+76
+00:04:05,970 --> 00:04:10,590
+khi chiều cao không đủ để
+
+77
+00:04:10,590 --> 00:04:13,590
+chứa các phần tử. Đây là cách mà ta dùng 
+
+78
+00:04:13,590 --> 00:04:15,570
+thuộc tính flow nếu ta cần đến đặc tính này. 
+
+79
+00:04:15,570 --> 00:04:17,640
+Ta sẽ chú thích phần này lại.
+
+80
+00:04:17,640 --> 00:04:19,829
+Ta cũng có thể đặt thuộc tính 
+
+81
+00:04:19,829 --> 00:04:24,840
+hướng layout (layoutDirection), giống như ta đã làm 
+
+82
+00:04:24,840 --> 00:04:26,410
+với phần tử layout lưới. 
+
+83
+00:04:26,410 --> 00:04:33,490
+Ta viết Qt.RightToLeft (phải qua trái). Chạy ứng dụng, 
+
+84
+00:04:33,490 --> 00:04:36,190
+Ta sẽ được hình 1, 2, 3 
+
+85
+00:04:36,190 --> 00:04:38,590
+đi từ phía bên phải. Ok, 
+
+86
+00:04:38,590 --> 00:04:41,470
+ta thấy đây là những gì ta có. Ta cũng có thể viết 
+
+87
+00:04:41,470 --> 00:04:49,270
+LeftToRight. Chạy ứng dụng, đây là  
+
+88
+00:04:49,270 --> 00:04:51,670
+giá trị mặc định. Các bạn có thể đang thắc mắc 
+
+89
+00:04:51,670 --> 00:04:54,210
+điều gì sẽ xảy ra nếu ta dùng các thuộc tình 
+
+90
+00:04:54,210 --> 00:04:58,120
+flow và layoutDirection (hướng layout) cũng lúc. 
+
+91
+00:04:58,120 --> 00:05:01,030
+Ta viết flow.TopToBottom (từ trên xuống dưới), 
+
+92
+00:05:01,030 --> 00:05:06,400
+hướng của layout (layoutDirection) là từ phải sang trái. 
+
+93
+00:05:06,400 --> 00:05:07,060
+Ta có gì ở đây?
+
+94
+00:05:07,060 --> 00:05:12,910
+Chạy ứng dụng. Mm-hmm, các hình trải từ trên 
+
+95
+00:05:12,910 --> 00:05:16,060
+xuống dưới, tuy nhiên có hướng đi bắt đầu từ phía bên phải,  
+
+96
+00:05:16,060 --> 00:05:18,580
+thay vì từ phía bên trái 
+
+97
+00:05:18,580 --> 00:05:22,300
+như khi ta dùng giá trị mặc định. 
+
+98
+00:05:22,300 --> 00:05:24,970
+Các bạn có thể thử kết hợp những thuộc tính khác nhau 
+
+99
+00:05:24,970 --> 00:05:27,310
+của flow và layoutDirection, và xem kết quả 
+
+100
+00:05:27,310 --> 00:05:29,530
+đạt được. Một thuộc tính khác mà ta đã dùng 
+
+101
+00:05:29,530 --> 00:05:32,860
+ở trong các phần tử sắp đặt và phần tử bố cục, 
+
+102
+00:05:32,860 --> 00:05:35,890
+đó là thuộc tính spacing (khoảng cách). Ta cũng có 
+
+103
+00:05:35,890 --> 00:05:37,930
+thuộc tính này trong phần tử Flow. 
+
+104
+00:05:37,930 --> 00:05:43,060
+Ta gõ "spacing", đặt 20. Chạy chương trình, 
+
+105
+00:05:43,060 --> 00:05:44,740
+ta sẽ thấy có khoảng cách 
+
+106
+00:05:44,740 --> 00:05:48,460
+giữa các phần tử ở đây. Ok, những gì mà ta vừa thấy 
+
+107
+00:05:48,460 --> 00:05:51,070
+chỉ là một phần các thuộc tính của  
+
+108
+00:05:51,070 --> 00:05:54,040
+phần tử Flow. Nếu các bạn 
+
+109
+00:05:54,040 --> 00:05:55,810
+muốn tìm hiểu thêm, các bạn có thể đọc
+
+110
+00:05:55,810 --> 00:05:58,419
+tất cả các thuộc tính này và 
+
+111
+00:05:58,419 --> 00:05:59,890
+cách sử dụng các thuộc tính đó trong 
+
+112
+00:05:59,890 --> 00:06:02,710
+ứng dụng. Bởi vì đây là bài giảng cuối cùng 
+
+113
+00:06:02,710 --> 00:06:05,320
+trong chương về các sắp xếp và bố trí phần tử trong QML.
+
+114
+00:06:05,320 --> 00:06:08,530
+Tta sẽ tổng kết lại những gì mà ta đã học. 
+
+115
+00:06:08,530 --> 00:06:11,440
+Đây là phần nói về bố cục trong Qt Quick trong 
+
+116
+00:06:11,440 --> 00:06:13,990
+tài liệu. Ta đã biết, các layout 
+
+117
+00:06:13,990 --> 00:06:17,680
+cho phép ta thay đổi kích thước của các phần tử 
+
+118
+00:06:17,680 --> 00:06:20,080
+trong giao diện. Đây là những phần tử 
+
+119
+00:06:20,080 --> 00:06:22,960
+mà ta thường sử. 
+
+120
+00:06:22,960 --> 00:06:25,090
+Các bạn có thể dùng tất cả các layout ở đây. Ta có 
+
+121
+00:06:25,090 --> 00:06:27,790
+ColumnLayout (bố cục cột), GridLayout (bố cục lưới), RowLayout (bố cục hàng), 
+
+122
+00:06:27,790 --> 00:06:30,940
+Các bạn cũng có thể dùng StackLayout (bố cục dạng chồng). 
+
+123
+00:06:30,940 --> 00:06:34,990
+Ta đã học về các phần tự sắp xếp, bao gồm hàng, cột 
+
+124
+00:06:34,990 --> 00:06:37,600
+và lưới. Ta cũng đã sử dụng và xem cách 
+
+125
+00:06:37,600 --> 00:06:38,910
+mà chúng tạo ra những cấu trúc như này. 
+
+126
+00:06:38,910 --> 00:06:41,400
+Ta sử dụng những phần tử này ta không phải bận tâm 
+
+127
+00:06:41,400 --> 00:06:43,830
+thay đổi kích thước, các phần tử này
+
+128
+00:06:43,830 --> 00:06:46,500
+khá phù hợp với yêu cầu như vậy. Kéo xuống dưới, 
+
+129
+00:06:46,500 --> 00:06:48,150
+ta có thể thấy thêm các thông tin 
+
+130
+00:06:48,150 --> 00:06:50,760
+về các phần tử này. Đây là những gì 
+
+131
+00:06:50,760 --> 00:06:53,670
+mà ta đã làm. Ta thấy hàng ở đây. Đây là những gì 
+
+132
+00:06:53,670 --> 00:06:55,530
+ta đã thực hiện. Ta thấy ở đây, 
+
+133
+00:06:55,530 --> 00:06:58,590
+dưới này, ta có lưới, 
+
+134
+00:06:58,590 --> 00:07:01,710
+ta có phần tử Flow. Có nhiều cách khác nhau để ta 
+
+135
+00:07:01,710 --> 00:07:04,500
+có thể sử dụng các phần tử sắp đặt này. 
+
+136
+00:07:04,500 --> 00:07:06,420
+Ở đây cũng chỉ ra rằng có rất nhiều cách để bạn có thể sắp đặt
+
+137
+00:07:06,420 --> 00:07:09,210
+các phần tử vào bên trong giao diện. 
+
+138
+00:07:09,210 --> 00:07:12,240
+Ta có thể dùng kỹ thuật cơ bản, đó là đặt 
+
+139
+00:07:12,240 --> 00:07:15,000
+tọa độ x và y của phần tử. Ta đã tìm hiểu cách này rồi. 
+
+140
+00:07:15,000 --> 00:07:18,030
+Ta cũng có thể neo các phần tử 
+
+141
+00:07:18,030 --> 00:07:20,550
+vào những phần tử khác bằng các anchor. Phần này  
+
+142
+00:07:20,550 --> 00:07:22,920
+ta cũng nghiên cứu rồi. Khi muốn sắp đặt 
+
+143
+00:07:22,920 --> 00:07:25,320
+các phần tử vào trong giao diện người dùng, 
+
+144
+00:07:25,320 --> 00:07:27,570
+ta có mọi công cụ ở đây, 
+
+145
+00:07:27,570 --> 00:07:31,110
+các công cụ này giúp ta tạo ra được những gì mà ta muốn, 
+
+146
+00:07:31,110 --> 00:07:34,620
+tuy nhiên, chúng cần được sử dụng theo một cách linh hoạt nhất. 
+
+147
+00:07:34,620 --> 00:07:36,480
+Đây là những nội dụng mà tôi đã hướng dẫn các bạn trong chương này. 
+
+148
+00:07:36,480 --> 00:07:38,520
+Trong chương tiếp theo, ta sẽ tiếp tục 
+
+149
+00:07:38,520 --> 00:07:40,920
+tìm hiểu các khái niệm 
+
+150
+00:07:40,920 --> 00:07:41,790
+trong Qt Quick. 
+
+151
+00:07:41,790 --> 00:00:00,000
+Hẹn gặp lại các bạn trong chương tiếp theo. 
+

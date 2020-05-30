@@ -1,0 +1,652 @@
+﻿1
+00:00:01,150 --> 00:00:06,680
+Chào mừng đến với video 3.3 Tương tác với web về Qt WebChannel. Trong video này chúng ta
+
+2
+00:00:06,680 --> 00:00:09,140
+sẽ tìm hiểu về cách hoạt động của QWebChannel.
+
+3
+00:00:09,140 --> 00:00:11,450
+C++ WebChannel API.
+
+4
+00:00:11,450 --> 00:00:14,180
+Và cuối cùng là Javascript WebChannel API.
+
+5
+00:00:14,180 --> 00:00:20,180
+Trước hết ta cùng thảo luận về cách hoạt động của Qt WebChannel. Đối với ứng dụng, WebChannel xuất QObject thông qua
+
+6
+00:00:20,180 --> 00:00:25,140
+một instance của QWebChannel. Đối với trang web,
+
+7
+00:00:25,140 --> 00:00:29,200
+có một QWebChannel.JS tương ứng, có tác dụng phiên dịch
+
+8
+00:00:29,200 --> 00:00:31,010
+QObject đã xuất thành javascript.
+
+9
+00:00:31,010 --> 00:00:36,740
+Các QWebChannel trên cả ứng dụng và trang web đều chịu trách nhiệm phiên dịch các object
+
+10
+00:00:36,740 --> 00:00:43,370
+giữa C++ và Javascript để chúng có cùng phương thức và thành viên dữ liệu bao gồm tín hiệu,
+
+11
+00:00:43,430 --> 00:00:45,540
+slot, và
+
+12
+00:00:45,540 --> 00:00:51,170
+các QProperty đã xuất. QWebChannel không triển khai bất kỳ một phương thức nào với mục đích gửi các ký tự 1 và 0 giữa
+
+13
+00:00:51,170 --> 00:00:52,520
+hai nền tảng.
+
+14
+00:00:52,520 --> 00:00:57,890
+Vì vậy ta sẽ phải tự triển khai. Một phần phương pháp chuyển giao này tương đương với
+
+15
+00:00:57,890 --> 00:01:03,770
+chúng ta phải thực hiện trên cả C++ và javascript, đó chính là lý do vì sao ta sẽ sử dụng
+
+16
+00:01:03,770 --> 00:01:04,820
+web socket.
+
+17
+00:01:05,000 --> 00:01:09,470
+Sau khi hiểu được khái niệm cơ bản về cách hoạt động của Qt WebChannel, ta cùng đi vào phân tích
+
+18
+00:01:09,470 --> 00:01:10,640
+ví dụ này.
+
+19
+00:01:10,670 --> 00:01:15,710
+Như đã nói ở trên, chúng ta sẽ sử dụng web socket. Web socket rất tiện lợi vì javascript
+
+20
+00:01:15,740 --> 00:01:21,050
+được cài đặt trong Chromium và ta có thể dễ dàng triển khai server web socket trong Qt, như vậy
+
+21
+00:01:21,050 --> 00:01:25,520
+điều duy nhất ta cần làm là cung cấp giao diện giữa QWebChannel và web
+
+22
+00:01:25,520 --> 00:01:26,290
+socket.
+
+23
+00:01:26,300 --> 00:01:30,620
+Hiện tại vì ví dụ này khá phức tạp nên chúng ta sẽ chỉnh sửa một số mã nguồn mở
+
+24
+00:01:30,620 --> 00:01:35,300
+từ một số ví dụ QWebChannel khác và bỏ qua công đoạn trên.
+
+25
+00:01:35,300 --> 00:01:37,510
+Các bạn có thể thoải mái đọc mã nguồn nếu muốn.
+
+26
+00:01:37,610 --> 00:01:39,580
+Bây giờ ta cùng quan sát mã.
+
+27
+00:01:39,680 --> 00:01:45,320
+Nếu ta nhìn vào các file header và source, phần mã mà chúng ta bỏ qua là
+
+28
+00:01:45,320 --> 00:01:51,770
+websocketclientwrapper và websockettransport. Tất cả đống mã đó đều được lấy trực tiếp từ các ví dụ QWebChannel khác.
+
+29
+00:01:51,780 --> 00:01:53,980
+Các bạn có thể đọc qua nếu muốn.
+
+30
+00:01:54,020 --> 00:01:59,400
+Ta cũng sẽ không tìm hiểu về phần mã ở QWebChannel.JS trong resource.
+
+31
+00:01:59,520 --> 00:02:04,980
+Nó nói về cách Qt xử lý QWebChannel cho javascript API.
+
+32
+00:02:05,210 --> 00:02:09,830
+Ta tập trung vào cách sử dụng hơn là cách Qt cung cấp QWebChannel, vì vậy chúng ta cũng sẽ không
+
+33
+00:02:09,830 --> 00:02:11,150
+tìm hiểu về mã này.
+
+34
+00:02:11,390 --> 00:02:15,920
+Nhưng nếu đi tới MainWindow, ta có thể xét
+
+35
+00:02:15,920 --> 00:02:16,590
+một số mã sau.
+
+36
+00:02:16,610 --> 00:02:22,460
+Như vậy khi cuộn xuống các thành viên dữ liệu, các bạn sẽ thấy ta có Web browser, Web Channel, một Web Socket
+
+37
+00:02:22,460 --> 00:02:28,870
+Server, Web Socket to QWebChannel interface, cũng là những thứ mà ta sẽ không tìm hiểu.
+
+38
+00:02:28,910 --> 00:02:32,550
+Và object to publish over QWebChannel.
+
+39
+00:02:32,570 --> 00:02:32,960
+Tuyệt vời.
+
+40
+00:02:32,960 --> 00:02:40,880
+Như vậy ta sẽ mở file .cpp và nếu cuộn tới hàm tạo, các bạn sẽ thấy ta có
+
+41
+00:02:40,880 --> 00:02:46,810
+create our browser, load a webpage và set the browser as the central widget in the MainWindow.
+
+42
+00:02:46,910 --> 00:02:51,100
+Tiếp theo ta sẽ bắt đầu với server web socket.
+
+43
+00:02:51,110 --> 00:02:53,080
+Kéo xuống phương thức này.
+
+44
+00:02:53,210 --> 00:02:59,840
+Ta cần phải tạo một instance của server QWebSocket, sau đó gọi phương thức listen vào cổng 1 2 3
+
+45
+00:02:59,840 --> 00:03:05,960
+4 5. Phương thức Listen sẽ trả lại một boolean thông báo hàm đã được nhập vào cổng
+
+46
+00:03:05,960 --> 00:03:09,300
+theo yêu cầu hay chưa.
+
+47
+00:03:09,310 --> 00:03:15,400
+Lưu ý ta sẽ sử dụng NonSecureMode trên WebSocketServer này,
+
+48
+00:03:15,400 --> 00:03:19,120
+và chỉ áp dụng đối với LocalHost. Vì vậy hãy đảm bảo
+
+49
+00:03:19,120 --> 00:03:24,000
+tránh NonSecureMode khi các bạn làm việc với web.
+
+50
+00:03:24,190 --> 00:03:24,670
+Tuyệt vời.
+
+51
+00:03:24,670 --> 00:03:27,990
+Sau khi hoàn thành server web socket,
+
+52
+00:03:28,000 --> 00:03:31,630
+ta sẽ tạo QWebChannel. Xong.
+
+53
+00:03:31,630 --> 00:03:36,120
+Tiếp theo ta khai báo object mà ta sẽ hiển thị bằng javascript.
+
+54
+00:03:36,160 --> 00:03:41,170
+Ta sẽ sử dụng phương thức register và nhập một chuỗi nhằm xác định object
+
+55
+00:03:41,170 --> 00:03:45,200
+bằng javascript và nhập cả tham chiếu cho chính object đó.
+
+56
+00:03:46,910 --> 00:03:51,900
+Bây giờ ta cần thiết lập đường vận chuyển hay đường giao tiếp giữa 2 web channel chính.
+
+57
+00:03:52,010 --> 00:03:57,830
+Khi nhìn vào phương thức setup_webchannel_transport, hãy nhớ rằng ta chỉ lấy mã này từ
+
+58
+00:03:57,890 --> 00:04:04,220
+những bài hướng dẫn Qt WebChannel khác, nhưng cơ bản ta cần phải gói WebSocketClient đến để
+
+59
+00:04:04,220 --> 00:04:11,420
+khi xuất hiện, nó sẽ xuất một class WebSocketTransport. Class WebSocketTransport là phần triển khai
+
+60
+00:04:11,420 --> 00:04:14,000
+cụ thể của class cơ sở.
+
+61
+00:04:14,000 --> 00:04:17,040
+QWebChannelAbstractTransport. Xin nhắc lại
+
+62
+00:04:17,060 --> 00:04:18,670
+đừng quá phụ thuộc vào mã này.
+
+63
+00:04:18,680 --> 00:04:20,630
+Tất cả chỉ là ví dụ.
+
+64
+00:04:20,630 --> 00:04:24,630
+Và nếu tôi có làm một ví dụ khác nữa thì cũng vẫn sẽ dùng lại mã này thôi.
+
+65
+00:04:24,710 --> 00:04:32,240
+Nhưng ta đã thiết lập thành công web channel, ta đã thiết lập một đường vận chuyển và xuất
+
+66
+00:04:32,300 --> 00:04:33,350
+một object.
+
+67
+00:04:33,350 --> 00:04:36,130
+Vậy là ứng dụng của ta sắp hoàn thành.
+
+68
+00:04:36,230 --> 00:04:39,940
+Tiếp theo ta sẽ tập trung vào trang web.
+
+69
+00:04:40,250 --> 00:04:44,150
+Các bạn thấy ta đã nạp webpage vào dòng 17.
+
+70
+00:04:44,150 --> 00:04:47,860
+Việc duy nhất ta cần làm là nhập Javascript.
+
+71
+00:04:47,990 --> 00:04:50,760
+Ta cùng kéo xuống phương thức này.
+
+72
+00:04:50,870 --> 00:04:57,770
+Để nhập javascript trước hết ta phải đưa page ra khỏi WebView, sau đó nạp
+
+73
+00:04:57,770 --> 00:05:03,620
+javascript tuỳ biến từ các file bằng phương thức hỗ trợ trước khi chèn javascript vào
+
+74
+00:05:03,620 --> 00:05:04,280
+page.
+
+75
+00:05:09,460 --> 00:05:10,160
+Tuyệt vời.
+
+76
+00:05:10,170 --> 00:05:15,300
+Nếu nhìn vào phương thức tuỳ biến get_custom_javascript này, các bạn có thể thấy ta đang tạo
+
+77
+00:05:15,300 --> 00:05:21,120
+QByteArray mà ta gọi là javascript. Sau đó ta sẽ mở
+
+78
+00:05:21,120 --> 00:05:28,290
+các file ở bên này và đưa vào QByteArray javascript. Cuối cùng ta tạo
+
+79
+00:05:28,290 --> 00:05:33,450
+QWebEngineScript, tạm gọi là script, và nhập mã nguồn của
+
+80
+00:05:33,440 --> 00:05:38,670
+QByteArray trên dòng đó, rồi tiếp tục đặt tên và thiết lập một số biến khác trước khi
+
+81
+00:05:38,670 --> 00:05:41,420
+trả về javascript.
+
+82
+00:05:41,540 --> 00:05:41,960
+Tuyệt vời.
+
+83
+00:05:41,970 --> 00:05:48,890
+Vậy đó là cách nhập javascript, nhưng thực tế chúng ta đang làm gì trong javascript?
+
+84
+00:05:49,020 --> 00:05:51,530
+Thử mở ra xem sao nhé.
+
+85
+00:05:51,690 --> 00:05:56,580
+Ta sẽ thực hiện toàn bộ quá trình này trên hàm onload, và các bạn có thể thấy điều đầu tiên
+
+86
+00:05:56,580 --> 00:06:02,340
+ta sẽ thực hiện là tạo một WebSocket. Và chúng ta sẽ nghe trên cổng localhost
+
+87
+00:06:02,340 --> 00:06:08,250
+12345 giống như WebSocketServer. Mỗi khi mở socket, ta
+
+88
+00:06:08,280 --> 00:06:15,390
+tạo một callback, tại đó ta sẽ tạo QWebChannel javascript
+
+89
+00:06:15,390 --> 00:06:22,730
+trong socket, sau đó ta sẽ tạo thêm một callback nữa giúp nhập channel.
+
+90
+00:06:22,830 --> 00:06:25,140
+Và bây giờ ta có thể viết mã được rồi.
+
+91
+00:06:25,140 --> 00:06:30,420
+Trước hết ta truy cập vào các object tương tác mà ta đã khai báo
+
+92
+00:06:30,420 --> 00:06:31,220
+hay xuất.
+
+93
+00:06:31,290 --> 00:06:35,940
+Vậy với tư cách là một phần của object channel này, ta sẽ có một thành viên dữ liệu được gọi là object
+
+94
+00:06:35,940 --> 00:06:41,700
+mà ta có thể sử dụng để truy cập object tương tác đã xuất. Tuyệt vời.
+
+95
+00:06:41,700 --> 00:06:45,630
+Ta cùng tiếp tục nhìn vào class object vừa truy cập.
+
+96
+00:06:45,630 --> 00:06:51,150
+Nếu quay lại và quan sát interactor.h, ta sẽ thấy một class khá phức tạp.
+
+97
+00:06:51,180 --> 00:06:57,090
+QWebChannel sẽ chỉ xuất tín hiệu, slot, và Qt property.
+
+98
+00:06:57,090 --> 00:07:03,030
+Các bạn có thể thấy trong file class header này, ta đã có một số slot, một tín hiệu và một QProperty. Chúng ta sẽ
+
+99
+00:07:03,080 --> 00:07:06,520
+tìm hiểu sâu hơn về QProperty khi làm việc với QML.
+
+100
+00:07:06,540 --> 00:07:11,970
+Hiện tại ta chỉ cần hiểu rằng nếu cần truy cập vào thành viên dữ liệu ta phải cho Qt biết
+
+101
+00:07:11,970 --> 00:07:17,830
+loại thành viên dữ liệu, tên thành viên, trong trường hợp này là who_changed_this_string.
+
+102
+00:07:17,850 --> 00:07:24,810
+Phương thức đọc, get_string, phương thức viết, set_string, và tín hiệu
+
+103
+00:07:24,810 --> 00:07:30,090
+thông báo thay đổi, trong trường hợp này là tín hiệu string_changed.
+
+104
+00:07:30,150 --> 00:07:33,820
+Xin nhắc lại là chúng ta sẽ được thực hành viết rất nhiều và nắm rõ được
+
+105
+00:07:33,830 --> 00:07:37,090
+cách hoạt động của QProperty khi làm việc với QML.
+
+106
+00:07:37,260 --> 00:07:41,720
+Ta cùng tiếp tục và nhìn vào các slot.
+
+107
+00:07:41,880 --> 00:07:45,530
+Vậy là ta đã có một phương thức launch_new_window.
+
+108
+00:07:45,570 --> 00:07:51,630
+Ta có 1 phương thức trả về một chuỗi và 1 phương thức yêu cầu ta gọi chuỗi đó.
+
+109
+00:07:51,630 --> 00:07:57,460
+Ta cùng quay lại với javascript. Và khi đã truy cập được object thực,
+
+110
+00:07:57,570 --> 00:08:02,640
+ta cùng sử dụng tất cả những tín hiệu, slot, và QProperty đó.
+
+111
+00:08:02,640 --> 00:08:09,720
+Điều đầu tiên cần làm là viện dẫn một slot C++. Và chúng ta sẽ viện dẫn slot mà trong đó
+
+112
+00:08:09,750 --> 00:08:14,120
+ta phải gọi mã. Đơn giản thôi.
+
+113
+00:08:14,160 --> 00:08:20,370
+Vậy làm cách nào ta có thể xử lý một slot nếu nó trả về giá trị, giống như phương thức trả về một chuỗi?
+
+114
+00:08:20,430 --> 00:08:29,180
+Vì đường giao tiếp không đồng bộ, nên ta phải sử dụng callback.
+
+115
+00:08:29,300 --> 00:08:33,380
+Giờ đây khi đã gọi được slot, ta sẽ kết nối tín hiệu như thế nào?
+
+116
+00:08:33,530 --> 00:08:35,110
+Thực ra lại cực kỳ giống nhau.
+
+117
+00:08:35,110 --> 00:08:37,640
+Ta cũng cần sử dụng callback.
+
+118
+00:08:38,650 --> 00:08:44,060
+Và theo tôi, có một điều cần lưu ý là ở đây ta không bắt buộc phải sử dụng callback nhưng ta cần đặt tương đương
+
+119
+00:08:44,060 --> 00:08:50,620
+với thứ gì đó.
+
+120
+00:08:50,710 --> 00:08:56,050
+Khi nhìn qua dòng mã này, hãy chú ý cách ta gọi trực tiếp thành viên dữ liệu
+
+121
+00:08:56,320 --> 00:08:57,610
+who_changed_this_string.
+
+122
+00:08:57,610 --> 00:09:00,670
+Giờ ta quay lại với interactor.
+
+123
+00:09:00,730 --> 00:09:07,150
+Tất cả là nhờ có QProperty này, bởi ta đã đặt phương thức read này là
+
+124
+00:09:07,150 --> 00:09:13,900
+get_string, cho phép ta gọi who_change_this_string đúng như này và nhận giá trị trả về
+
+125
+00:09:13,900 --> 00:09:15,180
+như kỳ vọng.
+
+126
+00:09:15,190 --> 00:09:21,550
+Hãy đoán xem ta có thể làm gì khi đã xác định hàm write này với set_string.
+
+127
+00:09:21,550 --> 00:09:26,760
+Nếu các bạn đoán rằng ta có thể gán giá trị bằng toán tử gán,
+
+128
+00:09:26,800 --> 00:09:28,040
+thì các bạn đoán đúng rồi đấy.
+
+129
+00:09:28,060 --> 00:09:32,830
+Ta cùng chạy thử xem nhé. Tuyệt vời.
+
+130
+00:09:32,840 --> 00:09:39,230
+Nếu nhìn qua Html mà ta đang thực hiện các phép toán, các bạn sẽ thấy một ví dụ
+
+131
+00:09:39,230 --> 00:09:40,820
+rất hiếm gặp.
+
+132
+00:09:40,880 --> 00:09:47,000
+Về cơ bản nó chỉ chứa các hướng dẫn "press F12 to bring up the javascript debugger" mà ta đã
+
+133
+00:09:47,000 --> 00:09:53,110
+đưa vào, chính là getfirebug ngay đây. Và ta còn có một nút nữa.
+
+134
+00:09:53,150 --> 00:09:58,290
+Hiện tại ta vẫn chưa thực sự đưa người sử dụng vào bất kỳ hoạt động tương tác nào mà ta đang thực hiện.
+
+135
+00:09:58,310 --> 00:10:04,520
+Vậy nên ta sẽ thêm một event listener nghe tiếng click trên button và
+
+136
+00:10:04,520 --> 00:10:07,870
+mở cửa sổ mới tương ứng.
+
+137
+00:10:07,990 --> 00:10:08,300
+Được rồi.
+
+138
+00:10:08,300 --> 00:10:13,100
+Và ta ghi chú "Add an event listener to HTML buttons 'click' method which calls the C++ method
+
+139
+00:10:13,160 --> 00:10:14,270
+launch_new_window".
+
+140
+00:10:18,160 --> 00:10:18,560
+Tuyệt vời.
+
+141
+00:10:18,560 --> 00:10:25,330
+Như vậy ta đã kết nối thành công với một tín hiệu, ta đã gọi được 2 loại slot khác nhau,
+
+142
+00:10:25,340 --> 00:10:32,180
+một loại không có giá trị trả về và một loại có giá trị trả về. Ta đã có thể đọc QProperty.
+
+143
+00:10:32,210 --> 00:10:40,310
+Ta có thể viết QProperty và đã kết nối một yếu tố HTML dạng nút
+
+144
+00:10:40,550 --> 00:10:42,230
+với launch_new_window.
+
+145
+00:10:42,230 --> 00:10:44,830
+Giờ ta cùng thử chạy xem nó có hoạt động không nhé.
+
+146
+00:10:46,150 --> 00:10:46,570
+Tuyệt vời.
+
+147
+00:10:46,570 --> 00:10:48,050
+Có vẻ mọi thứ đều hoạt động
+
+148
+00:10:48,070 --> 00:10:55,270
+khá tốt. Giờ ta sẽ ấn F12, nếu nhìn vào mã javascript
+
+149
+00:10:55,270 --> 00:11:02,470
+và dữ liệu xuất từ đầu ra ứng dụng, các bạn có thể thấy một số kết quả
+
+150
+00:11:02,470 --> 00:11:08,130
+hoạt động tương tác của chúng ta. Và nếu click vào nút này, ta sẽ thấy một hộp thoại mở ra.
+
+151
+00:11:08,170 --> 00:11:15,610
+Vậy là ta đã thành công trong việc gọi các tín hiệu và slot bằng javascript và xem kết quả
+
+152
+00:11:15,670 --> 00:11:16,770
+trong console.
+
+153
+00:11:16,840 --> 00:11:24,040
+Và ta cũng thành công trong việc tương tác, gọi và thay đổi mọi thứ từ javascript.
+
+154
+00:11:24,040 --> 00:11:27,300
+Các bạn hoàn toàn có thể tự mình mày mò thêm nữa với ví dụ này.
+
+155
+00:11:27,370 --> 00:11:34,630
+Vậy sau khi ta đã tích hợp thành công mớ hỗn độn này với các yếu tố trang web, ta sẽ ứng dụng vào đâu đây?
+
+156
+00:11:34,720 --> 00:11:39,730
+Một trong những trường hợp điển hình nhất là khi công ty đang trong quá trình chuyển giao từ
+
+157
+00:11:39,880 --> 00:11:42,880
+máy tính sang web hoặc ngược lại.
+
+158
+00:11:42,880 --> 00:11:48,540
+Nhiều khi quá trình này diễn ra rất chậm chạp vì thời gian của nhà phát triển rất quý báu.
+
+159
+00:11:48,580 --> 00:11:51,930
+Ta sẽ không muốn viết lại toàn bộ tiện ích cùng lúc đâu.
+
+160
+00:11:51,970 --> 00:11:57,350
+Vậy xử lý QWebChannel như trên có thể là một cách đơn giản hoá quá trình hiệu quả
+
+161
+00:11:57,400 --> 00:12:01,410
+khi ta phải chuyển giao từ web sang máy tính hoặc từ máy tính sang Web.
+
+162
+00:12:01,540 --> 00:12:08,320
+Nhưng nhìn chung chúng ta đã tìm hiểu xong về cách hoạt động của QWebChannel, bao gồm cả C++ và Javascript
+
+163
+00:12:08,410 --> 00:12:14,870
+API. Hãy theo dõi phần tiếp theo của chúng tôi về quản lý đa phương tiện.
+

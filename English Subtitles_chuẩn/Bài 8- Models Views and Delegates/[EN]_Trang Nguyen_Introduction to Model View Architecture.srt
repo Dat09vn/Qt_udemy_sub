@@ -1,0 +1,608 @@
+1
+00:00:00,000 --> 00:00:02,009
+in this lecture we are looking at the
+
+2
+00:00:02,009 --> 00:00:04,680
+Model View architecture and QT quick the
+
+3
+00:00:04,680 --> 00:00:07,859
+model 2 architecture abbreviated MVC is
+
+4
+00:00:07,859 --> 00:00:09,960
+a design pattern that allows you to
+
+5
+00:00:09,960 --> 00:00:13,410
+separate the way data is stored and the
+
+6
+00:00:13,410 --> 00:00:16,350
+way data is displayed to the user. there
+
+7
+00:00:16,350 --> 00:00:18,570
+are three components the model which
+
+8
+00:00:18,570 --> 00:00:21,660
+stores your data that you which displays
+
+9
+00:00:21,660 --> 00:00:24,390
+your data, and the controller which maybe
+
+10
+00:00:24,390 --> 00:00:26,519
+is the exchange of data between the
+
+11
+00:00:26,519 --> 00:00:29,820
+model and the view. now tooth doesn't
+
+12
+00:00:29,820 --> 00:00:30,990
+implement the model view controller
+
+13
+00:00:30,990 --> 00:00:33,899
+pattern completely, it takes the
+
+14
+00:00:33,899 --> 00:00:36,600
+controller and strips it down to a
+
+15
+00:00:36,600 --> 00:00:39,450
+delegate and the delegate does part of
+
+16
+00:00:39,450 --> 00:00:41,790
+the job that a full-blown controller
+
+17
+00:00:41,790 --> 00:00:44,820
+would do. in qml specifically, the
+
+18
+00:00:44,820 --> 00:00:47,340
+delegate defines how each row in the
+
+19
+00:00:47,340 --> 00:00:49,649
+ListView is going to look. you have to
+
+20
+00:00:49,649 --> 00:00:50,969
+keep in mind that you have three
+
+21
+00:00:50,969 --> 00:00:53,640
+components in QT quick: the model the
+
+22
+00:00:53,640 --> 00:00:56,219
+view and the delegate. now that we have
+
+23
+00:00:56,219 --> 00:00:58,320
+an idea about the models you delegate
+
+24
+00:00:58,320 --> 00:01:01,230
+architecture in QT quick, what components
+
+25
+00:01:01,230 --> 00:01:03,989
+are available to us in Qt Quick so
+
+26
+00:01:03,989 --> 00:01:07,110
+that we can use them in qml. for
+
+27
+00:01:07,110 --> 00:01:09,540
+the view you have list view, grid view
+
+28
+00:01:09,540 --> 00:01:11,460
+and if you are the components that we're
+
+29
+00:01:11,460 --> 00:01:12,750
+not going to talk about in this chapter.
+
+30
+00:01:12,750 --> 00:01:15,659
+for the model there is a list model an
+
+31
+00:01:15,659 --> 00:01:18,299
+XML list model, we are going to look at
+
+32
+00:01:18,299 --> 00:01:20,520
+all these models, and the delegate is
+
+33
+00:01:20,520 --> 00:01:23,100
+really a chunk of qml code that
+
+34
+00:01:23,100 --> 00:01:25,350
+controls the look of each row in your
+
+35
+00:01:25,350 --> 00:01:29,189
+list view, as we going to see. okay and
+
+36
+00:01:29,189 --> 00:01:31,200
+one thing you need to understand is that
+
+37
+00:01:31,200 --> 00:01:33,689
+the data that goes in your model can
+
+38
+00:01:33,689 --> 00:01:36,000
+really come from anywhere. it can come
+
+39
+00:01:36,000 --> 00:01:38,729
+from the database the internet. it can
+
+40
+00:01:38,729 --> 00:01:41,520
+come from a file that you are storing on
+
+41
+00:01:41,520 --> 00:01:44,220
+your drive. it can come from static data
+
+42
+00:01:44,220 --> 00:01:47,070
+that you type in your QML code, and a
+
+43
+00:01:47,070 --> 00:01:50,670
+model gives you a common interface that
+
+44
+00:01:50,670 --> 00:01:53,340
+you can use to abstract the real source
+
+45
+00:01:53,340 --> 00:01:56,040
+of data away, so that it can be used by
+
+46
+00:01:56,040 --> 00:01:58,799
+many components. for example you can take
+
+47
+00:01:58,799 --> 00:02:01,829
+one list model and feed it to a list
+
+48
+00:02:01,829 --> 00:02:04,200
+view and the grid view, and there is a
+
+49
+00:02:04,200 --> 00:02:06,990
+common interface to pass the data back
+
+50
+00:02:06,990 --> 00:02:08,639
+and forth between these two components,
+
+51
+00:02:08,639 --> 00:02:10,949
+and you don't need to worry about the
+
+52
+00:02:10,949 --> 00:02:11,380
+detail
+
+53
+00:02:11,380 --> 00:02:14,230
+how the data is really stored. this is
+
+54
+00:02:14,230 --> 00:02:16,720
+the benefit of having the way you store
+
+55
+00:02:16,720 --> 00:02:20,320
+data abstracted away in a model like
+
+56
+00:02:20,320 --> 00:02:23,740
+list model and XML list model. okay now
+
+57
+00:02:23,740 --> 00:02:25,600
+we want to focus on list model a little
+
+58
+00:02:25,600 --> 00:02:28,090
+bit. the way you use the list model in
+
+59
+00:02:28,090 --> 00:02:30,430
+your qml code, you really give it a list
+
+60
+00:02:30,430 --> 00:02:32,380
+of elements that you are going to
+
+61
+00:02:32,380 --> 00:02:34,720
+display. you can put in these elements
+
+62
+00:02:34,720 --> 00:02:37,240
+statically when you define a list model,
+
+63
+00:02:37,240 --> 00:02:39,460
+and this is how it looks in code, you
+
+64
+00:02:39,460 --> 00:02:41,650
+have a list model component, and inside
+
+65
+00:02:41,650 --> 00:02:44,110
+you have a bunch of list elements that
+
+66
+00:02:44,110 --> 00:02:47,470
+contain attribute and value pieces of
+
+67
+00:02:47,470 --> 00:02:49,150
+data.we're going to look at this in a
+
+68
+00:02:49,150 --> 00:02:51,910
+moment. okay you can put static list
+
+69
+00:02:51,910 --> 00:02:54,100
+elements in your list model. that's one
+
+70
+00:02:54,100 --> 00:02:56,380
+way to put in the data, but you can also
+
+71
+00:02:56,380 --> 00:02:59,170
+use any of these methods that are
+
+72
+00:02:59,170 --> 00:03:02,110
+available to you to manipulate your
+
+73
+00:03:02,110 --> 00:03:05,200
+model at runtime. you can append data,
+
+74
+00:03:05,200 --> 00:03:07,120
+you can clear data, you can get an
+
+75
+00:03:07,120 --> 00:03:09,820
+element you can insert, move, remove, and
+
+76
+00:03:09,820 --> 00:03:12,010
+you can use all these functions, we are
+
+77
+00:03:12,010 --> 00:03:13,630
+going to have a chance to use some of
+
+78
+00:03:13,630 --> 00:03:16,020
+these in one of the upcoming lectures.
+
+79
+00:03:16,020 --> 00:03:18,700
+there are also two properties that are
+
+80
+00:03:18,700 --> 00:03:20,950
+available to you: count gives you the
+
+81
+00:03:20,950 --> 00:03:22,980
+number of elements in your model, and
+
+82
+00:03:22,980 --> 00:03:26,020
+dynamic roles is a property that allows
+
+83
+00:03:26,020 --> 00:03:30,130
+you to modify the nature of your model
+
+84
+00:03:30,130 --> 00:03:33,040
+at runtime. if you look at this append
+
+85
+00:03:33,040 --> 00:03:35,620
+method, it takes a parameter of j/s
+
+86
+00:03:35,620 --> 00:03:38,440
+object dictionary .I want to focus on
+
+87
+00:03:38,440 --> 00:03:40,720
+this a little bit. if you are familiar
+
+88
+00:03:40,720 --> 00:03:43,330
+with JS, you're going to recognize what
+
+89
+00:03:43,330 --> 00:03:45,190
+we have here. this is a just an object,
+
+90
+00:03:45,190 --> 00:03:47,560
+and this is how you pass data in your
+
+91
+00:03:47,560 --> 00:03:49,900
+model dynamically, you pass something
+
+92
+00:03:49,900 --> 00:03:52,450
+like this. we just looked at an example
+
+93
+00:03:52,450 --> 00:03:54,640
+of how you can build your list model, and
+
+94
+00:03:54,640 --> 00:03:56,950
+you see that it takes country and
+
+95
+00:03:56,950 --> 00:03:59,980
+capital here. if we were to put in a
+
+96
+00:03:59,980 --> 00:04:02,740
+piece of data like this dynamically, we
+
+97
+00:04:02,740 --> 00:04:05,140
+would pass in adjust an object that is
+
+98
+00:04:05,140 --> 00:04:07,959
+structured like this. okay when you pass
+
+99
+00:04:07,959 --> 00:04:10,150
+a list element dynamically, you pass it
+
+100
+00:04:10,150 --> 00:04:12,670
+as a JSobject, this is what we mean
+
+101
+00:04:12,670 --> 00:04:15,850
+here. in QML terminology these
+
+102
+00:04:15,850 --> 00:04:19,478
+attributes are called roles, okay so we
+
+103
+00:04:19,478 --> 00:04:22,029
+have two roles in our list model, here we
+
+104
+00:04:22,029 --> 00:04:23,950
+have a country role and we have
+
+105
+00:04:23,950 --> 00:04:26,560
+capital role, and we give values to these
+
+106
+00:04:26,560 --> 00:04:29,260
+roles. these roles can be named to be
+
+107
+00:04:29,260 --> 00:04:31,330
+anything really, but you need to remember
+
+108
+00:04:31,330 --> 00:04:33,730
+the name you gave them here, because
+
+109
+00:04:33,730 --> 00:04:36,340
+you're going to use them to refer to
+
+110
+00:04:36,340 --> 00:04:38,500
+this piece of data in your delegates
+
+111
+00:04:38,500 --> 00:04:40,570
+that we're about to see. we just looked
+
+112
+00:04:40,570 --> 00:04:43,630
+at one type of models that we have want
+
+113
+00:04:43,630 --> 00:04:46,180
+to look at XML list model. this is a
+
+114
+00:04:46,180 --> 00:04:48,610
+model that allows you to wrap around an
+
+115
+00:04:48,610 --> 00:04:51,970
+XML file that is either local or coming
+
+116
+00:04:51,970 --> 00:04:54,420
+from the internet, and it allows you to
+
+117
+00:04:54,420 --> 00:04:57,520
+automatically read the data from the XML
+
+118
+00:04:57,520 --> 00:05:00,220
+file, and fit it to your list view, or
+
+119
+00:05:00,220 --> 00:05:02,350
+other views that you might have in you
+
+120
+00:05:02,350 --> 00:05:05,080
+QML file. the source property allows you
+
+121
+00:05:05,080 --> 00:05:07,720
+to specify where the XML file is going
+
+122
+00:05:07,720 --> 00:05:09,910
+to come from, and you have a set of
+
+123
+00:05:09,910 --> 00:05:11,980
+queries that allow you to fetch the data
+
+124
+00:05:11,980 --> 00:05:15,400
+in your XML file. and you can use XPath,
+
+125
+00:05:15,400 --> 00:05:18,010
+this is a technology that allows you to
+
+126
+00:05:18,010 --> 00:05:21,310
+parse an XML file and take the data that
+
+127
+00:05:21,310 --> 00:05:23,770
+you want from that file. we're going to
+
+128
+00:05:23,770 --> 00:05:26,320
+see how this works. I take away from here
+
+129
+00:05:26,320 --> 00:05:29,440
+is that this model wraps around an XML
+
+130
+00:05:29,440 --> 00:05:33,280
+file and allows you to extract data from
+
+131
+00:05:33,280 --> 00:05:36,160
+there automatically, and fit that your
+
+132
+00:05:36,160 --> 00:05:39,250
+list view or grid view if you happen to
+
+133
+00:05:39,250 --> 00:05:41,920
+need that. and the last piece of the
+
+134
+00:05:41,920 --> 00:05:43,480
+puzzle that we're going to look at is
+
+135
+00:05:43,480 --> 00:05:45,880
+the ListView, which is going to tie all
+
+136
+00:05:45,880 --> 00:05:47,650
+the things we've talked about together.
+
+137
+00:05:47,650 --> 00:05:50,530
+the ListView has a model property which
+
+138
+00:05:50,530 --> 00:05:52,690
+lends to the model that you want to show
+
+139
+00:05:52,690 --> 00:05:55,150
+in the ListView, you have a delegate that
+
+140
+00:05:55,150 --> 00:05:57,760
+controls how each role in the ListView is
+
+141
+00:05:57,760 --> 00:06:00,340
+going to look, and we have highlight
+
+142
+00:06:00,340 --> 00:06:02,770
+header and footer that allows you to
+
+143
+00:06:02,770 --> 00:06:04,870
+decorate your ListView to make it look
+
+144
+00:06:04,870 --> 00:06:07,300
+better, and right here we have an example
+
+145
+00:06:07,300 --> 00:06:09,340
+for this view. this is how you define it,
+
+146
+00:06:09,340 --> 00:06:10,960
+and we're going to look at this in
+
+147
+00:06:10,960 --> 00:06:13,960
+detail in a few upcoming lectures. ok
+
+148
+00:06:13,960 --> 00:06:15,640
+this should be all to spice up your
+
+149
+00:06:15,640 --> 00:06:18,430
+appetite to work with models and views
+
+150
+00:06:18,430 --> 00:06:20,920
+in QT quick. in the next lecture we're
+
+151
+00:06:20,920 --> 00:06:22,660
+going to start looking at list view and
+
+152
+00:06:22,660 --> 00:00:00,000
+list model in detail, I'll see you then
+

@@ -1,0 +1,252 @@
+1
+00:00:00,000 --> 00:00:02,250
+In this lecture we are looking at the
+
+2
+00:00:02,250 --> 00:00:04,980
+switch to to quit control this control
+
+3
+00:00:04,980 --> 00:00:07,740
+is really like a checkbox but it is more
+
+4
+00:00:07,740 --> 00:00:10,620
+suited to mobile devices we're going to
+
+5
+00:00:10,620 --> 00:00:13,650
+go to QT creator and play with it okay
+
+6
+00:00:13,650 --> 00:00:16,949
+here we are in QT creator we create our
+
+7
+00:00:16,949 --> 00:00:19,199
+new project it's a two to quick
+
+8
+00:00:19,199 --> 00:00:22,470
+application we call it switch demo save
+
+9
+00:00:22,470 --> 00:00:28,050
+it in the usual location choose our QT
+
+10
+00:00:28,050 --> 00:00:32,070
+version and choose our kit hit next and
+
+11
+00:00:32,070 --> 00:00:35,670
+finish we should import our QT quick
+
+12
+00:00:35,670 --> 00:00:39,390
+control module change the title to say
+
+13
+00:00:39,390 --> 00:00:44,190
+switch demo down here we want to put a
+
+14
+00:00:44,190 --> 00:00:48,539
+column component the width is going to be
+
+15
+00:00:48,539 --> 00:00:54,840
+the same as or the parent and we give it
+
+16
+00:00:54,840 --> 00:00:59,550
+a spacing of 20 so I want to put in a
+
+17
+00:00:59,550 --> 00:01:03,750
+couple of switch components so going to
+
+18
+00:01:03,750 --> 00:01:09,890
+say switch the text is going to say
+
+19
+00:01:09,890 --> 00:01:15,420
+Wi-Fi for example I copied this a couple
+
+20
+00:01:15,420 --> 00:01:21,810
+of times this is going to say bluetooth
+
+21
+00:01:21,810 --> 00:01:25,520
+and this is going to say NFC.
+
+22
+00:01:25,520 --> 00:01:27,960
+let's say that we want the user to
+
+23
+00:01:27,960 --> 00:01:30,090
+choose the technology that they want to
+
+24
+00:01:30,090 --> 00:01:33,119
+use to share data if you look at the
+
+25
+00:01:33,119 --> 00:01:34,829
+documentation there are a couple of
+
+26
+00:01:34,829 --> 00:01:36,960
+properties that this switch component
+
+27
+00:01:36,960 --> 00:01:40,950
+has, and one of them is checked, you use
+
+28
+00:01:40,950 --> 00:01:43,860
+this to control if the switch is on or
+
+29
+00:01:43,860 --> 00:01:49,790
+off okay so if we set the Wi-Fi one to
+
+30
+00:01:49,790 --> 00:01:55,799
+true and run you see that it is turned
+
+31
+00:01:55,799 --> 00:01:58,409
+on if you turn it off it goes off like
+
+32
+00:01:58,409 --> 00:02:02,040
+this if you turn it on it turns black
+
+33
+00:02:02,040 --> 00:02:04,920
+and it goes to the right okay you can
+
+34
+00:02:04,920 --> 00:02:07,500
+also turn on NFC or Bluetooth or
+
+35
+00:02:07,500 --> 00:02:11,129
+whatever you want I want to Center my
+
+36
+00:02:11,129 --> 00:02:13,770
+fence here because
+
+37
+00:02:13,770 --> 00:02:16,020
+think it looks better if it is centered
+
+38
+00:02:16,020 --> 00:02:18,200
+so I'm going to say anchor.horizontalCenter
+
+39
+00:02:18,200 --> 00:02:21,600
+parent horizontal
+
+40
+00:02:21,600 --> 00:02:26,850
+Center copy this samething and put it in
+
+41
+00:02:26,850 --> 00:02:32,460
+these buttons, another thing you can do
+
+42
+00:02:32,460 --> 00:02:35,070
+is disable one of these buttons and all
+
+43
+00:02:35,070 --> 00:02:37,610
+you have to do is say enabled and set
+
+44
+00:02:37,610 --> 00:02:43,140
+that to false and if you run we're going
+
+45
+00:02:43,140 --> 00:02:47,190
+to have the NFC switch turned off okay
+
+46
+00:02:47,190 --> 00:02:51,120
+it is disabled you can also capture the
+
+47
+00:02:51,120 --> 00:02:54,920
+jet state you can say unchecked changed
+
+48
+00:02:54,920 --> 00:03:06,510
+and say if checked because to true Wi-Fi
+
+49
+00:03:06,510 --> 00:03:19,580
+switch is turned on let's say that and
+
+50
+00:03:19,580 --> 00:03:32,730
+if it is not true we say Wi-Fi switch is
+
+51
+00:03:32,730 --> 00:03:38,310
+turned off if we run this we turn it off
+
+52
+00:03:38,310 --> 00:03:41,430
+it is turned off we turn it on it is
+
+53
+00:03:41,430 --> 00:03:43,860
+turned on okay you can do all this done
+
+54
+00:03:43,860 --> 00:03:46,410
+if you want you can see that this is
+
+55
+00:03:46,410 --> 00:03:48,540
+really no different than a checkbox and
+
+56
+00:03:48,540 --> 00:03:51,570
+it is a matter of preference which one
+
+57
+00:03:51,570 --> 00:03:54,600
+you use QT quick does its best to give
+
+58
+00:03:54,600 --> 00:03:57,480
+you more components on your menu and let
+
+59
+00:03:57,480 --> 00:03:59,850
+you choose what matches better your
+
+60
+00:03:59,850 --> 00:04:02,820
+requirements for your project this is
+
+61
+00:04:02,820 --> 00:04:04,770
+all have to say in this lecture in the
+
+62
+00:04:04,770 --> 00:04:06,990
+next one we're going to look at Page and
+
+63
+00:04:06,990 --> 00:00:00,000
+Tab bar components, I'll see you there
+

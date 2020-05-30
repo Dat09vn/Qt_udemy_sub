@@ -1,0 +1,734 @@
+1
+00:00:00,000 --> 00:00:01,650
+Trong bài này, chúng tôi sẽ hướng dẫn các bạn
+
+2
+00:00:01,650 --> 00:00:04,859
+các cài đặt Qt creator trên Linux và
+
+3
+00:00:04,859 --> 00:00:07,710
+trên Mac. Qt là phầm mềm đa nền tảng
+
+4
+00:00:07,710 --> 00:00:10,440
+và các bạn có thể sử dụng nó trên Windows, Mac và
+
+5
+00:00:10,440 --> 00:00:12,929
+Linux. Tôi thường khuyến khích chạy
+
+6
+00:00:12,929 --> 00:00:14,910
+Qt creator trên cả ba nền tảng này.
+
+7
+00:00:14,910 --> 00:00:17,520
+Đó là cách tốt nhất để cảm nhận
+
+8
+00:00:17,520 --> 00:00:20,670
+cách nó được sử dụng trong thực tế. Nhưng tôi
+
+9
+00:00:20,670 --> 00:00:22,769
+không sở hữu một máy Mac và cài đặt
+
+10
+00:00:22,769 --> 00:00:25,080
+trên máy ảo là phạm pháp nên tôi sẽ
+
+11
+00:00:25,080 --> 00:00:27,210
+không làm thế. Nhưng tôi sẽ cho
+
+12
+00:00:27,210 --> 00:00:29,970
+các bạn xem cách cài đặt nếu các bạn chạy
+
+13
+00:00:29,970 --> 00:00:32,430
+nó trên một máy Mac. Và nếu các bạn gặp vẫn để gì
+
+14
+00:00:32,430 --> 00:00:35,880
+cứ việc hỏi tôi ở phần QA
+
+15
+00:00:35,880 --> 00:00:37,800
+và tôi sẽ cố hết sức để giúp các
+
+16
+00:00:37,800 --> 00:00:40,170
+bạn. Chúng ta sẽ đến trang download
+
+17
+00:00:40,170 --> 00:00:43,079
+chính thức của Qt. Chúng ta sẽ
+
+18
+00:00:43,079 --> 00:00:45,719
+các phiên bản chính thức và chúng ta sẽ
+
+19
+00:00:45,719 --> 00:00:49,050
+được đưa đến đây. Khi đã ở đây chọn Qt
+
+20
+00:00:49,050 --> 00:00:54,949
+chúng ta chọn Qt 5.10 mà chình là Qt 5.10.1.
+
+21
+00:00:54,949 --> 00:00:59,370
+Các bạn được đưa cho lựa chọn của các file
+
+22
+00:00:59,370 --> 00:01:01,829
+sẽ tải về. Trong trường hợp này chúng ta
+
+23
+00:01:01,829 --> 00:01:03,600
+đang sử dụng Linux nên chúng ta sẽ tải về
+
+24
+00:01:03,600 --> 00:01:06,210
+cái này. Chúng ta sẽ ấn vào đường
+
+25
+00:01:06,210 --> 00:01:10,729
+link này cho Qt-opensource-linux-x64-5.10.1.
+
+26
+00:01:10,729 --> 00:01:15,360
+Chúng ta sẽ thấy một
+
+27
+00:01:15,360 --> 00:01:18,360
+cửa sổ để xác nhận rằng chúng ta muốn
+
+28
+00:01:18,360 --> 00:01:20,970
+tải fike này. Chúng ta sẽ chọn
+
+29
+00:01:20,970 --> 00:01:25,350
+OK để xác nhận nó. Và phiên tải về
+
+30
+00:01:25,350 --> 00:01:28,350
+sẽ bắt đầu. Bởi vì tôi đã tải về rồi
+
+31
+00:01:28,350 --> 00:01:30,360
+để tiết kiệm thời gian, tôi sẽ
+
+32
+00:01:30,360 --> 00:01:34,770
+hủy cái này đi và mở bảng điều khiển
+
+33
+00:01:34,770 --> 00:01:38,250
+trên hệ điều hành Linux. Hôm nay tôi sẽ
+
+34
+00:01:38,250 --> 00:01:43,439
+hiển thị thư mục tôi đang sử dụng bằng các gõ pwd.
+
+35
+00:01:43,439 --> 00:01:46,560
+Và các bạn có thể thấy là tôi đang ở thư mục
+
+36
+00:01:46,560 --> 00:01:49,350
+gốc. Tôi có thể xem trong thư mục
+
+37
+00:01:49,350 --> 00:01:54,689
+download của mình và làm một lệnh ls để hiển thị
+
+38
+00:01:54,689 --> 00:01:57,210
+các file có trông đây. Và các bạn có thể thấy file
+
+39
+00:01:57,210 --> 00:02:03,420
+tôi đã tải về. Các bạn có thể gõ ls -alh để hiển thị
+
+40
+00:02:03,420 --> 00:02:06,090
+các files trong thư mục và các thông tin
+
+41
+00:02:06,090 --> 00:02:09,000
+liên quan của file. Các bạn có thể thấy
+
+42
+00:02:09,000 --> 00:02:11,760
+kích thước của file, các bạn có thể thấy tên của
+
+43
+00:02:11,760 --> 00:02:13,890
+file, các bạn có thể thấy
+
+44
+00:02:13,890 --> 00:02:16,500
+các quyền của file. Bây giờ các bạn có thể thấy
+
+45
+00:02:16,500 --> 00:02:19,800
+file này chưa thể thực hiện chúng ta muốn
+
+46
+00:02:19,800 --> 00:02:22,590
+làm nó có thể thực hiện. Và chúng ta làm thế bằng cách
+
+47
+00:02:22,590 --> 00:02:29,670
+gõ chmod +x và gõ tên của
+
+48
+00:02:29,670 --> 00:02:32,250
+file. Các bạn có thể chỉ gõ Qt ở đây
+
+49
+00:02:32,250 --> 00:02:35,550
+và ấn tab để có tên đầy đủ của file
+
+50
+00:02:35,550 --> 00:02:38,640
+có thể được hoàn thiện. Khi các bạn làm xong thì gõ Enter
+
+51
+00:02:38,640 --> 00:02:43,860
+và nếu chúng ta thực hiện ls -alh một lần nữa các bạn
+
+52
+00:02:43,860 --> 00:02:45,870
+sẽ thấy là file đã chuyển sang màu xanh
+
+53
+00:02:45,870 --> 00:02:48,300
+và các bạn cũng thấy là các quyền đã
+
+54
+00:02:48,300 --> 00:02:51,600
+thay đổi. Bây giờ chúng ta có x ở khắp nơi
+
+55
+00:02:51,600 --> 00:02:54,860
+có nghĩa là bất cứ ai cũng có thể chạy
+
+56
+00:02:54,860 --> 00:02:58,080
+file thực thi này. Việc chúng ta sẽ
+
+57
+00:02:58,080 --> 00:03:02,610
+bây giờ là chạy nó, được rồi chúng ta gõ ./ và
+
+58
+00:03:02,610 --> 00:03:06,090
+gõ vào tên của file, ấn enter và
+
+59
+00:03:06,090 --> 00:03:08,489
+các bạn có thể thấy chúng ta có một cửa sổ giống với
+
+60
+00:03:08,489 --> 00:03:12,239
+cái ở trên Windows. Ok, chúng ta sẽ làm
+
+61
+00:03:12,239 --> 00:03:15,930
+theo cách tương tự và ấn next. Và chúng ta
+
+62
+00:03:15,930 --> 00:03:19,650
+sẽ bỏ qua phần lập tài khoản Qt.
+
+63
+00:03:19,650 --> 00:03:26,970
+Next và tôi muốn cài đặt Qt trong thư mục gốc
+
+64
+00:03:26,970 --> 00:03:30,120
+của mình. Và chúng ta cơ bản là chọn
+
+65
+00:03:30,120 --> 00:03:34,320
+giống với những gì chúng ta đã làm trên Windows
+
+66
+00:03:34,320 --> 00:03:38,250
+Chúng ta muốn có các
+
+67
+00:03:38,250 --> 00:03:42,209
+thành phần cho Qt desktop sử dụng
+
+68
+00:03:42,209 --> 00:03:43,320
+bộ giải mã GCC.
+
+69
+00:03:43,320 --> 00:03:45,810
+Tôi cũng khuyến nghị đánh dấu vào
+
+70
+00:03:45,810 --> 00:03:50,549
+ô cho android x86 và android arm v7
+
+71
+00:03:50,549 --> 00:03:52,769
+bỏi vì trong khóa học chúng ta sẽ
+
+72
+00:03:52,769 --> 00:03:55,470
+chạy các ứng dụng trên Android. Chúng ta
+
+73
+00:03:55,470 --> 00:03:58,470
+chủ yếu cần bản x86 bởi vì nó giúp cho
+
+74
+00:03:58,470 --> 00:04:01,170
+ứng dụng của các bạn chạy rất nhanh trên thiết bị
+
+75
+00:04:01,170 --> 00:04:04,140
+giả lập nhưng nếu các bạn có một thiết bị
+
+76
+00:04:04,140 --> 00:04:06,720
+chạy trên nền tảng này nó cũng 
+
+77
+00:04:06,720 --> 00:04:08,940
+rất hữu dụng. Nên hãy nhớ
+
+78
+00:04:08,940 --> 00:04:10,709
+đánh dấu vào 2 ô này,
+
+79
+00:04:10,709 --> 00:04:17,660
+android x86 và android arm v7. Ấn Next.
+
+80
+00:04:17,660 --> 00:04:21,168
+Chấp nhận bản quyền.
+
+81
+00:04:21,168 --> 00:04:26,940
+Next lần nữa và ấn Install. Các bạn có thể hiển thị
+
+82
+00:04:26,940 --> 00:04:32,669
+chi tiết và quá trình cài đặt và chờ
+
+83
+00:04:32,669 --> 00:04:38,720
+cho nó kết thúc. Phần cài đặt đã xong,
+
+84
+00:04:38,720 --> 00:04:44,780
+chúng ta có thể ấn Next và chọn chạy
+
+85
+00:04:44,780 --> 00:04:51,990
+Qt creator ở đây. Ấn Finish và chúng ta
+
+86
+00:04:51,990 --> 00:04:54,630
+đã ở đây. Việc đâu tiên các bạn muốn làm ở đây
+
+87
+00:04:54,630 --> 00:04:58,530
+là khóa Qt creator vào thanh công cụ để
+
+88
+00:04:58,530 --> 00:05:00,660
+lần sau các bạn không phải đi tìm
+
+89
+00:05:00,660 --> 00:05:03,800
+nó. Hãy mở rộng cửa sổ này và
+
+90
+00:05:03,800 --> 00:05:11,330
+chúng ta sẽ thử chạy một chương trình
+0:05:06.810,0:05:17.220
+đơn giản như chúng ta đã làm trên Windows. Ấn File -
+
+91
+00:05:11,330 --> 00:05:17,220
+New project. Chúng ta sẽ chọn một ứng dụng
+
+92
+00:05:17,220 --> 00:05:20,550
+Qt widgets. Chúng ta sẽ gọi
+
+93
+00:05:20,550 --> 00:05:28,200
+nó là QtCreatorDemo. Chúng ta chọn
+
+94
+00:05:28,200 --> 00:05:34,800
+bộ phát triển cho dự án. Ấn Next. Chúng ta
+
+95
+00:05:34,800 --> 00:05:38,010
+sẽ chọn một vài widget như khi chúng ta làm với
+
+96
+00:05:38,010 --> 00:05:41,700
+Windows. Chúng ta sẽ ấn Finish và Qt
+
+97
+00:05:41,700 --> 00:05:44,250
+creator sẽ tạo dự án cho chúng ta.
+
+98
+00:05:44,250 --> 00:05:48,419
+Và chúng ta sẽ thấy các file ở bên này.
+
+99
+00:05:48,419 --> 00:05:50,520
+Điều đầu tiên các bạn để ý ở đây là chúng
+
+100
+00:05:50,520 --> 00:05:54,360
+ta có các kí tự hiển thị rất nhỏ trên
+
+101
+00:05:54,360 --> 00:05:56,810
+cửa sổ ở đây. Và cách để thay đổi là
+
+102
+00:05:56,810 --> 00:06:03,479
+các bạn chọn tools - options chọn text editor
+
+103
+00:06:03,479 --> 00:06:10,080
+và tăng kích thước ở đây. Chúng ta có thể
+
+104
+00:06:10,080 --> 00:06:14,030
+để ở cỡ 18, tôi thích cỡ 18, tôi nghĩ thế là ổn,
+
+105
+00:06:14,030 --> 00:06:20,400
+apply rồi ấn ok. Và các bạn có thể thấy là mọi thức
+
+106
+00:06:20,400 --> 00:06:23,699
+bây giờ đã có thể nhìn rõ. Điều chúng ta
+
+107
+00:06:23,699 --> 00:06:25,729
+sắp làm là ấn cái nút màu xanh ở đây.
+
+108
+00:06:25,729 --> 00:06:28,560
+Nhưng trước khi chúng ta làm thế đó hãy mở
+
+109
+00:06:28,560 --> 00:06:31,919
+thẻ dữ liệu biên dịch ở đây để chúng ta có thể thấy
+
+110
+00:06:31,919 --> 00:06:34,020
+điều gì đang diễn ra.
+
+111
+00:06:34,020 --> 00:06:39,889
+Ấn nút màu xanh để dịch ứng dụng của các bạn.
+
+112
+00:06:41,780 --> 00:06:45,060
+Được rồi và các bạn thấy là trên Linux chúng ta có
+
+113
+00:06:45,060 --> 00:06:47,759
+một lỗi, quá trình dịch đã thất bại.
+
+114
+00:06:47,759 --> 00:06:51,210
+Và các bạn có thể thấy nó bảo rằng usr/bin/id
+
+115
+00:06:51,210 --> 00:06:56,159
+cannot find -lgl. Đây thực ra là một
+
+116
+00:06:56,159 --> 00:06:59,639
+lỗi khi Qt tìm kiếm dữ liệu nó cần
+
+117
+00:06:59,639 --> 00:07:02,520
+để chạy ứng dụng của chúng ta. Và có một cách để sửa
+
+118
+00:07:02,520 --> 00:07:04,770
+vấn đề này, các bạn lại mở bản điều khiển lên và
+
+119
+00:07:04,770 --> 00:07:07,860
+chạy một vài dòng lệnh. Lệnh chúng ta cần
+
+120
+00:07:07,860 --> 00:07:11,069
+phải chạy được hiển thị ở đây là apt-get
+
+121
+00:07:11,069 --> 00:07:13,830
+install mesa-common-dev và sudo
+
+122
+00:07:13,830 --> 00:07:18,180
+apt-get install libglu1-mesa-dev.
+
+123
+00:07:18,180 --> 00:07:20,099
+Chúng ta sẽ vào bảng điều khiển
+
+124
+00:07:20,099 --> 00:07:22,590
+và gõ lệnh này vào. Vậy chúng ta
+
+125
+00:07:22,590 --> 00:07:31,400
+sẽ mở bảng điều khiển lên
+
+126
+00:07:31,400 --> 00:07:40,370
+sudo apt-geti nstall mesa-common-dev. Tôi đưa vào mật khẩu của mình ở đây
+
+127
+00:07:40,370 --> 00:07:47,849
+Các bạn cũng nên làm thế. Và tôi sẽ đồng
+
+128
+00:07:47,849 --> 00:07:51,529
+đồng ý cài đặt cái này.
+
+129
+00:07:57,800 --> 00:08:17,840
+Đã xong giờ đến sudo apt-get install libglu1-mesa-dev.
+
+130
+00:08:21,229 --> 00:08:24,419
+Chúng ta sẽ đồng ý cài đặt thêm cái này nữa.
+
+131
+00:08:24,419 --> 00:08:31,740
+Okay nó đã cài xong. Giờ nếu các bạn quay
+
+132
+00:08:31,740 --> 00:08:38,510
+lại Qt creator và chạy ứng dụng lại lần nữa.
+
+133
+00:08:41,299 --> 00:08:44,610
+Chúng ta sẽ chạy được mà không gặp phải vấn đề.
+
+134
+00:08:44,610 --> 00:08:46,710
+Và chúng ta đã có ứng dụng của mình ở đây.
+
+135
+00:08:46,710 --> 00:08:50,340
+Và bây giờ nó không có vẻ dễ quan sát trên Linux
+
+136
+00:08:50,340 --> 00:08:54,839
+nên hãy đi tới file widgetUI 
+
+137
+00:08:54,839 --> 00:08:58,350
+ở đây, nhấn đúp. Và đưa
+
+138
+00:08:58,350 --> 00:09:01,140
+thứ gì đó lên màn hình, hãy chỉ lấy
+
+139
+00:09:01,140 --> 00:09:04,410
+một nút hay 2 nút và để chúng lên
+
+140
+00:09:04,410 --> 00:09:09,960
+màn hình và chạy lại. Chúng ta muốn
+
+141
+00:09:09,960 --> 00:09:15,570
+lưu lại những gì vừa làm, save all. Và ứng dúng của chúng ta ở
+
+142
+00:09:15,570 --> 00:09:17,850
+đây các bạn có thể thấy 2 nút. Và đến đây
+
+143
+00:09:17,850 --> 00:09:21,870
+là kết thúc phần cài đặt Qt creator trên
+
+144
+00:09:21,870 --> 00:09:24,330
+Linux. Okay bây giờ các bạn có thể chạy
+
+145
+00:09:24,330 --> 00:09:27,150
+nó trên Linux và tôi rất muốn cho các bạn
+
+146
+00:09:27,150 --> 00:09:30,300
+xem cách cài đặt trên Mac OS nhưng rôi lại không có
+
+147
+00:09:30,300 --> 00:09:32,880
+cái Mac nào cả. Và thứ duy nhất tôi có thể làm bây giờ là
+
+148
+00:09:32,880 --> 00:09:37,620
+truy cập một website mà sẽ hướng đã các bạn qua
+
+149
+00:09:37,620 --> 00:09:40,200
+các bước của quá trình cài đặt Qt creator
+
+150
+00:09:40,200 --> 00:09:43,110
+trên một máy Mac. Nếu các bạn dùng Mac cái này
+
+151
+00:09:43,110 --> 00:09:45,930
+sẽ khá dễ làm nên chúng ta sẽ
+
+152
+00:09:45,930 --> 00:09:50,400
+chép cài này và quay lại trình duyệt.
+
+153
+00:09:50,400 --> 00:10:01,589
+và đến đó. Okay, họ nói điều
+
+154
+00:10:01,589 --> 00:10:03,470
+đầu tiên các bạn phải làm là cài đặt
+
+155
+00:10:03,470 --> 00:10:07,110
+Xcode. Và để cài Xcode các bạn phải
+
+156
+00:10:07,110 --> 00:10:09,600
+vào link ở đây, ấn lên mút view
+
+157
+00:10:09,600 --> 00:10:14,040
+trong AppStore của Mac và tải
+
+158
+00:10:14,040 --> 00:10:15,750
+Xcode. Các bạn nên thực hiện những
+
+159
+00:10:15,750 --> 00:10:18,360
+hướng dẫn ở đây. Và khi các bạn đã
+
+160
+00:10:18,360 --> 00:10:22,170
+cài đặt Xcode các bạn có thể cài Qt
+
+161
+00:10:22,170 --> 00:10:24,180
+creator sau đó. Các bạn phải cài Xcode
+
+162
+00:10:24,180 --> 00:10:27,839
+vì các công cụ được sử dụng để
+
+163
+00:10:27,839 --> 00:10:30,300
+biên dịch ứng dụng của bạn đều đến từ Xcode.
+
+164
+00:10:30,300 --> 00:10:32,670
+Chúng được tích hợp trong Xcode và không có
+
+165
+00:10:32,670 --> 00:10:35,690
+cách nào khác để cài đặt chúng riêng lẻ.
+
+166
+00:10:35,690 --> 00:10:37,950
+Sau khi các bạn có Xcode các bạn sẽ
+
+167
+00:10:37,950 --> 00:10:40,560
+cài đặt Qt creator. Các bạn đi tới
+
+168
+00:10:40,560 --> 00:10:43,800
+link tải về ở đây và các bạn chọn
+
+169
+00:10:43,800 --> 00:10:46,740
+tải về phiên bản cho Mac và các bạn cài đặt nó
+
+170
+00:10:46,740 --> 00:10:48,990
+như các bạn thấy ở đây. Đây là những thứ chúng ta
+
+171
+00:10:48,990 --> 00:10:50,180
+vừa làm.
+
+172
+00:10:50,180 --> 00:10:52,190
+Sau khi các bạn cài đặt nó các bạn sẽ
+
+173
+00:10:52,190 --> 00:10:54,770
+có thể tạo một dự án và chạy nó như
+
+174
+00:10:54,770 --> 00:10:57,110
+chúng ta vừa làm. Nếu các bạn gặp bất cứ vấn đề
+
+175
+00:10:57,110 --> 00:10:59,600
+thực hiện việc mày trên Mac hãy cứ gọi trên và tôi sẽ
+
+176
+00:10:59,600 --> 00:11:03,050
+có giúp đỡ các bạn vượt qua vấn đề. Và
+
+177
+00:11:03,050 --> 00:11:06,110
+đây đã là kết thúc quá trình cài đặt Qt
+
+178
+00:11:06,110 --> 00:11:09,230
+creator trên nền tảng mà các bạn sử dụng.
+
+179
+00:11:09,230 --> 00:11:10,370
+Trong bài học tiếp theo
+
+180
+00:11:10,370 --> 00:11:12,649
+chúng ta sẽ đi tìm hiểu giao diện người dùng
+
+181
+00:11:12,649 --> 00:11:15,860
+của Qt creator và thử làm quen
+
+182
+00:11:15,860 --> 00:11:18,020
+với nó. Tôi sẽ gặp lại các bạn trong
+
+183
+00:11:18,020 --> 00:00:00,000
+bài tiếp theo.
+

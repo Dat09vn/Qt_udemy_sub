@@ -1,0 +1,364 @@
+﻿1
+00:00:00,890 --> 00:00:06,060
+Đây là video 6.2 biểu diễn trực quan về Hoạt ảnh và Chuyển đổi trực quan.
+
+2
+00:00:06,700 --> 00:00:12,690
+Trong video này, chúng tôi sẽ giới thiệu về Hoạt ảnh/Các chuyển đổi thông thường, demo về Hoạt ảnh tuần tự và
+
+3
+00:00:12,690 --> 00:00:15,480
+kết thúc bài học bằng việc demo một phép chuyển đổi xoay (Rotational Transformation)
+
+4
+00:00:15,510 --> 00:00:21,630
+Hãy bắt đầu nào. Vậy hoạt ảnh là gì? Trong Qml hoạt ảnh được áp dụng cho các giá trị thuộc tính
+
+5
+00:00:21,630 --> 00:00:25,380
+để tăng sự tương tác suôn sẻ giữa các giá trị thuộc tính hiện tại và tương lai.
+
+6
+00:00:25,380 --> 00:00:29,850
+ví dụ, chúng ta có thể áp dụng một hoạt động vào một hình chữ nhật để làm cho nó chuyển sang bên phải
+
+7
+00:00:29,850 --> 00:00:35,610
+30 pixel,  Thirty pixels, barely make room for something else or to smoothly translate between vertical and horizontal
+
+8
+00:00:35,610 --> 00:00:36,380
+views.
+
+9
+00:00:36,390 --> 00:00:42,960
+Các loại hoạt ảnh phổ biến nhất bao gồm X và Y, Tỷ lệ(Scale), Xoay và Chuyển đổi nguồn gốc.
+
+10
+00:00:42,960 --> 00:00:47,320
+Điều quan trọng cần hiểu về animation là chúng được áp dụng cho cả các đối tượng trực tiếp ban đầu
+
+11
+00:00:47,370 --> 00:00:53,190
+cũng như bất kỳ thành phần con nào có độ ưu tiên cao hơn mà đối tượng đó có thể có. Trong video này,
+
+12
+00:00:53,190 --> 00:00:58,070
+Chúng ta sẽ tạo một màn hình đang tải cho phép người dùng biết ứng dụng của chúng ta vẫn đang hoạt động.
+
+13
+00:00:58,140 --> 00:01:02,610
+Bạn có thể hiểu ở đây rằng ứng dụng đang có một loạt các mạng hoặc có thể là một loạt các yêu cầu xử lý
+
+14
+00:01:02,610 --> 00:01:03,930
+ở nền sau (background).
+
+15
+00:01:03,930 --> 00:01:08,130
+Tôi sẽ mở project của chúng ta, tiếp đến mở main document và điều đầu tiên chúng ta
+
+16
+00:01:08,130 --> 00:01:16,330
+sẽ làm là tạo một tạo một blue_ball.
+
+17
+00:01:16,340 --> 00:01:19,400
+Bây giờ hãy tạo hiệu ứng động để bật lên và xuống.
+
+18
+00:01:19,580 --> 00:01:23,640
+Chúng ta muốn đưa bóng từ độ cao tối thiểu (min height) của nó lên độ cao tối đa (max height) và sau đó thả nó xuống.
+
+19
+00:01:23,690 --> 00:01:28,460
+Vì vậy chúng ta sẽ sử dụng kiểu hoạt ảnh tuần tự để cho bạn thấy chúng được xảy ra nối tiếp nhau,
+
+20
+00:01:28,460 --> 00:01:33,860
+thay vì là xảy ra đồng thời. Chúng ta sẽ thực hiện thao tác với biến Y và hãy tạo
+
+21
+00:01:33,860 --> 00:01:36,720
+một vòng lặp vô hạn.
+
+22
+00:01:37,910 --> 00:01:43,460
+Bây giờ hãy bắt đầu với hoạt ảnh đầu tiên của chúng ta, nơi mà chúng ta đưa bóng từ độ cao tối thiểu của nó lên độ cao tối đa.
+
+23
+00:01:43,610 --> 00:01:49,600
+Và chúng ta sẽ sử dụng kiểu NumberAnimation để làm điều này. Chúng ta cũng muốn có khung thời gian cho nó
+
+24
+00:01:49,610 --> 00:01:54,780
+hoàn thành và easing.type, thứ mà kiểm soát dáng vẻ của nó khi nó được hoạt ảnh.
+
+25
+00:01:56,340 --> 00:02:00,250
+Bây giờ thì tạo một Pause ở trong và cùng chạy chương trình.
+
+26
+00:02:00,720 --> 00:02:02,250
+Hãy chạy chương trình nào.
+
+27
+00:02:03,590 --> 00:02:09,020
+Và bạn thấy rằng quả bóng được đưa thẳng từ độ cao tối thiểu lên độ cao tối đa của nó và sau đó dừng lại
+
+28
+00:02:09,020 --> 00:02:13,790
+trong nửa giây và bạn cũng có thể nhận thấy kiểu lặp này ngay bây giờ vì nó nhảy từ
+
+29
+00:02:14,060 --> 00:02:17,170
+trên xuống dưới mà không có bước nhảy nào ở giữa.
+
+30
+00:02:17,180 --> 00:02:21,240
+Vì vậy khi bạn đưa quả bóng này lên và thả nó xuống, hãy tạo cho nó một bước bật nhảy nữa.
+
+31
+00:02:21,260 --> 00:02:24,680
+Chúng ta tạo thêm một NumberAnimation khác để làm điều này
+
+32
+00:02:29,390 --> 00:02:29,780
+Được rồi.
+
+33
+00:02:29,780 --> 00:02:32,100
+Bây giờ thì chạy nó và xem nó hoạt động như thế nào.
+
+34
+00:02:32,120 --> 00:02:37,550
+Bây giờ việc đưa bóng lên suôn sẻ hơn. Trước khi chúng ta thả bóng xuống xuống và bóng bật nảy nhẹ lại, việc này thực hiện nhờ
+
+35
+00:02:37,550 --> 00:02:39,710
+OutBounce easing.type
+
+36
+00:02:39,710 --> 00:02:45,920
+Bây giờ nếu bạn đang tự hỏi các kiểu của thủ thuật chuyển động Easing là gì, bạn có thể đi đến Animation
+
+37
+00:02:45,920 --> 00:02:46,930
+QML Type.
+
+38
+00:02:47,180 --> 00:02:53,670
+Và nếu bạn kéo xuống phía dưới bạn có thể thấy các kiểu sẵn có của Easing trong tài liệu.
+
+39
+00:02:53,690 --> 00:02:58,100
+Và nếu bạn nhìn về phía bên phải, bạn có thể thấy hình ảnh đồ họa và cách chúng được
+
+40
+00:02:58,110 --> 00:03:00,460
+hoạt ảnh như thế nào. Tuyệt.
+
+41
+00:03:00,460 --> 00:03:01,350
+Điều đó khá là tuyệt đấy chứ.
+
+42
+00:03:01,350 --> 00:03:03,440
+Nó khá đơn gian và trông cũng dễ đúng không.
+
+43
+00:03:03,440 --> 00:03:05,280
+Nhưng hãy tiếp tục và tìm hiểu về nó kĩ hơn một chút.
+
+44
+00:03:05,320 --> 00:03:10,750
+Và bây giờ thay vì chỉ làm các hoạt ảnh chuyển động thẳng, hãy cùng áp dụng phép chuyển đổi quay
+
+45
+00:03:10,750 --> 00:03:11,740
+đầu tiên của chúng ta.
+
+46
+00:03:11,750 --> 00:03:17,320
+Lý do thực hiện điều này có thể là ứng dụng của chúng ta có phần tải hoặc được tải và người dùng cần một hoạt động
+
+47
+00:03:17,320 --> 00:03:19,150
+để nhận biết chương trình đang trong quá trình thực hiện.
+
+48
+00:03:19,150 --> 00:03:23,440
+Bây giờ nếu người dùng của chúng ta bị kẹt hoặc bị mất tập trung quá lâu, có thể họ sẽ không biết cần phải
+
+49
+00:03:23,440 --> 00:03:25,320
+ấn gì hoặc họ cần phải làm gì sau đó.
+
+50
+00:03:25,330 --> 00:03:29,090
+Vì vậy, chúng ta hãy tiếp tục và tạo ra một nút bấm để hỗ trợ cho người dùng.
+
+51
+00:03:32,830 --> 00:03:37,130
+Chúng ta đã tạo một nút bấm và gán đặc tính cho nó, chúng ta gọi đặc tính đó là wiggle_value, và mục đích thực sự chỉ là
+
+52
+00:03:37,130 --> 00:03:42,560
+chúng ta sẽ làm lung lay nút bấm qua lại để thu hút người dùng.
+
+53
+00:03:42,560 --> 00:03:46,830
+Vì vậy, để làm điều đó chúng ta sẽ cần phải sử dụng một phép chuyển đổi và phép biến đổi mà chúng ta sẽ sử dụng
+
+54
+00:03:46,920 --> 00:03:52,970
+là chuyển đổi quay và chúng ta cần phải có X origin và y origin, cái mà đối với chúng ta sẽ trở thành
+
+55
+00:03:52,970 --> 00:03:58,610
+là trung tâm của nút và tiếp đó chúng ta tạo đặc tính angle có tên gọi là
+
+56
+00:03:58,610 --> 00:03:59,630
+wiggle_value.
+
+57
+00:04:02,520 --> 00:04:02,990
+Hoàn hảo.
+
+58
+00:04:03,000 --> 00:04:09,000
+Bất cứ khi nào chúng ta thay đổi angle, chúng ta muốn nó thực hiện bất kỳ phép chuyển đổi được chỉ định nào khác tại đây và
+
+59
+00:04:09,210 --> 00:04:10,470
+hoạt ảnh tuần tự khác nữa.
+
+60
+00:04:10,470 --> 00:04:13,830
+Do vậy hãy tiếp tục và định nghĩa nó bởi kiểu hành (behavioral type).
+
+61
+00:04:13,830 --> 00:04:18,650
+Chúng ta sẽ tạo ra Behavior on angle và tiếp đó là thực hiện hoạt ảnh tuần tự.
+
+62
+00:04:19,220 --> 00:04:23,070
+Chúng ta chạy tiếp chương trình lần hai. Ngay khi chúng ta có mọi thứ sẵn sàng,
+
+63
+00:04:23,070 --> 00:04:31,380
+Chúng ta đi xuống về phía bên phải trong 60 giây, sau đó chúng ta sẽ quay trở lại trong 120 giây và
+
+64
+00:04:31,380 --> 00:04:33,360
+sau đó quay lại 0 trong 60 giây.
+
+65
+00:04:35,350 --> 00:04:39,820
+Bây giờ điều duy nhất tôi thực sự cần làm là thay đổi những giá trị này.
+
+66
+00:04:39,820 --> 00:04:44,470
+Khi chúng ta lần đầu thay đổi giá trị, chúng ta sẽ sử dụng một timer để làm điều đó
+
+67
+00:04:44,470 --> 00:04:48,780
+Tôi sẽ sao chép và đưa mã code vào đây. Hãy nhìn vào dòng này,
+
+68
+00:04:48,780 --> 00:04:49,960
+Chúng ta đang tạo ra một timer.
+
+69
+00:04:49,960 --> 00:04:54,720
+Chúng ta đã có thuộc tính "firt" để đánh dấu đây là lần đầu tiên vào hàm, và thuộc tính "interval" mà bạn có thể nhìn thấy trong
+
+70
+00:04:54,720 --> 00:05:00,360
+OnTriggered, gọi lại hoặc xử lý wiggle original và chúng ta kiểm tra xem go_buttons.wiggle_value bằng
+
+71
+00:05:00,360 --> 00:05:02,500
+0 hay không và chúng ta thay đổi nó thành 10 chưa.
+
+72
+00:05:02,550 --> 00:05:06,610
+Và nếu hiện tại nó không bằng 0 thì nó sẽ được đổi thành 0.
+
+73
+00:05:06,750 --> 00:05:11,290
+Và sau đó chúng ta reset lại "interval" này để đảm bảo rằng nó dài hơn một chút vào lần thứ hai và
+
+74
+00:05:11,290 --> 00:05:11,900
+thứ ba.
+
+75
+00:05:12,040 --> 00:05:15,810
+Bây giờ chúng ta đã có điều đó khi chúng ta thay đổi wiggle_value từ 0 đến 10.
+
+76
+00:05:15,810 --> 00:05:18,330
+NumberAnimation sẽ xử lý trước tiên.
+
+77
+00:05:18,390 --> 00:05:24,450
+Nhưng điều chúng ta muốn làm là thiết lập một số giá trị cho rung lắc ngược lại thì giá trị sẽ là
+
+78
+00:05:24,450 --> 00:05:26,140
+-10.
+
+79
+00:05:26,190 --> 00:05:27,330
+Đây hoàn toàn đều là về góc.
+
+80
+00:05:27,330 --> 00:05:28,410
+Đây hoàn toàn đều là về độ.
+
+81
+00:05:28,410 --> 00:05:31,260
+Đầu tiên thì đẩy nó lên 10 độ.
+
+82
+00:05:31,260 --> 00:05:35,020
+Tiếp đó thì cho nó giật ngược về -10 độ.
+
+83
+00:05:35,040 --> 00:05:36,330
+Và sau đó chúng ta sẽ đưa nó về 0.
+
+84
+00:05:36,330 --> 00:05:39,380
+Chúng ta hãy thiết lập thật nhanh chóng với những giá trị trên.
+
+85
+00:05:40,090 --> 00:05:47,120
+Hoàn hảo. Thử chạy và xem nó trông như thế nào. Nhìn xuống phía dưới cùng,
+
+86
+00:05:47,120 --> 00:05:52,250
+nút bấm của chúng ra đang rung lắc như muốn nói với người dùng hãy bấm vào nút này
+
+87
+00:05:52,250 --> 00:05:53,300
+đi.
+
+88
+00:05:53,510 --> 00:05:55,050
+Điều đó thật tuyệt.
+
+89
+00:05:55,190 --> 00:06:00,670
+Chúng ta đã hoàn thành và học xong cách sử dụng phép chuyển đổi, các hoạt ảnh tuần tự tuần tự,
+
+90
+00:06:00,710 --> 00:06:07,790
+bên cạnh việc tìm hiểu các kiểu hoạt ảnh và chuyển đổi thông thường. Hãy tham gia cùng chúng tôi trong video tiếp theo về Hiệu ứng
+
+91
+00:06:07,790 --> 00:06:09,290
+đồ họa và hạt(Particles).
+

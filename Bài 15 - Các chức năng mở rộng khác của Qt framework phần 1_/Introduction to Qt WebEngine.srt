@@ -1,0 +1,228 @@
+﻿1
+00:00:00,720 --> 00:00:05,290
+Chào mừng đến với phần 3 của Làm chủ lập trình Qt, và chúng ta sẽ tìm hiểu về tương tác với web.
+
+2
+00:00:05,500 --> 00:00:09,060
+Ta cùng bắt đầu với việc giới thiệu công cụ web Qt.
+
+3
+00:00:09,070 --> 00:00:12,660
+Trong video chúng ta sẽ xét khái niệm công cụ web Qt,
+
+4
+00:00:12,700 --> 00:00:18,160
+quan sát cấu trúc công cụ web và cuối cùng tìm hiểu một số tính năng cùng các phần bổ sung.
+
+5
+00:00:18,460 --> 00:00:23,210
+Đầu tiên chúng ta cùng nói qua về công cụ web Qt. Công cụ web, theo tài liệu tham khảo,
+
+6
+00:00:23,230 --> 00:00:25,750
+cung cấp chức năng giúp hiển thị nội dung web.
+
+7
+00:00:25,750 --> 00:00:28,900
+Điều này có nghĩa ta có thể thả Web vào ứng dụng.
+
+8
+00:00:28,930 --> 00:00:33,280
+Điều thực sự khiến công cụ này hiệu quả đến vậy chính là việc ta có thể nhúng nội dung từ web, ngay cả khi nền tảng
+
+9
+00:00:33,280 --> 00:00:38,620
+mà ta đang phát triển không có công cụ web riêng. Công cụ web sử dụng chromium làm nền,
+
+10
+00:00:38,650 --> 00:00:41,860
+cùng loại công nghệ mà Google Chrome sử dụng để hiển thị web.
+
+11
+00:00:41,860 --> 00:00:44,160
+Điều này đồng nghĩa với các vấn đề về tương thích trình duyệt.
+
+12
+00:00:44,200 --> 00:00:45,940
+Nếu Chrome sử dụng được thì Qt
+
+13
+00:00:45,940 --> 00:00:47,230
+cũng sử dụng được. Tuyệt vời.
+
+14
+00:00:47,260 --> 00:00:50,370
+Vậy code-wise, chúng ta bổ sung mô-đun này như thế nào?
+
+15
+00:00:50,620 --> 00:00:53,530
+Mô-đun công cụ web được phân chia khá logic.
+
+16
+00:00:53,530 --> 00:00:57,640
+Do đó cách tốt nhất để nắm được những việc cần làm là làm một tour nhanh khám phá mô-đun.
+
+17
+00:00:57,700 --> 00:01:02,590
+Chúng ta vẫn chưa thảo luận nhiều về sự khác biệt giữa việc viết mã cho thiết bị di động và cho máy tính vì ta chủ yếu
+
+18
+00:01:02,590 --> 00:01:07,000
+tập trung vào ứng dụng máy tính. Nhưng thực chất Qt có 2 ngôn ngữ lập trình khác nhau.
+
+19
+00:01:07,240 --> 00:01:12,270
+Ngôn ngữ chính vẫn là C++ nhưng Qt còn có một ngôn ngữ riêng để viết mã cho thiết bị di động.
+
+20
+00:01:12,280 --> 00:01:17,710
+Các chi tiết khá liên quan nhưng điểm khác biệt chủ yếu là các widget và mã liên quan sử dụng
+
+21
+00:01:17,710 --> 00:01:20,690
+C++ trong khi mã riêng của thiết bị di động sử dụng
+
+22
+00:01:20,690 --> 00:01:26,560
+QML để bổ sung giao diện người dùng. Thực ra ta có thể nhìn thấy một chi tiết trong cấu trúc công cụ web.
+
+23
+00:01:26,740 --> 00:01:32,110
+Phần widget ở bên trái được dành riêng cho máy tính trong khi ở vị trí trung tâm công cụ web Qt
+
+24
+00:01:32,110 --> 00:01:32,890
+thực chất
+
+25
+00:01:32,890 --> 00:01:37,460
+là QML dành cho thiết bị di động, và lõi công cụ web chứa mã chung cho cả 2 ngôn ngữ.
+
+26
+00:01:37,480 --> 00:01:41,800
+Nếu các bạn đang phân vân thì cột ở bên phải chính là quy trình công cụ web chứa
+
+27
+00:01:41,800 --> 00:01:44,620
+mã để hiển thị trang và chạy Javascript.
+
+28
+00:01:44,620 --> 00:01:47,650
+Tất cả đều được phân chia từ mớ hỗn độn thành quy trình này.
+
+29
+00:01:47,650 --> 00:01:52,310
+Vì chúng ta sẽ tập trung vào máy tính, nên ta cùng xét riêng cấu trúc của widget.
+
+30
+00:01:52,360 --> 00:01:57,430
+Đây là chi tiết class widget, view ở trên cùng chính là widget cấp cao nhất.
+
+31
+00:01:57,490 --> 00:02:04,840
+Nó có thể chứa nhiều page, mỗi page có các hành động, lịch sử và profile riêng, cùng khả năng vô hạn
+
+32
+00:02:04,840 --> 00:02:07,730
+giúp tạo tương tác người dùng tuỳ biến.
+
+33
+00:02:07,840 --> 00:02:12,970
+Mở rộng một chút, đây là một ví dụ về QML, rất giống với widget, nhưng để ý
+
+34
+00:02:12,970 --> 00:02:15,300
+page đã biến mất so với phần trước.
+
+35
+00:02:15,310 --> 00:02:17,730
+Thực ra nó đã được tích hợp trực tiếp trong view.
+
+36
+00:02:17,890 --> 00:02:22,350
+Vậy mô-đun công cụ web có những tính năng gì?
+
+37
+00:02:22,510 --> 00:02:25,180
+Qt liệt kê những cụ thể những tính năng này.
+
+38
+00:02:25,240 --> 00:02:30,430
+Một số tính năng thú vị mà tôi đã ghi chú là full screen, ví dụ được sử dụng để mở toàn màn hình video YouTube,
+
+39
+00:02:30,430 --> 00:02:36,730
+print to PDF, làm kịch bản rất hiệu quả, spellchecker, ta sẽ không nhận ra
+
+40
+00:02:36,730 --> 00:02:39,910
+mình đang sử dụng spellchecker cho tới khi nó biến mất.
+
+41
+00:02:40,090 --> 00:02:45,700
+Và view source hay devtools, hãy thử tưởng tượng xem sẽ vất vả thế nào nếu ta phải tự mình
+
+42
+00:02:45,700 --> 00:02:46,540
+làm những việc đó.
+
+43
+00:02:46,540 --> 00:02:51,940
+Như vậy ta sẽ sử dụng mô-đun này khi nào, hay cho trường hợp cụ thể nào?
+
+44
+00:02:52,090 --> 00:02:56,250
+Thực ra có rất nhiều loại mã hàng ngày được viết dành riêng cho web.
+
+45
+00:02:56,260 --> 00:03:01,300
+Nếu cần phát triển một ứng dụng lớn ta có thể thả trình duyệt web vào giữa
+
+46
+00:03:01,300 --> 00:03:05,230
+ứng dụng và tác động những thứ đã hoàn thiện cho web.
+
+47
+00:03:05,230 --> 00:03:09,940
+Một ví dụ thường gặp khác là nếu ta xây dựng một ứng dụng kinh doanh, có một dịch vụ
+
+48
+00:03:09,940 --> 00:03:14,740
+chỉ có thể cung cấp được bằng web và ta muốn tích hợp dịch vụ đó vào ứng dụng.
+
+49
+00:03:14,740 --> 00:03:21,070
+Một ví dụ cũng khá phổ biến nhưng lại ít được nhắc tới là kịch bản hay in trang web
+
+50
+00:03:21,070 --> 00:03:26,620
+theo quy trình. Câu trả lời thường gặp khi ta in một loạt trang web thành file PDF là
+
+51
+00:03:26,620 --> 00:03:29,440
+sử dụng chức năng web-to-print trong Qt.
+
+52
+00:03:29,440 --> 00:03:34,180
+Tôi đã từng cân nhắc việc sử dụng tính năng này để theo dõi nghiên cứu, bởi ta có thể dễ dàng
+
+53
+00:03:34,180 --> 00:03:39,370
+ấn nút, lưu trang web, và đưa vào một thư mục file cụ thể dựa trên đề tài nghiên cứu,
+
+54
+00:03:39,370 --> 00:03:42,120
+ví dụ thế, siêu hữu dụng.
+
+55
+00:03:42,190 --> 00:03:48,070
+Nhưng hiện tại chúng ta đã tìm hiểu xong các tính năng và một số ý tưởng bổ sung cho công cụ web, cấu trúc của nó,
+
+56
+00:03:48,190 --> 00:03:53,410
+và thảo luận khái niệm công cụ web. Hãy theo dõi video tiếp theo của chúng tôi, trong đó ta sẽ tìm hiểu về widget công cụ web giúp xây dựng
+
+57
+00:03:53,410 --> 00:03:54,020
+trình duyệt.
+

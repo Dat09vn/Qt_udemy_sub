@@ -1,0 +1,552 @@
+0:00:00.000,0:00:04.859
+In this lecture, we're going to show you
+
+0:00:01.650,0:00:07.710
+how to install Qt creator on Linux and
+
+0:00:04.859,0:00:10.440
+on an Mac. Qt happens to be cross-platform
+
+0:00:07.710,0:00:12.929
+and you can use it on Windows, Mac and
+
+0:00:10.440,0:00:14.910
+Linux. I usually recommend to run a
+
+0:00:12.929,0:00:17.520
+Qt creator on these three platforms.
+
+0:00:14.910,0:00:20.670
+That's the best way to get its feel and
+
+0:00:17.520,0:00:22.769
+how it's used in the real world. But I
+
+0:00:20.670,0:00:25.080
+don't own a Mac and it is illegal to
+
+0:00:22.769,0:00:27.210
+install it in VirtualBox so I'm not
+
+0:00:25.080,0:00:29.970
+going to do that. But I'm going to show
+
+0:00:27.210,0:00:32.430
+you how you could do that if you are to
+
+0:00:29.970,0:00:35.880
+run it on a Mac. And if you run into a
+
+0:00:32.430,0:00:37.800
+problem just ping me in the QA section
+
+0:00:35.880,0:00:40.170
+and I'm going to do my best to help you
+
+0:00:37.800,0:00:43.079
+out. We're going to go to the official
+
+0:00:40.170,0:00:45.719
+download page of Qt. We're going to
+
+0:00:43.079,0:00:49.050
+choose official release and we're going
+
+0:00:45.719,0:00:54.949
+to be taken here. Once here choose Qt
+
+0:00:49.050,0:00:59.370
+we choose Qt 5.10 which was Qt 5.10.1. And
+
+0:00:54.949,0:01:01.829
+you are given the options of the files
+
+0:00:59.370,0:01:03.600
+that you can download. In our case we are
+
+0:01:01.829,0:01:06.210
+on Linux so we're going to download
+
+0:01:03.600,0:01:10.729
+this one. We're going to click on this
+
+0:01:06.210,0:01:15.360
+link for Qt-opensource-linux-x64-5.10.1.
+
+0:01:10.729,0:01:18.360
+And we're going to be given a
+
+0:01:15.360,0:01:20.970
+window to confirm that we want to
+
+0:01:18.360,0:01:25.350
+download the file. We're going to click
+
+0:01:20.970,0:01:28.350
+OK and confirm that. And our download is
+
+0:01:25.350,0:01:30.360
+going to start. Because I have it already
+
+0:01:28.350,0:01:34.770
+downloaded to save time, I'm going to
+
+0:01:30.360,0:01:38.250
+cancel out of this and open the terminal
+
+0:01:34.770,0:01:43.439
+on my Linux machine. Today I'm going to
+
+0:01:38.250,0:01:46.560
+show the directory I'm in by typing pwd.
+
+0:01:43.439,0:01:49.350
+And you see that I am in my home
+
+0:01:46.560,0:01:54.689
+directory. So I can see the into my
+
+0:01:49.350,0:01:57.210
+download folder and do an ls to show the
+
+0:01:54.689,0:02:03.420
+files in here. And you see my downloaded
+
+0:01:57.210,0:02:06.090
+file. You can hit ls -alh to show the
+
+0:02:03.420,0:02:09.000
+files in the folder and other pieces of
+
+0:02:06.090,0:02:11.760
+information on the file. You can see the
+
+0:02:09.000,0:02:13.890
+size of the file, you see the name of the
+
+0:02:11.760,0:02:16.500
+file, you see the
+
+0:02:13.890,0:02:19.800
+emissions to the file. Now you see that
+
+0:02:16.500,0:02:22.590
+this file is not executable we want to
+
+0:02:19.800,0:02:29.670
+make it executable. And we do that by
+
+0:02:22.590,0:02:32.250
+typing chmod +x and typing the name
+
+0:02:29.670,0:02:35.550
+of the file. You can just type Qt here
+
+0:02:32.250,0:02:38.640
+and hit tab to have the name of the file
+
+0:02:35.550,0:02:43.860
+also completed. When you done hit enter
+
+0:02:38.640,0:02:45.870
+and if we do an ls -alh again you're
+
+0:02:43.860,0:02:48.300
+going to see that the file turns green
+
+0:02:45.870,0:02:51.600
+and you see the permissions are
+
+0:02:48.300,0:02:54.860
+different. Now we have X everywhere which
+
+0:02:51.600,0:02:58.080
+means that anybody can run this
+
+0:02:54.860,0:03:02.610
+executable file. Now what we're going to
+
+0:02:58.080,0:03:06.090
+do is run it ok we hit ./ and
+
+0:03:02.610,0:03:08.489
+type the name of the file, hit enter and
+
+0:03:06.090,0:03:12.239
+you see that we have the same window we
+
+0:03:08.489,0:03:15.930
+had on Windows. Ok, so we're going to do
+
+0:03:12.239,0:03:19.650
+the same thing we get to next. And we're
+
+0:03:15.930,0:03:26.970
+going to skip out of this Qt account
+
+0:03:19.650,0:03:30.120
+then. Next and I want to install Qt in my
+
+0:03:26.970,0:03:34.320
+home directory. And we basically choose
+
+0:03:30.120,0:03:38.250
+the same things we did in the windows
+
+0:03:34.320,0:03:42.209
+install so we want to have the
+
+0:03:38.250,0:03:43.320
+components for Qt desktop using the
+
+0:03:42.209,0:03:45.810
+GCC compiler.
+
+0:03:43.320,0:03:50.549
+I also recommend checking the check
+
+0:03:45.810,0:03:52.769
+boxes for android x86 and android arm v7
+
+0:03:50.549,0:03:55.470
+because in this course we are going to
+
+0:03:52.769,0:03:58.470
+run our applications on Android. We
+
+0:03:55.470,0:04:01.170
+mainly need x86 because it makes it very
+
+0:03:58.470,0:04:04.140
+fast to run your applications on virtual
+
+0:04:01.170,0:04:06.720
+devices but if you happen to have a real
+
+0:04:04.140,0:04:08.940
+devices running this architecture, it is
+
+0:04:06.720,0:04:10.709
+also going to be useful. So please make
+
+0:04:08.940,0:04:17.660
+sure these two check boxes are checked,
+
+0:04:10.709,0:04:21.169
+android x86 and android arm v7. Hit next.
+
+0:04:17.660,0:04:26.940
+Accept the license.
+
+0:04:21.169,0:04:32.669
+Next again and hit install. You can show
+
+0:04:26.940,0:04:38.720
+the details about your install and wait
+
+0:04:32.669,0:04:44.780
+for it to finish. The install is done now,
+
+0:04:38.720,0:04:51.990
+we can click Next and choose to launch
+
+0:04:44.780,0:04:54.630
+Qt creator here. Hit finish and we are
+
+0:04:51.990,0:04:58.530
+here. The first thing you want to do here
+
+0:04:54.630,0:05:00.660
+is to lock Qt creator to launcher so
+
+0:04:58.530,0:05:03.800
+that next time you don't have to go look
+
+0:05:00.660,0:05:06.810
+for it. Let's maximize this window and
+
+0:05:03.800,0:05:11.330
+we're going to try and run a simple
+
+0:05:06.810,0:05:17.220
+program as we did for Windows. Hit file -
+
+0:05:11.330,0:05:20.550
+new project. We're going to choose a Qt
+
+0:05:17.220,0:05:28.200
+widgets application. We're going to call
+
+0:05:20.550,0:05:34.800
+it QtCreatorDemo. We choose
+
+0:05:28.200,0:05:38.010
+the kit for a project. Hit next. We're
+
+0:05:34.800,0:05:41.700
+going to choose few widget as we did for
+
+0:05:38.010,0:05:44.250
+Windows. We're going to hit finish and Qt
+
+0:05:41.700,0:05:48.419
+creator is going to generate our project.
+
+0:05:44.250,0:05:50.520
+And we should see our files in here. The
+
+0:05:48.419,0:05:54.360
+first thing you notice here is that we
+
+0:05:50.520,0:05:56.810
+really have very small characters in the
+
+0:05:54.360,0:06:03.479
+window here. And the way to change this
+
+0:05:56.810,0:06:10.080
+you go to tools - options choose text
+
+0:06:03.479,0:06:14.030
+editor and increase the size here. We can
+
+0:06:10.080,0:06:20.400
+make it 18 I like 18 I think it's good
+
+0:06:14.030,0:06:23.699
+so apply hit ok. And you see that things
+
+0:06:20.400,0:06:25.729
+are visible right now. So what we're
+
+0:06:23.699,0:06:28.560
+going to do is hit the green button here.
+
+0:06:25.729,0:06:31.919
+But before we do that let's open the
+
+0:06:28.560,0:06:34.020
+compiled output tab here so that we see
+
+0:06:31.919,0:06:39.889
+things happening.
+
+0:06:34.020,0:06:39.889
+Hit the green button to compile your app.
+
+0:06:41.780,0:06:47.759
+Okay and you see that on Linux we have
+
+0:06:45.060,0:06:51.210
+an error, our compile actually failed.
+
+0:06:47.759,0:06:56.159
+And you see that it says usr/bin/ld
+
+0:06:51.210,0:06:59.639
+cannot find -lgl. This is actually a
+
+0:06:56.159,0:07:02.520
+problem in Qt finding the things it
+
+0:06:59.639,0:07:04.770
+needs to run our app. And a way to fix
+
+0:07:02.520,0:07:07.860
+this you have to go to the terminal and
+
+0:07:04.770,0:07:11.069
+run a few commands. The commands we need
+
+0:07:07.860,0:07:13.830
+to run are shown here sudo apt-get
+
+0:07:11.069,0:07:18.180
+install mesa-common-dev and sudo
+
+0:07:13.830,0:07:20.099
+apt-get install libglu1-mesa-dev.
+
+0:07:18.180,0:07:22.590
+So we're going to go there in the
+
+0:07:20.099,0:07:31.400
+command line and type this. So we're
+
+0:07:22.590,0:07:40.370
+going to open our command line
+
+0:07:31.400,0:07:47.849
+sudo apt-geti nstall mesa-common-dev. I put in my password
+
+0:07:40.370,0:07:51.529
+you should put in yours. And I'm going to
+
+0:07:47.849,0:07:51.529
+agree to install this.
+
+0:07:57.800,0:08:17.840
+This is done in sudo apt-get install libglu1-mesa-dev.
+
+0:08:21.229,0:08:31.740
+We're going to accept to install this
+
+0:08:24.419,0:08:38.510
+thing. Okay this is done. Now if you go
+
+0:08:31.740,0:08:38.510
+back to Qt creator and run the app again.
+
+0:08:41.300,0:08:46.710
+We should be running without a problem.
+
+0:08:44.610,0:08:50.340
+And we have our widget application here.
+
+0:08:46.710,0:08:54.839
+And now it's not very visible on Linux
+
+0:08:50.340,0:08:58.350
+here so let's go to the widgetUI file
+
+0:08:54.839,0:09:01.140
+here, double click on it. And put
+
+0:08:58.350,0:09:04.410
+something on the screen, let's just grab
+
+0:09:01.140,0:09:09.960
+a button just two buttons put them on
+
+0:09:04.410,0:09:15.570
+the screen and run again. So we want to
+
+0:09:09.960,0:09:17.850
+save what we did, save all. And our app is
+
+0:09:15.570,0:09:21.870
+here you see our two buttons. And this
+
+0:09:17.850,0:09:24.330
+concludes our install on Linux of Qt
+
+0:09:21.870,0:09:27.150
+creator. Okay now that you have it
+
+0:09:24.330,0:09:30.300
+running on Linux I'd like to show you
+
+0:09:27.150,0:09:32.880
+how to do it on Mac OS but I don't have
+
+0:09:30.300,0:09:37.620
+a Mac. And the only thing I can do now is
+
+0:09:32.880,0:09:40.200
+a visit web link that works you through
+
+0:09:37.620,0:09:43.110
+the process of installing Qt creator
+
+0:09:40.200,0:09:45.930
+on a Mac. So if you are on a Mac this
+
+0:09:43.110,0:09:50.400
+should be straight forward so we're going
+
+0:09:45.930,0:10:01.589
+to copy this come back to our browser
+
+0:09:50.400,0:10:03.470
+and go there. Okay, so they say that the
+
+0:10:01.589,0:10:07.110
+first thing you have to do is install
+
+0:10:03.470,0:10:09.600
+Xcode. And to install Xcode you have to
+
+0:10:07.110,0:10:14.040
+go to this link here, click on the view
+
+0:10:09.600,0:10:15.750
+in the Mac App Store button and download
+
+0:10:14.040,0:10:18.360
+Xcode. You should follow these
+
+0:10:15.750,0:10:22.170
+instructions here. And once you have
+
+0:10:18.360,0:10:24.180
+Xcode installed you can then install Qt
+
+0:10:22.170,0:10:27.839
+creator. You have to install Xcode
+
+0:10:24.180,0:10:30.300
+because the tools that are used to
+
+0:10:27.839,0:10:32.670
+compile your app are come from Xcode.
+
+0:10:30.300,0:10:35.690
+They are bundled into Xcode and there is
+
+0:10:32.670,0:10:37.950
+no other way to install them separately.
+
+0:10:35.690,0:10:40.560
+After you have Xcode you're going to
+
+0:10:37.950,0:10:43.800
+install Qt creator. You go to the
+
+0:10:40.560,0:10:46.740
+download link here and you choose to
+
+0:10:43.800,0:10:48.990
+download for the Mac and you install it
+
+0:10:46.740,0:10:50.180
+as you see here. These are the things we
+
+0:10:48.990,0:10:52.190
+just did.
+
+0:10:50.180,0:10:54.770
+And after you install it you should be
+
+0:10:52.190,0:10:57.110
+able to create a project and run it as
+
+0:10:54.770,0:10:59.600
+we did. If you face any problem doing
+
+0:10:57.110,0:11:03.050
+this on a Mac please ping me and I'll
+
+0:10:59.600,0:11:06.110
+try and help you get across this. And
+
+0:11:03.050,0:11:09.230
+this closes our tour of installing Qt
+
+0:11:06.110,0:11:10.370
+creator on your platform of choice. In
+
+0:11:09.230,0:11:12.649
+the next lecture
+
+0:11:10.370,0:11:15.860
+we'd like to look at the user interface
+
+0:11:12.649,0:11:18.020
+of Qt creator and try to get more
+
+0:11:15.860,0:11:20.410
+familiar with that. I'll see you in the
+
+0:11:18.020,0:11:20.410
+next lecture.
+

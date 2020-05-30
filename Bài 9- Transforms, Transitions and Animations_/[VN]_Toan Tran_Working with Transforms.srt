@@ -1,0 +1,868 @@
+﻿1
+00:00:00,000 --> 00:00:02,399
+Trong bài giảng này, chúng ta sẽ làm 1 demo
+
+2
+00:00:02,399 --> 00:00:05,100
+về làm việc với chuyển đổi - translation, xoay vòng - rotation và mở rộng - scaling.
+
+3
+00:00:05,100 --> 00:00:08,099
+Và chúng ta hãy vào Qt Creator và làm điều đó.
+
+4
+00:00:08,099 --> 00:00:11,010
+Okay, chúng ta đang ở Qt Creator.
+
+5
+00:00:11,010 --> 00:00:13,530
+Chúng ta sẽ tạo dự án của chúng ta
+
+6
+00:00:13,530 --> 00:00:15,570
+nó sẽ là một ứng dụng nhanh Qt (Qt Quick Application) như thường lệ.
+
+7
+00:00:15,570 --> 00:00:18,000
+chúng ta sẽ gọi nó là 'TransformsDemo',
+
+8
+00:00:18,000 --> 00:00:22,789
+lưu nó trong một vị trí trên ổ đĩa của chúng ta,
+
+9
+00:00:22,789 --> 00:00:27,230
+chọn Qt version (phiên bản Qt), chọn kit (bộ hỗ trợ), và hoàn thành.
+
+10
+00:00:27,230 --> 00:00:30,900
+Vì vậy, những gì chúng ta muốn làm là đưa
+
+11
+00:00:30,900 --> 00:00:32,700
+một bộ các hình chữ nhật ở cửa sổ này ở đây,
+
+12
+00:00:32,700 --> 00:00:35,940
+và áp dụng các biến đổi khi các bạn nhấn vào
+
+13
+00:00:35,940 --> 00:00:37,739
+hình chữ nhật. Chúng ta sẽ dùng
+
+14
+00:00:37,739 --> 00:00:40,710
+chuyển đổi - translation, xoay vòng - rotation và mở rộng - scaling.
+
+15
+00:00:40,710 --> 00:00:42,180
+Bởi vì chúng ta không muốn lặp lại chính mình,
+
+16
+00:00:42,180 --> 00:00:45,090
+chúng ta sẽ tạo 1 component và dùng nó khi cần thiết.
+
+17
+00:00:45,090 --> 00:00:47,550
+Vì vậy, chúng ta muốn đến đây
+
+18
+00:00:47,550 --> 00:00:52,559
+tập tin tài nguyên QML, thêm mới (add new...), Qt
+
+19
+00:00:52,559 --> 00:00:57,030
+chúng ta muốn thêm vào tập tin QML và chúng ta muốn
+
+20
+00:00:57,030 --> 00:01:03,120
+gọi nó là 'ClickableRect'
+
+21
+00:01:03,120 --> 00:01:05,159
+bởi vì đó là chính là nó. Chúng ta không muốn làm
+
+22
+00:01:05,159 --> 00:01:08,460
+điều gì đặc biệt ở đây. Chúng ta sẽ thay đổi
+
+23
+00:01:08,460 --> 00:01:12,299
+'import' này thành phiên bản mới nhất
+
+24
+00:01:12,299 --> 00:01:14,880
+của Qt Quick và chúng ta muốn biến nó
+
+25
+00:01:14,880 --> 00:01:16,830
+thành 1 hình chữ nhật. Chúng ta không muốn làm điều gì đặc biệt.
+
+26
+00:01:16,830 --> 00:01:19,530
+Chúng ta muốn để cho nó một ID.
+
+27
+00:01:19,530 --> 00:01:22,020
+Hãy gọi cái này là 'root' (gốc) và chúng ta sẽ
+
+28
+00:01:22,020 --> 00:01:25,439
+khai báo một 'signal' ('tín hiệu') ở đây để thông báo cho chúng ta khi
+
+29
+00:01:25,439 --> 00:01:27,780
+khu vực chuột (MouseArea) bên trong hình chữ nhật này
+
+30
+00:01:27,780 --> 00:01:30,180
+được nhấp vào và chúng ta sẽ định nghĩa
+
+31
+00:01:30,180 --> 00:01:34,350
+khu vực chuột (MouseArea) của chúng ta. Để ý rằng chúng ta không dùng
+
+32
+00:01:34,350 --> 00:01:37,200
+bất kỳ dấu ngoặc nào ở đây. Điều này
+
+33
+00:01:37,200 --> 00:01:40,110
+là có thể trong QML. Chúng tôi muốn MouseArea (khu vực chuột)
+
+34
+00:01:40,110 --> 00:01:44,670
+được đặt trong 'parent' và khi nó
+
+35
+00:01:44,670 --> 00:01:48,509
+được nhấn, chúng ta muốn phát ra tín hiệu và
+
+36
+00:01:48,509 --> 00:01:50,729
+các bạn đã biết làm thế nào để phát ra một tín hiệu,
+
+37
+00:01:50,729 --> 00:01:53,729
+chúng ta gọi nó như cách chúng ta gọi một function (hàm) trong JavaScript.
+
+38
+00:01:53,729 --> 00:01:56,899
+Vì vậy, chúng ta sẽ nói
+
+39
+00:01:56,899 --> 00:02:00,540
+'root.clicked()' như thế này.
+
+40
+00:02:00,540 --> 00:02:03,149
+Okay, component của chúng ta đã xong. Chúng ta có thể
+
+41
+00:02:03,149 --> 00:02:05,850
+trở lại với QML chính và bắt đầu
+
+42
+00:02:05,850 --> 00:02:08,128
+làm việc với nó. Chúng ta sẽ thay đổi
+
+43
+00:02:08,128 --> 00:02:11,250
+tiêu đề ở đây thành 'Transform Demo' ( 'Biến đổi giới thiệu').
+
+44
+00:02:11,250 --> 00:02:13,060
+Chúng ta muốn đặt một hình chữ nhật
+
+45
+00:02:13,060 --> 00:02:17,080
+để lấp đầy cửa sổ này.
+
+46
+00:02:17,080 --> 00:02:23,500
+Bên trong này sẽ là container (vật chứa). Chúng ta muốn
+
+47
+00:02:23,500 --> 00:02:27,250
+liên kết 'parent' và chúng ta muốn có
+
+48
+00:02:27,250 --> 00:02:31,120
+màu sắc. Hãy điền vào màu be và trong này, chúng ta
+
+49
+00:02:31,120 --> 00:02:33,880
+muốn có 1 MouseArea (khu vực chuột) để
+
+50
+00:02:33,880 --> 00:02:39,730
+liên kết với hình chữ nhật này. Nó sẽ là 'parent' ở đây
+
+51
+00:02:39,730 --> 00:02:42,370
+bởi vì đó là bố mẹ của khu vực chuột
+
+52
+00:02:42,370 --> 00:02:45,330
+này và chút ta muốn biết khi nó được nhấn vào.
+
+53
+00:02:45,330 --> 00:02:49,120
+Và đây là nơi chúng ta sẽ thực hiện một
+
+54
+00:02:49,120 --> 00:02:51,610
+số thay đổi cho các hình chữ nhật mà chúng ta
+
+55
+00:02:51,610 --> 00:02:54,190
+sẽ định nghĩa. Vì vậy, chúng ta sẽ
+
+56
+00:02:54,190 --> 00:02:57,730
+đi xuống dưới đây và định nghĩa hình chữ nhật của chúng ta.
+
+57
+00:02:57,730 --> 00:03:01,060
+Chúng ta sẽ sử dụng 'ClickableRect',
+
+58
+00:03:01,060 --> 00:03:03,940
+mà chúng ta đã định nghĩa ở đây.
+
+59
+00:03:03,940 --> 00:03:08,319
+ID sẽ là 'rect1Id'. Chúng ta muốn
+
+60
+00:03:08,319 --> 00:03:14,049
+chiều rộng và chiều cao là 100. Chúng ta muốn
+
+61
+00:03:14,049 --> 00:03:18,310
+điểm bắt đầu ở x là 50 và
+
+62
+00:03:18,310 --> 00:03:21,670
+ở y là 100. Và khi
+
+63
+00:03:21,670 --> 00:03:23,920
+hình chữ nhật được nhấn vào, lưu ý rằng chúng ta có thể
+
+64
+00:03:23,920 --> 00:03:27,880
+dùng onclicked bởi vì chúng ta đã khai báo
+
+65
+00:03:27,880 --> 00:03:30,430
+signal (tín hiệu) này ở đây, trong component (thành phần) ở đây. Chúng ta có thể
+
+66
+00:03:30,430 --> 00:03:33,150
+định nghĩa xử lý (handler) của tín hiệu này ở đây.
+
+67
+00:03:33,150 --> 00:03:36,010
+Được rồi, đây là sự tiện lợi của bằng cách sử dụng component (thành phần).
+
+68
+00:03:36,010 --> 00:03:38,950
+Vậy khi click vào chỗ này
+
+69
+00:03:38,950 --> 00:03:42,370
+hình chữ nhật đầu tiên chúng ta muốn
+
+70
+00:03:42,370 --> 00:03:45,549
+dịch chuyển trên trục x. Chúng ta sẽ
+
+71
+00:03:45,549 --> 00:03:47,769
+tăng toạ độ x
+
+72
+00:03:47,769 --> 00:03:49,540
+của hình chữ nhật này ở đây. Vì vậy, chúng ta sẽ nói x
+
+73
+00:03:49,540 --> 00:03:55,269
++=, ví dụ như cộng thêm 20.
+
+74
+00:03:55,269 --> 00:03:58,150
+Được rồi, chúng ta cũng nên cho nó một màu sắc, như vậy
+
+75
+00:03:58,150 --> 00:04:01,959
+chúng ta có thể phân biệt chúng chỉ bởi
+
+76
+00:04:01,959 --> 00:04:05,079
+nhìn vào chúng. Màu sắc sẽ là
+
+77
+00:04:05,079 --> 00:04:09,060
+'red' ('đỏ'). Chúng ta muốn sao chép hình chữ nhật này
+
+78
+00:04:09,060 --> 00:04:11,639
+bởi vì nó sẽ chủ yếu là giống nhau.
+
+79
+00:04:11,639 --> 00:04:15,639
+Chúng ta chỉ thay đổi phần biến đổi
+
+80
+00:04:15,639 --> 00:04:18,668
+khi chúng ta nhấn vào. Ở đây chúng ta đang thử
+
+81
+00:04:18,668 --> 00:04:21,480
+chuyển đổi - translation
+
+82
+00:04:21,480 --> 00:04:26,990
+trên trục x. Đây là sẽ là 'rect2Id'.
+
+83
+00:04:26,990 --> 00:04:31,080
+Chúng ta muốn để hình chữ nhật này trên x tại vị trí 250
+
+84
+00:04:31,080 --> 00:04:34,050
+và khi chúng ta nhấn vào nó, chúng ta muốn
+
+85
+00:04:34,050 --> 00:04:37,560
+thêm vào thuộc tính quay (rotation poperty). Được rồi, chúng ta
+
+86
+00:04:37,560 --> 00:04:40,710
+muốn thêm vào góc quay, chúng ta
+
+87
+00:04:40,710 --> 00:04:43,020
+sẽ cộng vào 15. Chúng ta sẽ thấy
+
+88
+00:04:43,020 --> 00:04:45,210
+nó hoạt động thế nào và màu sắc sẽ là
+
+89
+00:04:45,210 --> 00:04:49,920
+'green' ('màu xanh'). Hãy sao chép, dùng cho
+
+90
+00:04:49,920 --> 00:04:54,180
+hình chữ nhật thứ 3 của chúng ta. Nhân tiện chúng ta nên đánh dấu ở đây
+
+91
+00:04:54,180 --> 00:05:00,240
+rằng chúng ta đang làm việc với xoay vòng - rotation. Bây giờ chúng ta
+
+92
+00:05:00,240 --> 00:05:05,160
+sẽ làm việc với mở rộng - scaling. Nó nên
+
+93
+00:05:05,160 --> 00:05:08,580
+là một 'rect3Id' ở đây. Và nó sẽ
+
+94
+00:05:08,580 --> 00:05:11,880
+bắt đầu ở vị trí 450 trên trục x.
+
+95
+00:05:11,880 --> 00:05:14,400
+Chúng ta sẽ thêm vào thuộc tính mở rộng (scaling property)
+
+96
+00:05:14,400 --> 00:05:18,030
+vì thế chúng ta sẽ nói 'scale +='
+
+97
+00:05:18,030 --> 00:05:22,410
+hãy thêm 0.05. Chúng ta sẽ thấy
+
+98
+00:05:22,410 --> 00:05:23,220
+nó hoạt động thế nào.
+
+99
+00:05:23,220 --> 00:05:25,620
+Các hình chữ nhật này được
+
+100
+00:05:25,620 --> 00:05:28,800
+chứa trong cửa sổ này ở đây và
+
+101
+00:05:28,800 --> 00:05:30,690
+cửa sổ này sẽ có nền
+
+102
+00:05:30,690 --> 00:05:34,470
+là hình chữ nhật này ở đây. Nó 'màu be'.
+
+103
+00:05:34,470 --> 00:05:36,810
+Chúng ta muốn biết khi người dùng nhấp
+
+104
+00:05:36,810 --> 00:05:39,420
+bên ngoài các hình chữ nhật ở trên và chúng ta muốn
+
+105
+00:05:39,420 --> 00:05:41,220
+đưa các hình chữ nhật trên trở lại
+
+106
+00:05:41,220 --> 00:05:42,600
+vị trí ban đầu.
+
+107
+00:05:42,600 --> 00:05:45,180
+Khi bạn nhấn vào đây rect1 sẽ
+
+108
+00:05:45,180 --> 00:05:47,540
+trở lại vị trí x 50 vì thế chúng ta sẽ nói
+
+109
+00:05:47,540 --> 00:05:52,530
+rect1Id bằng 50. Đây là cách
+
+110
+00:05:52,530 --> 00:05:58,710
+các bạn mang chúng trở lại. rect2Id.rotation
+
+111
+00:05:58,710 --> 00:06:01,440
+nó nên xoay lại vị trí 0, vì thế
+
+112
+00:06:01,440 --> 00:06:04,580
+chúng ta sẽ dùng 'rotation' bằng 0.
+
+113
+00:06:04,580 --> 00:06:08,610
+rect3Id sẽ quay trở lại
+
+114
+00:06:08,610 --> 00:06:11,970
+tỉ lệ scale bằng 1 vì đây
+
+115
+00:06:11,970 --> 00:06:16,590
+là giá trị mặc định của thành phần của chúng ta. Và
+
+116
+00:06:16,590 --> 00:06:19,770
+những tính chất này, xoay vòng - rotation và mở rộng - scaling, tôi không
+
+117
+00:06:19,770 --> 00:06:21,840
+nghĩ rằng chúng ta đã nói về chúng trước đây, nhưng
+
+118
+00:06:21,840 --> 00:06:24,120
+các bạn có thể tìm hiểu về chúng trong tài liệu hướng dẫn.
+
+119
+00:06:24,120 --> 00:06:27,950
+Hãy thử tìm 'rectangle'.
+
+120
+00:06:27,950 --> 00:06:32,760
+Nhấn để tìm, đọc phần Property.
+
+121
+00:06:32,760 --> 00:06:35,400
+Được rồi, các bạn có thể thấy là nó 1 thành phần kế thừa,
+
+122
+00:06:35,400 --> 00:06:37,530
+và nếu các bạn đọc phần tính chất ở đây,
+
+123
+00:06:37,530 --> 00:06:41,580
+chúng ta sẽ thấy, hãy
+
+124
+00:06:41,580 --> 00:06:43,830
+kéo xuống chút, các bạn sẽ thấy
+
+125
+00:06:43,830 --> 00:06:47,669
+rotation, scale ở đây. Và nếu
+
+126
+00:06:47,669 --> 00:06:48,990
+các bạn nhấn vào, chúng sẽ nói cho các bạn
+
+127
+00:06:48,990 --> 00:06:51,000
+chính xác những gì chúng làm. Thuộc tính này xác định
+
+128
+00:06:51,000 --> 00:06:53,130
+sự xoay vòng của yếu tố theo góc độ
+
+129
+00:06:53,130 --> 00:06:57,300
+theo chiều kim đồng hồ quanh điểm transformOrigin (gốc biến đổi) của nó.
+
+130
+00:06:57,300 --> 00:06:59,759
+Chúng ta sẽ tìm hiểu về transformOrigin
+
+131
+00:06:59,759 --> 00:07:02,610
+sau. Nhưng bây giờ chúng ta chỉ muốn
+
+132
+00:07:02,610 --> 00:07:05,630
+chạy ứng dụng và xem nó trông như thế nào.
+
+133
+00:07:05,630 --> 00:07:08,729
+Được rồi, ứng dụng của chúng tôi ở đây. Hình chữ nhật thứ ba,
+
+134
+00:07:08,729 --> 00:07:11,340
+chúng ta nên thay đổi màu sắc. Nhưng nếu chúng ta
+
+135
+00:07:11,340 --> 00:07:13,110
+bấm vào hình chữ nhật màu đỏ, các bạn thấy rằng
+
+136
+00:07:13,110 --> 00:07:17,460
+nó di chuyển về phía phải. Được rồi, nếu chúng ta nhấn
+
+137
+00:07:17,460 --> 00:07:19,350
+vào hình chữ nhật màu xanh, các bạn thấy rằng nó
+
+138
+00:07:19,350 --> 00:07:22,229
+xoay tròn. Và nếu chúng ta bấm vào
+
+139
+00:07:22,229 --> 00:07:24,449
+hình chữ nhật thứ ba, các bạn thấy rằng nó lớn lên.
+
+140
+00:07:24,449 --> 00:07:29,099
+Đó là mở rộng - scaling. Được rồi, nếu
+
+141
+00:07:29,099 --> 00:07:30,780
+các bạn nhấn vào bên ngoài, các bạn sẽ thấy rằng chúng
+
+142
+00:07:30,780 --> 00:07:35,639
+sẽ trở lại vị trí chúng thuộc về. Được rồi, nhấn
+
+143
+00:07:35,639 --> 00:07:37,979
+bên ngoài, chúng quay lại. Chúng ta nên quay lại
+
+144
+00:07:37,979 --> 00:07:39,690
+và thay đổi màu sắc của hình chữ nhật thứ ba
+
+145
+00:07:39,690 --> 00:07:42,479
+sang 'blue' (màu xanh da trời) để chúng ta có thể
+
+146
+00:07:42,479 --> 00:07:46,470
+phân biệt chúng. Được rồi bây giờ tôi
+
+147
+00:07:46,470 --> 00:07:48,050
+muốn các bạn xem làm thế nào các bạn có thể làm việc với
+
+148
+00:07:48,050 --> 00:07:50,789
+transformOrigin (gốc biến đổi). Điều này thực sự có ý nghĩa
+
+149
+00:07:50,789 --> 00:07:54,449
+với xoay vòng và mở rộng. Nếu các bạn nhìn vào
+
+150
+00:07:54,449 --> 00:07:56,970
+hình chữ nhật thứ 2, nếu chúng ta nhấn vào nó
+
+151
+00:07:56,970 --> 00:07:59,940
+các bạn thấy rằng nó xoay vòng và
+
+152
+00:07:59,940 --> 00:08:02,400
+tâm của nó là chính giữa
+
+153
+00:08:02,400 --> 00:08:04,680
+hình chữ nhật. Các bạn nhấn vào hình chữ nhật thứ ba,
+
+154
+00:08:04,680 --> 00:08:06,479
+các bạn có thế thấy rằng nó
+
+155
+00:08:06,479 --> 00:08:09,560
+mở rộng ra nhưng tâm của sự mở rộng này
+
+156
+00:08:09,560 --> 00:08:12,389
+là khoảng chính giữa ở đây. Các bạn có thể
+
+157
+00:08:12,389 --> 00:08:15,210
+thực sự tâm của những biến đổi này
+
+158
+00:08:15,210 --> 00:08:17,940
+bằng cách thay đổi thuộc tính transformOrigin (gốc biến đổi).
+
+159
+00:08:17,940 --> 00:08:20,729
+Tôi nghĩ chúng ta cũng có thể tìm hiểu cái này ở đây.
+
+160
+00:08:20,729 --> 00:08:23,820
+Đây là thuộc tính mà
+
+161
+00:08:23,820 --> 00:08:26,099
+chứa điểm gốc mà
+
+162
+00:08:26,099 --> 00:08:29,639
+mở rộng và xoay vòng xảy ra xung quanh.
+
+163
+00:08:29,639 --> 00:08:31,949
+Được rồi, các bạn có thể xác định vị trí biến đổi xảy ra xung quanh
+
+164
+00:08:31,949 --> 00:08:34,979
+ở góc trên bên trái, phía trên, góc trên bên phải....
+
+165
+00:08:34,979 --> 00:08:39,000
+các bạn có thể dùng một trong vị trí này, ở đây.
+
+166
+00:08:39,000 --> 00:08:41,520
+Vì vậy, chúng ta sẽ quay trở lại đoạn mã của chúng ta.
+
+167
+00:08:41,520 --> 00:08:45,480
+Nhìn vào biến đổi xoay vòng
+
+168
+00:08:45,480 --> 00:08:48,230
+mà chúng ta dùng ở đây và nói 'transformOrigin'.
+
+169
+00:08:48,230 --> 00:08:51,860
+Đây là cách các bạn ảnh hưởng nó.
+
+170
+00:08:51,860 --> 00:08:54,810
+Hãy nhìn vào tài liệu hướng dẫn và xem
+
+171
+00:08:54,810 --> 00:08:59,430
+chúng ta có thể khai gì ở đây. Chúng ta có thể nói
+
+172
+00:08:59,430 --> 00:09:01,920
+ví dụ như, 'Item.BottomRight'. Tại sao không copy
+
+173
+00:09:01,920 --> 00:09:05,490
+cái này và thử nó trong đoạn mã của chúng ta. Thật
+
+174
+00:09:05,490 --> 00:09:06,740
+tuyệt vời, phải không?
+
+175
+00:09:06,740 --> 00:09:11,310
+Okay, hình chữ nhật màu xanh lá cây
+
+176
+00:09:11,310 --> 00:09:14,220
+sẽ xoay quanh điểm dưới bên phải.
+
+177
+00:09:14,220 --> 00:09:19,350
+Hãy chạy ứng dụng.
+
+178
+00:09:19,350 --> 00:09:22,290
+Okay, điểm dưới bên phải đây. Nếu chúng ta nhấn,
+
+179
+00:09:22,290 --> 00:09:25,200
+các bạn có thể thấy rằng sự xoay vòng diễn ra quanh điểm đó.
+
+180
+00:09:25,200 --> 00:09:28,920
+Hãy mang nó trở lại ban đầu bằng cách
+
+181
+00:09:28,920 --> 00:09:31,830
+bấm vào hình chữ nhật màu be. Chúng ta có thể tiếp tục
+
+182
+00:09:31,830 --> 00:09:34,170
+chơi với nó. Quay trở lại đoạn mã của chúng ta.
+
+183
+00:09:34,170 --> 00:09:36,810
+Hãy thử phía trên bên phải. Tại sao không
+
+184
+00:09:36,810 --> 00:09:41,190
+phải là phía trên bên phải? Nếu chúng ta chạy một lần nữa, nó sẽ
+
+185
+00:09:41,190 --> 00:09:43,800
+xoay quanh góc trên bên phải của
+
+186
+00:09:43,800 --> 00:09:46,620
+hình chữ nhật. Và đây là những gì chúng ta có.
+
+187
+00:09:46,620 --> 00:09:48,720
+Các bạn cũng có thể làm như thế với hình chữ nhật thứ ba,
+
+188
+00:09:48,720 --> 00:09:51,900
+cái mà chúng ta dùng biến đổi mở rộng.
+
+189
+00:09:51,900 --> 00:09:55,850
+Vì vậy, hãy sao chép cái này làm ví dụ.
+
+190
+00:09:55,850 --> 00:10:04,850
+Đặt nó xuống đây và nói dưới đáy bên trái.
+
+191
+00:10:04,850 --> 00:10:13,140
+Tại sao không? Hãy chạy thử chương trình. Và hãy xem thử mở rộng của chúng ta
+
+192
+00:10:13,140 --> 00:10:15,600
+diễn ra ở đây. Các bạn thấy rằng điểm dưới đáy
+
+193
+00:10:15,600 --> 00:10:20,100
+bên trái được cố định và chúng ta sẽ mở rộng
+
+194
+00:10:20,100 --> 00:10:22,590
+ra các hướng khác. Tôi hy vọng điều này có ý nghĩa
+
+195
+00:10:22,590 --> 00:10:24,930
+và nếu các bạn cần dùng những
+
+196
+00:10:24,930 --> 00:10:27,480
+thay đổi này, các bạn có thể chơi với thuộc tính
+
+197
+00:10:27,480 --> 00:10:31,410
+transformOrigin với thành phần của các bạn
+
+198
+00:10:31,410 --> 00:10:35,040
+trong QML. Được rồi, và các bạn thực sự có thể
+
+199
+00:10:35,040 --> 00:10:38,070
+thấy rằng transformOrigin là
+
+200
+00:10:38,070 --> 00:10:40,740
+điểm mà xung quanh đó, sự biến đổi
+
+201
+00:10:40,740 --> 00:10:43,470
+sẽ xảy ra. Điều này đưa chúng ta đến điểm kết
+
+202
+00:10:43,470 --> 00:10:45,540
+của bài giảng này. Tôi hy vọng rằng nó làm sáng tỏ
+
+203
+00:10:45,540 --> 00:10:47,100
+cách mà các bạn làm việc với
+
+204
+00:10:47,100 --> 00:10:49,680
+các dạng biến đổi và thật sự không có gì
+
+205
+00:10:49,680 --> 00:10:51,960
+ngăn các bạn trộn và phối hợp
+
+206
+00:10:51,960 --> 00:10:56,100
+chúng với nhau. Ví dụ, các bạn có thể lấy hình chữ nhật thứ ba
+
+207
+00:10:56,100 --> 00:10:58,890
+và áp dụng thuộc tính xoay tròn
+
+208
+00:10:58,890 --> 00:11:02,100
+cho nó. Để chúng có thể diễn ra
+
+209
+00:11:02,100 --> 00:11:06,269
+đồng thời. Hãy chạy và nếu các bạn nhấn vào, các bạn
+
+210
+00:11:06,269 --> 00:11:09,870
+có thể thấy rằng nó đang xoay và mở rộng
+
+211
+00:11:09,870 --> 00:11:13,139
+cùng một lúc. DĨ nhiên, nếu các bạn nhấn vào
+
+212
+00:11:13,139 --> 00:11:15,389
+hình chữ nhật mùa be, mọi thứ trở lại
+
+213
+00:11:15,389 --> 00:11:17,490
+bình thường, bởi vì chúng ta đang cài đặt lại
+
+214
+00:11:17,490 --> 00:11:20,459
+mọi thứ tại đây. Trong bài giảng tiếp theo, chúng ta
+
+215
+00:11:20,459 --> 00:11:22,199
+sẽ giới thiệu đến các bạn
+
+216
+00:11:22,199 --> 00:11:24,720
+thế giới hấp dẫn của việc làm việc với
+
+217
+00:11:24,720 --> 00:00:00,000
+hiệu ứng hoạt hình trong QML. Hẹn gặp lại các bạn ở bài sau.
+

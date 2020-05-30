@@ -1,0 +1,308 @@
+1
+00:00:00,000 --> 00:00:01,620
+Trong bài giảng này, chúng ta sẽ tìm hiểu về
+
+2
+00:00:01,620 --> 00:00:04,529
+FontDialog, một hộp thoại cho phép bạn
+
+3
+00:00:04,529 --> 00:00:07,170
+chọn một font chữ và sử dụng nó ở đâu đó trong ứng dụng của bạn.
+
+4
+00:00:07,170 --> 00:00:09,480
+Và chúng ta hãy vào Qt Creator và chơi với nó.
+
+5
+00:00:09,480 --> 00:00:12,509
+Chúng ta đang ở Qt Creator.
+
+6
+00:00:12,509 --> 00:00:14,370
+Chúng ta sẽ tạo
+
+7
+00:00:14,370 --> 00:00:15,150
+một dự án mới, như thường lệ.
+
+8
+00:00:15,150 --> 00:00:18,449
+Chúng ta gọi nó là 'FontDialogDemo',
+
+9
+00:00:18,449 --> 00:00:21,619
+lưu nó tại một vị trí trên ổ đĩa của chúng ta,
+
+10
+00:00:21,619 --> 00:00:26,099
+chọn Qt version (phiên bản Qt), chọn kit (bộ hỗ trợ),
+
+11
+00:00:26,099 --> 00:00:32,399
+và chúng ta đang ở đây. Chúng ta muốn 'import' (nhập)
+
+12
+00:00:32,399 --> 00:00:42,809
+'QtQuick.Dialog', hãy nhập phiên bản 1.3.
+
+13
+00:00:42,809 --> 00:00:47,059
+Chúng ta cũng muốn 'import QtQuick.Controls'
+
+14
+00:00:47,149 --> 00:00:49,829
+bởi vì chúng ta cũng muốn sử dụng nút điều khiển,
+
+15
+00:00:49,829 --> 00:00:52,920
+vì vậy chúng ta sẽ ghi '2.4' ở đây, đó là
+
+16
+00:00:52,920 --> 00:00:55,730
+phiên bản mới nhất có sẵn cho chúng ta bây giờ.
+
+17
+00:00:55,730 --> 00:00:58,800
+Chúng ta thay đổi 'title' (tiêu đề) ở đây thành
+
+18
+00:00:58,800 --> 00:01:03,899
+'FontDialogDemo' và chúng ta dặt 1 'Column' (cột) ở đây, bên trong.
+
+19
+00:01:03,899 --> 00:01:07,229
+Bạn chắc đã quen với điều này.
+
+20
+00:01:07,229 --> 00:01:10,439
+'spacing' (khoảng cách) sẽ là 20.
+
+21
+00:01:10,439 --> 00:01:11,450
+Tại sao không?
+
+22
+00:01:11,450 --> 00:01:16,189
+nó sẽ được ở giữa và
+
+23
+00:01:16,189 --> 00:01:19,110
+ở trong, chúng ta muốn có 1 'Button' (nút) điều khiển.
+
+24
+00:01:19,110 --> 00:01:24,020
+'text' (văn bản) sẽ là 'Change Font' (Thay đổi font chữ),
+
+25
+00:01:24,049 --> 00:01:26,689
+Nó sẽ được canh giữa theo chiều ngang
+
+26
+00:01:26,689 --> 00:01:30,619
+vì vậy chúng ta sẽ ghi như này.
+
+27
+00:01:30,619 --> 00:01:33,750
+'parent.horizontalCenter' , và khi nó được nhấn vào,
+
+28
+00:01:33,750 --> 00:01:37,170
+chúng ta muốn chạy 1 hộp thoại. Được rồi, chúng ta
+
+29
+00:01:37,170 --> 00:01:43,170
+sẽ ghi 'fontDialogId'. Được rồi, chúng ta
+
+30
+00:01:43,170 --> 00:01:45,240
+vẫn chưa có hộp thoại, nhưng chúng ta
+
+31
+00:01:45,240 --> 00:01:46,979
+sẽ có nó và cái này sẽ chạy.
+
+32
+00:01:46,979 --> 00:01:49,890
+Dưới đây, chúng ta sẽ đặt 1 thành phần 'Text' (Văn bản). 
+
+33
+00:01:49,890 --> 00:01:55,729
+ID của nó sẽ là 'textId',
+
+34
+00:01:55,729 --> 00:02:00,560
+'text' (văn bản) sẽ là 'Hello World' (Chào thế giới).
+
+35
+00:02:01,040 --> 00:02:05,610
+Và ở dưới đây chúng ta muốn có một 'FontDialog',
+
+36
+00:02:05,610 --> 00:02:13,880
+ID sẽ là 'fontDialogId',
+
+37
+00:02:13,880 --> 00:02:19,080
+'title' (tiêu đề) sẽ là 'Choose Font' (Chọn font chữ).
+
+38
+00:02:19,080 --> 00:02:24,710
+Tôi muốn dùng font mặc định cho
+
+39
+00:02:25,220 --> 00:02:36,060
+cái này. OK, đây là cách mà tôi sẽ xác định nó.
+
+40
+00:02:36,060 --> 00:02:38,730
+Tôi sẽ dùng đối tượng toàn cầu (global object) Qt và đưa 
+
+41
+00:02:38,730 --> 00:02:40,680
+vào nó font chữ mà tôi muốn dùng. Tôi hy vọng các bạn
+
+42
+00:02:40,680 --> 00:02:42,450
+nhớ về đối tượng toàn cầu
+
+43
+00:02:42,450 --> 00:02:45,300
+global object Qt. Và các bạn có thể thấy rằng Đây là một
+
+44
+00:02:45,300 --> 00:02:47,400
+nhóm thuộc tính, các bạn có thể xác định nhiều
+
+45
+00:02:47,400 --> 00:02:49,709
+font ở đây. Nó sẽ
+
+46
+00:02:49,709 --> 00:02:52,380
+là font mặc định mà sẽ được hiện thị khi chúng ta
+
+47
+00:02:52,380 --> 00:02:55,290
+mở hộp thoại này ở dây. Được rồi khi nó được
+
+48
+00:02:55,290 --> 00:03:00,000
+chấp nhận, chúng ta cũng muốn biết và chúng ta
+
+49
+00:03:00,000 --> 00:03:05,660
+muốn biết không, khi nó bị từ chối.
+
+50
+00:03:05,660 --> 00:03:14,720
+Khi người dùng từ chối, chúng ta muốn nói thế này và
+
+51
+00:03:14,720 --> 00:03:17,820
+khi nó được chấp nhận, chúng ta muốn nói
+
+52
+00:03:17,820 --> 00:03:21,299
+font được chọn và chúng ta
+
+53
+00:03:21,299 --> 00:03:24,239
+sẽ nói thế này. Chúng ta cũng muốn lấy font đó
+
+54
+00:03:24,239 --> 00:03:27,060
+và thiết lập vào thuộc tính font cho
+
+55
+00:03:27,060 --> 00:03:29,580
+văn bản này ở đây. Vì vậy, chúng ta sẽ nói
+
+56
+00:03:29,580 --> 00:03:40,049
+'testId.font' bằng 'fontDialogId.font'.
+
+57
+00:03:40,049 --> 00:03:43,110
+OK, font chữ mà người dùng chọn
+
+58
+00:03:43,110 --> 00:03:45,590
+sẽ có sẵn trong font ở đây.
+
+59
+00:03:45,590 --> 00:03:48,420
+Tôi nghĩ chúng ta có thể chạy ứng dụng bây giờ và
+
+60
+00:03:48,420 --> 00:03:53,340
+xem cách nó hoạt động. Nếu bạn nhấn vào nút,
+
+61
+00:03:53,340 --> 00:03:55,380
+bạn thấy rằng bạn có một cửa sổ
+
+62
+00:03:55,380 --> 00:03:58,200
+ở đây để chọn chữ. Chúng ta có thể lựa chọn một
+
+63
+00:03:58,200 --> 00:03:58,680
+font chữ.
+
+64
+00:03:58,680 --> 00:04:00,959
+Được rồi, hãy tăng kích thước ở đây, hãy
+
+65
+00:04:00,959 --> 00:04:03,930
+dùng 48 chả hạn và chọn font yêu thích
+
+66
+00:04:03,930 --> 00:04:06,810
+của tôi, font 'Consolas'. Hãy xem thử nếu chúng ta
+
+67
+00:04:06,810 --> 00:04:11,280
+có thể kiếm được nó không. Đây rồi, 'Consolas'. Nếu tôi nhấn "OK",
+
+68
+00:04:11,280 --> 00:04:13,920
+bạn thấy font chữ ở đây thay đổi.
+
+69
+00:04:13,920 --> 00:04:16,079
+Đây là cách mà bạn dùng
+
+70
+00:04:16,079 --> 00:04:18,690
+hộp thoại font và bạn có thể lấy font đó
+
+71
+00:04:18,690 --> 00:04:21,600
+và thiết lập cho các thành phần UI (User Interface - Giao diện người dùng) khác
+
+72
+00:04:21,600 --> 00:04:24,750
+mà có thuộc tính font như chúng ta làm ở đây
+
+73
+00:04:24,750 --> 00:04:27,060
+với thành phần 'Text'. Đây là tất cả
+
+74
+00:04:27,060 --> 00:04:28,800
+những gì tôi phải nói trong bài này. Trong bài tới
+
+75
+00:04:28,800 --> 00:04:30,419
+chúng ta sẽ tìm hiểu về cách dùng
+
+76
+00:04:30,419 --> 00:04:32,730
+MessageDialog (hộp thoại tin nhắn) để bật tin nhắn
+
+77
+00:04:32,730 --> 00:00:00,000
+thông báo cho người dùng. Hẹn gặp lại các bạn ở bài sau.
+

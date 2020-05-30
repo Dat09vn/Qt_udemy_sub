@@ -1,0 +1,892 @@
+1
+00:00:00,000 --> 00:00:02,280
+and this lecture we are going to visit
+
+2
+00:00:02,280 --> 00:00:05,730
+some basic elements in qml this include
+
+3
+00:00:05,730 --> 00:00:09,630
+things like rectangle image and text but
+
+4
+00:00:09,630 --> 00:00:11,790
+before we start I'd like to visit one
+
+5
+00:00:11,790 --> 00:00:14,309
+element which is the parent of all the
+
+6
+00:00:14,309 --> 00:00:16,500
+visual elements that we have used so far
+
+7
+00:00:16,500 --> 00:00:19,289
+and many others and that element is
+
+8
+00:00:19,289 --> 00:00:21,630
+called item let's go to the
+
+9
+00:00:21,630 --> 00:00:25,320
+documentation and look at it which I can
+
+10
+00:00:25,320 --> 00:00:30,420
+item here hit enter and you choose item
+
+11
+00:00:30,420 --> 00:00:33,360
+qml type choose the letters version of
+
+12
+00:00:33,360 --> 00:00:36,480
+Qt have installed here and if you look
+
+13
+00:00:36,480 --> 00:00:39,480
+at the description it says the item type
+
+14
+00:00:39,480 --> 00:00:42,600
+is the base type for all visual items in
+
+15
+00:00:42,600 --> 00:00:44,700
+QT quack and if you look at the
+
+16
+00:00:44,700 --> 00:00:46,800
+properties that it has we have been
+
+17
+00:00:46,800 --> 00:00:49,410
+using some of these properties you can
+
+18
+00:00:49,410 --> 00:00:52,559
+see that it has properties of anchors we
+
+19
+00:00:52,559 --> 00:00:54,989
+have been using anchors sent in parent
+
+20
+00:00:54,989 --> 00:00:57,600
+there are many anchors as we are going
+
+21
+00:00:57,600 --> 00:01:00,000
+to see and this properties comes from
+
+22
+00:01:00,000 --> 00:01:02,870
+the parent item and other elements like
+
+23
+00:01:02,870 --> 00:01:05,939
+rectangle and text happen to inherit
+
+24
+00:01:05,939 --> 00:01:08,130
+this so what we're going to do is create
+
+25
+00:01:08,130 --> 00:01:10,500
+a critical project and play with this
+
+26
+00:01:10,500 --> 00:01:14,100
+dance for you to see them in action hit
+
+27
+00:01:14,100 --> 00:01:18,869
+file new project we call the project key
+
+28
+00:01:18,869 --> 00:01:22,619
+ml basic elements demo store it in a
+
+29
+00:01:22,619 --> 00:01:26,060
+location on our drive hit next and
+
+30
+00:01:26,060 --> 00:01:29,970
+choose your kit which is desktop for now
+
+31
+00:01:29,970 --> 00:01:34,799
+we're going to it next and finish we are
+
+32
+00:01:34,799 --> 00:01:36,979
+going to change the title here and
+
+33
+00:01:36,979 --> 00:01:39,810
+create an item element I think this is
+
+34
+00:01:39,810 --> 00:01:42,479
+the first time we use this we give it an
+
+35
+00:01:42,479 --> 00:01:45,270
+ID this property also comes from the
+
+36
+00:01:45,270 --> 00:01:52,220
+item we'll give it an X location of 50 a
+
+37
+00:01:52,220 --> 00:01:56,040
+Y location of 50 and by the way you can
+
+38
+00:01:56,040 --> 00:01:58,590
+specify your properties on one line like
+
+39
+00:01:58,590 --> 00:02:00,799
+this by separating them with a semicolon
+
+40
+00:02:00,799 --> 00:02:04,799
+the other thing you can do is this this
+
+41
+00:02:04,799 --> 00:02:06,750
+is also another syntax that is
+
+42
+00:02:06,750 --> 00:02:09,690
+acceptable in KML and I find myself
+
+43
+00:02:09,690 --> 00:02:11,570
+mixing distance
+
+44
+00:02:11,570 --> 00:02:14,400
+okay inside we're going to put a
+
+45
+00:02:14,400 --> 00:02:18,410
+rectangle you already know the rectangle
+
+46
+00:02:18,410 --> 00:02:22,950
+the width is going to be 15 the height
+
+47
+00:02:22,950 --> 00:02:27,300
+is going to be 15 the color is going to
+
+48
+00:02:27,300 --> 00:02:29,940
+be red and inside we're going to put in
+
+49
+00:02:29,940 --> 00:02:33,240
+a mouth area that is going to fill the
+
+50
+00:02:33,240 --> 00:02:36,480
+entire rectangle so it's going to say n
+
+51
+00:02:36,480 --> 00:02:43,080
+course and we want to know when this
+
+52
+00:02:43,080 --> 00:02:45,330
+mouth area is correct
+
+53
+00:02:45,330 --> 00:02:47,280
+the other thing we want to do is to give
+
+54
+00:02:47,280 --> 00:02:50,190
+this rectangle a fixed position we are
+
+55
+00:02:50,190 --> 00:02:54,180
+going to put in at X 10 + y 10 and we
+
+56
+00:02:54,180 --> 00:02:55,980
+are going to define other rectangles as
+
+57
+00:02:55,980 --> 00:03:00,840
+well just like this one but we are going
+
+58
+00:03:00,840 --> 00:03:03,150
+to change the x position and the cutter
+
+59
+00:03:03,150 --> 00:03:08,010
+so this one is going to be at X of 60
+
+60
+00:03:08,010 --> 00:03:13,920
+it's going to be green another one that
+
+61
+00:03:13,920 --> 00:03:20,790
+is going to be at 120 and it's going to
+
+62
+00:03:20,790 --> 00:03:25,709
+be blue and another one that is going to
+
+63
+00:03:25,709 --> 00:03:30,110
+be at 180 and it's going to be magenta
+
+64
+00:03:30,110 --> 00:03:32,760
+what do you think we'll see when we run
+
+65
+00:03:32,760 --> 00:03:34,980
+this application we're going to have
+
+66
+00:03:34,980 --> 00:03:38,340
+this item wrap around this rectangle and
+
+67
+00:03:38,340 --> 00:03:41,160
+the coordinates of laying out these
+
+68
+00:03:41,160 --> 00:03:43,320
+rectangles are going to start at this
+
+69
+00:03:43,320 --> 00:03:46,050
+location because this is the wrapper
+
+70
+00:03:46,050 --> 00:03:48,630
+container around these rectangles let's
+
+71
+00:03:48,630 --> 00:03:50,370
+run the application so that you see
+
+72
+00:03:50,370 --> 00:03:55,920
+yourself so what is happening the red
+
+73
+00:03:55,920 --> 00:03:59,100
+and green rectangles are touching each
+
+74
+00:03:59,100 --> 00:04:01,800
+other okay let's put this back to zero
+
+75
+00:04:01,800 --> 00:04:05,250
+so that they don't touch each other okay
+
+76
+00:04:05,250 --> 00:04:07,709
+this is much better to make things much
+
+77
+00:04:07,709 --> 00:04:10,410
+more visible I am going to assign a
+
+78
+00:04:10,410 --> 00:04:13,800
+child rectangle to this item and make it
+
+79
+00:04:13,800 --> 00:04:16,709
+feel the entire item so I'm going to do
+
+80
+00:04:16,709 --> 00:04:20,510
+something like this
+
+81
+00:04:20,720 --> 00:04:23,810
+and I'm going to give it a color of
+
+82
+00:04:23,810 --> 00:04:30,230
+beige okay why am I doing this it is
+
+83
+00:04:30,230 --> 00:04:33,380
+because the I am element doesn't support
+
+84
+00:04:33,380 --> 00:04:36,470
+this color property and I wanted to put
+
+85
+00:04:36,470 --> 00:04:38,540
+in a rectangle which has a background
+
+86
+00:04:38,540 --> 00:04:40,730
+color so that things are invisible I'm
+
+87
+00:04:40,730 --> 00:04:46,100
+also going to give this a border and we
+
+88
+00:04:46,100 --> 00:04:48,470
+are going to give our item here a width
+
+89
+00:04:48,470 --> 00:04:50,990
+and height so the width is going to be
+
+90
+00:04:50,990 --> 00:04:55,850
+something like 400 why not and the
+
+91
+00:04:55,850 --> 00:05:01,840
+height is going to be 300 let's run
+
+92
+00:05:01,840 --> 00:05:05,690
+mm-hmm and you see that our item is
+
+93
+00:05:05,690 --> 00:05:08,810
+wrapping around this beige rectangle and
+
+94
+00:05:08,810 --> 00:05:11,120
+you can see that the elements inside the
+
+95
+00:05:11,120 --> 00:05:13,760
+item are laid out in the coordinate
+
+96
+00:05:13,760 --> 00:05:17,300
+system of the item you can see that X is
+
+97
+00:05:17,300 --> 00:05:20,530
+zero for the red rectangle and Y is 10
+
+98
+00:05:20,530 --> 00:05:24,830
+starting counting from the origin of the
+
+99
+00:05:24,830 --> 00:05:27,410
+item rectangle I hope this makes sense
+
+100
+00:05:27,410 --> 00:05:30,560
+and the others also keep increasing in X
+
+101
+00:05:30,560 --> 00:05:33,230
+the green rectangle is at a slightly
+
+102
+00:05:33,230 --> 00:05:36,169
+higher value of x and the some things
+
+103
+00:05:36,169 --> 00:05:38,390
+happen for the blue rectangle and the
+
+104
+00:05:38,390 --> 00:05:41,900
+magenta rectangle here ok one thing you
+
+105
+00:05:41,900 --> 00:05:43,220
+should notice is that there are some
+
+106
+00:05:43,220 --> 00:05:45,169
+properties that come from the item
+
+107
+00:05:45,169 --> 00:05:48,260
+element and some of these are I D X Y
+
+108
+00:05:48,260 --> 00:05:50,840
+width and height if we go back to the
+
+109
+00:05:50,840 --> 00:05:52,700
+documentation we're going to see those
+
+110
+00:05:52,700 --> 00:05:57,860
+you see X Y Z we have the width here and
+
+111
+00:05:57,860 --> 00:06:00,979
+if we go up we can find the height here
+
+112
+00:06:00,979 --> 00:06:02,720
+so these are the properties that are
+
+113
+00:06:02,720 --> 00:06:04,640
+coming from the item but there are
+
+114
+00:06:04,640 --> 00:06:06,530
+properties that the item doesn't have
+
+115
+00:06:06,530 --> 00:06:09,470
+and some of those include color and
+
+116
+00:06:09,470 --> 00:06:12,320
+border here because an item is not
+
+117
+00:06:12,320 --> 00:06:14,810
+supposed to be visible it can't have a
+
+118
+00:06:14,810 --> 00:06:18,410
+color like rectangle does one thing I
+
+119
+00:06:18,410 --> 00:06:20,900
+want you to see is that you can use the
+
+120
+00:06:20,900 --> 00:06:23,900
+item element to wrap around other items
+
+121
+00:06:23,900 --> 00:06:27,500
+we have actually done that by setting
+
+122
+00:06:27,500 --> 00:06:30,470
+the X&Y position for the item element
+
+123
+00:06:30,470 --> 00:06:32,780
+you can see that they start here so if I
+
+124
+00:06:32,780 --> 00:06:34,610
+comment out this
+
+125
+00:06:34,610 --> 00:06:37,909
+you wait to see that this beige
+
+126
+00:06:37,909 --> 00:06:40,729
+rectangle which is our item really is
+
+127
+00:06:40,729 --> 00:06:43,039
+going to move back to 0-0 from the
+
+128
+00:06:43,039 --> 00:06:45,789
+parent which is this window element
+
+129
+00:06:45,789 --> 00:06:49,039
+let's run again okay you see that it
+
+130
+00:06:49,039 --> 00:06:51,919
+starts at zero we are able to manipulate
+
+131
+00:06:51,919 --> 00:06:54,800
+all these elements just by manipulating
+
+132
+00:06:54,800 --> 00:06:58,069
+the X&Y position of the item element and
+
+133
+00:06:58,069 --> 00:07:00,379
+I hope this drives home the point that
+
+134
+00:07:00,379 --> 00:07:02,929
+you can use the item element to group
+
+135
+00:07:02,929 --> 00:07:05,239
+different elements together and carry
+
+136
+00:07:05,239 --> 00:07:08,149
+out group manipulations to the contained
+
+137
+00:07:08,149 --> 00:07:12,169
+items let's uncomment this back and give
+
+138
+00:07:12,169 --> 00:07:16,669
+it an x value of 150 why not run again
+
+139
+00:07:16,669 --> 00:07:21,379
+and you see that it moves slightly to
+
+140
+00:07:21,379 --> 00:07:22,009
+the right
+
+141
+00:07:22,009 --> 00:07:24,469
+another element I want you to look at is
+
+142
+00:07:24,469 --> 00:07:29,059
+the text element so let's use it down
+
+143
+00:07:29,059 --> 00:07:33,709
+here we give it an ID and we can give it
+
+144
+00:07:33,709 --> 00:07:35,899
+a text property which is the text that
+
+145
+00:07:35,899 --> 00:07:38,329
+is going to be shown so we can type in
+
+146
+00:07:38,329 --> 00:07:38,809
+here
+
+147
+00:07:38,809 --> 00:07:45,740
+this is my text and if we run this what
+
+148
+00:07:45,740 --> 00:07:50,839
+shall we see let's run you see that we
+
+149
+00:07:50,839 --> 00:07:54,499
+see this is my text to the top of the
+
+150
+00:07:54,499 --> 00:07:57,740
+rectangle that wraps around our item
+
+151
+00:07:57,740 --> 00:08:00,259
+element and the text is shown at
+
+152
+00:08:00,259 --> 00:08:03,349
+position zero zero which means that when
+
+153
+00:08:03,349 --> 00:08:06,199
+you don't specify the X&Y position for
+
+154
+00:08:06,199 --> 00:08:09,019
+your element it is going to be at zero
+
+155
+00:08:09,019 --> 00:08:11,509
+zero okay you should know this because
+
+156
+00:08:11,509 --> 00:08:14,179
+we want our text to show down below the
+
+157
+00:08:14,179 --> 00:08:16,999
+rectangles we are going to give it an x
+
+158
+00:08:16,999 --> 00:08:22,069
+value of let's say 100 and the y value
+
+159
+00:08:22,069 --> 00:08:25,819
+of 100 another thing we can specify for
+
+160
+00:08:25,819 --> 00:08:28,219
+this text element is the size of the
+
+161
+00:08:28,219 --> 00:08:30,469
+font and we do that by using their
+
+162
+00:08:30,469 --> 00:08:33,529
+grouped font property and calling point
+
+163
+00:08:33,529 --> 00:08:36,979
+size we can specify 20 here let's see
+
+164
+00:08:36,979 --> 00:08:43,698
+what we get mm hmm this is my text these
+
+165
+00:08:43,698 --> 00:08:46,009
+are the different basic properties you
+
+166
+00:08:46,009 --> 00:08:48,089
+can use on the text element and
+
+167
+00:08:48,089 --> 00:08:50,550
+as usual if you need to know more about
+
+168
+00:08:50,550 --> 00:08:54,300
+it you can select it hit f1 and you're
+
+169
+00:08:54,300 --> 00:08:57,029
+going to have its documentation up in
+
+170
+00:08:57,029 --> 00:08:59,970
+the text items can display both plain
+
+171
+00:08:59,970 --> 00:09:03,240
+text and rich text for example red text
+
+172
+00:09:03,240 --> 00:09:05,610
+with the specific font and size can be
+
+173
+00:09:05,610 --> 00:09:08,730
+defined like this hello world font
+
+174
+00:09:08,730 --> 00:09:10,889
+family her vertical point size desu and
+
+175
+00:09:10,889 --> 00:09:14,519
+color red let's actually copy this why
+
+176
+00:09:14,519 --> 00:09:24,240
+not come back to our text and put in
+
+177
+00:09:24,240 --> 00:09:27,779
+these properties hey control a control I
+
+178
+00:09:27,779 --> 00:09:38,399
+to align distance run again mm-hmm and
+
+179
+00:09:38,399 --> 00:09:41,430
+we have our text here and the font
+
+180
+00:09:41,430 --> 00:09:43,470
+property deserves a little bit more
+
+181
+00:09:43,470 --> 00:09:44,999
+attention because I don't think we
+
+182
+00:09:44,999 --> 00:09:47,610
+talked about it yet the font property is
+
+183
+00:09:47,610 --> 00:09:50,519
+a grouped property and that refers to
+
+184
+00:09:50,519 --> 00:09:53,339
+the fact that you can call font family
+
+185
+00:09:53,339 --> 00:09:56,040
+font down point size so to look at this
+
+186
+00:09:56,040 --> 00:09:57,660
+property let's go back to the
+
+187
+00:09:57,660 --> 00:10:06,569
+documentation and type the font click on
+
+188
+00:10:06,569 --> 00:10:09,360
+the latest version of cute we have
+
+189
+00:10:09,360 --> 00:10:12,059
+installed and you can see a font value
+
+190
+00:10:12,059 --> 00:10:14,639
+with the properties of cue font okay
+
+191
+00:10:14,639 --> 00:10:18,120
+it's like a cue font data type from the
+
+192
+00:10:18,120 --> 00:10:21,360
+c++ side of cube it is a grouped
+
+193
+00:10:21,360 --> 00:10:24,360
+property which means that it has many
+
+194
+00:10:24,360 --> 00:10:26,639
+properties grouped together you can
+
+195
+00:10:26,639 --> 00:10:29,220
+specify the family of the font you can
+
+196
+00:10:29,220 --> 00:10:32,100
+specify whether or not it's bold italic
+
+197
+00:10:32,100 --> 00:10:35,160
+underline point size and many others you
+
+198
+00:10:35,160 --> 00:10:37,230
+can use the font like this and this is
+
+199
+00:10:37,230 --> 00:10:39,509
+really what we have been doing they just
+
+200
+00:10:39,509 --> 00:10:42,360
+specify more properties than we did we
+
+201
+00:10:42,360 --> 00:10:45,800
+can copy this then and take it out and
+
+202
+00:10:45,800 --> 00:10:48,689
+we can specify these properties on one
+
+203
+00:10:48,689 --> 00:10:51,300
+line like this if you want to it's going
+
+204
+00:10:51,300 --> 00:10:56,610
+to work okay it's bold now another way
+
+205
+00:10:56,610 --> 00:10:59,040
+you can specify the font is by grouping
+
+206
+00:10:59,040 --> 00:11:00,460
+things together like
+
+207
+00:11:00,460 --> 00:11:10,180
+so you can say font-family just like
+
+208
+00:11:10,180 --> 00:11:12,340
+this and keep specifying the other
+
+209
+00:11:12,340 --> 00:11:19,260
+properties on different lines and
+
+210
+00:11:20,220 --> 00:11:28,030
+whether or not it is bold if you run the
+
+211
+00:11:28,030 --> 00:11:29,770
+application we are going to see the same
+
+212
+00:11:29,770 --> 00:11:34,690
+thing okay the same time and these are
+
+213
+00:11:34,690 --> 00:11:36,820
+different syntaxes that are available to
+
+214
+00:11:36,820 --> 00:11:38,950
+you to specify grouped properties
+
+215
+00:11:38,950 --> 00:11:41,530
+another thing you can do if you want to
+
+216
+00:11:41,530 --> 00:11:45,180
+is to specify this stance on one line
+
+217
+00:11:45,180 --> 00:11:47,110
+we're going to do that
+
+218
+00:11:47,110 --> 00:11:49,420
+you can actually copy this put this on
+
+219
+00:11:49,420 --> 00:11:52,180
+one line and separate things using
+
+220
+00:11:52,180 --> 00:11:54,160
+semicolons like this and this is going
+
+221
+00:11:54,160 --> 00:11:58,060
+to work as well okay this is the 10th
+
+222
+00:11:58,060 --> 00:12:00,520
+element and how you can specify some of
+
+223
+00:12:00,520 --> 00:00:00,000
+its properties
+

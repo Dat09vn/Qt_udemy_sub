@@ -1,0 +1,247 @@
+WEBVTT
+
+00:00.890 --> 00:05.550
+This is Section 6 of mastering you programming which covers visual representations.
+
+00:05.720 --> 00:10.520
+So let's go and get started with charts and Qml. In this video, we're going to cover: Static graph
+
+00:10.520 --> 00:15.890
+resources, Dynamic line graphs and finally Dynamic scattered graphs.
+
+00:16.070 --> 00:17.390
+Let's get started.
+
+00:17.720 --> 00:22.690
+If you're working with static data the qtcharts Qml examples are going to be your best bet.
+
+00:22.700 --> 00:31.840
+Here you can find demos for pie, line, spline, area scatter and bar series examples.
+
+00:31.850 --> 00:34.460
+So what is there left to cover.
+
+00:34.760 --> 00:40.160
+Well, these examples are great if you have static data, you know, data that you can write into your source
+
+00:40.160 --> 00:40.840
+code.
+
+00:40.850 --> 00:46.100
+And my experience static data graphs are the hilarious minority of cases for graphs needed in the 
+
+00:46.100 --> 00:47.360
+applications.
+
+00:47.360 --> 00:51.950
+Most of the time we are only to need to generate graphs on the fly after doing some calculations.
+
+00:52.100 --> 00:54.970
+So how do we generate graphs on the fly.
+
+00:55.250 --> 00:56.450
+Let's go out and find out.
+
+00:56.510 --> 01:02.510
+The first thing to note here is that the qtchart is actually dependent on qt widgets so as before
+
+01:02.510 --> 01:07.790
+we're using a Qapplication if you're going to use q charts with Qml you need to actually
+
+01:07.790 --> 01:11.480
+switch to a Qapplication that can save you some time.
+
+01:11.490 --> 01:15.510
+So once we've got that, set up the first thing that we're going to need is some data.
+
+01:15.590 --> 01:18.350
+Now for this example it actually included some data.
+
+01:18.350 --> 01:24.250
+We're going to plot the land speed records from the last 60 or 70 years.
+
+01:24.290 --> 01:30.040
+So the first thing that we need to do for this case and these are basically the speed that it was done
+
+01:30.080 --> 01:31.430
+and the actual date.
+
+01:31.520 --> 01:39.080
+So we need to create an instance of our data. And one thing to note here is that our data is actually
+
+01:39.080 --> 01:40.390
+in a list model.
+
+01:40.430 --> 01:46.370
+And the reason I do this is so that it can be easily incorporated into a list view so that you can display
+
+01:46.370 --> 01:48.470
+the list view in the chart right next to it.
+
+01:48.480 --> 01:52.660
+You can do it after we're done with this example and you've got everything running.
+
+01:52.670 --> 01:57.170
+So now that we've got our data. The next thing that we're going to need is chart view which is where
+
+01:57.170 --> 01:58.870
+our data will be displayed.
+
+01:58.880 --> 02:05.700
+We're going to create a ID in ChartView in lower case and we'll give it a title of land_speed records
+
+02:09.300 --> 02:15.060
+Perfect. So our land speed record data is going to be the actual date that it was broken and the value
+
+02:15.060 --> 02:17.450
+in kilometers per hour that were driven.
+
+02:17.460 --> 02:23.120
+So we're going to need to create two accessories one ValueAis for the speed and one DateTimeAxis
+
+02:23.130 --> 02:27.450
+for the date.
+
+02:27.530 --> 02:32.820
+The next thing that we're going to do is set Mins and Maxxis for both of our accessories because the
+
+02:32.820 --> 02:36.400
+data will be plotted off the chart with the default values
+
+02:36.410 --> 02:44.050
+if we don't. So we'll go ahead and set the min and max properties for both of these.
+
+02:44.050 --> 02:49.300
+The last thing that we're going to do is go ahead and set a format up for the DateTimeAxis because
+
+02:49.300 --> 02:50.650
+the default is a little
+
+02:50.650 --> 02:55.320
+for those. Cool. so now we've got four axis to find.
+
+02:55.320 --> 02:59.490
+Let's go ahead and create a line series that will plot this for us.
+
+03:02.380 --> 03:07.040
+Awesome. So we're going to go ahead and uncomment this initialization of this Component.onCompleted
+
+03:07.040 --> 03:13.220
+line and which you see here is we call this function _add_data_to_series and we actually pass in the
+
+03:13.220 --> 03:19.090
+"LineSeries" that we just created. So we scroll down to where we define this add_data_to_series function.
+
+03:19.100 --> 03:21.310
+Basically we need to iterate through our data.
+
+03:21.350 --> 03:22.250
+That's what we're going to do here.
+
+03:22.250 --> 03:29.540
+We've got a for loop and we're going to go from i equal to zero to i equal to the count of all our data and then we're
+
+03:29.540 --> 03:34.460
+going to get access to each of our list items so just as a reminder list items look something like this
+
+03:34.870 --> 03:39.620
+and we're going to get access to them each individually using a get method passing in our i value
+
+03:39.710 --> 03:46.850
+and we want to get a hold of our two data information which is our speed and our date. Now we do need
+
+03:46.850 --> 03:52.450
+to change our year in our data into a date format instead of a stream.
+
+03:52.490 --> 03:55.310
+And we can do this using the Parse method.
+
+03:55.330 --> 04:00.550
+So once we've got our data in both the speed and the date, the last thing we need to do is go ahead and
+
+04:00.550 --> 04:03.610
+append it or add it to our actual series.
+
+04:05.620 --> 04:06.040
+Awesome.
+
+04:06.050 --> 04:09.980
+So let's go ahead and run this and see how it looks.
+
+04:09.980 --> 04:14.450
+You see we've got our line chart with our min, max and our land speed records.
+
+04:14.450 --> 04:19.970
+Now this isn't super helpful because it's kind of hard to tell exactly where the data points are.
+
+04:19.970 --> 04:25.330
+You see it in the elbow of the band but it's kind of hard to see it for our more linear stuff where
+
+04:25.330 --> 04:25.880
+it is.
+
+04:25.910 --> 04:29.370
+So let's go ahead and add a scatter chart here.
+
+04:29.730 --> 04:34.760
+So you could go all the way down the bottom you see that added a ToolBar to do that and a ToolButton
+
+04:34.760 --> 04:36.390
+to do that "Add Scatter".
+
+04:36.670 --> 04:43.440
+So let's go to its onClicked and you see I've got a here, we only create this one time.
+
+04:43.460 --> 04:48.920
+So let's go ahead and really release the Create series function in our chart view to add any other series
+
+04:48.920 --> 04:49.570
+to it.
+
+04:51.790 --> 04:56.790
+And then move past in this names, should be "scatter" and are x and y axis.
+
+04:58.050 --> 05:01.530
+So the last thing that we need to do is go ahead and add our data to it.
+
+05:01.530 --> 05:06.440
+So we created the chart successfully and the series successfully but we haven't added data to it.
+
+05:06.510 --> 05:11.740
+Luckily we've got our method that we created and implemented this and did a series.
+
+05:11.740 --> 05:15.810
+And so we'll just call this again with our scatter series that we just created.
+
+05:15.840 --> 05:22.380
+So let's run this one more time and then click this add scatter button and you see now it's much cleaner
+
+05:22.440 --> 05:27.780
+and easier to see where the individual points are happening on our land speed records.
+
+05:27.780 --> 05:29.380
+Now this still is slightly wrong.
+
+05:29.400 --> 05:34.230
+And the reason is we should have really just thought of this as a scatter series and then typically
+
+05:34.230 --> 05:39.930
+what you'll see for charts is we actually use a line series to show us the trends how our land speed
+
+05:39.930 --> 05:41.000
+record is trending.
+
+05:41.040 --> 05:47.430
+So I challenge you to react to this code and convert our line series to a scattered series and then
+
+05:47.430 --> 05:54.610
+dynamically calculate and plot the linear trend line of the land speed records as a line series.
+
+05:54.750 --> 06:00.270
+And with that we've successfully demonstrated how to create dynamic and linear and scatter graphs in
+
+06:00.270 --> 06:05.330
+addition to reviewing the static graph resource documentation.
+
+06:05.450 --> 06:09.890
+Join us in the next video where we look at animations and visual transformations.

@@ -1,0 +1,368 @@
+﻿1
+00:00:01,640 --> 00:00:03,880
+Xin chào mừng bạn quay lại với khóa học Qt5.
+
+2
+00:00:03,980 --> 00:00:07,280
+Tôi là Symeon Huang. Trong video này,
+
+3
+00:00:07,290 --> 00:00:09,740
+ta sẽ học về kỹ thuật xử lý lệnh command-line.
+
+4
+00:00:11,530 --> 00:00:20,950
+Ta sẽ học cách thêm lệnh command-line, phân tích và xử lý chúng.
+
+5
+00:00:20,970 --> 00:00:29,930
+Nếu bạn đã sẵn sàng, ta lại sử dụng project HelloWorld. Tôi đã viết thêm vài dòng vào đây.
+
+6
+00:00:31,330 --> 00:00:36,450
+Tôi include hai thư viện QCommandLineOption, QCommandLineParser.
+
+7
+00:00:36,520 --> 00:00:45,740
+Tôi đặt tên ứng dụng là QCoreApplication và đặt số phiên bản. Khi kết thúc, chương trình sẽ in ra chuỗi Hello
+
+8
+00:00:45,960 --> 00:00:46,360
+Qt World”
+
+9
+00:00:46,470 --> 00:00:47,460
+friend
+
+10
+00:00:47,740 --> 00:00:50,370
+và một số.
+
+11
+00:00:50,460 --> 00:00:56,140
+Điểm mới trong đoạn code này là tôi đã thêm đối tượng parser(bộ phân tích cú pháp). Nó sẽ đảm nhận việc xử lý chương trình QCoreApplication.
+
+12
+00:00:56,170 --> 00:01:04,450
+Như các bạn thấy, chương trình QCoreApplication
+
+13
+00:01:04,510 --> 00:01:06,700
+được khởi tạo với cả hai đối số.
+
+14
+00:01:10,050 --> 00:01:17,730
+truyền biến “a” cho đối tượng parser đồng nghĩa với việc truyền biến argc và mảng argv[] cho
+
+15
+00:01:17,730 --> 00:01:24,930
+QCommandLineParser.Ở hai dòng này ta thêm lệnh command-line “help” và “version”
+
+16
+00:01:25,410 --> 00:01:33,240
+Chú ý là chúng sẽ không có hiệu lực nếu bạn chưa đặt tên ứng dụng và
+
+17
+00:01:33,270 --> 00:01:39,360
+số phiên bản.Vậy khi chạy chương trình thì làm sao để ta truyền biến đầu vào bằng lênh command-line?
+
+18
+00:01:40,140 --> 00:01:42,340
+Đơn giản lắm.
+
+19
+00:01:42,400 --> 00:01:51,980
+Chuyển sang chế độ “projects”. Tại màn hình này, bạn có thể truyền biến đầu vào bằng lệnh command-line. Thử chạy lệnh “help” nhé. Gõ “-h”
+
+20
+00:01:53,900 --> 00:02:00,720
+Bạn nên chọn các mục checkbox này để chương trình chạy trên terminal.
+
+21
+00:02:03,730 --> 00:02:13,400
+Ta chạy chương trình. Khi chọn checkbox này, một màn hình pop-up trợ giúp được hiện lên, thay vì chạy chương trình, nó sẽ
+
+22
+00:02:13,400 --> 00:02:19,300
+mở một cửa sổ mới để hiển thị các kết quả thay vì hiển thị luôn các output của ứng dụng.
+
+23
+00:02:20,320 --> 00:02:31,960
+Đây đơn giản chỉ là thông tin trợ giúp mà bạn thường thấy trong các lệnh command-line thông thường.
+
+24
+00:02:31,960 --> 00:02:37,590
+Lệnh –h sẽ dừng chương trình và in ra thông tin trợ giúp.
+
+25
+00:02:39,860 --> 00:02:43,690
+Còn –v sẽ in ra số phiên bản.
+
+26
+00:02:47,190 --> 00:02:48,740
+Đây là kết quả ta sẽ nhận được.
+
+27
+00:02:48,750 --> 00:02:56,110
+Tên chương trình là “Hello World” số phiên bản là “0.1”.
+
+28
+00:02:56,330 --> 00:02:58,640
+Nếu không truyền command-line argument(biến số command-line).
+
+29
+00:03:01,390 --> 00:03:05,410
+Thì chương trình sẽ in ra chuỗi “Hello Qt World
+
+30
+00:03:05,410 --> 00:03:07,040
+This is number 1” như bình thường.
+
+31
+00:03:09,710 --> 00:03:11,970
+Bởi giá trị của biến num là 1.
+
+32
+00:03:12,860 --> 00:03:18,530
+Giờ nếu tôi muốn gán giá trị cho biến num từ lệnh command-line
+
+33
+00:03:19,600 --> 00:03:21,780
+Thì phải làm thế nào. Ta sẽ
+
+34
+00:03:21,790 --> 00:03:22,280
+dùng
+
+35
+00:03:22,380 --> 00:03:23,560
+QCommandLineOption.
+
+36
+00:03:27,190 --> 00:03:32,100
+Đối số đầu tiên sẽ là tên.
+
+37
+00:03:32,300 --> 00:03:33,980
+Nếu nó là ký tự đơn
+
+38
+00:03:34,310 --> 00:03:36,810
+thì tên đó sẽ là kiểu tên “short”
+
+39
+00:03:36,960 --> 00:03:45,970
+Nếu không thì tên đó sẽ là kiểu tên “long”. Ta dùng hàm overloaded constructor(hàm khởi tạo nạp chồng) thứ 3.
+
+40
+00:03:46,330 --> 00:03:48,190
+Hàm sẽ nhận đối số đầu tiên là tên.
+
+41
+00:03:48,220 --> 00:03:54,140
+Đối số thứ hai là mô tả, thứ ba là valueName(tên của giá trị) và cuối cùng là giá trị mặc định.
+
+42
+00:03:54,130 --> 00:04:04,360
+Chú ý là tất cả các đối số đều là kiểu QString.
+
+43
+00:04:04,430 --> 00:04:08,360
+Ta đặt giá trị mặc định là 1.
+
+44
+00:04:08,390 --> 00:04:16,360
+Ta không cần khởi tạo biến này nữa. À mà để làm ví dụ,
+
+45
+00:04:16,360 --> 00:04:17,370
+ta sẽ để nó bằng 0.
+
+46
+00:04:21,130 --> 00:04:29,550
+Tiếp theo, ta add đối tượng numOption vào đối tượng parser.
+
+47
+00:04:29,580 --> 00:04:31,130
+Vẫn chưa xong.
+
+48
+00:04:31,130 --> 00:04:38,420
+Sau khi parser xử lý đối số, tất cả các giá trị được lưu trong parser. Bạn phải lấy chúng
+
+49
+00:04:38,930 --> 00:04:39,790
+lại.
+
+50
+00:04:39,830 --> 00:04:45,780
+Bạn phải lấy ra giá trị được lưu trong parser.
+
+51
+00:04:45,970 --> 00:04:54,860
+Làm thế nào? Ta sẽ dùng hàm value(), truyền đối tượng numOption vào.
+
+52
+00:04:57,420 --> 00:04:59,420
+Do giá trị trả về sẽ là kiểu QString.
+
+53
+00:04:59,770 --> 00:05:04,750
+Ta dùng hàm toInt() để chuyển về kiểu integer.
+
+54
+00:05:04,750 --> 00:05:15,550
+Nếu ta không truyền đối số, thì khi chạy, kết quả sẽ là 1 hay 0?
+
+55
+00:05:15,690 --> 00:05:16,330
+Để xem nhé.
+
+56
+00:05:24,880 --> 00:05:30,630
+Aha, kết quả là 1. Bởi ta đặt giá trị mặc định cho nó là 1.
+
+57
+00:05:30,810 --> 00:05:32,280
+Nếu xóa đối số này đi.
+
+58
+00:05:35,350 --> 00:05:36,760
+Kết quả sẽ là 0.
+
+59
+00:05:36,840 --> 00:05:37,610
+Tại sao?
+
+60
+00:05:37,610 --> 00:05:40,930
+Bởi vì ta không chuyền tham số cho numOption.
+
+61
+00:05:41,190 --> 00:05:47,030
+Suy ta giá trị của parser sẽ là một chuỗi rỗng.
+
+62
+00:05:48,500 --> 00:05:57,040
+Chuỗi rỗng đổi thành kiểu integer sẽ thành 0. Bởi vì quá trình chuyển đổi kiểu thất bại, nên kết quả sẽ là 0
+
+63
+00:05:57,060 --> 00:06:02,340
+Kết quả này không đúng so với mong đợi.
+
+64
+00:06:02,560 --> 00:06:08,530
+Ta sẽ đưa dòng này vào.
+
+65
+00:06:08,580 --> 00:06:11,900
+Để tôi thử lỗi cho các bạn xem.
+
+66
+00:06:11,970 --> 00:06:21,240
+Gán giá trị biến này bằng -1. Bạn tưởng kết quả sẽ là -1 chứ không phải là 0.
+
+67
+00:06:21,240 --> 00:06:24,390
+Nhưng do ta không truyền giá trị vào nên hàm toInt() sẽ không đổi kiểu được.
+
+68
+00:06:24,770 --> 00:06:28,400
+Do đó, kết quả là 0.
+
+69
+00:06:28,610 --> 00:06:30,230
+Làm sao để tránh được lỗi này?
+
+70
+00:06:30,310 --> 00:06:37,680
+Ta dùng hàm isSet().
+
+71
+00:06:37,920 --> 00:06:39,830
+Ta gán giá trị cho biến
+
+72
+00:06:39,910 --> 00:06:43,210
+Chỉ khi nào giá trị được truyền vào.
+
+73
+00:06:43,300 --> 00:06:48,660
+Bây giờ, ta sẽ nhận được kết quả là -1 thay vì 0.
+
+74
+00:07:00,150 --> 00:07:02,900
+Đó, kết quả là -1.
+
+75
+00:07:02,940 --> 00:07:04,130
+Giờ tôi muốn truyền giá trị
+
+76
+00:07:04,230 --> 00:07:07,690
+bằng lệnh command-line.Chuyển sang màn hình projects
+
+77
+00:07:08,750 --> 00:07:15,940
+We can use dash n2. But how can I know it’s dash n.
+
+78
+00:07:15,970 --> 00:07:19,280
+Có lẽ ta nên tham khảo mục Help trước.
+
+79
+00:07:19,760 --> 00:07:20,090
+OK
+
+80
+00:07:25,090 --> 00:07:34,920
+Aha, như các bạn thấy, “-n” là tên của lệnh command-line ta đã định nghĩa trước đó
+
+81
+00:07:35,930 --> 00:07:40,870
+Chuỗi “the number argument” là đoạn mô tả cho lệnh.  <number> là chuỗi giá trị.
+
+82
+00:07:40,990 --> 00:07:46,700
+Chú ý là nó không được trùng lặp.
+
+83
+00:07:46,930 --> 00:07:56,700
+Ở phạm vi bài học này thì không quan trọng lắm. Nhưng đó là quy ước chung để đặt tên cho chuỗi giá trị.
+
+84
+00:07:58,090 --> 00:08:07,600
+Rồi nếu muốn giá trị 3, tôi viết “-n3”.
+
+85
+00:08:07,630 --> 00:08:17,660
+Khi đó tôi sẽ nhận được kết quả là “3”.Do ta đã truyền giá trị cho numOption nên giá trị của nó sẽ là “3”.
+
+86
+00:08:17,670 --> 00:08:24,000
+Khi đó hàm toInt() sẽ chuyển đổi chuỗi “3” thành số nguyên 3.
+
+87
+00:08:24,170 --> 00:08:29,810
+Và kết quả cuối cùng là 3.
+
+88
+00:08:29,870 --> 00:08:30,630
+Thử nhé.
+
+89
+00:08:33,140 --> 00:08:34,520
+Đúng là 3 luôn.
+
+90
+00:08:35,530 --> 00:08:40,740
+Sau bài học này, bạn đã học được kỹ thuật sử dụng QCommandLineParser và
+
+91
+00:08:40,750 --> 00:08:47,350
+QCommandLineOption để nâng cấp ứng dụng console của mình. Ở bài học tiếp theo, ta sẽ học về điểm mạnh của của cross-platform framework(framework đa nền tảng)
+
+92
+00:08:48,250 --> 00:08:52,690
+đó là tính cơ động và hỗ trợ đa nền tảng của nó.
+

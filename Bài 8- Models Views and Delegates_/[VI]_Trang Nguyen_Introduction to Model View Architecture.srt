@@ -1,0 +1,609 @@
+1
+00:00:00,000 --> 00:00:02,009
+Trong bài giảng này, ta sẽ học về
+
+2
+00:00:02,009 --> 00:00:04,680
+Mô hình Model - View trong Qt Quick.
+
+3
+00:00:04,680 --> 00:00:07,859
+Mô hình Model View, viết tắt là MVC,
+
+4
+00:00:07,859 --> 00:00:09,960
+đây là một design partern (mẫu thiết kế) cho phép ta
+
+5
+00:00:09,960 --> 00:00:13,410
+tách việc lưu dữ liệu
+
+6
+00:00:13,410 --> 00:00:16,350
+và cách hiển thị dữ liệu cho người dùng.
+
+7
+00:00:16,350 --> 00:00:18,570
+Mô hình gồm ba thành phần: Model -
+
+8
+00:00:18,570 --> 00:00:21,660
+lưu trữ dữ liệu, View - hiển thị
+
+9
+00:00:21,660 --> 00:00:24,390
+dữ liệu, Controller - có thể dùng
+
+10
+00:00:24,390 --> 00:00:26,519
+để trao đổi dữ liệu giữa
+
+11
+00:00:26,519 --> 00:00:29,820
+Model và View. Qt không
+
+12
+00:00:29,820 --> 00:00:30,990
+cài đặt Mô hình Model View Controller (MVC)
+
+13
+00:00:30,990 --> 00:00:33,899
+hoàn toàn, Qt sử dụng
+
+14
+00:00:33,899 --> 00:00:36,600
+Controller thành
+
+15
+00:00:36,600 --> 00:00:39,450
+các Delegate, và Delegate sẽ
+
+16
+00:00:39,450 --> 00:00:41,790
+thực thi những việc của 
+
+17
+00:00:41,790 --> 00:00:44,820
+Controller. Riêng trong QML,
+
+18
+00:00:44,820 --> 00:00:47,340
+các Delegate sẽ xác định cách mà
+
+19
+00:00:47,340 --> 00:00:49,649
+mỗi dòng trong ListView được hiển thị. Cần
+
+20
+00:00:49,649 --> 00:00:50,969
+lưu ý rằng cần có
+
+21
+00:00:50,969 --> 00:00:53,640
+ba thành phần trong Qt Quick: Model,
+
+22
+00:00:53,640 --> 00:00:56,219
+View và Delegate. Bây giờ, ta đã
+
+23
+00:00:56,219 --> 00:00:58,320
+hiểu một chút về mô hình Model, View, Delegate
+
+24
+00:00:58,320 --> 00:01:01,230
+trong Qt Quick. Những thành phần
+
+25
+00:01:01,230 --> 00:01:03,989
+đã có sẵn trong Qt Quick,
+
+26
+00:01:03,989 --> 00:01:07,110
+ta có thể dùng trong QML.
+
+27
+00:01:07,110 --> 00:01:09,540
+Đối với View, ta có ListView, GridView
+
+28
+00:01:09,540 --> 00:01:11,460
+và một số thành phần khác...
+
+29
+00:01:11,460 --> 00:01:12,750
+mà ta không nhắc tới ở bài học này.
+
+30
+00:01:12,750 --> 00:01:15,659
+Đối với Model, ta có ListModel,
+
+31
+00:01:15,659 --> 00:01:18,299
+XML ListModel. Ta sẽ học về
+
+32
+00:01:18,299 --> 00:01:20,520
+tất cả các Model đó, và Delegate
+
+33
+00:01:20,520 --> 00:01:23,100
+là phần quan trọng nhất trong mã qml,
+
+34
+00:01:23,100 --> 00:01:25,350
+nó định nghĩa cách hiển thị của các dòng trong
+
+35
+00:01:25,350 --> 00:01:29,189
+ListView như ta sắp thấy. 
+
+36
+00:01:29,189 --> 00:01:31,200
+Một điều nữa bạn cần hiểu là
+
+37
+00:01:31,200 --> 00:01:33,689
+các dữ liệu trong Model của bạn
+
+38
+00:01:33,689 --> 00:01:36,000
+có thể từ bất cứ đâu.
+
+39
+00:01:36,000 --> 00:01:38,729
+Có thể là cơ sở dữ liệu, từ Internet,
+
+40
+00:01:38,729 --> 00:01:41,520
+có thể là từ một tập tin mà bạn lưu trữ
+
+41
+00:01:41,520 --> 00:01:44,220
+trên ổ đĩa cứng, có thể là dữ liệu tĩnh (dữ liệu gõ trong mã nguồn)
+
+42
+00:01:44,220 --> 00:01:47,070
+mà bạn gõ trong mã nguồn QML,
+
+43
+00:01:47,070 --> 00:01:50,670
+và một Model sẽ có interface (giao thức) chung
+
+44
+00:01:50,670 --> 00:01:53,340
+mà bạn có thể dùng để trừa tượng hóa nguồn dữ liệu thật sự
+
+45
+00:01:53,340 --> 00:01:56,040
+để nhờ đó, nó có thể được sử dụng bởi
+
+46
+00:01:56,040 --> 00:01:58,799
+nhiều thành phần. Ví dụ, bạn có thể lấy
+
+47
+00:01:58,799 --> 00:02:01,829
+một ListModel và đưa nó vào ListView
+
+48
+00:02:01,829 --> 00:02:04,200
+và GridView, và còn có
+
+49
+00:02:04,200 --> 00:02:06,990
+một interface chung để chuyển dữ liệu
+
+50
+00:02:06,990 --> 00:02:08,639
+qua lại giữa hai thành phần,
+
+51
+00:02:08,639 --> 00:02:10,949
+và bạn sẽ không phải lo về
+
+52
+00:02:10,949 --> 00:02:11,380
+chi tiết,
+
+53
+00:02:11,380 --> 00:02:14,230
+cách dữ liệu thật sự được lưu trữ.
+
+54
+00:02:14,230 --> 00:02:16,720
+Đây là lợi ích của việc tách
+
+55
+00:02:16,720 --> 00:02:20,320
+cách lưu trữ dữ liệu trên Model
+
+56
+00:02:20,320 --> 00:02:23,740
+như ListModel và XML ListModel.
+
+57
+00:02:23,740 --> 00:02:25,600
+Ta sẽ tập trung vào ListModel một chút.
+
+58
+00:02:25,600 --> 00:02:28,090
+Cách dùng ListModel trong
+
+59
+00:02:28,090 --> 00:02:30,430
+QML. Ta thật ra đưa vào một danh sách
+
+60
+00:02:30,430 --> 00:02:32,380
+các phần tử mà sẽ
+
+61
+00:02:32,380 --> 00:02:34,720
+hiển thị. Bạn có thể tạo các phần tử...
+
+62
+00:02:34,720 --> 00:02:37,240
+một cách tĩnh khi định nghĩa ListModel.
+
+63
+00:02:37,240 --> 00:02:39,460
+trông nó sẽ thế này.
+
+64
+00:02:39,460 --> 00:02:41,650
+Bạn có một thành phần là ListModel
+và trong đó,
+
+65
+00:02:41,650 --> 00:02:44,110
+bạn có các ListElement (phần tử trong list)...
+
+66
+00:02:44,110 --> 00:02:47,470
+có chứa các thuộc tính và giá trị
+
+67
+00:02:47,470 --> 00:02:49,150
+của dữ liệu. Ta sẽ nói về nó sau.
+
+68
+00:02:49,150 --> 00:02:51,910
+Bạn có thể tạo các phần tử tĩnh vào ListModel
+
+69
+00:02:51,910 --> 00:02:54,100
+ngay trong mã nguồn. Đây là một cách để
+
+70
+00:02:54,100 --> 00:02:56,380
+đưa dữ liệu vào. Nhưng bạn cũng có thể
+
+71
+00:02:56,380 --> 00:02:59,170
+sử dụng bất kì các phương thức ở đây...
+
+72
+00:02:59,170 --> 00:03:02,110
+để thêm/xóa/sửa dữ liệu
+
+73
+00:03:02,110 --> 00:03:05,200
+trong Model ở lúc runtime (chương trình đang chạy).
+
+74
+00:03:05,200 --> 00:03:07,120
+Bạn có thể xóa dữ liệu, bạn có thể
+
+75
+00:03:07,120 --> 00:03:09,820
+lấy phần tử, bạn có thể thêm, chuyển, xóa và
+
+76
+00:03:09,820 --> 00:03:12,010
+bạn có thể dùng tất cả các hàm này. Chúng ta sẽ
+
+77
+00:03:12,010 --> 00:03:13,630
+sử dụng một số hàm...
+
+78
+00:03:13,630 --> 00:03:16,020
+trong các bài giảng tiếp theo.
+
+79
+00:03:16,020 --> 00:03:18,700
+Ngoài ra, còn có hai thuộc tính...
+
+80
+00:03:18,700 --> 00:03:20,950
+mà bạn có thể dùng: "count" (số lượng) cho bạn biết
+
+81
+00:03:20,950 --> 00:03:22,980
+số lượng phần tử mà bạn có trong Model,
+
+82
+00:03:22,980 --> 00:03:26,020
+dynamicRoles là một thuộc tính cho phép
+
+83
+00:03:26,020 --> 00:03:30,130
+thay đổi tính của Model
+
+84
+00:03:30,130 --> 00:03:33,040
+lúc runtime. Nếu nhìn vào
+
+85
+00:03:33,040 --> 00:03:35,620
+hàm "append" (thêm vào sau list) này, nó có tham số 
+
+86
+00:03:35,620 --> 00:03:38,440
+là object dictionary (từ điển đối tượng). Tôi muốn tập trung
+
+87
+00:03:38,440 --> 00:03:40,720
+vào đây một chút. Nếu bạn đã quen 
+
+88
+00:03:40,720 --> 00:03:43,330
+dùng dữ liệu JSON, bạn sẽ nhận ra những gì...
+
+89
+00:03:43,330 --> 00:03:45,190
+mà ta có ở đây. Đây chỉ là một đối tượng,
+
+90
+00:03:45,190 --> 00:03:47,560
+và đây là cách bạn đưa dữ liệu động (trong lúc chạy chương trình) vào
+
+91
+00:03:47,560 --> 00:03:49,900
+trong Model, bạn đưa một thứ gì đó...
+
+92
+00:03:49,900 --> 00:03:52,450
+như thế này vào. Chúng ta vừa xem một ví dụ...
+
+93
+00:03:52,450 --> 00:03:54,640
+về cách xây dựng ListModel, và
+
+94
+00:03:54,640 --> 00:03:56,950
+bạn thấy rằng ta cần tới cả "country" (nước) và 
+
+95
+00:03:56,950 --> 00:03:59,980
+"capital" (thủ đô) ở đây. Nếu ta muốn
+
+96
+00:03:59,980 --> 00:04:02,740
+tạo một phần từ như này một cách động vào đây,
+
+97
+00:04:02,740 --> 00:04:05,140
+ta chỉ cần đưa vào một đối tượng
+
+98
+00:04:05,140 --> 00:04:07,959
+có cấu trúc thế này. Khi bạn muốn tạo động
+
+99
+00:04:07,959 --> 00:04:10,150
+một phần tử của danh sách, bạn truyền vào
+
+100
+00:04:10,150 --> 00:04:12,670
+một JSON object (đối tượng JSON), đây là điều tôi muốn nói.
+
+101
+00:04:12,670 --> 00:04:15,850
+Trong thuật ngữ QML,
+
+102
+00:04:15,850 --> 00:04:19,478
+các thuộc tính này gọi là "role" (vai trò).
+
+103
+00:04:19,478 --> 00:04:22,029
+Ta có hai role trong ListModel,
+
+104
+00:04:22,029 --> 00:04:23,950
+ta có "country" và
+
+105
+00:04:23,950 --> 00:04:26,560
+"capital", và ta sẽ đặt giá trị cho chúng.
+
+106
+00:04:26,560 --> 00:04:29,260
+Ta có thể đặt tên role là
+
+107
+00:04:29,260 --> 00:04:31,330
+gì cũng được, nhưng bạn cần phải nhớ
+
+108
+00:04:31,330 --> 00:04:33,730
+cái tên mà bạn đặt, bởi vì
+
+109
+00:04:33,730 --> 00:04:36,340
+bạn sẽ dùng tới chúng để tham chiếu
+
+110
+00:04:36,340 --> 00:04:38,500
+tới dữ liệu này trong Delegate
+
+111
+00:04:38,500 --> 00:04:40,570
+mà ta sắp xem sau đây. Ta vừa xem
+
+112
+00:04:40,570 --> 00:04:43,630
+một kiểu Model mà ta có. Bây giờ ta sẽ
+
+113
+00:04:43,630 --> 00:04:46,180
+xem XML ListModel. Đây là
+
+114
+00:04:46,180 --> 00:04:48,610
+một model cho phép bạn cấu trúc hóa
+
+115
+00:04:48,610 --> 00:04:51,970
+một tập tin XML đang nằm trong máy
+
+116
+00:04:51,970 --> 00:04:54,420
+hoặc lấy từ internet, và nó cho phép bạn
+
+117
+00:04:54,420 --> 00:04:57,520
+tự động đọc được dữ liệu từ tập tin XML
+
+118
+00:04:57,520 --> 00:05:00,220
+và đưa nó vào ListView,
+
+119
+00:05:00,220 --> 00:05:02,350
+hoặc các view khác mà bạn có
+
+120
+00:05:02,350 --> 00:05:05,080
+trong QML. Thuộc tính source
+
+121
+00:05:05,080 --> 00:05:07,720
+cho phép bạn xác định tập tin XML
+
+122
+00:05:07,720 --> 00:05:09,910
+sẽ đến từ đâu, và bạn có
+
+123
+00:05:09,910 --> 00:05:11,980
+một tập hợp query (truy vẫn) để đọc dữ liệu
+
+124
+00:05:11,980 --> 00:05:15,400
+trong tập tin XML. Bạn có thể dùng XPath,
+
+125
+00:05:15,400 --> 00:05:18,010
+là một kỹ thuật cho phép bạn
+
+126
+00:05:18,010 --> 00:05:21,310
+đọc tập tin XML và lấy các dữ liệu
+
+127
+00:05:21,310 --> 00:05:23,770
+mà bạn muốn từ tập tin đó. Ta sẽ
+
+128
+00:05:23,770 --> 00:05:26,320
+xem nó hoạt động thế nào. Tôi lấy từ đây...
+
+129
+00:05:26,320 --> 00:05:29,440
+Model này đang đọc một tập tin XML
+
+130
+00:05:29,440 --> 00:05:33,280
+và cho phép bạn trích xuất dữ liệu
+
+131
+00:05:33,280 --> 00:05:36,160
+của file một cách tự động, và đưa vào
+
+132
+00:05:36,160 --> 00:05:39,250
+ListView hoặc GridView nếu
+
+133
+00:05:39,250 --> 00:05:41,920
+bạn cần dùng. Và điều cuối cùng
+
+134
+00:05:41,920 --> 00:05:43,480
+mà ta sẽ xem sau đây là
+
+135
+00:05:43,480 --> 00:05:45,880
+ListView, nó sẽ là thứ kết nối
+
+136
+00:05:45,880 --> 00:05:47,650
+tất cả những thứ mà ta vừa nhắc tới.
+
+137
+00:05:47,650 --> 00:05:50,530
+ListView có thuộc tính "model",
+
+138
+00:05:50,530 --> 00:05:52,690
+được đặt giá trị là một Model mà bạn muốn hiển thị
+
+139
+00:05:52,690 --> 00:05:55,150
+trong ListView, bạn sẽ có "delegate"
+
+140
+00:05:55,150 --> 00:05:57,760
+để định nghĩa các hiển thị của các dòng trong ListView.
+
+141
+00:05:57,760 --> 00:06:00,340
+Ta cũng có "highlight" (dòng được chọn),
+
+142
+00:06:00,340 --> 00:06:02,770
+"header" (đầu ListView) và "footer" (chân ListView) cho phép bạn
+
+143
+00:06:02,770 --> 00:06:04,870
+trang trí ListView để nó đẹp hơn,
+
+144
+00:06:04,870 --> 00:06:07,300
+và ở đây ta có một ví dụ.
+
+145
+00:06:07,300 --> 00:06:09,340
+Đây là cách bạn tạo ra nó,
+
+146
+00:06:09,340 --> 00:06:10,960
+và ta sẽ xem xét nó
+
+147
+00:06:10,960 --> 00:06:13,960
+chi tiết ở các bài sau.
+
+148
+00:06:13,960 --> 00:06:15,640
+Đây là tất cả những thông tin cần thiết
+
+149
+00:06:15,640 --> 00:06:18,430
+khi dùng Model và view
+
+150
+00:06:18,430 --> 00:06:20,920
+trong Qt Quick. Trong bài sau, ta sẽ
+
+151
+00:06:20,920 --> 00:06:22,660
+bắt đầu nghiên cứu ListView và
+
+152
+00:06:22,660 --> 00:00:00,000
+ListModel thật chi tiết. Hẹn gặp lại.
+

@@ -1,0 +1,268 @@
+1
+00:00:00,000 --> 00:00:02,939
+In this lecture, we are looking at Qt
+
+2
+00:00:02,939 --> 00:00:06,240
+Quick Dialogs. Dialogs allow you to
+
+3
+00:00:06,240 --> 00:00:08,490
+show transient information, the kind of
+
+4
+00:00:08,490 --> 00:00:10,440
+information you want the user to see for
+
+5
+00:00:10,440 --> 00:00:12,900
+one or two seconds and let them choose
+
+6
+00:00:12,900 --> 00:00:14,370
+what they want to do with the
+
+7
+00:00:14,370 --> 00:00:16,859
+information. You can also use them to let
+
+8
+00:00:16,859 --> 00:00:19,020
+the user choose something, for example
+
+9
+00:00:19,020 --> 00:00:21,359
+they can use Dialogs to choose files
+
+10
+00:00:21,359 --> 00:00:24,510
+in the file system, they can use Dialogs
+
+11
+00:00:24,510 --> 00:00:26,699
+to choose colors, fonts and things like
+
+12
+00:00:26,699 --> 00:00:29,160
+that. Here we have a few classes we're
+
+13
+00:00:29,160 --> 00:00:30,900
+going to look at in this chapter. We're
+
+14
+00:00:30,900 --> 00:00:32,340
+going to look at the Dialog class,
+
+15
+00:00:32,340 --> 00:00:34,530
+which is the parent of all these
+
+16
+00:00:34,530 --> 00:00:37,860
+Dialogs: ColorDialog, FileDialog,
+
+17
+00:00:37,860 --> 00:00:40,079
+FontDialog and MessageDialog. They
+
+18
+00:00:40,079 --> 00:00:42,120
+allow you to do these things you see here
+
+19
+00:00:42,120 --> 00:00:44,340
+to the right. And if you go to the
+
+20
+00:00:44,340 --> 00:00:46,770
+documentation, you're going to find more
+
+21
+00:00:46,770 --> 00:00:49,440
+details on this thing here. Another thing
+
+22
+00:00:49,440 --> 00:00:51,780
+that should be noted is that these 
+
+23
+00:00:51,780 --> 00:00:54,570
+Qt Quick Dialogs are part of the Qt Quick
+
+24
+00:00:54,570 --> 00:00:57,390
+Dialogs module as we're going to see.
+
+25
+00:00:57,390 --> 00:01:00,449
+And they are mostly meant to be used on
+
+26
+00:01:00,449 --> 00:01:02,879
+desktop platforms. We're going to see a
+
+27
+00:01:02,879 --> 00:01:05,010
+way you can use them on mobile devices
+
+28
+00:01:05,010 --> 00:01:07,619
+towards the end of this chapter, but
+
+29
+00:01:07,619 --> 00:01:09,450
+mostly you're going to be using these
+
+30
+00:01:09,450 --> 00:01:12,180
+Dialogs on desktop platforms. Now we're
+
+31
+00:01:12,180 --> 00:01:13,979
+going to look at some of the shared
+
+32
+00:01:13,979 --> 00:01:16,590
+properties between all these Dialogs. A
+
+33
+00:01:16,590 --> 00:01:20,310
+Dialog can be modal in that it blocks
+
+34
+00:01:20,310 --> 00:01:22,740
+the user to do something else until they
+
+35
+00:01:22,740 --> 00:01:25,290
+have closed the Dialog. The modality
+
+36
+00:01:25,290 --> 00:01:27,930
+can be application-wise in which you
+
+37
+00:01:27,930 --> 00:01:30,479
+block action in the entire application,
+
+38
+00:01:30,479 --> 00:01:33,210
+or it can be window-wise where you block
+
+39
+00:01:33,210 --> 00:01:35,880
+application in the entire window. In the
+
+40
+00:01:35,880 --> 00:01:37,950
+Dialogs that allow the user to choose
+
+41
+00:01:37,950 --> 00:01:40,049
+something, for example the File Dialog,
+
+42
+00:01:40,049 --> 00:01:42,659
+the Color Dialog, the Font Dialog, we have
+
+43
+00:01:42,659 --> 00:01:45,270
+these properties. For File Dialog, you
+
+44
+00:01:45,270 --> 00:01:47,759
+want to know the file that the user
+
+45
+00:01:47,759 --> 00:01:50,490
+choose or the files if they happen to
+
+46
+00:01:50,490 --> 00:01:53,670
+choose multiple files. You can also let
+
+47
+00:01:53,670 --> 00:01:55,590
+the user choose a folder, the same
+
+48
+00:01:55,590 --> 00:01:58,649
+happens for the color. Color holds the
+
+49
+00:01:58,649 --> 00:02:01,610
+color that was chosen by the user.
+
+50
+00:02:01,610 --> 00:02:04,680
+Current Color holds the color that the
+
+51
+00:02:04,680 --> 00:02:07,020
+user has chosen but hasn't confirmed yet.
+
+52
+00:02:07,020 --> 00:02:09,300
+You're going to see this. And the same
+
+53
+00:02:09,300 --> 00:02:12,720
+happens to Font and Current Font. A Dialog
+
+54
+00:02:12,720 --> 00:02:13,710
+is invisible
+
+55
+00:02:13,710 --> 00:02:16,050
+by default. To make it visible, you can do
+
+56
+00:02:16,050 --> 00:02:18,090
+one of two things: you can set the
+
+57
+00:02:18,090 --> 00:02:20,460
+visible property of it or you can call
+
+58
+00:02:20,460 --> 00:02:22,860
+the open method, which does that for you
+
+59
+00:02:22,860 --> 00:02:24,960
+in the background. To make it invisible,
+
+60
+00:02:24,960 --> 00:02:27,540
+you set the visible property to false or
+
+61
+00:02:27,540 --> 00:02:30,750
+you call the close method. And this is
+
+62
+00:02:30,750 --> 00:02:33,510
+all I have to spice up your appetite to
+
+63
+00:02:33,510 --> 00:02:35,550
+work with the Dialogs in Qt Quick. In
+
+64
+00:02:35,550 --> 00:02:37,380
+the next lecture, we're going to start
+
+65
+00:02:37,380 --> 00:02:38,970
+working with them and we're going to
+
+66
+00:02:38,970 --> 00:02:41,730
+start with the Color Dialog. I'll see
+
+67
+00:02:41,730 --> 00:00:00,000
+you there.
+

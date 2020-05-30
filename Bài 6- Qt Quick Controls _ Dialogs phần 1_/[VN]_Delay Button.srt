@@ -1,0 +1,501 @@
+﻿1
+00:00:00,000 --> 00:00:02,250
+Trong bài này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,250 --> 00:00:05,670
+Delay Button một đối tượng thuộc Quick controls, nó là
+
+3
+00:00:05,670 --> 00:00:08,429
+một đối tượng cho phép ta có thể dễ dàng
+
+4
+00:00:08,429 --> 00:00:12,120
+xử lý trường hợp vô tình click vào trúng button, hãy mở
+
+5
+00:00:12,120 --> 00:00:13,860
+Qt creator và làm thử nào
+
+6
+00:00:13,860 --> 00:00:17,010
+Vào QT creator, ta sẽ
+
+7
+00:00:17,010 --> 00:00:19,949
+tạo mới một project, như thường lệ nó sẽ là một
+
+8
+00:00:19,949 --> 00:00:23,039
+ứng dựng QT quick, chúng ta đặt tên nó là
+
+9
+00:00:23,039 --> 00:00:25,529
+DelayButtonDemo và lưu nó lại, và như lần trước
+
+10
+00:00:25,529 --> 00:00:30,240
+nhấn next sau đó chọn phiên bản Qt
+
+11
+00:00:30,240 --> 00:00:35,160
+và chọn bộ công cụ (kits), thay đổi tiêu đề
+
+12
+00:00:35,160 --> 00:00:37,829
+ở đây thành DelayButtonDemo và xuống
+
+13
+00:00:37,829 --> 00:00:44,190
+dưới chúng ta đặt một thành phần column, chúng ta
+
+14
+00:00:44,190 --> 00:00:56,719
+sẽ import thư viện Qt quick controls 2.4
+
+15
+00:00:56,719 --> 00:00:59,969
+và duống dưới đây
+
+16
+00:00:59,969 --> 00:01:03,629
+chúng ta đặt một Label để hiển thị thông tin
+
+17
+00:01:03,629 --> 00:01:07,439
+về đối tượng component này, phía bên trong tôi sẽ
+
+18
+00:01:07,439 --> 00:01:10,380
+thiết lập một số thuộc tính mà tôi đã
+
+19
+00:01:10,380 --> 00:01:13,049
+chuẩn bị sẵn, ta có chiều rộng
+
+20
+00:01:13,049 --> 00:01:15,990
+thì bằng với đối tượng cha, chỉnh
+
+21
+00:01:15,990 --> 00:01:18,479
+WrapMode là Wrap để nó có thể
+
+22
+00:01:18,479 --> 00:01:21,479
+bao được chữ nếu dòng chữ đó có
+
+23
+00:01:21,479 --> 00:01:24,090
+chiều rộng rộng hơn chiều rộng của đối tượng
+
+24
+00:01:24,090 --> 00:01:26,759
+ta chỉnh cho font chữ to lên một chút, có lẽ bạn
+
+25
+00:01:26,759 --> 00:01:29,430
+đã biết tất cả những thứ này, bên dưới này ta
+
+26
+00:01:29,430 --> 00:01:34,290
+để một DelayButton nó
+
+27
+00:01:34,290 --> 00:01:37,350
+có rất nhiều thuộc tính giống với một button bình thường
+
+28
+00:01:37,350 --> 00:01:39,960
+do vậy nó sẽ có thuộc tính như text
+
+29
+00:01:39,960 --> 00:01:42,329
+chúng ta gõ "Delay Button"
+
+30
+00:01:42,329 --> 00:01:46,590
+để cho đẹp chúng ta cũng đặt thuộc tính
+
+31
+00:01:46,590 --> 00:01:48,030
+canh giữa cho nó và chúng ta gõ
+
+32
+00:01:48,030 --> 00:01:51,479
+anchor.horizontalCentor là parent.horizontalCenter
+
+33
+00:01:51,479 --> 00:01:53,579
+và chúng ta sẽ xem một số
+
+34
+00:01:53,579 --> 00:01:56,520
+signals(tín hiệu) cụ thể của DelayButton
+
+35
+00:01:56,520 --> 00:02:01,380
+chọn nó và nhấn f1 để đi tới
+
+36
+00:02:01,380 --> 00:02:04,070
+phần hướng dẫn đầy đủ, bạn sẽ thấy
+
+37
+00:02:04,070 --> 00:02:07,200
+phần mô tả cho button này, nó là một
+description for this button it is a
+
+38
+00:02:07,200 --> 00:02:09,090
+button có khả năng kiểm tra và dừng chờ
+
+39
+00:02:09,090 --> 00:02:11,890
+trước khi button
+
+40
+00:02:11,890 --> 00:02:14,890
+được check, và hàm tín hiệu activated()
+
+41
+00:02:14,890 --> 00:02:18,100
+được phát đi, căn bản là nó được thiết kế để
+
+42
+00:02:18,100 --> 00:02:20,500
+mặc định bạn sẽ bấm giữ nút này
+
+43
+00:02:20,500 --> 00:02:24,340
+để có thể kích hoạt nó và nó được kích hoạt
+
+44
+00:02:24,340 --> 00:02:27,100
+sau một khoảng thời gian kể từ khi sự kiện xảy ra
+
+45
+00:02:27,100 --> 00:02:30,010
+thời gian đó được cấu hình trong thuộc tính delay
+
+46
+00:02:30,010 --> 00:02:32,680
+và progress là thuộc tính chỉ ra nó sẽ chờ
+
+47
+00:02:32,680 --> 00:02:35,950
+bao lâu, ta sẽ
+
+48
+00:02:35,950 --> 00:02:41,200
+trở lại phần code, chỉnh
+
+49
+00:02:41,200 --> 00:02:43,690
+để thời gian chờ là 1 giây
+
+50
+00:02:43,690 --> 00:02:46,600
+chính là 1000 mili giây và ta muốn
+
+51
+00:02:46,600 --> 00:02:48,790
+biết khi nào thì button được kích hoạt
+
+52
+00:02:48,790 --> 00:02:55,870
+nên ta sẽ viết cho thuộc tính onActivated
+
+53
+00:02:55,870 --> 00:03:05,350
+ta sẽ gõ console.log và giờ tới
+
+54
+00:03:05,350 --> 00:03:07,959
+progress (quá trình), nếu bạn qua trở lại
+
+55
+00:03:07,959 --> 00:03:10,239
+phần hướng dẫn bạn thấy có
+
+56
+00:03:10,239 --> 00:03:13,660
+thuộc tính progress ở đây, và chúng ta muốn
+
+57
+00:03:13,660 --> 00:03:18,130
+lấy thông tin của nó, vì thế ta có một tín hiệu (signal) tự động gọi là
+
+58
+00:03:18,130 --> 00:03:23,560
+onProgressChanged, chúng ta muốn hiển thị
+
+59
+00:03:23,560 --> 00:03:31,090
+ra console thông tin progress, hãy chạy
+
+60
+00:03:31,090 --> 00:03:33,180
+chương trình lên và xem nó như thế nào
+
+61
+00:03:33,180 --> 00:03:36,489
+bạn thấy cái chữ này nằm không như ta
+
+62
+00:03:36,489 --> 00:03:38,140
+mong muốn, chúng ta muốn nó tràn ra
+
+63
+00:03:38,140 --> 00:03:41,410
+hết chiều ngang nhưng nó không như thế, vì vậy
+
+64
+00:03:41,410 --> 00:03:43,959
+ta cần chỉnh một số thứ cho nó
+
+65
+00:03:43,959 --> 00:03:47,799
+chúng ta cần chỉnh chiều rộng của Column này bằng với
+
+66
+00:03:47,799 --> 00:03:52,750
+chiều rộng của đối tượng cha, và hãy thêm
+
+67
+00:03:52,750 --> 00:03:59,560
+khoảng cách nữa, chạy lại chương trình
+
+68
+00:03:59,560 --> 00:04:03,070
+ta sẽ thấy sự thay đổi và ở đây
+
+69
+00:04:03,070 --> 00:04:06,220
+nếu bạn nhấn vào nút này bạn sẽ thấy
+
+70
+00:04:06,220 --> 00:04:10,650
+nó hiện lên một số thông tìn về progress
+
+71
+00:04:10,650 --> 00:04:13,630
+rồi, cái progress(quá trình) thì trong khoảng 0 - 1
+
+72
+00:04:13,630 --> 00:04:17,168
+và nếu chúng ta cứ giữ nó nó sẽ
+
+73
+00:04:17,168 --> 00:04:20,048
+chạy tới 1, và nó báo
+
+74
+00:04:20,048 --> 00:04:21,149
+nút đã được kích hoạt
+
+75
+00:04:21,149 --> 00:04:28,380
+tôi có thể nhấn lại và button đã được
+
+76
+00:04:28,380 --> 00:04:35,430
+kích hoạt, ok chúng ta biết rằng button được
+
+77
+00:04:35,430 --> 00:04:38,370
+kích hoạt khi tín hiệu này được kích hoạt và
+
+78
+00:04:38,370 --> 00:04:40,889
+bạn có thể thấy nó hiện số 1 khi
+
+79
+00:04:40,889 --> 00:04:44,310
+bạn giữ cho progress chạy tới 1, ok bạn có thể
+
+80
+00:04:44,310 --> 00:04:46,440
+sử dụng loại nút này trong trường hợp
+
+81
+00:04:46,440 --> 00:04:47,970
+bạn muốn trong ứng dụng
+
+82
+00:04:47,970 --> 00:04:51,449
+có một ngữ cảnh giống thế này nhưng tình huống
+
+83
+00:04:51,449 --> 00:04:54,150
+sử dụng thông thường là cho người sử dụng nhấn
+
+84
+00:04:54,150 --> 00:04:56,490
+giữ button tới khi button được kích hoạt
+
+85
+00:04:56,490 --> 00:04:59,190
+và khi nó được kích hoạt rồi thì
+
+86
+00:04:59,190 --> 00:05:01,590
+cho phép người dùng click một lần nữa và
+
+87
+00:05:01,590 --> 00:05:04,350
+hủy kích hoạt của nó đi, để làm được điều
+
+88
+00:05:04,350 --> 00:05:07,080
+đó ta cần sử dụng JavaScript
+
+89
+00:05:07,080 --> 00:05:09,660
+và chúng ta cần làm gì ?
+
+90
+00:05:09,660 --> 00:05:13,349
+di chuyển lên phía trên đây và định nghĩa
+
+91
+00:05:13,349 --> 00:05:19,410
+một thuộc tính mới, gõ property
+
+92
+00:05:19,410 --> 00:05:24,650
+tiếp theo là activated và ta để nó là false
+
+93
+00:05:24,650 --> 00:05:28,620
+ta cũng cần quản lý tín hiệu khi
+
+94
+00:05:28,620 --> 00:05:35,580
+mà button được nhấn, chúng ta muốn kiểm tra
+
+95
+00:05:35,580 --> 00:05:44,370
+và xem nếu button kích hoạt
+
+96
+00:05:44,370 --> 00:05:53,699
+chúng ta sẽ in ra console là "Button is clicked"
+
+97
+00:05:53,699 --> 00:05:55,560
+chỗ này bạn có thể làm bất cứ thứ gì bạn muốn khi
+
+98
+00:05:55,560 --> 00:05:58,770
+button được kích hoạt và thu thập, và ta
+
+99
+00:05:58,770 --> 00:06:03,120
+gán activated
+
+100
+00:06:03,120 --> 00:06:07,500
+thành false
+
+101
+00:06:07,500 --> 00:06:10,440
+và khi button đã được kích hoạt
+
+102
+00:06:10,440 --> 00:06:13,919
+ta sẽ chỉnh activated thành
+
+103
+00:06:13,919 --> 00:06:17,449
+true ở đây
+
+104
+00:06:21,029 --> 00:06:23,889
+làm nó có thể nhấn được
+
+105
+00:06:23,889 --> 00:06:26,499
+nhưng khi đang click nó sẽ
+
+106
+00:06:26,499 --> 00:06:29,050
+chuyển thành không click được nữa và
+
+107
+00:06:29,050 --> 00:06:31,569
+sự kiện click sẽ không được xử lý nữa
+
+108
+00:06:31,569 --> 00:06:33,999
+bởi vì biến activated không còn là
+
+109
+00:06:33,999 --> 00:06:37,029
+true, tôi hi vọng là các bạn hiểu, ta
+
+110
+00:06:37,029 --> 00:06:39,789
+sẽ tiếp tục xem cái progress khi chúng ta
+
+111
+00:06:39,789 --> 00:06:42,099
+nhấn giữ button nó sẽ thế nào
+
+112
+00:06:42,099 --> 00:06:46,959
+chạy chương trình và nhấn giữ nút này, bạn sẽ thấy
+
+113
+00:06:46,959 --> 00:06:51,300
+khi bạn thả nó ra thì tín hiệu activated
+
+114
+00:06:51,300 --> 00:06:56,559
+không còn được kích hoạt, rồi
+
+115
+00:06:56,559 --> 00:06:59,829
+hãy giữ nó đến khi nó kết thúc, nó hiện ra
+
+116
+00:06:59,829 --> 00:07:03,729
+"Button is activated" nhưng nó không click nữa
+
+117
+00:07:03,729 --> 00:07:06,639
+nó hiện ra "Button clicked" và progress
+
+118
+00:07:06,639 --> 00:07:09,339
+trở lại giá trị 0, đây là
+
+119
+00:07:09,339 --> 00:07:11,829
+toàn bộ về Delay Button, nó thì
+
+120
+00:07:11,829 --> 00:07:15,069
+rất dễ sử dụng trong thực tế và nó có thể
+
+121
+00:07:15,069 --> 00:07:17,050
+hỗ trợ bạn khi bạn muốn làm cái gì đó
+
+122
+00:07:17,050 --> 00:07:17,739
+tương tự
+
+123
+00:07:17,739 --> 00:07:19,629
+trong bài kế tiếp chúng ta sẽ tìm hiểu
+
+124
+00:07:19,629 --> 00:07:23,259
+về Dial Controls trong QT quick,
+
+125
+00:07:23,259 --> 00:00:00,000
+hẹn gặp lại.
+

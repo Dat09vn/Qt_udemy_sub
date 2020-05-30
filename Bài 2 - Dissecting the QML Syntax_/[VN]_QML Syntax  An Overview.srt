@@ -1,0 +1,1316 @@
+1
+00:00:00,000 --> 00:00:01,770
+Trong bài này chúng ta sẽ bắt đầu đi 
+
+2
+00:00:01,770 --> 00:00:04,140
+nghiên cứu về cú pháp của ngôn ghữ Qml.
+
+3
+00:00:04,140 --> 00:00:06,720
+Thay vì giảng cho các bạn một bài về
+
+4
+00:00:06,720 --> 00:00:10,260
+ngữ nghĩa của Qml, tôi nghĩ sẽ hiệu quả
+
+5
+00:00:10,260 --> 00:00:13,049
+hơn khi sử dụng qt creator, bắt đầu
+
+6
+00:00:13,049 --> 00:00:15,150
+tạo ra một thứ gì đó thú vị và sau đó
+
+7
+00:00:15,150 --> 00:00:17,430
+giải thích về cú pháp trong lúc chúng ta lập trình. Thứ chúng ta sẽ
+
+8
+00:00:17,430 --> 00:00:18,990
+thiết kế thì như thế này các bạn có thể
+
+9
+00:00:18,990 --> 00:00:21,090
+ấn vào ô màu đỏ, nó sẽ
+
+10
+00:00:21,090 --> 00:00:23,039
+hiển thị màu bạn ấn trong hình tròn
+
+11
+00:00:23,039 --> 00:00:26,789
+màu xanh lam nhạt ở đây, các bạn ấn vào màu xanh lá
+
+12
+00:00:26,789 --> 00:00:29,039
+thấy nó ghi là xanh lá ở đây, các bạn ấn vào màu xanh lam
+
+13
+00:00:29,039 --> 00:00:31,380
+nó sẽ ghi là xanh lam. Các bạn thấy là chúng ta có
+
+14
+00:00:31,380 --> 00:00:34,440
+vài dòng nhật ký ở khung thông tin ứng dụng.
+
+15
+00:00:34,440 --> 00:00:36,690
+Khi các bạn ấn vào ô màu xanh lam nhạt
+
+16
+00:00:36,690 --> 00:00:39,480
+các bạn thấy là nó hiển thị loop và khi
+
+17
+00:00:39,480 --> 00:00:42,149
+các bạn ấn nhũng ô khác thì không có gì xảy ra nữa
+
+18
+00:00:42,149 --> 00:00:45,660
+mặc dù chúng ta vẫn thấy có nhật kí xuất hiện. Vậy
+
+19
+00:00:45,660 --> 00:00:47,250
+chúng ta sẽ thiết kế thứ này và
+
+20
+00:00:47,250 --> 00:00:49,590
+đồng thời giải thích về cú pháp Qml
+
+21
+00:00:49,590 --> 00:00:52,590
+mà chúng ta sử dụng. Chúng ta sẽ
+
+22
+00:00:52,590 --> 00:00:53,899
+tạo một dự án mới.
+
+23
+00:00:53,899 --> 00:00:57,329
+Nó là một ứng dụng Qt quick trắng.
+
+24
+00:00:57,329 --> 00:00:59,910
+Chúng ta sẽ lưu nó ở một
+
+25
+00:00:59,910 --> 00:01:03,420
+vị trí trên ổ đĩa, chúng ta sẽ sử dụng chỗ đó làm
+
+26
+00:01:03,420 --> 00:01:06,450
+vị trí lưu mặc định của dự án, tạm thời. Chúng ta
+
+27
+00:01:06,450 --> 00:01:09,570
+sẽ gọi nó là QmlSyntaxDemo, ấn
+
+28
+00:01:09,570 --> 00:01:12,689
+next, lựa chọn bản qmake làm công cụ thiết kế,
+
+29
+00:01:12,689 --> 00:01:15,210
+lựa chọn bản qt mới nhất mà bạn
+
+30
+00:01:15,210 --> 00:01:18,270
+đã cài. Và các bạn chọn
+
+31
+00:01:18,270 --> 00:01:20,820
+bộ công cụ desktop. Điều đầu tiên tôi muốn các bạn
+
+32
+00:01:20,820 --> 00:01:23,520
+để ý là cú pháp import ở đây.
+
+33
+00:01:23,520 --> 00:01:25,619
+Cái đầu tiên để đưa vào thư viện
+
+34
+00:01:25,619 --> 00:01:27,930
+qt quick mà chúng ta sẽ sử dụng, và
+
+35
+00:01:27,930 --> 00:01:31,320
+các thứ hai sẽ đưa vào một phần
+
+36
+00:01:31,320 --> 00:01:34,500
+của qt quick mà thực hiện việc hiển thị của sổ
+
+37
+00:01:34,500 --> 00:01:36,210
+này đây. Các bạn thấy là thành phần cửa sổ
+
+38
+00:01:36,210 --> 00:01:38,850
+được lấy ra từ thu viện này. Và nếu 
+
+39
+00:01:38,850 --> 00:01:40,799
+chúng ta đưa nó làm phần bình luận các bạn thấy là
+
+40
+00:01:40,799 --> 00:01:43,020
+cửa sổ ở đây không thể được nhận diện. Do đó nó
+
+41
+00:01:43,020 --> 00:01:45,990
+đến từ lấn nhập thư viện này đây. Chúng
+
+42
+00:01:45,990 --> 00:01:48,240
+về cơ bản là đưa vào các thư viện khác nhau và
+
+43
+00:01:48,240 --> 00:01:50,490
+khiến cho các thư việc sẵn sàng để bạn sử dụng trong
+
+44
+00:01:50,490 --> 00:01:52,799
+file của chúng ta. Điều đầu tiên chúng muốn
+
+45
+00:01:52,799 --> 00:01:55,170
+làm là cho cái của sổ này
+
+46
+00:01:55,170 --> 00:01:58,880
+một ID, chúng ta sẽ gọi nó là rootId. 
+
+47
+00:01:58,880 --> 00:02:03,299
+Id giống như một flag mà để xác định
+
+48
+00:02:03,299 --> 00:02:05,579
+duy nhất một phần tử Qml.
+
+49
+00:02:05,579 --> 00:02:08,119
+các bạn sẽ sử dụng cái này rất này cho nên
+
+50
+00:02:08,119 --> 00:02:11,459
+hãy nhớ kỹ nó. Điều tiếp theo chúng ta muốn
+
+51
+00:02:11,459 --> 00:02:13,710
+làm là để cửa sổ này
+
+52
+00:02:13,710 --> 00:02:15,930
+hiển thị rằng nó là một Qml Syntax Demo
+
+53
+00:02:15,930 --> 00:02:19,500
+vì đó chình là nó. Chúng ta
+
+54
+00:02:19,500 --> 00:02:24,120
+muốn khai báo một thuộc tính. Nó sẽ 
+
+55
+00:02:24,120 --> 00:02:26,700
+là một xâu kí tự, nó sẽ có tên là testToShow
+
+56
+00:02:26,700 --> 00:02:30,030
+và nó sẽ được gán giá trị ban đầu
+
+57
+00:02:30,030 --> 00:02:33,240
+là một xâu rỗng như thế này. Đây là cách
+
+58
+00:02:33,240 --> 00:02:35,550
+các ban khai báo biến hay thuộc tính trong
+
+59
+00:02:35,550 --> 00:02:38,040
+Qml và chúng ta sẽ có cơ hội để
+
+60
+00:02:38,040 --> 00:02:39,750
+nói nhiều hơn về nó khi chúng ta học về
+
+61
+00:02:39,750 --> 00:02:43,230
+biến và các kiểu dữ liệu. Chúng ta sẽ
+
+62
+00:02:43,230 --> 00:02:47,310
+ra một phần tử hàng, chúng ta sẽ
+
+63
+00:02:47,310 --> 00:02:51,420
+cho là Id là Row1 và nhớ là 
+
+64
+00:02:51,420 --> 00:02:54,600
+một Id xác định duy nhất một phần tử
+
+65
+00:02:54,600 --> 00:02:58,080
+Qml trong phần code Qml của các bạn. Chúng ta có thể
+
+66
+00:02:58,080 --> 00:03:00,450
+gọi tới hàng này bất cứ đâu trong file này
+
+67
+00:03:00,450 --> 00:03:03,150
+bằng việc sử dụng cái Id này, các bạn sẽ thấy
+
+68
+00:03:03,150 --> 00:03:04,440
+cách chúng ta sử dụng nó.
+
+69
+00:03:04,440 --> 00:03:07,260
+Chúng ta muốn hàng này ở chính giữa, cách
+
+70
+00:03:07,260 --> 00:03:10,230
+chúng ta làm thế là chúng ta viết anchors.centerIn: Parent.
+
+71
+00:03:10,230 --> 00:03:13,890
+Chúng ta sẽ nói về 
+
+72
+00:03:13,890 --> 00:03:16,020
+anchor sau trong khóa học nhưng bây giờ
+
+73
+00:03:16,020 --> 00:03:18,750
+chúng sẽ sử dụng nó để nói với chương trình
+
+74
+00:03:18,750 --> 00:03:21,870
+hiển thị cái hàng này ở chính giữa cái
+
+75
+00:03:21,870 --> 00:03:24,450
+cửa sổ này, hàng ngang sẽ nằm ở
+
+76
+00:03:24,450 --> 00:03:26,880
+chinhs giữa cửa sổ. Chúng ta muốn thêm vào
+
+77
+00:03:26,880 --> 00:03:30,300
+một chút khoảng trống và hãy để nó ở 20 vì
+
+78
+00:03:30,300 --> 00:03:32,670
+chúng ta muốn các phần tử trong hàng
+
+79
+00:03:32,670 --> 00:03:35,820
+có chút khoảng cách giữa chúng.
+
+80
+00:03:35,820 --> 00:03:37,920
+Tôi không nghĩ là mình đã nói điều này nhưng phần tử
+
+81
+00:03:37,920 --> 00:03:39,920
+Row cho phép các bạn sắp xếp
+
+82
+00:03:39,920 --> 00:03:43,680
+các phần tử trên một hàng, từ trái sang phải
+
+83
+00:03:43,680 --> 00:03:47,040
+theo ý các bạn. Và bây giờ chúng ta
+
+84
+00:03:47,040 --> 00:03:49,080
+sẵn sàng để thêm những thứ khác vào bên trong, chúng ta
+
+85
+00:03:49,080 --> 00:03:52,320
+sẽ đưa vào các phần tử rectangle. Okay
+
+86
+00:03:52,320 --> 00:03:54,180
+vậy chúng ta sẽ viết rectangle như thế này
+
+87
+00:03:54,180 --> 00:03:56,960
+chúng ta sẽcho nó chiều rộng là
+
+88
+00:03:56,960 --> 00:04:04,950
+150 và chiều cao là 150. Nếu các bạn
+
+89
+00:04:04,950 --> 00:04:07,230
+chưa để ý thì đây là cách các bạn xác định
+
+90
+00:04:07,230 --> 00:04:11,220
+thuộc tính cho các phần tử Qml, đây
+
+91
+00:04:11,220 --> 00:04:13,200
+không phải là lấn đầu tiên chúng ta làm nó nhưng tôi
+
+92
+00:04:13,200 --> 00:04:14,850
+nghĩ đây là lần đầu tôi 
+
+93
+00:04:14,850 --> 00:04:18,329
+giải thích về nó. Ở trên đây các bạn thấy
+
+94
+00:04:18,329 --> 00:04:20,070
+một phần tử cửa sổ cũng có vài
+
+95
+00:04:20,070 --> 00:04:22,380
+thuộc tính, chúng ta có một thuộc tính khả kiến để
+
+96
+00:04:22,380 --> 00:04:25,110
+làm cho nó nhìn thấy được nó cũng có một chiều rộng và
+
+97
+00:04:25,110 --> 00:04:27,510
+chiều cao và đầu đề mà được hiển thị ở
+
+98
+00:04:27,510 --> 00:04:30,630
+thanh tiêu đề cho cửa sổ ở đây. Chúng ta
+
+99
+00:04:30,630 --> 00:04:32,730
+đang làm việc tương tự: thiết lập
+
+100
+00:04:32,730 --> 00:04:35,070
+chiều rộng và cao cho hình chữ nhật này. Chúng ta
+
+101
+00:04:35,070 --> 00:04:37,200
+cũng có các thuộc tính khác và phần tử
+
+102
+00:04:37,200 --> 00:04:39,300
+hình chữ nhật này chúng ta sẽ có cơ hội
+
+103
+00:04:39,300 --> 00:04:41,370
+để nói về nó nhưng bây giờ chúng ta
+
+104
+00:04:41,370 --> 00:04:44,880
+muốn thiết lập một màu sắc. Nó sẽ là
+
+105
+00:04:44,880 --> 00:04:46,740
+màu nền nên chúng ta sẽ để nó có
+
+106
+00:04:46,740 --> 00:04:52,260
+màu đỏ. Chúng ta muốn cho nó một bo viền chúng ta
+
+107
+00:04:52,260 --> 00:04:54,510
+muốn viền của nó hơi tròn một chút
+
+108
+00:04:54,510 --> 00:04:57,000
+chúng ta sẽ để nó ở 20. Và
+
+109
+00:04:57,000 --> 00:04:59,280
+bên trong chúng ta muốn đưa một phần tử mà
+
+110
+00:04:59,280 --> 00:05:02,580
+chúng ta gọi là MouseArea. Một MouseArea về
+
+111
+00:05:02,580 --> 00:05:04,470
+cơ bản là một thứ cho phép chúng ta
+
+112
+00:05:04,470 --> 00:05:07,050
+làm cho thứ gì đó có thể ấn vào, chúng ta
+
+113
+00:05:07,050 --> 00:05:09,210
+sẽ làm cho nó tràn đầy hình chữ nhật và
+
+114
+00:05:09,210 --> 00:05:11,400
+chúng ta sẽ sử dụng anchors một lần nữa. Chúng ta
+
+115
+00:05:11,400 --> 00:05:15,110
+sẽ viết anchors.fill:parent. Và
+
+116
+00:05:15,110 --> 00:05:20,100
+chúng ta muốn đưa vào một trình điều khiển sự kiện mà
+
+117
+00:05:20,100 --> 00:05:21,930
+sẽ được gọi đến mỗi khi bạn ấn chuột vào nó.
+
+118
+00:05:21,930 --> 00:05:24,450
+Cách các bạn làm nó giống như trong JavaScript
+
+119
+00:05:24,450 --> 00:05:28,830
+các bạn viết onClicked và các bạn thiết lập
+
+120
+00:05:28,830 --> 00:05:31,680
+đoạn code mà mình muốn được thực thi khi
+
+121
+00:05:31,680 --> 00:05:34,200
+các bạn ấn lên nó ở trong đây. Bây giờ chúng ta
+
+122
+00:05:34,200 --> 00:05:38,370
+muốn gọi console.log và chúng ta muốn
+
+123
+00:05:38,370 --> 00:05:45,720
+viết "click on the red rectangle". Chúng ta
+
+124
+00:05:45,720 --> 00:05:47,700
+nên đặt một Id cho hình chữ nhật này
+
+125
+00:05:47,700 --> 00:05:52,490
+nên chúng ta sẽ viết id : redRectId.
+
+126
+00:05:52,490 --> 00:05:55,020
+Okay bầy giờ chúng ta đã làm xong cái này tôi muốn
+
+127
+00:05:55,020 --> 00:05:58,740
+chép cái hình chữ nhật này và dán nó thêm
+
+128
+00:05:58,740 --> 00:06:02,160
+3 lần nữa. Các bạn thấy là chúng báo cho lỗi
+
+129
+00:06:02,160 --> 00:06:04,710
+cho chúng ta rằng redRectId đã được
+
+130
+00:06:04,710 --> 00:06:07,770
+sử dụng nó bị trùng id. Hình chữ nhật
+
+131
+00:06:07,770 --> 00:06:11,010
+này sẽ có màu xanh là nên chúng ta
+
+132
+00:06:11,010 --> 00:06:17,430
+gọi nó là greenRectId và cái này
+
+133
+00:06:17,430 --> 00:06:21,330
+sẽ có màu xanh lam chúng ta sẽ gọi
+
+134
+00:06:21,330 --> 00:06:25,470
+là blueRectId ở đây. Chúng ta cũng thay đổi
+
+135
+00:06:25,470 --> 00:06:27,870
+tin được hiển thị ở đây, chúng ta 
+
+136
+00:06:27,870 --> 00:06:30,810
+sẽ để green ở đây - green rectangle
+
+137
+00:06:30,810 --> 00:06:34,050
+và blue ở đây. Bay giờ chúng ta đã có những thứ này tôi
+
+138
+00:06:34,050 --> 00:06:35,760
+muốn chạy ứng dụng và cho các bạn thấy
+
+139
+00:06:35,760 --> 00:06:38,880
+nó trong như thế nào. Ấn nút màu xanh
+
+140
+00:06:38,880 --> 00:06:40,639
+ở đây để chạy
+
+141
+00:06:40,639 --> 00:06:43,840
+và boom các bạn thấy là chúng ta có
+
+142
+00:06:43,840 --> 00:06:46,969
+những hình chữ nhật và chúng có góc bo tròn
+
+143
+00:06:46,969 --> 00:06:50,029
+mà được đặt bởi thuộc tính radius
+
+144
+00:06:50,029 --> 00:06:53,120
+ở đây trên phần tử rectangle. Một thứ nữa
+
+145
+00:06:53,120 --> 00:06:54,770
+tôi muốn cho các bạn xem là các
+
+146
+00:06:54,770 --> 00:06:57,110
+đoạn vắn bản đã có hiệu lực, tiêu đề mà chúng ta
+
+147
+00:06:57,110 --> 00:06:59,779
+đặt. Và nếu các bạn tăng kích thước của
+
+148
+00:06:59,779 --> 00:07:01,370
+cửa sổ các bạn thấy là những
+
+149
+00:07:01,370 --> 00:07:04,729
+hình chữ nhật nằm nguyên tại chính giữa cửa sổ
+
+150
+00:07:04,729 --> 00:07:08,120
+như chúng ta đã dặt ở đây. Chúng ta muốn mội thứ
+
+151
+00:07:08,120 --> 00:07:10,819
+trong hàng đặt ở trung tâm của đối tượng cha.
+
+152
+00:07:10,819 --> 00:07:13,159
+Và bây giờ mong các bạn đã nhận ra các phần tử 
+
+153
+00:07:13,159 --> 00:07:17,210
+trong hàng được sắp xếp theo một hàng 
+
+154
+00:07:17,210 --> 00:07:20,270
+từ trái qua phải. Okay các bạn thấy là 
+
+155
+00:07:20,270 --> 00:07:22,099
+phần tử đầu tiên chúng ta đưa vào là
+
+156
+00:07:22,099 --> 00:07:24,590
+hình chữ nhật màu đỏ, cái thứ 2 là
+
+157
+00:07:24,590 --> 00:07:26,750
+chữ nhật màu xanh lục, cái thứ 3 là chũ nhật 
+
+158
+00:07:26,750 --> 00:07:28,909
+màu xanh lam và các bạn thấy rằng chúng
+
+159
+00:07:28,909 --> 00:07:32,240
+được sắp xếp từ trái qua phải. Nếu
+
+160
+00:07:32,240 --> 00:07:34,520
+bạn ấn lên chữ nhật màu đỏ các bạn thấy
+
+161
+00:07:34,520 --> 00:07:36,229
+rằng chúng nói bạn ấn lên chữ nhật
+
+162
+00:07:36,229 --> 00:07:38,839
+màu đỏ, ấn lên cái màu xanh lá các bạn thấy
+
+163
+00:07:38,839 --> 00:07:41,120
+lời nhắc, ấn lên cái màu xanh lam các bạn thấy
+
+164
+00:07:41,120 --> 00:07:43,669
+lời nhắc. Nhưng đây chưa phải là những gì
+
+165
+00:07:43,669 --> 00:07:46,339
+định thực hiện trong bài này. Cho nên
+
+166
+00:07:46,339 --> 00:07:48,139
+việc tiếp theo chúng ta làm là thêm vào
+
+167
+00:07:48,139 --> 00:07:54,379
+hình tròn màu lam nhạt, chúng ta làm như thế nào. Chúng ta
+
+168
+00:07:54,379 --> 00:07:56,629
+sẽ chép phần code ở đây về phần 
+
+169
+00:07:56,629 --> 00:07:58,189
+hình chữ nhật một lần nữa bởi vì đó là những gì
+
+170
+00:07:58,189 --> 00:08:01,159
+chúng ta sẽ kế thừa để làm nó trong giống
+
+171
+00:08:01,159 --> 00:08:05,419
+như một hình tròn. Chúng ta sẽ dán nó
+
+172
+00:08:05,419 --> 00:08:08,120
+xuống đây. Chúng ta sẽ thay đổi Id
+
+173
+00:08:08,120 --> 00:08:13,219
+thành textRectId và bên trong chúng ta muốn
+
+174
+00:08:13,219 --> 00:08:15,680
+hiển thị vài kí tự. Các chúng ta làm thế là chúng ta đặt
+
+175
+00:08:15,680 --> 00:08:18,500
+phần tử text vào bên trong chúng ta đã làm
+
+176
+00:08:18,500 --> 00:08:20,330
+thế này trong bài trước nên chúng ta
+
+177
+00:08:20,330 --> 00:08:23,719
+sẽ viết text và chúng ta muốn giá trị của nó là
+
+178
+00:08:23,719 --> 00:08:26,960
+textToShow, thuộc tính mà chúng ta
+
+179
+00:08:26,960 --> 00:08:30,439
+đã khai báo ở phía trên này. Chúng ta cũng muốn nó
+
+180
+00:08:30,439 --> 00:08:33,589
+hiển thị ở giữa của đối tượng cha nên
+
+181
+00:08:33,589 --> 00:08:37,429
+chúng ta sẽ viết anchor.centerIn: parent.
+
+182
+00:08:37,429 --> 00:08:42,919
+Và để kiểm tra hãy để nó hiển thị hello
+
+183
+00:08:42,919 --> 00:08:46,370
+ở đây để xem chúng ta có nhìn thấy dòng chữ nào ở trong
+
+184
+00:08:46,370 --> 00:08:48,860
+chữ nhật mà chúng đã khai báo ở đây không. Chúng ta cũng
+
+185
+00:08:48,860 --> 00:08:51,709
+muốn làm nó trông giống hình tròn nên chúng ta
+
+186
+00:08:51,709 --> 00:08:54,329
+sẽ tăng độ cong tới
+
+187
+00:08:54,329 --> 00:08:57,239
+một con số rất lớn, hãy để nó ở 100 và
+
+188
+00:08:57,239 --> 00:08:59,850
+xem nó trong như thế nào. Trước khi chúng ta chạy
+
+189
+00:08:59,850 --> 00:09:06,269
+thử hãy để màu của nó thành đogẻ blue. Có rất
+
+190
+00:09:06,269 --> 00:09:08,429
+nhiều màu được định sẵn mà các bạn có thể sử dụng
+
+191
+00:09:08,429 --> 00:09:11,339
+cho các ứng dụng Qml, chúng ta sẽ 
+
+192
+00:09:11,339 --> 00:09:12,959
+nói thêm về những thứ này khi chúng ta nói về
+
+193
+00:09:12,959 --> 00:09:15,420
+các thuộc tính màu sắc. Hãy chạy thử
+
+194
+00:09:15,420 --> 00:09:19,259
+ứng dụng đễ xem thành quả. Và BOOM
+
+195
+00:09:19,259 --> 00:09:21,959
+chúng ta thấy là chúng ta có một hình tròn màu lam nhạt
+
+196
+00:09:21,959 --> 00:09:24,389
+hiển thị hello. Việc tiếp theo chúng ta muốn
+
+197
+00:09:24,389 --> 00:09:26,670
+làm là thay đổi thuộc tính này khi chúng ta
+
+198
+00:09:26,670 --> 00:09:30,540
+ấn vào các chữ nhật ở đây, chúng ta làm
+
+199
+00:09:30,540 --> 00:09:34,170
+như thế nào. Nếu các bạn quan sát thì Id cho đoạn văn tự này
+
+200
+00:09:34,170 --> 00:09:36,720
+chưa có ở đây nên đây là thời cơ để
+
+201
+00:09:36,720 --> 00:09:39,689
+khai báo nó nên chúng ta sẽ đặt cho nó là textId.
+
+202
+00:09:39,689 --> 00:09:42,839
+Okay khi ai đó ấn vào chúng ta
+
+203
+00:09:42,839 --> 00:09:45,480
+muốn thay đổi thuộc tính testToShow
+
+204
+00:09:45,480 --> 00:09:47,970
+này và nó sẽ thay đổi 
+
+205
+00:09:47,970 --> 00:09:50,759
+thuộc tính text ở đây cho chúng ta bởi vì chúng ta
+
+206
+00:09:50,759 --> 00:09:53,189
+đã ràng buộc thuộc tính này với 
+
+207
+00:09:53,189 --> 00:09:55,019
+thuộc tính ở đây. Hãy để tôi cho các bạn xem
+
+208
+00:09:55,019 --> 00:09:55,499
+ý của tôi.
+
+209
+00:09:55,499 --> 00:09:57,540
+Chúng ta sẽ viết ở đây
+
+210
+00:09:57,540 --> 00:10:04,259
+testToShow = "blue" bởi vì đây là chữ nhật
+
+211
+00:10:04,259 --> 00:10:07,589
+màu xanh lam. Ở đây chúng ta sẽ đặt
+
+212
+00:10:07,589 --> 00:10:14,279
+textToShow = "green" và ở đây chúng ta sẽ
+
+213
+00:10:14,279 --> 00:10:19,669
+đặt textToShow = "red".
+
+214
+00:10:19,669 --> 00:10:29,429
+Hãy chạy thử. Uh-huh các bạn thấy là nói hiển thị
+
+215
+00:10:29,429 --> 00:10:33,959
+red rồi green rồi blue. Okay
+
+216
+00:10:33,959 --> 00:10:35,999
+tại sao nó lại có thể thực hiện và tại sao nó lại thay đổi
+
+217
+00:10:35,999 --> 00:10:39,149
+văn tự trong hình tròn lam nhạt. Khi
+
+218
+00:10:39,149 --> 00:10:41,699
+chúng ta chỉ thây đổi thuộc tính của testToShow
+
+219
+00:10:41,699 --> 00:10:43,709
+nhớ rằng chúng ta khai báo thứ này ở
+
+220
+00:10:43,709 --> 00:10:46,949
+phía trên này. Nó xảy ra bởi vì chúng ta đã
+
+221
+00:10:46,949 --> 00:10:49,410
+ràng buộc khi chúng ta gán testToShow
+
+222
+00:10:49,410 --> 00:10:52,439
+cho đoạn văn tự ở đây. Khi các bạn làm thế này
+
+223
+00:10:52,439 --> 00:10:54,239
+lần đầu chúng ta đang thực hiện cái chúng ta gọi là
+
+224
+00:10:54,239 --> 00:10:57,329
+ràng buộc thuộc tính trong Qml, các bạn thực ra
+
+225
+00:10:57,329 --> 00:10:59,100
+đang bảo hệ thống cứ theo dõi
+
+226
+00:10:59,100 --> 00:11:01,619
+thay đổi của thuộc tính testToShow và 
+
+227
+00:11:01,619 --> 00:11:04,529
+khi nào có gì thay đổi, thay đổi đó
+
+228
+00:11:04,529 --> 00:11:06,419
+sẽ được lan truyền sang bất cứ
+
+229
+00:11:06,419 --> 00:11:07,450
+thuộc tính nào
+
+230
+00:11:07,450 --> 00:11:09,250
+đã liên kết và trong trường hợp này tới thuộc tính
+
+231
+00:11:09,250 --> 00:11:11,380
+của phần tử văn tự ở đây, tôi
+
+232
+00:11:11,380 --> 00:11:15,190
+mong là cái này dễ hiểu. Hãy chạy thử lại để
+
+233
+00:11:15,190 --> 00:11:18,280
+các bạn thấy được nó thao tác red, green,
+
+234
+00:11:18,280 --> 00:11:21,970
+blue. Okat tôi thực sự muốn làm
+
+235
+00:11:21,970 --> 00:11:24,730
+gì đó để phá vỡ cấu trúc này nên
+
+236
+00:11:24,730 --> 00:11:26,170
+khi các bạn ấn vào chữ nhật lam nhạt
+
+237
+00:11:26,170 --> 00:11:28,090
+ở đây tôi muốn thay đổi văn tự
+
+238
+00:11:28,090 --> 00:11:31,000
+trong đây thành văn tự tĩnh. Tôi sẽ 
+
+239
+00:11:31,000 --> 00:11:37,750
+đặt textId.text = thứ gì đó
+
+240
+00:11:37,750 --> 00:11:40,690
+như là loop. Okay đây là một đoạn văn tự thay thế tôi
+
+241
+00:11:40,690 --> 00:11:43,450
+đặt vào đây. Khi tôi chạy úng dụng
+
+242
+00:11:43,450 --> 00:11:45,760
+tôi sẽ vẫn có thể ấn vào các chũ nhật
+
+243
+00:11:45,760 --> 00:11:48,100
+đỏ, xanh lục, xang lam và thay đổi
+
+244
+00:11:48,100 --> 00:11:50,470
+văn tự ở đây nhưng khi tôi ấn vào 
+
+245
+00:11:50,470 --> 00:11:52,510
+hình tròn lam nhạt tôi sẽ phá bỏ
+
+246
+00:11:52,510 --> 00:11:54,610
+cấu trúc này bởi vì tôi
+
+247
+00:11:54,610 --> 00:11:57,670
+đặt một giá trị khác cho thuộc tính
+
+248
+00:11:57,670 --> 00:12:00,280
+ở đây. Hãy chạy chương trình và cho
+
+249
+00:12:00,280 --> 00:12:05,410
+các bạn xem ý của tôi. Okay ứng dụng đã ở đây
+
+250
+00:12:05,410 --> 00:12:09,130
+tôi có thể ấn vào chữ nhật đỏ, tôi thấy red ở đây, tôi
+
+251
+00:12:09,130 --> 00:12:12,250
+ấn vào chữ nhật xanh lục đã thấy green ở đây, tôi ấn vào
+
+252
+00:12:12,250 --> 00:12:15,010
+chữ nhật xanh lam tôi thấy xanh lam ở đây. Hãy ấn vào
+
+253
+00:12:15,010 --> 00:12:18,160
+cái ô này chúng ta sẽ thấy loop ở đây. Nhưng
+
+254
+00:12:18,160 --> 00:12:20,530
+khi tôi ấn lên màu đỏ lần nữa chú ý rằng tôi
+
+255
+00:12:20,530 --> 00:12:23,230
+có nhận được lời nhắc ở đay nhưng các thay đổi
+
+256
+00:12:23,230 --> 00:12:25,630
+không được ánh xạ vào chữ nhật lam nhạt
+
+257
+00:12:25,630 --> 00:12:27,640
+bởi vì tôi đã hủy thuộc tính đó.
+
+258
+00:12:27,640 --> 00:12:32,110
+Tôi đã phá bỏ rằng buộc giữa
+
+259
+00:12:32,110 --> 00:12:34,960
+thuộc tính testToShow và văn tự của
+
+260
+00:12:34,960 --> 00:12:37,030
+thành phần text ở đây. Tôi mong điều này
+
+261
+00:12:37,030 --> 00:12:39,280
+dễ hiểu. Tất nhiên đâu chỉ là phần
+
+262
+00:12:39,280 --> 00:12:40,870
+giới thiệu chúng ta sẽ có thêm nhiều 
+
+263
+00:12:40,870 --> 00:12:43,180
+cơ hội để thảo luận về điều này nhưng bây giờ
+
+264
+00:12:43,180 --> 00:12:45,850
+các bạn đã có ý tưởng về Qml là một
+
+265
+00:12:45,850 --> 00:12:49,120
+ngôn ngữ khai báo. Nó có
+
+266
+00:12:49,120 --> 00:12:51,100
+tính khai bào vì các bạn tự định nghĩa
+
+267
+00:12:51,100 --> 00:12:53,320
+các thành phần khi các bạn cần chúng. Và một thứ nữa
+
+268
+00:12:53,320 --> 00:12:55,840
+các bạn cần để ý là các thành phần
+
+269
+00:12:55,840 --> 00:12:57,520
+đều ohaan cáp bậc có một quan hệ
+
+270
+00:12:57,520 --> 00:13:00,820
+cha - con giữa các phần tử
+
+271
+00:13:00,820 --> 00:13:03,550
+trong một file Qml. Ví dụ
+
+272
+00:13:03,550 --> 00:13:05,980
+phần tử hàng là con của
+
+273
+00:13:05,980 --> 00:13:08,350
+cửa sổ ở đây, chữ nhật là một con
+
+274
+00:13:08,350 --> 00:13:11,020
+con của phần tử hàng ở đây và
+
+275
+00:13:11,020 --> 00:13:14,200
+những chữ nhật này là anh em. Các bạn
+
+276
+00:13:14,200 --> 00:13:16,600
+có thể thấy mỗi chữ nhật có một con
+
+277
+00:13:16,600 --> 00:13:19,529
+của riêng nó, một mouseArea.
+
+278
+00:13:19,529 --> 00:13:21,720
+Và dưới này chúng ta có một chữ nhật
+
+279
+00:13:21,720 --> 00:13:23,459
+có hai con
+
+280
+00:13:23,459 --> 00:13:26,279
+phần tử văn tự và phần tử
+
+281
+00:13:26,279 --> 00:13:28,529
+mouseArea. Một thứ khác các bạn để ý là
+
+282
+00:13:28,529 --> 00:13:31,379
+chúng ta cho các phần tử các Id riêng biệt.
+
+283
+00:13:31,379 --> 00:13:35,509
+Chúng ta không sử dụng đến rowId ở đây nhưng
+
+284
+00:13:35,509 --> 00:13:40,920
+để ý rằng chúng ta thay đổi văn tự
+
+285
+00:13:40,920 --> 00:13:43,740
+bên trong phần tử này sử dụng Id của nó, chúng ta dùng
+
+286
+00:13:43,740 --> 00:13:48,660
+textID.text. Nếu chúng ta chỉ dùng mỗi text
+
+287
+00:13:48,660 --> 00:13:50,819
+như thế này chúng ta sẽ gặp một lỗi
+
+288
+00:13:50,819 --> 00:13:53,399
+khi chúng ta chạy chương trình bởi vì
+
+289
+00:13:53,399 --> 00:13:55,290
+thuộc tính này không thể nhận ra.
+
+290
+00:13:55,290 --> 00:13:58,050
+Okau hãy ấn vào cái này và các bạn sẽ thấy
+
+291
+00:13:58,050 --> 00:14:00,209
+có lỗi không thể viết lến thuộc tính
+
+292
+00:14:00,209 --> 00:14:03,180
+toàn thể "text". Phần tử mouseArea không có
+
+293
+00:14:03,180 --> 00:14:05,610
+một thuộc tính text để làm việc. Đó là
+
+294
+00:14:05,610 --> 00:14:08,160
+tại sao chúng ta thấy lỗi ở đây và nó cho
+
+295
+00:14:08,160 --> 00:14:11,040
+chúng ta dòng code mà chúng ta có
+
+296
+00:14:11,040 --> 00:14:13,470
+lỗi này. Chúng ta có thể sửa nó
+
+297
+00:14:13,470 --> 00:14:16,350
+bằng cách ấn Ctrl+Z để quay lại trước đó.
+
+298
+00:14:16,350 --> 00:14:19,529
+Okay các Id là rất quan trọng khi
+
+299
+00:14:19,529 --> 00:14:21,839
+các bạn định làm việc với các phần tử
+
+300
+00:14:21,839 --> 00:14:24,480
+sau này trong code như chúng ta đã làm ở đây.
+
+301
+00:14:24,480 --> 00:14:27,269
+Một thứ các bạn thấy là trong Qml các bạn có thể
+
+302
+00:14:27,269 --> 00:14:30,120
+đáp lại các sự kiện. Chúng ta phần tử mouseArea này
+
+303
+00:14:30,120 --> 00:14:32,519
+và chúng ta có thể ấn và
+
+304
+00:14:32,519 --> 00:14:35,730
+phản ứng lại cú nhập bằng đoạn code
+
+305
+00:14:35,730 --> 00:14:38,610
+ở đây. Okay chúng ta hiển thị tin nhắc bằng cách
+
+306
+00:14:38,610 --> 00:14:41,579
+ghi vào bảng báo lỗi chúng ta cũng thay đổi
+
+307
+00:14:41,579 --> 00:14:43,889
+giá trị của thuộc tính testToShow
+
+308
+00:14:43,889 --> 00:14:46,980
+ở đây. Các bạn có thể làm những việc này trong
+
+309
+00:14:46,980 --> 00:14:49,500
+Qml. Các bạn có thể xử lý các sự kiện và chúng ta sẽ
+
+310
+00:14:49,500 --> 00:14:51,569
+có nhiều cơ hội để thảo luận về thứ này
+
+311
+00:14:51,569 --> 00:14:53,939
+sau trong khóa học. Tôi mong 
+
+312
+00:14:53,939 --> 00:14:56,550
+đây là một phần giới thiệu tốt cho
+
+313
+00:14:56,550 --> 00:14:59,759
+cú pháp cơ bản của Qml, nó thực sự
+
+314
+00:14:59,759 --> 00:15:02,309
+không khó nếu chúng ta quen với
+
+315
+00:15:02,309 --> 00:15:05,339
+nhưng thứ như HTML và CSS, thứ này
+
+316
+00:15:05,339 --> 00:15:08,220
+không thể thực sự làm khó các bạn bởi vì nó
+
+317
+00:15:08,220 --> 00:15:10,319
+khá giống kể cả cú pháp có hơi
+
+318
+00:15:10,319 --> 00:15:11,339
+khác.
+
+319
+00:15:11,339 --> 00:15:14,189
+Đến đây là đã kết thúc những gì chúng ta định ra trong
+
+320
+00:15:14,189 --> 00:15:15,839
+bài học này. Tôi mong các bạn đã có một
+
+321
+00:15:15,839 --> 00:15:17,939
+phần giới thiệu thú vị về ngôn ngữ Qml. Tôi
+
+322
+00:15:17,939 --> 00:15:20,189
+khuyến khích các bạn ôn lại
+
+323
+00:15:20,189 --> 00:15:23,040
+và thử chạy nó hay thay đổi một vài thứ
+
+324
+00:15:23,040 --> 00:15:25,829
+theo ý thích để xem hiệu quả của những
+
+325
+00:15:25,829 --> 00:15:28,170
+thay đổi. Trong bài học tiếp theo chúng ta sẽ
+
+326
+00:15:28,170 --> 00:15:30,420
+cùng tìm hiểu về vài kiểu dữ liệu trong Qml và
+
+327
+00:15:30,420 --> 00:15:32,490
+cách các bạn có thể sử dụng chúng trong úng dụng
+
+328
+00:15:32,490 --> 00:15:34,679
+Qt quick. Tôi sẽ gặp lại các bạn
+
+329
+00:15:34,679 --> 00:00:00,000
+trong bài tiếp theo.
+

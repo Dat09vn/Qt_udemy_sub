@@ -1,0 +1,1256 @@
+1
+00:00:00,000 --> 00:00:02,190
+in this lecture we are going to look at
+
+2
+00:00:02,190 --> 00:00:03,120
+the combobox
+
+3
+00:00:03,120 --> 00:00:05,640
+element it is an element that allows the
+
+4
+00:00:05,640 --> 00:00:08,010
+user to choose between different options
+
+5
+00:00:08,010 --> 00:00:11,460
+if you come to Qt creator go to
+
+6
+00:00:11,460 --> 00:00:15,210
+tools options and choose Build & Run
+
+7
+00:00:15,210 --> 00:00:17,310
+here you going to have an option here
+
+8
+00:00:17,310 --> 00:00:20,070
+stop application before building I just
+
+9
+00:00:20,070 --> 00:00:21,840
+want you to see that a combobox is
+
+10
+00:00:21,840 --> 00:00:23,699
+something like this you click on it and
+
+11
+00:00:23,699 --> 00:00:25,980
+you are given a few options you can
+
+12
+00:00:25,980 --> 00:00:28,260
+choose from and you choose one by
+
+13
+00:00:28,260 --> 00:00:29,279
+clicking to it
+
+14
+00:00:29,279 --> 00:00:31,980
+let's create a new project QT quick
+
+15
+00:00:31,980 --> 00:00:35,719
+application we call it combobox demo
+
+16
+00:00:35,719 --> 00:00:41,610
+hit next choose our Qt version we
+
+17
+00:00:41,610 --> 00:00:44,040
+want these toolkit we are working on
+
+18
+00:00:44,040 --> 00:00:48,960
+desktop in this demo we change the title
+
+19
+00:00:48,960 --> 00:00:55,260
+to combo box demo and we should put in
+
+20
+00:00:55,260 --> 00:00:59,840
+our import for a QT quick controls
+
+21
+00:00:59,840 --> 00:01:05,188
+controls 2.4 that's what we want down
+
+22
+00:01:05,188 --> 00:01:09,810
+here we want to put a column element we
+
+23
+00:01:09,810 --> 00:01:15,240
+want these spacing to be 40 and we want
+
+24
+00:01:15,240 --> 00:01:19,369
+its width to be the same as the parent
+
+25
+00:01:19,369 --> 00:01:21,960
+in this we put the label element
+
+26
+00:01:21,960 --> 00:01:25,290
+and the label element is really like a
+
+27
+00:01:25,290 --> 00:01:30,860
+text element if we click on it and press f1
+
+28
+00:01:30,860 --> 00:01:33,390
+going to help mode you're going to
+
+29
+00:01:33,390 --> 00:01:36,750
+see that the label element extends text
+
+30
+00:01:36,750 --> 00:01:39,750
+with styling and font inheritance it
+
+31
+00:01:39,750 --> 00:01:42,960
+really is a text that is enhanced with
+
+32
+00:01:42,960 --> 00:01:45,750
+more features so you can give it some
+
+33
+00:01:45,750 --> 00:01:49,799
+text to show and we are going to say 
+
+34
+00:01:49,799 --> 00:01:57,329
+"Non Editable Combo" because this is what we
+
+35
+00:01:57,329 --> 00:01:59,040
+want to show out mean the combobox that you
+
+36
+00:01:59,040 --> 00:02:03,390
+cannot edit we want its wrap mode to be
+
+37
+00:02:03,390 --> 00:02:09,239
+level wrap we want it to be aligned in
+
+38
+00:02:09,239 --> 00:02:10,739
+the center so we're going to set
+
+39
+00:02:10,739 --> 00:02:12,550
+horizontalAlignment
+
+40
+00:02:12,550 --> 00:02:16,810
+Qt AlignHCenter and we
+
+41
+00:02:16,810 --> 00:02:19,450
+wanted to have the same width as its
+
+42
+00:02:19,450 --> 00:02:23,200
+parent okay we put the label to keep
+
+43
+00:02:23,200 --> 00:02:25,600
+things organized and so that you can
+
+44
+00:02:25,600 --> 00:02:28,720
+know what we are aiming at down here we
+
+45
+00:02:28,720 --> 00:02:31,440
+are going to put a combobox element
+
+46
+00:02:31,440 --> 00:02:34,120
+okay let's look at its documentation
+
+47
+00:02:34,120 --> 00:02:37,690
+click on f1 go in full help mode and
+
+48
+00:02:37,690 --> 00:02:40,030
+you're going to see it is a combined
+
+49
+00:02:40,030 --> 00:02:42,880
+button and pop-up list this is a better
+
+50
+00:02:42,880 --> 00:02:45,640
+explanation actually when you click on
+
+51
+00:02:45,640 --> 00:02:47,920
+it there is a pop-up list that shows
+
+52
+00:02:47,920 --> 00:02:50,440
+with the options that you can choose
+
+53
+00:02:50,440 --> 00:02:53,320
+okay and you use it like this the model
+
+54
+00:02:53,320 --> 00:02:55,810
+property allows you to give it a list of
+
+55
+00:02:55,810 --> 00:02:58,630
+things that it can show and we are going
+
+56
+00:02:58,630 --> 00:03:01,360
+to Edit, in a moment let's give it an
+
+57
+00:03:01,360 --> 00:03:09,640
+ID okay this is the ID we want let's
+
+58
+00:03:09,640 --> 00:03:11,920
+close this we want to give it the data
+
+59
+00:03:11,920 --> 00:03:15,010
+to show using the model property we put
+
+60
+00:03:15,010 --> 00:03:25,930
+this in an array so let's say 1 2 this
+
+61
+00:03:25,930 --> 00:03:30,010
+should do we want it to be in the center
+
+62
+00:03:30,010 --> 00:03:32,790
+horizontally too so we can say anchors
+
+63
+00:03:32,790 --> 00:03:35,550
+horizontal center because parent
+
+64
+00:03:35,550 --> 00:03:38,470
+horizontal Center and we want to know
+
+65
+00:03:38,470 --> 00:03:41,320
+when somebody selects something in the
+
+66
+00:03:41,320 --> 00:03:44,020
+combo box if we go back to the
+
+67
+00:03:44,020 --> 00:03:47,980
+documentation and look at its signals
+
+68
+00:03:47,980 --> 00:03:51,040
+there is one signal that is called
+
+69
+00:03:51,040 --> 00:03:55,480
+activated and it is emitted when the item
+
+70
+00:03:55,480 --> 00:03:59,260
+at index is activated by the
+
+71
+00:03:59,260 --> 00:04:05,520
+user okay so we can say on activated
+
+72
+00:04:07,140 --> 00:04:10,750
+this is the handler we want and inside
+
+73
+00:04:10,750 --> 00:04:13,239
+this handler we want to output the
+
+74
+00:04:13,239 --> 00:04:15,880
+element that was selected and there is
+
+75
+00:04:15,880 --> 00:04:17,918
+another property that should give us
+
+76
+00:04:17,918 --> 00:04:22,060
+that on a plate and that one is current
+
+77
+00:04:22,060 --> 00:04:26,860
+text so we can say console.log
+
+78
+00:04:26,860 --> 00:04:31,360
+we want to put the current index inside
+
+79
+00:04:31,360 --> 00:04:33,919
+square brackets so we're going to do
+
+80
+00:04:33,919 --> 00:04:44,900
+something like this okay we first want
+
+81
+00:04:44,900 --> 00:04:47,389
+to show the index which is current index
+
+82
+00:04:47,389 --> 00:04:49,969
+this is another property of the combo
+
+83
+00:04:49,969 --> 00:04:52,039
+box element if you go there you see that
+
+84
+00:04:52,039 --> 00:04:55,580
+it is this property that holds the index
+
+85
+00:04:55,580 --> 00:04:57,819
+of the current item in the combo box
+
+86
+00:04:57,819 --> 00:05:01,069
+okay we are going to append the current
+
+87
+00:05:01,069 --> 00:05:05,509
+text to show the current element and we
+
+88
+00:05:05,509 --> 00:05:08,349
+are going to append a string literal
+
+89
+00:05:08,349 --> 00:05:13,909
+that says is activated okay you going to
+
+90
+00:05:13,909 --> 00:05:16,819
+see what I mean when we run this let's
+
+91
+00:05:16,819 --> 00:05:21,289
+run the application mm-hmm you see that
+
+92
+00:05:21,289 --> 00:05:23,300
+when we click on the combo box here we
+
+93
+00:05:23,300 --> 00:05:26,180
+have a list of options you can select
+
+94
+00:05:26,180 --> 00:05:28,580
+one through four for example if we
+
+95
+00:05:28,580 --> 00:05:33,830
+select three it says to the index and it
+
+96
+00:05:33,830 --> 00:05:36,979
+says the text and it says is activated
+
+97
+00:05:36,979 --> 00:05:41,240
+okay the index for 3 is 2 because the
+
+98
+00:05:41,240 --> 00:05:44,750
+indexes start from 0 so this is 0 1 2
+
+99
+00:05:44,750 --> 00:05:50,240
+and the last one should be 3mx and it
+
+100
+00:05:50,240 --> 00:05:52,639
+says the text and it says it is
+
+101
+00:05:52,639 --> 00:05:53,479
+activated
+
+102
+00:05:53,479 --> 00:05:56,210
+I hope this shows you how you can
+
+103
+00:05:56,210 --> 00:05:59,300
+capture the currently selected item in
+
+104
+00:05:59,300 --> 00:06:02,270
+the combo box and another thing that is
+
+105
+00:06:02,270 --> 00:06:05,479
+not obvious is how you give your combo
+
+106
+00:06:05,479 --> 00:06:09,469
+box a list of things it can show ok this
+
+107
+00:06:09,469 --> 00:06:12,529
+is a model property we haven't really
+
+108
+00:06:12,529 --> 00:06:15,409
+talked about models in qutilat we are
+
+109
+00:06:15,409 --> 00:06:17,270
+going to talk about that later in the
+
+110
+00:06:17,270 --> 00:06:20,569
+course but for now know that it is a way
+
+111
+00:06:20,569 --> 00:06:24,110
+you feed the data to show to the combo
+
+112
+00:06:24,110 --> 00:06:26,509
+box and this is really what we did here
+
+113
+00:06:26,509 --> 00:06:29,360
+now you know how to work with a non
+
+114
+00:06:29,360 --> 00:06:32,689
+editable combo box that you feed static
+
+115
+00:06:32,689 --> 00:06:35,569
+data using model property here the
+
+116
+00:06:35,569 --> 00:06:38,729
+next thing we want to do is to use
+
+117
+00:06:38,729 --> 00:06:41,939
+an editable combobox that we can add
+
+118
+00:06:41,939 --> 00:06:45,509
+data to at run time okay we're going to
+
+119
+00:06:45,509 --> 00:06:48,059
+call this editable it's really going to
+
+120
+00:06:48,059 --> 00:06:51,419
+be the same the other properties and we
+
+121
+00:06:51,419 --> 00:06:54,169
+are going to copy these combo box and
+
+122
+00:06:54,169 --> 00:06:59,879
+give it a bunch of other properties okay
+
+123
+00:06:59,879 --> 00:07:03,229
+we are going to call it editable combo
+
+124
+00:07:03,229 --> 00:07:07,020
+because we want to edit it and we want
+
+125
+00:07:07,020 --> 00:07:12,479
+to set its editable property to true to
+
+126
+00:07:12,479 --> 00:07:15,259
+make it edible
+
+127
+00:07:15,559 --> 00:07:18,059
+okay another thing I want you to see now
+
+128
+00:07:18,059 --> 00:07:20,550
+is that you can feed this with an
+
+129
+00:07:20,550 --> 00:07:23,729
+explicit model we are going to use a
+
+130
+00:07:23,729 --> 00:07:30,509
+model that we call list model we are
+
+131
+00:07:30,509 --> 00:07:33,360
+going to give it an ID of model and
+
+132
+00:07:33,360 --> 00:07:37,169
+again I haven't really explained models
+
+133
+00:07:37,169 --> 00:07:40,080
+in QT quick for now I just want you to
+
+134
+00:07:40,080 --> 00:07:42,300
+have something to show in the combo box
+
+135
+00:07:42,300 --> 00:07:45,149
+and just look at how I do things here
+
+136
+00:07:45,149 --> 00:07:47,819
+don't focus on the model stuff
+
+137
+00:07:47,819 --> 00:07:50,610
+focus on how they feed data to the combo
+
+138
+00:07:50,610 --> 00:07:53,159
+box okay I'm going to try and explain it
+
+139
+00:07:53,159 --> 00:07:53,999
+as I go
+
+140
+00:07:53,999 --> 00:07:57,180
+to save some time I am going to put a
+
+141
+00:07:57,180 --> 00:08:01,319
+list of elements inside this model let's
+
+142
+00:08:01,319 --> 00:08:04,529
+hit ctrl a and control I to align fence
+
+143
+00:08:04,529 --> 00:08:08,520
+I just put these list elements, this
+
+144
+00:08:08,520 --> 00:08:11,069
+element is an element that allows you to
+
+145
+00:08:11,069 --> 00:08:15,419
+add items to the model okay you see that
+
+146
+00:08:15,419 --> 00:08:19,020
+we have objects inside we have an
+
+147
+00:08:19,020 --> 00:08:21,509
+attribute of text and an attribute of
+
+148
+00:08:21,509 --> 00:08:24,659
+location we have a few animals inside we
+
+149
+00:08:24,659 --> 00:08:27,149
+have a dog chicken cat and meerkat and
+
+150
+00:08:27,149 --> 00:08:30,080
+the location Kigali Beijing Mumbai and
+
+151
+00:08:30,080 --> 00:08:36,179
+Paris just look at this as a way to feed
+
+152
+00:08:36,179 --> 00:08:38,458
+data to the combobox don't focus on the
+
+153
+00:08:38,458 --> 00:08:41,279
+details of how this works I am going to
+
+154
+00:08:41,279 --> 00:08:43,169
+have a chance to explain this when we
+
+155
+00:08:43,169 --> 00:08:45,660
+talk about models and using into the
+
+156
+00:08:45,660 --> 00:08:48,390
+Qt quick, because our list element has two
+
+157
+00:08:48,390 --> 00:08:51,240
+attributes we need to specify which
+
+158
+00:08:51,240 --> 00:08:52,620
+attribute is going
+
+159
+00:08:52,620 --> 00:08:55,200
+to be shown in the list model just like
+
+160
+00:08:55,200 --> 00:08:58,320
+we saw one two three in the first combo
+
+161
+00:08:58,320 --> 00:09:01,200
+box here the way you do that you specify
+
+162
+00:09:01,200 --> 00:09:06,870
+a text role property and you pass in the
+
+163
+00:09:06,870 --> 00:09:09,870
+name of the attribute that you have in
+
+164
+00:09:09,870 --> 00:09:12,150
+your model here and this name should be
+
+165
+00:09:12,150 --> 00:09:17,670
+in quotes don't forget that and by now
+
+166
+00:09:17,670 --> 00:09:20,190
+if we run the application let's see what
+
+167
+00:09:20,190 --> 00:09:24,900
+we see mm-hmm you see that our elements
+
+168
+00:09:24,900 --> 00:09:28,230
+are showing inside we have a dog chicken
+
+169
+00:09:28,230 --> 00:09:30,990
+cat and meerkat you can see that this
+
+170
+00:09:30,990 --> 00:09:33,360
+combo box is different from what we had
+
+171
+00:09:33,360 --> 00:09:36,750
+before because it allows us to change
+
+172
+00:09:36,750 --> 00:09:39,089
+the data inside for example if we set
+
+173
+00:09:39,089 --> 00:09:43,080
+dog111 and hit enter we see that
+
+174
+00:09:43,080 --> 00:09:46,110
+our data is not added to the model why
+
+175
+00:09:46,110 --> 00:09:48,900
+is that this is because you didn't
+
+176
+00:09:48,900 --> 00:09:52,500
+capture the on accepted signal of the
+
+177
+00:09:52,500 --> 00:09:54,870
+combo box if you go back to the
+
+178
+00:09:54,870 --> 00:09:58,459
+documentation for the combobox
+
+179
+00:09:58,459 --> 00:10:03,570
+look at signals the accepted signal is
+
+180
+00:10:03,570 --> 00:10:06,330
+emitted when the return or Enter key is
+
+181
+00:10:06,330 --> 00:10:09,420
+pressed on an editable combo box so we
+
+182
+00:10:09,420 --> 00:10:12,900
+need to capture this signal and manually
+
+183
+00:10:12,900 --> 00:10:16,470
+add the data to the model and before we
+
+184
+00:10:16,470 --> 00:10:19,410
+do that I want you to look at another
+
+185
+00:10:19,410 --> 00:10:24,360
+property which is called edit text which
+
+186
+00:10:24,360 --> 00:10:27,390
+contains the text that the user typed in
+
+187
+00:10:27,390 --> 00:10:31,260
+in the combo box to add to the model we
+
+188
+00:10:31,260 --> 00:10:33,959
+are going to use these two things let's
+
+189
+00:10:33,959 --> 00:10:43,230
+come down here and set on accepted but
+
+190
+00:10:43,230 --> 00:10:46,920
+before we add the item to the model here
+
+191
+00:10:46,920 --> 00:10:49,800
+we need to check if the combo box
+
+192
+00:10:49,800 --> 00:10:52,529
+doesn't have this element already for
+
+193
+00:10:52,529 --> 00:10:54,959
+example if you try to add dog again
+
+194
+00:10:54,959 --> 00:10:57,900
+while dog is here we should be able to
+
+195
+00:10:57,900 --> 00:11:00,050
+detect that and not add it
+
+196
+00:11:00,050 --> 00:11:02,060
+again the way you do that you use the
+
+197
+00:11:02,060 --> 00:11:04,750
+method that is provided by ListElement
+
+198
+00:11:04,750 --> 00:11:09,050
+which is called find okay it is here in
+
+199
+00:11:09,050 --> 00:11:13,670
+methods this method returns the index of
+
+200
+00:11:13,670 --> 00:11:17,269
+the specified text or minus one if no 
+
+201
+00:11:17,269 --> 00:11:20,810
+match is found so what we can do is set
+
+202
+00:11:20,810 --> 00:11:23,470
+if find
+
+203
+00:11:23,470 --> 00:11:29,870
+edit text because edit text is the text
+
+204
+00:11:29,870 --> 00:11:32,990
+that the user typed in the combo box if
+
+205
+00:11:32,990 --> 00:11:35,450
+we cannot find it in the combo box
+
+206
+00:11:35,450 --> 00:11:39,470
+already this is going to return minus
+
+207
+00:11:39,470 --> 00:11:42,950
+one and this is when we want to add the
+
+208
+00:11:42,950 --> 00:11:44,779
+element to the model so we're going to
+
+209
+00:11:44,779 --> 00:11:48,350
+set model which is the ID of our model
+
+210
+00:11:48,350 --> 00:11:51,769
+and set append and we are going to
+
+211
+00:11:51,769 --> 00:11:54,470
+append an object okay we are going to
+
+212
+00:11:54,470 --> 00:12:02,810
+set text edit text and because of our
+
+213
+00:12:02,810 --> 00:12:06,170
+model takes two attributes in list
+
+214
+00:12:06,170 --> 00:12:08,810
+elements we can add a dummy location
+
+215
+00:12:08,810 --> 00:12:18,230
+like location let's say us why not can
+
+216
+00:12:18,230 --> 00:12:22,660
+we do that let's try this if we run this
+
+217
+00:12:22,660 --> 00:12:26,120
+okay you see that we have our four
+
+218
+00:12:26,120 --> 00:12:29,320
+elements if we delete this and set
+
+219
+00:12:29,320 --> 00:12:35,779
+Buffalo hit enter and look down again
+
+220
+00:12:35,779 --> 00:12:38,120
+you see that we have buffalo and if we
+
+221
+00:12:38,120 --> 00:12:41,360
+select it you see that index 4 has been
+
+222
+00:12:41,360 --> 00:12:44,930
+added and it is buffalo okay we can
+
+223
+00:12:44,930 --> 00:12:48,020
+manually add data to our model here
+
+224
+00:12:48,020 --> 00:12:55,160
+let's add giraffe hit enter look down
+
+225
+00:12:55,160 --> 00:12:57,050
+you see we have buffalo and we have
+
+226
+00:12:57,050 --> 00:12:59,540
+giraffe the last thing i want to show
+
+227
+00:12:59,540 --> 00:13:02,510
+you is how you can manually capture the
+
+228
+00:13:02,510 --> 00:13:04,940
+current element without having to select
+
+229
+00:13:04,940 --> 00:13:06,490
+another one sometimes you need that
+
+230
+00:13:06,490 --> 00:13:10,680
+let's go down here and add a button
+
+231
+00:13:10,680 --> 00:13:14,320
+you already know how to use a button the
+
+232
+00:13:14,320 --> 00:13:22,810
+text is going to set capture current we
+
+233
+00:13:22,810 --> 00:13:24,610
+want it to be in the center so we're
+
+234
+00:13:24,610 --> 00:13:27,390
+going to copy this and put this here and
+
+235
+00:13:27,390 --> 00:13:31,060
+the one it is clipped we want to capture
+
+236
+00:13:31,060 --> 00:13:33,670
+the current element and show it in the
+
+237
+00:13:33,670 --> 00:13:35,560
+debug output so we're going to say
+
+238
+00:13:35,560 --> 00:13:41,710
+console.log we want to get the text and
+
+239
+00:13:41,710 --> 00:13:45,190
+the location of the list element here
+
+240
+00:13:45,190 --> 00:13:48,460
+for the current item that is selected in
+
+241
+00:13:48,460 --> 00:13:52,480
+the combo box the way you do that you
+
+242
+00:13:52,480 --> 00:13:56,430
+want to put things in square brackets
+
+243
+00:13:56,430 --> 00:14:03,160
+like this so we want to say inside here
+
+244
+00:14:03,160 --> 00:14:10,050
+model yet okay this is a method that is
+
+245
+00:14:10,050 --> 00:14:13,240
+provided by the model it basically
+
+246
+00:14:13,240 --> 00:14:16,240
+returns this list element object and
+
+247
+00:14:16,240 --> 00:14:18,760
+then you can call these properties using
+
+248
+00:14:18,760 --> 00:14:20,710
+the dot notation I am going to show you
+
+249
+00:14:20,710 --> 00:14:22,960
+what I mean so I am going to say
+
+250
+00:14:22,960 --> 00:14:28,390
+editable combo box ID current index okay
+
+251
+00:14:28,390 --> 00:14:31,020
+when you do this this is going to return
+
+252
+00:14:31,020 --> 00:14:34,300
+the ListElement that is the currently
+
+253
+00:14:34,300 --> 00:14:40,180
+selected I am and we can say text to get
+
+254
+00:14:40,180 --> 00:14:40,900
+its
+
+255
+00:14:40,900 --> 00:14:44,860
+text we are going to put a column here
+
+256
+00:14:44,860 --> 00:14:47,890
+and add its location so we're going to
+
+257
+00:14:47,890 --> 00:14:55,090
+say model get all this things and put
+
+258
+00:14:55,090 --> 00:14:57,490
+this on the next line so that things are
+
+259
+00:14:57,490 --> 00:15:01,800
+readable a little bit and say location I
+
+260
+00:15:01,800 --> 00:15:05,140
+hope this makes sense this is a method
+
+261
+00:15:05,140 --> 00:15:09,970
+for the list model here that gets the
+
+262
+00:15:09,970 --> 00:15:13,150
+list element at a given index we are
+
+263
+00:15:13,150 --> 00:15:15,610
+passing the current a text and when we
+
+264
+00:15:15,610 --> 00:15:19,810
+get the object here we captured the text
+
+265
+00:15:19,810 --> 00:15:22,819
+by saying dot text here and
+
+266
+00:15:22,819 --> 00:15:25,100
+captured the location by saying that
+
+267
+00:15:25,100 --> 00:15:27,229
+location we're going to run the
+
+268
+00:15:27,229 --> 00:15:31,699
+application if we click on capture
+
+269
+00:15:31,699 --> 00:15:34,879
+current element you see that it says
+
+270
+00:15:34,879 --> 00:15:38,600
+Dog Kigali which is what we have our
+
+271
+00:15:38,600 --> 00:15:42,619
+dog is located in Kigali let's add our
+
+272
+00:15:42,619 --> 00:15:48,589
+own element and say Buffalo remember
+
+273
+00:15:48,589 --> 00:15:51,679
+that the elements we add manually are
+
+274
+00:15:51,679 --> 00:15:54,350
+going to be located in the US by default
+
+275
+00:15:54,350 --> 00:15:57,369
+which because that's what we did here
+
+276
+00:15:57,369 --> 00:16:02,299
+okay if we say this Buffalo is going to
+
+277
+00:16:02,299 --> 00:16:04,309
+be added to the list if we get the
+
+278
+00:16:04,309 --> 00:16:06,679
+current element we are having Buffalo
+
+279
+00:16:06,679 --> 00:16:10,429
+located in the US let's add giraffe it's
+
+280
+00:16:10,429 --> 00:16:16,579
+also going to be in the US okay select
+
+281
+00:16:16,579 --> 00:16:20,319
+chicken it's going to be in Beijing
+
+282
+00:16:20,319 --> 00:16:24,649
+select giraffe it's going to be in the
+
+283
+00:16:24,649 --> 00:16:27,819
+US okay it's Giraffe, I
+
+284
+00:16:27,819 --> 00:16:31,069
+realized this is a bit useless because
+
+285
+00:16:31,069 --> 00:16:34,429
+the location is hard-coded in here but
+
+286
+00:16:34,429 --> 00:16:37,549
+it is not difficult to get the location
+
+287
+00:16:37,549 --> 00:16:39,589
+from another location in your
+
+288
+00:16:39,589 --> 00:16:42,439
+application and use it here I just
+
+289
+00:16:42,439 --> 00:16:45,229
+wanted you to have a way to read the
+
+290
+00:16:45,229 --> 00:16:48,289
+data that is stored in a model that you
+
+291
+00:16:48,289 --> 00:16:51,289
+specified and supposedly to your combo
+
+292
+00:16:51,289 --> 00:16:53,720
+box here and by now you have all the
+
+293
+00:16:53,720 --> 00:16:55,459
+information you need to work with the
+
+294
+00:16:55,459 --> 00:16:58,729
+non editable combo box and an editable
+
+295
+00:16:58,729 --> 00:17:02,419
+combo box okay you can pass in static
+
+296
+00:17:02,419 --> 00:17:05,529
+data like this or you can pass in an
+
+297
+00:17:05,529 --> 00:17:09,439
+explicit model like this okay don't
+
+298
+00:17:09,439 --> 00:17:12,619
+forget to set the textRole property for
+
+299
+00:17:12,619 --> 00:17:14,599
+your model when you do it like this
+
+300
+00:17:14,599 --> 00:17:16,909
+because when you forget it your combo
+
+301
+00:17:16,909 --> 00:17:19,878
+box is not going to know what it needs
+
+302
+00:17:19,878 --> 00:17:23,750
+to show in here okay if we comment this
+
+303
+00:17:23,750 --> 00:17:26,990
+out and run the application we are going
+
+304
+00:17:26,990 --> 00:17:29,450
+to have an error on the combo box is not
+
+305
+00:17:29,450 --> 00:17:31,700
+going to know what it needs to show this
+
+306
+00:17:31,700 --> 00:17:33,860
+is an internal error on the combobox
+
+307
+00:17:33,860 --> 00:17:36,049
+because it doesn't really know what
+
+308
+00:17:36,049 --> 00:17:36,290
+to show 
+
+309
+00:17:36,290 --> 00:17:39,170
+you need to set this property to have a
+
+310
+00:17:39,170 --> 00:17:41,890
+model that you set like this to work
+
+311
+00:17:41,890 --> 00:17:44,570
+this covers all I have to say in this
+
+312
+00:17:44,570 --> 00:17:46,640
+lecture in the next one we like to look
+
+313
+00:17:46,640 --> 00:17:49,490
+at a component called a delay button
+
+314
+00:17:49,490 --> 00:00:00,000
+I'll see you there
+

@@ -1,0 +1,544 @@
+1
+00:00:00,000 --> 00:00:02,310
+In this lecture, we are looking at ways
+
+2
+00:00:02,310 --> 00:00:05,250
+you can use JavaScript in your QML code.
+
+3
+00:00:05,250 --> 00:00:08,160
+We are specifically going to look at how
+
+4
+00:00:08,160 --> 00:00:10,290
+you can use JavaScript in property
+
+5
+00:00:10,290 --> 00:00:13,349
+bindings, custom functions and signal
+
+6
+00:00:13,349 --> 00:00:16,470
+handlers. Let's go to Qt creator and look
+
+7
+00:00:16,470 --> 00:00:19,109
+at that. Okay. here we are in Qt creator.
+
+8
+00:00:19,109 --> 00:00:21,359
+We are going to create a new project
+
+9
+00:00:21,359 --> 00:00:24,570
+as usual. It's going to be a Qt quick
+
+10
+00:00:24,570 --> 00:00:27,810
+application. We are going to call it
+
+11
+00:00:27,810 --> 00:00:30,960
+JavaScript usage demo. save it in a
+
+12
+00:00:30,960 --> 00:00:34,320
+location on our drive. Use this as the
+
+13
+00:00:34,320 --> 00:00:38,809
+default location for our project for now.
+
+14
+00:00:38,809 --> 00:00:43,860
+Choose your Qt version and choose your
+
+15
+00:00:43,860 --> 00:00:48,289
+camp. We are going to change the title to
+
+16
+00:00:48,289 --> 00:00:53,910
+JavaScript users demo. And to have
+
+17
+00:00:53,910 --> 00:00:55,980
+something to work on, we are going to put
+
+18
+00:00:55,980 --> 00:00:58,980
+a rectangle inside. This is what we
+
+19
+00:00:58,980 --> 00:01:06,180
+always do. Its width is going to depend
+
+20
+00:01:06,180 --> 00:01:08,340
+on the height, so it is going to be
+
+21
+00:01:08,340 --> 00:01:14,760
+height multiplied by 2. And its height
+
+22
+00:01:14,760 --> 00:01:18,869
+is going to be 100 for now. We are going to
+
+23
+00:01:18,869 --> 00:01:22,740
+give it a color of green, and it's going
+
+24
+00:01:22,740 --> 00:01:25,229
+to be in the center of its parent which
+
+25
+00:01:25,229 --> 00:01:28,080
+is this window element here. so we're
+
+26
+00:01:28,080 --> 00:01:33,270
+going to say anchors. Let's run and
+
+27
+00:01:33,270 --> 00:01:36,479
+see what we have. Okay. This is our
+
+28
+00:01:36,479 --> 00:01:38,790
+rectangle. It is in the middle of the
+
+29
+00:01:38,790 --> 00:01:41,790
+window object here. I don't know if you
+
+30
+00:01:41,790 --> 00:01:45,060
+noticed already but this is JavaScript
+
+31
+00:01:45,060 --> 00:01:49,140
+used in property binding. We are binding
+
+32
+00:01:49,140 --> 00:01:51,240
+the width of this rectangle to its
+
+33
+00:01:51,240 --> 00:01:53,790
+height. And this is one usage that we
+
+34
+00:01:53,790 --> 00:01:56,520
+just saw of using javascript in QML
+
+35
+00:01:56,520 --> 00:01:58,740
+files. You've already seen me do this a
+
+36
+00:01:58,740 --> 00:02:01,259
+lot and you are probably going to do it
+
+37
+00:02:01,259 --> 00:02:03,930
+yourself to make your properties depend
+
+38
+00:02:03,930 --> 00:02:06,240
+on each other. To play with this a little
+
+39
+00:02:06,240 --> 00:02:08,490
+more, I am going to put the MouseArea
+
+40
+00:02:08,490 --> 00:02:16,880
+inside. It's going to feel the parent. And
+
+41
+00:02:16,880 --> 00:02:21,420
+we are going to allow this mousearea to
+
+42
+00:02:21,420 --> 00:02:24,660
+drag this rectangle here. We are going to
+
+43
+00:02:24,660 --> 00:02:32,760
+say drag.target: container. You already
+
+44
+00:02:32,760 --> 00:02:34,470
+know how to do this, we've done this
+
+45
+00:02:34,470 --> 00:02:41,160
+before. The Axis is going to be the
+
+46
+00:02:41,160 --> 00:02:49,160
+XAxis. The minimum is going to be zero.
+
+47
+00:02:49,760 --> 00:02:56,120
+And the maximum is going to be parent
+
+48
+00:02:56,120 --> 00:03:01,170
+width minus the width of this containerRecId.
+
+49
+00:03:01,170 --> 00:03:06,140
+So we're going to do.
+
+50
+00:03:08,030 --> 00:03:10,980
+Because we are dragging this rectangle,
+
+51
+00:03:10,980 --> 00:03:13,320
+we don't really need to anchor it in the
+
+52
+00:03:13,320 --> 00:03:15,020
+parent. These properties would be
+
+53
+00:03:15,020 --> 00:03:16,980
+conflicting, so we're going to comment
+
+54
+00:03:16,980 --> 00:03:21,030
+this out. Run the application. It's going
+
+55
+00:03:21,030 --> 00:03:23,310
+to be in the top left of the window, and
+
+56
+00:03:23,310 --> 00:03:28,290
+we can drag it from left to right, can
+
+57
+00:03:28,290 --> 00:03:30,120
+increase the size of the window and you
+
+58
+00:03:30,120 --> 00:03:33,270
+see that it still works. So what we want
+
+59
+00:03:33,270 --> 00:03:37,050
+is, for the rectangle here, to change the
+
+60
+00:03:37,050 --> 00:03:40,590
+color when it goes past the X location
+
+61
+00:03:40,590 --> 00:03:44,790
+of 300. And the way we do that, we make
+
+62
+00:03:44,790 --> 00:03:47,760
+its color depend on the x coordinate of
+
+63
+00:03:47,760 --> 00:03:52,830
+it. So we're going to say if X is greater
+
+64
+00:03:52,830 --> 00:03:59,480
+than 300, the color is going to be red;
+
+65
+00:03:59,480 --> 00:04:02,910
+otherwise, it's going to be green. This is
+
+66
+00:04:02,910 --> 00:04:05,730
+a ternary operator. So if you don't know
+
+67
+00:04:05,730 --> 00:04:07,380
+about it you should check it in
+
+68
+00:04:07,380 --> 00:04:10,250
+JavaScript documentation or any other,
+
+69
+00:04:10,250 --> 00:04:13,920
+like programming language. This is really
+
+70
+00:04:13,920 --> 00:04:15,690
+common and you're going to see it a lot
+
+71
+00:04:15,690 --> 00:04:18,750
+in QML examples. Let's run the
+
+72
+00:04:18,750 --> 00:04:21,910
+application. And if we drag past
+
+73
+00:04:21,910 --> 00:04:25,030
+some location on X, the rectangle should
+
+74
+00:04:25,030 --> 00:04:27,990
+turn red. And you see that it turns red
+
+75
+00:04:27,990 --> 00:04:31,660
+right here. So we should do something to
+
+76
+00:04:31,660 --> 00:04:34,660
+show the x-coordinate as it changes and
+
+77
+00:04:34,660 --> 00:04:39,250
+we should capture one signal for, when X
+
+78
+00:04:39,250 --> 00:04:41,620
+is changed, we are going to say 
+
+79
+00:04:41,620 --> 00:04:53,580
+onXChanged, console.log of X. Run again.
+
+80
+00:04:53,580 --> 00:04:56,530
+Okay. Let's drag to the right. You see
+
+81
+00:04:56,530 --> 00:05:00,550
+that we are passing 100, 200 and when we
+
+82
+00:05:00,550 --> 00:05:03,520
+get close to 300, notice that the color
+
+83
+00:05:03,520 --> 00:05:10,090
+is going to turn red. Ready, red. So our
+
+84
+00:05:10,090 --> 00:05:12,610
+code is working. But what I really want
+
+85
+00:05:12,610 --> 00:05:15,280
+you to focus on is this thing here. okay.
+
+86
+00:05:15,280 --> 00:05:18,370
+This is JavaScript used in here and that
+
+87
+00:05:18,370 --> 00:05:20,290
+this is also another case of using
+
+88
+00:05:20,290 --> 00:05:24,670
+javascript in property binding. okay. Now
+
+89
+00:05:24,670 --> 00:05:26,560
+that you send this, I'd like to show you
+
+90
+00:05:26,560 --> 00:05:29,290
+how you can use custom functions. So what
+
+91
+00:05:29,290 --> 00:05:31,600
+we can do, for example, we can move this
+
+92
+00:05:31,600 --> 00:05:34,450
+property binding here in a function. The
+
+93
+00:05:34,450 --> 00:05:35,950
+way you do that, you can define a
+
+94
+00:05:35,950 --> 00:05:38,380
+function down here, inside this rectangle.
+
+95
+00:05:38,380 --> 00:05:47,050
+And I call it getHeight. And it is going
+
+96
+00:05:47,050 --> 00:05:52,090
+to return what we just did here, this
+
+97
+00:05:52,090 --> 00:05:55,600
+expression. I realize this is a very
+
+98
+00:05:55,600 --> 00:05:58,570
+basic and trivial example, but I just
+
+99
+00:05:58,570 --> 00:06:01,210
+want you to see that you can do this. If
+
+100
+00:06:01,210 --> 00:06:03,070
+you want to do more complex things,
+
+101
+00:06:03,070 --> 00:06:06,520
+you're free to do so. So we can press getHeight
+
+102
+00:06:06,520 --> 00:06:08,860
+here. okay. This is a function we
+
+103
+00:06:08,860 --> 00:06:11,830
+defined inside this rectangle and we are
+
+104
+00:06:11,830 --> 00:06:14,350
+calling it here. Let's run the
+
+105
+00:06:14,350 --> 00:06:16,930
+application to see that things still
+
+106
+00:06:16,930 --> 00:06:19,900
+work the same way. You see that the width
+
+107
+00:06:19,900 --> 00:06:22,810
+is 2 times the height and our code still
+
+108
+00:06:22,810 --> 00:06:25,720
+works. Let's flood this function as a
+
+109
+00:06:25,720 --> 00:06:28,990
+custom function so that you have this as
+
+110
+00:06:28,990 --> 00:06:31,660
+a reference. And again you might have
+
+111
+00:06:31,660 --> 00:06:34,600
+noticed that in this place here, 
+
+112
+00:06:34,600 --> 00:06:35,529
+onExchange,
+
+113
+00:06:35,529 --> 00:06:37,779
+we have used javascript in a signal
+
+114
+00:06:37,779 --> 00:06:41,009
+handler. Okay. So let's flat this champ.
+
+115
+00:06:41,009 --> 00:06:45,279
+and this really covers all I wanted to
+
+116
+00:06:45,279 --> 00:06:47,589
+show you in this lecture, which is where
+
+117
+00:06:47,589 --> 00:06:50,349
+you can use JavaScript in your QML files.
+
+118
+00:06:50,349 --> 00:06:53,309
+To recap, you can use javascript in
+
+119
+00:06:53,309 --> 00:06:56,379
+property binding just like we did here.
+
+120
+00:06:56,379 --> 00:06:59,079
+I think this turns to function so we
+
+121
+00:06:59,079 --> 00:07:03,309
+should say in Function. You can use
+
+122
+00:07:03,309 --> 00:07:05,889
+javascript in property bindings. You can
+
+123
+00:07:05,889 --> 00:07:09,279
+use javascript in functions, we defined a
+
+124
+00:07:09,279 --> 00:07:11,559
+custom function here, and we called it's
+
+125
+00:07:11,559 --> 00:07:14,919
+here, on the width property, to make it
+
+126
+00:07:14,919 --> 00:07:17,799
+depend on the height. That we define here.
+
+127
+00:07:17,799 --> 00:07:21,129
+We have also used it here in a signal
+
+128
+00:07:21,129 --> 00:07:23,619
+handler where we simply did a console.log
+
+129
+00:07:23,619 --> 00:07:27,009
+to show the current value of x. Okay.
+
+130
+00:07:27,009 --> 00:07:28,899
+Discovers all we set up to do in this
+
+131
+00:07:28,899 --> 00:07:31,209
+lecture, I hope you have a better idea of
+
+132
+00:07:31,209 --> 00:07:33,759
+where you can use javascript in QML
+
+133
+00:07:33,759 --> 00:07:36,009
+files. And the next lecture, we're going
+
+134
+00:07:36,009 --> 00:07:37,959
+to take a little bit more on functions
+
+135
+00:07:37,959 --> 00:07:40,599
+and see the scope of where you can use
+
+136
+00:07:40,599 --> 00:00:00,000
+them. I see you in the next lecture
+

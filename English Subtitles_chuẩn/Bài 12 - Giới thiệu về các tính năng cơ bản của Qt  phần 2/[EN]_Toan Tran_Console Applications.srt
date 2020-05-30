@@ -1,0 +1,346 @@
+WEBVTT
+
+00:01.100 --> 00:06.430
+And this is Section 1- 'Moving beyond GUI Application' which covers using Qt to create console application.
+
+00:06.890 --> 00:11.750
+In this video we're going to cover why we want to use Qt for console application, Qt file directory
+
+00:11.750 --> 00:14.500
+manipulations and Qt messaging debugging.
+
+00:14.510 --> 00:16.330
+So let's answer the obvious question up front.
+
+00:16.460 --> 00:20.980
+Why would we use a GUI development platform for console or non-graphical applications?
+
+00:21.050 --> 00:24.320
+Well it is much much more than a GUI development platform.
+
+00:24.320 --> 00:28.330
+In fact I won't give you one reason to use Qt for console applications.
+
+00:28.340 --> 00:35.000
+I'll give you 6. So if your code involves SQL database access, XML parsing, JSON parsing, thread
+
+00:35.000 --> 00:41.180
+management, networking, event handling, any combination of the aforementioned tasks and it's better for
+
+00:41.180 --> 00:46.400
+you to use C++ you should consider using Qt. There's no need to reinvent the programming wheel.
+
+00:46.400 --> 00:50.360
+Another reason to use Qt for non-graphical applications is that your environment might constrain
+
+00:50.360 --> 00:52.220
+you from using a GUI for anything.
+
+00:52.220 --> 00:57.050
+Common examples of where this would apply would be if you're running on a server, creating a simple utility
+
+00:57.260 --> 01:00.950
+or creating a bunch of services for a microservice architecture.
+
+01:00.980 --> 01:07.700
+So now that we've explained why, let's tackle how we create a project without a GUI. We're going to tackle
+
+01:07.700 --> 01:10.500
+the nonevent loop based example in this lesson.
+
+01:10.520 --> 01:13.430
+But we'll do an event loop based example in the next one.
+
+01:13.820 --> 01:22.240
+So if we switch to the Qt Creator, go to 'File', 'New File or Project', 'Non-Qt Project', 'Plain C++ Application'.
+
+01:22.370 --> 01:28.550
+Select a project location, we will stick with the 'qmake' build system and select the desktop kit and
+
+01:28.550 --> 01:33.850
+then select our version control and we go ahead and run this project.
+
+01:33.850 --> 01:38.900
+What you'll see is this is a very simple Hello World example but we have this process stuff that pops
+
+01:38.900 --> 01:40.350
+up every time we run this.
+
+01:40.480 --> 01:46.500
+If we don't want that process of the pop up, we can navigate into the '.pro', under this console,
+
+01:46.510 --> 01:52.900
+we will take that out and now if we rerun this, this application output will actually pop up in here.
+
+01:54.700 --> 01:56.190
+Awesome. So now, we know how to do that.
+
+01:56.190 --> 01:58.690
+Let's go ahead and create a small utility.
+
+01:58.690 --> 02:01.560
+Now we need to create some photos for use in the next section.
+
+02:01.570 --> 02:04.190
+A bunch of randomly colored photos to be exact.
+
+02:04.360 --> 02:07.700
+So let's create an application to generate some photos.
+
+02:07.900 --> 02:08.940
+We change the code.
+
+02:08.960 --> 02:14.080
+See I've already outlined what we need to do here and the first step is file path manipulation.
+
+02:14.110 --> 02:19.300
+Now I don't often memorise things programming but if there's one thing I invariably end up memorising,
+
+02:19.330 --> 02:21.250
+it's file path manipulation.
+
+02:21.250 --> 02:27.810
+Being able to change directories, create files and create directories while incredibly mundane is in
+
+02:27.850 --> 02:29.340
+the lifeblood of programming.
+
+02:29.380 --> 02:30.910
+So we're going to cover it now.
+
+02:30.910 --> 02:37.210
+Qt provides a cross-platform method for file manipulation in QDir. QDir can be used to manipulate
+
+02:37.210 --> 02:42.610
+pathnames, access information regarding path and files and manipulate the underlying file system.
+
+02:42.610 --> 02:47.300
+So let's go ahead and get access to our current working directory. Awesome.
+
+02:47.310 --> 02:52.350
+So now that we've got access to our current directory, we need to go back to the root of the project
+
+02:52.350 --> 02:57.120
+which means we need to backup 2 directories and then change into the folder for Section 2.
+
+02:57.150 --> 03:01.140
+We're going to create a directory called 'pics' in the section 2 folder.
+
+03:01.230 --> 03:03.920
+So go and change into that section 2 now.
+
+03:05.230 --> 03:10.090
+Now I can of course tell our program to do this but whether or not this is a valid operation is another
+
+03:10.090 --> 03:11.350
+question entirely.
+
+03:11.350 --> 03:15.910
+So let's go ahead and make sure that it was a valid directory change and if it's not that we go ahead
+
+03:15.910 --> 03:18.730
+and inform our users. Nice.
+
+03:18.760 --> 03:21.900
+So now that we've got this boolean. How do we inform our users?
+
+03:22.030 --> 03:25.880
+Well Qt has a built in debugging messaging framework.
+
+03:25.900 --> 03:30.670
+The nice thing about using this framework is that we can change a flag and it can be compiled out.
+
+03:30.670 --> 03:35.090
+We're going to use QFatal here since this is a pretty much no go for our application.
+
+03:35.110 --> 03:40.150
+Our users will need to take some drastic steps in order to make it an actual valid run of the program
+
+03:40.480 --> 03:50.510
+but if it isn't quite that drastic there's also QInfo, QWarning, QCritical and QDebug.
+
+03:50.550 --> 03:56.890
+So if you actually look at this message, it tells us is that the directory 2_section was not
+
+03:56.890 --> 04:02.170
+found and that we need to change our code to 'cd' into the absolute path for our system instead,
+
+04:02.170 --> 04:07.090
+or move the build to the expected directory which it then gives us the expected directory.
+
+04:07.090 --> 04:10.240
+Now we might want to tell our users what the absolute path is.
+
+04:10.240 --> 04:15.100
+So let's go ahead and do that right now before we actually exit this program.
+
+04:15.100 --> 04:20.410
+So since we can't go any further from here we'll go ahead and return out of our main file or a main
+
+04:20.410 --> 04:21.160
+function here.
+
+04:22.380 --> 04:27.100
+So now that we've ensured that we're in the correct directory or it at least exists.
+
+04:27.120 --> 04:30.310
+Let's go ahead and create our 'pics' directory.
+
+04:30.450 --> 04:34.580
+Well actually let's only create it if it doesn't exist in the first place.
+
+04:36.160 --> 04:40.690
+Now this is a little bit of trivial code because if we look at this make mkdir function it'll actually
+
+04:40.730 --> 04:42.060
+returns out of boolean.
+
+04:42.070 --> 04:45.290
+But I wanted to find excuse to use this exist function.
+
+04:45.430 --> 04:49.180
+So you know that it 'exists' function exists right.
+
+04:49.180 --> 04:53.560
+So we also need a change into this directory, so go into that now.
+
+04:53.590 --> 04:54.220
+Perfect.
+
+04:54.220 --> 04:57.010
+Now we need to remove any old photos.
+
+04:57.010 --> 05:00.840
+We use a Qt specific keyword to make this a little easier,
+
+05:00.850 --> 05:06.490
+the 'foreach' command which makes it much simpler to iterate over containers.
+
+05:07.700 --> 05:13.580
+So the entryList will go ahead and give us a bunch of filepaths and then if we find any filepath
+
+05:13.640 --> 05:18.640
+in this pics directory, we're going to go ahead and remove them. Awesome.
+
+05:18.640 --> 05:25.460
+So now when you just need to generate our 100 photos we'll go ahead and do this using a big for loop.
+
+05:25.490 --> 05:30.050
+The first thing that we need to do in our for loop is go ahead and create our QImage.
+
+05:30.050 --> 05:33.390
+And this is going to be a 100 by 100 pixel photos.
+
+05:33.390 --> 05:38.050
+So we'll go and specify that here and then pass in a valid format.
+
+05:38.060 --> 05:40.010
+Now we need to fill the image with a color.
+
+05:40.040 --> 05:44.380
+So we actually need to pick a color first.
+
+05:44.480 --> 05:46.430
+So there's a couple of thing to note here.
+
+05:47.120 --> 05:53.240
+First of all we create the 'colors' at the top of our actual function. It is just a QVector of QColor which
+
+05:53.240 --> 05:59.000
+we get from this method get_virdis_values(), which comes from this header file, which just defines a bunch
+
+05:59.000 --> 06:00.310
+of colors.
+
+06:00.320 --> 06:03.380
+Also the other thing to note is we're using the modulus operator.
+
+06:03.380 --> 06:08.570
+You'll see this quite a bit using qrand or the RAND function and the modulus operator to kind of get
+
+06:08.570 --> 06:10.540
+some sort of bounded random number.
+
+06:10.560 --> 06:15.980
+So this isn't actually been correctly because you don't know what the maximum number is but it's not
+
+06:16.000 --> 06:19.220
+been in 256 increments basically.
+
+06:19.220 --> 06:24.800
+So what I want to demonstrate right now is basically a good way to actually create a true random distribution.
+
+06:25.010 --> 06:29.000
+So we go out and use the class QRandomGenerator and we'll create that.
+
+06:29.000 --> 06:37.430
+And so instead of using this, we can actually call the 'bounded' function on 'random' and pass in the maximum
+
+06:37.430 --> 06:39.170
+which is going to be 255.
+
+06:39.300 --> 06:45.410
+So this will actually return us a better more random than using qrand with modulus operator.
+
+06:45.430 --> 06:49.220
+This is probably still valid code if you don't really care about how it's bent.
+
+06:49.240 --> 06:50.680
+But it's important to know.
+
+06:50.990 --> 06:51.410
+Awesome.
+
+06:51.410 --> 06:54.910
+So now that we've got our color, let's go ahead and fill in our image.
+
+06:56.120 --> 07:01.040
+And once we've got it filled, the last thing we need to do is go ahead and save it. Before we save it,
+
+07:01.040 --> 07:07.130
+we actually need a file path to save it and so let's create that and then just to make sure that we
+
+07:07.130 --> 07:07.930
+got everything right,
+
+07:07.960 --> 07:14.150
+let's go ahead and pass this in to the de-bug before actually saving our file. And that's it. Let's go
+
+07:14.150 --> 07:14.620
+and run this to
+
+07:14.620 --> 07:15.950
+make sure it works.
+
+07:15.950 --> 07:18.140
+Looks like everything worked out OK.
+
+07:18.230 --> 07:20.690
+Now this might not seem like a big deal.
+
+07:20.780 --> 07:22.220
+Let's think about this for a second.
+
+07:22.310 --> 07:28.100
+Without the help of Qt, we would have had to dive into the portable network graphics or PNG format
+
+07:28.130 --> 07:31.870
+and figure out ourselves how to manually save a PNG file.
+
+07:31.880 --> 07:36.590
+Additionally if we wanted this code to be cross-platform we'd have to individually implement the file
+
+07:36.590 --> 07:42.570
+manipulations ourself, which would be a huge drag, which is why we're using Qt in this case for
+
+07:42.800 --> 07:45.420
+console applications and why can be so useful.
+
+07:45.680 --> 07:50.750
+And with that we successfully created our pictures for our future graphics library while demonstrating
+
+07:50.750 --> 07:55.760
+Qt debugging messaging and the QDir class for file manipulations.
+
+07:55.790 --> 08:01.320
+Join us next time where we go over event loop applications and beyond GUI programming section.

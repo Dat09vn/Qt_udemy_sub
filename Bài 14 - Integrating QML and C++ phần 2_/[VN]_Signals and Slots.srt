@@ -1,0 +1,406 @@
+﻿1
+00:00:00,890 --> 00:00:06,370
+Đây là video 5.2 giao tiếp với Qt, sẽ giới thiệu Signals (tín hiệu) và slots(nơi nhận). Trong video này,
+
+2
+00:00:06,390 --> 00:00:13,440
+chúng ta sẽ đi tìm hiểu C++ Signals gửi tới QML Slots, QML Signals tới QML slots và cuối cùng là
+
+3
+00:00:13,440 --> 00:00:15,940
+QML Signals tới C++ Slots
+
+4
+00:00:15,960 --> 00:00:18,110
+Rồi hãy bắt đầu
+
+5
+00:00:18,270 --> 00:00:22,460
+Bây giờ ta sẽ bắt đầu viết code từ ít đến nhiều
+
+6
+00:00:22,490 --> 00:00:27,800
+Rồi ta cần viết một ít code để kết nối một C++ signal có sẵn tới
+
+7
+00:00:27,820 --> 00:00:28,750
+QML slot.
+
+8
+00:00:28,830 --> 00:00:30,100
+Vậy, hãy bắt đầu làm thôi.
+
+9
+00:00:30,120 --> 00:00:33,980
+model hình ảnh của ta thì sẽ có 2 loại sự kiện thay đổi dữ liệu.
+
+10
+00:00:34,110 --> 00:00:38,150
+Một khi chúng ta thay đổi duy nhất một chỉ số và một khi ta thay đổi hết cả model.
+
+11
+00:00:38,160 --> 00:00:41,300
+Bây giờ hãy thiết lập một số thứ để cho ta biết cái nào là cái nào.
+
+12
+00:00:41,310 --> 00:00:47,640
+Chúng ta sẽ định nghĩa một hàm gọi là my_data_changed_slot và ta sẽ để nó trong
+
+13
+00:00:47,730 --> 00:00:51,120
+sự kiện onCompleted của signal, là một phần của ListView.
+
+14
+00:00:51,570 --> 00:00:56,190
+Chúng ta có 3 biến tham số đầu vào đó là upper_index, lower_index và role
+
+15
+00:00:56,190 --> 00:00:58,010
+là cái mà signal (tín hiệu) sẽ gửi cho ta.
+
+16
+00:00:59,440 --> 00:01:01,040
+Và ta cần làm 2 thứ,
+
+17
+00:01:01,060 --> 00:01:07,290
+đó là nếu ta chỉ thay đổi một chỉ số thì chúng ta sẽ tiến hành ghi nó ra.
+
+18
+00:01:07,450 --> 00:01:10,920
+còn nếu chúng ta thay đổi 2 chỉ số thì chúng ta cũng tiến hành log (ghi) nó ra luôn.
+
+19
+00:01:13,900 --> 00:01:14,230
+Hoàn hảo.
+
+20
+00:01:14,230 --> 00:01:18,880
+Khi bạn đã định nghĩa một Slot thì hãy đi kết nối nó với signal, chúng ta sẽ
+
+21
+00:01:18,880 --> 00:01:24,760
+gắn nó với với signal (tín hiệu) sự kiện thay đổi dữ liệu trong model và ta sẽ gọi hàm connect của
+
+22
+00:01:24,760 --> 00:01:32,850
+tín hiệu dataChanged, hoàn hảo rồi, và đây là một ví dụ về kết nối một C++ signal tới một QML slot.
+
+23
+00:01:32,860 --> 00:01:38,200
+Lưu ý là QML slots bản chất là các hàm javascript thế nên ta sẽ định nghĩa một hàm javascript mới
+
+24
+00:01:38,200 --> 00:01:40,780
+và sau đó ta tiến hành kết nối nó.
+
+25
+00:01:40,780 --> 00:01:44,370
+Vậy làm thế nào để kết nối QML signal tới một QML slot.
+
+26
+00:01:44,560 --> 00:01:47,390
+Đầu tiên ta cần định nghĩa một QML signal.
+
+27
+00:01:47,410 --> 00:01:51,930
+Lưu ý là trong khi javascript là một kiểu ngôn ngữ yếu thì signal thì là kiểu mạnh.
+
+28
+00:01:52,060 --> 00:01:56,770
+Do vậy định nghĩa các kiểu tham số là một phần của định nghĩa signal,
+
+29
+00:01:56,770 --> 00:01:57,440
+các tham số đầu vào.
+
+30
+00:01:57,550 --> 00:02:03,500
+Giờ hãy tiến hành tạo một signal request_new_colors, một signal trong QML.
+
+31
+00:02:03,520 --> 00:02:10,090
+Bây giờ chúng ta sẽ đi viết nó ở phần gốc đây và gõ signal request_new_colors
+
+32
+00:02:10,090 --> 00:02:15,670
+sau đó ta sẽ gõ kiểu dữ liệu được truyền vào, nó sẽ là kiểu string
+và ta sẽ truyền nó vào từ bên ngoài
+
+33
+00:02:15,670 --> 00:02:21,320
+chúng ta sẽ đặt tên nó là urgency và đây là cách bạn định nghĩa một QML signal.
+
+34
+00:02:21,350 --> 00:02:26,580
+Với tín hiệu QML signal, chúng ta vẫn chưa hoàn tất ở một số điểm
+
+35
+00:02:26,590 --> 00:02:32,860
+Và khi ta kết nối QML tới QML, ta tiến hành kết nối tín hiệu (signal) của ta với việc thực hiện log ra nội dung
+
+36
+00:02:32,860 --> 00:02:37,260
+ở phía QML, và ta có thể biết ta truyền vào ở phía C++
+
+37
+00:02:37,270 --> 00:02:42,070
+Rồi ta sẽ cài đặt một hàm single_function, hàm này sẽ log (ghi) ra tín hiệu (signal) mà ta phát đi và ta sẽ gọi nó là
+
+38
+00:02:42,070 --> 00:02:47,950
+log_the_urgency và nó sẽ nhận một tham số đầu vào là urgency, sau đó ta sẽ
+
+39
+00:02:47,950 --> 00:02:54,550
+đi gọi hàm console.log nó ra, được rồi, tiếp theo ta kết nối nó, và ta sẽ sử dụng
+
+40
+00:02:54,640 --> 00:03:03,380
+hàm callback onCompleted một lần nữa và ta sẽ sử dụng hàm
+connect và truyền vào
+
+41
+00:03:03,380 --> 00:03:05,140
+hàm mà ta muốn kết nối tới.
+
+42
+00:03:05,230 --> 00:03:10,430
+Vậy là chúng ta đã kết nối thành công QML signal với
+QML slot, nó chỉ là
+
+43
+00:03:10,430 --> 00:03:11,870
+một hàm javascript
+
+44
+00:03:12,010 --> 00:03:18,130
+Chúng ta đã làm xong và giờ chúng ta chuyển sang tạo kết nối giữa QML signal tới C++ slot.
+
+45
+00:03:18,290 --> 00:03:23,180
+Chúng ta đã có signal request_new_color và giờ ta sẽ kết nối nó tới
+
+46
+00:03:23,180 --> 00:03:27,780
+slot tương ứng, cái mà ta đã viết trong photo model
+
+47
+00:03:27,780 --> 00:03:31,280
+nếu bạn nhìn ở đây, bạn sẽ thấy ta có một public slot nó chính là hàm randomize_color_values() này.
+
+48
+00:03:31,310 --> 00:03:37,550
+Ta sẽ tiến hành kết nối signal request_new_color() với slot (hàm tiếp nhận)
+
+49
+00:03:37,550 --> 00:03:38,510
+randomize_color_values()
+
+50
+00:03:38,510 --> 00:03:43,520
+Và thứ ta đã làm là định nghĩa một signal ở vị trí này và nó là rất quan trọng
+
+51
+00:03:43,520 --> 00:03:48,520
+bởi vì ta làm thế để nó có thể được truy cập dễ dàng phía C++.
+
+52
+00:03:48,530 --> 00:03:53,840
+Giờ ta sẽ đi tham chiếu đến phần tử root của chúng ta và ta sẽ
+
+53
+00:03:53,840 --> 00:04:02,060
+làm điều đó bằng cách sử dụng QQmlAplicationEngine mà ta đã khai báo
+trước đó, nó có một phần tử root và
+
+54
+00:04:02,060 --> 00:04:04,940
+ta sẽ tạo một thể hiện của phần tử root đầu tiên (index 0)
+
+55
+00:04:05,800 --> 00:04:10,250
+Bản chất thì các đối tượng root nằm trong một danh sách
+
+56
+00:04:10,270 --> 00:04:15,280
+và chúng ta sẽ lấy phần tử đầu tiên cái mà chính là phần tử root của chúng ta.
+
+57
+00:04:15,310 --> 00:04:21,190
+Bây giờ tín hiệu (signal) thì đã được kết nối với phần tử root nên tín hiệu mà chúng ta đã khai báo lúc nãy request_new_color thì cũng
+
+58
+00:04:21,190 --> 00:04:25,500
+đã được đính vào phần tử root.
+
+59
+00:04:25,510 --> 00:04:30,430
+và việc tiếp theo ta cần làm là kết nối nó như là ta làm với signal C++ .
+
+60
+00:04:30,490 --> 00:04:31,450
+tới slot.
+
+61
+00:04:31,450 --> 00:04:35,320
+Bây giờ chúng ta đang sử dụng kết nổi signal và slot theo kiểu cũ,
+nó thì
+
+62
+00:04:35,320 --> 00:04:37,980
+hơi dài dòng nhưng cũng cùng tác dụng
+
+63
+00:04:40,170 --> 00:04:40,540
+Tuyệt vời.
+
+64
+00:04:40,560 --> 00:04:45,010
+Bây giờ cần lưu ý rằng chúng ta cần truyền vào
+là hàm request_new_color.
+
+65
+00:04:45,010 --> 00:04:46,050
+truyền QString vào
+
+66
+00:04:46,110 --> 00:04:46,800
+đây.
+
+67
+00:04:47,070 --> 00:04:48,600
+nhưng cái cốt lõi thì chưa có.
+
+68
+00:04:48,660 --> 00:04:51,330
+chúng ta chưa xử lý urgency.
+
+69
+00:04:51,480 --> 00:04:58,050
+Chúng ta chỉ gọi thế này nhưng urgency thì sẽ bị mất ở đây trong xử lý của chúng ta.
+
+70
+00:04:58,050 --> 00:05:01,410
+Nhưng đó là cách để chúng ta kết nối signal tới slot thành công.
+
+71
+00:05:01,410 --> 00:05:07,370
+Thứ duy nhất mà chúng ta thiếu đó là chúng ta chưa thật sự phát tín hiệu (signal) ở đây requesting colors.
+
+72
+00:05:07,380 --> 00:05:09,800
+Hãy thực hiện điều đó thôi.
+
+73
+00:05:10,230 --> 00:05:17,400
+Chúng ta sẽ thực hiện điều đó ở đây, nếu bạn nhìn vào ListView này
+chúng ta sẽ cần có một phần là
+
+74
+00:05:17,410 --> 00:05:18,230
+header.
+
+75
+00:05:18,420 --> 00:05:19,520
+Vì vậy ta tạo header
+
+76
+00:05:19,560 --> 00:05:20,550
+nó là một hình chữ nhật
+
+77
+00:05:20,550 --> 00:05:22,830
+nó có chiều cao là 50 và chiều rộng ứng với đối tượng cha
+
+78
+00:05:22,990 --> 00:05:23,970
+Và ta có một vài thành phần ở đây
+
+79
+00:05:23,970 --> 00:05:26,240
+ta có một thành phần Timer và một MouseArea.
+
+80
+00:05:26,400 --> 00:05:34,410
+Và nếu ta click vào vùng MouseArea bạn sẽ thấy là ta sẽ gọi hàm change_header_text() của đối tượng cha, công dụng của nó là
+
+81
+00:05:34,410 --> 00:05:39,780
+hiển thị cho người dúng chuỗi "Changing colors now" và tiếp theo là
+chỉnh timer.running
+
+82
+00:05:39,780 --> 00:05:43,180
+là true để cho thành phần Timer của chúng ta gọi sự kiện onTriggered.
+
+83
+00:05:43,200 --> 00:05:49,840
+sau đó chúng ta sẽ phát đi tín hiệu request_new_color và ta cần truyền tham số urgency vào
+
+84
+00:05:49,840 --> 00:05:52,540
+và ta để chuỗi now! ý là nói nó đang xảy ra.
+
+85
+00:05:52,650 --> 00:05:59,600
+Và khi mà nó kết thúc thì sẽ gọi sự kiện trigger và phát đi tín hiệu (signal) của chúng ta
+
+86
+00:05:59,670 --> 00:06:01,140
+nó truyền đi mọi thứ bên trong đây
+
+87
+00:06:01,140 --> 00:06:02,730
+bây giờ hãy chạy thử nào.
+
+88
+00:06:04,440 --> 00:06:04,900
+Tuyệt vời.
+
+89
+00:06:04,910 --> 00:06:10,800
+Bạn thấy ở phía trên cùng này chúng ta có chuỗi tiêu đề mà ta đã tạo nó hiển thị thông báo clicking any item to
+
+90
+00:06:10,810 --> 00:06:11,670
+change it's color.
+
+91
+00:06:11,670 --> 00:06:14,940
+và nếu ta click vào cái trên cùng nó hiện ra "it's changing the color now"
+
+92
+00:06:15,090 --> 00:06:21,030
+Và bạn thấy chúng ta đã thay đổi toàn bộ màu trong danh sách này mỗi khi chúng ta click.
+
+93
+00:06:21,040 --> 00:06:28,050
+Ngoài ra bạn còn thấy ở phần debug mà ta đã bật chạy ở đây
+
+94
+00:06:28,050 --> 00:06:35,020
+nó cho phép ta nhìn thấy chúng ta đã thay đổi rất nhiều index.
+
+95
+00:06:35,020 --> 00:06:38,550
+và nó cũng hiện ra chỉ số index này thay đổi, chỗ này ta gõ là many indexes change
+
+96
+00:06:39,530 --> 00:06:45,570
+Và sau đó bạn có thể thấy khi ta click và thay đổi một giá trị
+bạn thấy nó báo "one index change".
+
+97
+00:06:45,620 --> 00:06:51,710
+Và vậy là chúng ta đã học được cách để kết nối tín hiệu (signal) C++
+tới QML slot, QML signal
+
+98
+00:06:51,710 --> 00:06:59,670
+tới QML slot và QML signal tới C++ slot. Và hãy tiếp tục cùng chúng tôi trong lần tới ta sẽ tìm hiểu cách để khai báo
+
+99
+00:06:59,710 --> 00:07:01,350
+QML type và QML module.
+

@@ -1,0 +1,232 @@
+﻿1
+00:00:01,740 --> 00:00:07,540
+Máy chủ TCP(TCP server). Ở video này, ta sẽ học cách cài đặt một máy chủ TCP(TCP server)
+
+2
+00:00:07,710 --> 00:00:15,000
+Trước tiên ta làm quen với QTcpSocket API, tạo một máy khách TCP(TCP client) đơn giản,
+
+3
+00:00:15,330 --> 00:00:20,060
+và một máy chủ TCP(TCP server).
+
+4
+00:00:20,130 --> 00:00:21,930
+Mở Qt Creator lên.
+
+5
+00:00:24,610 --> 00:00:29,160
+Tạo một ứng dụng console tên tcpClient.
+
+6
+00:00:29,380 --> 00:00:33,060
+Để tôi giới thiệu class mới, đó là QTcpSocket
+
+7
+00:00:36,630 --> 00:00:44,190
+QTcpSocket là class mở rộng của class QAbstractSocket,
+
+8
+00:00:44,190 --> 00:00:47,500
+nó đại diện cho socket của mạng dùng giao thức TCP.
+
+9
+00:00:47,620 --> 00:00:54,040
+Thêm vào đó, class QAbstractSocket cũng thừa kế từ class QIODevice
+
+10
+00:00:54,310 --> 00:01:01,180
+nên ta có thể dùng tất cả các hàm đọc và ghi dữ liệu để gửi và nhận dữ liệu. Để dùng được class này, ta thêm module mạng(network module) vào file cấu hình
+
+11
+00:01:01,180 --> 00:01:02,200
+của project.
+
+12
+00:01:02,200 --> 00:01:10,710
+Đó là file tcpClient.pro. Gõ QT += network
+
+13
+00:01:10,710 --> 00:01:17,060
+Chuột phải vào project, chạy lệnh qmake để tạo ra Makefile
+
+14
+00:01:17,070 --> 00:01:24,290
+để bật tính năng auto-complete và highlight cú pháp cho module mạng trên trình sửa code.
+
+15
+00:01:24,360 --> 00:01:33,210
+Nhớ include QTcpSocket và QHostAddress header file.
+
+16
+00:01:33,210 --> 00:01:39,760
+Ta tạo đối tượng client kiểu QTcpSocket.
+
+17
+00:01:39,840 --> 00:01:45,890
+Trong trường hợp có nhiều giao diện mạng(network interfaces) ở phía máy khách(client), ta phải cài đặt hàm bind() cho socket.
+
+18
+00:01:45,960 --> 00:01:51,140
+Nếu không thì để mặc định cũng được
+
+19
+00:01:51,270 --> 00:01:54,500
+Cổng giao tiếp sẽ được cài đặt ngẫu nhiên.
+
+20
+00:01:54,570 --> 00:02:00,060
+Ta kết nối socket tới localhost cổng 54321
+
+21
+00:02:00,090 --> 00:02:04,850
+và chờ kết nối thành công.
+
+22
+00:02:05,010 --> 00:02:12,390
+Khi client đã kết nối thành công, ta chờ để nhận thông báo được gửi về từ máy chủ.
+
+23
+00:02:12,390 --> 00:02:20,840
+Sau khi nhận được thông báo, ta in thông báo ra màn hình và ghi dữ liệu của thông báo vào socket.
+
+24
+00:02:20,850 --> 00:02:27,090
+Đó là cơ chế hoạt động của giao thức TCP trong Qt. Trong ví dụ này, ta đồng bộ xử lý chương trình bằng
+
+25
+00:02:27,780 --> 00:02:33,310
+hàm waitForReadyRead().
+
+26
+00:02:33,310 --> 00:02:41,540
+Thực ra, xử lý bất đồng bộ bằng signals và slots thường được áp dụng nhiều hơn.
+
+27
+00:02:41,690 --> 00:02:47,640
+Chương trình không cần khởi tạo event loop(vòng lặp sự kiên), nên ta sẽ kết thúc chương trình bằng lệnh return với mã là 0.
+
+28
+00:02:47,690 --> 00:02:56,060
+Giờ nếu ta buid và chạy chương trình, thì sẽ bị báo lỗi với nội dung
+
+29
+00:02:59,100 --> 00:03:06,680
+"Failed to connect to the local host and the exit code is 1" (Không thể kết nối tới localhost, chương trình kết thúc với mã 1). Bởi vì ta chưa cài đặt máy chủ.
+
+30
+00:03:07,020 --> 00:03:15,001
+Nghĩa là không tồn tại máy chủ đang chạy tại cổng 54321.
+
+31
+00:03:15,110 --> 00:03:24,030
+Để hoàn thiện ví dụ, ta làm một máy chủ TCP đơn giản. Các bước gần giống với làm TCP client, thêm module mạng(network module)
+
+32
+00:03:24,030 --> 00:03:24,480
+chạy lệnh qmake.
+
+33
+00:03:27,190 --> 00:03:34,460
+Nhưng ta dùng bộ API khác đó là QTcpServer.
+
+34
+00:03:34,460 --> 00:03:37,210
+QTcpServer đại diện cho một máy chủ dùng giao thức TCP.
+
+35
+00:03:37,620 --> 00:03:41,720
+Với mỗi kết nối sẽ tương ứng với một đối tượng kiểu QTcpSocket.
+
+36
+00:03:41,970 --> 00:03:45,930
+Ta có thể cài đặt địa chỉ và cổng của máy chủ.
+
+37
+00:03:46,230 --> 00:03:55,860
+Tương tự với client, ta cài đặt máy chủ hoạt động trên localhost cổng 54321.
+
+38
+00:03:56,360 --> 00:04:00,200
+và dùng hàm waitForNewConnection() để tạm dừng xử lý cho tới khi có kết nối mới được thiết lập.
+
+39
+00:04:01,190 --> 00:04:05,500
+Nhờ dùng hàm dừng xử lý này mà ta không cần tạo event loop(vòng lặp các sự kiện) cho chương trình.
+
+40
+00:04:06,400 --> 00:04:15,530
+Truyền biến "-1" để cho hàm không bao giờ bị quá thòi gian hoạt động(timeout).
+
+41
+00:04:15,720 --> 00:04:19,040
+Sau đó dùng hàm nextPedingConnection() để nhận kết nối.
+
+42
+00:04:19,930 --> 00:04:27,320
+Con trỏ kiểu QTcpSocket này là socket được dùng để giao tiếp với máy khách(client)
+
+43
+00:04:27,370 --> 00:04:36,070
+Ta vẫn dùng các đọc và ghi dữ liệu để nhận và gửi đi thông báo. Sau khi xử lý xong với kết nối này.
+
+44
+00:04:36,090 --> 00:04:42,470
+Ta đóng kết nối lại và lên lịch để xóa nó đi.
+
+45
+00:04:42,540 --> 00:04:45,840
+Đó là cách tối nhất để tránh lãng phí bộ nhớ.
+
+46
+00:04:45,870 --> 00:04:51,780
+Cuối cùng, ta gọi hàm server.close() để chấm dứt tiếp nhận kết nối.
+
+47
+00:04:51,780 --> 00:04:52,640
+Giờ chạy thử máy chủ(server) và máy khách(client) nhé.
+
+48
+00:04:52,640 --> 00:04:59,790
+Trước tiên, ta buid và khởi động máy chủ TCP
+
+49
+00:04:59,820 --> 00:05:00,960
+trên địa chỉ và cổng đã được cài đặt.
+
+50
+00:05:08,610 --> 00:05:15,200
+Máy chủ đã hoạt động.
+
+51
+00:05:15,360 --> 00:05:18,690
+Giờ ta chạy máy khách(client) để kết nối tới máy chủ(server).
+
+52
+00:05:22,360 --> 00:05:28,210
+Như bạn thấy trên màn hình, kết nối tới máy chủ đã thành công,
+
+53
+00:05:28,210 --> 00:05:30,910
+máy khách đã nhận được thông báo từ máy chủ và gửi thông báo đi thành công.
+
+54
+00:05:43,260 --> 00:05:49,170
+Ta tổng kết lại kiến thức của phần ba. Xuyên xuốt phần này, ta đã học kiến thức cơ bản về
+
+55
+00:05:49,170 --> 00:05:50,280
+lập trình mạng.
+
+56
+00:05:50,280 --> 00:05:57,690
+và đã thực hành gửi HTTP request và tải dữ liệu về.
+
+57
+00:05:57,700 --> 00:05:59,450
+Cuối cùng là làm thử ví dụ về mô hình máy chủ(server)- máy khách(client) chạy giao thức TCP.
+
+58
+00:05:59,680 --> 00:06:04,560
+Từ giờ trở đi, bạn đã có thể làm ứng dụng truy cập mạng được rồi.
+

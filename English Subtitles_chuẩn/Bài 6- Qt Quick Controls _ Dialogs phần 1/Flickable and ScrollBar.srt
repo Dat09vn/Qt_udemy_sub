@@ -1,0 +1,424 @@
+1
+00:00:00,000 --> 00:00:02,100
+in this lecture we are playing with the
+
+2
+00:00:02,100 --> 00:00:04,380
+flickable component and the scroll bars
+
+3
+00:00:04,380 --> 00:00:06,839
+you use Flickable component when you
+
+4
+00:00:06,839 --> 00:00:09,570
+have more content than your available
+
+5
+00:00:09,570 --> 00:00:12,269
+window area can display and the scroll
+
+6
+00:00:12,269 --> 00:00:15,120
+bars are used to show you that you can
+
+7
+00:00:15,120 --> 00:00:18,390
+scroll to see more contents, let'go
+
+8
+00:00:18,390 --> 00:00:20,340
+to Qt createor and play with us
+
+9
+00:00:20,340 --> 00:00:23,100
+here we are in Qt creator we're
+
+10
+00:00:23,100 --> 00:00:26,160
+going to create a new project the Qt
+
+11
+00:00:26,160 --> 00:00:28,769
+Quick application as usual we call it
+
+12
+00:00:28,769 --> 00:00:32,009
+flickable scroll bar demo save it in the
+
+13
+00:00:32,009 --> 00:00:35,850
+usual location hit next choose your QT
+
+14
+00:00:35,850 --> 00:00:41,520
+version choose your kit and finish we
+
+15
+00:00:41,520 --> 00:00:43,940
+want to change the title to say
+
+16
+00:00:43,940 --> 00:00:47,820
+flickable and scroll bar demo we want to
+
+17
+00:00:47,820 --> 00:00:55,829
+import QT quick controls let's choose
+
+18
+00:00:55,829 --> 00:00:59,070
+the latest version we have in our suit
+
+19
+00:00:59,070 --> 00:01:02,219
+installation and if we go to the
+
+20
+00:01:02,219 --> 00:01:06,619
+documentation and search for flickable
+
+21
+00:01:08,299 --> 00:01:11,430
+we're going to see that this component
+
+22
+00:01:11,430 --> 00:01:14,130
+places its children on a surface that
+
+23
+00:01:14,130 --> 00:01:17,130
+can be dragged and flicked okay you can
+
+24
+00:01:17,130 --> 00:01:20,490
+basically scroll through more content
+
+25
+00:01:20,490 --> 00:01:23,430
+than your window area can display so
+
+26
+00:01:23,430 --> 00:01:25,020
+what we're going to do is put the
+
+27
+00:01:25,020 --> 00:01:32,420
+flickable component inside here and
+
+28
+00:01:32,420 --> 00:01:36,320
+inside we want to put a column component
+
+29
+00:01:36,320 --> 00:01:40,920
+to have them layout vertically give
+
+30
+00:01:40,920 --> 00:01:46,979
+it an ID make it fill the parent and we
+
+31
+00:01:46,979 --> 00:01:48,960
+want out flickable component here to
+
+32
+00:01:48,960 --> 00:01:52,640
+have the same width as its parent and
+
+33
+00:01:52,640 --> 00:01:58,200
+the same height as its parent but we
+
+34
+00:01:58,200 --> 00:02:01,399
+want to tell it how much content it is
+
+35
+00:02:01,399 --> 00:02:04,409
+expected to show and that content is
+
+36
+00:02:04,409 --> 00:02:06,509
+going to come from this column component
+
+37
+00:02:06,509 --> 00:02:09,000
+here it's going to depend on the number
+
+38
+00:02:09,000 --> 00:02:11,500
+and size of the items that the
+
+39
+00:02:11,500 --> 00:02:13,930
+column here contains so we should use
+
+40
+00:02:13,930 --> 00:02:16,570
+implicit hide here to play it safe we're
+
+41
+00:02:16,570 --> 00:02:20,380
+going to say mColumnId and place
+
+42
+00:02:20,380 --> 00:02:23,620
+implicitHeight, now we should put some content
+
+43
+00:02:23,620 --> 00:02:26,740
+inside this column of ours I have a
+
+44
+00:02:26,740 --> 00:02:29,740
+rectangle here prepared I'm going to put
+
+45
+00:02:29,740 --> 00:02:32,740
+it in to save some time it basically is
+
+46
+00:02:32,740 --> 00:02:35,170
+a rectangle it has a color it has a
+
+47
+00:02:35,170 --> 00:02:37,480
+width that is the same as the parent and
+
+48
+00:02:37,480 --> 00:02:40,209
+it has a height and inside we have a
+
+49
+00:02:40,209 --> 00:02:43,690
+text component that says element 1 and
+
+50
+00:02:43,690 --> 00:02:47,170
+the text color is white so I am basically
+
+51
+00:02:47,170 --> 00:02:50,380
+going to copy it and paste it turn a
+
+52
+00:02:50,380 --> 00:02:52,720
+couple of times and change the colors to
+
+53
+00:02:52,720 --> 00:02:55,239
+have different things okay this is going
+
+54
+00:02:55,239 --> 00:02:57,970
+to be in blue and it's going to say
+
+55
+00:02:57,970 --> 00:03:05,200
+Element 2 this is going to be yellow
+
+56
+00:03:05,200 --> 00:03:10,540
+and it is going to say element 3 this is
+
+57
+00:03:10,540 --> 00:03:16,510
+going to be magenta why not and it's
+
+58
+00:03:16,510 --> 00:03:19,209
+going to say element 4 and we're going
+
+59
+00:03:19,209 --> 00:03:21,730
+to keep going until we have a twist 7 of
+
+60
+00:03:21,730 --> 00:03:26,320
+this okay I'm going to keep doing it and
+
+61
+00:03:26,320 --> 00:03:29,049
+come back when I'm done okay I have a
+
+62
+00:03:29,049 --> 00:03:31,230
+bunch of rectangles inside this column
+
+63
+00:03:31,230 --> 00:03:34,390
+if you want to make you things a little
+
+64
+00:03:34,390 --> 00:03:36,640
+bit more visible you can collapse these
+
+65
+00:03:36,640 --> 00:03:41,170
+rectangles like this okay this is better
+
+66
+00:03:41,170 --> 00:03:43,810
+if you want to know for example the
+
+67
+00:03:43,810 --> 00:03:45,610
+number of rectangles that you have
+
+68
+00:03:45,610 --> 00:03:48,760
+inside or something like that so we have
+
+69
+00:03:48,760 --> 00:03:52,239
+a Flickable component and we have a
+
+70
+00:03:52,239 --> 00:03:55,090
+bunch of rectangles inside we can run
+
+71
+00:03:55,090 --> 00:03:57,299
+the application and see how it looks
+
+72
+00:03:57,299 --> 00:04:00,820
+mm-hm you see we have our rectangles the
+
+73
+00:04:00,820 --> 00:04:04,630
+rectangles are bigger than the available
+
+74
+00:04:04,630 --> 00:04:08,829
+space in height but we can scroll up and
+
+75
+00:04:08,829 --> 00:04:11,640
+down because we have a flickable
+
+76
+00:04:11,640 --> 00:04:14,380
+wrapping around our column component
+
+77
+00:04:14,380 --> 00:04:16,168
+this is cool
+
+78
+00:04:16,168 --> 00:04:18,668
+another thing I want you to see is that
+
+79
+00:04:18,668 --> 00:04:21,459
+you can put scroll bars on this
+
+80
+00:04:21,459 --> 00:04:24,070
+flickable component to kind of let the
+
+81
+00:04:24,070 --> 00:04:25,000
+user have
+
+82
+00:04:25,000 --> 00:04:27,490
+idea of how much content is still
+
+83
+00:04:27,490 --> 00:04:30,340
+available the way you do that you come
+
+84
+00:04:30,340 --> 00:04:33,550
+back to our code here come to the bottom
+
+85
+00:04:33,550 --> 00:04:35,680
+of the column component or you can even
+
+86
+00:04:35,680 --> 00:04:37,480
+come to the top it really doesn't matter
+
+87
+00:04:37,480 --> 00:04:39,640
+you just have to be in the flickable
+
+88
+00:04:39,640 --> 00:04:44,940
+component and say scroll bar vertical
+
+89
+00:04:44,940 --> 00:04:51,460
+okay and say scroll bar and that create
+
+90
+00:04:51,460 --> 00:04:53,470
+a component like this this is an
+
+91
+00:04:53,470 --> 00:04:56,860
+attached property that adds scrollbar
+
+92
+00:04:56,860 --> 00:04:59,440
+capabilities to our flickable component
+
+93
+00:04:59,440 --> 00:05:02,020
+here okay and you put a scrollbar
+
+94
+00:05:02,020 --> 00:05:04,600
+component like this you don't need to
+
+95
+00:05:04,600 --> 00:05:07,480
+specify anything else you're going to
+
+96
+00:05:07,480 --> 00:05:10,210
+have scroll bars when you run this
+
+97
+00:05:10,210 --> 00:05:12,790
+application and you see that if you
+
+98
+00:05:12,790 --> 00:05:16,090
+scroll you're going to see a scrollbar
+
+99
+00:05:16,090 --> 00:05:19,480
+to the right here this is cool isn't it
+
+100
+00:05:19,480 --> 00:05:21,880
+so whenever you have more content than
+
+101
+00:05:21,880 --> 00:05:24,419
+your available window area can display
+
+102
+00:05:24,419 --> 00:05:27,240
+think of the flickable component
+
+103
+00:05:27,240 --> 00:05:29,260
+this covers all i had to say in this lecture
+
+104
+00:05:29,260 --> 00:05:32,050
+about the Flickable component, in the
+
+105
+00:05:32,050 --> 00:05:33,550
+next one we're going to look at this
+
+106
+00:05:33,550 --> 00:00:00,000
+slider component I see you there
+

@@ -1,0 +1,727 @@
+1
+00:00:00,000 --> 00:00:01,560
+Trong bài này chúng ta sẽ nói về
+
+2
+00:00:01,560 --> 00:00:04,080
+ràng buộc thuộc tính trong qml.
+
+3
+00:00:04,080 --> 00:00:06,450
+Điều này thực ra dễ để cho các bạn xem hơn
+
+4
+00:00:06,450 --> 00:00:08,639
+là nói về nó nên tôi sẽ đi tới qt
+
+5
+00:00:08,639 --> 00:00:10,710
+creator, tạo một dự án và cho các bạn
+
+6
+00:00:10,710 --> 00:00:13,500
+xem nội dung. Okay Chúng ta đang ở trong qt
+
+7
+00:00:13,500 --> 00:00:15,269
+creator, tôi sẽ tạo một dự án
+
+8
+00:00:15,269 --> 00:00:17,699
+mới, nó sẽ là một ứng dụng qt quick
+
+9
+00:00:17,699 --> 00:00:19,770
+như chúng ta đã làm trước đây,
+
+10
+00:00:19,770 --> 00:00:22,289
+chúng ta sẽ gọi nó là PropertyBindingDemo
+
+11
+00:00:22,289 --> 00:00:24,529
+và lưu nó ở vị trí như mọi khi,
+
+12
+00:00:24,529 --> 00:00:29,220
+ấn next, chọn phiên bản mới nhất của
+
+13
+00:00:29,220 --> 00:00:32,340
+qt mà chúng ta đã cài, chọn ok.
+
+14
+00:00:32,340 --> 00:00:36,090
+Và chúng ta có dự án cúa mình ở đây, chúng ta muốn
+
+15
+00:00:36,090 --> 00:00:39,410
+thay đổi tiêu đề thành "Property Binding Demo".
+
+16
+00:00:39,410 --> 00:00:44,910
+Chúng ta sẽ bỏ vào một
+
+17
+00:00:44,910 --> 00:00:50,960
+chữ nhật, id sẽ là redRectId.
+
+18
+00:00:50,960 --> 00:00:55,289
+Nó sẽ có chiều rộng là 50
+
+19
+00:00:55,289 --> 00:01:00,170
+và chiều cao phụ thuộc vào chiều rộng
+
+20
+00:01:00,170 --> 00:01:07,409
+nên chúng ta sẽ viết width * 1.5. Cái này
+
+21
+00:01:07,409 --> 00:01:10,890
+là được, chúng ta muốn cho nó màu đỏ.
+
+22
+00:01:10,890 --> 00:01:15,930
+Đây chính là ràng buộc thuộc tính,
+
+23
+00:01:15,930 --> 00:01:19,080
+Nó là định nghĩa một thuộc tính phụ thuộc
+
+24
+00:01:19,080 --> 00:01:22,200
+vào một thuộc tính khái. Trong trường hợp này
+
+25
+00:01:22,200 --> 00:01:25,170
+chiều cao của chữ nhật phụ thuộc vào
+
+26
+00:01:25,170 --> 00:01:25,890
+chiều rộng của nó.
+
+27
+00:01:25,890 --> 00:01:27,960
+Tôi biết nhìn thì có vẻ là một phép
+
+28
+00:01:27,960 --> 00:01:30,840
+gán giá trị đoen giản nhưng trong qml
+
+29
+00:01:30,840 --> 00:01:33,090
+đây là một ràng buộc giữa chiều rộng và
+
+30
+00:01:33,090 --> 00:01:35,220
+chiều cao của chũ nhật này.
+
+31
+00:01:35,220 --> 00:01:37,470
+Bất cứ khi nào chiều rộng thay đổi, chiều cao
+
+32
+00:01:37,470 --> 00:01:39,060
+cũng sẽ thay đổi theo
+
+33
+00:01:39,060 --> 00:01:41,189
+biểu thức ở đây. Và
+
+34
+00:01:41,189 --> 00:01:44,100
+đây chính là thứ chúng ta gọi là ràng buộc thuộc tính.
+
+35
+00:01:44,100 --> 00:01:47,909
+Chiều cao bị ràng buộc bởi chiều rộng
+
+36
+00:01:47,909 --> 00:01:50,460
+bằng biểu thức ở đây. Để làm rõ cái này
+
+37
+00:01:50,460 --> 00:01:51,840
+tôi sẽ thêm vào vái thành phần nữa.
+
+38
+00:01:51,840 --> 00:02:00,899
+Tôi sẽ thêm một chũ nhật nữa, các bạn
+
+39
+00:02:00,899 --> 00:02:02,520
+có lẽ đã đoán được màu của 
+
+40
+00:02:02,520 --> 00:02:06,060
+chữ nhật này sẽ là xanh lam. Nó sẽ có
+
+41
+00:02:06,060 --> 00:02:10,020
+chiều rộng là 100, chiều cao là
+
+42
+00:02:10,020 --> 00:02:12,010
+100
+
+43
+00:02:12,010 --> 00:02:14,170
+và nên trong chúng ta sẽ bỏ vào một
+
+44
+00:02:14,170 --> 00:02:18,659
+mouseArea và khi ấn vào thứ này
+
+45
+00:02:18,659 --> 00:02:22,269
+chúng ta sẽ làm gì đó. Chúng ta muốn 
+
+46
+00:02:22,269 --> 00:02:25,569
+them 10 vài chiều rộng hiện tại của 
+
+47
+00:02:25,569 --> 00:02:28,090
+chữ nhật màu đỏ. Cách các bạn làm thế, các bạn sẽ viết
+
+48
+00:02:28,090 --> 00:02:35,459
+redRectId.width = redRectId.width + 10.
+
+49
+00:02:35,459 --> 00:02:38,859
+Chúng ta cũng muốn làm cho
+
+50
+00:02:38,859 --> 00:02:41,620
+mouseArea này tràn đầy chũ nhật ở đây
+
+51
+00:02:41,620 --> 00:02:43,450
+nên chúng ta sẽ đi lên trên và
+
+52
+00:02:43,450 --> 00:02:48,250
+viết anchors.fill: parent. Chúng ta muốn
+
+53
+00:02:48,250 --> 00:02:50,409
+chữ nhật này sẽ làm ở dưới đáy
+
+54
+00:02:50,409 --> 00:02:53,230
+của cửa sổ, cách chúng ta làm thể là chúng ta sẽ
+
+55
+00:02:53,230 --> 00:02:56,500
+ghim nó vào đáy. Chúng ta muốn
+
+56
+00:02:56,500 --> 00:02:59,829
+đáy của nó nằm chúng với
+
+57
+00:02:59,829 --> 00:03:02,349
+đáy của cửa sổ. Chúng ta sẽ
+
+58
+00:03:02,349 --> 00:03:12,849
+viết anchor.bottom: parent.bottom.. Hãy chạy
+
+59
+00:03:12,849 --> 00:03:15,670
+ứng dụng và xem chúng ta có gì. Mm-hmm
+
+60
+00:03:15,670 --> 00:03:20,410
+chúng ta có một chũ nhật màu đỏ với chiều rộng là 50
+
+61
+00:03:20,410 --> 00:03:25,419
+và chiều cao là 75 và chúng ta có một
+
+62
+00:03:25,419 --> 00:03:29,260
+chữ nhật khác ở dưới có màu xanh lam. Và
+
+63
+00:03:29,260 --> 00:03:31,349
+khi chúng ta ấn lên chũ nhật xanh lam
+
+64
+00:03:31,349 --> 00:03:35,500
+chiều rộng của chũ nhật màu đỏ tăng.
+
+65
+00:03:35,500 --> 00:03:39,040
+Cho nên chúng ta sẽ ấn và xem
+
+66
+00:03:39,040 --> 00:03:40,870
+thứ này tăng chiều rộng và
+
+67
+00:03:40,870 --> 00:03:43,030
+chiều cao. Và nó đang xảy ra đây là thứ
+
+68
+00:03:43,030 --> 00:03:46,090
+chúng ta muốn. Đây chính là ràng buộc thuộc tính đang
+
+69
+00:03:46,090 --> 00:03:48,579
+làm việc mà chúng ta không làm gì
+
+70
+00:03:48,579 --> 00:03:51,280
+để cho việc cập nhật này thực hiện khi 
+
+71
+00:03:51,280 --> 00:03:53,349
+chiều rộng thay đổi. Nó được thực hiện tự động
+
+72
+00:03:53,349 --> 00:03:56,139
+bởi qml và đây là điều được gọi
+
+73
+00:03:56,139 --> 00:03:58,510
+ràng buộc thuộc tính các bạn ràng buộc hai thuộc tính
+
+74
+00:03:58,510 --> 00:04:00,879
+với nhay và các bạn định nghĩa một biểu thức
+
+75
+00:04:00,879 --> 00:04:03,489
+mà sẽ được sử dụng để ràng buộc chúng.
+
+76
+00:04:03,489 --> 00:04:06,250
+Nhưng có một vấn đề khi các bạn
+
+77
+00:04:06,250 --> 00:04:08,500
+có thay đổi ràng buộc nó sẽ bị
+
+78
+00:04:08,500 --> 00:04:11,400
+phá hủy. Hãy thêm vào một chũ nhật nữa
+
+79
+00:04:11,400 --> 00:04:16,530
+chúng ta sẽ gọi nó là chũ nhật xanh lá
+
+80
+00:04:17,180 --> 00:04:27,520
+Id, màu sắc sẽ làm máu xanh lá,
+
+81
+00:04:28,600 --> 00:04:33,889
+chiều rộng và cao và thuộc tính
+
+82
+00:04:33,889 --> 00:04:35,900
+anchor sẽ giống như hệt cái trước
+
+83
+00:04:35,900 --> 00:04:43,130
+nhưng cạnh trái của nó sẽ được
+
+84
+00:04:43,130 --> 00:04:46,280
+đính vào cạnh phải của chữ nhật xanh lam.
+
+85
+00:04:46,280 --> 00:04:50,419
+Tôi sẽ viết
+
+86
+00:04:50,419 --> 00:04:53,630
+blueRectId.right. Và bên trong chúng ta sẽ
+
+87
+00:04:53,630 --> 00:04:55,850
+bỏ vào một mouseArea nên chúng ta sẽ chỉ
+
+88
+00:04:55,850 --> 00:04:59,780
+chép và điều chỉnh phương thức
+
+89
+00:04:59,780 --> 00:05:02,210
+onClicked của nó để có một hiệu ứng khác.
+
+90
+00:05:02,210 --> 00:05:05,139
+Chúng ta sẽ viết redRectId.height và
+
+91
+00:05:05,139 --> 00:05:08,389
+thay đổi nó tành một giá trị cố dịnh, hãy
+
+92
+00:05:08,389 --> 00:05:12,080
+chay nó thành 100, làm ví dụ. Chạy
+
+93
+00:05:12,080 --> 00:05:15,710
+ứng dụng và cho các bạn xem ý của tôi.
+
+94
+00:05:15,710 --> 00:05:18,650
+Nếu chúng ta ấn lên chũ nhật xanh làm mọi thứ
+
+95
+00:05:18,650 --> 00:05:20,870
+vẫn bình thường: chiều rộng thay đổi và 
+
+96
+00:05:20,870 --> 00:05:23,300
+chiều cao thay đổi. Nếu các bạn ấn lên
+
+97
+00:05:23,300 --> 00:05:25,400
+chữ nhật xanh là chiều cao sẽ 
+
+98
+00:05:25,400 --> 00:05:28,460
+bị chuyển về 100 chú ý ràng chiều rọng
+
+99
+00:05:28,460 --> 00:05:31,190
+không thay đổi nhưng một điều tệ hơn là
+
+100
+00:05:31,190 --> 00:05:32,750
+nếu các bạn ấn vào chữ nhật xanh lam
+
+101
+00:05:32,750 --> 00:05:36,680
+các bạn rằng chỉ có chiều rộng thay đổi 
+
+102
+00:05:36,680 --> 00:05:39,020
+và chiều cao thì không thay đổi theo nó.
+
+103
+00:05:39,020 --> 00:05:41,870
+Đây là bởi vì chúng ta đã hủy bỏ ràng buộc
+
+104
+00:05:41,870 --> 00:05:44,570
+bằng cách đặt chiều cao thành một giá trị tĩnh.
+
+105
+00:05:44,570 --> 00:05:48,260
+Okay chúng ta đặt chiều cao là 100 và
+
+106
+00:05:48,260 --> 00:05:52,070
+phá bỏ ràng buộc mà liên kết
+
+107
+00:05:52,070 --> 00:05:55,610
+chiều cao và chiều rộng ở đây. Đó là tại sao
+
+108
+00:05:55,610 --> 00:05:58,789
+khi các bạn ấn lên chũ nhật xanh lam chỉ
+
+109
+00:05:58,789 --> 00:06:01,460
+có chiều rộng thay đổi. Các bạn có thể nghĩ là
+
+110
+00:06:01,460 --> 00:06:03,680
+các bạn có thể sủa nó uhmmm
+
+111
+00:06:03,680 --> 00:06:07,030
+ví dụ như chép đoạn này và
+
+112
+00:06:07,030 --> 00:06:09,860
+thay đổi thành biểu thức này. Nó
+
+113
+00:06:09,860 --> 00:06:13,190
+nên sửa được phải không. Hãy để cái này
+
+114
+00:06:13,190 --> 00:06:16,789
+là 2 để khi chúng ta ấn chữ nhật xanh lục
+
+115
+00:06:16,789 --> 00:06:22,220
+chiều cao trở thành 2 lần chiều 
+ 
+0:06:19.550,0:06:26.719
+rộng. Hãy chạy ứng dụng và xem
+
+116
+00:06:22,220 --> 00:06:26,719
+nó có hoạt động không. Thực ra chúng ta ấn lên
+
+117
+00:06:26,719 --> 00:06:29,389
+chữ nhật xanh lam mọi thứ vẫn bình thường,
+
+118
+00:06:29,389 --> 00:06:30,680
+chúng ta ấn lên chữ nhật xanh lục
+
+119
+00:06:30,680 --> 00:06:33,050
+các bạn thấy là mọi thứ thay đổi chút it
+
+120
+00:06:33,050 --> 00:06:35,479
+nhưng nếu các bạn ấn lên
+
+121
+00:06:35,479 --> 00:06:36,949
+chữ nhật xanh lam mọi thứ không 
+
+122
+00:06:36,949 --> 00:06:38,750
+hoạt động như chúng ta muốn.
+
+123
+00:06:38,750 --> 00:06:42,229
+Chúng ra vẫn thấy chiều rộng đang
+
+124
+00:06:42,229 --> 00:06:44,449
+thay đổi nhưng chiều cao thì không đổi
+
+125
+00:06:44,449 --> 00:06:46,490
+cùng chiều rộng có nghĩa là biểu thức
+
+126
+00:06:46,490 --> 00:06:48,949
+ở đây không thực sự có hiệu quả.
+
+127
+00:06:48,949 --> 00:06:50,780
+Điều gì thực sự xảy ra khi bài gán 
+
+128
+00:06:50,780 --> 00:06:53,180
+một thuộc tính như thế này khi nó đã
+
+129
+00:06:53,180 --> 00:06:55,669
+được gán trước đây và ràng vuộc với một
+
+130
+00:06:55,669 --> 00:06:58,669
+thuộc tính khác ràng buộc sẽ bị phá bỏ. Nó 
+
+131
+00:06:58,669 --> 00:07:00,440
+thực ra chỉ lấy kết quả của 
+
+132
+00:07:00,440 --> 00:07:04,250
+biểu thức này và gánnó như một giá trị
+
+133
+00:07:04,250 --> 00:07:06,800
+tĩnh cho chiều cao ở đây. Và đây không
+
+134
+00:07:06,800 --> 00:07:09,289
+khác gì việc chúng ta gán
+
+135
+00:07:09,289 --> 00:07:11,690
+một giá trị tĩnh như thế này. Nếu các bạn muốn
+
+136
+00:07:11,690 --> 00:07:13,430
+biểu thức này của các bạn có hiểu quả
+
+137
+00:07:13,430 --> 00:07:16,190
+khi các bạn ấn vào chữ nhật xanh lục, các bạn
+
+138
+00:07:16,190 --> 00:07:18,740
+cần lầm thêm một chút việc nữa.
+
+139
+00:07:18,740 --> 00:07:20,660
+Điều chúng ta sẽ làm là chép đoạn này
+
+140
+00:07:20,660 --> 00:07:23,229
+bởi vì chúng ta sẽ sử dụng nó và
+
+141
+00:07:23,229 --> 00:07:29,270
+viết Qt.binding(). và bên trong chúng ta cần
+
+142
+00:07:29,270 --> 00:07:31,070
+đưa vào một hàm mà sẽ 
+
+143
+00:07:31,070 --> 00:07:33,860
+trả về biểu thức của chúng ta. Điều chúng ta
+
+144
+00:07:33,860 --> 00:07:36,610
+sẽ viết là gì, chúng ta sẽ viết function()
+
+145
+00:07:36,610 --> 00:07:40,280
+các bạn cho một danh sach tham số và chúng ta cho
+
+146
+00:07:40,280 --> 00:07:42,979
+nó phần thân như thế này. Tôi thích
+
+147
+00:07:42,979 --> 00:07:46,039
+cách dòng như này để cho
+
+148
+00:07:46,039 --> 00:07:49,849
+dễ đọc hơn. Và trả về
+
+149
+00:07:49,849 --> 00:07:53,900
+redRectId.width và nhân nó với 2. Chúng ta
+
+150
+00:07:53,900 --> 00:07:56,479
+sử dụng Id ở đây bởi vì chúng ta
+
+151
+00:07:56,479 --> 00:07:59,090
+đang cố truy cập vào chũ nhật này
+
+152
+00:07:59,090 --> 00:08:01,250
+từ một thành phần kahcs chính là chữ nhật
+
+153
+00:08:01,250 --> 00:08:04,639
+này. Hãy chạy ứng dụng để xem
+
+154
+00:08:04,639 --> 00:08:07,039
+logic của chúng ta có hoạt động không và sau đó tôi sẽ
+
+155
+00:08:07,039 --> 00:08:09,620
+thử giải thích nó một lấn nữa. Các bạn ấn lên
+
+156
+00:08:09,620 --> 00:08:11,090
+chữ nhật xnah lam, các bạn thấy chiều rộng
+
+157
+00:08:11,090 --> 00:08:13,580
+thay đổi và chiều cao thây dổi, ấn 
+
+158
+00:08:13,580 --> 00:08:16,580
+lên chữ nhật xanh lục và ấn lại
+
+159
+00:08:16,580 --> 00:08:17,870
+chũ nhật xanh lam.
+
+160
+00:08:17,870 --> 00:08:19,759
+Các bạn thấy là mọi thứ bây giờ đã được cập nhật.
+
+161
+00:08:19,759 --> 00:08:23,630
+Vậy nó hoạt động như thế nào, nó
+
+162
+00:08:23,630 --> 00:08:26,090
+hoạt động bởi vì chúng ta bọc logic
+
+163
+00:08:26,090 --> 00:08:29,539
+của chúng ta bên trong qt.binding. Điều mà nó
+
+164
+00:08:29,539 --> 00:08:32,510
+thực sự làm là gì, nó thông báo cho hệ thống
+
+165
+00:08:32,510 --> 00:08:35,779
+qt rằng chúng ta muốn ràng buộc ở đây
+
+166
+00:08:35,779 --> 00:08:38,179
+thay thế ràng buộc mà chúng ta đã có ở đây
+
+167
+00:08:38,179 --> 00:08:41,659
+nếu các bạn không bọc đoạn code của mình vào
+
+168
+00:08:41,659 --> 00:08:44,580
+qt.binding nó sẽ giống như
+
+169
+00:08:44,580 --> 00:08:46,710
+các bạn gán một giá trị tĩnh và nó
+
+170
+00:08:46,710 --> 00:08:49,350
+sẽ không cập nhật như các bạn muốn. Tôi mong
+
+171
+00:08:49,350 --> 00:08:52,140
+điều này thực sự làm rõ cách các bạn làm việc
+
+172
+00:08:52,140 --> 00:08:54,480
+với ràng buộc thuộc tính. Và các bạn thấy
+
+173
+00:08:54,480 --> 00:08:57,210
+sự cần thiết sử dụng qt.binding khi các bạn
+
+174
+00:08:57,210 --> 00:08:59,370
+cần cập nhật ràng buộc của mình mà các bạn
+
+175
+00:08:59,370 --> 00:09:02,010
+đã định nghĩa trước đó trong ứng dụng Qt.
+
+176
+00:09:02,010 --> 00:09:03,990
+Và trong baig tiếp theo chúng ta sẽ
+
+177
+00:09:03,990 --> 00:09:06,660
+nói về đối tượng toàn cục của qt mà
+
+178
+00:09:06,660 --> 00:09:09,240
+chúng ta đã động vào ngay đây bằng việc gọi
+
+179
+00:09:09,240 --> 00:09:11,970
+qt.binding. Đây là đối tượng toàn cục
+
+180
+00:09:11,970 --> 00:09:14,280
+của qt và chúng ta sẽ xử lý vấn đề này
+
+181
+00:09:14,280 --> 00:00:00,000
+trong bài sau. Tôi sẽ gặp lại các bạn ở đó.
+

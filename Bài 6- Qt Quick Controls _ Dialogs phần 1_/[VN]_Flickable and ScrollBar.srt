@@ -1,0 +1,424 @@
+1
+00:00:00,000 --> 00:00:02,100
+trong bài này chúng ta sẽ thực hành với
+
+2
+00:00:02,100 --> 00:00:04,380
+thành phần có thể vuốt được (Flickable) và thanh cuộn (scrollbar)
+
+3
+00:00:04,380 --> 00:00:06,839
+bạn sử dụng một thành phần có thể vuốt được
+
+4
+00:00:06,839 --> 00:00:09,570
+khi bạn có nội dung nhiều hơn kích thước
+
+5
+00:00:09,570 --> 00:00:12,269
+hiển thị của cửa sổ và scrollbar 
+
+6
+00:00:12,269 --> 00:00:15,120
+thì được dùng để giúp bạn có thể
+
+7
+00:00:15,120 --> 00:00:18,390
+cuộn để xem thêm nội dung, nào hãy mở
+
+8
+00:00:18,390 --> 00:00:20,340
+Qt creator và thử cùng tôi
+
+9
+00:00:20,340 --> 00:00:23,100
+chúng ta đã ở trong Qt creator, ta tạo
+
+10
+00:00:23,100 --> 00:00:26,160
+một project mới, project kiểu Qt
+
+11
+00:00:26,160 --> 00:00:28,769
+Quick application như thường lệ và đặt tên
+
+12
+00:00:28,769 --> 00:00:32,009
+nó là FlickableScrollBarDemo, lưu nó lại 
+
+13
+00:00:32,009 --> 00:00:35,850
+với đường dẫn quen thuộc, nhấn next và chọn
+
+14
+00:00:35,850 --> 00:00:41,520
+phiên bản Qt sử dụng, tiếp đến chọn Kit và thế là xong
+
+15
+00:00:41,520 --> 00:00:43,940
+ta thay đổi tiêu đề thành
+
+16
+00:00:43,940 --> 00:00:47,820
+"Flickable and Scrollbar Demo", tiếp theo
+
+17
+00:00:47,820 --> 00:00:55,829
+khai báo thư viện QtQuick Control, chọn
+
+18
+00:00:55,829 --> 00:00:59,070
+phiên bản mới nhất ta có trong bộ 
+
+19
+00:00:59,070 --> 00:01:02,219
+cài đặt này và tiếp theo ta đi tới
+
+20
+00:01:02,219 --> 00:01:06,619
+phần hướng dẫn và tìm flickable
+
+21
+00:01:08,299 --> 00:01:11,430
+bạn thấy đây, phần tử Flickable thì 
+
+22
+00:01:11,430 --> 00:01:14,130
+chứa các phần tử con của nó trên một bề mặt
+
+23
+00:01:14,130 --> 00:01:17,130
+mà có thể kéo và vuốt được, rồi đơn giản
+
+24
+00:01:17,130 --> 00:01:20,490
+là nó có thể vuốt di chuyển hết nội dung
+
+25
+00:01:20,490 --> 00:01:23,430
+mà cửa sổ không chứa hết, và
+
+26
+00:01:23,430 --> 00:01:25,020
+việc chúng ta cần làm là để một phần tử
+
+27
+00:01:25,020 --> 00:01:32,420
+Flickable ở trong đây và
+
+28
+00:01:32,420 --> 00:01:36,320
+bên trong ta đặt một thành phần Column
+
+29
+00:01:36,320 --> 00:01:40,920
+và để nó được bố cục theo chiều dọc, đặt cho 
+
+30
+00:01:40,920 --> 00:01:46,979
+nó một ID, cho nó tràn đầy phần tử cha và ta
+
+31
+00:01:46,979 --> 00:01:48,960
+muốn thành phần Flickable này có
+
+32
+00:01:48,960 --> 00:01:52,640
+cùng chiều rộng với đối tượng cha của nó, cùng
+
+33
+00:01:52,640 --> 00:01:58,200
+luôn chiều cao với đối tượng cha, rồi ta
+
+34
+00:01:58,200 --> 00:02:01,399
+cần chỉnh kích thước nội dung mà nó
+
+35
+00:02:01,399 --> 00:02:04,409
+có thể hiển thị và kích thước nội dung đó
+
+36
+00:02:04,409 --> 00:02:06,509
+thì có được từ thành phần Column này,
+
+37
+00:02:06,509 --> 00:02:09,000
+nó phụ thuộc vào số lượng và 
+
+38
+00:02:09,000 --> 00:02:11,500
+kích cỡ của phần tử mà 
+
+39
+00:02:11,500 --> 00:02:13,930
+column này chứa, vì thế ta nên để là
+
+40
+00:02:13,930 --> 00:02:16,570
+implicitHeight ở đây để cho đảm bảo, ta
+
+41
+00:02:16,570 --> 00:02:20,380
+gõ mColumnId rồi gõ
+
+42
+00:02:20,380 --> 00:02:23,620
+implicitHeight, bây giờ ta thêm một số nội dung
+
+43
+00:02:23,620 --> 00:02:26,740
+vào trong Column của chúng ta, tôi có một
+
+44
+00:02:26,740 --> 00:02:29,740
+nội dung chuẩn bị sẵn ở đây, tôi sẽ bỏ
+
+45
+00:02:29,740 --> 00:02:32,740
+nó vào để tiết kiệm thời gian, nó đơn giản là
+
+46
+00:02:32,740 --> 00:02:35,170
+một hình chữ nhật, nó có màu sắc, nó có 
+
+47
+00:02:35,170 --> 00:02:37,480
+chiều rộng giống với đối tượng cha và
+
+48
+00:02:37,480 --> 00:02:40,209
+nó có chiều cao cụ thể, bên trong này ta có
+
+49
+00:02:40,209 --> 00:02:43,690
+một đối tượng text hiển thị Element 1 và
+
+50
+00:02:43,690 --> 00:02:47,170
+màu chữ là màu trắng, vì thế tôi 
+
+51
+00:02:47,170 --> 00:02:50,380
+sẽ copy nó và dán nó xuống
+
+52
+00:02:50,380 --> 00:02:52,720
+thêm vài lần và thay đổi màu sắc
+
+53
+00:02:52,720 --> 00:02:55,239
+để cho nó khác nhau, rồi gõ vào là
+
+54
+00:02:55,239 --> 00:02:57,970
+Blue (màu xanh) và gõ chữ cho nó là
+
+55
+00:02:57,970 --> 00:03:05,200
+Element 2, nó sẽ có màu vàng
+
+56
+00:03:05,200 --> 00:03:10,540
+cái này thì sẽ là Element 3, cái kế tiếp
+
+57
+00:03:10,540 --> 00:03:16,510
+sẽ có màu  (đỏ tươi) tại sao ko ?, và tiếp 
+
+58
+00:03:16,510 --> 00:03:19,209
+sẽ là Element 4 và ta tiếp tục
+
+59
+00:03:19,209 --> 00:03:21,730
+tạo tới cái thứ 7
+
+60
+00:03:21,730 --> 00:03:26,320
+okay, tôi sẽ tiếp tục làm và 
+
+61
+00:03:26,320 --> 00:03:29,049
+trở lại khi tôi xong, okay tôi có một
+
+62
+00:03:29,049 --> 00:03:31,230
+đống hình chử nhật bên trong Column này
+
+63
+00:03:31,230 --> 00:03:34,390
+nếu bạn muốn nhìn được mọi thứ
+
+64
+00:03:34,390 --> 00:03:36,640
+dễ dàng hơn bạn có thể thu gọn những 
+
+65
+00:03:36,640 --> 00:03:41,170
+cái rectangle này lại như thế này, okay nó 
+
+66
+00:03:41,170 --> 00:03:43,810
+dễ nhìn hơn rồi, bạn có thể thấy tổng 
+
+67
+00:03:43,810 --> 00:03:45,610
+bao nhiêu cái rectangle mà bạn có
+
+68
+00:03:45,610 --> 00:03:48,760
+bên trong hay các thứ khác bạn thay vào, ta
+
+69
+00:03:48,760 --> 00:03:52,239
+đã có một phần tử Flickable và ta có một
+
+70
+00:03:52,239 --> 00:03:55,090
+tập hợp các rectangle bên trong, ta có thể chạy
+
+71
+00:03:55,090 --> 00:03:57,299
+chương trnhf và nhìn xem nó như thế nào
+
+72
+00:03:57,299 --> 00:04:00,820
+mm-hm, bạn thấy các hình chữ nhật của chúng ta
+
+73
+00:04:00,820 --> 00:04:04,630
+nhung các hình chữ nhật thì nhiều và vượt quá
+
+74
+00:04:04,630 --> 00:04:08,829
+chiều cao của cửa sổ nhưng chúng ta có thể cuộn
+
+75
+00:04:08,829 --> 00:04:11,640
+nó lên xuống bởi vì chúng ta có một
+
+76
+00:04:11,640 --> 00:04:14,380
+thành phần có thể vuốt bao cái cột phần tử này
+
+77
+00:04:14,380 --> 00:04:16,168
+nó thật tuyệt
+
+78
+00:04:16,168 --> 00:04:18,668
+một thứ khác tôi muốn bạn xem đó là
+
+79
+00:04:18,668 --> 00:04:21,459
+bạn có thể để thêm Scrollbar vào
+
+80
+00:04:21,459 --> 00:04:24,070
+phần tử Flickable để giúp
+
+81
+00:04:24,070 --> 00:04:25,000
+người dùng có thể thấy
+
+82
+00:04:25,000 --> 00:04:27,490
+được bao nhiêu nội dung còn
+
+83
+00:04:27,490 --> 00:04:30,340
+bên dưới, cách làm là thế này, trở lại 
+
+84
+00:04:30,340 --> 00:04:33,550
+code của chúng ta, đến phần dưới 
+
+85
+00:04:33,550 --> 00:04:35,680
+sau phần tử Column hoặc bạn có thể
+
+86
+00:04:35,680 --> 00:04:37,480
+để ở trên cùng cũng được, ko thành vấn đề
+
+87
+00:04:37,480 --> 00:04:39,640
+Bạn chỉ việc để một đối tượng
+
+88
+00:04:39,640 --> 00:04:44,940
+bên trong thành phần Flickable và gõ ScrollBar.vertical
+
+89
+00:04:44,940 --> 00:04:51,460
+tiếp theo gõ ScrollBar và nó tạo ra
+
+90
+00:04:51,460 --> 00:04:53,470
+một phần tử như thế này, đây là một
+
+91
+00:04:53,470 --> 00:04:56,860
+thuộc tính đính kèm cho phép thêm một thanh cuộn
+
+92
+00:04:56,860 --> 00:04:59,440
+vào phần tử Flickable của chúng ta
+
+93
+00:04:59,440 --> 00:05:02,020
+okay, bạn chỉ cần đặt một phần tử Scrollbar
+
+94
+00:05:02,020 --> 00:05:04,600
+như thế này, không cần
+
+95
+00:05:04,600 --> 00:05:07,480
+viết thêm bất cứ gì, bạn sẽ có 
+
+96
+00:05:07,480 --> 00:05:10,210
+được thanh cuộn khi bạn chạy
+
+97
+00:05:10,210 --> 00:05:12,790
+chương trình và bạn thấy là nếu bạn 
+
+98
+00:05:12,790 --> 00:05:16,090
+cuộn bạn sẽ thấy thanh cuộn xuất hiện
+
+99
+00:05:16,090 --> 00:05:19,480
+phía bên phải, thật tuyệt phải ko, 
+
+100
+00:05:19,480 --> 00:05:21,880
+và khi bạn có nhiều nội dung hơn
+
+101
+00:05:21,880 --> 00:05:24,419
+kích thước cửa sổ có thể hiển thị
+
+102
+00:05:24,419 --> 00:05:27,240
+hãy nghĩ đến dùng thành phần Flickable
+
+103
+00:05:27,240 --> 00:05:29,260
+nó là tất cả những gì tôi muốn nói ở bài này
+
+104
+00:05:29,260 --> 00:05:32,050
+về thành phần Flickable, trong bài kế tiếp
+
+105
+00:05:32,050 --> 00:05:33,550
+chúng ta sẽ tìm hiểu về
+
+106
+00:05:33,550 --> 00:00:00,000
+thành phần Slider, hẹn gặp lại.
+

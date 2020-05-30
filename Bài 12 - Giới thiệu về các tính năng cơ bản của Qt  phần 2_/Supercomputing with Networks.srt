@@ -1,0 +1,696 @@
+﻿1
+00:00:00,800 --> 00:00:06,550
+Chào mừng các bạn đến với video về xây dựng ứng dụng siêu máy tính. Trong video này chúng ta sẽ tìm hiểu về
+
+2
+00:00:06,550 --> 00:00:12,760
+cấu trúc siêu máy tính đơn giản, mã hoá mạng trong Qt, và triển khai đầy đủ một ứng dụng siêu máy tính.
+
+3
+00:00:12,760 --> 00:00:16,900
+Ta cùng nói ngắn gọn về cấu trúc của ứng dụng siêu máy tính.
+
+4
+00:00:17,020 --> 00:00:22,180
+Ta cần tạo một số giao diện để giúp phân chia công việc bằng cách song song hoá. Để
+
+5
+00:00:22,180 --> 00:00:27,310
+làm được điều đó, ta sẽ tạo 2 server TCP và một loạt worker ở giữa như trong
+
+6
+00:00:27,310 --> 00:00:32,170
+biểu đồ trên đây. Một server sẽ là push server mang chức năng phân phối công việc
+
+7
+00:00:32,170 --> 00:00:33,370
+cho các worker.
+
+8
+00:00:33,370 --> 00:00:38,440
+Server còn lại sẽ là pull server có chức năng nhận kết quả từ các phép toán. Bây giờ
+
+9
+00:00:38,450 --> 00:00:40,770
+giữa những server này sẽ là các worker.
+
+10
+00:00:40,870 --> 00:00:46,090
+Các worker sẽ kết nối với pull server, nhận công việc, chạy một số phép toán, sau đó đưa kết quả
+
+11
+00:00:46,180 --> 00:00:47,430
+vào pull server.
+
+12
+00:00:47,620 --> 00:00:53,030
+Setup này khá tiện lợi vì nó đơn giản, và ta luôn có thể thêm worker để hoàn thành công việc nhanh hơn.
+
+13
+00:00:53,110 --> 00:00:58,580
+Chỉ cần đảm bảo các phép tính sẽ mất nhiều thời gian hơn so với độ trễ của mạng.
+
+14
+00:00:58,630 --> 00:01:02,860
+Bây giờ ví dụ của chúng ta sẽ đơn giản hoá cấu trúc một chút, để ta không phải
+
+15
+00:01:02,860 --> 00:01:05,440
+bắt đầu cùng lúc 4 quy trình khác nhau.
+
+16
+00:01:05,470 --> 00:01:10,570
+Ta sẽ làm điều này bằng cách kết hợp push và pull server trong một quy trình và mô phỏng các worker
+
+17
+00:01:10,570 --> 00:01:15,870
+với một quy trình duy nhất giúp tác động vòng lặp sự kiện và QTimer để mô phỏng nhiều worker.
+
+18
+00:01:15,880 --> 00:01:20,650
+Sau khi xong ví dụ này, ta sẽ xem lại toàn bộ cấu trúc đầy đủ mà tôi sẽ giới thiệu cho
+
+19
+00:01:20,650 --> 00:01:21,660
+loại ứng dụng này.
+
+20
+00:01:21,790 --> 00:01:27,040
+Ta cùng bắt đầu nhé. Các bạn sẽ phải mở cả file project server và
+
+21
+00:01:27,040 --> 00:01:27,550
+client.
+
+22
+00:01:27,580 --> 00:01:32,770
+Và nếu nhìn vào file server ở push server và kéo xuống dưới, các bạn có thể thấy ta có 2
+
+23
+00:01:32,770 --> 00:01:36,570
+biến thành viên, một QTcpServer và một QStringList.
+
+24
+00:01:36,580 --> 00:01:42,820
+Như vậy ta sẽ sử dụng QTcpServer để xuất từng chuỗi phép toán một.
+
+25
+00:01:42,850 --> 00:01:46,420
+Và trong ví dụ này ta sẽ thực hiện 101 phép toán.
+
+26
+00:01:46,540 --> 00:01:51,760
+Nếu đi tới phần triển khai của file và nhìn vào hàm tạo của class này, các bạn sẽ
+
+27
+00:01:51,760 --> 00:01:58,260
+thấy ta đã có sẵn server, listen, trên LocalHost, cổng 5000.
+
+28
+00:01:58,480 --> 00:02:03,820
+Sau đó ta sẽ khởi chạy các phép toán, sử dụng number_operations, về cơ bản chỉ
+
+29
+00:02:03,970 --> 00:02:05,960
+thêm một string cho mỗi số.
+
+30
+00:02:05,980 --> 00:02:11,920
+Cuối cùng và quan trọng nhất, ta lấy QTcpServer, cụ thể là tín hiệu newConnection,
+
+31
+00:02:11,980 --> 00:02:14,550
+và kết nối với slot send_work.
+
+32
+00:02:14,560 --> 00:02:19,830
+Nếu kéo xuống slot send_work, ta sẽ thấy được cách triển khai.
+
+33
+00:02:19,840 --> 00:02:22,400
+Điều đầu tiên ta cần làm là lấy socket.
+
+34
+00:02:22,450 --> 00:02:26,990
+Và ta sẽ thực hiện điều đó bằng hàm nextPendingConnection trên server.
+
+35
+00:02:27,400 --> 00:02:27,850
+Tuyệt vời.
+
+36
+00:02:27,850 --> 00:02:31,840
+Bây giờ ta cần kiểm tra để đảm bảo rằng ta vẫn còn việc để làm. Ta sẽ thực hiện
+
+37
+00:02:31,840 --> 00:02:35,590
+điều đó bằng cách gọi hàm isEmpty trên operations.
+
+38
+00:02:35,590 --> 00:02:42,880
+Nếu operations empty, thì ta tiếp tục xuất tín hiệu finished và trả lại từ
+
+39
+00:02:42,880 --> 00:02:43,770
+hàm này.
+
+40
+00:02:43,900 --> 00:02:47,280
+Nếu operations không empty, điều đó có nghĩa ta vẫn còn việc để làm.
+
+41
+00:02:47,320 --> 00:02:52,750
+Như vậy ta sẽ tiếp tục xuất phép toán đầu tiên. Khi lấy socket, ta cần đảm bảo
+
+42
+00:02:52,750 --> 00:02:55,650
+rằng thao tác được thực hiện đúng lúc.
+
+43
+00:02:55,840 --> 00:03:00,310
+Sau đó ta kết nối tín hiệu disconnected tới slot deleteLater,
+
+44
+00:03:00,340 --> 00:03:04,450
+tất cả đều trên QTcpSocket.
+
+45
+00:03:04,470 --> 00:03:08,910
+Tôi quên mất một điều, đó là ta phải đảm bảo QTcpSocket này
+
+46
+00:03:08,910 --> 00:03:13,410
+được dọn sạch. Và ta sẽ làm việc đó bằng cách gọi tín hiệu disconnected
+
+47
+00:03:13,410 --> 00:03:18,830
+tới slot deleteLater slot trên QTcpSocket.
+
+48
+00:03:18,840 --> 00:03:22,380
+Tiếp theo các bạn cần nhớ rằng dữ liệu trên mạng khá tốn kém.
+
+49
+00:03:22,380 --> 00:03:24,770
+Vậy nên ta cần đảm bảo nén được càng nhiều càng tốt.
+
+50
+00:03:24,810 --> 00:03:27,600
+May mắn là Qt có một hàm hỗ trợ thao tác đó trong
+
+51
+00:03:27,630 --> 00:03:28,820
+QDataStream.
+
+52
+00:03:28,830 --> 00:03:35,030
+Chúng ta sẽ sử dụng hàm đó luôn. Như vậy phép input QDataStream,
+
+53
+00:03:35,030 --> 00:03:39,110
+toán tử input QDataStream, như các bạn thấy trên dòng này, thực chất sẽ
+
+54
+00:03:39,110 --> 00:03:43,430
+nén dữ liệu operation, tức QString này, vào block
+
+55
+00:03:43,430 --> 00:03:49,840
+QByteArray, được gọi là block, mà ta đã đưa vào hàm tạo cho QDataStream.
+
+56
+00:03:49,850 --> 00:03:54,120
+Bây giờ block QByteArray này chính là thứ ta cần gửi.
+
+57
+00:03:54,230 --> 00:03:57,540
+Vì vậy ta sẽ gửi bằng hàm write.
+
+58
+00:03:57,620 --> 00:04:02,000
+Sau đó ta sẽ ngắt kết nối QTcpSocket bằng hàm disconnectFromHost.
+
+59
+00:04:03,350 --> 00:04:07,640
+Bây giờ ta tiếp tục lấy client_connection.
+
+60
+00:04:07,640 --> 00:04:10,180
+Chúng ta đã đảm bảo nó sẽ được dọn sạch.
+
+61
+00:04:10,190 --> 00:04:16,590
+Ta đã lấy operation đầu tiên và nén lại, sau đó viết QByteArray đã nén
+
+62
+00:04:16,670 --> 00:04:20,590
+để có thể gửi tới một trong số những worker.
+
+63
+00:04:20,600 --> 00:04:22,610
+Vậy worker sẽ xử lý như thế nào?
+
+64
+00:04:22,640 --> 00:04:24,310
+Ta cùng quan sát nhé.
+
+65
+00:04:24,320 --> 00:04:29,300
+Chúng ta sẽ mở project client rồi đi tới file triển khai
+
+66
+00:04:29,300 --> 00:04:30,010
+socket_manager.
+
+67
+00:04:30,260 --> 00:04:33,250
+Hàm tạo cho class này rất đơn giản.
+
+68
+00:04:33,560 --> 00:04:35,810
+Ta vừa gọi hàm setup_sockets.
+
+69
+00:04:35,870 --> 00:04:37,440
+Đối với các worker,
+
+70
+00:04:37,460 --> 00:04:43,250
+mỗi worker cần 2 socket, một để kết nối với push server và một để kết nối với pull
+
+71
+00:04:43,250 --> 00:04:49,070
+server. Cặp socket, như các bạn có thể thấy ở đây, tạo 2 socket chỉ để phục vụ cho mục đích trên, một input và một
+
+72
+00:04:49,070 --> 00:04:49,940
+output.
+
+73
+00:04:50,120 --> 00:04:53,420
+Chúng ta sẽ kết nối output ngay với pull server.
+
+74
+00:04:53,420 --> 00:04:58,020
+Như vậy, trong trường hợp này sẽ là LocalHost trên cổng 5001.
+
+75
+00:04:58,070 --> 00:05:02,550
+Vì ta đã nén dữ liệu trước khi gửi, nên ta sẽ giải nén dữ liệu ở đây.
+
+76
+00:05:02,660 --> 00:05:09,370
+Vì vậy ta sẽ tạo một QDataStream rồi liên kết với cặp socket input, hay
+
+77
+00:05:09,370 --> 00:05:14,060
+QTcpSocket input bằng hàm setDevice trên QDataStream.
+
+78
+00:05:14,060 --> 00:05:19,910
+Giờ tín hiệu cần chú ý nhất mà QTcpSocket sẽ nhận là tín hiệu
+
+79
+00:05:19,910 --> 00:05:23,260
+readyRead, có chức năng thông báo rằng ta có dữ liệu cần đọc.
+
+80
+00:05:23,390 --> 00:05:26,670
+Ta sẽ sử dụng một slot dựa trên functor để sắp xếp mã một chút.
+
+81
+00:05:26,720 --> 00:05:33,410
+Vì tín hiệu mới chỉ là readyRead chứ không phải "Này dữ liệu xong xuôi rồi đấy,
+
+82
+00:05:33,410 --> 00:05:34,490
+bắt đầu xử lý đi",
+
+83
+00:05:34,490 --> 00:05:37,980
+ta sẽ phải kiểm tra để đảm bảo rằng toàn bộ dữ liệu đã đầy đủ.
+
+84
+00:05:38,030 --> 00:05:43,850
+Ta sẽ làm việc này sử dụng 2 hàm đối với object data_stream, startTransaction và commitTransaction. Ta sẽ
+
+85
+00:05:43,850 --> 00:05:48,260
+gọi hàm startTransaction trước.
+
+86
+00:05:48,270 --> 00:05:54,270
+Như vậy trong mã này, nếu hàm commitTransaction trả về false, điều đó có nghĩa là ta vẫn còn dữ liệu
+
+87
+00:05:54,270 --> 00:05:55,350
+chưa nhận.
+
+88
+00:05:55,470 --> 00:06:01,110
+Hàm commitTransaction này có khả năng đưa data_stream quay trở về
+
+89
+00:06:01,110 --> 00:06:03,180
+vị trí ta gọi startTransaction.
+
+90
+00:06:03,270 --> 00:06:06,030
+Nếu không hợp lý thì tôi cũng chẳng lo.
+
+91
+00:06:06,030 --> 00:06:09,870
+Về cơ bản đây là chi tiết triển khai của QDataStream.
+
+92
+00:06:09,870 --> 00:06:14,410
+Điều quan trọng ta cần nắm được là work này thực chất đang giải nén dữ liệu.
+
+93
+00:06:14,430 --> 00:06:19,710
+Đặc biệt tại vị trí ta tạo instance QString có tên work, sau khi sử dụng
+
+94
+00:06:19,710 --> 00:06:20,820
+các toán tử output,
+
+95
+00:06:20,820 --> 00:06:25,550
+ta sẽ đặt toàn bộ dữ liệu vào biến work này.
+
+96
+00:06:25,560 --> 00:06:29,850
+Như vậy nếu ta qua được phần gọi hàm ở đây, và data_stream
+
+97
+00:06:29,850 --> 00:06:31,560
+commitTransaction trả về true,
+
+98
+00:06:31,560 --> 00:06:36,810
+điều đó có nghĩa là biến QString có tên work này đã nhận dữ liệu giải nén mà ta gửi
+
+99
+00:06:36,810 --> 00:06:37,920
+qua push server.
+
+100
+00:06:37,920 --> 00:06:42,750
+Ta cùng gọi một hàm để mô phỏng work.
+
+101
+00:06:42,760 --> 00:06:48,130
+Bây giờ nếu quan sát hàm xử lý work, các bạn sẽ thấy rằng thực chất ta không
+
+102
+00:06:48,130 --> 00:06:49,130
+xử lý work.
+
+103
+00:06:49,150 --> 00:06:53,680
+Các bạn có thể thấy note ngay đây "in real code, work calculations would happen before we compress the data
+
+104
+00:06:53,680 --> 00:06:54,240
+again".
+
+105
+00:06:54,250 --> 00:06:59,560
+Nhưng vì ta sẽ chỉ mô phỏng xử lý work, nên ta sẽ giải nén dữ liệu, vì
+
+106
+00:06:59,560 --> 00:07:03,230
+ta chỉ mô phỏng work trong đó ta sẽ lại nén dữ liệu lần nữa.
+
+107
+00:07:03,340 --> 00:07:09,160
+Giải nén dữ liệu chỉ để nén lại nghe có vẻ ngu ngốc, nhưng hãy nhớ rằng, mất gói tin là
+
+108
+00:07:09,160 --> 00:07:10,240
+rất tốn kém đấy.
+
+109
+00:07:10,240 --> 00:07:13,870
+Nếu nhìn vào hàm xử lý work, các bạn sẽ thấy rằng thực ra ta sẽ chẳng
+
+110
+00:07:13,870 --> 00:07:14,980
+làm gì cả.
+
+111
+00:07:14,980 --> 00:07:20,110
+Như vậy trong note này "in real code, work calculations would happen before we compress the data again".
+
+112
+00:07:20,410 --> 00:07:22,000
+Vì đây chỉ là mô phỏng,
+
+113
+00:07:22,000 --> 00:07:24,960
+nên ta chỉ cần nén lại dữ liệu.
+
+114
+00:07:25,000 --> 00:07:27,710
+Và mã rất giống nhau. Vì vậy ta sẽ tạo một QByteArray,
+
+115
+00:07:27,760 --> 00:07:34,650
+ta tạo một QDataStream và đưa QByteArray vào, sau đó tiếp tục sử dụng toán tử input.
+
+116
+00:07:34,660 --> 00:07:36,940
+Như vậy QString thực chất là biến work.
+
+117
+00:07:36,940 --> 00:07:42,730
+Chúng ta sẽ viết vào data_stream, điều đó có nghĩa là ta có thể
+
+118
+00:07:42,730 --> 00:07:43,450
+gửi block này đi.
+
+119
+00:07:43,540 --> 00:07:49,050
+Tiến hành luôn thôi. Và ta cần đảm bảo rằng socket output đã được kết nối.
+
+120
+00:07:49,050 --> 00:07:50,640
+vậy nên ta sẽ kiểm tra điều đó trước.
+
+121
+00:07:50,680 --> 00:07:55,990
+Nhưng nếu đã kết nối, thì ta sẽ tiếp tục gửi work trở lại, sử dụng hàm write.
+
+122
+00:07:56,960 --> 00:08:00,840
+Bây giờ ta cần mô phỏng một số phép time ở đây.
+
+123
+00:08:00,860 --> 00:08:05,900
+Nếu không thì ta chỉ biết tốc độ của LocalHost loopback thôi. Và ta sẽ thực hiện việc đó
+
+124
+00:08:05,900 --> 00:08:09,590
+bằng cách sử dụng hàm random, bounded.
+
+125
+00:08:09,590 --> 00:08:15,140
+Như vậy ta sẽ chọn 1 số từ 0 đến 500. Sau đó ta sẽ đưa simulated_work_time vào một
+
+126
+00:08:15,140 --> 00:08:21,800
+QTimer. QTimer này lại được kết nối với một functor khác. Và nó sẽ gọi hàm get_more_work,
+
+127
+00:08:21,800 --> 00:08:28,460
+từ đó liên kết socket input lại với push socket để
+
+128
+00:08:28,460 --> 00:08:30,530
+tiếp tục lấy thêm work.
+
+129
+00:08:30,530 --> 00:08:35,530
+Điều cuối cùng cần làm, giờ đây ta đã gửi work, ở ngay trên đây.
+
+130
+00:08:35,540 --> 00:08:39,150
+Vậy là ta đã gửi work từ các worker quay trở về pull server.
+
+131
+00:08:39,230 --> 00:08:42,830
+Ta cùng tiếp tục quan sát pull server.
+
+132
+00:08:42,870 --> 00:08:48,440
+Và nếu nhìn vào hàm tạo của pull server, các bạn sẽ thấy ta có listen trên
+
+133
+00:08:48,440 --> 00:08:51,080
+LocalHost cổng 5001.
+
+134
+00:08:51,110 --> 00:08:57,020
+Sau đso giống như đã làm với push server, ta kết nối server, tức QTcpServer, cụ thể là
+
+135
+00:08:57,020 --> 00:09:03,020
+hàm newConnection, với slot receive_work. Như vậy slot receive_work trông y hệt
+
+136
+00:09:03,020 --> 00:09:03,900
+slot send_work.
+
+137
+00:09:03,930 --> 00:09:04,250
+Đúng không?
+
+138
+00:09:04,280 --> 00:09:09,560
+Ta sử dụng nextPendingConnection trên server để xuất client_connection.
+
+139
+00:09:09,560 --> 00:09:15,530
+Ta tạo một QDataStream. Và ta tiếp tục kết nối client_connection với data_stream.
+
+140
+00:09:15,680 --> 00:09:17,810
+Sau đó ta cần đảm bảo đã lấy được hết work,
+
+141
+00:09:17,810 --> 00:09:22,870
+ta sẽ sử dụng startTransaction và commitTransaction để đảm bảo thu thập được toàn bộ thông tin.
+
+142
+00:09:22,940 --> 00:09:26,030
+Nhưng cuối cùng thì tất cả dữ liệu sẽ lại đi vào biến
+
+143
+00:09:26,030 --> 00:09:31,790
+QString, như ta gọi là result. Và ta sử dụng toán tử output tại dòng này để đưa
+
+144
+00:09:32,120 --> 00:09:34,720
+thông tin data_stream vào result.
+
+145
+00:09:34,760 --> 00:09:38,480
+Sau đó chúng ta sẽ kiểm tra để đảm bảo đã lấy được thông tin, và kiểm tra
+
+146
+00:09:38,480 --> 00:09:41,470
+để xem liệu result, tức QString, có empty hay không.
+
+147
+00:09:41,490 --> 00:09:44,720
+Và cuối cùng là in ra.
+
+148
+00:09:45,020 --> 00:09:50,860
+Bây giờ chúng ta sẽ chạy 2 project này. Chúng ta sẽ chạy server trước, sau đó là client.
+
+149
+00:09:50,990 --> 00:09:55,850
+Vậy là thay đổi server rồi chạy client.
+
+150
+00:09:56,050 --> 00:10:00,070
+Có vẻ như ta mất 4.9 đến 8 giây để chạy.
+
+151
+00:10:00,070 --> 00:10:06,820
+Lưu ý rằng chúng ta có thể đi tới client và thay đổi số worker, sau đó tiếp tục
+
+152
+00:10:06,820 --> 00:10:10,610
+mô phỏng trường hợp ta có nhiều worker hơn và chạy lại chương trình.
+
+153
+00:10:10,720 --> 00:10:13,020
+Đó cũng chính là những gì ta sẽ làm trong thực tế.
+
+154
+00:10:13,030 --> 00:10:16,670
+Nếu ta muốn thực hiện công việc nhanh hơn, thì chỉ cần tăng số lượng worker.
+
+155
+00:10:16,690 --> 00:10:18,820
+Quy trình rất đơn giản.
+
+156
+00:10:18,820 --> 00:10:23,590
+Lý thuyết thì thế thôi nhưng trên thực tế tôi sẽ
+
+157
+00:10:23,590 --> 00:10:24,330
+làm như sau.
+
+158
+00:10:24,700 --> 00:10:28,590
+Đầu tiên tôi sẽ loại bỏ vòng lặp sự kiện ra khỏi worker.
+
+159
+00:10:28,600 --> 00:10:30,430
+Các worker sẽ rất đơn giản,
+
+160
+00:10:30,430 --> 00:10:32,870
+gần giống như mã được hiển thị trên đây.
+
+161
+00:10:33,130 --> 00:10:35,700
+Về cơ bản worker sẽ chạy một vòng lặp vô hạn.
+
+162
+00:10:35,710 --> 00:10:40,900
+Nó sẽ lấy work từ push server, chạy các phép toán, sau đó gửi kết quả trở về
+
+163
+00:10:40,900 --> 00:10:41,820
+pull server.
+
+164
+00:10:41,950 --> 00:10:47,140
+Và lý do khiến các worker đơn giản như vậy là bởi ta sẽ tác động lên trình quản lý quy trình như
+
+165
+00:10:47,140 --> 00:10:50,000
+đã tạo trong video trước.
+
+166
+00:10:50,200 --> 00:10:55,750
+Cơ bản tôi sẽ tạo lượng worker bằng với số lõi trên server. Khi làm cho các worker trở nên
+
+167
+00:10:55,750 --> 00:10:56,710
+đơn giản như vậy,
+
+168
+00:10:56,710 --> 00:11:02,170
+ta sẽ để hệ điều hành quản lý chuyển đổi tác vụ hơn là chúng ta tự lập trình
+
+169
+00:11:02,170 --> 00:11:05,200
+một cách thủ công, dù muốn thế nào đi nữa.
+
+170
+00:11:05,200 --> 00:11:08,630
+Bản chất hệ điều hành đã chuyển đổi tác vụ khá hiệu quả rồi.
+
+171
+00:11:08,650 --> 00:11:13,980
+Vì vậy ta chỉ nên tận dụng khả năng đó chứ không nên tự mình lập trình một cách thủ công.
+
+172
+00:11:14,260 --> 00:11:19,840
+Như vậy ta đã tìm hiểu xong về xây dựng một ứng dụng siêu máy tính, làm việc với mã hoá mạng
+
+173
+00:11:19,840 --> 00:11:24,850
+trong Qt, và lược qua cấu trúc đơn giản của một ứng dụng siêu máy tính.
+
+174
+00:11:25,820 --> 00:11:30,080
+Hãy theo dõi video tiếp theo của chúng tôi, trong đó ta sẽ đi sâu vào model/views.
+

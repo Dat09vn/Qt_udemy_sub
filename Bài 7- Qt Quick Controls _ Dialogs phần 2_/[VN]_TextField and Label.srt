@@ -1,0 +1,372 @@
+1
+00:00:00,000 --> 00:00:02,460
+Bạn sử dụng thành phần TextField khi bạn muốn
+
+2
+00:00:02,460 --> 00:00:05,520
+lấy dữ liệu chữ trên một ô và được nhập từ 
+
+3
+00:00:05,520 --> 00:00:07,950
+người dùng, chúng ta sẽ mở QT creator
+
+4
+00:00:07,950 --> 00:00:09,630
+và thử làm với nó một đối tượng QtQuick,
+
+5
+00:00:09,630 --> 00:00:14,490
+Trong QT creator chúng ta tạo mới
+
+6
+00:00:14,490 --> 00:00:18,740
+project và đặt tên nó là TextFieldDemo,
+
+7
+00:00:18,740 --> 00:00:22,650
+lưu nó vào đường dẫn thường lệ và chọn phiên bản QT,
+
+8
+00:00:22,650 --> 00:00:29,340
+tiếp theo chọn Kit. Ta muốn 
+
+9
+00:00:29,340 --> 00:00:32,930
+thêm thư viện QT Quick Control vào và
+
+10
+00:00:32,930 --> 00:00:36,149
+ta muốn hiện thông tin bài học của chúng ta
+
+11
+00:00:36,149 --> 00:00:42,210
+trong bài này. Một thành phần TextField thì bản chất
+
+12
+00:00:42,210 --> 00:00:44,430
+là giống cái mà bạn thấy ở đây, nó là một
+
+13
+00:00:44,430 --> 00:00:47,329
+ô để nhập tên của bạn, tôi sẽ để là Daniel
+
+14
+00:00:47,329 --> 00:00:51,449
+và tôi có thể xử lý dữ liệu trong ô
+
+15
+00:00:51,449 --> 00:00:53,370
+này ví dụ tôi có thể lấy giá trị nó khi 
+
+16
+00:00:53,370 --> 00:00:56,039
+người dùng nhấn nút, rồi giờ chúng ta hãy
+
+17
+00:00:56,039 --> 00:00:57,570
+thử làm việc đó.
+
+18
+00:00:57,570 --> 00:01:00,410
+Ta trở lại phần mã nguồn và 
+
+19
+00:01:00,410 --> 00:01:07,170
+để một thành phần Column ở trong, đặt thêm 
+
+20
+00:01:07,170 --> 00:01:12,840
+khoảng cách, cỡ 20 và ta muốn canh giữa
+
+21
+00:01:12,840 --> 00:01:14,869
+nó trong đối tượng cha, vì thế ta sẽ gõ
+
+22
+00:01:14,869 --> 00:01:18,689
+như thường lệ. Ta đặt thêm 
+
+23
+00:01:18,689 --> 00:01:23,280
+phần tử Row và cho nó có khảng cách 30, 
+
+24
+00:01:23,280 --> 00:01:27,270
+chiều rông là 300, và thành phần Row này
+
+25
+00:01:27,270 --> 00:01:28,860
+sẽ có một phần tử Label
+
+26
+00:01:28,860 --> 00:01:31,530
+để hiển thị Tên nhập vào lên và ta
+
+27
+00:01:31,530 --> 00:01:33,780
+có một phần tử TextField để
+
+28
+00:01:33,780 --> 00:01:36,840
+nhập Tên từ người dùng, vì thế 
+
+29
+00:01:36,840 --> 00:01:38,700
+ta sẽ để một thành phần Label
+
+30
+00:01:38,700 --> 00:01:41,930
+như thế này. Nhân Ctrl A rồi Ctrl I để gióng hàng cho nó.
+
+31
+00:01:41,930 --> 00:01:45,750
+Nó có thuộc tính chiều rộng và chiều cao căn bản thế này,
+
+32
+00:01:45,750 --> 00:01:48,329
+ta để wrapMode thế này và gióng hàng
+
+33
+00:01:48,329 --> 00:01:50,990
+cho nó được canh giữa, thuộc tính text thì để
+
+34
+00:01:50,990 --> 00:01:53,729
+"First Name". Nếu bạn muốn biết về
+
+35
+00:01:53,729 --> 00:01:55,799
+phần tử Label bạn có thể xem trong
+
+36
+00:01:55,799 --> 00:01:58,170
+tài liệu hướng dẫn và xem ở phần Label
+
+37
+00:01:58,170 --> 00:02:00,810
+nó được kế thừa từ Text với hai thuộc tính styling và font.
+
+38
+00:02:00,810 --> 00:02:04,200
+Rồi ta thêm một số tính năng để
+
+39
+00:02:04,200 --> 00:02:07,409
+nhận diện được những gì chúng ta sẽ nhìn thấy, giờ ta thêm
+
+40
+00:02:07,409 --> 00:02:10,970
+phần tử TextField
+
+41
+00:02:12,530 --> 00:02:16,730
+ta đặt cho nó một ID,
+
+42
+00:02:17,030 --> 00:02:20,280
+để chiều rộng là 200 thử 
+
+43
+00:02:20,280 --> 00:02:24,480
+và chiều cao là 50, tôi nghĩ
+
+44
+00:02:24,480 --> 00:02:28,560
+nó nên có một thông tin hướng dẫn (placeholder)
+
+45
+00:02:28,560 --> 00:02:34,650
+ta để nó là FirstName hay để là "Type in your FirstName"
+
+46
+00:02:34,650 --> 00:02:36,450
+để mời người dùng nhập vào
+
+47
+00:02:36,450 --> 00:02:42,840
+gì đó, và nếu bạn nhìn
+
+48
+00:02:42,840 --> 00:02:45,300
+tài liệu mô tả của thành phần này, hãy nhấn
+
+49
+00:02:45,300 --> 00:02:51,060
+F1, bạn thấy là nó kế thừa TextInput 
+
+50
+00:02:51,060 --> 00:02:53,880
+cái mà ta đã từng thấy trước đây, nếu 
+
+51
+00:02:53,880 --> 00:02:56,010
+bạn xem nó bạn sẽ thấy nó có
+
+52
+00:02:56,010 --> 00:02:58,770
+các hàm tín hiệu (signals), và một trong
+
+53
+00:02:58,770 --> 00:03:01,110
+số đó là editingFinished(), hàm này được
+
+54
+00:03:01,110 --> 00:03:03,180
+chạy khi chúng ta nhấn một nút Enter
+
+55
+00:03:03,180 --> 00:03:06,660
+hay khi nhấp chuột ra 
+
+56
+00:03:06,660 --> 00:03:10,380
+ra chỗ khác, vì thế bạn có thể sử dụng nó để biết khi nào
+
+57
+00:03:10,380 --> 00:03:13,290
+ta có thể lấy dữ liệu chữ từ nó, bên trong này
+
+58
+00:03:13,290 --> 00:03:17,840
+bạn có thể gõ onEditingFinished, sau đó
+
+59
+00:03:17,840 --> 00:03:26,370
+console.log nội dung "Text edit finish" và hiện
+
+60
+00:03:26,370 --> 00:03:29,190
+chuỗi mới được nhập ra, nó chính là
+
+61
+00:03:29,190 --> 00:03:32,280
+thuộc tính text của đối tượng này.
+
+62
+00:03:32,280 --> 00:03:36,480
+Rồi bên dưới này 
+
+63
+00:03:36,480 --> 00:03:40,160
+ta sẽ đặt một cái nút,
+
+64
+00:03:40,880 --> 00:03:44,460
+nhớ rằng đây là phần tử Column
+
+65
+00:03:44,460 --> 00:03:46,470
+nên chúng ta có thể thêm các
+
+66
+00:03:46,470 --> 00:03:50,760
+phần tử vào trong nó. Chữ của nút thì sẽ để là
+
+67
+00:03:50,760 --> 00:03:57,510
+"Click" và sau đó trong sự kiện onClickEvent ta sẽ
+
+68
+00:03:57,510 --> 00:03:59,640
+lấy chữ mà người dùng đã nhập ra, nó là chữ trong
+
+69
+00:03:59,640 --> 00:04:07,830
+TextField. Ta có thể làm thế này và truyền 
+
+70
+00:04:07,830 --> 00:04:11,250
+vào textFieldID và lấy thuộc tính text của nó
+
+71
+00:04:11,250 --> 00:04:14,040
+giờ hãy thử chạy chương trình và xem 
+
+72
+00:04:14,040 --> 00:04:17,040
+chúng ta có gì. Oke chúng ta có các thứ
+
+73
+00:04:17,040 --> 00:04:20,579
+ở đây và bạn thấy là cái nút Click
+
+74
+00:04:20,579 --> 00:04:23,460
+này thì chưa được canh giữa, nhưng nó không
+
+75
+00:04:23,460 --> 00:04:23,889
+phải là gì khó khăn cả,
+
+76
+00:04:23,889 --> 00:04:29,740
+Tôi gõ Daniel và khi tôi nhấn click
+
+77
+00:04:29,740 --> 00:04:33,129
+bạn thấy là tôi đã lấy được 2 
+
+78
+00:04:33,129 --> 00:04:36,669
+tín hiệu, một có được từ sự kiện
+
+79
+00:04:36,669 --> 00:04:40,629
+bỏ chuột ra khỏi ô TextField và sự kiện
+
+80
+00:04:40,629 --> 00:04:42,789
+onEditingFinished được kích hoạt
+
+81
+00:04:42,789 --> 00:04:46,780
+trong đây chúng ta đã gõ Text Edit Finished
+
+82
+00:04:46,780 --> 00:04:53,080
+À ta phải gõ là finished mới đúng. Và một 
+
+83
+00:04:53,080 --> 00:04:55,060
+tín hiệu khác được kích hoạt khi ta nhấn vào cái nút Click
+
+84
+00:04:55,060 --> 00:04:57,729
+nó hiện ra Text is Daniel, bạn có thể sử dụng
+
+85
+00:04:57,729 --> 00:05:00,310
+bất cứ cách gì bạn muốn để phục vụ cho việc
+
+86
+00:05:00,310 --> 00:05:02,770
+lấy dữ liệu text của bạn. Và thưa quý vị
+
+87
+00:05:02,770 --> 00:05:04,779
+đây là tất cả những gì bạn cần biết 
+
+88
+00:05:04,779 --> 00:05:06,939
+về thành phần TextField, nó thật sự
+
+89
+00:05:06,939 --> 00:05:09,509
+rất dễ và bạn sử dụng nó để lấy 
+
+90
+00:05:09,509 --> 00:05:12,849
+một chuỗi thông tin từ người dùng
+
+91
+00:05:12,849 --> 00:05:14,860
+và trong bài kế tiếp ta sẽ đi tìm hiểu 
+
+92
+00:05:14,860 --> 00:05:18,189
+về SplitView trong Qt Quick Control, tôi sẽ
+
+93
+00:05:18,189 --> 00:00:00,000
+gặp lại bạn ở bài đấy.
+

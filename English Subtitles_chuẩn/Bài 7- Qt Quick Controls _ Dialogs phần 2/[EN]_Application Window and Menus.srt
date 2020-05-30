@@ -1,0 +1,1336 @@
+1
+00:00:00,000 --> 00:00:01,560
+In this lecture, we're going to look at
+
+2
+00:00:01,560 --> 00:00:03,990
+the Application Window Control. Along the
+
+3
+00:00:03,990 --> 00:00:06,420
+way, we're going to look at menus, menu
+
+4
+00:00:06,420 --> 00:00:08,519
+bars and stack view. The Application
+
+5
+00:00:08,519 --> 00:00:10,980
+Window Qt Quick control gives you
+
+6
+00:00:10,980 --> 00:00:13,769
+ready-made spaces where you can stuff in
+
+7
+00:00:13,769 --> 00:00:15,750
+your content. You have a menu bar for
+
+8
+00:00:15,750 --> 00:00:17,880
+example, you have a header and you have
+
+9
+00:00:17,880 --> 00:00:20,460
+the footer, and you have the main content
+
+10
+00:00:20,460 --> 00:00:22,830
+area. If you look at what we have on the
+
+11
+00:00:22,830 --> 00:00:24,300
+right here, which is what we're going to word 
+
+12
+00:00:24,300 --> 00:00:26,910
+in this course by the way, the file
+
+13
+00:00:26,910 --> 00:00:29,760
+edit hub thing here is the menu bar. In
+
+14
+00:00:29,760 --> 00:00:32,610
+the header, we have put these buttons.
+
+15
+00:00:32,610 --> 00:00:34,860
+These are really convenient buttons for
+
+16
+00:00:34,860 --> 00:00:37,500
+menus that are inside these file edit
+
+17
+00:00:37,500 --> 00:00:39,719
+help menus. We have the main content
+
+18
+00:00:39,719 --> 00:00:42,239
+which contains these rectangles here and
+
+19
+00:00:42,239 --> 00:00:44,579
+we have a footer which contains our 
+
+20
+00:00:44,579 --> 00:00:46,649
+Tab bar. And to be able to navigate through
+
+21
+00:00:46,649 --> 00:00:48,870
+these pages, we are going to use a StackView,
+
+22
+00:00:48,870 --> 00:00:51,329
+and you're going to learn how to
+
+23
+00:00:51,329 --> 00:00:53,699
+use that too. We're going to go to 
+
+24
+00:00:53,699 --> 00:00:56,610
+Qt creator and do all this. Here we are in
+
+25
+00:00:56,610 --> 00:00:58,980
+Qt creator, we are going to create
+
+26
+00:00:58,980 --> 00:01:03,620
+our project. It's Qt Quick Application.
+
+27
+00:01:04,549 --> 00:01:06,650
+We hit Next,
+
+28
+00:01:06,650 --> 00:01:13,170
+choose our Qt version, we choose our kit
+
+29
+00:01:13,170 --> 00:01:17,939
+and click Finish. We want to import Qt Quick
+
+30
+00:01:17,939 --> 00:01:22,229
+controls and we want to change the title
+
+31
+00:01:22,229 --> 00:01:24,990
+here to say ApplicationWindow Demo.
+
+32
+00:01:24,990 --> 00:01:28,049
+Let's put a space in here, go to the
+
+33
+00:01:28,049 --> 00:01:37,650
+documentation and look for this. If we go
+
+34
+00:01:37,650 --> 00:01:40,079
+to the description of this, it is a
+
+35
+00:01:40,079 --> 00:01:42,509
+window which makes it convenient to add
+
+36
+00:01:42,509 --> 00:01:45,090
+menu bar, header, footer and things
+
+37
+00:01:45,090 --> 00:01:47,970
+like this. And you have it here, this is
+
+38
+00:01:47,970 --> 00:01:50,490
+how you word it, and you have all these
+
+39
+00:01:50,490 --> 00:01:52,920
+components that you can work with: menu
+
+40
+00:01:52,920 --> 00:01:55,890
+bar, header and footer and you put in
+
+41
+00:01:55,890 --> 00:01:57,869
+some contents inside. This is exactly
+
+42
+00:01:57,869 --> 00:01:59,579
+what we're going to do in this lecture.
+
+43
+00:01:59,579 --> 00:02:02,909
+Let's go back to our code and change our
+
+44
+00:02:02,909 --> 00:02:06,680
+Window here to the ApplicationWindow,
+
+45
+00:02:06,680 --> 00:02:12,330
+and what we should do is come here to
+
+46
+00:02:12,330 --> 00:02:13,709
+speed up things a little bit.
+
+47
+00:02:13,709 --> 00:02:16,239
+We're going to copy all these things
+
+48
+00:02:16,239 --> 00:02:18,129
+because we're going to need them, so no
+
+49
+00:02:18,129 --> 00:02:21,310
+need to type them again. The Qt 
+
+50
+00:02:21,310 --> 00:02:23,109
+documentation has done the job for us,
+
+51
+00:02:23,109 --> 00:02:25,030
+and we're going to fill in these
+
+52
+00:02:25,030 --> 00:02:29,139
+placeholders. Click Ctrl A, Ctrl I to align. But
+
+53
+00:02:29,139 --> 00:02:31,269
+before we go any further, I want to
+
+54
+00:02:31,269 --> 00:02:33,609
+explain a little more on the StackView. 
+
+55
+00:02:33,609 --> 00:02:40,290
+I'm going to click F1, open in full mode, and
+
+56
+00:02:40,290 --> 00:02:43,060
+it basically is a component that can be
+
+57
+00:02:43,060 --> 00:02:45,010
+used with a set of inter-linked
+
+58
+00:02:45,010 --> 00:02:47,889
+information pages. It allows you to have
+
+59
+00:02:47,889 --> 00:02:50,260
+a stack of UI components as you see here,
+
+60
+00:02:50,260 --> 00:02:54,159
+and you can do many operations on them.
+
+61
+00:02:54,159 --> 00:02:56,889
+You can push new items to the stack, or
+
+62
+00:02:56,889 --> 00:03:00,189
+you can pop or remove items from the 
+
+63
+00:03:00,189 --> 00:03:01,449
+stack. You're going to see how we use
+
+64
+00:03:01,449 --> 00:03:03,790
+this, I just want you to have an idea of
+
+65
+00:03:03,790 --> 00:03:06,430
+what we are using here. Let's close this
+
+66
+00:03:06,430 --> 00:03:10,120
+and work on our Menu bar. It is basically
+
+67
+00:03:10,120 --> 00:03:12,939
+going to contain menus. So our menu bar
+
+68
+00:03:12,939 --> 00:03:15,780
+here is going to contain three menus:
+
+69
+00:03:15,780 --> 00:03:19,449
+the File, Edit and Help menu. So we're going
+
+70
+00:03:19,449 --> 00:03:23,979
+to say Menu here, and you can learn more
+
+71
+00:03:23,979 --> 00:03:26,560
+on this by going in the documentation
+
+72
+00:03:26,560 --> 00:03:28,359
+yourself. It really is easy and you
+
+73
+00:03:28,359 --> 00:03:30,759
+probably know how to navigate the
+
+74
+00:03:30,759 --> 00:03:33,189
+documentation by now. A Menu can
+
+75
+00:03:33,189 --> 00:03:36,400
+have a title, so we're going to say File
+
+76
+00:03:36,400 --> 00:03:39,310
+here and the way you put content inside
+
+77
+00:03:39,310 --> 00:03:42,699
+in a Menu, you use an Action element. I am
+
+78
+00:03:42,699 --> 00:03:44,409
+going to put in an Action that I had
+
+79
+00:03:44,409 --> 00:03:48,340
+prepared. Type Ctrl A, Ctrl I to align. Let's go
+
+80
+00:03:48,340 --> 00:03:50,949
+to the documentation for it and you're
+
+81
+00:03:50,949 --> 00:03:53,349
+going to see that an Action represents
+
+82
+00:03:53,349 --> 00:03:55,659
+an abstract user interface action that
+
+83
+00:03:55,659 --> 00:03:58,239
+can have shortcuts and can be assigned
+
+84
+00:03:58,239 --> 00:04:01,180
+to menu items and toolbar buttons.
+
+85
+00:04:01,180 --> 00:04:03,250
+It basically is something you can have
+
+86
+00:04:03,250 --> 00:04:06,609
+in the Menu, in the toolbar and you can
+
+87
+00:04:06,609 --> 00:04:08,409
+have shortcuts for it. One of those
+
+88
+00:04:08,409 --> 00:04:10,479
+things for example is to copy
+
+89
+00:04:10,479 --> 00:04:12,669
+something, you can have a UI
+
+90
+00:04:12,669 --> 00:04:14,590
+component to allow you to copy in the
+
+91
+00:04:14,590 --> 00:04:17,048
+toolbar, you can have it in the menu and
+
+92
+00:04:17,048 --> 00:04:19,298
+you can have shortcuts for doing that.
+
+93
+00:04:19,298 --> 00:04:21,909
+So this is what we have here in our
+
+94
+00:04:21,909 --> 00:04:25,740
+code. It is an Action. This is a New, File
+
+95
+00:04:25,740 --> 00:04:27,610
+menu items that we’re going
+
+96
+00:04:27,610 --> 00:04:30,129
+to have. We can specify an icon for it,
+
+97
+00:04:30,129 --> 00:04:32,919
+and we can know when it is triggered.
+
+98
+00:04:32,919 --> 00:04:35,020
+When the user clicks on this Action in
+
+99
+00:04:35,020 --> 00:04:37,509
+the Menu, we're going to know. You
+
+100
+00:04:37,509 --> 00:04:39,729
+see that it also has an icon source
+
+101
+00:04:39,729 --> 00:04:42,039
+property. This is how you specify an icon
+
+102
+00:04:42,039 --> 00:04:44,560
+for it. I think this is a chance we have
+
+103
+00:04:44,560 --> 00:04:48,189
+to provide these icons. So I am going to
+
+104
+00:04:48,189 --> 00:04:51,069
+go to the Resources folder here, click Add New,
+
+105
+00:04:51,069 --> 00:04:54,759
+Qt, Qt Resource File,
+
+106
+00:04:54,759 --> 00:05:03,729
+I choose resource here. I add a
+
+107
+00:05:03,729 --> 00:05:06,939
+Prefix, you probably know how to do
+
+108
+00:05:06,939 --> 00:05:10,120
+all these. And I need to go where these
+
+109
+00:05:10,120 --> 00:05:14,889
+things are stored on my drive and add a
+
+110
+00:05:14,889 --> 00:05:20,889
+new Images folder. I am going to go in
+
+111
+00:05:20,889 --> 00:05:22,990
+the folder and paste in a bunch of
+
+112
+00:05:22,990 --> 00:05:26,740
+images that I had prepared. These are
+
+113
+00:05:26,740 --> 00:05:29,409
+the icons and you can see that it is a
+
+114
+00:05:29,409 --> 00:05:31,659
+set of different actions you can do in
+
+115
+00:05:31,659 --> 00:05:34,240
+your application. So what I want to do, I
+
+116
+00:05:34,240 --> 00:05:37,060
+want to come back to our resource file,
+
+117
+00:05:37,060 --> 00:05:40,270
+go inside this folder, select
+
+118
+00:05:40,270 --> 00:05:42,909
+everything in there and add it to our
+
+119
+00:05:42,909 --> 00:05:46,150
+resource file. I'm going to save and if I
+
+120
+00:05:46,150 --> 00:05:49,240
+come here, this file icon should be
+
+121
+00:05:49,240 --> 00:05:52,389
+available now. We want to add a bunch of
+
+122
+00:05:52,389 --> 00:05:54,900
+other actions that we're going to need.
+
+123
+00:05:54,900 --> 00:05:58,300
+So we have the New menu item, we have the
+
+124
+00:05:58,300 --> 00:06:01,089
+Open menu item, we have the Save menu
+
+125
+00:06:01,089 --> 00:06:03,669
+item and we have the Save as menu item.
+
+126
+00:06:03,669 --> 00:06:05,949
+Another thing you can do is separate
+
+127
+00:06:05,949 --> 00:06:09,759
+menu items in your Menu here. The way you
+
+128
+00:06:09,759 --> 00:06:11,860
+do that is you come here and put a
+
+129
+00:06:11,860 --> 00:06:15,909
+component called MenuSeparator, and
+
+130
+00:06:15,909 --> 00:06:18,159
+you put it here. there's going to be a
+
+131
+00:06:18,159 --> 00:06:20,620
+horizontal line separating these menus.
+
+132
+00:06:20,620 --> 00:06:23,560
+Let's add the last Action in this Menu,
+
+133
+00:06:23,560 --> 00:06:27,009
+which is the quitAction. Type Ctrl A,
+
+134
+00:06:27,009 --> 00:06:30,279
+Ctrl I to align, and you see that
+
+135
+00:06:30,279 --> 00:06:33,069
+when this Action is triggered, when we
+
+136
+00:06:33,069 --> 00:06:36,669
+click on the Quit menu item, we are going
+
+137
+00:06:36,669 --> 00:06:38,680
+to quit the application and you
+
+138
+00:06:38,680 --> 00:06:41,199
+recognize this Qt.quit method
+
+139
+00:06:41,199 --> 00:06:43,629
+from the Qt global object that we have
+
+140
+00:06:43,629 --> 00:06:44,529
+seen before.
+
+141
+00:06:44,529 --> 00:06:47,499
+This is our first menu, we need to
+
+142
+00:06:47,499 --> 00:06:51,520
+do the same for the Edit menu and Help
+
+143
+00:06:51,520 --> 00:06:54,460
+menu. I am going to put in those menus, I
+
+144
+00:06:54,460 --> 00:06:56,499
+have them prepared to save you some
+
+145
+00:06:56,499 --> 00:06:59,439
+typing. We're going to go down here and
+
+146
+00:06:59,439 --> 00:07:01,960
+put in those menus. Type Ctrl A, Ctrl I to
+
+147
+00:07:01,960 --> 00:07:04,749
+align. And you can see that it basically
+
+148
+00:07:04,749 --> 00:07:07,360
+is the same thing. I put these actions on
+
+149
+00:07:07,360 --> 00:07:10,150
+one line to have things readable a
+
+150
+00:07:10,150 --> 00:07:12,580
+little bit. And you see that we are using
+
+151
+00:07:12,580 --> 00:07:16,360
+qsTr to make this things translatable,
+
+152
+00:07:16,360 --> 00:07:18,879
+you can do that if you want. 
+
+153
+00:07:18,879 --> 00:07:22,240
+Let's change the first Menu
+
+154
+00:07:22,240 --> 00:07:25,779
+here to be like the others. I’m going
+
+155
+00:07:25,779 --> 00:07:29,169
+to come here and change the title to say
+
+156
+00:07:29,169 --> 00:07:32,650
+this and change this to File. This
+
+157
+00:07:32,650 --> 00:07:34,839
+is the way to go, this is the way you do
+
+158
+00:07:34,839 --> 00:07:37,270
+it in a real application if you want it
+
+159
+00:07:37,270 --> 00:07:39,849
+to be translatable. This strings here
+
+160
+00:07:39,849 --> 00:07:41,560
+are going to be translatable in
+
+161
+00:07:41,560 --> 00:07:43,839
+different languages, but we're not going
+
+162
+00:07:43,839 --> 00:07:46,000
+to go deep into this subject in this
+
+163
+00:07:46,000 --> 00:07:49,899
+lecture. Now we have our MenuBar
+
+164
+00:07:49,899 --> 00:07:52,389
+complete, the next thing we want to focus
+
+165
+00:07:52,389 --> 00:07:54,729
+on is the ToolBar, and what we really
+
+166
+00:07:54,729 --> 00:07:57,370
+have to do is adding a bunch of buttons.
+
+167
+00:07:57,370 --> 00:08:00,009
+These buttons are going to be tool
+
+168
+00:08:00,009 --> 00:08:02,979
+buttons. We basically put them in like
+
+169
+00:08:02,979 --> 00:08:06,399
+this. We have a Row component and inside
+
+170
+00:08:06,399 --> 00:08:08,680
+we have ToolButton with a few
+
+171
+00:08:08,680 --> 00:08:11,199
+pre-selected actions that we have to the
+
+172
+00:08:11,199 --> 00:08:13,120
+top. These are the actions we want to
+
+173
+00:08:13,120 --> 00:08:15,699
+show up in the ToolBar. We have the New
+
+174
+00:08:15,699 --> 00:08:18,990
+we have the Save, Save as and Quit action.
+
+175
+00:08:18,990 --> 00:08:21,639
+If you go up, you can find all these
+
+176
+00:08:21,639 --> 00:08:24,580
+actions where we define them here and we
+
+177
+00:08:24,580 --> 00:08:27,490
+give them IDs. The next thing we want to
+
+178
+00:08:27,490 --> 00:08:29,860
+do is to adding the pages that we are
+
+179
+00:08:29,860 --> 00:08:32,469
+going to navigate through, and this Stackview
+
+180
+00:08:32,469 --> 00:08:35,169
+component here. So we're going to go
+
+181
+00:08:35,169 --> 00:08:38,229
+to this qml qrc file, that's where we
+
+182
+00:08:38,229 --> 00:08:40,000
+want to add them so that they are with
+
+183
+00:08:40,000 --> 00:08:45,459
+the other qml files. Click Add New, Qt, QML File.
+
+184
+00:08:45,459 --> 00:08:50,190
+We call this Page1.
+
+185
+00:08:51,270 --> 00:08:54,250
+We change this import to say Qt Quick
+
+186
+00:08:54,250 --> 00:08:57,820
+2.11 because that's what we are using
+
+187
+00:08:57,820 --> 00:09:01,990
+here. If you come to the main qml file,
+
+188
+00:09:01,990 --> 00:09:04,870
+you can see it, and we want to have a
+
+189
+00:09:04,870 --> 00:09:08,470
+rectangle component inside, and we want
+
+190
+00:09:08,470 --> 00:09:13,030
+its color to be green for example. We
+
+191
+00:09:13,030 --> 00:09:16,810
+want to do the same to have three pages.
+
+192
+00:09:16,810 --> 00:09:22,690
+So click Add New, Qt, QML file, it's going to
+
+193
+00:09:22,690 --> 00:09:27,160
+be Page2, hit Next, we finish this. We
+
+194
+00:09:27,160 --> 00:09:33,100
+come to Page1, we copy it and we
+
+195
+00:09:33,100 --> 00:09:36,730
+paste it here, and we say this should be
+
+196
+00:09:36,730 --> 00:09:43,110
+red. Come back here, click Add New, Qt, QML file,
+
+197
+00:09:43,110 --> 00:09:51,940
+it's going to be page3. And we
+
+198
+00:09:51,940 --> 00:09:55,450
+paste in our thing here which is going
+
+199
+00:09:55,450 --> 00:09:59,980
+to be blue. We have our pages, now we
+
+200
+00:09:59,980 --> 00:10:02,320
+can come back to our main QML file and
+
+201
+00:10:02,320 --> 00:10:06,490
+work on our StackView. It is going to
+
+202
+00:10:06,490 --> 00:10:08,440
+fill the parents so they did this for us.
+
+203
+00:10:08,440 --> 00:10:12,310
+We want to give it an id and stack id,
+
+204
+00:10:12,310 --> 00:10:18,100
+and if you go to its documentation, let's
+
+205
+00:10:18,100 --> 00:10:21,910
+see if we can find StackView, you
+
+206
+00:10:21,910 --> 00:10:24,030
+see that it has a property called
+
+207
+00:10:24,030 --> 00:10:29,740
+initialItem. It holds the initial
+
+208
+00:10:29,740 --> 00:10:31,720
+item that should be shown when the Stackview
+
+209
+00:10:31,720 --> 00:10:34,810
+is created. So we want to assign
+
+210
+00:10:34,810 --> 00:10:42,220
+Page1 to this property, we show it
+
+211
+00:10:42,220 --> 00:10:45,220
+like this. And in our footer, we're going
+
+212
+00:10:45,220 --> 00:10:48,160
+to have a TabBar that is going to allow
+
+213
+00:10:48,160 --> 00:10:50,770
+us to navigate through all these pages.
+
+214
+00:10:50,770 --> 00:10:54,550
+The way we do that is we give this TabBar
+
+215
+00:10:54,550 --> 00:10:57,160
+an id
+
+216
+00:10:57,160 --> 00:11:01,839
+and we want it's width to be the same as
+
+217
+00:11:01,839 --> 00:11:05,680
+the parents’ width. Inside we want to have
+
+218
+00:11:05,680 --> 00:11:07,990
+a few tab buttons, so we're going to say
+
+219
+00:11:07,990 --> 00:11:12,040
+TabButton. The first one is going to say
+
+220
+00:11:12,040 --> 00:11:19,480
+qsTr(“Page1”),
+
+221
+00:11:19,480 --> 00:11:22,420
+and we want to do something when it is
+
+222
+00:11:22,420 --> 00:11:26,800
+clicked. The first thing we want to do is
+
+223
+00:11:26,800 --> 00:11:29,350
+to take something that is on top of the
+
+224
+00:11:29,350 --> 00:11:32,350
+stack and remove it, and we do that by
+
+225
+00:11:32,350 --> 00:11:35,170
+calling the pop method. And we want to
+
+226
+00:11:35,170 --> 00:11:39,610
+put the Page1 component so that it is
+
+227
+00:11:39,610 --> 00:11:42,069
+shown on this stack and we put on the top of
+
+228
+00:11:42,069 --> 00:11:44,350
+this stack immediately, and we do that by
+
+229
+00:11:44,350 --> 00:11:48,699
+saying mStackId.push. And we want to
+
+230
+00:11:48,699 --> 00:11:51,819
+give it what to show, the way we refer to
+
+231
+00:11:51,819 --> 00:11:54,100
+what is in the qrC file here. You
+
+232
+00:11:54,100 --> 00:11:59,620
+say qrC and you say Page1.qml
+
+233
+00:11:59,620 --> 00:12:01,540
+because that's what we want to be shown
+
+234
+00:12:01,540 --> 00:12:05,019
+when this TabButton is clicked. And to
+
+235
+00:12:05,019 --> 00:12:07,240
+make sure that our thing is working here,
+
+236
+00:12:07,240 --> 00:12:10,660
+we are going to console log the number
+
+237
+00:12:10,660 --> 00:12:13,300
+of items in the stack. We're going to say
+
+238
+00:12:13,300 --> 00:12:25,990
+console.log(“Number of items:…)
+
+239
+00:12:25,990 --> 00:12:30,579
+And it’s going to be the depth of the stack.
+
+240
+00:12:30,579 --> 00:12:32,589
+You can look at this depth property in
+
+241
+00:12:32,589 --> 00:12:35,529
+the documentation. When you click this
+
+242
+00:12:35,529 --> 00:12:38,019
+button, we're going to pop whatever is on
+
+243
+00:12:38,019 --> 00:12:40,480
+the top of the stack, and we are going to
+
+244
+00:12:40,480 --> 00:12:42,639
+push the item that we want to put in
+
+245
+00:12:42,639 --> 00:12:44,559
+there. In this case, it is going to be
+
+246
+00:12:44,559 --> 00:12:49,630
+Page1.qml here. We want to repeat what we
+
+247
+00:12:49,630 --> 00:12:52,300
+just did here and do it for all the
+
+248
+00:12:52,300 --> 00:12:55,990
+items, the remaining two. So we copy and
+
+249
+00:12:55,990 --> 00:13:00,160
+paste, here we say Page2. Number 3 is
+
+250
+00:13:00,160 --> 00:13:03,670
+going to be easier now, and here it is
+
+251
+00:13:03,670 --> 00:13:08,949
+going to be 3. And here it is 
+
+252
+00:13:08,949 --> 00:13:10,120
+going to be 2,
+
+253
+00:13:10,120 --> 00:13:14,260
+here it is going to be 3. And ladies
+
+254
+00:13:14,260 --> 00:13:16,750
+and gentlemen we have everything in
+
+255
+00:13:16,750 --> 00:13:19,930
+place to test our Application Window thing,
+
+256
+00:13:19,930 --> 00:13:22,570
+and now it is convoluted there is a lot
+
+257
+00:13:22,570 --> 00:13:24,970
+of information. Now we're going to run it
+
+258
+00:13:24,970 --> 00:13:26,589
+and I'm going to try and explain it
+
+259
+00:13:26,589 --> 00:13:28,420
+again, and I hope you're going to
+
+260
+00:13:28,420 --> 00:13:31,450
+understand it a little more better. 
+
+261
+00:13:31,450 --> 00:13:34,300
+we have our application here, ignore this
+
+262
+00:13:34,300 --> 00:13:38,010
+thing for now, and we can click to
+
+263
+00:13:38,010 --> 00:13:40,810
+navigate through the pages. The
+
+264
+00:13:40,810 --> 00:13:45,040
+first page is green, red, blue, which is
+
+265
+00:13:45,040 --> 00:13:48,760
+what we specified in here: page 1 is
+
+266
+00:13:48,760 --> 00:13:53,050
+green, page 2 is red, page three is blue. And we
+
+267
+00:13:53,050 --> 00:13:55,360
+have menus to the top here. If you click
+
+268
+00:13:55,360 --> 00:13:58,210
+on File, you’re going to see New, Open, Save,
+
+269
+00:13:58,210 --> 00:14:02,290
+Save As. If you come back to our code, the
+
+270
+00:14:02,290 --> 00:14:07,120
+File menu has New, Open, Save, Save us.
+
+271
+00:14:07,120 --> 00:14:10,750
+You basically specify
+
+272
+00:14:10,750 --> 00:14:12,779
+things you want to have in the Menu bar.
+
+273
+00:14:12,779 --> 00:14:16,390
+I want to have the File menu, this
+
+274
+00:14:16,390 --> 00:14:18,820
+menu here. I want to have the Edit menu,
+
+275
+00:14:18,820 --> 00:14:21,370
+which is this menu here. I want to have
+
+276
+00:14:21,370 --> 00:14:23,800
+to Help menu, which is this menu here. And
+
+277
+00:14:23,800 --> 00:14:27,100
+if you come back to our application, you
+
+278
+00:14:27,100 --> 00:14:29,980
+see these menus here, the File/ Edit menu. The
+
+279
+00:14:29,980 --> 00:14:31,690
+way you put things inside, you use
+
+280
+00:14:31,690 --> 00:14:34,330
+actions. This is our Action and a few
+
+281
+00:14:34,330 --> 00:14:36,670
+properties inside, and it really is the
+
+282
+00:14:36,670 --> 00:14:39,160
+same thing. The MenuSeparator here, I
+
+283
+00:14:39,160 --> 00:14:42,310
+hope you saw it. You can see it is
+
+284
+00:14:42,310 --> 00:14:45,190
+this line here, then we took
+
+285
+00:14:45,190 --> 00:14:48,459
+a set of predefined actions and put them
+
+286
+00:14:48,459 --> 00:14:50,500
+in the ToolBar. You have the new
+
+287
+00:14:50,500 --> 00:14:53,620
+Save/ Save As/ Quit actions in the ToolBar
+
+288
+00:14:53,620 --> 00:14:57,580
+and it is what we have down here in the
+
+289
+00:14:57,580 --> 00:14:59,940
+header.// We have a toolbar and we
+
+290
+00:14:59,940 --> 00:15:02,529
+define ToolButton and passing the
+
+291
+00:15:02,529 --> 00:15:04,839
+actions that are going to be in here. And
+
+292
+00:15:04,839 --> 00:15:07,740
+by now, I hope you see that the
+
+293
+00:15:07,740 --> 00:15:10,600
+flexibility of the Action item is that
+
+294
+00:15:10,600 --> 00:15:13,150
+you can use it in multiple places. We
+
+295
+00:15:13,150 --> 00:15:16,150
+define it here in the menu bar and we
+
+296
+00:15:16,150 --> 00:15:19,329
+are using it in the header component
+
+297
+00:15:19,329 --> 00:15:22,300
+here, through these tool buttons. An
+
+298
+00:15:22,300 --> 00:15:23,900
+Action can be used in many
+
+299
+00:15:23,900 --> 00:15:26,810
+places in your user interface and the
+
+300
+00:15:26,810 --> 00:15:28,880
+logic that you defined on that action
+
+301
+00:15:28,880 --> 00:15:31,430
+for example here, the logic that is going
+
+302
+00:15:31,430 --> 00:15:33,350
+to happen when you trigger this action
+
+303
+00:15:33,350 --> 00:15:35,930
+is to quit the application. We can
+
+304
+00:15:35,930 --> 00:15:38,120
+quit the application from the File menu
+
+305
+00:15:38,120 --> 00:15:40,940
+and we can quit the application from the
+
+306
+00:15:40,940 --> 00:15:43,700
+tool bar by clicking on this ToolButton
+
+307
+00:15:43,700 --> 00:15:45,860
+here. And we have to prove what we just
+
+308
+00:15:45,860 --> 00:15:47,890
+said, we're going to come to File here,
+
+309
+00:15:47,890 --> 00:15:50,780
+click, you see that the application dies.
+
+310
+00:15:50,780 --> 00:15:54,590
+We start it again, we click on the Quit
+
+311
+00:15:54,590 --> 00:15:57,320
+action here in the toolbar, the
+
+312
+00:15:57,320 --> 00:15:58,340
+application quits.
+
+313
+00:15:58,340 --> 00:16:01,040
+And the
+
+314
+00:16:01,040 --> 00:16:03,500
+rest is really specifying the icons in
+
+315
+00:16:03,500 --> 00:16:06,110
+the Resource folder and making sure they
+
+316
+00:16:06,110 --> 00:16:08,420
+are available when you pass them to the
+
+317
+00:16:08,420 --> 00:16:11,660
+actions to be shown like this. And this
+
+318
+00:16:11,660 --> 00:16:13,670
+is really all there is to working with
+
+319
+00:16:13,670 --> 00:16:15,920
+the Application Window. You work with it
+
+320
+00:16:15,920 --> 00:16:17,990
+when you want to take advantage of this
+
+321
+00:16:17,990 --> 00:16:20,930
+menu bars and toolbars and footer
+
+322
+00:16:20,930 --> 00:16:24,440
+locations. And you're going to see it’s mostly
+
+323
+00:16:24,440 --> 00:16:26,600
+used with the stackview component because
+
+324
+00:16:26,600 --> 00:16:29,330
+it allows you to navigate through pieces
+
+325
+00:16:29,330 --> 00:16:31,910
+of user interfaces defined in different
+
+326
+00:16:31,910 --> 00:16:34,790
+components like this, and it makes it
+
+327
+00:16:34,790 --> 00:16:37,100
+very easy to do. If you go back to the
+
+328
+00:16:37,100 --> 00:16:38,540
+Help, you're going to see there is a
+
+329
+00:16:38,540 --> 00:16:40,540
+bunch of methods that you can work with
+
+330
+00:16:40,540 --> 00:16:43,580
+with the stack view and you can learn
+
+331
+00:16:43,580 --> 00:16:45,590
+more about them by clicking on each one
+
+332
+00:16:45,590 --> 00:16:48,140
+of these. This is all I had to say in
+
+333
+00:16:48,140 --> 00:16:50,210
+this lecture, I hope you enjoyed it. I'll
+
+334
+00:16:50,210 --> 00:00:00,000
+see you in the next chapter.
+

@@ -1,0 +1,384 @@
+1
+00:00:00,000 --> 00:00:01,800
+In this lecture, we're looking at how you
+
+2
+00:00:01,800 --> 00:00:03,540
+can import some an external javascript
+
+3
+00:00:03,540 --> 00:00:06,540
+code in your QML file and use it
+
+4
+00:00:06,540 --> 00:00:09,480
+directly. Let's go to QT creator and
+
+5
+00:00:09,480 --> 00:00:12,420
+play with us. Okay, here we are in QT
+
+6
+00:00:12,420 --> 00:00:14,460
+creator. We are going to create a new
+
+7
+00:00:14,460 --> 00:00:17,699
+project. We're going to call it
+
+8
+00:00:17,699 --> 00:00:22,590
+JavaScript import demo. Hit "Next", choose
+
+9
+00:00:22,590 --> 00:00:26,220
+your QT version, choose your desktop kit
+
+10
+00:00:26,220 --> 00:00:30,150
+here, and finish. What we're going to do
+
+11
+00:00:30,150 --> 00:00:33,690
+is to change the title here. We are going
+
+12
+00:00:33,690 --> 00:00:37,950
+to put a rectangle inside. Width is going
+
+13
+00:00:37,950 --> 00:00:43,260
+to be 300, height is going to be 100. It's
+
+14
+00:00:43,260 --> 00:00:47,190
+great to be blue. And it's going to be
+
+15
+00:00:47,190 --> 00:00:55,800
+centered in the parent. In start, we are
+
+16
+00:00:55,800 --> 00:00:59,730
+going to have a text element. This text
+
+17
+00:00:59,730 --> 00:01:03,090
+is going to say "Click Me". It's going to
+
+18
+00:01:03,090 --> 00:01:08,670
+be in the center as well. And the parent
+
+19
+00:01:08,670 --> 00:01:11,010
+of the text is this rectangle here, so
+
+20
+00:01:11,010 --> 00:01:13,200
+the text is going to be in the middle of
+
+21
+00:01:13,200 --> 00:01:17,310
+this rectangle here. We also want to put
+
+22
+00:01:17,310 --> 00:01:19,830
+a MouseArea that is going to fill this
+
+23
+00:01:19,830 --> 00:01:25,229
+rectangle. I should put this inside the
+
+24
+00:01:25,229 --> 00:01:30,329
+rectangle. It's going to fill the
+
+25
+00:01:30,329 --> 00:01:37,229
+rectangle. And when it's clicked, we want
+
+26
+00:01:37,229 --> 00:01:39,840
+to do something. For now, we can
+
+27
+00:01:39,840 --> 00:01:49,470
+console.log "Hello there". If you run the
+
+28
+00:01:49,470 --> 00:01:51,479
+application, there's nothing special.
+
+29
+00:01:51,479 --> 00:01:53,189
+You're going to see a rectangle in the
+
+30
+00:01:53,189 --> 00:01:55,229
+middle. It's going to have some text
+
+31
+00:01:55,229 --> 00:01:57,689
+inside and when you click, it's going to
+
+32
+00:01:57,689 --> 00:02:01,500
+say "hello there" in the console. The color
+
+33
+00:02:01,500 --> 00:02:04,049
+is really not good. So I think I should
+
+34
+00:02:04,049 --> 00:02:07,439
+change this to green. Let's see how it
+
+35
+00:02:07,439 --> 00:02:10,199
+looks. Or yellow green. We've used this
+
+36
+00:02:10,199 --> 00:02:12,709
+before.
+
+37
+00:02:13,530 --> 00:02:16,150
+Yellow-green. It looks like this. I think
+
+38
+00:02:16,150 --> 00:02:20,560
+it's going to be better. Okay, this is
+
+39
+00:02:20,560 --> 00:02:23,140
+better. If you click it says "hello there".
+
+40
+00:02:23,140 --> 00:02:25,870
+So what we want to do is to add a new
+
+41
+00:02:25,870 --> 00:02:28,900
+javascript file and call a method inside
+
+42
+00:02:28,900 --> 00:02:31,690
+there and let it say "hello there". We
+
+43
+00:02:31,690 --> 00:02:33,580
+don't want to say "hello there" directly.
+
+44
+00:02:33,580 --> 00:02:35,560
+We want this to come from a piece of
+
+45
+00:02:35,560 --> 00:02:37,930
+code that is stored in an external
+
+46
+00:02:37,930 --> 00:02:41,860
+javascript file. That's all go. We want to
+
+47
+00:02:41,860 --> 00:02:45,190
+come to the QML that qrc file
+
+48
+00:02:45,190 --> 00:02:48,010
+here, and add the new file. So we're going
+
+49
+00:02:48,010 --> 00:02:53,800
+to click add new Qt, JS file and call
+
+50
+00:02:53,800 --> 00:02:58,300
+it utilities, one, because it's going to
+
+51
+00:02:58,300 --> 00:03:01,600
+contain somethings that we want to use.
+
+52
+00:03:01,600 --> 00:03:03,910
+And you're going to see that under the
+
+53
+00:03:03,910 --> 00:03:06,310
+main QML file, we have a new javascript
+
+54
+00:03:06,310 --> 00:03:10,690
+file. Its extension is JS. We're going
+
+55
+00:03:10,690 --> 00:03:13,210
+to get rid of the content and put in our
+
+56
+00:03:13,210 --> 00:03:17,620
+function. It's going to be called "greeting".
+
+57
+00:03:17,620 --> 00:03:22,750
+And inside, it is going to say the
+
+58
+00:03:22,750 --> 00:03:26,940
+same thing we had. In the onClicked,
+
+59
+00:03:26,940 --> 00:03:30,490
+handler, okay, just like this we have a
+
+60
+00:03:30,490 --> 00:03:33,580
+function in the external javascript file.
+
+61
+00:03:33,580 --> 00:03:36,760
+We are going to save it. Come back to the
+
+62
+00:03:36,760 --> 00:03:39,670
+QML file, and now we need a way to import
+
+63
+00:03:39,670 --> 00:03:42,610
+our JavaScript code. The way you do that,
+
+64
+00:03:42,610 --> 00:03:49,620
+we're going to say import "utilities1.js".
+
+65
+00:03:49,620 --> 00:03:54,610
+And you're going to say as and you
+
+66
+00:03:54,610 --> 00:03:56,950
+specify a name that you're going to use
+
+67
+00:03:56,950 --> 00:04:00,730
+to call methods from this file. We call
+
+68
+00:04:00,730 --> 00:04:06,640
+this utilities 1, starting with capital.
+
+69
+00:04:06,640 --> 00:04:11,700
+And down here, we can say utilities one
+
+70
+00:04:11,700 --> 00:04:14,500
+greetin. You see that the method is even
+
+71
+00:04:14,500 --> 00:04:17,140
+recognized in the autocomplete feature
+
+72
+00:04:17,140 --> 00:04:19,870
+of QT creator. If you run the
+
+73
+00:04:19,870 --> 00:04:23,530
+application, click here. You see that it
+
+74
+00:04:23,530 --> 00:04:25,020
+says "hello there", 
+
+75
+00:04:25,020 --> 00:04:28,259
+but the message here is coming from an
+
+76
+00:04:28,259 --> 00:04:31,080
+external javascript file. Let's prove it
+
+77
+00:04:31,080 --> 00:04:41,669
+by adding something here. Save this. Run
+
+78
+00:04:41,669 --> 00:04:49,319
+again. And you see that it says "hello
+
+79
+00:04:49,319 --> 00:04:52,409
+there" from external javascript file. And
+
+80
+00:04:52,409 --> 00:04:55,050
+it really is this easy to call methods
+
+81
+00:04:55,050 --> 00:04:57,509
+from an external javascript file. You
+
+82
+00:04:57,509 --> 00:04:59,729
+just added to your resources just like
+
+83
+00:04:59,729 --> 00:05:02,520
+you add QML files. You put your methods
+
+84
+00:05:02,520 --> 00:05:03,210
+in there.
+
+85
+00:05:03,210 --> 00:05:06,479
+When you import it in QML, take note of
+
+86
+00:05:06,479 --> 00:05:08,970
+this syntax here, you specify your file
+
+87
+00:05:08,970 --> 00:05:11,940
+in quartz. And you specify a name, you're
+
+88
+00:05:11,940 --> 00:05:13,800
+going to use to call your methods and
+
+89
+00:05:13,800 --> 00:05:15,990
+then you call it. And everything is going
+
+90
+00:05:15,990 --> 00:05:18,150
+to be fine. And this is really all I had
+
+91
+00:05:18,150 --> 00:05:20,400
+to say in this lecture in showing you
+
+92
+00:05:20,400 --> 00:05:22,979
+how you can call javascript from an
+
+93
+00:05:22,979 --> 00:05:26,310
+external file in your QML file. In the
+
+94
+00:05:26,310 --> 00:05:27,960
+next lecture, we're going to see ways you
+
+95
+00:05:27,960 --> 00:05:30,360
+can import your JavaScript indirectly.
+
+96
+00:05:30,360 --> 00:00:00,000
+I see you in the next lecture.
+

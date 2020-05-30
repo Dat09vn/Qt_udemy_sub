@@ -1,0 +1,1180 @@
+﻿1
+00:00:00,000 --> 00:00:01,890
+Trong bài giảng này, chúng ta sẽ làm 1
+
+2
+00:00:01,890 --> 00:00:05,100
+hiệu ứng trái banh nảy. Nó sẽ
+
+3
+00:00:05,100 --> 00:00:07,560
+1 demo hơi khác với cái mà chúng ta
+
+4
+00:00:07,560 --> 00:00:09,719
+sẽ đang làm. Bởi vì tôi sẽ
+
+5
+00:00:09,719 --> 00:00:12,179
+chỉ cho các bạn 1 tài liệu tham khảo rất tốt
+
+6
+00:00:12,179 --> 00:00:14,639
+để học về QML. Chúng ta sẽ kiếm 1
+
+7
+00:00:14,639 --> 00:00:16,619
+ví dụ tốt trong đó và chúng ta sẽ
+
+8
+00:00:16,619 --> 00:00:18,960
+chạy nó. Tôi nghĩ đây là một cách tốt để
+
+9
+00:00:18,960 --> 00:00:22,199
+chỉ các bạn cách để các bạn có thể kiếm thấy câu trả lời cho điều mà các bạn
+
+10
+00:00:22,199 --> 00:00:24,630
+chưa biết. Ok,tài liệu tham khảo mà tôi
+
+11
+00:00:24,630 --> 00:00:27,300
+nói đến chính là cuốn sách này ở đây. Nó là một
+
+12
+00:00:27,300 --> 00:00:29,910
+sách trực tuyến. Tên của
+
+13
+00:00:29,910 --> 00:00:30,390
+nó là
+
+14
+00:00:30,390 --> 00:00:33,420
+'A book about Qt5' - 'Một cuốn sách về Qt5'. Đó là đóng góp bởi
+
+15
+00:00:33,420 --> 00:00:36,420
+một số người. Nó là nguồn mở. Nó có một
+
+16
+00:00:36,420 --> 00:00:38,489
+giấy phép mở, các bạn có thể đọc nó hay có thể
+
+17
+00:00:38,489 --> 00:00:40,710
+đóng góp cho nó nếu các bạn có
+
+18
+00:00:40,710 --> 00:00:42,960
+điều gì muốn thêm vào nó. Tôi sẽ
+
+19
+00:00:42,960 --> 00:00:45,090
+để các bạn đọc hết những điều này nếu các bạn
+
+20
+00:00:45,090 --> 00:00:48,739
+mà các bạn muốn. Vì vậy, những gì chúng ta muốn làm là đến
+
+21
+00:00:48,739 --> 00:00:53,730
+chương 5 về 'Fluid elements' (thành phần lỏng) và chúng ta muốn
+
+22
+00:00:53,730 --> 00:00:56,969
+đọc về 'Animations' (hoạt hình). Và các bạn có thể thấy rằng
+
+23
+00:00:56,969 --> 00:00:59,100
+họ cũng nó về đường easing. Họ
+
+24
+00:00:59,100 --> 00:01:01,680
+cung cấp cho các bạn 1 bài giảng hay về chúng. Các bạn
+
+25
+00:01:01,680 --> 00:01:04,589
+có thể thực sự nhìn thấy điều này. Vì vậy, hãy di chuyển
+
+26
+00:01:04,589 --> 00:01:08,549
+xuống dưới, tìm thứ chúng ta cần và chúng ta muốn xem
+
+27
+00:01:08,549 --> 00:01:10,710
+'Grouped Animations' - 'Nhóm Hoạt Hình'. Các bạn có thể thấy rằng
+
+28
+00:01:10,710 --> 00:01:13,560
+họ chỉ cho các bạn làm cách nào để hoạt hình hoá mọi thứ. Điều này thật là
+
+29
+00:01:13,560 --> 00:01:15,060
+điều chúng ta đã làm ở bài
+
+30
+00:01:15,060 --> 00:01:18,180
+học này. SequentialAnimation, các bạn di chuyển chúng
+
+31
+00:01:18,180 --> 00:01:21,810
+lần lượt trên Y và trên X và ParallelAnimation
+
+32
+00:01:21,810 --> 00:01:24,840
+khiến chúng diễn ra đồng thời. Nhưng
+
+33
+00:01:24,840 --> 00:01:26,850
+đây không phải là điều chúng ta muốn. Chúng ta muốn làm
+
+34
+00:01:26,850 --> 00:01:29,340
+cái này, ở đây, 1 quả banh nảy. Vì vậy chúng ta
+
+35
+00:01:29,340 --> 00:01:31,200
+sẽ cùng đọc cái này và tạo ra 1
+
+36
+00:01:31,200 --> 00:01:33,600
+dự án Qt mới để chơi với nó.
+
+37
+00:01:33,600 --> 00:01:35,700
+Vậy nhóm các hoạt hình cũng có thể được lồng
+
+38
+00:01:35,700 --> 00:01:37,619
+chả hạn, 1 nhóm hoat hình nối tiếp (sequential animation) có thể có
+
+39
+00:01:37,619 --> 00:01:40,920
+2 nhóm hoạt hình song song (parallel animation) là
+
+40
+00:01:40,920 --> 00:01:43,799
+nhóm hoạt hình con và ngược lại.
+
+41
+00:01:43,799 --> 00:01:46,470
+Okay, vậy nhóm hoạt hình cũng có thể được lồng. Chúng ta có thể
+
+42
+00:01:46,470 --> 00:01:48,090
+hiển thị hoá điều này với ví dụ
+
+43
+00:01:48,090 --> 00:01:51,119
+với quả bóng nảy. Ý tưởng là ném một quả bóng từ
+
+44
+00:01:51,119 --> 00:01:54,619
+trái sang phải và hoạt hình hoá hành vi của nó.
+
+45
+00:01:54,619 --> 00:01:57,360
+Ok, đây là những gì chúng ta muốn làm.
+
+46
+00:01:57,360 --> 00:01:59,070
+Để hiểu về hoạt hình trên, chúng ta sẽ
+
+47
+00:01:59,070 --> 00:02:02,549
+chia nó thành 3 phần. Chúng ta sẽ
+
+48
+00:02:02,549 --> 00:02:05,969
+hoạt hoá trên X từ trái sang phải,
+
+49
+00:02:05,969 --> 00:02:08,580
+trên Y1, trái banh đi lên
+
+50
+00:02:08,580 --> 00:02:12,090
+và trên Y2, trái banh
+
+51
+00:02:12,090 --> 00:02:13,330
+rơi xuống,
+
+52
+00:02:13,330 --> 00:02:15,310
+và chúng ta sẽ áp dụng một số hiệu ứng nảy (bouncing)
+
+53
+00:02:15,310 --> 00:02:18,130
+lên nó khi quả bóng rơi xuống, và chúng ta
+
+54
+00:02:18,130 --> 00:02:20,140
+sẽ quay quả bóng
+
+55
+00:02:20,140 --> 00:02:23,050
+trong suốt quá trình hoạt hình. Và họ cố gắng để miêu tả
+
+56
+00:02:23,050 --> 00:02:24,820
+những gì chúng ta đang làm ở đây. Chúng ta sẽ
+
+57
+00:02:24,820 --> 00:02:27,460
+tạo hoạt hình trên Y, chúng ta sẽ bắt đầu
+
+58
+00:02:27,460 --> 00:02:29,740
+trên Y, chúng ta sẽ đi
+
+59
+00:02:29,740 --> 00:02:33,610
+xuống và trong suốt thời gian này, chúng ta
+
+60
+00:02:33,610 --> 00:02:36,070
+quay và di chuyển trên X.
+
+61
+00:02:36,070 --> 00:02:38,890
+Và chúng ta hãy vào Qt Creator
+
+62
+00:02:38,890 --> 00:02:41,740
+và cùng làm. Được rồi, chúng ta đang
+
+63
+00:02:41,740 --> 00:02:43,870
+ở đây trong Qt Creator, chúng ta sẽ tạo 1
+
+64
+00:02:43,870 --> 00:02:44,740
+dự án của chúng ta.
+
+65
+00:02:44,740 --> 00:02:49,450
+Nó là 1 Qt Quick Application (tạo nhanh ứng dụng Qt). Chúng ta gọi nó
+
+66
+00:02:49,450 --> 00:02:53,470
+'AnimatedBallBounceDemo', lưu nó tại
+
+67
+00:02:53,470 --> 00:02:56,890
+vị trí thường lệ, chọn phiên bản Qt,
+
+68
+00:02:56,890 --> 00:03:02,470
+lựa chọn kit và kết thúc. Chúng ta sẽ
+
+69
+00:03:02,470 --> 00:03:05,740
+để làm tất cả mọi thứ trong tập tin 'main.qml' của chúng ta.
+
+70
+00:03:05,740 --> 00:03:08,230
+Chúng ta sẽ skip phần này. Đây là 1
+
+71
+00:03:08,230 --> 00:03:10,209
+1 container (vật chứa) cho tất cả mọi thứ mà các bạn sẽ làm.
+
+72
+00:03:10,209 --> 00:03:12,640
+Bước tiếp theo sẽ là thêm
+
+73
+00:03:12,640 --> 00:03:14,800
+hình nền, mà trong trường hợp của chung ta là 2
+
+74
+00:03:14,800 --> 00:03:16,630
+hình chữ nhât màu xanh lá và xanh da trời
+
+75
+00:03:16,630 --> 00:03:19,540
+ở đây. Được rồi chúng ta về cơ bản sẽ
+
+76
+00:03:19,540 --> 00:03:22,090
+dùng cái này. Hình chữ nhật đầu tiên là 'sky' (trời).
+
+77
+00:03:22,090 --> 00:03:25,510
+Nó có dùng gradient ở đây. Gradient thật ra là
+
+78
+00:03:25,510 --> 00:03:27,550
+1 chuyển đổi từ những
+
+79
+00:03:27,550 --> 00:03:31,510
+màu săcx khác nhau. Ok, các bạn thấy màu xanh ở đây, bắt đầu
+
+80
+00:03:31,510 --> 00:03:35,110
+hơi đậm sau nhạt dần
+
+81
+00:03:35,110 --> 00:03:37,570
+khi chúng ta đi xuống và điều tương tự cũng xảy ra
+
+82
+00:03:37,570 --> 00:03:41,080
+với màu xanh ở đây, nó bắt đàu hơi nhạt và sau
+
+83
+00:03:41,080 --> 00:03:43,660
+đậm dần. Vì vậy chúng ta sẽ copy
+
+84
+00:03:43,660 --> 00:03:45,940
+chữ nhật của chúng ta ở đây và tôi nghĩ rằng chúng ta nên
+
+85
+00:03:45,940 --> 00:03:49,480
+copy hết chúng và đem chúng về
+
+86
+00:03:49,480 --> 00:03:53,680
+ví dụ của chúng ta ở đây. Đây là 1
+
+87
+00:03:53,680 --> 00:03:56,110
+thực hành tốt để biết cách sao chép trong
+
+88
+00:03:56,110 --> 00:03:58,480
+dự án của các bạn và cách để thêm chúng vào.
+
+89
+00:03:58,480 --> 00:04:04,360
+Ctrl+A, Ctrl+I để căn chỉnh lại. Chúng ta đã có nền. Bầu trời
+
+90
+00:04:04,360 --> 00:04:06,880
+sẽ là gradient này. Mặt đất
+
+91
+00:04:06,880 --> 00:04:09,610
+sẽ là gradient này. Và các bạn có thể thấy rằng
+
+92
+00:04:09,610 --> 00:04:13,420
+mặt đất thì được nối với đáy
+
+93
+00:04:13,420 --> 00:04:17,649
+của bầu trời và nó sẽ
+
+94
+00:04:17,649 --> 00:04:20,228
+chạm tới đáy của cửa sổ. Chúng ta thực sự có thể chạy
+
+95
+00:04:20,228 --> 00:04:21,940
+ứng dụng ngay bây giờ và
+
+96
+00:04:21,940 --> 00:04:23,380
+xem nó trông thế nào.
+
+97
+00:04:23,380 --> 00:04:27,160
+Hãy chạy nó và các bạn thấy đó
+
+98
+00:04:27,160 --> 00:04:30,940
+mặt đất của chúng ta không chạy. Vậy, vấn đề là
+
+99
+00:04:30,940 --> 00:04:35,020
+cái gì? Chúng tôi muốn để ' anchor' (neo) hình chữ nhật
+
+100
+00:04:35,020 --> 00:04:37,000
+dùng là đất tại đáy của
+
+101
+00:04:37,000 --> 00:04:38,770
+bố mẹ vì vây chúng ta sẽ đổi nó thành
+
+102
+00:04:38,770 --> 00:04:42,310
+'parent.bottom' (cha mẹ.dưới). Thế tốt hơn. Hãy chạy thử chương trình
+
+103
+00:04:42,310 --> 00:04:45,880
+để xem chúng ta có gì bây giờ. Được rồi các bạn thấy
+
+104
+00:04:45,880 --> 00:04:48,100
+rằng chúng ta có bầu trời và đất
+
+105
+00:04:48,100 --> 00:04:50,770
+màu xanh lá cây. Hình chữ nhật ở trên
+
+106
+00:04:50,770 --> 00:04:54,220
+sẽ có chiều cao là 200 pixel
+
+107
+00:04:54,220 --> 00:04:56,320
+và hình dưới sẽ có
+
+108
+00:04:56,320 --> 00:04:57,370
+chiều cao là phần còn lại.
+
+109
+00:04:57,370 --> 00:05:00,190
+Hãy mang quả bóng này
+
+110
+00:05:00,190 --> 00:05:02,380
+lên canva. Quả bóng được lưu tại
+
+111
+00:05:02,380 --> 00:05:04,930
+"assets/soccer_ball.png'. Để bắt đầu, chúng ta
+
+112
+00:05:04,930 --> 00:05:06,970
+đặt nó tại vị trí góc dưới cùng
+
+113
+00:05:06,970 --> 00:05:10,060
+bên trái, gần ngay lề. Được rồi, nó sẽ
+
+114
+00:05:10,060 --> 00:05:12,550
+bắt đầu tại đay. Vì vậy, những gì chúng ta sẽ làm
+
+115
+00:05:12,550 --> 00:05:15,550
+về cơ bản là mang hình ảnh này ở đây
+
+116
+00:05:15,550 --> 00:05:19,110
+vào trong dự án của chúng ta. Chúng ta sẽ đặt nó ở dưới
+
+117
+00:05:19,110 --> 00:05:22,450
+hình chữ nhật thứ 2, mặt đất. Chúng ta muốn
+
+118
+00:05:22,450 --> 00:05:24,970
+thêm vào 1 tập tin tài nguyên để
+
+119
+00:05:24,970 --> 00:05:28,420
+chứa hình này ở đây. Vì vậy tôi sẽ
+
+120
+00:05:28,420 --> 00:05:32,040
+đến đây, 'Resources' (tài nguyên), 'add new...' (thêm mới),
+
+121
+00:05:32,040 --> 00:05:40,330
+'Qt resource file' (tập tin tài nguyên Qt), và chúng ta sẽ gọi nó 'resourse' (tài nguyên)
+
+122
+00:05:40,330 --> 00:05:43,630
+Xong. Chúng ta quay trở lại nơi mà dự án của chúng tôi là lưu trữ.
+
+123
+00:05:43,630 --> 00:05:47,410
+Đó nên ở đây. Chúng ta muốn
+
+124
+00:05:47,410 --> 00:05:50,640
+thêm thư mục mới gọi là ''images" (hình ảnh) và
+
+125
+00:05:50,640 --> 00:05:54,160
+tôi muốn mở thư mục  đó và đưa
+
+126
+00:05:54,160 --> 00:05:57,310
+hình của quả bóng của chúng ta vào đó. Vì vậy, nếu các bạn không
+
+127
+00:05:57,310 --> 00:05:59,950
+có quả bóng đó, các bạn có thể trở lại
+
+128
+00:05:59,950 --> 00:06:02,680
+đầu cuốn sách này ở đây. Tôi muốn đi đến đầu
+
+129
+00:06:02,680 --> 00:06:04,780
+cuốn sách và các bạn sẽ thấy rằng các bạn
+
+130
+00:06:04,780 --> 00:06:07,300
+có thể kiếm các ví dụ trong các chương ở thư mục
+
+131
+00:06:07,300 --> 00:06:10,750
+ 'asset'. Chúng ta đang ở chương 5 vì vậy các bạn nên
+
+132
+00:06:10,750 --> 00:06:12,970
+vào chương 5. Hãy nhìn vào đó.
+
+133
+00:06:12,970 --> 00:06:15,640
+Các bạn nên tải về chương 5 ở đây và
+
+134
+00:06:15,640 --> 00:06:17,860
+các bạn giải nén ở đây và kiếm
+
+135
+00:06:17,860 --> 00:06:20,140
+hình quả bóng và các ví dụ mà các bạn cần.
+
+136
+00:06:20,140 --> 00:06:23,260
+Vậy đặt hình đó vào thư mục 'images
+
+137
+00:06:23,260 --> 00:06:25,630
+như thế này hay các bạn có thể copy hình này
+
+138
+00:06:25,630 --> 00:06:28,510
+từ tập tin mà tôi cung cấp
+
+139
+00:06:28,510 --> 00:06:31,210
+kèm theo khoá học này. Chúng ta sẽ đóng cái này lại ở đây
+
+140
+00:06:31,210 --> 00:06:33,460
+vì các bạn không cần nó nữa.
+
+141
+00:06:33,460 --> 00:06:37,030
+Chúng ta sẽ thêm 1 'Prefix', bỏ cái này đi,
+
+142
+00:06:37,030 --> 00:06:40,229
+bởi vì chúng ta không muốn nó, chọn 'add file...' (thêm tập tin),
+
+143
+00:06:40,229 --> 00:06:43,960
+mở thư mục 'images', chọn hình 'soccerball'.  Lưu ý
+
+144
+00:06:43,960 --> 00:06:46,810
+tên ở đây là 'soccerball.png'. Chúng ta lưu lại,
+
+145
+00:06:46,810 --> 00:06:50,050
+trở lại đây và đổi cái này thành
+
+146
+00:06:50,050 --> 00:06:55,629
+'images/soccerball.png' Các bạn có thể thấy rằng
+
+147
+00:06:55,629 --> 00:06:58,449
+nó được ghi nhận và các bạn thấy rằng họ
+
+148
+00:06:58,449 --> 00:07:00,999
+ghi 'root' ở đây vì vậy chúng ta nên xác định
+
+149
+00:07:00,999 --> 00:07:04,659
+'root' là của sổ này  bởi vì nó
+
+150
+00:07:04,659 --> 00:07:08,379
+là đối tượng bố mẹ. Vì vậy, nó nên là 'root' ở đây.
+
+151
+00:07:08,379 --> 00:07:11,050
+Vì vậy , quả bóng sẽ nằm ở dưới đáy bên trái
+
+152
+00:07:11,050 --> 00:07:15,039
+vì X là 0 và
+
+153
+00:07:15,039 --> 00:07:17,169
+chiều cao là chiều cao của
+
+154
+00:07:17,169 --> 00:07:19,960
+đối tượng bố mẹ, chính là của sổ 'root' ở đây
+
+155
+00:07:19,960 --> 00:07:24,189
+trù cho chiều cao quả banh. Và khi chúng ta
+
+156
+00:07:24,189 --> 00:07:26,259
+nhấn vào, chúng ta sẽ reset vị trí X của nó,
+
+157
+00:07:26,259 --> 00:07:29,529
+vị trí Y và quay tròn và
+
+158
+00:07:29,529 --> 00:07:31,900
+chúng ta sẽ bắt đầu hoạt hình.
+
+159
+00:07:31,900 --> 00:07:33,819
+Nó chưa được xác định nên các bạn có thể
+
+160
+00:07:33,819 --> 00:07:37,599
+an toàn mà bỏ qua nó bây giờ. Chúng ta thực sự có thể comment
+
+161
+00:07:37,599 --> 00:07:40,089
+nó ra. Chúng ta không muốn nó ảnh hưởng
+
+162
+00:07:40,089 --> 00:07:42,639
+đến những gì chúng ta có. Hãy chạy để xem liệu chúng ta
+
+163
+00:07:42,639 --> 00:07:47,580
+có đặt quả bóng ở đúng vị trí.
+
+164
+00:07:48,419 --> 00:07:51,610
+Mm-hmm.... Chúng ta có quả bóng ở đây. Điều này thật là
+
+165
+00:07:51,610 --> 00:07:54,159
+tốt. OK, chúng ta có hình ảnh
+
+166
+00:07:54,159 --> 00:07:56,469
+ở đúng vị trí. Đây là những gì chúng ta nên có.
+
+167
+00:07:56,469 --> 00:07:58,509
+Hình có 1 MouseArea liên kết với nó.
+
+168
+00:07:58,509 --> 00:08:01,000
+Nếu quả bóng được nhấn vào, vị trí của
+
+169
+00:08:01,000 --> 00:08:03,009
+quả bóng sẽ được thiết lập được và
+
+170
+00:08:03,009 --> 00:08:06,219
+hoạt hình sẽ được khởi động lại. Hãy bắt đầu với 1 nhóm
+
+171
+00:08:06,219 --> 00:08:09,099
+hoạt hình tuần tự cho 2 chuyển tiếp trên Y.
+
+172
+00:08:09,099 --> 00:08:12,849
+Vì vậy, họ dùng 1 SequentialAnimation
+
+173
+00:08:12,849 --> 00:08:17,379
+để hoạt hình hoá quả bóng đi lên và đi xuống.
+
+174
+00:08:17,379 --> 00:08:21,279
+Ok, nó sẽ là chuyển động lên 'to' (tới) 20, và nó
+
+175
+00:08:21,279 --> 00:08:25,120
+sẽ quay lại 'to' (tới) 240 và
+
+176
+00:08:25,120 --> 00:08:29,020
+'duration' (thời lượng) sẽ lần luọt là 0.4 và 0.6.
+
+177
+00:08:29,020 --> 00:08:33,760
+Hãy copy nó và đặt vào
+
+178
+00:08:33,760 --> 00:08:37,059
+dự án của chúng ta. Các bạn nên đặt nó bên dưới
+
+179
+00:08:37,059 --> 00:08:40,360
+tấm hình. Nó sẽ chạy. Vậy chúng ta có
+
+180
+00:08:40,360 --> 00:08:43,448
+SequentialAnimation. Ok, quả bóng sẽ
+
+181
+00:08:43,448 --> 00:08:45,399
+chuyển động hướng lên và nó
+
+182
+00:08:45,399 --> 00:08:48,160
+sẽ chuyển động xuống và các bạn thấy rằng
+
+183
+00:08:48,160 --> 00:08:51,760
+40% thời gian nó sẽ đi lên
+
+184
+00:08:51,760 --> 00:08:54,519
+và 60% thời gian là để
+
+185
+00:08:54,519 --> 00:08:57,010
+đi xuống. Vì vậy, chúng ta cần xác định
+
+186
+00:08:57,010 --> 00:08:59,860
+thời gian (duration) ở đây. Hãy đi lên. Tôi không nghĩ
+
+187
+00:08:59,860 --> 00:09:00,760
+rằng chúng ta đã xác định nó.
+
+188
+00:09:00,760 --> 00:09:06,630
+Hãy tạo 'property' 'int' và gọi nó là 'duration'
+
+189
+00:09:06,630 --> 00:09:11,529
+và nó sẽ là 1 giây (1000).
+
+190
+00:09:11,529 --> 00:09:13,720
+Trong sách nói là 3 giây nhưng
+
+191
+00:09:13,720 --> 00:09:15,670
+tôi thích để 1 giây ở đây. Các bạn có thể ghi bất cứ gì
+
+192
+00:09:15,670 --> 00:09:18,370
+mà các bạn muốn. Và chúng ta đã lấy cơ hội này để thay đổi
+
+193
+00:09:18,370 --> 00:09:25,660
+điều này. Nó nên như thế này. Các bạn nên đi
+
+194
+00:09:25,660 --> 00:09:30,720
+xuống dưới và uncomment cái này tại đây.
+
+195
+00:09:30,720 --> 00:09:34,360
+Được rồi, tôi hy vọng các bạn đang thấy quá trình
+
+196
+00:09:34,360 --> 00:09:36,070
+các bạn có thể đi qua để thiết kế một cái gì đó vui vẻ.
+
+197
+00:09:36,070 --> 00:09:41,110
+Hãy chạy thử chương trình. Hoạt hình sẽ được
+
+198
+00:09:41,110 --> 00:09:43,000
+khởi động lại và chúng ta sẽ thấy quả bóng
+
+199
+00:09:43,000 --> 00:09:45,449
+đi lên và đi xuống. Được rồi
+
+200
+00:09:45,449 --> 00:09:49,170
+đó là những gì xảy ra.
+
+201
+00:09:51,850 --> 00:09:55,240
+Bây giờ, những gì chúng ta muốn là để vào cạnh lề
+
+202
+00:09:55,240 --> 00:09:59,170
+và chuyển động xoay tròn. Hãy quay trở lại
+
+203
+00:09:59,170 --> 00:10:02,380
+cuốn sách. Tiếp theo chúng ta cần thêm chuyển dịch X.
+
+204
+00:10:02,380 --> 00:10:04,779
+Chuyển dịch X sẽ chạy
+
+205
+00:10:04,779 --> 00:10:06,370
+song song với chuyển dịch Y
+
+206
+00:10:06,370 --> 00:10:09,459
+vì thế chúng ta cần gói
+
+207
+00:10:09,459 --> 00:10:12,069
+chuỗi chuyển dịch Y vào 1 nhóm
+
+208
+00:10:12,069 --> 00:10:13,630
+hoạt hình song song cùng với chuyển dịch X.
+
+209
+00:10:13,630 --> 00:10:15,459
+Vì vậy, đây là những gì chúng ta đang
+
+210
+00:10:15,459 --> 00:10:17,920
+làm. Được rồi, đây là một SequentialAnimation
+
+211
+00:10:17,920 --> 00:10:20,829
+mà chúng ta có. Chúng ta sẽ gói nó
+
+212
+00:10:20,829 --> 00:10:22,690
+vào 1 ParallelAnimation và chúng ta
+
+213
+00:10:22,690 --> 00:10:25,269
+sẽ thêm 1 NumberAnimation mà
+
+214
+00:10:25,269 --> 00:10:28,000
+sẽ hoạt hình hoá quả banh
+
+215
+00:10:28,000 --> 00:10:31,240
+theo toạ độ X. Hãy đặt vào nhóm hoạt hình
+
+216
+00:10:31,240 --> 00:10:37,000
+nhóm hoạt hình song song của chúng ta 'id' sẽ là 'anim'
+
+217
+00:10:37,000 --> 00:10:41,019
+và nó sẽ chứa
+
+218
+00:10:41,019 --> 00:10:44,490
+SequentialAnimation này mà chúng ta có ở đây.
+
+219
+00:10:44,490 --> 00:10:49,899
+Hãy lấy nó ra, đưa nó vào, lấy cái 'id' này ra
+
+220
+00:10:49,899 --> 00:10:52,290
+vì chúng ta không còn cần nó nữa.
+
+221
+00:10:52,290 --> 00:10:55,540
+Nhưng ở dưới đây, chúng ta muốn đặt thêm
+
+222
+00:10:55,540 --> 00:11:01,810
+1 NumberAnimation nữa và
+
+223
+00:11:01,810 --> 00:11:04,240
+cái NumberAnimation này sẽ là cái chúng ta có
+
+224
+00:11:04,240 --> 00:11:04,779
+ở đây.
+
+225
+00:11:04,779 --> 00:11:08,680
+Vì vậy, chúng tôi đã sao chép cái này và đặt nó trong đây.
+
+226
+00:11:08,680 --> 00:11:12,790
+Ctrl+A, Ctrl+I để căn chỉnh lại. Vậy chúng ta
+
+227
+00:11:12,790 --> 00:11:14,170
+đang hoạt hình hoá quả bóng,
+
+228
+00:11:14,170 --> 00:11:17,500
+chúng ta sẽ animate nó trên X,
+
+229
+00:11:17,500 --> 00:11:20,350
+'to' (tới) 400 và 'duration' (thời lượng) là
+
+230
+00:11:20,350 --> 00:11:22,899
+thời lượng mà chúng ta có
+
+231
+00:11:22,899 --> 00:11:25,839
+ở đây. Hãy chạy ứng dụng và khi
+
+232
+00:11:25,839 --> 00:11:28,120
+chúng ta bắt đầu, chúng ta đang bắt đầu
+
+233
+00:11:28,120 --> 00:11:30,009
+nhóm hoạt hình song song và các thứ sẽ xảy ra
+
+234
+00:11:30,009 --> 00:11:32,439
+cùng một lúc. Các bạn thấy rằng quả bóng
+
+235
+00:11:32,439 --> 00:11:35,860
+chuyển động từ trái sang phải. Chúng ta
+
+236
+00:11:35,860 --> 00:11:38,589
+đang có 1 số tiến bộ. Phải không? Được rồi, đây là
+
+237
+00:11:38,589 --> 00:11:40,149
+đến những gì chúng ta có. Cuối cùng, chúng ta muốn
+
+238
+00:11:40,149 --> 00:11:42,790
+quả bóng quay tròn. Vì điều này, chúng ta cần
+
+239
+00:11:42,790 --> 00:11:44,740
+thêm 1 hoạt hình vào
+
+240
+00:11:44,740 --> 00:11:47,050
+nhóm hoạt hình song song của chúng ta Chúng ta chọn RotationAnimation
+
+241
+00:11:47,050 --> 00:11:49,600
+bởi vì nó là chuyên
+
+242
+00:11:49,600 --> 00:11:53,170
+cho xoay vòng. Chuyển động RotationAnimation của chúng ta sẽ
+
+243
+00:11:53,170 --> 00:11:55,720
+như thế này. Nó sẽ diễn ra
+
+244
+00:11:55,720 --> 00:11:58,209
+từ đầu đến cuối.
+
+245
+00:11:58,209 --> 00:12:01,089
+'target' (mục tiêu) sẽ là 'ball' (quả bóng) và nó
+
+246
+00:12:01,089 --> 00:12:04,540
+sẽ xoay đến góc này, ở đây.
+
+247
+00:12:04,540 --> 00:12:05,769
+Hãy đặt điều đó
+
+248
+00:12:05,769 --> 00:12:09,189
+vào trong dự án của chúng ta. Nó sẽ ở dưới
+
+249
+00:12:09,189 --> 00:12:11,559
+NumberAnimation bởi vì nó cần phải được
+
+250
+00:12:11,559 --> 00:12:16,290
+bao gồm trong ParallelAnimation ở đây.
+
+251
+00:12:16,290 --> 00:12:18,670
+Đây là những gì chúng ta có.
+
+252
+00:12:18,670 --> 00:12:26,069
+Hãy chạy thử chương trình. Ok, chúng ta quay khi di chuyển.
+
+253
+00:12:26,069 --> 00:12:29,379
+Chúng ta đang có 1 điều giống hơn với điều
+
+254
+00:12:29,379 --> 00:12:32,019
+chúng ta muốn. Chúng ta nên quay trở lại
+
+255
+00:12:32,019 --> 00:12:35,709
+cuốn sách và xem những bước tiếp theo. Đó là
+
+256
+00:12:35,709 --> 00:12:37,389
+toàn bộ chuỗi hoạt hình. Một điều
+
+257
+00:12:37,389 --> 00:12:39,670
+còn thiếu là cung cấp đúng
+
+258
+00:12:39,670 --> 00:12:42,610
+đường easing cho chuyển động của quả bóng. Cho
+
+259
+00:12:42,610 --> 00:12:46,239
+chuyển động trên Y1, tôi dùng đường 'Easing.OutCirc' vì
+
+260
+00:12:46,239 --> 00:12:48,369
+điều này sẽ trông giống như một chuyển động
+
+261
+00:12:48,369 --> 00:12:52,779
+vòng tròn. Y2 sẽ được bổ sung với Easing.OutBounce
+
+262
+00:12:52,779 --> 00:12:55,239
+vì quả bóng nên nảy lên ở cuối.
+
+263
+00:12:55,239 --> 00:12:58,299
+Ok, quả bóng nên nảy lên khi chúng ta
+
+264
+00:12:58,299 --> 00:13:01,360
+kết thúc hoạt hình. Vì vậy, những gì họ đã làm,
+
+265
+00:13:01,360 --> 00:13:05,379
+họ đặt 1 'easing.type' ở thời điểm quả bóng
+
+266
+00:13:05,379 --> 00:13:11,759
+đi lên và nó sẽ là 'Easing.OutCirc'.
+
+267
+00:13:11,759 --> 00:13:16,379
+Khi các bóng đang đi lên, chúng ta... ease OutCirc.
+
+268
+00:13:16,379 --> 00:13:21,279
+Đây là hoạt hình của chúng ta ở đây. Hãy quay trở lại
+
+269
+00:13:21,279 --> 00:13:25,449
+cuốn sách. Khi các bóng đang đi lên, chúng ta... ease OutBounce.
+
+270
+00:13:25,449 --> 00:13:31,540
+Hãy trở lại đoạn mã của chúng ta và dùng nó.
+
+271
+00:13:31,540 --> 00:13:35,980
+Hãy xem lại cuốn sách lần nữa và
+
+272
+00:13:35,980 --> 00:13:38,259
+và xem chúng ta có gì. Chúng ta không còn có bất cứ điều gì
+
+273
+00:13:38,259 --> 00:13:41,769
+khác. Điều này thực sự là tất cả. Hãy quay lại
+
+274
+00:13:41,769 --> 00:13:48,699
+dự án của chúng ta, chạy nó và khi chúng ta nhấn vào
+
+275
+00:13:48,699 --> 00:13:52,179
+chúng ta có 1 quả bóng đang chuyển động
+
+276
+00:13:52,179 --> 00:13:54,189
+nảy tại đây. Và thưa quý vị,
+
+277
+00:13:54,189 --> 00:13:56,199
+đây là những gì chúng ta đã làm trong bài
+
+278
+00:13:56,199 --> 00:13:58,509
+học này. Tôi hi vọng các bạn thích nó. Điều quan trọng nhất là
+
+279
+00:13:58,509 --> 00:14:02,019
+các bạn biết rằng các bạn có thể
+
+280
+00:14:02,019 --> 00:14:05,049
+dùng cuốn sách nay để học 1 số thứ
+
+281
+00:14:05,049 --> 00:14:07,809
+mà các bạn muốn biết nhưng tôi
+
+282
+00:14:07,809 --> 00:14:10,239
+không có điều kiện để đề cập đến. Nó là rất
+
+283
+00:14:10,239 --> 00:14:12,970
+là phong phú về nội dung. Nó nói về nhiều thứ hơn
+
+284
+00:14:12,970 --> 00:14:15,189
+tôi có thể đề cập trong khoá học này.
+
+285
+00:14:15,189 --> 00:14:18,540
+Các bạn có thể thấy rằng họ đề cập về multimedia,
+
+286
+00:14:18,540 --> 00:14:20,400
+về hiệu ứng đổ bóng,
+
+287
+00:14:20,400 --> 00:14:22,770
+về canva... Tất cả đều là
+
+288
+00:14:22,770 --> 00:14:25,530
+những đề tài thú vị và các bạn nên
+
+289
+00:14:25,530 --> 00:14:27,480
+tham khảo cuốn sách này khi các bạn hoàn thành
+
+290
+00:14:27,480 --> 00:14:29,550
+khoá học này. Tôi nghĩ rằng các bạn sẽ
+
+291
+00:14:29,550 --> 00:14:32,220
+có đủ kiến thức nền để đọc nó và
+
+292
+00:14:32,220 --> 00:14:34,920
+hiểu nó. Được rồi, đây là tất cả những gì tôi có
+
+293
+00:14:34,920 --> 00:14:36,720
+cho khoá này. Và bài tiếp theo chúng
+
+294
+00:14:36,720 --> 00:14:38,490
+ta sẽ tìm hiểu về trang thái và chuyển tiếp.
+
+295
+00:14:38,490 --> 00:00:00,000
+Hẹn gặp lại các bạn ở bài sau.
+

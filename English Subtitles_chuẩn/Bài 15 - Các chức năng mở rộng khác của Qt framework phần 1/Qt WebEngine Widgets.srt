@@ -1,0 +1,301 @@
+WEBVTT
+
+00:00.550 --> 00:06.480
+And this is the video 3.2 of interacting with the web which covers web engine widgets. In this video we're
+
+00:06.480 --> 00:12.300
+going to cover the Qt web engine widgets, application programmer interface, build a simple web browser
+
+00:12.300 --> 00:16.040
+using widgets and a couple custom browser ideas.
+
+00:16.140 --> 00:17.740
+So let's start with the easy question.
+
+00:17.760 --> 00:22.230
+Why would we cover the API or application programmer interface?
+
+00:22.230 --> 00:25.560
+We want to see where the majority of the functionality for this module is.
+
+00:25.620 --> 00:30.600
+Additionally an API review helps us understand how the code is supposed to work so that we can leverage
+
+00:30.630 --> 00:33.000
+the pre-made code rather than fight against it.
+
+00:33.000 --> 00:34.710
+So let's take a look.
+
+00:34.740 --> 00:38.610
+Remember that this is the top level architecture that we showed from the last time.
+
+00:38.790 --> 00:41.790
+And here's how this breaks down into actual class names.
+
+00:41.790 --> 00:44.400
+The top level widget is QWebEngineView.
+
+00:44.460 --> 00:48.660
+Now I've outlined some of what I saw to be most of the important functions on the right.
+
+00:48.660 --> 00:55.500
+So you can see here that we can set either a Url, Page or Html document on our top level view,
+
+00:55.650 --> 00:57.930
+which is super convenient as we'll see in a second.
+
+00:57.990 --> 01:01.270
+Below the QWebEngineView is the QWebEnginePage.
+
+01:01.290 --> 01:04.470
+This is where the meat of the module is, it's in the page itself.
+
+01:04.470 --> 01:09.260
+Now I didn't outline it here but the page also has some of the same functions as the view does.
+
+01:09.270 --> 01:16.920
+So for example you can set the Url or the Html on the page itself, just like you can with a top level view.
+
+01:17.070 --> 01:22.360
+The way to think that page can be seen if you open a normal web browser, which you'll typically see in
+
+01:22.360 --> 01:25.350
+the web browser, is the actual tabbed interface.
+
+01:25.350 --> 01:31.260
+Each tab represents another page, and any one time only one page is showing.
+
+01:31.260 --> 01:34.770
+But if you click on a tab it will switch to the relevant page.
+
+01:34.770 --> 01:38.860
+Now whether you choose to implement a web browser as a tabbed interface is up to you.
+
+01:38.880 --> 01:45.420
+You could use for example a drop down list to change between your different pages, or whatever other
+
+01:45.420 --> 01:50.370
+interesting interfaces you can think of. Some of the interesting functions I saw on the page included
+
+01:50.370 --> 01:55.470
+the icon and title functions, which will return you the icon and title for the page.
+
+01:55.470 --> 02:00.090
+Additional functions for this class include download, run javascript, and print.
+
+02:00.090 --> 02:05.340
+So all in all QWebEnginePage is a very very powerful class and you'll be seeing a lot of it.
+
+02:05.340 --> 02:09.770
+The enum WebAction is also part of this class and very important.
+
+02:09.840 --> 02:12.540
+We'll review it once we finished up with this diagram.
+
+02:12.630 --> 02:17.290
+So below the page are some other classes that we won't get into too much here.
+
+02:17.340 --> 02:19.720
+The profile is very interesting.
+
+02:19.740 --> 02:24.390
+If you wanted to implement like incognito mode the profile is how you would do it.
+
+02:24.390 --> 02:29.340
+You can also implement your own settings, script, and cookie handling from that profile as well.
+
+02:29.340 --> 02:33.990
+So if your web browser needs to dive into any of these areas they each have their own distinct classes
+
+02:34.050 --> 02:36.110
+and functions to go along with them.
+
+02:36.120 --> 02:40.560
+Now that we're done with that diagram, Let's talk about some of the actions. A lot of the user actions
+
+02:40.560 --> 02:44.130
+are tracked in a single enum in QWebEnginePage.
+
+02:44.130 --> 02:48.140
+I've copied a couple up here just to illustrate where to go to find some functionality.
+
+02:48.180 --> 02:55.050
+So for example some of the actions that are owned by the page include back, forward, stop, cut, copy, and
+
+02:55.050 --> 02:56.090
+paste.
+
+02:56.430 --> 03:02.200
+But if you look at the actual documentation which we'll see here WebEnginePage WebAction, you can see there
+
+03:02.220 --> 03:05.100
+actually like 44 different enums here.
+
+03:05.290 --> 03:10.020
+So this is super important if you're implementing a more fully featured web browser to make sure that
+
+03:10.020 --> 03:13.190
+you correctly handle each of these actions.
+
+03:13.320 --> 03:15.920
+But that's a quick crash course in the API.
+
+03:16.020 --> 03:20.940
+So now that we have an understanding of how the code works together, let's go ahead and create a quick
+
+03:20.940 --> 03:22.150
+web browser.
+
+03:22.530 --> 03:29.550
+So if you open up the web engine project and open up the MainWindow_H you can see here we've
+
+03:29.550 --> 03:32.730
+got a very streamlined class. Looking at the private section
+
+03:32.730 --> 03:34.920
+there's only three private widgets here,
+
+03:35.060 --> 03:38.240
+a QWidget, a QWebEngineView and a QLineEdit.
+
+03:38.250 --> 03:43.920
+We use the QLineEdit to input and view our current Urls, and we use the central_widget to
+
+03:43.920 --> 03:45.570
+help navigate some of the layout.
+
+03:45.630 --> 03:50.050
+Basically what we need to do is put our Url above our web_view.
+
+03:50.190 --> 03:54.930
+So let's go ahead and switch to our implementation of our mainwindow and the first thing that we'll
+
+03:54.930 --> 03:59.940
+do is go ahead and create these three widgets.
+
+03:59.960 --> 04:05.560
+We also want to call this set_up_central_widget_ui function which if we look at this all this does is we
+
+04:05.560 --> 04:07.980
+create a VerticalBoxLayout.
+
+04:08.020 --> 04:13.630
+We add the QLineEdit which is called edit_bar first so that it's above our web_view.
+
+04:13.630 --> 04:19.870
+So we also add in our web view. And then we actually set this layout that we've just created on our
+
+04:19.870 --> 04:20.840
+central_widget.
+
+04:21.190 --> 04:25.600
+And you see as part of this constructor we actually call a central_widget on the mainwindow and pass it
+
+04:25.600 --> 04:26.890
+in our central_widget.
+
+04:26.920 --> 04:30.430
+So the next thing that we want to do is actually load a Url.
+
+04:30.520 --> 04:33.230
+Let's load Wikipedia's Url as example.
+
+04:33.280 --> 04:40.920
+We'll go ahead and make a temporary QString and set it on the edit_bar class.
+
+04:41.120 --> 04:47.020
+Now in order to call the load function on our web_view, we need to actually wrap the QString with the
+
+04:47.020 --> 04:54.200
+Url constructor to make sure that our web_view can load it. The last thing we want to do is make sure that whenever
+
+04:54.200 --> 04:56.770
+we change the Url in our LineEdit
+
+04:56.840 --> 04:58.220
+the web_view gets changed.
+
+04:58.310 --> 05:04.430
+Luckily QLineEdit has a signal that signifies when editing is finished, the editing finished signal.
+
+05:04.610 --> 05:05.890
+We'll connect this to the
+
+05:05.900 --> 05:07.990
+setUrl function in our Main_Window.
+
+05:10.840 --> 05:13.740
+So now if we scroll down to the setUrl function
+
+05:13.900 --> 05:19.570
+we'll go ahead and grab the text out of our QLineEdit and use a static function to let our
+
+05:19.570 --> 05:20.530
+QUrl class
+
+05:20.530 --> 05:24.500
+know that's coming from our users before finally loading it into the WebView.
+
+05:24.510 --> 05:28.500
+so let's go ahead and run this and see how it goes.
+
+05:28.700 --> 05:34.340
+Yep that looks like a web browser. So you might be asking yourself "Is that it"?
+
+05:34.350 --> 05:35.330
+And the truth is
+
+05:35.340 --> 05:37.080
+"Well yeah kind of".
+
+05:37.080 --> 05:40.410
+The interesting thing about web browsers is browsing the internet.
+
+05:40.860 --> 05:46.620
+If you pull open Chrome you can see that we've got a tab widget, couple of icons, but that's about it.
+
+05:46.620 --> 05:49.800
+The user interface for the browser itself tends to be pretty limited.
+
+05:49.800 --> 05:52.710
+I challenge you to make a similar tab browser using Qt.
+
+05:52.710 --> 05:55.850
+It should take you less than a day to get a simple tab widget working.
+
+05:55.950 --> 06:00.450
+Now if you're looking for some examples there's a few on Qt's website which you can find at this
+
+06:00.450 --> 06:01.120
+Url.
+
+06:01.300 --> 06:07.710
+The cookie browser, stylesheet, Html2PDF and Spellchecker are all interesting examples. With what
+
+06:07.710 --> 06:09.070
+we've learned so far,
+
+06:09.090 --> 06:13.960
+they might inspire you to help create your own unique web browser that scratches at personal itch.
+
+06:14.010 --> 06:18.210
+So I encourage you to look at some of these examples and understand exactly what itch they were trying to
+
+06:18.210 --> 06:21.980
+scratch because it might help you realize your own unique use case.
+
+06:22.080 --> 06:26.760
+But with that we've hopefully successfully inspired you to create your own personal web browser, build
+
+06:26.820 --> 06:32.040
+our own simple web browser and review the widget application programmer interface.
+
+06:32.190 --> 06:36.420
+Now the one thing that we're missing is the ability to interact directly with the web from our desktop
+
+06:36.420 --> 06:36.880
+app.
+
+06:36.900 --> 06:39.950
+We'll cover this in our next video when we look at the Qt WebChannel.

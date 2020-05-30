@@ -1,0 +1,536 @@
+﻿1
+00:00:01,160 --> 00:00:07,130
+Video về chương trình hướng danh sách sự kiện GUI (event driven GUI list program).  Chúng ta sẽ tìm hiểu về các loại lập trình đồng thời,
+
+2
+00:00:07,280 --> 00:00:12,150
+functor cơ sở tín hiệu/khe kết nối và kết thúc bằng cách làm một ví dụ về sự kiện vòng lặp hướng.
+
+3
+00:00:12,170 --> 00:00:15,680
+Một trong những đề xuất chính trong Qt là bộ khung hướng sự kiện (event driven framework).
+
+4
+00:00:15,890 --> 00:00:20,100
+Tin tốt là thậm chí nếu chúng ta không dùng đồ hoạ, chúng ta cũng có thể sử dụng vòng lặp sự kiện (event loop).
+
+5
+00:00:20,210 --> 00:00:21,790
+Vì vậy hãy tìm ra cách.
+
+6
+00:00:21,850 --> 00:00:28,460
+Nếu chúng ta mở ra Qt Creator, bấm menu File, chọn New file or project application, chọn Qt Console Application, bấm Choose
+
+7
+00:00:28,460 --> 00:00:30,080
+chọn tên và vị trí
+
+8
+00:00:30,110 --> 00:00:34,740
+Chúng ta sẽ gắn bó với hệ thống xây dựng qmake , chọn kit và làm một dự án quản lý.
+
+9
+00:00:34,780 --> 00:00:39,650
+Và chúng ta sẽ tạo 1 ứng dụng nhỏ và nó sẽ tạo ra 1 QCoreApplication mới
+
+10
+00:00:39,650 --> 00:00:40,500
+gọi exec().
+
+11
+00:00:40,550 --> 00:00:45,110
+Đây thực sự là 1 vòng lặp sự kiện. Làm cách nào để tạo 1 vòng lặp sự kiện trong 1 chương trình phi-GUI (non-GUI?
+
+12
+00:00:45,110 --> 00:00:48,710
+Nếu chúng ta chạy cái này, nó sẽ tiếp tục và vì không có gì để thấy sựu khác biệt, nó
+
+13
+00:00:48,710 --> 00:00:49,770
+sẽ chạy vòng lặp sự kiện mãi mãi.
+
+14
+00:00:49,880 --> 00:00:54,970
+Điều nãy có nghĩa là chúng ta có thể lấy tín hiệu (signal) và khe (slot) và đặt vào chương trình điều khiển của chúng ta.
+
+15
+00:00:54,980 --> 00:00:56,540
+Vậy ở đâu điều này hữu ích?
+
+16
+00:00:56,540 --> 00:01:01,630
+Bất cứ chương trình nào cần cần nhắc về IO (In-Out - Nhập - Xuất) thì sẽ luôn là đối tượng tốt cho 1 sự kiện vòng.
+
+17
+00:01:01,640 --> 00:01:05,480
+Bất kỳ loại ứng dụng mạng hay máy chủ sẽ hưởng lợi từ ứng dụng này.
+
+18
+00:01:05,510 --> 00:01:10,190
+Một trong các lý do chúng ta nói về làm 1 ứng dụng đồ hoạ danh sách (graphic list application) là trường hợp chúng ta
+
+19
+00:01:10,190 --> 00:01:10,930
+chạy nó trên máy chủ.
+
+20
+00:01:11,030 --> 00:01:12,740
+Chúng ta hãy mở rộng cái này 1 chút.
+
+21
+00:01:12,740 --> 00:01:17,660
+Thông thường chúng ta chạy trên máy chủ,hoặc là vì chúng ta có thêm sức mạnh xử lý so với trên máy tính cá nhân
+
+22
+00:01:17,720 --> 00:01:22,220
+hoặc chúng ta cần 1 quá trình chạy trong thời gian dài để cung cấp một số dịch vụ.
+
+23
+00:01:22,220 --> 00:01:27,240
+Kiến trúc vi dịch vụ (microservice architecture) là 1 đường lối thiết kế đã đạt được 1 sự quan tâm lớn gần đây.
+
+24
+00:01:27,320 --> 00:01:32,360
+Hãy thiết kế 1 ứng dụng nhỏ chạy trên máy chủ và quay lên các dịch vụ khác khi cần thiết
+
+25
+00:01:32,390 --> 00:01:35,190
+hay khi có nhu cầu, sử dụng các tiến trình con.
+
+26
+00:01:35,270 --> 00:01:40,100
+Nếu các bạn không quen thuộc, lập trình đồng thời thường sử dụng luồng sự kiện
+
+27
+00:01:40,100 --> 00:01:44,700
+hay đa quy trình. Mỗi cách trên có điểm mạnh và điểm yếu.
+
+28
+00:01:44,720 --> 00:01:49,490
+Nhưng điêu tốt khi sử dụng đa quy trình là chúng ta có thể sử dụng hệ điều hành để quản lý
+
+29
+00:01:49,490 --> 00:01:52,490
+chuyển các quy trình chứ không phải lập trình thủ công chúng.
+
+30
+00:01:52,490 --> 00:01:55,070
+Đây là lý do tại sao vi dịch vụ trở nên phổ biến.
+
+31
+00:01:55,100 --> 00:01:59,420
+Hãy tiếp tục và thiết kế 1 ứng dụng quản lý để khởi động các vi dịch vụ của các bạn.
+
+32
+00:01:59,420 --> 00:02:01,960
+Thường cho việc này, chúng ta sẽ sử dụng một ứng dụng mạng.
+
+33
+00:02:01,970 --> 00:02:06,770
+Đế giữ vị dụ đơn giản, chúng ta sẽ dùng 1 đồng hồ đếm giờ để mô phỏng một số loại nhu cầu.
+
+34
+00:02:06,970 --> 00:02:09,820
+Chúng ta sẽ tìm hiểu về tạo ứng dụng mạng trong video tới.
+
+35
+00:02:10,040 --> 00:02:14,720
+Chúng ta sẽ đến tập tin main.cpp của chúng ta, tạo 1 lớp nhỏ gọi là ProcessManager và
+
+36
+00:02:14,720 --> 00:02:15,770
+bắt đầu ở đó.
+
+37
+00:02:15,800 --> 00:02:20,480
+Nếu chúng ta nhìn vào tập tin tiêu đề, 1 điều quan trọng chúng ta cần biết rằng chúng ta cần phân lớp
+
+38
+00:02:20,480 --> 00:02:24,320
+ProcessManager từ Q_OBJECt và 'include' 'QObject'.
+
+39
+00:02:24,320 --> 00:02:27,260
+Điều này sẽ cho phép chúng ta sử dụng các dấu hiệu và khe.
+
+40
+00:02:27,260 --> 00:02:32,900
+Trong trường hợp của chúng ta, chúng ta muốn dùng tín hiệu và khe để giúp chúng ta hiểu cách mà quá trình phụ của chúng ta hoạt động.
+
+41
+00:02:32,900 --> 00:02:36,430
+Có nhiều tín hiêu mà chúng ta muốn thu thập và nhiều khe mà chúng ta muốn biểu quyết.
+
+42
+00:02:36,440 --> 00:02:42,860
+Nếu chúng ta đi lên và nhìn vào trình khởi tạo đây là đồng hồ đếm giờ của chúng ta, nó sẽ mô phỏng nhu cầu của chúng ta và
+
+43
+00:02:42,860 --> 00:02:48,940
+chúng ta sẽ kết nối tín hiệu của 'timer' 'timeout' tới lệnh start_process.
+
+44
+00:02:48,950 --> 00:02:50,720
+Đây là 1 phần của lớp này.
+
+45
+00:02:50,750 --> 00:02:53,320
+start_process là nơi chúng ta sẽ bắt đầu.
+
+46
+00:02:53,360 --> 00:02:58,310
+Và các bạn lưu ý rằng lệnh start_process này sẽ nhận vào 1 'name', vì vậy 'name' nên thực sự là tên
+
+47
+00:02:58,340 --> 00:03:01,530
+của quá trình hay vị trí tập tin.
+
+48
+00:03:01,580 --> 00:03:04,440
+Trong trường hợp này, chúng ta chỉ sẽ để nó trống vì đây chỉ là 1 ví dụ.
+
+49
+00:03:04,460 --> 00:03:07,940
+Nhưng bình thường, các bạn muốn nó là bất cứ dịch vụ nào mà các bạn đang cố gắng chạy.
+
+50
+00:03:08,050 --> 00:03:13,680
+Điều đầu tiên chúng ta cần làm ở đây là tạo quá trình QProcess của chúng ta và sau đó chúng ta sẽ thêm
+
+51
+00:03:13,680 --> 00:03:20,550
+cái này vào danh sách quá trình của chúng ta và sau đó chúng ta sẽ bắt đầu nó vơi tên mà chúng ta muốn thêm vào.
+
+52
+00:03:20,600 --> 00:03:25,420
+Tên này sẽ là đường dẫn tập tin hay tên liên kết trong đường dẫn của các bạn.
+
+53
+00:03:25,470 --> 00:03:30,360
+Hãy tiếp tục và đưa cái này vào phương thức hỗ trợ (helper method) để giúp chúng ta thiết lập 1 số tín hiệu.
+
+54
+00:03:30,400 --> 00:03:35,700
+Bây giờ những gì chúng ta muốn làm là kết nối tín hiệu kết thúc đến phương thức processes_finished của chúng ta.
+
+55
+00:03:35,710 --> 00:03:42,150
+Chúng ta cũng sẽ đưa tên của quá trình gốc mà bình thường chúng ta không thể làm với tín hiệu.
+
+56
+00:03:42,250 --> 00:03:45,480
+vậy đây là nơi tín hiệu cơ sở functor đến để giải cứu.
+
+57
+00:03:45,490 --> 00:03:50,860
+Bây giờ, những gì chúng ta muốn làm là kết nối signal_finished đến phương thức process_finished của chúng ta như là một phần của
+
+58
+00:03:50,860 --> 00:03:51,460
+lớp này.
+
+59
+00:03:51,460 --> 00:03:56,140
+Thách thức duy nhất ở đây là, chúng ta muốn dùng tên quá trình gốc mà chúng tôi thường
+
+60
+00:03:56,140 --> 00:03:56,900
+không thể làm.
+
+61
+00:03:57,010 --> 00:03:59,650
+Nhưng đó là nơi tín hiệu cơ sở functor đi vào giải cứu.
+
+62
+00:03:59,770 --> 00:04:01,390
+Vì vậy, hãy tiếp tục và thực hiện điều đó.
+
+63
+00:04:01,400 --> 00:04:09,960
+Bây giờ, vì tín hiệu kết thúc thực tế là quá tải, chúng ta sẽ sử dụng phương thức trợ giúp QOverloaded để
+
+64
+00:04:09,960 --> 00:04:14,940
+giúp chúng ta kết nối tín hiệu và khe một cách chính xác và sau đó là tín hiệu cơ sở functor
+
+65
+00:04:14,940 --> 00:04:16,550
+mà chúng ta không bao giờ nhìn thấy trước đó.
+
+66
+00:04:16,680 --> 00:04:23,940
+Các bạn có 1 danh sách các argument để đưa vào, danh sách phương thức chứa tất cả các phương thức
+
+67
+00:04:24,300 --> 00:04:27,230
+và sau đó là khối mã thực tế mà chúng ta dùng.
+
+68
+00:04:27,480 --> 00:04:31,830
+Vậy điều đầu tiên mà chúng ta muốn dùng là các biến cần như 1 phần của chức năng.
+
+69
+00:04:31,830 --> 00:04:35,590
+Trong trường hợp này, chúng ta đều cần quá trình thực tế, tên quá trình.
+
+70
+00:04:35,610 --> 00:04:40,530
+Và sau đó nếu chúng ta muốn gọi 1 method từ lớp, chúng ta cần 1 con trỏ (pointer) đến biến instance.
+
+71
+00:04:40,530 --> 00:04:45,080
+Như vậy có process, process_name và 1 con trỏ đến instance.
+
+72
+00:04:45,090 --> 00:04:49,860
+Điều tiếp theo chúng ta cần làm là tiếp tục và lấy 2 biến đang đến.
+
+73
+00:04:49,860 --> 00:04:55,520
+Vậy chúng ta có 1 số nguyên (int) và 1 tình trạng thoát ra (exit status) và chúng ta sẽ đưa nó vào phương thức thực sự goi ở đây.
+
+74
+00:04:55,800 --> 00:04:58,300
+Và int ở đây thực tế được biết đến là exit_code (mã thoát).
+
+75
+00:04:58,500 --> 00:05:01,560
+Và sau đó chúng ta có ExitStatus của chúng ta.
+
+76
+00:05:01,640 --> 00:05:06,050
+Vì vậy, bây giờ chúng ta đã có tất cả các thông tin cần thiết, điều duy nhất  chúng ta cần làm là thực sự gọi
+
+77
+00:05:06,050 --> 00:05:06,740
+phương thức (method).
+
+78
+00:05:06,860 --> 00:05:12,290
+Trong trường hợp của chúng ta, phương thức mà chúng ta muốn gọi là phần của lớp là process_finished. Cái này
+
+79
+00:05:12,290 --> 00:05:16,700
+lấy vào takes in our exit_code, status, process và process_name
+
+80
+00:05:19,680 --> 00:05:20,100
+Tuyệt vời.
+
+81
+00:05:20,110 --> 00:05:23,830
+Đó là 1 ví dụ khó về tín hiệu dựa trên functor (functor based signal).
+
+82
+00:05:23,830 --> 00:05:29,320
+Hãy thử 1 cách dễ hơn và cái này sẽ không bị quá tải và tín hiệu mà chúng ta
+
+83
+00:05:29,320 --> 00:05:38,760
+muốn kết nối là lỗi xảy ra và khe mà chúng ta muốn kết nối tới nó là bộ xử lý lỗi của chúng ta (error handler).
+
+84
+00:05:38,770 --> 00:05:43,720
+Vậy nếu các bạn nhớ cách dùng functor, block đầu tiên này là nơi chúng ta đưa vào các argument mà chúng ta muốn
+
+85
+00:05:43,720 --> 00:05:44,800
+dùng và phương thức (method).
+
+86
+00:05:44,800 --> 00:05:46,300
+Đây là 1 phần trong phương thức gọi.
+
+87
+00:05:46,300 --> 00:05:52,230
+Chúng ta sẽ cần phải lấy cả lỗi của điều này và sau đó nhìn xem nơi ma chúng ta thật sự chạy đoạn mã của chúng ta.
+
+88
+00:05:52,300 --> 00:05:57,850
+Tương tự với phương thức mà chúng ta muốn. Chúng ta muốn giữ quá trình (process), tên quá trình (process_name) và con trỏ (pointer)
+
+89
+00:05:57,850 --> 00:06:00,690
+đến instance. Và sau đó, trong phương thức gọi của chúng ta,
+
+90
+00:06:00,700 --> 00:06:06,140
+điều duy nhất mà chúng ta sẽ lấy là QProcess, ProcessError và sau đó phương thức gọi mà chúng ta muốn
+
+91
+00:06:06,140 --> 00:06:12,890
+gọi là 1 phần của lớp của chúng ta là error_handle và chúng ta sẽ tiếp tục đưa vào đây error, process
+
+92
+00:06:12,920 --> 00:06:19,210
+và process_name. Tuyệt vời. Vậy đây là 2 ví dụ dùng kết nối tín hiệu / khe cắm dựa trên functor.
+
+93
+00:06:19,240 --> 00:06:23,350
+1 cái là quá tải (overloaded) và 1 cái không.
+
+94
+00:06:23,410 --> 00:06:28,060
+Và bây giờ chúng ta đã có các tín hiệu của chúng ta kết nối. Hãy tiếp tục và triển khai quá trình xử lý crash của chúng ta.
+
+95
+00:06:28,120 --> 00:06:33,730
+Vì vậy, hãy giả định rằng nếu quá trình kết thúc bình thường, chúng ta sẽ chỉ cần cho nó vào nền.
+
+96
+00:06:33,730 --> 00:06:38,670
+Một điều chúng ta sẽ muốn làm là bỏ nó ra khỏi vector các quá trình.
+
+97
+00:06:38,780 --> 00:06:45,110
+Điều mà chúng ta muốn làm là nếu quá trình chúng ta thật sự bị crash, chúng ta muốn khởi động lại nó,
+
+98
+00:06:45,310 --> 00:06:51,210
+mà đó là lý do mà chúng ta sẽ đưa vào đây process_name và 1 lần nữa làm cái này, chúng ta sẽ
+
+99
+00:06:51,210 --> 00:06:53,410
+gọi phương thức khỏi động tại đây.
+
+100
+00:06:53,630 --> 00:06:59,360
+Bây giờ chúng ta đã có tiến trình xử lý crash được thiết lập, hãy tiếp tục và xử lý tín hiệu kill (giết).
+
+101
+00:06:59,360 --> 00:07:04,700
+Bình thường, chúng ta cũng sẽ đưa vào từ xa nhưng ở đây, chúng ta sẽ mô phỏng 1
+
+102
+00:07:04,910 --> 00:07:09,300
+và chúng ta sẽ mô phỏng nó bằng cách dùng QTimer.
+
+103
+00:07:09,320 --> 00:07:15,260
+Lý do chúng ta dùng ifdef-else-endif thì được đề cập trong comment này. Các ứng dụng Windows
+
+104
+00:07:15,260 --> 00:07:19,630
+có thể hoặc không thế xử lý tin nhắn WM_CLOSE.
+
+105
+00:07:19,850 --> 00:07:24,080
+Vì vậy, chúng ta mang ra những khẩu súng lớn và thay vì cố gắng đóng chúng, chúng ta sẽ tiếp tục
+
+106
+00:07:24,110 --> 00:07:29,180
+và gọi kill() (giết) trên chúng. Nếu chúng ta không chạy trong Windows,
+
+107
+00:07:29,210 --> 00:07:33,980
+1 điều mà chúng ta muốn làm là cho ứng dụng của chúng ta cơ hôi để tự tắt (shut down) chúng
+
+108
+00:07:34,050 --> 00:07:36,750
+và cách mà chúng ta làm nó là gọi phương thức terminate().
+
+109
+00:07:36,800 --> 00:07:40,820
+Và cách này nếu quá trình của chúng ta có bất kỳ tập tin hay bất cứ thứ gì mà chúng cần dọn dẹp, trước cho
+
+110
+00:07:40,820 --> 00:07:41,710
+chúng 1 cơ hội.
+
+111
+00:07:41,720 --> 00:07:44,760
+Bây giờ các bạn vẫn có thể thực sự goi phương thức kill() ở đây.
+
+112
+00:07:44,780 --> 00:07:49,280
+Nhưng một lần nữa nếu các bạn gọi kill ở đây, nó không cho quá trình của các bạn cơ hội để tự dọn dẹp chúng trước,
+
+113
+00:07:49,280 --> 00:07:55,640
+mà đó là lý do chúng ta muốn thử và gọi terminate() trước và chúng ta có lẽ muốn cho người dùng chúng ta
+
+114
+00:07:55,700 --> 00:07:59,720
+một số cách để thực sự đi và chỉ định phương thức kill nếu phương thức terminate không làm việc.
+
+115
+00:07:59,720 --> 00:08:02,320
+Đôi khi quá trình của chúng ta có thể treo.
+
+116
+00:08:02,330 --> 00:08:05,720
+Điều cuối cùng mà chúng ta sẽ không chạm vào đây là xử lý lỗi.
+
+117
+00:08:05,720 --> 00:08:11,000
+Vì vậy, nếu các bạn nhìn qua đoạn mã ở đây, chúng tôi đã có một vài lỗi có thể
+
+118
+00:08:11,000 --> 00:08:11,630
+hiện popup ở đây.
+
+119
+00:08:11,660 --> 00:08:16,370
+Chúng ta có Crashed (Đã crash), FailedToStart (Khởi động thất bại), Timedout (Quá thời gian), WriteError (Lỗi ghi) .... Nhưng điều này cho thấy các bạn làm thế nào các bạn sẽ thực sự
+
+120
+00:08:16,460 --> 00:08:21,020
+đi qua và có 1 khối mã để tiếp tục và xử lý tất cả điều đó.
+
+121
+00:08:21,410 --> 00:08:25,760
+Nhưng với điều đó, với tất cả những mã chúng ta đã thực hiện, hãy tiếp tục và chạy nó và hãy chắc chắn rằng nó hoạt động.
+
+122
+00:08:26,780 --> 00:08:36,030
+Vậy nếu các bạn đã đưa vào tên quá trình ở đây, trong dấu chấm phẩy ở đó, các bạn có thể thấy rằng chúng ta sẽ
+
+123
+00:08:36,030 --> 00:08:37,820
+quay vòng đoạn mã ở đây.
+
+124
+00:08:37,940 --> 00:08:45,350
+Và là 1 phần của phương thức khởi động sẽ thật sự đạt đến số quy trình tối đa và thật sự dừng bộ đếm thời gian.
+
+125
+00:08:45,350 --> 00:08:51,520
+Chúng ta đang mô phỏng một dạng quá trình mạng mà sẽ cho chúng ta biết để bắt đầu. Hãy nhìn tên quá trình
+
+126
+00:08:51,530 --> 00:08:52,680
+ở đây để trống.
+
+127
+00:08:52,700 --> 00:08:55,050
+Nhưng chúng ta có thể đặt vào bất kỳ quá trình.
+
+128
+00:08:55,070 --> 00:08:57,460
+Tôi chỉ không có 1 ứng dụng đa nền tảng tốt nào ở đây để đưa vào.
+
+129
+00:08:57,500 --> 00:09:02,930
+Và chúng ta sẽ tiếp tục và bắt đầu tất cả 4 quá trình của chúng ta trước khi chúng ta đạt tới quá trình tối đa và
+
+130
+00:09:02,930 --> 00:09:03,840
+dừng bộ đếm thời gian của chúng ta.
+
+131
+00:09:03,950 --> 00:09:08,430
+Và đây là quá trình kết thúc (kill process) của chúng ta nơi mà chúng ta thật sự giết các qúa trình.
+
+132
+00:09:08,540 --> 00:09:14,900
+Tuyệt vời. Mọi thứ hoàn tất. Chúng ta đã thành công tạo 1 vì dụ non-GUI nhỏ dựa trên vòng lặp sự kiện, nơi chúng ta
+
+133
+00:09:15,080 --> 00:09:21,730
+tìm hiểu về tạo tín hiệu và khe functor và cách lập trình đồng thời.
+
+134
+00:09:21,770 --> 00:09:25,520
+Hãy tham gia với chúng tôi trong bài tới để tìm hiểu về mạng siêu máy tính.
+

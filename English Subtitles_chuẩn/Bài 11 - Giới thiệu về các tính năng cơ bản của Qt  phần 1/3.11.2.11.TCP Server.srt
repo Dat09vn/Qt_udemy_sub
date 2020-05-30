@@ -1,0 +1,175 @@
+WEBVTT
+
+00:01.740 --> 00:07.540
+TCP server. In this video we are going to set up a TCP server.
+
+00:07.710 --> 00:15.000
+At first we will create a simple TCP client and get familiar with QTcpSocket API.
+
+00:15.330 --> 00:20.060
+Then we will make a TCP server to complete the demo.
+
+00:20.130 --> 00:21.930
+Now let's launch Qt Creator.
+
+00:24.610 --> 00:29.160
+We create a new Qt console application project tcpClient.
+
+00:29.380 --> 00:33.060
+Let's introduce a new class QTcpSocket
+
+00:36.630 --> 00:44.190
+which is a derived class of QAbstractSocket, as the name suggests, it is a representation of network
+
+00:44.190 --> 00:47.500
+socket using TCP protocol.
+
+00:47.620 --> 00:54.040
+On the other hand, QAbstractSocket inherits QIODevice which means we have read and write methods
+
+00:54.310 --> 01:01.180
+to receive and a send data. To use this class we need to add network module into project configuration
+
+01:01.180 --> 01:02.200
+file.
+
+01:02.200 --> 01:10.710
+In this case tcpClient.pro. We type QT plus equal network into this file.
+
+01:10.710 --> 01:17.060
+Right click the whole project and then run qmake again to regenerate to make files to enable auto
+
+01:17.070 --> 01:24.290
+complete and syntax highlighting for network module in the code editor.
+
+01:24.360 --> 01:33.210
+Remember to include relevant header files namely QTcpSocket and QHostAddress.
+
+01:33.210 --> 01:39.760
+Now let's create a QTcpSocket object, client. For client-side socket
+
+01:39.840 --> 01:45.890
+we may wish to use bind() method in the case of multiple network interfaces.
+
+01:45.960 --> 01:51.140
+Otherwise it is sufficient to let the platform determine its outgoing interface.
+
+01:51.270 --> 01:54.500
+The port will be assigned randomly.
+
+01:54.570 --> 02:00.060
+Now let's use the socket to connect to localhost, at port
+
+02:00.090 --> 02:04.850
+54321 and the wait for connected.
+
+02:05.010 --> 02:12.390
+Once we are sure the client state is in the connected state, we then wait for the message sent from
+
+02:12.390 --> 02:20.840
+the server. We print the message and write our own messages back to the socket.
+
+02:20.850 --> 02:27.090
+This is how simple the TCP connection works in Qt. Do bare in mind that we use some blocking methods
+
+02:27.780 --> 02:33.310
+such as waitForReadyRead() here to make this example synchronized.
+
+02:33.310 --> 02:41.540
+It is possible and actually more common to use them asynchronously with signals and the slots.
+
+02:41.690 --> 02:47.640
+Since there is no need to enter an event loop, we return a normal exit code 0 in the end.
+
+02:47.690 --> 02:56.060
+If we if we build and run this application now, we will receive an error message saying
+
+02:59.100 --> 03:06.680
+It's failed to connect to the localhost and the exit code is 1. That's because we haven't written our server.
+
+03:07.020 --> 03:15.100
+And there is no server running and listening at 54321. To finish this demo
+
+03:15.110 --> 03:24.030
+Let's make a simple TCP server. Same procedure as TCP client, add network module, run
+
+03:24.030 --> 03:24.480
+qmake.
+
+03:27.190 --> 03:34.460
+But API set is different in the server side. We will facilitate QTcpServer instead.
+
+03:34.460 --> 03:37.210
+QTcpServer provide a TCP based server.
+
+03:37.620 --> 03:41.720
+Each incoming connection can be obtained as a QTcpSocket.
+
+03:41.970 --> 03:45.930
+We can specify the address and the port that the server should listen at.
+
+03:46.230 --> 03:55.860
+Similarly, we first make it listen on localhost at port 54321 and use waitForNewConnection()
+
+03:56.360 --> 04:00.200
+to block execution until a new connection is established.
+
+04:01.190 --> 04:05.500
+By using this blocking method, we don't need an event loop in this application.
+
+04:06.400 --> 04:15.530
+The argument minus one passed to this method means this method would never time out. Then we obtain the
+
+04:15.720 --> 04:19.040
+connection by calling nextPedingConnection() method.
+
+04:19.930 --> 04:27.320
+The QTcpSocket pointer is the socket to communicate with the client.
+
+04:27.370 --> 04:36.070
+We use the same read and write methods to receive and send messages. After we've done with this connection.
+
+04:36.090 --> 04:42.470
+We close this socket and then we schedule it for deletion.
+
+04:42.540 --> 04:45.840
+This is a good practice to avoid the memory wasting.
+
+04:45.870 --> 04:51.780
+In the end, we stop accepting new connections by calling server.close() method.
+
+04:51.780 --> 04:52.640
+Now let's verify our server and client.
+
+04:52.640 --> 04:59.790
+We first built and run TCP server to let it listen at the specified
+
+04:59.820 --> 05:00.960
+address and port.
+
+05:08.610 --> 05:15.200
+Now the server is running now.
+
+05:15.360 --> 05:18.690
+Then we run TCP client to make a connection.
+
+05:22.360 --> 05:28.210
+As you can see from the application output, the connection was established successfully and the messages
+
+05:28.210 --> 05:30.910
+were received and sent as expected.
+
+05:43.260 --> 05:49.170
+Now let's look back at section 3, throughout this section, we've learned the basics about network
+
+05:49.170 --> 05:50.280
+programming.
+
+05:50.280 --> 05:57.690
+Then we got our hands on sending HTTP request and downloading. We're finished with this section with TCP
+
+05:57.700 --> 05:59.450
+client and server demo.
+
+05:59.680 --> 06:04.560
+You should now be able to apply this knowledge to make your application networking capable.

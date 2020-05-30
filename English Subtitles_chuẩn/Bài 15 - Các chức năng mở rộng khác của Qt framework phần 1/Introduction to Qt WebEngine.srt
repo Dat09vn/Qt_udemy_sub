@@ -1,0 +1,172 @@
+WEBVTT
+
+00:00.720 --> 00:05.290
+And this is Section 3 of mastering Qt programming which covers interacting with the web.
+
+00:05.500 --> 00:09.060
+So let's go ahead and get started with introducing Qt web engine.
+
+00:09.070 --> 00:12.660
+So in this video we're going to look at what the Qt web engine is,
+
+00:12.700 --> 00:18.160
+look at the web engine architecture before finally covering some features and implementation.
+
+00:18.460 --> 00:23.210
+So first off let's talk about what the Qt web engine real quick. Web engine, according to the documentation,
+
+00:23.230 --> 00:25.750
+provides functionality for rendering web content.
+
+00:25.750 --> 00:28.900
+This means that we can drop the web into our applications.
+
+00:28.930 --> 00:33.280
+What really makes this so powerful is that we can embed content from the web even if the platform that
+
+00:33.280 --> 00:38.620
+we're developing for doesn't have a native web engine. Web engine uses chromium in the background,
+
+00:38.650 --> 00:41.860
+the same technology that Google Chrome uses to display the web.
+
+00:41.860 --> 00:44.160
+That means for browser compatibility issues.
+
+00:44.200 --> 00:45.940
+If it works in Chrome, it works
+
+00:45.940 --> 00:47.230
+in Qt, awesome.
+
+00:47.260 --> 00:50.370
+So code-wise how do we implement this module?
+
+00:50.620 --> 00:53.530
+Well the web engine module is broken up pretty logically.
+
+00:53.530 --> 00:57.640
+So the best way to figure out what we can do is to take a tour of the module real quick.
+
+00:57.700 --> 01:02.590
+Now we haven't talked much about the difference between mobile and desktop coding since we've been primarily
+
+01:02.590 --> 01:07.000
+focused on desktop apps at this point. But Qt actually has two different programming languages.
+
+01:07.240 --> 01:12.270
+The core language is C++ but Qt has a specific language to help write mobile code.
+
+01:12.280 --> 01:17.710
+The break down is in cling, but the main difference is that widgets and the associated code for them use
+
+01:17.710 --> 01:20.690
+C++ where mobile specific code uses
+
+01:20.690 --> 01:26.560
+QML to implement the user interface. We may actually see a break down in the web engine architecture.
+
+01:26.740 --> 01:32.110
+The widget section on the left here is specifically for desktop while in the center the Qt web engine
+
+01:32.110 --> 01:32.890
+is actually
+
+01:32.890 --> 01:37.460
+QML for mobile, and the web engine core contains common code for both.
+
+01:37.480 --> 01:41.800
+Now if you're wondering, what the far right one is the web engine process. This actually contains
+
+01:41.800 --> 01:44.620
+a code for page rendering and Javascript execution.
+
+01:44.620 --> 01:47.650
+These are separated from the gooey into this process.
+
+01:47.650 --> 01:52.310
+Now since we're going to focus on desktop here, let's look specifically at the architecture of widgets.
+
+01:52.360 --> 01:57.430
+Here's the widget class breakdown. A view at the top is the top level widget.
+
+01:57.490 --> 02:04.840
+It can have multiple pages which each has their own distinct history, actions and profiles. Lots of power
+
+02:04.840 --> 02:07.730
+here to make real custom user interactions.
+
+02:07.840 --> 02:12.970
+And just for reference here's a QML example, it's very similar to the widgets but note that the
+
+02:12.970 --> 02:15.300
+page is missing here from the previous section.
+
+02:15.310 --> 02:17.730
+It's actually integrated directly into the view.
+
+02:17.890 --> 02:22.350
+So what kind of features does the web engine module have?
+
+02:22.510 --> 02:25.180
+Well Qt list these features here specifically.
+
+02:25.240 --> 02:30.430
+A couple of interesting ones that I noted are full screen which can be used to fullscreen YouTube videos
+
+02:30.430 --> 02:36.730
+for example, print to PDF which can be useful for scripting, spellchecker which you don't realize how
+
+02:36.730 --> 02:39.910
+you're taking it is not to have spellchecker until it's gone.
+
+02:40.090 --> 02:45.700
+And the view source or dev tools, because imagine how difficult it would be to implement those features
+
+02:45.700 --> 02:46.540
+yourself.
+
+02:46.540 --> 02:51.940
+So where will we use this module, or what specific implementations can we use it for.
+
+02:52.090 --> 02:56.250
+Well frankly there's a lot of code that gets written everyday specifically for the web.
+
+02:56.260 --> 03:01.300
+One possibility if you need to develop a large application is to drop a web browser in the middle of your
+
+03:01.300 --> 03:05.230
+application and leverage something that is already ready for the web.
+
+03:05.230 --> 03:09.940
+Another common example would be if you're building an application for a business and there's a service
+
+03:09.940 --> 03:14.740
+that's only provided by the web and you want to integrate that service into your application.
+
+03:14.740 --> 03:21.070
+The last common but perhaps not talked about frequently example would be scripting or programmatically
+
+03:21.070 --> 03:26.620
+printing out web pages. Common accepted answer to script out a bunch of web pages into PDF files is
+
+03:26.620 --> 03:29.440
+to use the web-to-print function in Qt.
+
+03:29.440 --> 03:34.180
+I've specifically considered using this feature to help keep track of research, as it'll be relatively easy
+
+03:34.180 --> 03:39.370
+to hit a button, save a web page, and put it in a specific file directory based on the research topic
+
+03:39.370 --> 03:42.120
+for example, which would be super useful.
+
+03:42.190 --> 03:48.070
+But for now we successfully covered the features and some implementation ideas for web engine, the architecture,
+
+03:48.190 --> 03:53.410
+and discuss what web engine is. Join us in the next video where we use the web engine widgets to build our
+
+03:53.410 --> 03:54.020
+own browser.

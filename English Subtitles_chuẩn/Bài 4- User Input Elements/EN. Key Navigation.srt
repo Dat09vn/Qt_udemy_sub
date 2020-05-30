@@ -1,0 +1,723 @@
+1
+00:00:00,000 --> 00:00:02,054
+In this lecture we are looking at the
+
+2
+00:00:02,054 --> 00:00:04,530
+key navigation attached property. This is
+
+3
+00:00:04,530 --> 00:00:07,493
+a property that adds focus navigation
+
+4
+00:00:07,509 --> 00:00:10,973
+properties to focusable UI components.
+
+5
+00:00:10,983 --> 00:00:13,825
+Let's go to QT creator and play with it.
+
+6
+00:00:13,875 --> 00:00:17,077
+Here we are in QT creator. Let's
+
+7
+00:00:17,078 --> 00:00:19,501
+create a new project. We call it key
+
+8
+00:00:19,501 --> 00:00:21,621
+navigation demo. Store it in the usual
+
+9
+00:00:21,659 --> 00:00:25,777
+location. Hit next. Choose the Q... choose
+
+10
+00:00:25,777 --> 00:00:31,745
+the QT version that you have installed.
+
+11
+00:00:31,748 --> 00:00:34,784
+And choose Ok. We want to change the
+
+12
+00:00:34,824 --> 00:00:38,776
+title here to key navigation demo. We are
+
+13
+00:00:38,776 --> 00:00:42,780
+going to add a row component inside. It's
+
+14
+00:00:42,780 --> 00:00:44,585
+going to be in the center of the
+
+15
+00:00:44,585 --> 00:00:48,375
+rectangle. So we're going to Center it in
+
+16
+00:00:48,376 --> 00:00:51,048
+the parent. And we are going to put two
+
+17
+00:00:51,048 --> 00:00:54,875
+rectangles inside. There it is. Going to
+
+18
+00:00:54,875 --> 00:00:59,439
+be firstrectID. The Width is going
+
+19
+00:00:59,453 --> 00:01:02,432
+to be 200 and the height is going to be
+
+20
+00:01:02,432 --> 00:01:06,373
+equal to the width. We want to have a
+
+21
+00:01:06,373 --> 00:01:12,573
+border color of black. We want the
+
+22
+00:01:12,578 --> 00:01:17,244
+rectangle to have a color of green and
+
+23
+00:01:17,254 --> 00:01:20,797
+we want it to start with the focus set
+
+24
+00:01:20,798 --> 00:01:23,805
+to true. It's going to start focused it's
+
+25
+00:01:23,812 --> 00:01:25,926
+going to be able to receive key events,
+
+26
+00:01:25,930 --> 00:01:28,434
+because we want to know when it has
+
+27
+00:01:28,438 --> 00:01:31,014
+focus. We are going to add the keys
+
+28
+00:01:31,015 --> 00:01:35,943
+attached property and listen for the key
+
+29
+00:01:35,949 --> 00:01:39,944
+number 5 being pressed. You already know
+
+30
+00:01:39,952 --> 00:01:42,664
+how to do this from the last lecture, and
+
+31
+00:01:42,664 --> 00:01:45,336
+we are going to say console.log I am
+
+32
+00:01:45,366 --> 00:01:48,885
+rect1 to know that it is the first
+
+33
+00:01:48,885 --> 00:01:51,874
+rectangle here that has focus. We
+
+34
+00:01:51,874 --> 00:01:57,100
+actually want to copy this rectangle and
+
+35
+00:01:57,109 --> 00:01:59,666
+paste it down here and modify it a
+
+36
+00:01:59,670 --> 00:02:02,205
+little bit. We are going to change the ID
+
+37
+00:02:02,212 --> 00:02:10,597
+and it is going to be blue, why not.
+
+38
+00:02:10,598 --> 00:02:12,585
+It's not going to have the focus by
+
+39
+00:02:12,588 --> 00:02:14,667
+default because we want the first one to
+
+40
+00:02:14,674 --> 00:02:17,219
+start with the focus. And when you hold
+
+41
+00:02:17,219 --> 00:02:21,302
+down the key number five it is going to
+
+42
+00:02:21,302 --> 00:02:25,537
+say I am red 2. Okay now we get to use
+
+43
+00:02:25,547 --> 00:02:27,306
+key navigation. Key navigation is a
+
+44
+00:02:27,336 --> 00:02:31,239
+property that allows you to navigate
+
+45
+00:02:31,241 --> 00:02:34,665
+through your UI components, when some key
+
+46
+00:02:34,673 --> 00:02:36,510
+is pressed. Let's go to each
+
+47
+00:02:36,517 --> 00:02:45,236
+documentation. Okay you can see that we
+
+48
+00:02:45,236 --> 00:02:48,067
+can detect when the backtab is collect
+
+49
+00:02:48,072 --> 00:02:53,098
+down, left, right, up and the tab key. So we
+
+50
+00:02:53,099 --> 00:02:57,204
+want to move the focus to the right for
+
+51
+00:02:57,214 --> 00:03:00,007
+this first rectangle, when you click on
+
+52
+00:03:00,007 --> 00:03:02,184
+the right button. So we are going to say
+
+53
+00:03:02,191 --> 00:03:07,468
+keys: key navigation, right. And it's going
+
+54
+00:03:07,476 --> 00:03:11,165
+to move to second rect ID. You specify
+
+55
+00:03:11,168 --> 00:03:16,554
+your target element by its ID. We want to
+
+56
+00:03:16,554 --> 00:03:19,684
+do something similar to the second
+
+57
+00:03:19,695 --> 00:03:22,604
+rectangle here. When you click on the
+
+58
+00:03:22,608 --> 00:03:27,226
+Left button, while this rectangle has
+
+59
+00:03:27,228 --> 00:03:30,438
+focus, we are going to transfer focus to
+
+60
+00:03:30,438 --> 00:03:33,640
+the first rectangle, which is identified
+
+61
+00:03:33,640 --> 00:03:37,806
+by this ID, first rect ID and we do that
+
+62
+00:03:37,807 --> 00:03:41,114
+like this. Okay and how do you know which
+
+63
+00:03:41,117 --> 00:03:43,513
+rectangle has focus? We are going to
+
+64
+00:03:43,523 --> 00:03:46,694
+press on the key number five and it's
+
+65
+00:03:46,697 --> 00:03:49,005
+going to tell us which rectangle has
+
+66
+00:03:49,012 --> 00:03:51,577
+focus, like we do in the console out here.
+
+67
+00:03:51,578 --> 00:03:54,917
+Let's run the application. Okay we have
+
+68
+00:03:54,924 --> 00:03:58,476
+two rectangles. The rectangles are laid
+
+69
+00:03:58,478 --> 00:04:03,028
+out in a row component and the green
+
+70
+00:04:03,035 --> 00:04:05,607
+rectangle because it is the first one is
+
+71
+00:04:05,611 --> 00:04:08,145
+going to be to the left. The blue
+
+72
+00:04:08,149 --> 00:04:10,975
+rectangle is second in the row component
+
+73
+00:04:10,982 --> 00:04:13,638
+and it's going to be to the right. Okay
+
+74
+00:04:13,638 --> 00:04:15,826
+so what we want to do is to hold down
+
+75
+00:04:15,830 --> 00:04:16,976
+the
+
+76
+00:04:16,976 --> 00:04:19,555
+key number five and you see that
+
+77
+00:04:19,555 --> 00:04:22,279
+rectangle one has focus. I'm going to
+
+78
+00:04:22,290 --> 00:04:24,931
+touch the right arrow key on my keyboard
+
+79
+00:04:24,939 --> 00:04:27,324
+and click on number five again. You see
+
+80
+00:04:27,324 --> 00:04:30,631
+that rect two has focus. Click on the
+
+81
+00:04:30,631 --> 00:04:34,298
+left arrow key. Click on five. You see
+
+82
+00:04:34,298 --> 00:04:37,407
+that rect one has focus. And you can see
+
+83
+00:04:37,422 --> 00:04:39,579
+that we are successfully transferring
+
+84
+00:04:39,579 --> 00:04:42,237
+focus from one rectangle to another
+
+85
+00:04:42,238 --> 00:04:44,669
+using this key navigation attached
+
+86
+00:04:44,672 --> 00:04:47,347
+property. And again it is an attached
+
+87
+00:04:47,351 --> 00:04:49,782
+property because the rectangle doesn't
+
+88
+00:04:49,783 --> 00:04:53,133
+have these properties by default. We are
+
+89
+00:04:53,140 --> 00:04:55,484
+attaching these properties using this
+
+90
+00:04:55,484 --> 00:04:58,138
+key navigation component here. This is
+
+91
+00:04:58,144 --> 00:05:00,209
+what is meant when somebody says that a
+
+92
+00:05:00,210 --> 00:05:03,098
+property is an attached property. Another
+
+93
+00:05:03,103 --> 00:05:05,148
+thing we can do to make these Apple
+
+94
+00:05:05,152 --> 00:05:07,405
+powers even better is to handle the
+
+95
+00:05:07,415 --> 00:05:11,237
+unfocused changed signa. Okay so if the
+
+96
+00:05:11,237 --> 00:05:13,628
+focus changes we are going to check and
+
+97
+00:05:13,635 --> 00:05:16,678
+see if focus equals to true for this
+
+98
+00:05:16,678 --> 00:05:20,496
+component for this rectangle here. If
+
+99
+00:05:20,500 --> 00:05:22,788
+it's true we are going to set its color
+
+100
+00:05:22,795 --> 00:05:29,418
+to gray, and if it isn't we are going to
+
+101
+00:05:29,419 --> 00:05:39,411
+turn it back to green. We are going to do
+
+102
+00:05:39,411 --> 00:05:41,439
+something similar to the second
+
+103
+00:05:41,439 --> 00:05:48,068
+rectangle. But when it is not focused, we
+
+104
+00:05:48,069 --> 00:05:50,708
+are going to turn the color back to
+
+105
+00:05:50,715 --> 00:05:52,878
+being blue, because that's what it was.
+
+106
+00:05:52,881 --> 00:05:56,639
+And we need to surround this with quotes
+
+107
+00:05:56,647 --> 00:06:01,448
+like this. Let's run the application. We
+
+108
+00:06:01,468 --> 00:06:03,057
+click on the right. You see that the
+
+109
+00:06:03,065 --> 00:06:05,241
+second rectangle has focused so it turns
+
+110
+00:06:05,247 --> 00:06:08,552
+gray. If we hold down the key number five,
+
+111
+00:06:08,556 --> 00:06:10,882
+it's going to tell us the same thing,
+
+112
+00:06:10,889 --> 00:06:15,594
+that it has focused. We turn it to the
+
+113
+00:06:15,596 --> 00:06:18,574
+left the first rectangle turns gray, but
+
+114
+00:06:18,582 --> 00:06:20,704
+the second rectangle lost focus so it
+
+115
+00:06:20,704 --> 00:06:23,785
+turns back to blue. Okay this should
+
+116
+00:06:23,791 --> 00:06:25,832
+give you an introduction on how to work
+
+117
+00:06:25,832 --> 00:06:28,544
+with key navigation to transfer focus
+
+118
+00:06:28,733 --> 00:06:30,344
+between you you icon.
+
+119
+00:06:30,347 --> 00:06:32,864
+But if we go back to the documentation
+
+120
+00:06:33,113 --> 00:06:35,195
+for key navigation and look at the
+
+121
+00:06:35,198 --> 00:06:37,265
+description you see that they have an
+
+122
+00:06:37,265 --> 00:06:39,617
+example here that we can try out. Okay so
+
+123
+00:06:39,617 --> 00:06:42,589
+it basically is four rectangles that are
+
+124
+00:06:42,589 --> 00:06:44,942
+wrapped in a grid component, and the grid
+
+125
+00:06:44,942 --> 00:06:50,689
+component is basically laying your
+
+126
+00:06:50,694 --> 00:06:53,592
+rectangles or whatever is inside into a
+
+127
+00:06:53,592 --> 00:06:56,071
+grid structure. We have the first
+
+128
+00:06:56,071 --> 00:06:58,411
+rectangle, the second rectangle, the third
+
+129
+00:06:58,412 --> 00:07:01,000
+one and the fourth one. And if you look
+
+130
+00:07:01,005 --> 00:07:03,629
+at the properties they have the width
+
+131
+00:07:03,667 --> 00:07:05,591
+and height, they have a color that
+
+132
+00:07:05,596 --> 00:07:09,061
+depends on whether or not the rectangle
+
+133
+00:07:09,067 --> 00:07:12,121
+is focused, and they transfer focus when
+
+134
+00:07:12,130 --> 00:07:15,084
+you hold down the right key while this
+
+135
+00:07:15,088 --> 00:07:17,385
+rectangle has focus focus is going to go
+
+136
+00:07:17,385 --> 00:07:20,113
+to the top right and you can see the
+
+137
+00:07:20,117 --> 00:07:23,182
+sentence. Okay so I am going to copy all
+
+138
+00:07:23,184 --> 00:07:29,542
+this code up to here. Comment out what we
+
+139
+00:07:29,550 --> 00:07:32,445
+have in our application so far so you
+
+140
+00:07:32,445 --> 00:07:33,972
+don't want to delete it. You want to keep
+
+141
+00:07:33,972 --> 00:07:36,792
+it for reference if you need it in the
+
+142
+00:07:36,795 --> 00:07:41,914
+future. But we are going to paste in the
+
+143
+00:07:41,920 --> 00:07:45,272
+code from the documentation. Okay so we
+
+144
+00:07:45,276 --> 00:07:54,076
+have our width component here. Let's run
+
+145
+00:07:54,076 --> 00:07:54,984
+the application and see what it looks
+
+146
+00:07:54,984 --> 00:07:55,234
+like. M-hmm what is wrong.
+
+147
+00:07:55,245 --> 00:08:10,500
+We didn't close the last bracket here so
+
+148
+00:08:10,507 --> 00:08:12,149
+we should close it.
+
+149
+00:08:12,155 --> 00:08:20,169
+This looks good. And down here you see
+
+150
+00:08:20,177 --> 00:08:24,300
+that it is smashed. Let's run again. You
+
+151
+00:08:24,300 --> 00:08:26,694
+see that this thing is showing but it is
+
+152
+00:08:26,699 --> 00:08:28,158
+really small. Let's click on right
+
+153
+00:08:28,160 --> 00:08:30,111
+you see that focus goes to the right.
+
+154
+00:08:30,111 --> 00:08:34,331
+Down goes down. Left it goes left. But
+
+155
+00:08:34,332 --> 00:08:36,171
+this is very small and it is not
+
+156
+00:08:36,174 --> 00:08:40,080
+centered, so we can use our qml powers to
+
+157
+00:08:40,082 --> 00:08:43,349
+turn it into what we want. I am going to
+
+158
+00:08:43,356 --> 00:08:47,259
+get rid of this width and height, because
+
+159
+00:08:47,260 --> 00:08:48,671
+I don't need it.
+
+160
+00:08:48,671 --> 00:08:51,399
+I am going to Center it in the parent,
+
+161
+00:08:51,399 --> 00:08:56,691
+and its parent is this window here and I
+
+162
+00:08:56,693 --> 00:08:59,790
+am going to turn its width and height to
+
+163
+00:08:59,793 --> 00:09:04,560
+100 because 50 is too small to see. Let's
+
+164
+00:09:04,560 --> 00:09:11,838
+do 100. Copy this. Paste it here, Paste it
+
+165
+00:09:11,838 --> 00:09:15,679
+here. We basically paste it everywhere,
+
+166
+00:09:15,686 --> 00:09:19,960
+where we need it. Let's run the
+
+167
+00:09:19,962 --> 00:09:23,710
+application. It should be in the center
+
+168
+00:09:23,719 --> 00:09:27,701
+now and our rectangles should be bigger.
+
+169
+00:09:27,701 --> 00:09:32,772
+Right, bottom, left, top. This is really
+
+170
+00:09:32,772 --> 00:09:34,857
+good. This is nothing different from what
+
+171
+00:09:34,862 --> 00:09:38,071
+we did before here. But they are using
+
+172
+00:09:38,074 --> 00:09:41,158
+ternary operators here to change the
+
+173
+00:09:41,166 --> 00:09:44,862
+color of the rectangle based on whether
+
+174
+00:09:44,862 --> 00:09:47,407
+or not the rectangle has focus. This is
+
+175
+00:09:47,408 --> 00:09:49,129
+the only different thing really. The
+
+176
+00:09:49,931 --> 00:09:52,137
+other fans are just transferring focus
+
+177
+00:09:52,139 --> 00:09:53,418
+to the ID of interest. This covers all
+
+178
+00:09:53,426 --> 00:09:55,304
+we set up to do in this lecture. And the
+
+179
+00:09:55,304 --> 00:09:57,680
+next one we're going to look at the
+
+180
+00:09:57,680 --> 00:09:58,947
+concept called focus school. I'll see you
+
+181
+00:09:58,954 --> 00:10:01,687
+in the next lecture.

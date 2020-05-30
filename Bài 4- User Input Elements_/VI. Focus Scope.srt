@@ -1,0 +1,599 @@
+1
+00:00:00,000 --> 00:00:01,949
+Trong bài này chúng ta sẽ tìm hiểu về
+
+2
+00:00:01,949 --> 00:00:05,190
+thành phần FocusScope qml. Thành phần này 
+
+3
+00:00:05,190 --> 00:00:07,950
+rất hữu dụng khi được sử dụng 
+
+4
+00:00:07,950 --> 00:00:11,160
+cùng các thành phần bên ngoài khác trong tập tin main.qml
+
+5
+00:00:11,160 --> 00:00:14,429
+của bạn. Truy cập vào QT Creator, tạo một 
+
+6
+00:00:14,429 --> 00:00:16,500
+dự án mới và tôi sẽ cho các bạn thấy cách sử dụng.
+
+7
+00:00:16,500 --> 00:00:19,380
+Ok chúng ta đang ở trong QT Creator. Chúng ta
+
+8
+00:00:19,380 --> 00:00:21,869
+sẽ tạo một dự án mới. Ta 
+
+9
+00:00:21,869 --> 00:00:26,359
+gọi là FocusScope Demo. Chọn Next.
+
+10
+00:00:26,359 --> 00:00:30,779
+Chọn phiên bản QT ở đây cùng với 
+
+11
+00:00:30,779 --> 00:00:34,350
+desktop kit như mọi khi. Đổi tiêu đều
+
+12
+00:00:34,350 --> 00:00:39,870
+thành focus... Ta sẽ tạo một
+
+13
+00:00:39,870 --> 00:00:43,110
+thành phần hình chữ nhật ở trong. Thiết lập với
+
+14
+00:00:43,110 --> 00:00:50,070
+chiều dài là 300, chiều cao 50, và chọn màu
+
+15
+00:00:50,070 --> 00:00:55,879
+be. Tôi thích màu be. Và chúng ta tạo focus.
+
+16
+00:00:55,879 --> 00:00:58,530
+Ở bên trong ta sẽ đặt thành phần
+
+17
+00:00:58,530 --> 00:01:02,000
+văn bản. Đoạn văn bản được thiết lập
+
+18
+00:01:02,000 --> 00:01:06,810
+là Default theo mặc định. Nó sẽ được đặt
+
+19
+00:01:06,810 --> 00:01:11,700
+ở giữa trong parent. Parent của nó 
+
+20
+00:01:11,700 --> 00:01:13,470
+chính là khối chữ nhật ở đây.
+
+21
+00:01:13,470 --> 00:01:20,280
+Gọi tới  containerRectId. Vì ta muốn
+
+22
+00:01:20,280 --> 00:01:22,290
+khối chữ nhật này cho ta biết khi có
+
+23
+00:01:22,290 --> 00:01:24,750
+focus, ta sẽ dùng đặc tính 
+
+24
+00:01:24,750 --> 00:01:33,329
+khóa đính kèm. Ta sẽ kiểm tra
+
+25
+00:01:33,329 --> 00:01:35,759
+nếu số khóa thứ nhất 
+
+26
+00:01:35,759 --> 00:01:38,549
+là chính xác. Vậy là bạn đã biết làm cách nào để thực hiện
+
+27
+00:01:38,549 --> 00:01:47,840
+nếu event.key bằng Qt.Key_1. Cẩn thận
+
+28
+00:01:48,680 --> 00:01:51,930
+với các kí tự sử dụng ở đây.
+
+29
+00:01:51,930 --> 00:01:57,469
+Đây là k viết thường. Còn đây là 
+
+30
+00:01:57,469 --> 00:02:01,290
+K viết hoa. Ta sẽ thiết lập nội dung 
+
+31
+00:02:01,290 --> 00:02:04,649
+của thành phần văn bản này để cho thấy 
+
+32
+00:02:04,649 --> 00:02:07,200
+ta đã nhấn chọn vào Key1 ở đây. 
+
+33
+00:02:07,200 --> 00:02:10,280
+Cấp cho nó một ID
+
+34
+00:02:10,840 --> 00:02:18,480
+và ta sẽ in ra text.Id.text 
+
+35
+00:02:18,480 --> 00:02:25,420
+bằng... Ta muốn thử với ít nhất
+
+36
+00:02:25,420 --> 00:02:36,040
+một khóa nữa. Nếu khóa là hai, ta
+
+37
+00:02:36,040 --> 00:02:39,489
+sẽ nói rằng ta đã chọn Key2. Còn không
+
+38
+00:02:39,489 --> 00:02:43,260
+ta sẽ nói rằng ta đã chọn một
+
+39
+00:02:43,260 --> 00:02:47,440
+khóa khác. Và ta sẽ nói rằng đó có thể là là bất kì khóa nào
+
+40
+00:02:47,440 --> 00:02:53,200
+bằng cách điền khóa vào 
+
+41
+00:02:53,200 --> 00:02:58,630
+chuỗi này. Ta sẽ đặt event.key.
+
+42
+00:02:58,630 --> 00:03:02,019
+Hãy chạy thử ứng dụng.
+
+43
+00:03:02,019 --> 00:03:04,630
+Vậy là ta đã có một khối chữ nhật nền tảng. Ta chọn
+
+44
+00:03:04,630 --> 00:03:09,549
+lần một. Chọn lần
+
+45
+00:03:09,549 --> 00:03:11,920
+hai. T chọn "Press on another key" và nó đưa ra 
+
+46
+00:03:11,920 --> 00:03:15,010
+khóa mà ta đã chọn. Đây là điều
+
+47
+00:03:15,010 --> 00:03:17,590
+ta muốn. Vậy có thể nói rằng ta muốn khởi tạo
+
+48
+00:03:17,590 --> 00:03:19,930
+thành phần khối chữ nhật nhiều lần. Và ta không muốn phải
+
+49
+00:03:19,930 --> 00:03:21,940
+sao chép dán khi ta đã biết làm thế nào để 
+
+50
+00:03:21,940 --> 00:03:24,549
+tạo các thành phần tùy chỉnh. Ta sẽ
+
+51
+00:03:24,549 --> 00:03:26,650
+tạo một thành phần bên ngoài của
+
+52
+00:03:26,650 --> 00:03:28,989
+khối chữ nhật này và khởi tạo nó bất cứ lúc nào khi ta
+
+53
+00:03:28,989 --> 00:03:32,049
+cần trong tập tin main.qml. Cùng
+
+54
+00:03:32,049 --> 00:03:35,380
+tạo một tập tin qml khác. Ta sẽ
+
+55
+00:03:35,380 --> 00:03:42,609
+thên một tập tin qml QT Quick 2 - và 
+
+56
+00:03:42,609 --> 00:03:50,829
+gọi là MButton. Nó sẽ vẫn nằm trong
+
+57
+00:03:50,829 --> 00:03:53,410
+dự án này. Ta sẽ dùng tập tin main.qml 
+
+58
+00:03:53,410 --> 00:03:59,290
+và sao chép khối chữ nhật ở đây. Ta sẽ
+
+59
+00:03:59,290 --> 00:04:02,170
+loại bỏ và dán nó vào đây
+
+60
+00:04:02,170 --> 00:04:05,650
+và thay Import thành 2.11,
+
+61
+00:04:05,650 --> 00:04:08,920
+vì đó là phiên bản QT Quick ta
+
+62
+00:04:08,920 --> 00:04:12,880
+đang sử dụng. are using. Vì ta đang thảo luận về qml
+
+63
+00:04:12,880 --> 00:04:15,430
+citizens, ta sẽ đóng gói nó thành một
+
+64
+00:04:15,430 --> 00:04:22,730
+yếu tố Item. Thực hiện và 
+
+65
+00:04:22,730 --> 00:04:28,680
+đặt chiều dài của item này. Để từ đó 
+
+66
+00:04:28,680 --> 00:04:31,560
+ta có thể thiết lập định vị khác như
+
+67
+00:04:31,560 --> 00:04:34,910
+hàng và cột. Chiều dài của nó sẽ là
+
+68
+00:04:34,910 --> 00:04:43,620
+containerRectId.width. Và chiều cao sẽ là 
+
+69
+00:04:43,620 --> 00:04:51,170
+chiều cao của container. Ta cũng sẽ
+
+70
+00:04:51,170 --> 00:04:54,150
+cần phải chọn màu nữa nên
+
+71
+00:04:54,150 --> 00:04:56,280
+ta có thể chỉ định nó bất kể khi nào ta
+
+72
+00:04:56,280 --> 00:05:01,200
+thiết lập trong tập tin main.qml.
+
+73
+00:05:01,200 --> 00:05:02,850
+Ta sẽ sử dụng property
+
+74
+00:05:02,850 --> 00:05:11,460
+alias (bí danh đặc tính). Nó sẽ trỏ đến 
+
+75
+00:05:11,460 --> 00:05:19,770
+màu của containerRectId. Bí danh là cách 
+
+76
+00:05:19,770 --> 00:05:21,960
+để đặt tên riêng cho đặc tính.
+
+77
+00:05:21,960 --> 00:05:24,690
+Bạn có thể sử dụng chúng dưới
+
+78
+00:05:24,690 --> 00:05:26,820
+những cái tên khác nhau. Nhưng lần này ta đang
+
+79
+00:05:26,820 --> 00:05:30,419
+định nghĩa bí danh trong phạm vi gốc của
+
+80
+00:05:30,419 --> 00:05:32,640
+mục này. Vậy cũng tức là nó sẽ khả dụng cho
+
+81
+00:05:32,640 --> 00:05:35,430
+cả những thành phần khác từ tập tin tin mail.qml.
+
+82
+00:05:35,430 --> 00:05:37,919
+Chúng ta cần khởi tạo 
+
+83
+00:05:37,919 --> 00:05:39,870
+thành phần MButton. Ta sẽ
+
+84
+00:05:39,870 --> 00:05:42,570
+viết BMutton và bạn có thể thấy nó được
+
+85
+00:05:42,570 --> 00:05:45,360
+nhận ra. Đây là cái đầu tiên. Tiếp theo
+
+86
+00:05:45,360 --> 00:05:47,940
+ta sẽ khởi tạo cái thứ hai.
+
+87
+00:05:47,940 --> 00:05:53,430
+Tuy nhiên, với cái thứ hai, ta muốn 
+
+88
+00:05:53,430 --> 00:05:55,590
+đổi thành màu xanh để có thể
+
+89
+00:05:55,590 --> 00:05:59,190
+phân biệt chúng. Hãy nhớ rằng ta đã
+
+90
+00:05:59,190 --> 00:06:01,950
+thể hiện đặc tính màu sắc thông qua
+
+91
+00:06:01,950 --> 00:06:05,730
+property alias này. Để sắp xếp những thứ này
+
+92
+00:06:05,730 --> 00:06:07,830
+hợp lý, ta sẽ đóng gói chúng vào 
+
+93
+00:06:07,830 --> 00:06:15,770
+trong một cột và thành một thành phần cột. Sao chép 
+
+94
+00:06:15,770 --> 00:06:19,650
+và dán nó vào đây. Chạy 
+
+95
+00:06:19,650 --> 00:06:22,560
+ứng dúng để thấy chúng ta có gì. Cái nào
+
+96
+00:06:22,560 --> 00:06:25,860
+có focus. Chọn một trong hai và bạn
+
+97
+00:06:25,860 --> 00:06:29,160
+sẽ thấy số nào có focus. Ô thứ nhất có có focus. Ta sẽ
+
+98
+00:06:29,160 --> 00:06:33,470
+cho nút bấm thứ nhất focus.
+
+99
+00:06:35,360 --> 00:06:41,790
+Chạy ứng dụng. Ta chọn cái thứ nhất. Không
+
+100
+00:06:41,790 --> 00:06:45,030
+có gì. Chọn nút bấm thứ hai, không có gì, Chọn
+
+101
+00:06:45,030 --> 00:06:47,340
+nút bấm khác, không có gì. Bạn thấy đó,
+
+102
+00:06:47,340 --> 00:06:50,450
+có vẻ như không nút bấm nào có focus.
+
+103
+00:06:50,450 --> 00:06:54,150
+Chuyển dòng lệnh thành bình luận. Chuyển khối chữ nhật
+
+104
+00:06:54,150 --> 00:07:03,440
+thứ hai thành có focus. Chạy lại ứng dụng.
+
+105
+00:07:03,440 --> 00:07:06,270
+Nếu bạn chọn cái đầu tiên, ta thấy rằng
+
+106
+00:07:06,270 --> 00:07:09,720
+nút đầu tiên có focus cho dù
+
+107
+00:07:09,720 --> 00:07:13,350
+ta rõ ràng đã cho nút thứ hai
+
+108
+00:07:13,350 --> 00:07:16,050
+có focus. Đây là vấn đề
+
+109
+00:07:16,050 --> 00:07:17,790
+xuất hiện khi ta sử dụng thành phần 
+
+110
+00:07:17,790 --> 00:07:20,430
+bên ngoài trong tập tin qml trong lúc
+
+111
+00:07:20,430 --> 00:07:22,980
+chuyển focus. Nghiên cứu có thể trở nên
+
+112
+00:07:22,980 --> 00:07:25,410
+khó đoán khi bạn đặt focus vào thành phần
+
+113
+00:07:25,410 --> 00:07:28,110
+của mình. Để sửa lỗi này, bạn
+
+114
+00:07:28,110 --> 00:07:30,450
+chỉ cần đóng gói thành phần vào trong một gói thành phần
+
+115
+00:07:30,450 --> 00:07:35,090
+FocusScope . Thử làm như vậy.
+
+116
+00:07:36,140 --> 00:07:39,750
+Chọn tập tin chính
+
+117
+00:07:39,750 --> 00:07:41,850
+và thay đổi một chút. Bởi
+
+118
+00:07:41,850 --> 00:07:44,220
+đôi khi khi bạn không đổi thư mục
+
+119
+00:07:44,220 --> 00:07:47,490
+main.qml file, QT Creator biết sự thay đổi
+
+120
+00:07:47,490 --> 00:07:49,920
+bạn đã làm trong các thành phần bên ngoài.
+
+121
+00:07:49,920 --> 00:07:52,230
+Ta thêm một khoảng trống ở đây. Chạy lại.
+
+122
+00:07:52,230 --> 00:07:58,650
+Chọn cái thứ nhất và bạn sẽ thấy
+
+123
+00:07:58,650 --> 00:08:01,620
+nút thứ hai có focus. Đó chính là thứ ta đã 
+
+124
+00:08:01,620 --> 00:08:02,430
+thiết lập ở đây.
+
+125
+00:08:02,430 --> 00:08:06,410
+Chuyển focus sang nút thứ nhất
+
+126
+00:08:07,490 --> 00:08:16,080
+như thế này. Chạy ứng dụng. Chọn
+
+127
+00:08:16,080 --> 00:08:18,780
+nút thứ nhất, nó có focus. Và bạn có thể
+
+128
+00:08:18,780 --> 00:08:21,180
+thấy rõ bằng cách đóng gói thành phần
+
+129
+00:08:21,180 --> 00:08:23,730
+bên ngoài vào một FocusScope,
+
+130
+00:08:23,730 --> 00:08:25,740
+kết quả thiết của đặc tính focus trên
+
+131
+00:08:25,740 --> 00:08:27,690
+thành phần của bạn sẽ dễ đoán hơn.
+
+132
+00:08:27,690 --> 00:08:30,150
+Đây là điều tôi muốn bạn thấy trong 
+
+133
+00:08:30,150 --> 00:08:32,400
+bài học này. Nếu bạn muốn tìm hiểu thêm về
+
+134
+00:08:32,400 --> 00:08:34,409
+thành phần FocusScope, bạn có thể chọn
+
+135
+00:08:34,409 --> 00:08:37,110
+vào đây và nhất F1. Bạn sẽ thấy
+
+136
+00:08:37,110 --> 00:08:38,520
+một tài liệu để tham khảo thêm.
+
+137
+00:08:38,520 --> 00:08:41,400
+Tất nhiên nó chỉ trình bày đơn giản rằng FocusScope hỗ trợ
+
+138
+00:08:41,400 --> 00:08:43,950
+việc kiểm soát focus bàn phím cho xây dựng 
+
+139
+00:08:43,950 --> 00:08:44,590
+những thành phần qml
+
+140
+00:08:44,590 --> 00:08:47,230
+có thể tái sử dụng. Và đó chính là điều ta vừa thực hiện.
+
+141
+00:08:47,230 --> 00:08:50,140
+Những người khám phá luôn thiết lập thêm trong suốt
+
+142
+00:08:50,140 --> 00:08:52,570
+bài học. Ở phần tiếp theo, ta sẽ
+
+143
+00:08:52,570 --> 00:08:54,040
+bắt đầu tìm hiểu javascript và xem
+
+144
+00:08:54,040 --> 00:08:56,140
+làm cách nào để tăng
+
+145
+00:08:56,140 --> 00:08:58,150
+khả năng tương tác trong qml của mình. Và nếu bạn
+
+146
+00:08:58,150 --> 00:09:00,790
+để ý, ta cũng đã từng dùng JavaScript.
+
+147
+00:09:00,790 --> 00:09:03,160
+Nhưng ta sẽ giải thích
+
+148
+00:09:03,160 --> 00:09:05,380
+những thứ đó và khai phá thêm
+
+149
+00:09:05,380 --> 00:09:07,750
+Gặp lại bạn
+
+150
+00:09:07,750 --> 00:00:00,000
+trong bài học tiếp theo.

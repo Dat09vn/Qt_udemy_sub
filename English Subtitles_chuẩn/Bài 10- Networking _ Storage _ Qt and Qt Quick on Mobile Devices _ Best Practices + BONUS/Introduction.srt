@@ -1,0 +1,1004 @@
+1
+00:00:00,030 --> 00:00:01,920
+In this lecture, we're going to see what
+
+2
+00:00:01,920 --> 00:00:04,770
+is available to you in terms of networking
+
+3
+00:00:04,770 --> 00:00:06,390
+in QT Quick.
+
+4
+00:00:06,390 --> 00:00:09,090
+First off, I want to mention that in your
+
+5
+00:00:09,090 --> 00:00:12,150
+Qt development, the resource heavy
+
+6
+00:00:12,150 --> 00:00:14,910
+operations should be done on the C++
+
+7
+00:00:14,910 --> 00:00:17,699
+side. We have mentioned before that there
+
+8
+00:00:17,699 --> 00:00:20,460
+are two major sides to working with Qt:
+
+9
+00:00:20,460 --> 00:00:23,550
+you can develop your application in C++
+
+10
+00:00:23,550 --> 00:00:26,490
+purely, or you can do your user interface
+
+11
+00:00:26,490 --> 00:00:28,710
+in QT Quick, which is what the company
+
+12
+00:00:28,710 --> 00:00:31,260
+behind Qt is pushing for now. They are
+
+13
+00:00:31,260 --> 00:00:34,110
+pushing to do user interfaces in Qt Quick,
+
+14
+00:00:34,110 --> 00:00:38,489
+and do resource heavy operations in C++
+
+15
+00:00:38,489 --> 00:00:41,489
+because that's much more scalable. Right
+
+16
+00:00:41,489 --> 00:00:44,579
+here you can see C++ classes that give
+
+17
+00:00:44,579 --> 00:00:47,730
+you magic powers in terms of networking.
+
+18
+00:00:47,730 --> 00:00:50,640
+You can do very low level things in
+
+19
+00:00:50,640 --> 00:00:53,550
+networking using TCP and UDP classes. You
+
+20
+00:00:53,550 --> 00:00:56,190
+can really do anything. You can do DNS
+
+21
+00:00:56,190 --> 00:00:58,620
+using the QHostInfo and 
+
+22
+00:00:58,620 --> 00:01:01,379
+QDNSLookup classes. You can do SSL/TLS.
+
+23
+00:01:01,379 --> 00:01:04,229
+You can use these two classes. And
+
+24
+00:01:04,229 --> 00:01:07,290
+they provide high level classes to work
+
+25
+00:01:07,290 --> 00:01:10,110
+with HTTP. You can use 
+
+26
+00:01:10,110 --> 00:01:12,360
+QNetworkAccessManager and QNetworkReply.
+
+27
+00:01:12,360 --> 00:01:14,520
+We have looked at this in one of my
+
+28
+00:01:14,520 --> 00:01:17,310
+previous courses on Q. So if you are
+
+29
+00:01:17,310 --> 00:01:20,490
+working on the C++ side of Qt, these
+
+30
+00:01:20,490 --> 00:01:22,680
+classes are going to come in handy but
+
+31
+00:01:22,680 --> 00:01:24,900
+we are not talking about those in this
+
+32
+00:01:24,900 --> 00:01:27,030
+course, because this course is purely
+
+33
+00:01:27,030 --> 00:01:29,700
+about QM.Oon the Qt Quick side,
+
+34
+00:01:29,700 --> 00:01:31,890
+there really isn't much you can do in
+
+35
+00:01:31,890 --> 00:01:34,110
+terms of networking. There are a few
+
+36
+00:01:34,110 --> 00:01:35,790
+things they allow you to do through
+
+37
+00:01:35,790 --> 00:01:38,579
+JavaScript. Here I have listed two use
+
+38
+00:01:38,579 --> 00:01:41,610
+cases I find important. One is being able
+
+39
+00:01:41,610 --> 00:01:44,610
+to load QML components remotely. In
+
+40
+00:01:44,610 --> 00:01:46,680
+this case, you serve your QML files
+
+41
+00:01:46,680 --> 00:01:48,869
+through the internet, and your
+
+42
+00:01:48,869 --> 00:01:50,700
+application is really like a web
+
+43
+00:01:50,700 --> 00:01:52,979
+application, you are serving your user
+
+44
+00:01:52,979 --> 00:01:56,130
+interface through the internet and it is
+
+45
+00:01:56,130 --> 00:01:58,799
+really like loading a web page, but you
+
+46
+00:01:58,799 --> 00:02:00,689
+are loading QML. This is what they
+
+47
+00:02:00,689 --> 00:02:03,149
+are trying to emulate. I just want you to
+
+48
+00:02:03,149 --> 00:02:05,100
+know in this use case we are not going to
+
+49
+00:02:05,100 --> 00:02:08,068
+go into too much detail about it, because
+
+50
+00:02:08,068 --> 00:02:10,758
+personally I haven't used it that much,
+
+51
+00:02:10,758 --> 00:02:12,920
+and you can consult the documentation if
+
+52
+00:02:12,920 --> 00:02:14,540
+you need more information about this.
+
+53
+00:02:14,540 --> 00:02:16,489
+What we are going to look at in this
+
+54
+00:02:16,489 --> 00:02:20,060
+chapter is XmlHTTPRequest, which is a
+
+55
+00:02:20,060 --> 00:02:22,760
+JavaScript object that you can use in
+
+56
+00:02:22,760 --> 00:02:25,129
+QML. And you can use it to fetch
+
+57
+00:02:25,129 --> 00:02:28,610
+HTTP data. Now we want to look at what
+
+58
+00:02:28,610 --> 00:02:32,209
+you can do with XmlHTTPRequest. We are
+
+59
+00:02:32,209 --> 00:02:34,430
+going to come to the documentation, the
+
+60
+00:02:34,430 --> 00:02:36,620
+JavaScript documentation available at
+
+61
+00:02:36,620 --> 00:02:39,859
+developer.mozilla.org. They have much
+
+62
+00:02:39,859 --> 00:02:42,530
+more details about JavaScript. And this
+
+63
+00:02:42,530 --> 00:02:44,959
+is the place to go if you need to read
+
+64
+00:02:44,959 --> 00:02:47,810
+more on things using JavaScript in your
+
+65
+00:02:47,810 --> 00:02:50,329
+QML. We have mentioned this in
+
+66
+00:02:50,329 --> 00:02:53,510
+the JavaScript section of this course. So
+
+67
+00:02:53,510 --> 00:02:56,690
+you use XmlHTTPRequest objects to
+
+68
+00:02:56,690 --> 00:02:58,849
+interact with servers. You can retrieve
+
+69
+00:02:58,849 --> 00:03:01,310
+data from a URL without having to do a
+
+70
+00:03:01,310 --> 00:03:04,489
+full page refresh. They talked about these
+
+71
+00:03:04,489 --> 00:03:08,450
+things. Despite its name XmlHTTPRequest
+
+72
+00:03:08,450 --> 00:03:10,790
+can be used to retrieve any page of data,
+
+73
+00:03:10,790 --> 00:03:14,780
+not just XML. down here they show you the
+
+74
+00:03:14,780 --> 00:03:16,910
+constructor. we are going to use this to
+
+75
+00:03:16,910 --> 00:03:19,069
+create our object. And if you look at
+
+76
+00:03:19,069 --> 00:03:20,720
+properties, there are a few things we are
+
+77
+00:03:20,720 --> 00:03:23,359
+going to use in a moment. One is 
+
+78
+00:03:23,359 --> 00:03:26,480
+onreadystatechange. We are going to use this
+
+79
+00:03:26,480 --> 00:03:30,949
+event handler to know if we had the data
+
+80
+00:03:30,949 --> 00:03:33,079
+or if we got some kind of error while
+
+81
+00:03:33,079 --> 00:03:35,780
+fetching our data from the internet. Okay,
+
+82
+00:03:35,780 --> 00:03:38,239
+down here you see the readyState values.
+
+83
+00:03:38,239 --> 00:03:39,889
+You can click on this to see the
+
+84
+00:03:39,889 --> 00:03:41,959
+possible values it can be: unsent
+
+85
+00:03:41,959 --> 00:03:45,069
+opened, headers_received, loading, or done,
+
+86
+00:03:45,069 --> 00:03:48,010
+which is when the operation is complete.
+
+87
+00:03:48,010 --> 00:03:50,569
+Another thing you might be interested in
+
+88
+00:03:50,569 --> 00:03:52,819
+is the responseText, which is the
+
+89
+00:03:52,819 --> 00:03:55,120
+response from the server that you get:
+
+90
+00:03:55,120 --> 00:03:58,180
+returns the text received from a server
+
+91
+00:03:58,180 --> 00:04:01,669
+following a request being sent. Another
+
+92
+00:04:01,669 --> 00:04:03,409
+thing I want you to look at is the
+
+93
+00:04:03,409 --> 00:04:07,370
+status: returns an unsigned short with
+
+94
+00:04:07,370 --> 00:04:09,739
+the status of the response of the
+
+95
+00:04:09,739 --> 00:04:14,060
+request. There are standard HTTP status
+
+96
+00:04:14,060 --> 00:04:16,488
+codes that are going to be returned in
+
+97
+00:04:16,488 --> 00:04:18,409
+here. I think they even have a link on
+
+98
+00:04:18,409 --> 00:04:21,139
+that. The status codes returned are the
+
+99
+00:04:21,139 --> 00:04:24,010
+standard HTTP status codes.
+
+100
+00:04:24,010 --> 00:04:26,200
+If you click on this, open this in
+
+101
+00:04:26,200 --> 00:04:29,260
+another tab, you're going to see those. You
+
+102
+00:04:29,260 --> 00:04:31,930
+have 200 when everything is okay. You got
+
+103
+00:04:31,930 --> 00:04:35,560
+what you wanted. You have 404 when the
+
+104
+00:04:35,560 --> 00:04:38,070
+page is not found and things like that.
+
+105
+00:04:38,070 --> 00:04:42,940
+Let's look at 404 page not found. You can
+
+106
+00:04:42,940 --> 00:04:44,950
+look at all these statuses. They are
+
+107
+00:04:44,950 --> 00:04:47,860
+available to you. Okay, now that we have a
+
+108
+00:04:47,860 --> 00:04:50,470
+little bit understanding about the 
+
+109
+00:04:50,470 --> 00:04:52,870
+XmlHTTPRequest object and what it does,
+
+110
+00:04:52,870 --> 00:04:55,570
+let's look at how we're going to use it.
+
+111
+00:04:55,570 --> 00:04:57,550
+First we are going to use it to fetch
+
+112
+00:04:57,550 --> 00:04:59,710
+some HTTP data. We are going to download
+
+113
+00:04:59,710 --> 00:05:02,380
+the web page, and we are going to write a
+
+114
+00:05:02,380 --> 00:05:04,270
+function like this to download the data.
+
+115
+00:05:04,270 --> 00:05:06,970
+It's going to take a URL that we want to
+
+116
+00:05:06,970 --> 00:05:09,790
+fetch. We're going to create a new 
+
+117
+00:05:09,790 --> 00:05:12,400
+XmlHTTPRequest object. You create it like
+
+118
+00:05:12,400 --> 00:05:14,530
+this. We just looked at the constructor
+
+119
+00:05:14,530 --> 00:05:18,460
+in the documentation, and we listen in on
+
+120
+00:05:18,460 --> 00:05:21,790
+this handler onreadystatechange, okay.
+
+121
+00:05:21,790 --> 00:05:23,620
+We put in a function that is going to
+
+122
+00:05:23,620 --> 00:05:27,190
+help us capture the data. And if 
+
+123
+00:05:27,190 --> 00:05:29,770
+readystate is headers_received, we just say
+
+124
+00:05:29,770 --> 00:05:32,140
+that we receive the headers. The
+
+125
+00:05:32,140 --> 00:05:34,450
+most important thing we want is to know
+
+126
+00:05:34,450 --> 00:05:37,360
+when the request is done, and we capture
+
+127
+00:05:37,360 --> 00:05:40,600
+that when the ready state is 
+
+128
+00:05:40,600 --> 00:05:43,390
+XmlHTTPRequest.done. After that we capture the
+
+129
+00:05:43,390 --> 00:05:45,970
+data that is stored in response text and
+
+130
+00:05:45,970 --> 00:05:48,310
+we turn that into a string. After you
+
+131
+00:05:48,310 --> 00:05:50,560
+get the text, you can really do anything
+
+132
+00:05:50,560 --> 00:05:51,070
+with it.
+
+133
+00:05:51,070 --> 00:05:53,410
+In this case we are just stuffinG this
+
+134
+00:05:53,410 --> 00:05:56,650
+text in a text area UI component, the
+
+135
+00:05:56,650 --> 00:05:58,930
+text property of it. And if this status
+
+136
+00:05:58,930 --> 00:06:01,900
+is not 200, meaning that we didn't get
+
+137
+00:06:01,900 --> 00:06:03,640
+what we wanted, we say that something
+
+138
+00:06:03,640 --> 00:06:07,840
+went wrong. After we define our XmlHTTPRequest,
+
+139
+00:06:07,840 --> 00:06:11,170
+we open it by parsing in the URL
+
+140
+00:06:11,170 --> 00:06:13,630
+that we got from the caller of this
+
+141
+00:06:13,630 --> 00:06:15,760
+function, and then we send our request.
+
+142
+00:06:15,760 --> 00:06:17,860
+This is really how you use this object
+
+143
+00:06:17,860 --> 00:06:21,580
+of XmlHTTPRequest. And when you have
+
+144
+00:06:21,580 --> 00:06:23,650
+this, you call your method like this by
+
+145
+00:06:23,650 --> 00:06:26,830
+parsing again a URL. We're going to do a
+
+146
+00:06:26,830 --> 00:06:29,320
+demo about this. Don't worry if this is
+
+147
+00:06:29,320 --> 00:06:31,570
+not clear yet. It is going to be clear
+
+148
+00:06:31,570 --> 00:06:33,610
+and you're going to see it work in
+
+149
+00:06:33,610 --> 00:06:35,890
+action. One thing I want to mention is
+
+150
+00:06:35,890 --> 00:06:37,090
+that what
+
+151
+00:06:37,090 --> 00:06:40,900
+did here is synchronous, meaning that it
+
+152
+00:06:40,900 --> 00:06:43,690
+can block your user interface if this
+
+153
+00:06:43,690 --> 00:06:46,050
+download here happens to take longer.
+
+154
+00:06:46,050 --> 00:06:48,729
+Imagine if it takes something like 5
+
+155
+00:06:48,729 --> 00:06:51,550
+seconds or 10 seconds to get the data if
+
+156
+00:06:51,550 --> 00:06:54,340
+your network is slow, that can happen, it
+
+157
+00:06:54,340 --> 00:06:56,290
+is going to block your user interface
+
+158
+00:06:56,290 --> 00:06:58,510
+and users are not going to be able to
+
+159
+00:06:58,510 --> 00:07:01,419
+interact with your application. So this
+
+160
+00:07:01,419 --> 00:07:04,840
+should be used on really fast operations
+
+161
+00:07:04,840 --> 00:07:08,020
+that don't take that long. I even
+
+162
+00:07:08,020 --> 00:07:11,080
+recommend not using this unless you
+
+163
+00:07:11,080 --> 00:07:13,210
+really have a good reason to do so,
+
+164
+00:07:13,210 --> 00:07:15,430
+because you can do this call 
+
+165
+00:07:15,430 --> 00:07:18,250
+asynchronously. to call it synchronously
+
+166
+00:07:18,250 --> 00:07:20,860
+you pass a callback method that is going
+
+167
+00:07:20,860 --> 00:07:23,050
+to be called when the operation is done.
+
+168
+00:07:23,050 --> 00:07:25,360
+And when this method is called, you can
+
+169
+00:07:25,360 --> 00:07:27,370
+do your normal things like grabbing the
+
+170
+00:07:27,370 --> 00:07:29,620
+text and using it in your user interface.
+
+171
+00:07:29,620 --> 00:07:31,870
+So the difference with the asynchronous
+
+172
+00:07:31,870 --> 00:07:34,180
+call is that when you get the data, ok,
+
+173
+00:07:34,180 --> 00:07:38,050
+you see that it looks mostly like what
+
+174
+00:07:38,050 --> 00:07:40,660
+we had before, but after we have the data,
+
+175
+00:07:40,660 --> 00:07:43,300
+we call the callback method with
+
+176
+00:07:43,300 --> 00:07:46,120
+whatever data we got from the server. You
+
+177
+00:07:46,120 --> 00:07:48,520
+see we are calling callback and we are
+
+178
+00:07:48,520 --> 00:07:51,550
+passing in the response text and we call
+
+179
+00:07:51,550 --> 00:07:53,470
+toString on that to turn that into a
+
+180
+00:07:53,470 --> 00:07:55,720
+string that we can work with in QML.
+
+181
+00:07:55,720 --> 00:07:58,180
+If we don't get the response, we
+
+182
+00:07:58,180 --> 00:08:00,970
+call the callback method with null to
+
+183
+00:08:00,970 --> 00:08:03,400
+mean that we had an error, and then we
+
+184
+00:08:03,400 --> 00:08:05,590
+kick off the download the same way we
+
+185
+00:08:05,590 --> 00:08:07,960
+did with the synchronous call. It really is
+
+186
+00:08:07,960 --> 00:08:09,910
+the same thing. The difference is that when
+
+187
+00:08:09,910 --> 00:08:11,349
+you get the data, you call the callback
+
+188
+00:08:11,349 --> 00:08:14,050
+method. Now how do you call this method
+
+189
+00:08:14,050 --> 00:08:16,780
+in your application? The downloadData
+
+190
+00:08:16,780 --> 00:08:19,270
+method. This is how you do it.
+
+191
+00:08:19,270 --> 00:08:21,849
+You call download data, and you pass in
+
+192
+00:08:21,849 --> 00:08:24,610
+the URL, and you pass in an inline
+
+193
+00:08:24,610 --> 00:08:26,950
+function that is going to act as your
+
+194
+00:08:26,950 --> 00:08:29,919
+callback. So when we get the data, this
+
+195
+00:08:29,919 --> 00:08:31,840
+function here is going to be called. You
+
+196
+00:08:31,840 --> 00:08:33,849
+see that it takes a parameter which is
+
+197
+00:08:33,849 --> 00:08:36,580
+the response here. We check to see if the
+
+198
+00:08:36,580 --> 00:08:38,950
+response is not null, and then we work
+
+199
+00:08:38,950 --> 00:08:41,409
+with the data that we got from the
+
+200
+00:08:41,409 --> 00:08:43,900
+server. In this case we are taking the
+
+201
+00:08:43,900 --> 00:08:46,780
+data, and also stuffing it in a textarea
+
+202
+00:08:46,780 --> 00:08:50,290
+UI component. If the response is null we say
+
+203
+00:08:50,290 --> 00:08:52,269
+that there was some kind of error. This
+
+204
+00:08:52,269 --> 00:08:54,310
+is really how you work with that.
+
+205
+00:08:54,310 --> 00:08:55,870
+The first thing we're going to do is to
+
+206
+00:08:55,870 --> 00:08:58,570
+download HTTP data. The second thing is
+
+207
+00:08:58,570 --> 00:09:01,389
+going to be to fetch restful api and
+
+208
+00:09:01,389 --> 00:09:03,940
+work with the json data that we get in
+
+209
+00:09:03,940 --> 00:09:06,759
+our Qt application. Again, this is going
+
+210
+00:09:06,759 --> 00:09:08,949
+to work on the foundation that we built
+
+211
+00:09:08,949 --> 00:09:12,310
+when we downloaded HTTP data using 
+
+212
+00:09:12,310 --> 00:09:16,120
+XmlHTTPRequest. The function to fetch data
+
+213
+00:09:16,120 --> 00:09:17,800
+is going to look like this. You see that
+
+214
+00:09:17,800 --> 00:09:21,130
+we are passing in the URL. This is the
+
+215
+00:09:21,130 --> 00:09:23,769
+URL. And we are passing in a callback
+
+216
+00:09:23,769 --> 00:09:26,680
+method. We get the response. This response
+
+217
+00:09:26,680 --> 00:09:28,839
+is going to be JSON data. So we want to
+
+218
+00:09:28,839 --> 00:09:31,899
+parse the JSON data into an object. This
+
+219
+00:09:31,899 --> 00:09:34,269
+is what we do here. After we get the
+
+220
+00:09:34,269 --> 00:09:37,360
+object, we loop over it capturing the
+
+221
+00:09:37,360 --> 00:09:40,029
+data that we want. This is also going to
+
+222
+00:09:40,029 --> 00:09:42,940
+be some kind of object. We are basically
+
+223
+00:09:42,940 --> 00:09:45,089
+capturing the data that we want, and
+
+224
+00:09:45,089 --> 00:09:47,829
+stuffing the data in a list model like
+
+225
+00:09:47,829 --> 00:09:49,870
+this. The thing I want you to notice is
+
+226
+00:09:49,870 --> 00:09:51,910
+that we are passing the image as an
+
+227
+00:09:51,910 --> 00:09:54,610
+object here, and this thing that is in
+
+228
+00:09:54,610 --> 00:09:57,519
+quotes is going to be our {???} and we
+
+229
+00:09:57,519 --> 00:10:00,069
+are going to use this in our delegate to
+
+230
+00:10:00,069 --> 00:10:02,050
+capture the data that we show in a
+
+231
+00:10:02,050 --> 00:10:04,360
+ListView, which is what we're doing next
+
+232
+00:10:04,360 --> 00:10:05,889
+really. This is our delegate
+
+233
+00:10:05,889 --> 00:10:07,990
+components. It's nothing special. We've
+
+234
+00:10:07,990 --> 00:10:10,810
+done most of these things before. We have
+
+235
+00:10:10,810 --> 00:10:12,760
+a rectangle inside, with a bunch of
+
+236
+00:10:12,760 --> 00:10:14,500
+properties inside, we have a text
+
+237
+00:10:14,500 --> 00:10:16,209
+component that is going to display our
+
+238
+00:10:16,209 --> 00:10:19,269
+data. But the text property can use a
+
+239
+00:10:19,269 --> 00:10:22,000
+{???} of joke, which is what we had before
+
+240
+00:10:22,000 --> 00:10:24,519
+here when we appended the data in the
+
+241
+00:10:24,519 --> 00:10:26,860
+model. This is what I want you to see. You
+
+242
+00:10:26,860 --> 00:10:29,440
+can use joke here, or you can even use
+
+243
+00:10:29,440 --> 00:10:32,500
+modelData that we have used before when
+
+244
+00:10:32,500 --> 00:10:35,589
+we have a direct model. You can look at
+
+245
+00:10:35,589 --> 00:10:38,290
+the Model View architecture chapter if you
+
+246
+00:10:38,290 --> 00:10:40,750
+haven't looked at that yet, this is going
+
+247
+00:10:40,750 --> 00:10:42,970
+to make sense. Ok. This is what we're
+
+248
+00:10:42,970 --> 00:10:45,010
+going to cover in this chapter. The next
+
+249
+00:10:45,010 --> 00:10:46,420
+lecture we're going to start by
+
+250
+00:10:46,420 --> 00:10:48,970
+downloading some data from the internet
+
+251
+00:10:48,970 --> 00:00:00,000
+using XmlHTTPRequest. I'll see you there
+

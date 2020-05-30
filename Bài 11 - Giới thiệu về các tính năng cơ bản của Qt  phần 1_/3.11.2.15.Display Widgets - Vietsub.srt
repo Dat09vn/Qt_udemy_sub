@@ -1,0 +1,264 @@
+﻿1
+00:00:01,630 --> 00:00:10,000
+Các Widget và Layout. Trong bài học này, chúng ta sẽ học về các loại widget và layout
+
+2
+00:00:10,000 --> 00:00:18,130
+Từ các widget phục vụ hiển thị như label tới các widget phục vụ biên soạn như line edit. Sau đó, chúng ta sẽ học về layout
+
+3
+00:00:18,130 --> 00:00:18,640
+và tab
+
+4
+00:00:21,660 --> 00:00:30,540
+Trong video 2.1, Display Widget, ta sẽ học về cách hiển thị các văn bản với label và text browser
+
+5
+00:00:30,670 --> 00:00:35,290
+widget, và cách hiển thị hình ảnh sử dụng label widget.
+
+6
+00:00:35,760 --> 00:00:39,900
+Cuối cùng, chúng ta sẽ học cách sử dụng thanh tiến trình (progress bar).
+
+7
+00:00:39,900 --> 00:00:41,460
+Chúng ta hãy bắt đầu nào.
+
+8
+00:00:43,860 --> 00:00:45,990
+Đầu tiên chúng ta tạo mới một Qt widgets
+
+9
+00:00:46,050 --> 00:01:02,860
+application project.
+
+10
+00:01:02,970 --> 00:01:05,580
+Chúng ta nên chọn loại project là "Q main window based project"
+
+11
+00:01:10,310 --> 00:01:14,640
+như bạn đã nhớ chúng ta đã làm trong các video trước.
+
+12
+00:01:14,650 --> 00:01:19,080
+Click đúp vào file "mainwindow.ui" để mở ra ở chế độ "design mode"
+
+13
+00:01:19,290 --> 00:01:22,770
+Bây giờ chúng ta sẽ thiết kế cho giao diện của ứng dụng
+
+14
+00:01:22,770 --> 00:01:25,950
+Nào, chúng ta sẽ kéo và thả 1 lable widget vào trong view
+
+15
+00:01:30,620 --> 00:01:34,100
+Sau đó, chúng ta sẽ kéo và thả một "text browser widget" vào
+
+16
+00:01:36,910 --> 00:01:45,640
+đổi kiểu layout của widget từ kiểu "central" sang kiểu "horizontally" bởi vì chúng ta sẽ gán cùng một
+
+17
+00:01:45,640 --> 00:01:48,660
+đoạn text cho cả hai widget này.
+
+18
+00:01:48,760 --> 00:01:50,590
+Chúng ta sẽ làm điều này trong source code
+
+19
+00:03:33,090 --> 00:03:37,470
+đặt thuộc tính mặc định của label widget là không "wrap text"
+
+20
+00:03:37,500 --> 00:03:40,690
+bạn có thể thấy các widget nhìn dài một cách không đẹp mắt lắm
+
+21
+00:03:40,950 --> 00:03:50,610
+Ngược lại, "text browser" widget sẽ có một thanh cuộn dọc với các "text displaying" widget được nhúng vào.
+
+22
+00:03:50,610 --> 00:03:57,690
+Trong "text browser", văn bản sẽ được wrap tự động và nó hoạt động giống như một "read only editor"
+
+23
+00:03:58,080 --> 00:04:05,520
+Bạn có thể chọn và copy nội dung được chọn. Bạn có thể mong muốn xem tài liệu về "text browser" và kiểm tra
+
+24
+00:04:05,520 --> 00:04:07,780
+danh sách thuộc tính (properties panel) trong design mode.
+
+25
+00:04:12,240 --> 00:04:16,990
+Bạn sẽ nhìn thấy được các thuộc tính của widget để có thể tùy chỉnh theo ý muốn
+
+26
+00:04:18,540 --> 00:04:22,470
+Bây giờ chúng ta sẽ đi đến một nội dung hấp dẫn hơn, đó là hiển thị hình ảnh với label widget
+
+27
+00:04:26,750 --> 00:04:31,090
+Tôi sẽ sử dụng hình ảnh 1 chú mèo để demo
+
+28
+00:04:31,820 --> 00:04:34,070
+OK, tôi sẽ sử dụng hình ảnh 1 chú mèo để demo cho nội dung này
+
+29
+00:04:41,390 --> 00:04:44,630
+Đầu tiên chúng ta sẽ loại bỏ "text browser" widget ra khỏi màn hình
+
+30
+00:04:49,930 --> 00:04:51,840
+Sau đó ta quay trở lại với file mainwindow.cpp
+
+31
+00:04:58,240 --> 00:04:59,910
+Chún ta sẽ sử dụng Qpixmap
+
+32
+00:05:05,150 --> 00:05:10,250
+Mọi việc thật đơn giản, tất cả những gì bạn cần làm chỉ là tải ảnh từ file ngoài vào
+
+33
+00:05:33,080 --> 00:05:36,870
+Sau đó gọi phương thức Pixmap của label widget
+
+34
+00:05:46,770 --> 00:05:50,270
+Phương thức này sẽ hiển thị ảnh trên màn hình
+
+35
+00:05:50,280 --> 00:05:52,080
+Bây giờ nếu chúng ta chạy ứng dụng,
+
+36
+00:05:57,680 --> 00:06:02,690
+bạn sẽ thấy hình ảnh được hiển thị trên màn hình trong label widget như chúng ta mong muốn.
+
+37
+00:06:10,250 --> 00:06:14,000
+Nội dung cuối cùng của video này là về thanh tiến trình (progress bar)
+
+38
+00:06:14,060 --> 00:06:17,600
+Quay trở lại với cửa sổ thiết kế giao diện.
+
+39
+00:06:17,600 --> 00:06:19,690
+Loại bỏ đi tất cả các widget.
+
+40
+00:06:19,690 --> 00:06:23,210
+Bây giờ chúng ta kéo thả thanh tiến trình vào màn hình.
+
+41
+00:06:23,810 --> 00:06:28,440
+Nếu bạn kiểm tra thuộc tính của thanh tiến trình trong Property Panel, bạn sẽ thấy nó nhận giá trị mặc định là 24.
+
+42
+00:06:28,670 --> 00:06:31,100
+Ở đây chúng ta sẽ đặt lại giá trị bằng 0.
+
+43
+00:06:31,700 --> 00:06:34,760
+Như vậy thì giá trị trạng thái ban đầu sẽ có ý nghĩa hơn.
+
+44
+00:06:37,850 --> 00:06:46,970
+Giá trị mặc định cho giá trị giải trạng thái ở đây nằm từ 0 đến 100 như bạn nhìn thấy ở đây.
+
+45
+00:06:46,990 --> 00:06:48,270
+Bạn có thể thay đổi giá trị này
+
+46
+00:06:48,280 --> 00:06:49,540
+nếu bạn có nhu cầu đặc biệt
+
+47
+00:06:55,570 --> 00:07:02,970
+Chúng ta sẽ sử dụng  hàm có sẵn của thanh tiến trình để thiết lập giá trị trạng thái cho nó.
+
+48
+00:07:03,040 --> 00:07:10,180
+Ngoài ra, chúng ta sẽ sử dụng bộ đếm thời gian QTimer để cập nhật giá trị trạng thái cho thanh tiến trình
+
+49
+00:07:10,270 --> 00:07:11,770
+sau mỗi 1/2 giây.
+
+50
+00:07:12,190 --> 00:07:14,740
+Đầu tiên chúng ta sẽ tạo ra 1 slot
+
+51
+00:07:30,160 --> 00:07:34,270
+sau đó chúng ta sẽ tạo ra một QTimer với chu kỳ là 1/2 giây
+
+52
+00:07:46,980 --> 00:07:48,840
+OK, chúng ta sẽ thiết lập chu kỳ = 1/2 giây
+
+53
+00:07:52,440 --> 00:07:54,710
+sau đó chúng ta kết nối với tín hiệu timeout.
+
+54
+00:08:08,450 --> 00:08:10,850
+Sau khoảng 1 giây không có kết nối, chúng ta sẽ khởi động timer.
+
+55
+00:08:15,050 --> 00:08:19,080
+Mặc định, QTimer sẽ phát tín hiệu timeout lặp đi lặp lại
+
+56
+00:08:19,130 --> 00:08:28,310
+sau mỗi chu kỳ, tuy nhiên nếu bạn muốn nó chỉ phát tín hiệu 1 lần và sau đó dừng hẳn thì bạn cần
+
+57
+00:08:28,310 --> 00:08:37,530
+đặt giá trị "single shot" = true.
+
+58
+00:08:37,700 --> 00:08:39,420
+Bây giờ chúng ta sẽ đi đến với slot
+
+59
+00:08:42,650 --> 00:08:45,360
+Đầu tiên, chúng ta đọc giá trị từ thành tiến trình
+
+60
+00:08:53,530 --> 00:08:57,130
+chúng ta kiểm tra giá trị nếu nó lớn hơn 100
+
+61
+00:09:00,480 --> 00:09:08,710
+nếu nó lớn hơn hoặc bằng 100, thì ta sẽ dừng lại thanh tiến trình vì thanh tiến trình đã đầy.
+
+62
+00:09:10,080 --> 00:09:18,630
+Nếu không phải, ta sẽ tăng giá trị của thanh tiến trình lên 1 và gán giá trị mới cho thanh tiến trình.
+
+63
+00:09:26,200 --> 00:09:27,810
+Nếu bạn chạy ứng dụng bây giờ,
+
+64
+00:09:49,620 --> 00:09:55,860
+bạn có thể thấy thanh tiến trình tăng giá trị sau mỗi nửa giây. Trong thực tế,
+
+65
+00:09:55,860 --> 00:10:02,140
+thanh tiến trình này có thể là thể hiện của một số tiến trình thực tế nào đó. Trong video tiếp theo,
+
+66
+00:10:02,210 --> 00:10:04,590
+chúng ta sẽ học về "Editable widget".
+

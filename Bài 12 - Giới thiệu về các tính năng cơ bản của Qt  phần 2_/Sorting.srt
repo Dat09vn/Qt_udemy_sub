@@ -1,0 +1,772 @@
+﻿1
+00:00:00,960 --> 00:00:06,180
+Chào mừng đến với phần 2, đi sâu vào Model/View, phần sắp xếp. Trong video này, ta sẽ tìm hiểu về
+
+2
+00:00:06,360 --> 00:00:11,400
+mô hình Model/View trong Qt, bao gồm nguồn gốc và chức năng, nhu cầu sắp xếp
+
+3
+00:00:11,400 --> 00:00:16,890
+trong các vấn đề thực tế, sau đó đi sâu vào 2 phương pháp sắp xếp: sắp xếp dùng model proxy và
+
+4
+00:00:16,890 --> 00:00:19,230
+sắp xếp thủ công.
+
+5
+00:00:19,230 --> 00:00:25,170
+Ta cùng bắt đầu với model-view-controller hay model/view trong Qt.
+
+6
+00:00:25,170 --> 00:00:29,440
+Mô hình model-view-controller là mô hình thiết kế được sử dụng khi xây dựng giao diện người dùng.
+
+7
+00:00:29,460 --> 00:00:31,340
+Cấu trúc này giúp phần tách cách lưu trữ dữ liệu với
+
+8
+00:00:31,340 --> 00:00:36,810
+cách hiển thị dữ liệu cho người dùng. Các bạn có thể thấy trên màn hình là một biểu đồ với sự
+
+9
+00:00:36,810 --> 00:00:37,990
+phân chia các mục.
+
+10
+00:00:38,000 --> 00:00:43,590
+Qt sử dụng mô hình model-view-controller đặc biệt được gọi là Model/View. Mô hình
+
+11
+00:00:43,590 --> 00:00:50,130
+Model/View cũng giống như mô hình model-view-controller. Ta chỉ cần gộp View với
+
+12
+00:00:50,130 --> 00:00:50,930
+Controller.
+
+13
+00:00:51,000 --> 00:00:56,500
+Như vậy View trong Qt chịu trách nhiệm cả về hiển thị dữ liệu và tương tác, xử lý dữ liệu mà người dụng nhập.
+
+14
+00:00:56,520 --> 00:00:59,010
+Các bạn có thể thấy đây là một biểu đồ của mô hình model/view.
+
+15
+00:00:59,280 --> 00:01:04,270
+Vậy tại sao nó lại quan trọng đến vậy? Sự phân chia các mục như vậy để tăng việc sử dụng lại mã nguồn.
+
+16
+00:01:04,290 --> 00:01:09,510
+Ta có thể hiển thị cùng dữ liệu dưới các view khác nhau và có thể tạo thêm nhiều loại view mới
+
+17
+00:01:09,750 --> 00:01:11,400
+mà không ảnh hưởng đến dữ liệu.
+
+18
+00:01:11,520 --> 00:01:16,020
+Hiểu rõ về mô hình giúp ta rất nhiều khi thiết kế chương trình để có thể tận dụng
+
+19
+00:01:16,020 --> 00:01:19,440
+mô hình của Qt mà không mất nhiều công sức. Với mô hình hoàn thiện như vậy,
+
+20
+00:01:19,440 --> 00:01:21,840
+thì thường sẽ có phương pháp thực hiện nhất định.
+
+21
+00:01:21,870 --> 00:01:25,330
+Ví dụ ta có 2 phương pháp sắp xếp có sẵn trong Qt.
+
+22
+00:01:25,350 --> 00:01:26,940
+Vậy ta cần sắp xếp những gì?
+
+23
+00:01:27,240 --> 00:01:30,050
+Giả sử ta có một ứng dụng hiển thị hình ảnh.
+
+24
+00:01:30,090 --> 00:01:34,410
+Ta muốn những bức ảnh này được sắp xếp một cách đẹp nhất có thể, trong trường hợp
+
+25
+00:01:34,410 --> 00:01:36,740
+này, ta sẽ sắp xếp theo màu sắc.
+
+26
+00:01:36,870 --> 00:01:41,280
+Ta sẽ dùng những ảnh một màu để minh họa, nó sẽ dễ dàng hơn cho việc xem xét sự hiệu quả
+
+27
+00:01:41,280 --> 00:01:42,030
+của phương pháp này.
+
+28
+00:01:42,030 --> 00:01:47,510
+Hãy lưu ý rằng đối với những ví dụ phức tạp, việc sắp xếp màu sẽ khó khăn hơn rất nhiều.
+
+29
+00:01:47,550 --> 00:01:50,130
+Hãy nhìn vào đoạn mã mà ta đang có sẵn.
+
+30
+00:01:51,010 --> 00:01:56,350
+Sau khi mở project bằng cách chọn file .pro phù hợp và cấu hình bằng cấu hình desktop mặc định,
+
+31
+00:01:56,410 --> 00:01:57,850
+ta có thể xem mã nguồn.
+
+32
+00:01:58,150 --> 00:02:03,950
+Mở main.cpp, các bạn có thể thấy ta đang tạo một MainWindow tuỳ biến và hiển thị trước khi chạy
+
+33
+00:02:04,040 --> 00:02:07,200
+vòng lặp sự kiện exec. Trong file header của mainwindow,
+
+34
+00:02:07,210 --> 00:02:09,850
+ta có thể thấy những thành phần của lớp này.
+
+35
+00:02:09,850 --> 00:02:14,050
+Ta sẽ có 2 view, một QListView và một QTableView.
+
+36
+00:02:14,200 --> 00:02:17,300
+Ta sử dụng mỗi view để thực hiện một phương pháp sắp xếp
+
+37
+00:02:17,300 --> 00:02:17,980
+trong Qt.
+
+38
+00:02:17,980 --> 00:02:20,770
+Tôi cũng đã có một model tuỳ biến để hỗ trợ cung cấp dữ liệu cho 2 view đó,
+
+39
+00:02:20,770 --> 00:02:23,030
+trong trường hợp này là PhotoItemModel.
+
+40
+00:02:23,050 --> 00:02:28,200
+Ngoài ra, ta sẽ tạo một widget tab, cho phép ta hiển thị chuyển đổi giữa 2 view.
+
+41
+00:02:28,210 --> 00:02:34,570
+Bây giờ nếu mở PhotoItemModel, ta sẽ thấy một vòng lặp for có nhiệm vụ tạo
+
+42
+00:02:34,570 --> 00:02:40,900
+các icon, tạo một item rồi đặt icon vừa tạo vào item trước khi đưa
+
+43
+00:02:40,900 --> 00:02:42,700
+item đó vào model.
+
+44
+00:02:42,820 --> 00:02:48,370
+Sau đó, tôi thêm vào đọa mã để tạo môt cột thứ hai chứ last_icon (icon cuối)
+
+45
+00:02:48,370 --> 00:02:51,910
+sau đó đưa nó vào cột có index 1.
+
+46
+00:02:51,940 --> 00:02:57,090
+Điều này sẽ giúp minh họa sắp xếp trên QTableView một cách hiệu quả.
+
+47
+00:02:57,250 --> 00:03:00,840
+Giờ ta cùng thử chạy và xem đã xử lý được đến đâu rồi.
+
+48
+00:03:02,200 --> 00:03:06,570
+Tab đầu tiên là QListView và tab thứ hai là QTableView.
+
+49
+00:03:06,910 --> 00:03:10,750
+Như tôi đã đề cập, có 2 phương pháp sắp xếp có sẵn trong Qt và các bạn có thể thấy tôi đã
+
+50
+00:03:10,750 --> 00:03:13,530
+ghi nhãn ở đây phương pháp nào được dùng cho view nào.
+
+51
+00:03:13,570 --> 00:03:19,480
+Như vậy trong QListView, tức là tab này, ta sẽ sử dụng mô hình proxy. Trong QTableView, tức là
+
+52
+00:03:19,480 --> 00:03:22,200
+tab này, ta sẽ sắp xếp thủ công.
+
+53
+00:03:22,270 --> 00:03:27,820
+Có thể hơi bất ngờ, nhưng phương pháp sử dụng proxy dùng QSortFilterProxyModel thực chất lại là phương pháp
+
+54
+00:03:27,820 --> 00:03:29,650
+dễ thực hiện hơn.
+
+55
+00:03:29,650 --> 00:03:32,160
+Ta cùng bắt đầu với phương pháp đó trước.
+
+56
+00:03:32,470 --> 00:03:37,760
+Ta sẽ phải xem trong file mainwindow.cpp. Trong hàm tạo của MainWindow,
+
+57
+00:03:37,780 --> 00:03:43,090
+các bạn có thể thấy ta đang tạo một thực thể của model, một thực thể của QListView trước khi đặt
+
+58
+00:03:43,150 --> 00:03:45,830
+model đã tạo vào list_view.
+
+59
+00:03:45,910 --> 00:03:51,620
+Giờ nghe có vẻ ngu ngốc, nhưng chúng ta sẽ đưa vào một QSortFilterProxyModel.
+
+60
+00:03:51,670 --> 00:03:55,840
+Như vậy các bạn sẽ có được một cái nhìn về cách sử dụng lớp này.
+
+61
+00:03:55,840 --> 00:04:02,560
+Trong khi tạo list_view, ta sẽ tạo một instance của QSortFilterProxyModel và
+
+62
+00:04:02,560 --> 00:04:04,760
+ta đã có sẵn biến sort_proxy_model ở đây rồi.
+
+63
+00:04:04,810 --> 00:04:11,320
+Ta chỉ việc tạo một QSortFilterProxyModel mới. Sau đó, ta sẽ
+
+64
+00:04:11,320 --> 00:04:14,750
+dùng hàm setSourceModel (đặt mô hình nguồn) để đặt model vào.
+
+65
+00:04:14,770 --> 00:04:20,950
+Ta sẽ gọi hàm đó và truyền model mà ta đã tạo ở trên đây
+
+66
+00:04:20,950 --> 00:04:23,250
+vào.
+
+67
+00:04:23,290 --> 00:04:27,640
+Và cuối cùng, thay vì đưa vào model ban đầu, chúng ta sẽ
+
+68
+00:04:27,640 --> 00:04:33,680
+đưa vào sort_proxy_model vào list_view. Chấm phẩy.
+
+69
+00:04:33,850 --> 00:04:39,880
+Như vậy đây là cách ta sử dụng một QSortFilterProxyModel, tạo một thực thể, thiết lập SourceModel,
+
+70
+00:04:40,000 --> 00:04:43,400
+sau đó đưa model proxy vào view thay cho model ban đầu.
+
+71
+00:04:43,420 --> 00:04:47,600
+Nhưng như vậy vẫn chưa sắp xếp màu ảnh như ta muốn vì ta chưa viết đoạn mã sắp xếp.
+
+72
+00:04:47,680 --> 00:04:49,490
+Bây giờ chúng ta sẽ tiến hành viết đoạn mã đó.
+
+73
+00:04:49,510 --> 00:04:54,640
+Hiện tại tôi đã tạo một lớp khung ở đây cho ví dụ này, vì vậy ta chỉ cần đi tới file
+
+74
+00:04:54,640 --> 00:04:57,580
+header của sortproxymodel.
+
+75
+00:04:57,730 --> 00:05:03,070
+Để sắp xếp được, ta phải cài đặt một hàm lessThan (nhỏ hơn), như các bạn
+
+76
+00:05:03,070 --> 00:05:06,610
+có thể thấy, hàm này có hai tham số là hai QModelIndex,
+
+77
+00:05:06,640 --> 00:05:10,240
+một cái là source_left (trái) và một cái là source_right (phải), sau đó trả về một boolean.
+
+78
+00:05:10,240 --> 00:05:16,300
+Bây giờ hẳn các bạn sẽ nghĩ "nếu vậy thì làm thế nào có thể đi từ một QModelIndex để tìm ra giá trị độ sáng
+
+79
+00:05:16,300 --> 00:05:17,090
+của một bức ảnh?"
+
+80
+00:05:17,090 --> 00:05:17,820
+Thú thật
+
+81
+00:05:17,830 --> 00:05:22,660
+khó để lấy được giá trị độ sáng của một bức ảnh trong Qt.
+
+82
+00:05:22,670 --> 00:05:24,250
+Chúng ta sẽ không đi quá sâu vào phần đó.
+
+83
+00:05:24,250 --> 00:05:28,810
+Thay vào đó chúng ta sẽ xem về cách lấy dữ liệu từ một QModelIndex, vì
+
+84
+00:05:28,810 --> 00:05:33,100
+khi đã biết cách lấy dữ liệu thì ta có thể có cách xử lý chúng
+
+85
+00:05:33,100 --> 00:05:35,410
+trong các ứng dụng cụ thể.
+
+86
+00:05:35,410 --> 00:05:41,680
+Đối với QSortFilterProxyModel, tôi biết rằng có một hàm sẽ trả về một QVariant.
+
+87
+00:05:41,680 --> 00:05:45,710
+Ta cùng khai báo một QVariant rồi gọi left_data.
+
+88
+00:05:45,990 --> 00:05:52,810
+Sau đó ta sẽ dùng sourceModel để có thể gọi hàm data.
+
+89
+00:05:52,890 --> 00:05:57,670
+Và hàm data cần có 2 tham số, một trong số đó là QModelIndex đã có sẵn.
+
+90
+00:05:57,670 --> 00:06:01,100
+Như vậy ta sẽ đưa vào source_left. Và tham số thứ 2 là role.
+
+91
+00:06:01,110 --> 00:06:02,870
+Tham số role hơi đặc biệt một chút.
+
+92
+00:06:02,890 --> 00:06:04,760
+Chúng ta nên dành chút thời gian để nói về tham số này.
+
+93
+00:06:05,080 --> 00:06:11,440
+Role trong Qt được view sử dụng để cho model biết nó cần loại dữ liệu nào.
+
+94
+00:06:11,440 --> 00:06:16,570
+Trong trường hợp này, ta cần thu thập một số thông tin về color hay decoration (trang trí). Nếu nhìn vào
+
+95
+00:06:16,570 --> 00:06:22,750
+bảng này, ta có thể thấy DecorationRole là role mà ta đang cần. Và bảng này sẽ
+
+96
+00:06:22,750 --> 00:06:24,280
+cho ta biết hàm data sẽ trả về loại dữ liệu nào.
+
+97
+00:06:24,280 --> 00:06:27,400
+Dữ liệu sẽ được biểu diễn như một decoration dưới dạng icon,
+
+98
+00:06:27,400 --> 00:06:30,050
+QColor, QIcon hoặc QPixmap.
+
+99
+00:06:30,130 --> 00:06:35,080
+Một role quan trọng khác mà các bạn cũng sẽ thường xuyên gặp là Qt::DisplayRole, như trong bảng này,
+
+100
+00:06:35,110 --> 00:06:37,420
+sẽ trả về một QString.
+
+101
+00:06:37,510 --> 00:06:42,910
+Sau khi đã biết ta cần loại role gì, chúng ta sẽ quay trở lại đoạn mã và đưa
+
+102
+00:06:42,910 --> 00:06:43,740
+role đó vào.
+
+103
+00:06:43,740 --> 00:06:46,180
+Vậy là Qt::Decoration.
+
+104
+00:06:47,450 --> 00:06:52,740
+Khi đã có dữ liệu phần tử left (bên trái), thì ta chỉ cần lấy dữ liệu phần tử right (bên phải) nữa. Chúng ta sẽ chỉnh sửa một chút
+
+105
+00:06:52,760 --> 00:06:56,480
+và đưa right vào.
+
+106
+00:06:56,680 --> 00:07:01,820
+Giờ đây khi đã có 2 QVariant, ta sẽ phải trả lời câu hỏi làm cách nào để có thể thu thập
+
+107
+00:07:01,820 --> 00:07:05,500
+thông tin pixel, picture hay color từ một QVariant?
+
+108
+00:07:05,540 --> 00:07:11,690
+Nếu nhìn vào tài liệu tham khảo về QVariant, ta sẽ thấy QVariant chứa rất nhiều
+
+109
+00:07:11,690 --> 00:07:17,090
+hàm to giúp chuyển đổi sang các loại dữ liệu cụ thể. Ví dụ như toBitArray,
+
+110
+00:07:17,120 --> 00:07:18,990
+toBool, toByteArray.
+
+111
+00:07:19,130 --> 00:07:24,290
+Nhưng ta sẽ không thể tìm thấy bất cứ color hay loại thông tin nào tương tự như thế.
+
+112
+00:07:24,350 --> 00:07:29,600
+Nhưng trong tài liệu có một ghi chú nói rằng QVariant không cung cấp hàm chuyển đổi cho các kiểu trên, nhưng ta có thể
+
+113
+00:07:29,600 --> 00:07:34,880
+sử dụng hàm value thay thế, và đó chính xác là những gì mà chúng ta
+
+114
+00:07:34,880 --> 00:07:35,760
+sắp thực hiện.
+
+115
+00:07:35,780 --> 00:07:44,050
+Ta sẽ quay trở lại với đoạn mã và lấy thông tin QIcon, sau đó gọi left_icon. Và
+
+116
+00:07:44,060 --> 00:07:49,250
+đối với left_data ta sẽ gọi hàm value. Ta tiếp tục đưa vào kiểu
+
+117
+00:07:49,250 --> 00:07:53,670
+mà ta cần, trong trường hợp này là QIcon và đó là những gì chúng ta cần làm.
+
+118
+00:07:53,810 --> 00:07:58,490
+Ta phải đảm bảo thực hiện các thao tác tương tự đối với right. Ta gọi trên right_data,
+
+119
+00:07:58,490 --> 00:08:06,290
+hàm value, ta sẽ đưa QIcon vào và thế là xong. Từ đây
+
+120
+00:08:06,290 --> 00:08:10,230
+chúng ta chỉ cần gọi một hàm hỗ trợ mà tôi đã thêm từ trước, đó là luminosity_less_than.
+
+121
+00:08:10,310 --> 00:08:15,880
+Trong hàm này, ta lấy một QPixmap từ QIcon, thay đổi QPixmap
+
+122
+00:08:15,880 --> 00:08:21,690
+thành một QImage, lấy pixel từ QImage trước khi chuyển nó từ
+
+123
+00:08:21,740 --> 00:08:25,680
+từ không gian màu RGB thành không gian màu LAB có chứa luminosity (độ sáng).
+
+124
+00:08:25,700 --> 00:08:28,370
+Toàn bộ chuyển đổi và tính toán đều nằm trong luminousty_calc.h.
+
+125
+00:08:28,370 --> 00:08:29,640
+Có thể các bạn sẽ muốn xem phần cài đặt.
+
+126
+00:08:29,660 --> 00:08:36,500
+Nhưng với ví dụ này, chúng ta chỉ cần trả về hàm luminosity_less_than (độ sáng nhỏ hơn). đồng thời truyền vào cả
+
+127
+00:08:36,500 --> 00:08:40,880
+left_icon và right_icon.
+
+128
+00:08:40,880 --> 00:08:43,400
+Giờ ta đã hoàn thành phần cài đặt hàm sắp xếp,
+
+129
+00:08:43,400 --> 00:08:46,510
+tất cả những gì ta cần làm là dùng lớp mà ta vừa tạo. Chắc các bạn còn nhớ,
+
+130
+00:08:46,580 --> 00:08:49,750
+hiện tại ta đã có một QSortFilterProxyModel.
+
+131
+00:08:49,760 --> 00:08:55,160
+Ta sẽ xoá nó đi và đưa vào thực thể mới vừa tạo, tức là một
+
+132
+00:08:55,160 --> 00:08:55,640
+SortProxyModel.
+
+133
+00:08:55,710 --> 00:08:59,620
+Bây giờ nếu chạy chương trình, chúng ta sẽ không thấy được thứ ta đang muốn.
+
+134
+00:08:59,620 --> 00:09:04,420
+Do đó, thay vì thông tin được sắp xếp, chúng ta vẫn thấy một mớ lộn xộn.
+
+135
+00:09:04,430 --> 00:09:06,480
+Còn một việc nữa mà chúng ta cần phải làm.
+
+136
+00:09:06,620 --> 00:09:09,830
+Đó là gọi hàm sort
+
+137
+00:09:09,830 --> 00:09:10,970
+trên model.
+
+138
+00:09:10,970 --> 00:09:16,790
+Như vậy ta gõ sort_proxy_model, gọi hàm sort và đưa vào cột đầu tiên. Thông tin sẽ
+
+139
+00:09:16,790 --> 00:09:18,780
+tự động được sắp xếp.
+
+140
+00:09:18,790 --> 00:09:23,800
+Thông thường chúng ta sẽ có một nút hay thứ gì đó và ta sẽ click vào nút đó rồi mọi thứ được
+
+141
+00:09:23,810 --> 00:09:27,560
+sắp xếp. Nó sẽ thực hiện cập nhật hiển thị trên View.
+
+142
+00:09:27,560 --> 00:09:30,950
+Ta làm như này để minh họa một cách nhanh gọn tính năng này.
+
+143
+00:09:30,950 --> 00:09:36,230
+Như vậy với hàm sort, và nếu chạy lại đoạn mã này, ta có thể thấy tất cả dữ liệu đã được sắp xếp
+
+144
+00:09:36,620 --> 00:09:41,140
+theo độ sáng từ tối nhất tới sáng nhất. Tuyệt vời.
+
+145
+00:09:41,150 --> 00:09:46,780
+Ta cùng chuyển sang phương pháp sắp xếp dữ liệu thứ 2, đó là sắp xếp thủ công.
+
+146
+00:09:46,790 --> 00:09:51,530
+Trong phương pháp này, ta sẽ thay đổi mô hình ban đầu. Trong khi với
+
+147
+00:09:51,530 --> 00:09:56,360
+sort_proxy_model, ta sẽ không phải làm điều đó. Với phương pháp thứ 2, thì ta .
+
+148
+00:09:56,360 --> 00:09:57,050
+cần phải làm.
+
+149
+00:09:57,050 --> 00:10:02,760
+Ta sẽ chuyển về model ban đầu ở đây để có thể minh họa cho phương pháp tới.
+
+150
+00:10:02,810 --> 00:10:08,660
+Trong model, ta đang sử dụng một QStandardItemModel. Và cách thực hiện đơn giản nhất là
+
+151
+00:10:08,660 --> 00:10:15,200
+tạo một item tuỳ biến kế thừa QStandardItem và cài đặt lại hàm
+
+152
+00:10:15,200 --> 00:10:15,940
+lessThan.
+
+153
+00:10:16,040 --> 00:10:22,190
+Tôi sẽ tạo một lớp mới vào đây và ta sẽ đặt tên  item đó là tuỳ
+
+154
+00:10:22,190 --> 00:10:22,690
+PhotoItem.
+
+155
+00:10:26,300 --> 00:10:29,740
+Đoạn mã trong hàm này sẽ rất giống với những gì ta đã làm trước đây.
+
+156
+00:10:29,900 --> 00:10:35,520
+Đầu tiên ta phải lấy dữ liệu dưới dạng QVariant. Như vậy
+
+157
+00:10:35,520 --> 00:10:40,140
+ta sẽ tạo một QVariant, và ta sẽ gọi đó là left_data.
+
+158
+00:10:40,210 --> 00:10:42,870
+Ta có thể gọi trực tiếp hàm data.
+
+159
+00:10:42,910 --> 00:10:48,080
+Sau đó ta sẽ truyền Qt::DecorationRole vào. Và ta sẽ thực hiện
+
+160
+00:10:48,080 --> 00:10:50,350
+tương tự cho right_data.
+
+161
+00:10:50,450 --> 00:10:56,710
+Lần này ta sẽ gọi trên other, là tên tham số của hàm,
+
+162
+00:10:56,960 --> 00:10:58,630
+và thực hiện tương tự.
+
+163
+00:10:59,730 --> 00:11:00,270
+Tuyệt vời.
+
+164
+00:11:00,300 --> 00:11:02,670
+Sau đó ta cần phải lấy QIcon.
+
+165
+00:11:02,670 --> 00:11:09,630
+Ta sẽ gọi đây là left_icon, và ta sẽ làm tương tự như trên. Ta sẽ sử dụng hàm value và đưa vào
+
+166
+00:11:09,710 --> 00:11:11,190
+kiểu mà ta mong muốn.
+
+167
+00:11:11,190 --> 00:11:15,680
+Tuyệt vời. Tương tự cho right với right_data.
+
+168
+00:11:16,960 --> 00:11:24,220
+Sau đó ta gọi hàm hỗ trợ, luminosity_less_than, truyền vào left_icon và
+
+169
+00:11:24,280 --> 00:11:25,640
+right_icon.
+
+170
+00:11:25,870 --> 00:11:30,310
+Cùng với đó chúng ta sẽ phải thay đổi hàm khởi một chút, ồ phải thêm dấu chấm phẩy
+
+171
+00:11:30,310 --> 00:11:31,100
+vào đây.
+
+172
+00:11:31,210 --> 00:11:35,410
+Như vậy ta phải thay đổi hàm khởi tạo một chút.
+
+173
+00:11:35,410 --> 00:11:41,450
+Thay vì dùng một QStandardItem tại vị trí này, chúng ta sẽ dùng
+
+174
+00:11:41,450 --> 00:11:43,320
+Photo.
+
+175
+00:11:43,450 --> 00:11:45,660
+Cho cả item thứ hai nữa.
+
+176
+00:11:46,660 --> 00:11:53,020
+Cả kiểu và thực thể. Cuối cùng, khi quay trở về
+
+177
+00:11:53,020 --> 00:11:58,270
+MainWWindow, ta cần phải đảm bảo đã kích hoạt sắp xếp. Vậy ta đi tới đây, thực ra tôi đã dẫn chú thích
+
+178
+00:11:58,270 --> 00:12:00,990
+nó, ở trong setup_table_view_ui.
+
+179
+00:12:01,180 --> 00:12:03,040
+Ở đây có một hàm ghi là setSortingEnabled (đặt kích hoạt sắp xếp).
+
+180
+00:12:03,070 --> 00:12:05,720
+Tôi sẽ thiết lập thành true.
+
+181
+00:12:05,740 --> 00:12:13,530
+Bây giờ nếu chạy chương trình, ta có thể thấy rằng khi click vào các cột, ta có thể thay đổi cách sắp xếp dữ liệu.
+
+182
+00:12:13,650 --> 00:12:16,830
+Và các bạn có thể thấy sự thay đổi đối với cột thứ hai.
+
+183
+00:12:16,830 --> 00:12:21,640
+Tôi cũng muốn các bạn chú ý một điều nữa là phương pháp này còn thay đổi view còn lại.
+
+184
+00:12:21,660 --> 00:12:21,990
+thấy không?
+
+185
+00:12:21,990 --> 00:12:28,230
+Như vậy view còn lại cũng được sắp xếp theo độ sáng. Ta có sắp xếp  cột thứ hai để quan sát
+
+186
+00:12:28,230 --> 00:12:30,680
+các màu sẽ hiển thị như thế nào nếu không sắp xếp theo độ sáng.
+
+187
+00:12:30,720 --> 00:12:36,780
+Khi thay đổi trong table view, chúng ta cũng thay đổi luôn cả view khác,
+
+188
+00:12:36,780 --> 00:12:42,080
+đó là nhược điểm của sắp xếp thủ công thay vì sử dụng QProxyModel.
+
+189
+00:12:42,090 --> 00:12:47,090
+Vậy là ta đã tìm hiểu xong về cách sắp xếp lập trình. Ta đã nắm được cách sử dụng mô hình proxy.
+
+190
+00:12:47,100 --> 00:12:53,130
+Ta đã biến đến khái niệm mô hình model/view trong Qt và tầm quan trọng của nó, cũng như cách dùng sắp xếp
+
+191
+00:12:53,130 --> 00:12:55,770
+trong thực tế.
+
+192
+00:12:55,810 --> 00:12:59,320
+Hãy theo dõi video tiếp theo của chúng tôi, trong đó ta tiếp tục đi sâu vào
+
+193
+00:12:59,320 --> 00:13:02,080
+mô hình model/view bằng cách thảo luận về filtering (lọc).
+

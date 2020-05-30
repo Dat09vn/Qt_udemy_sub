@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00.740 --> 00:06.580
+This video which covers custom models we're going to cover why create custom models how to choose our
+
+00:06.580 --> 00:10.930
+models subclass based on the data structure and then walk through an example where we implement our
+
+00:10.930 --> 00:12.420
+own custom list model.
+
+00:12.430 --> 00:14.500
+So let's go ahead and get started.
+
+00:14.500 --> 00:19.930
+So first off why would we create our own custom model especially if we've been getting by so well with
+
+00:19.930 --> 00:21.930
+the built in Qt standard item model.
+
+00:22.000 --> 00:24.580
+Well sometimes our data is complex.
+
+00:24.610 --> 00:26.100
+It comes from different sources.
+
+00:26.140 --> 00:31.090
+It's dynamic or it's so expensive to query that we need to create our own model just to get around these
+
+00:31.090 --> 00:32.200
+limitations.
+
+00:32.220 --> 00:36.760
+You will occasionally also run into corners of the Qt framework where the commune's classes are not
+
+00:36.760 --> 00:41.200
+powerful enough to implement what you need requiring you to strike off on your own as well.
+
+00:41.200 --> 00:45.520
+So if you know you need a custom model what class should you based your implementation on.
+
+00:45.520 --> 00:47.620
+Well it depends on your data structure.
+
+00:47.710 --> 00:52.030
+If your data is represented by a list consider using Qt abstract list model.
+
+00:52.030 --> 00:52.870
+If it's a table.
+
+00:52.900 --> 00:58.900
+Qt abstract table model and a tree structure require you to subclass queue abstract item model completely.
+
+00:58.900 --> 01:01.930
+I would also encourage you to try and simplify your models if possible.
+
+01:01.930 --> 01:02.600
+So why you didn't.
+
+01:02.610 --> 01:03.830
+Maybe a tree structure.
+
+01:03.840 --> 01:09.250
+It may be possible to display as a table if you get creative tricks like this will help lower the complexity
+
+01:09.250 --> 01:09.840
+of your code.
+
+01:09.910 --> 01:13.180
+But for now let's go ahead and implement the simplest example.
+
+01:13.180 --> 01:15.070
+A Qt abstract list model.
+
+01:15.070 --> 01:18.610
+Now the nice thing about this model is that the data isn't hierarchical.
+
+01:18.610 --> 01:22.320
+We don't have to worry about a couple of functions which we'll talk about in the second.
+
+01:22.350 --> 01:25.360
+So here's our simple photo item model for this model.
+
+01:25.360 --> 01:30.640
+We need to reimplement the row count data set data and flags method.
+
+01:30.640 --> 01:35.320
+Now as I previously mentioned the two functions that we don't have to worry about are the index and
+
+01:35.320 --> 01:38.230
+parent functions because our data is hierarchical.
+
+01:38.380 --> 01:40.550
+So let's start implementing it.
+
+01:40.660 --> 01:45.490
+If we go down to our row count the row count method is going to be very simple.
+
+01:45.490 --> 01:50.350
+Only the root node should return the list size for all other valid parents.
+
+01:50.350 --> 01:53.130
+Row count should return a zero.
+
+01:53.150 --> 01:54.570
+So let's go ahead and check that.
+
+01:54.580 --> 02:00.950
+I will say if the index is valid we will go ahead and return a 0.
+
+02:00.950 --> 02:05.480
+The reason that we do this is so that our model never looks like a tree model in another view for
+
+02:05.540 --> 02:13.130
+any of the non-valid i.e. the root node will go ahead and return our internal data type which in this
+
+02:13.130 --> 02:19.160
+example is colors and since it's a vector we can just return the size function in order to implement
+
+02:19.250 --> 02:20.390
+our data method.
+
+02:20.390 --> 02:24.200
+The only role that we're concerned with is the cute decoration role.
+
+02:24.290 --> 02:27.420
+So we're going to check and return data based on that.
+
+02:27.470 --> 02:32.210
+And again we've got a couple of catch alls So if the index isn't valid we're just going to return a
+
+02:32.240 --> 02:37.950
+q variance and at the end of this method if we end up at the end we're going to return a blank queue
+
+02:38.180 --> 02:40.410
+as well for all our other display's role.
+
+02:40.430 --> 02:45.860
+The only rule that we're worried about is we're going to say if the rule is equal to the Qt declaration
+
+02:45.860 --> 02:51.020
+rule that means that we want to return our color information so we'll go ahead and do that.
+
+02:51.020 --> 02:52.780
+We say return again.
+
+02:52.820 --> 02:54.120
+Just the colors.
+
+02:54.140 --> 03:00.260
+And since that's the vector we'll just access the row method in the index and go ahead and return that
+
+03:00.260 --> 03:01.520
+directly.
+
+03:01.520 --> 03:05.320
+The next thing that we need to do is implement the set data function.
+
+03:05.360 --> 03:09.520
+Now the first thing that we need to do is to make sure that we're actually changing the data.
+
+03:09.530 --> 03:11.830
+So let's go ahead and check that first.
+
+03:11.870 --> 03:17.540
+The easiest way to do this is access the data using the data method which has two variables the index
+
+03:17.540 --> 03:22.850
+which we already have and the role which we have as well and what we want to make sure that we're not
+
+03:22.850 --> 03:24.850
+passing in something that's already there.
+
+03:24.860 --> 03:30.530
+So we want to make sure that this value variant that we're passing is new data so we want to make sure
+
+03:30.530 --> 03:35.150
+that the data that's in there currently is not the data that we're setting it to.
+
+03:35.510 --> 03:40.940
+Once we've got that we'll go ahead and make the changes in our underlying data which is again our colors
+
+03:41.030 --> 03:47.960
+and will access this using the list in accessor and we'll go ahead and grab the row and what we'll
+
+03:47.960 --> 03:51.200
+do is we'll set this equal to our value.
+
+03:51.200 --> 03:58.790
+But we do want to change the type so we'll use the value method on our value to get the Q color out.
+
+03:58.790 --> 04:04.130
+Now one thing that's important to note is when we actually set data we need to let the viewers know
+
+04:04.130 --> 04:08.390
+that they need to update the data and to do that we need actually emit a signal and the signal that
+
+04:08.390 --> 04:12.530
+we need to emit is actually the data change signal which takes in several things.
+
+04:12.530 --> 04:17.900
+The top left index the bottom right index which for our purposes they are the same right.
+
+04:17.900 --> 04:19.310
+We're only changing one.
+
+04:19.370 --> 04:24.620
+And then the actual rolls that we're changing which since again we're only changing a single roll.
+
+04:24.650 --> 04:27.290
+We're not super concerned with anything else.
+
+04:27.290 --> 04:33.950
+So go ahead and pass in the two indexes left most and bottoms and then we'll create a quick q vector
+
+04:34.070 --> 04:38.240
+integer type and we'll go ahead and pass our roll directly in.
+
+04:38.450 --> 04:41.050
+The last thing we want to do is go ahead and return.
+
+04:41.150 --> 04:45.620
+You know if this worked or not in more complex models or what we want would probably be some type of
+
+04:45.620 --> 04:46.720
+data validation.
+
+04:46.730 --> 04:49.860
+Now since this is a very very simple model we're not going to do that.
+
+04:49.910 --> 04:56.090
+But if for example our data validation failed then we want to be sure to let our user know that whatever
+
+04:56.090 --> 04:57.470
+they tried didn't work.
+
+04:57.500 --> 05:01.230
+And so we do that by what we return on the boolean here.
+
+05:01.700 --> 05:02.150
+Awesome.
+
+05:02.150 --> 05:06.030
+So the last thing that we need to re-implement is the flags method call.
+
+05:06.390 --> 05:13.100
+So the default flags include a item is selectable type which obscures the color whenever we select an
+
+05:13.100 --> 05:14.280
+item in the view.
+
+05:14.420 --> 05:19.790
+So you can already see this default code if the index isn't valid which means it's the root index we
+
+05:19.790 --> 05:24.450
+return no item flags because the root doesn't need to be decorated with any type of flags.
+
+05:24.650 --> 05:29.000
+And the only other thing that we want to do is go ahead and return for all our other items.
+
+05:29.000 --> 05:35.500
+We want to let the viewers know that the item is actually enabled so the item flags can be pretty tricky.
+
+05:35.540 --> 05:40.670
+If you don't return this item as a table are pictures that will get returned will actually be in grayscale
+
+05:40.760 --> 05:44.330
+which is a goofy thing to try to track down if you don't know where to look.
+
+05:44.330 --> 05:50.690
+So one thing to note is we're slightly gaming the system here because we don't return a item is editable
+
+05:50.690 --> 05:53.600
+command but if you run this code you can actually see you can edit stuff.
+
+05:53.600 --> 06:00.230
+So normally what you'd see here is a no other item rule that says that the item is editable which we're
+
+06:00.230 --> 06:06.050
+actually not going to do but that is exactly how you would implement or stack those type of item roles
+
+06:06.050 --> 06:06.540
+together.
+
+06:06.590 --> 06:12.980
+And the reason that we're not doing that is because a typical item delegates that actually do the editing
+
+06:13.100 --> 06:15.050
+they don't play well with cue dialogues.
+
+06:15.050 --> 06:20.150
+So if we go ahead and look at this main window implementation and then look at the change color slot
+
+06:20.210 --> 06:22.500
+which is how we're actually changing the colors.
+
+06:22.820 --> 06:27.240
+We first get the actual current color out but then we actually call this dialog.
+
+06:27.430 --> 06:33.230
+And in order to make that dialog work we need to do that outside of the normal editing process which
+
+06:33.230 --> 06:36.670
+is why we're not returning that edible flag because we're actually doing it outside.
+
+06:36.690 --> 06:38.940
+Let's go ahead and run this and make sure it works.
+
+06:39.990 --> 06:46.310
+Yes we messed up there a little bit with our verbiage be parent instead of index there we go.
+
+06:46.310 --> 06:48.880
+So here we've got our random assortment of pictures.
+
+06:48.920 --> 06:54.950
+And as promised if you click one of these our dialog pops open and we can actually go ahead and significantly
+
+06:54.950 --> 06:58.550
+alter any of the items that we want which gets set.
+
+06:58.550 --> 07:04.190
+If you look back at the slot so we'll close this out and we'll look at the implementation of the main
+
+07:04.190 --> 07:04.780
+window.
+
+07:04.970 --> 07:09.320
+So he uses dialogue to go ahead and get the color and then we get our model and actually call the set
+
+07:09.540 --> 07:14.540
+a command on it manually and pass in the index color and the cute decoration roll.
+
+07:14.690 --> 07:18.780
+So with that we've successfully implemented everything that we need.
+
+07:19.070 --> 07:22.070
+So we successfully implemented a custom model.
+
+07:22.070 --> 07:28.370
+We talked on the model data relationship as well as talked about the need for why would we need to
+
+07:28.400 --> 07:35.680
+create our own custom model Please join us next time where we implement a treeview as part of the series.

@@ -1,0 +1,308 @@
+1
+00:00:00,000 --> 00:00:01,620
+In this lecture, we're going to look at
+
+2
+00:00:01,620 --> 00:00:04,529
+FontDialog, a dialog that allows you to
+
+3
+00:00:04,529 --> 00:00:07,170
+choose a font and use it somewhere in your application.
+
+4
+00:00:07,170 --> 00:00:09,480
+Let's go to Qt Creator and play with this.
+
+5
+00:00:09,480 --> 00:00:12,509
+Here we are in Qt Creator.
+
+6
+00:00:12,509 --> 00:00:14,370
+We're going to create
+
+7
+00:00:14,370 --> 00:00:15,150
+a new project as usual.
+
+8
+00:00:15,150 --> 00:00:18,449
+We call it 'FontDialogDemo',
+
+9
+00:00:18,449 --> 00:00:21,619
+save it in a location on our drive,
+
+10
+00:00:21,619 --> 00:00:26,099
+choose our Qt Version, choose our desktop kit,
+
+11
+00:00:26,099 --> 00:00:32,399
+and we are here. We want to 'import'
+
+12
+00:00:32,399 --> 00:00:42,809
+'QtQuick.Dialog', let's import 1.3.
+
+13
+00:00:42,809 --> 00:00:47,059
+We also want to 'import' 'QtQuick.Controls'
+
+14
+00:00:47,149 --> 00:00:49,829
+because we want to use a button control also,
+
+15
+00:00:49,829 --> 00:00:52,920
+so we're going to say '2.4', the
+
+16
+00:00:52,920 --> 00:00:55,730
+last version we have available as of now.
+
+17
+00:00:55,730 --> 00:00:58,800
+We change the title here to say
+
+18
+00:00:58,800 --> 00:01:03,899
+'FontDialog Demo' and we put a 'Column' here, inside.
+
+19
+00:01:03,899 --> 00:01:07,229
+You must be familiar with this already.
+
+20
+00:01:07,229 --> 00:01:10,439
+'spacing' 's going to be 20.
+
+21
+00:01:10,439 --> 00:01:11,450
+Why not?
+
+22
+00:01:11,450 --> 00:01:16,189
+it's going to be in the center and
+
+23
+00:01:16,189 --> 00:01:19,110
+inside we want to have a 'Button' control.
+
+24
+00:01:19,110 --> 00:01:24,020
+The 'text' is going to say 'Change Font'.
+
+25
+00:01:24,049 --> 00:01:26,689
+It's going to be  in the centered horizontally
+
+26
+00:01:26,689 --> 00:01:30,619
+so we're going to say this.
+
+27
+00:01:30,619 --> 00:01:33,750
+'parent.horizontalCenter' and when it's clicked,
+
+28
+00:01:33,750 --> 00:01:37,170
+we want to start a dialogue. Okay we're
+
+29
+00:01:37,170 --> 00:01:43,170
+going to say 'fontDialogId'. Okay we
+
+30
+00:01:43,170 --> 00:01:45,240
+don't have this dialog yet, but we're
+
+31
+00:01:45,240 --> 00:01:46,979
+going to have it and this is going to work.
+
+32
+00:01:46,979 --> 00:01:49,890
+Down here we want to put a 'Text' component.
+
+33
+00:01:49,890 --> 00:01:55,729
+Its 'ID' is going to be 'textId',
+
+34
+00:01:55,729 --> 00:02:00,560
+the 'text' is going to say 'Hello World'.
+
+35
+00:02:01,040 --> 00:02:05,610
+And down here we want to have a 'FontDialog',
+
+36
+00:02:05,610 --> 00:02:13,880
+ID is going to be 'fontDialogId',
+
+37
+00:02:13,880 --> 00:02:19,080
+the 'title' 's going to say 'Choose Font'.
+
+38
+00:02:19,080 --> 00:02:24,710
+I want to give it a default font of
+
+39
+00:02:25,220 --> 00:02:36,060
+this one. Okay this is how I specify it.
+
+40
+00:02:36,060 --> 00:02:38,730
+I use the Qt global object and I pass in
+
+41
+00:02:38,730 --> 00:02:40,680
+the font that I want to say. I hope you
+
+42
+00:02:40,680 --> 00:02:42,450
+remember this from the Qt global
+
+43
+00:02:42,450 --> 00:02:45,300
+object. And you can see that. This is a
+
+44
+00:02:45,300 --> 00:02:47,400
+grouped property, you can specify many
+
+45
+00:02:47,400 --> 00:02:49,709
+things on this font. This is going to be
+
+46
+00:02:49,709 --> 00:02:52,380
+the default font, that is shown when we
+
+47
+00:02:52,380 --> 00:02:55,290
+open this dialog here. Okay when it is
+
+48
+00:02:55,290 --> 00:03:00,000
+accepted, we also want to know and we
+
+49
+00:03:00,000 --> 00:03:05,660
+want to know, when it is rejected too.
+
+50
+00:03:05,660 --> 00:03:14,720
+On rejection, we want to say 'console.log' and
+
+51
+00:03:14,720 --> 00:03:17,820
+when it is accepted we say 'console.log',
+
+52
+00:03:17,820 --> 00:03:21,299
+say the font that was chosen and we say
+
+53
+00:03:21,299 --> 00:03:24,239
+it like this. We also want to take the
+
+54
+00:03:24,239 --> 00:03:27,060
+font and set it as the font property for
+
+55
+00:03:27,060 --> 00:03:29,580
+the text here. So we're going to say
+
+56
+00:03:29,580 --> 00:03:40,049
+'testId.font' equals 'fontDialogId.font'.
+
+57
+00:03:40,049 --> 00:03:43,110
+Okay the font that the user selects is
+
+58
+00:03:43,110 --> 00:03:45,590
+going to be available in the font here.
+
+59
+00:03:45,590 --> 00:03:48,420
+I think we can run the application now and
+
+60
+00:03:48,420 --> 00:03:53,340
+see how it behaves. If you click the button,
+
+61
+00:03:53,340 --> 00:03:55,380
+you see that you have a window
+
+62
+00:03:55,380 --> 00:03:58,200
+here to choose the font. We can choose a
+
+63
+00:03:58,200 --> 00:03:58,680
+font.
+
+64
+00:03:58,680 --> 00:04:00,959
+Okay let's increase the size here, make
+
+65
+00:04:00,959 --> 00:04:03,930
+it 48 for example and choose my favourite
+
+66
+00:04:03,930 --> 00:04:06,810
+font, which is 'Consolas'. Let's see if we
+
+67
+00:04:06,810 --> 00:04:11,280
+can find it. 'Consolas' is here. If I hit 'OK',
+
+68
+00:04:11,280 --> 00:04:13,920
+you see that the font here changed.
+
+69
+00:04:13,920 --> 00:04:16,079
+This is really how you use the font
+
+70
+00:04:16,079 --> 00:04:18,690
+dialogues and you can then capture the
+
+71
+00:04:18,690 --> 00:04:21,600
+font and set it to other UI components
+
+72
+00:04:21,600 --> 00:04:24,750
+that have the font property like we did
+
+73
+00:04:24,750 --> 00:04:27,060
+here for the 'Text' component. This is all
+
+74
+00:04:27,060 --> 00:04:28,800
+I've to say in this lecture. In the next
+
+75
+00:04:28,800 --> 00:04:30,419
+one we're going to see how you can use
+
+76
+00:04:30,419 --> 00:04:32,730
+MessageDialog to pop up some messages
+
+77
+00:04:32,730 --> 00:00:00,000
+for the user. I'll see you there
+

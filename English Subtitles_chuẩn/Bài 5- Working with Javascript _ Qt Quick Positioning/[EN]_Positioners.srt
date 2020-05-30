@@ -1,0 +1,924 @@
+1
+00:00:00,000 --> 00:00:01,740
+In this lecture, we're going to look at
+
+2
+00:00:01,740 --> 00:00:04,950
+positioners like row/column and grid. We
+
+3
+00:00:04,950 --> 00:00:07,109
+are going to try to use them and bloat
+
+4
+00:00:07,109 --> 00:00:09,210
+the structure that we had in the last
+
+5
+00:00:09,210 --> 00:00:12,389
+lecture using anchors. Let's go to QT
+
+6
+00:00:12,389 --> 00:00:15,509
+creator and do this. Here we are in QT
+
+7
+00:00:15,509 --> 00:00:17,910
+creator and we are going to create a new
+
+8
+00:00:17,910 --> 00:00:18,630
+project.
+
+9
+00:00:18,630 --> 00:00:21,350
+It's a QT quick application as usual.
+
+10
+00:00:21,350 --> 00:00:24,529
+It's going to be called "positioners demo",
+
+11
+00:00:24,529 --> 00:00:27,590
+stored in the usual location, hit "Next",
+
+12
+00:00:27,590 --> 00:00:31,399
+choose the QT version you have installed,
+
+13
+00:00:31,399 --> 00:00:37,110
+we choose our kit and finish. Let's
+
+14
+00:00:37,110 --> 00:00:39,540
+change the title here and call it
+
+15
+00:00:39,540 --> 00:00:43,170
+"positioners demo" and we need to put a
+
+16
+00:00:43,170 --> 00:00:45,450
+rectangle inside because we need to do
+
+17
+00:00:45,450 --> 00:00:47,460
+the same structure as we did before.
+
+18
+00:00:47,460 --> 00:00:51,770
+ID is going to be containerRecId.
+
+19
+00:00:51,770 --> 00:00:55,020
+Width is going to be 300, I think that's
+
+20
+00:00:55,020 --> 00:00:56,370
+what it was.
+
+21
+00:00:56,370 --> 00:01:02,120
+Height is going to be the same as with.
+
+22
+00:01:03,559 --> 00:01:10,080
+Border, it's going to be black. And it's
+
+23
+00:01:10,080 --> 00:01:15,180
+going to be centered in the parent. And
+
+24
+00:01:15,180 --> 00:01:17,640
+by the way I don't think I mentioned
+
+25
+00:01:17,640 --> 00:01:20,220
+this in the last lecture. anchors.centerIn: parent 
+
+26
+00:01:20,220 --> 00:01:22,850
+is equivalent to setting the
+
+27
+00:01:22,850 --> 00:01:24,960
+horizontal Center and the vertical
+
+28
+00:01:24,960 --> 00:01:27,780
+Center, so it basically is the same as
+
+29
+00:01:27,780 --> 00:01:35,630
+saying. anchors.horizontalCenter
+
+30
+00:01:35,630 --> 00:01:43,130
+parent.horizontalCenter and
+
+31
+00:01:43,130 --> 00:01:53,220
+anchors.verticalCenter: parent.verticalCenter. Okay, let's give
+
+32
+00:01:53,220 --> 00:01:54,960
+it a color so that you see this working.
+
+33
+00:01:54,960 --> 00:01:57,630
+I'm going to take it out after so I'm
+
+34
+00:01:57,630 --> 00:02:02,340
+going to give it a color red. Let's run
+
+35
+00:02:02,340 --> 00:02:05,369
+the application. And if all works, it
+
+36
+00:02:05,369 --> 00:02:07,770
+should be in the center of this window
+
+37
+00:02:07,770 --> 00:02:11,310
+here. Okay, it's in the center. And if you
+
+38
+00:02:11,310 --> 00:02:13,799
+resize it's going to work the same.
+
+39
+00:02:13,799 --> 00:02:16,239
+Okay, to show you that it is equivalent,
+
+40
+00:02:16,239 --> 00:02:21,599
+I'm going to comment this out and
+
+41
+00:02:22,560 --> 00:02:28,030
+uncomment "anchors.CenterIn: parent". And
+
+42
+00:02:28,030 --> 00:02:30,400
+it's going to be the same. I wanted to
+
+43
+00:02:30,400 --> 00:02:32,530
+make this point here. I'm sorry I didn't
+
+44
+00:02:32,530 --> 00:02:36,219
+mention that in the anchors lecture. Okay,
+
+45
+00:02:36,219 --> 00:02:38,469
+so what we want to do is to put
+
+46
+00:02:38,469 --> 00:02:42,700
+a grid component inside here. We want to
+
+47
+00:02:42,700 --> 00:02:46,030
+specify the number of columns that we're
+
+48
+00:02:46,030 --> 00:02:48,609
+going to have inside. I want to have
+
+49
+00:02:48,609 --> 00:02:51,669
+three. It is four columns by default, and
+
+50
+00:02:51,669 --> 00:02:53,799
+if you want to know more about the grid
+
+51
+00:02:53,799 --> 00:02:57,030
+component, you can come to the help here
+
+52
+00:02:57,030 --> 00:03:02,980
+and type "grid". It is this easy. And they're
+
+53
+00:03:02,980 --> 00:03:04,840
+going to show you all you need to know
+
+54
+00:03:04,840 --> 00:03:05,530
+about it.
+
+55
+00:03:05,530 --> 00:03:07,750
+so what we want to do is to actually
+
+56
+00:03:07,750 --> 00:03:10,180
+copy the rectangles that we did in the
+
+57
+00:03:10,180 --> 00:03:12,040
+last lecture. I am going to open that
+
+58
+00:03:12,040 --> 00:03:15,750
+project. You can go where you save it. 
+
+59
+00:03:15,750 --> 00:03:19,510
+Let's go there. Here, okay. You can go
+
+60
+00:03:19,510 --> 00:03:22,269
+where you saved it, open the file with
+
+61
+00:03:22,269 --> 00:03:25,659
+whatever editor you see fat, and copy the
+
+62
+00:03:25,659 --> 00:03:29,349
+rectangles inside the containerRectID
+
+63
+00:03:29,349 --> 00:03:32,650
+here. so I have the project opened in Qt
+
+64
+00:03:32,650 --> 00:03:35,079
+creator so no need to do it like that,
+
+65
+00:03:35,079 --> 00:03:37,510
+but it is the same. I'm going to copy
+
+66
+00:03:37,510 --> 00:03:41,919
+from here to here okay.
+
+67
+00:03:41,919 --> 00:03:44,669
+Double check to make sure that it is the
+
+68
+00:03:44,669 --> 00:03:47,919
+rectangles that you want. I'm going to
+
+69
+00:03:47,919 --> 00:03:50,859
+copy them, come back to our project and
+
+70
+00:03:50,859 --> 00:03:54,549
+place them inside. Of course, I'm going to
+
+71
+00:03:54,549 --> 00:03:57,040
+have to do some modifications. Because we
+
+72
+00:03:57,040 --> 00:04:00,459
+are using the grid positioning system, we
+
+73
+00:04:00,459 --> 00:04:02,590
+don't need to do anchors ourselves, so
+
+74
+00:04:02,590 --> 00:04:06,780
+I'm going to take them out. One is gone
+
+75
+00:04:06,780 --> 00:04:13,659
+two is gone, three is gone. Let's take all
+
+76
+00:04:13,659 --> 00:04:20,139
+this garbage out. Four is gone. This
+
+77
+00:04:20,139 --> 00:04:22,139
+also should go.
+
+78
+00:04:22,139 --> 00:04:26,039
+This also should go.
+
+79
+00:04:30,740 --> 00:04:36,180
+Go, okay, I'm just taking these
+
+80
+00:04:36,180 --> 00:04:41,729
+anchors out, so we have six rectangles
+
+81
+00:04:41,729 --> 00:04:45,860
+inside: top left, top center, top right,
+
+82
+00:04:45,860 --> 00:04:50,030
+center left, center Center, center right,
+
+83
+00:04:50,030 --> 00:04:53,130
+bottom left, bottom center, and bottom
+
+84
+00:04:53,130 --> 00:04:56,460
+right. They are positioned in a green
+
+85
+00:04:56,460 --> 00:05:00,530
+component and the number of columns is
+
+86
+00:05:00,530 --> 00:05:04,580
+three. Why is it four? I set it to three,
+
+87
+00:05:04,580 --> 00:05:09,810
+okay. If you run the application, let's
+
+88
+00:05:09,810 --> 00:05:12,410
+see what we get.
+
+89
+00:05:12,410 --> 00:05:17,010
+Seems like I've forgot some anchor here.
+
+90
+00:05:17,010 --> 00:05:19,410
+Okay, and this is a good time to learn
+
+91
+00:05:19,410 --> 00:05:21,660
+that you cannot specify our anchors for
+
+92
+00:05:21,660 --> 00:05:25,289
+items inside the grid. Grid do not work if
+
+93
+00:05:25,289 --> 00:05:29,660
+you do that. Okay, we forgot this one.
+
+94
+00:05:29,660 --> 00:05:36,630
+Let's double check again. And while I am
+
+95
+00:05:36,630 --> 00:05:39,000
+here, I should take out this red color
+
+96
+00:05:39,000 --> 00:05:42,449
+because I used it to show you this
+
+97
+00:05:42,449 --> 00:05:45,060
+stands here. Now you know it, there's no
+
+98
+00:05:45,060 --> 00:05:50,039
+need. Let's run, mm-hmm, we have our
+
+99
+00:05:50,039 --> 00:05:55,680
+rectangles but the center-left rectangle
+
+100
+00:05:55,680 --> 00:05:58,680
+is missing. What is happening here? It
+
+101
+00:05:58,680 --> 00:06:03,020
+doesn't have a color, so we took it out.
+
+102
+00:06:03,020 --> 00:06:05,039
+Let's make it beige.
+
+103
+00:06:05,039 --> 00:06:10,949
+I love beige. Run again, mm-hmm,
+
+104
+00:06:10,949 --> 00:06:14,039
+these are our elements positioned in 
+
+105
+00:06:14,039 --> 00:06:17,180
+a grid. I hope you can appreciate how
+
+106
+00:06:17,180 --> 00:06:19,979
+simple the code became for this thing.
+
+107
+00:06:19,979 --> 00:06:22,080
+Okay, you basically put your rectangles
+
+108
+00:06:22,080 --> 00:06:25,860
+inside and the grid positioner takes
+
+109
+00:06:25,860 --> 00:06:28,380
+care of positioning them for you in a
+
+110
+00:06:28,380 --> 00:06:30,750
+grid. All you have to do is specify the
+
+111
+00:06:30,750 --> 00:06:33,270
+number of columns here you want. Let's
+
+112
+00:06:33,270 --> 00:06:35,340
+see what happens if you specify two
+
+113
+00:06:35,340 --> 00:06:39,300
+columns. Run again.
+
+114
+00:06:39,300 --> 00:06:41,970
+Okay, two columns. And you see that the
+
+115
+00:06:41,970 --> 00:06:44,879
+system forces, thanks to be layout, in two
+
+116
+00:06:44,879 --> 00:06:47,629
+columns. Let's turn this back to three.
+
+117
+00:06:47,629 --> 00:06:52,889
+Run again. And boom, this is our thing
+
+118
+00:06:52,889 --> 00:06:55,319
+here. Another thing I want you to see is
+
+119
+00:06:55,319 --> 00:06:57,270
+that you can comment out the columns
+
+120
+00:06:57,270 --> 00:07:00,740
+here and change the element to a row and
+
+121
+00:07:00,740 --> 00:07:05,960
+have things displayed from left to right.
+
+122
+00:07:05,960 --> 00:07:09,990
+This is that. Okay, nine rectangles from
+
+123
+00:07:09,990 --> 00:07:13,110
+left to right. You can also do the same
+
+124
+00:07:13,110 --> 00:07:16,889
+in a vertical fashion. So you can do
+
+125
+00:07:16,889 --> 00:07:20,639
+"column" to help them lay down from top to
+
+126
+00:07:20,639 --> 00:07:26,599
+bottom. It is this easy, top to bottom. I
+
+127
+00:07:26,599 --> 00:07:29,340
+don't think we have enough space to show
+
+128
+00:07:29,340 --> 00:07:32,400
+all of this but they are here 1 2 3 4 5
+
+129
+00:07:32,400 --> 00:07:36,180
+6 7. Two are not visible because we don't
+
+130
+00:07:36,180 --> 00:07:38,550
+have enough vertical space. We centered
+
+131
+00:07:38,550 --> 00:07:41,699
+this. Let's take out this CenterIn parent
+
+132
+00:07:41,699 --> 00:07:45,719
+thing so that it is aligned to the
+
+133
+00:07:45,719 --> 00:07:51,210
+top of the parent. And you see our things
+
+134
+00:07:51,210 --> 00:07:56,029
+here. Let's turn this back to the grid and
+
+135
+00:07:56,029 --> 00:07:59,159
+specify our columns here. Another thing I
+
+136
+00:07:59,159 --> 00:08:00,779
+want you to see is that you can specify
+
+137
+00:08:00,779 --> 00:08:02,969
+the spacing between your elements. So you
+
+138
+00:08:02,969 --> 00:08:09,900
+can say spacing 10. Run again and there
+
+139
+00:08:09,900 --> 00:08:13,349
+is going to be a distance of 10 between
+
+140
+00:08:13,349 --> 00:08:16,620
+your elements. You can also do row
+
+141
+00:08:16,620 --> 00:08:20,699
+spacing to have your rows separated by a
+
+142
+00:08:20,699 --> 00:08:23,580
+distance that you specify here.
+
+143
+00:08:23,580 --> 00:08:27,740
+Rowspacing, say 10. 
+
+144
+00:08:27,740 --> 00:08:32,539
+Let's do that. Okay, they are separated.
+
+145
+00:08:32,539 --> 00:08:42,269
+you can do "columnspacing". Let's do 10 as
+
+146
+00:08:42,269 --> 00:08:45,839
+well. The space is going to be between
+
+147
+00:08:45,839 --> 00:08:48,810
+the columns. Okay. And by now, I hope you
+
+148
+00:08:48,810 --> 00:08:51,240
+see that specifying the spacing here is
+
+149
+00:08:51,240 --> 00:08:52,360
+like
+
+150
+00:08:52,360 --> 00:08:54,430
+specifying both the row and column
+
+151
+00:08:54,430 --> 00:08:56,970
+spacing. It's going to be the same thing.
+
+152
+00:08:56,970 --> 00:09:04,500
+Let's run, same thing. Let's comment this out.
+
+153
+00:09:04,589 --> 00:09:07,990
+Okay, so far we have only rectangles with
+
+154
+00:09:07,990 --> 00:09:10,360
+colors, but I want to do something more
+
+155
+00:09:10,360 --> 00:09:13,029
+interesting for now. I'm going to put an
+
+156
+00:09:13,029 --> 00:09:16,450
+image inside this top left rectangle, so
+
+157
+00:09:16,450 --> 00:09:19,540
+I'm going to say "Image". I'm going to give
+
+158
+00:09:19,540 --> 00:09:25,000
+it a width of 15, a height of 15. And I
+
+159
+00:09:25,000 --> 00:09:27,579
+need to specify the source image.
+
+160
+00:09:27,579 --> 00:09:30,820
+Okay, I'm going to select the resources
+
+161
+00:09:30,820 --> 00:09:36,060
+folder here. Right, click, add new, Qt
+
+162
+00:09:36,060 --> 00:09:39,839
+resource file. I'm going to call it
+
+163
+00:09:39,839 --> 00:09:46,180
+"resources". Hit "next". we have worked with
+
+164
+00:09:46,180 --> 00:09:48,880
+the resources before, so this is not new
+
+165
+00:09:48,880 --> 00:09:53,470
+to you. I want to add a prefix because I
+
+166
+00:09:53,470 --> 00:09:55,060
+don't want to have any specific
+
+167
+00:09:55,060 --> 00:09:57,100
+preference, so I'm going to take this out
+
+168
+00:09:57,100 --> 00:10:00,490
+and hit "enter". I am going to go where my
+
+169
+00:10:00,490 --> 00:10:04,209
+main.qml file is created, showing
+
+170
+00:10:04,209 --> 00:10:08,410
+Explorer right here, and I'm going to
+
+171
+00:10:08,410 --> 00:10:10,959
+fall into the folder for our project
+
+172
+00:10:10,959 --> 00:10:15,100
+here. I want to add an image folder. Let's
+
+173
+00:10:15,100 --> 00:10:20,320
+call it "images", and I am going to paste
+
+174
+00:10:20,320 --> 00:10:23,320
+in an image that I have prepared on my
+
+175
+00:10:23,320 --> 00:10:27,720
+drive. Let's come back to our project, add
+
+176
+00:10:27,720 --> 00:10:31,420
+files to the resources file that we just
+
+177
+00:10:31,420 --> 00:10:34,899
+created, go in images, choose this LearnQt
+
+178
+00:10:34,899 --> 00:10:40,060
+image and save. So I can come back
+
+179
+00:10:40,060 --> 00:10:43,170
+to our qml file and say "images/learnQt.png"
+
+180
+00:10:43,170 --> 00:10:47,649
+I need to anchor
+
+181
+00:10:47,649 --> 00:10:51,339
+this image into its parent which is top
+
+182
+00:10:51,339 --> 00:10:53,440
+left rec, so I'm going to say
+
+183
+00:10:53,440 --> 00:11:00,100
+anchors.CenterIn: parent. Run again, mm-hmm,
+
+184
+00:11:00,100 --> 00:11:02,980
+and you see that our image is showing up
+
+185
+00:11:02,980 --> 00:11:04,970
+in the top left
+
+186
+00:11:04,970 --> 00:11:07,189
+rectangle here. Another thing I want you to
+
+187
+00:11:07,189 --> 00:11:08,709
+see is that you can specify the
+
+188
+00:11:08,709 --> 00:11:12,139
+alignment for the cells in your grid. Let
+
+189
+00:11:12,139 --> 00:11:14,660
+me show you what I mean. If I take the
+
+190
+00:11:14,660 --> 00:11:17,629
+size of this top left rectangle and turn
+
+191
+00:11:17,629 --> 00:11:24,769
+it to 60 and run again, it's not going to
+
+192
+00:11:24,769 --> 00:11:27,079
+fill the available width, so it's going
+
+193
+00:11:27,079 --> 00:11:30,230
+to be aligned to the top left by default.
+
+194
+00:11:30,230 --> 00:11:33,259
+You can control this alignment by using
+
+195
+00:11:33,259 --> 00:11:36,709
+the properties on your grid, and one of
+
+196
+00:11:36,709 --> 00:11:40,610
+them is horizontalItemAlignment and
+
+197
+00:11:40,610 --> 00:11:43,610
+you can specify different properties. You
+
+198
+00:11:43,610 --> 00:11:47,899
+can say Grid.AlignBottom horizontal
+
+199
+00:11:47,899 --> 00:11:51,230
+center left, right, top or verticalCenter.
+
+200
+00:11:51,230 --> 00:11:57,829
+For now, we want to do to the right. Let's
+
+201
+00:11:57,829 --> 00:12:00,980
+run this and you see that it is aligned
+
+202
+00:12:00,980 --> 00:12:03,079
+to the right. You can try passing in
+
+203
+00:12:03,079 --> 00:12:05,600
+other properties to see the effect of
+
+204
+00:12:05,600 --> 00:12:08,240
+your things here. You can also do
+
+205
+00:12:08,240 --> 00:12:15,699
+verticalItemAlignment. Let's do 
+
+206
+00:12:15,699 --> 00:12:24,350
+Grid.AlignVerticalCenter and you can see
+
+207
+00:12:24,350 --> 00:12:26,949
+that it is in the center vertically.
+
+208
+00:12:26,949 --> 00:12:29,420
+Before we wrap up this lecture, I want
+
+209
+00:12:29,420 --> 00:12:31,790
+you to know that you can also do mirroring
+
+210
+00:12:31,790 --> 00:12:34,639
+on your grid. The way you do that,
+
+211
+00:12:34,639 --> 00:12:37,759
+you come to your grid here and say
+
+212
+00:12:37,759 --> 00:12:43,879
+"LayoutMirroring.enabled", set this to
+
+213
+00:12:43,879 --> 00:12:46,850
+true and we want the children to inherit
+
+214
+00:12:46,850 --> 00:12:49,779
+this property to have them mirrored
+
+215
+00:12:49,779 --> 00:12:52,430
+correctly, so we're going to say 
+
+216
+00:12:52,430 --> 00:12:57,350
+"LayoutMirroring.ChildrenInherit" and set this
+
+217
+00:12:57,350 --> 00:13:00,949
+to true. And you can find all these
+
+218
+00:13:00,949 --> 00:13:03,290
+properties by looking in the
+
+219
+00:13:03,290 --> 00:13:05,149
+documentation. We have this selected
+
+220
+00:13:05,149 --> 00:13:08,389
+within F1. You're going to see all about
+
+221
+00:13:08,389 --> 00:13:12,199
+this attached property. Let's run the
+
+222
+00:13:12,199 --> 00:13:16,040
+application and you can see that the
+
+223
+00:13:16,040 --> 00:13:18,380
+order of things is reversed. This
+
+224
+00:13:18,380 --> 00:13:20,480
+to the left here and it's to the right
+
+225
+00:13:20,480 --> 00:13:23,630
+now. Okay, discovers all I had to say in
+
+226
+00:13:23,630 --> 00:13:25,670
+this lecture, I hope you know how you can
+
+227
+00:13:25,670 --> 00:13:28,970
+work with row, column and grid. In the
+
+228
+00:13:28,970 --> 00:13:30,440
+next lecture, we're going to look at a
+
+229
+00:13:30,440 --> 00:13:32,630
+much more powerful positioning technique
+
+230
+00:13:32,630 --> 00:13:35,900
+that is layout. I'll see you in the next
+
+231
+00:13:35,900 --> 00:00:00,000
+lecture.
+

@@ -1,0 +1,892 @@
+1
+00:00:00,000 --> 00:00:02,280
+Trong bài giảng này, chúng ta sẽ xem xét
+
+2
+00:00:02,280 --> 00:00:05,730
+một số phần tử cơ bản trong QML. Bao gồm
+
+3
+00:00:05,730 --> 00:00:09,630
+những thứ như rectangle (hình chữ nhật), image (hình ảnh) và text (text). Nhưng
+
+4
+00:00:09,630 --> 00:00:11,790
+trước khi bắt đầu, ta sẽ ghé thăm một
+
+5
+00:00:11,790 --> 00:00:14,300
+phần tử, là cha của tất cả
+
+6
+00:00:14,300 --> 00:00:16,500
+các phần tử trực quan mà ta đã sử dụng cho đến nay
+
+7
+00:00:16,500 --> 00:00:19,289
+và nhiều phần tử khác. Và nó
+
+8
+00:00:19,289 --> 00:00:21,630
+được gọi là "Item". Hãy đi đến
+
+9
+00:00:21,630 --> 00:00:25,320
+tài liệu tham khảo và nhìn vào nó, mà ta có
+
+10
+00:00:25,320 --> 00:00:30,420
+mục ở đây. Nhấn enter và ta chọn "Item
+
+11
+00:00:30,420 --> 00:00:33,360
+QML type", chọn phiên bản mới hơn của
+
+12
+00:00:33,360 --> 00:00:36,480
+Qt đã được cài đặt ở đây. Và nếu ta nhìn
+
+13
+00:00:36,480 --> 00:00:39,480
+vào phần mô tả nó nói "Loại Item
+
+14
+00:00:39,480 --> 00:00:42,600
+là loại cơ sở cho tất cả các mục trực quan trong
+
+15
+00:00:42,600 --> 00:00:44,700
+QT Quick". Và nếu ta nhìn vào
+
+16
+00:00:44,700 --> 00:00:46,800
+các thuộc tính nó có, mà ta đã
+
+17
+00:00:46,800 --> 00:00:49,410
+sử dụng một trong số chúng, có thể
+
+18
+00:00:49,410 --> 00:00:52,559
+thấy rằng nó có thuộc tính là "anchors". Ta
+
+19
+00:00:52,559 --> 00:00:54,989
+đã sử dụng anchors.centerIn:parent.
+
+20
+00:00:54,989 --> 00:00:57,600
+Có nhiều "anchors" như chúng ta đang 
+
+21
+00:00:57,600 --> 00:01:00,000
+thấy. Và tính chất này đến từ
+
+22
+00:01:00,000 --> 00:01:02,870
+Item cha và các phần tử khác như
+
+23
+00:01:02,870 --> 00:01:05,939
+rectangle và text phải kế thừa
+
+24
+00:01:05,939 --> 00:01:08,130
+điều này. Vì vậy, những gì chúng ta sẽ làm là tạo ra
+
+25
+00:01:08,130 --> 00:01:10,500
+"Qt Quick project" và nghịch ngợm với nó
+
+26
+00:01:10,500 --> 00:01:14,100
+để thấy chúng hoạt động. Đánh
+
+27
+00:01:14,100 --> 00:01:18,869
+"File" => "New project". Ta đặt tên dự án là
+
+28
+00:01:18,869 --> 00:01:22,619
+QMLBasicElementsDemo. Lưu nó trong một
+
+29
+00:01:22,619 --> 00:01:26,060
+vị trí trên ổ đĩa. Nhấn "Next" và
+
+30
+00:01:26,060 --> 00:01:29,970
+chọn bộ công cụ (kit) lúc này tên là "Desktop".
+
+31
+00:01:29,970 --> 00:01:34,799
+Nhấn "Next" rồi "Finish". Ta
+
+32
+00:01:34,799 --> 00:01:36,979
+sẽ thay đổi tiêu đề ở đây và
+
+33
+00:01:36,979 --> 00:01:39,810
+tạo một phần tử "Item". Tôi nghĩ đây là
+
+34
+00:01:39,810 --> 00:01:42,479
+lần đầu tiên chúng ta sử dụng nó. Ta cung cấp cho nó một
+
+35
+00:01:42,479 --> 00:01:45,270
+ID. Thuộc tính này cũng của
+
+36
+00:01:45,270 --> 00:01:52,220
+Item. Ta sẽ gán cho nó vị trí x là 50 và
+
+37
+00:01:52,220 --> 00:01:56,040
+Y là 50. Và nhân tiện ta có thể
+
+38
+00:01:56,040 --> 00:01:58,590
+chỉ định các thuộc tính trên một dòng, như
+
+39
+00:01:58,590 --> 00:02:00,799
+thế này, bằng cách tách chúng bằng dấu chấm phẩy.
+
+40
+00:02:00,799 --> 00:02:04,799
+Điều khác ta có thể làm là như thế này. Đây
+
+41
+00:02:04,799 --> 00:02:06,750
+cũng là một cú pháp khác
+
+42
+00:02:06,750 --> 00:02:09,690
+chấp nhận được trong QML. Và tôi thấy mình
+
+43
+00:02:09,690 --> 00:02:11,570
+đang làm xáo trộn những thứ này.
+
+44
+00:02:11,570 --> 00:02:14,400
+Được rồi, bên trong chúng ta sẽ đặt
+
+45
+00:02:14,400 --> 00:02:18,410
+rectangle. Ta đã biết rectangle.
+
+46
+00:02:18,410 --> 00:02:22,950
+Chiều rộng sẽ là 15, chiều cao
+
+47
+00:02:22,950 --> 00:02:27,300
+sẽ là 15. Màu sắc sẽ
+
+48
+00:02:27,300 --> 00:02:29,940
+là màu đỏ. Và bên trong ta sẽ đưa vào
+
+49
+00:02:29,940 --> 00:02:33,240
+một MouseArea được lấp đầy
+
+50
+00:02:33,240 --> 00:02:36,480
+toàn bộ rectangle. Vì vậy, ta có
+
+51
+00:02:36,480 --> 00:02:43,080
+"anchors". Và chúng ta muốn biết khi nào
+
+52
+00:02:43,080 --> 00:02:45,300
+MouseArea được nhấp.
+
+53
+00:02:45,300 --> 00:02:47,280
+Điều khác ta muốn làm là cho
+
+54
+00:02:47,280 --> 00:02:50,190
+rectangle này là một vị trí cố định. Ta
+
+55
+00:02:50,190 --> 00:02:54,180
+sẽ đặt vào x 10 và y 10. Và ta
+
+56
+00:02:54,180 --> 00:02:55,980
+sẽ định nghĩa các rectangle khác như
+
+57
+00:02:55,980 --> 00:03:00,840
+tốt, giống như cái này. Nhưng ta sẽ
+
+58
+00:03:00,840 --> 00:03:03,150
+thay đổi vị trí x và màu sắc.
+
+59
+00:03:03,150 --> 00:03:08,010
+Vì vậy, cái này x sẽ là 60.
+
+60
+00:03:08,010 --> 00:03:13,920
+Và nó màu xanh lá. Một cái khác
+
+61
+00:03:13,920 --> 00:03:20,790
+sẽ là 120. Và nó sẽ
+
+62
+00:03:20,790 --> 00:03:25,709
+màu xanh dương. Và thêm cái nữa
+
+63
+00:03:25,709 --> 00:03:30,110
+ở 180. Và nó sẽ có màu hồng.
+
+64
+00:03:30,110 --> 00:03:32,760
+Điều gì xảy ra khi ta chạy
+
+65
+00:03:32,760 --> 00:03:34,980
+ứng dụng này? Ta sẽ có
+
+66
+00:03:34,980 --> 00:03:38,340
+Item bao ngoài rectangle này và
+
+67
+00:03:38,340 --> 00:03:41,160
+tọa độ của những
+
+68
+00:03:41,160 --> 00:03:43,320
+rectangle sẽ bắt đầu tại
+
+69
+00:03:43,320 --> 00:03:46,050
+vị trí này vì đây là phần bao ngoài
+
+70
+00:03:46,050 --> 00:03:48,630
+chứa những rectangle này. Hãy
+
+71
+00:03:48,630 --> 00:03:50,370
+chạy ứng dụng để tự mình thấy.
+
+72
+00:03:50,370 --> 00:03:55,920
+Vậy điều gì sẽ xảy ra? Rectangle màu đỏ
+
+73
+00:03:55,920 --> 00:03:59,100
+và rectangle màu xanh đang dính vào
+
+74
+00:03:59,100 --> 00:04:01,800
+nhau. Được rồi, hãy đặt chỗ này là 0
+
+75
+00:04:01,800 --> 00:04:05,250
+để chúng không dính vào nhau nữa. Được rồi
+
+76
+00:04:05,250 --> 00:04:07,709
+điều này đã tốt hơn nhiều. Để làm điều này
+
+77
+00:04:07,709 --> 00:04:10,100
+rõ ràng hơn tôi sẽ chỉ định
+
+78
+00:04:10,100 --> 00:04:13,800
+rectangle con cho Item này và làm cho nó
+
+79
+00:04:13,800 --> 00:04:16,709
+lấp đầy toàn bộ Item. Như vậy ta sẽ làm
+
+80
+00:04:16,709 --> 00:04:20,510
+kiểu như thế này.
+
+81
+00:04:20,720 --> 00:04:23,810
+Và ta sẽ cho nó màu
+
+82
+00:04:23,810 --> 00:04:30,230
+be. Được rồi, tại sao lại làm điều này? Nó là
+
+83
+00:04:30,230 --> 00:04:33,380
+bởi vì phần tử "Item" không hỗ trợ
+
+84
+00:04:33,380 --> 00:04:36,470
+thuộc tính màu này và ta lại muốn đặt
+
+85
+00:04:36,470 --> 00:04:38,540
+trong rectangle có màu nền
+
+86
+00:04:38,540 --> 00:04:40,730
+để ẩn đi mọi thứ. Tôi
+
+87
+00:04:40,730 --> 00:04:46,100
+cũng sẽ tạo ra một đường viền. Và ta
+
+88
+00:04:46,100 --> 00:04:48,470
+sẽ gán cho Item ở đây một chiều rộng
+
+89
+00:04:48,470 --> 00:04:50,990
+và chiều cao. Vì vậy, chiều rộng sẽ là
+
+90
+00:04:50,990 --> 00:04:55,850
+một cái gì đó như 400. Tại sao không? Và
+
+91
+00:04:55,850 --> 00:05:01,840
+chiều cao sẽ là 300. Chạy nào.
+
+92
+00:05:01,840 --> 00:05:05,690
+Mm-hmm ... và ta thấy rằng Item
+
+93
+00:05:05,690 --> 00:05:08,810
+bao quanh rectangle màu be này. Và
+
+94
+00:05:08,810 --> 00:05:11,120
+ta có thể thấy rằng các phần tử bên trong
+
+95
+00:05:11,120 --> 00:05:13,760
+Item được thiết đặt trong
+
+96
+00:05:13,760 --> 00:05:17,300
+hệ thống tọa độ của Item. Ta có thể thấy rằng x bằng
+
+97
+00:05:17,300 --> 00:05:20,530
+0 với rectangle màu đỏ và y bằng 10
+
+98
+00:05:20,530 --> 00:05:24,830
+bắt đầu tính từ điểm gốc của
+
+99
+00:05:24,830 --> 00:05:27,410
+Item rectangle. Tôi hy vọng điều này dễ hiểu.
+
+100
+00:05:27,410 --> 00:05:30,560
+Và giá trị x của những rectangle khác cũng tăng theo.
+
+101
+00:05:30,560 --> 00:05:33,230
+rectangle màu xanh lá có giá trị
+
+102
+00:05:33,230 --> 00:05:36,169
+x cao hơn một chút. Và những điều tương tự
+
+103
+00:05:36,169 --> 00:05:38,390
+xảy ra cho rectangle màu xanh dương và
+
+104
+00:05:38,390 --> 00:05:41,900
+rectangle màu hồng. Ok, một điều ta
+
+105
+00:05:41,900 --> 00:05:43,220
+nên lưu ý là có một số
+
+106
+00:05:43,220 --> 00:05:45,169
+thuộc tính là của Item
+
+107
+00:05:45,169 --> 00:05:48,260
+và một trong số đó là id, x, y,
+
+108
+00:05:48,260 --> 00:05:50,840
+chiều rộng và chiều cao. Nếu quay trở lại
+
+109
+00:05:50,840 --> 00:05:52,700
+tài liệu tham khảo ta sẽ thấy chúng.
+
+110
+00:05:52,700 --> 00:05:57,860
+Ta thấy x y z ... Chúng ta có chiều rộng ở đây. Và
+
+111
+00:05:57,860 --> 00:06:00,979
+nếu ta đi lên, ta có thể tìm thấy chiều cao ở đây.
+
+112
+00:06:00,979 --> 00:06:02,720
+Đây là những thuộc tính
+
+113
+00:06:02,720 --> 00:06:04,640
+của Item. Nhưng có
+
+114
+00:06:04,640 --> 00:06:06,530
+những thuộc tính mà Item đó không có.
+
+115
+00:06:06,530 --> 00:06:09,470
+Và một trong đó là màu sắc và
+
+116
+00:06:09,470 --> 00:06:12,320
+đường viền vì ở đây Item không
+
+117
+00:06:12,320 --> 00:06:14,810
+được cho là có thể nhìn thấy được. Nó không thể có
+
+118
+00:06:14,810 --> 00:06:18,410
+màu như rectangle. Một điều tôi
+
+119
+00:06:18,410 --> 00:06:20,900
+muốn chúng ta thấy là ta có thể sử dụng
+
+120
+00:06:20,900 --> 00:06:23,900
+phần tử "Item" để bao quanh các Item khác.
+
+121
+00:06:23,900 --> 00:06:27,500
+Ta đã thực sự thực hiện điều đó bằng cách thiết lập
+
+122
+00:06:27,500 --> 00:06:30,470
+vị trí x và y cho phần tử "Item".
+
+123
+00:06:30,470 --> 00:06:32,780
+Ta có thể thấy rằng nó bắt đầu ở đây. Như vậy, nếu tôi
+
+124
+00:06:32,780 --> 00:06:34,610
+comment đoạn này lại.
+
+125
+00:06:34,610 --> 00:06:37,909
+Ta sẽ thấy rectangle màu be 
+
+126
+00:06:37,909 --> 00:06:40,729
+này chính là Item được
+
+127
+00:06:40,729 --> 00:06:43,039
+chuyển về (0, 0), từ phần tử
+
+128
+00:06:43,039 --> 00:06:45,789
+cha chính là phần tử "Window" này.
+
+129
+00:06:45,789 --> 00:06:49,039
+Hãy chạy lại. Okay, ta thấy nó
+
+130
+00:06:49,039 --> 00:06:51,919
+bắt đầu từ 0. Chúng ta có thể thao tác
+
+131
+00:06:51,919 --> 00:06:54,800
+tất cả những phần tử này chỉ bằng thao tác
+
+132
+00:06:54,800 --> 00:06:58,069
+vị trí x và y của phần tử "Item". Và
+
+133
+00:06:58,069 --> 00:07:00,379
+tôi hy vọng điều này chỉ cho ta biết 
+
+134
+00:07:00,379 --> 00:07:02,929
+ta có thể sử dụng phần tử "Item" để nhóm
+
+135
+00:07:02,929 --> 00:07:05,239
+các phần tử khác nhau với nhau và 
+
+136
+00:07:05,239 --> 00:07:08,149
+thực hiện các thao tác nhóm
+
+137
+00:07:08,149 --> 00:07:12,169
+cho các mục có chứa. Hãy bỏ ghi chú này lại và đặt
+
+138
+00:07:12,169 --> 00:07:16,669
+giá trị x là 150. Sao lại không? Chạy lại
+
+139
+00:07:16,669 --> 00:07:21,379
+và ta thấy nó di chuyển nhẹ đến
+
+140
+00:07:21,379 --> 00:07:22,009
+bên phải.
+
+141
+00:07:22,009 --> 00:07:24,469
+Một phần tử khác tôi muốn xem xét là
+
+142
+00:07:24,469 --> 00:07:29,059
+phần tử "text". Vì vậy, hãy dùng nó ở
+
+143
+00:07:29,059 --> 00:07:33,709
+đây. Ta cung cấp cho nó một ID và ta có thể cung cấp cho nó
+
+144
+00:07:33,709 --> 00:07:35,899
+một thuộc tính text là văn bản
+
+145
+00:07:35,899 --> 00:07:38,329
+sẽ được hiển thị. Vì vậy, chúng tôi có thể nhập
+
+146
+00:07:38,329 --> 00:07:38,809
+nội dung:
+
+147
+00:07:38,809 --> 00:07:45,740
+"Đây là text của tôi". Và nếu chạy cái này
+
+148
+00:07:45,740 --> 00:07:50,839
+ta sẽ thấy? Hãy chạy. Thấy điều đó chứ ? Ta
+
+149
+00:07:50,839 --> 00:07:54,499
+xem "Đây là text của tôi" ở đầu
+
+150
+00:07:54,499 --> 00:07:57,740
+rectangle bao quanh phẩn tử
+
+151
+00:07:57,740 --> 00:08:00,259
+Item và text được hiển thị tại
+
+152
+00:08:00,259 --> 00:08:03,349
+vị trí (0, 0), có nghĩa là khi
+
+153
+00:08:03,349 --> 00:08:06,199
+ta không chỉ định vị trí x và y cho
+
+154
+00:08:06,199 --> 00:08:09,019
+phần tử của ta nó sẽ là (0, 0).
+
+155
+00:08:09,019 --> 00:08:11,509
+Được rồi, ta nên biết điều này
+
+156
+00:08:11,509 --> 00:08:14,179
+nếu muốn text hiển thị bên dưới
+
+157
+00:08:14,179 --> 00:08:16,999
+rectangle. Ta sẽ cung cấp cho nó một 
+
+158
+00:08:16,999 --> 00:08:22,069
+giá trị của x, giả sử, 100 và giá trị y
+
+159
+00:08:22,069 --> 00:08:25,819
+100. Một điều khác ta có thể gán cho
+
+160
+00:08:25,819 --> 00:08:28,219
+phần tử "text" này có kích thước của
+
+161
+00:08:28,219 --> 00:08:30,469
+phông chữ. Và ta làm điều đó bằng cách sử dụng
+
+162
+00:08:30,469 --> 00:08:33,529
+thuộc tính phông chữ được nhóm và phông chữ trong pointSize.
+
+163
+00:08:33,529 --> 00:08:36,979
+Ta có thể gán 20 ở đây. Hãy xem
+
+164
+00:08:36,979 --> 00:08:43,698
+những gì ta nhận được, mm hmm ... Đây là text của tôi. Những
+
+165
+00:08:43,698 --> 00:08:46,009
+thuộc tính cơ bản khác nhau mà ta
+
+166
+00:08:46,009 --> 00:08:48,089
+có thể sử dụng trên phần tử "text". Và
+
+167
+00:08:48,089 --> 00:08:50,550
+như thường lệ nếu ta cần biết thêm về nó
+
+168
+00:08:50,550 --> 00:08:54,300
+ta có thể chọn nó, nhấn F1 và ta
+
+169
+00:08:54,300 --> 00:08:57,029
+sẽ có tài liệu hướng dẫn về nó.
+
+170
+00:08:57,029 --> 00:08:59,970
+Các mục "text" có thể hiển thị cả văn bản
+
+171
+00:08:59,970 --> 00:09:03,240
+thường và văn bản dạng đa thức. Ví dụ:một đoạn văn bản màu đỏ
+
+172
+00:09:03,240 --> 00:09:05,610
+với phông chữ và kích thước đặc thù có thể
+
+173
+00:09:05,610 --> 00:09:08,730
+được định nghĩa thế này, "Hello World!", "font
+
+174
+00:09:08,730 --> 00:09:10,889
+family" là Helvertica, pointSize như thế này và
+
+175
+00:09:10,889 --> 00:09:14,519
+"color" có giá trị là "red". Hãy sao chép cái này. Sao
+
+176
+00:09:14,519 --> 00:09:24,240
+lại không? Quay lại đoạn text của chúng ta và đưa vào
+
+177
+00:09:24,240 --> 00:09:27,779
+các thuộc tính này tại đây. Control + A, Control + I
+
+178
+00:09:27,779 --> 00:09:38,399
+để sắp xếp chúng lại. Chạy lại, mm-hmm ... Và
+
+179
+00:09:38,399 --> 00:09:41,430
+chúng tôi có text ở đây. Và thuộc tính
+
+180
+00:09:41,430 --> 00:09:43,470
+phông chữ xứng đáng được chú ý
+
+181
+00:09:43,470 --> 00:09:44,999
+nhiều hơn một chút vì tôi không nghĩ chúng ta
+
+182
+00:09:44,999 --> 00:09:47,610
+đã nói về nó. Thuộc tính phông chữ là
+
+183
+00:09:47,610 --> 00:09:50,519
+thuộc tính được nhóm và đề cập đến
+
+184
+00:09:50,519 --> 00:09:53,339
+thực tế là ta có thể gọi font.family
+
+185
+00:09:53,339 --> 00:09:56,040
+font.pointSize. Vì vậy, để xem xét thuộc tính
+
+186
+00:09:56,040 --> 00:09:57,660
+này , hãy quay lại
+
+187
+00:09:57,660 --> 00:10:06,569
+tài liệu tham khảo và gõ "font". Bấm vào
+
+188
+00:10:06,569 --> 00:10:09,360
+phiên bản mới nhất của Qt ta
+
+189
+00:10:09,360 --> 00:10:12,059
+đã cài đặt và ta có thể thấy giá trị phông chữ
+
+190
+00:10:12,059 --> 00:10:14,639
+với các thuộc tính của QFont. Được rồi
+
+191
+00:10:14,639 --> 00:10:18,120
+nó giống như kiểu dữ liệu QFont từ
+
+192
+00:10:18,120 --> 00:10:21,360
+C ++ của Qt, có nghĩa
+
+193
+00:10:21,360 --> 00:10:24,360
+nó có nhiều
+
+194
+00:10:24,360 --> 00:10:26,639
+thuộc tính được nhóm lại với nhau. Ta có thể
+
+195
+00:10:26,639 --> 00:10:29,220
+gán thuộc tính cho phông chữ, có thể
+
+196
+00:10:29,220 --> 00:10:32,100
+gán cho thuộc tính in đậm, nghiêng,
+
+197
+00:10:32,100 --> 00:10:35,160
+gạch dưới, pointSize và nhiều thứ khác. Ta
+
+198
+00:10:35,160 --> 00:10:37,230
+có thể sử dụng phông chữ như thế này và đây là
+
+199
+00:10:37,230 --> 00:10:39,509
+chính là những gì chúng ta đã làm. Người ta chỉ
+
+200
+00:10:39,509 --> 00:10:42,360
+gán nhiều thuộc tính hơn ta đã làm thôi. Ta
+
+201
+00:10:42,360 --> 00:10:45,800
+có thể sao chép nó và lấy nó ra. Và
+
+202
+00:10:45,800 --> 00:10:48,689
+ta có thể gán thuộc tính này trên một
+
+203
+00:10:48,689 --> 00:10:51,300
+dòng như thế này nếu ta muốn. Nó sẽ
+
+204
+00:10:51,300 --> 00:10:56,610
+hoạt động. Được rồi, bây giờ nó đã được in đậm. Cách khác
+
+205
+00:10:56,610 --> 00:10:59,040
+ta có thể gán phông chữ bằng cách nhóm
+
+206
+00:10:59,040 --> 00:11:00,600
+mọi thứ với nhau như thế này
+
+207
+00:11:00,600 --> 00:11:10,180
+Vì vậy, ta có thể chỉnh "font", "family" giống như
+
+208
+00:11:10,180 --> 00:11:12,340
+thế này và tiếp tục gán
+
+209
+00:11:12,340 --> 00:11:19,260
+các thuộc tính khác trên các dòng khác nhau. Và
+
+210
+00:11:20,220 --> 00:11:28,030
+có hay không nó được in đậm. Nếu ta chạy
+
+211
+00:11:28,030 --> 00:11:29,770
+ứng dụng ta sẽ thấy điều
+
+212
+00:11:29,770 --> 00:11:34,690
+tương tự. Được rồi điều tương tự. Và đây là
+
+213
+00:11:34,690 --> 00:11:36,820
+những cú pháp khác có sẵn để
+
+214
+00:11:36,820 --> 00:11:38,950
+ta gán các thuộc tính được nhóm.
+
+215
+00:11:38,950 --> 00:11:41,530
+Một điều ta có thể làm nếu ta muốn
+
+216
+00:11:41,530 --> 00:11:45,180
+là gán điều này trên một dòng.
+
+217
+00:11:45,180 --> 00:11:47,110
+Chúng ta sẽ làm điều đó.
+
+218
+00:11:47,110 --> 00:11:49,420
+Ta thực sự có thể sao chép cái này, đặt nó lên
+
+219
+00:11:49,420 --> 00:11:52,180
+một dòng và những thứ riêng biệt bằng cách sử dụng
+
+220
+00:11:52,180 --> 00:11:54,160
+dấu chấm phẩy như thế này. Và điều này
+
+221
+00:11:54,160 --> 00:11:58,060
+cũng sẽ hoạt động. Ok, đây là "text"
+
+222
+00:11:58,060 --> 00:12:00,520
+và cách ta có thể chỉ định một số
+
+223
+00:12:00,520 --> 00:00:00,000
+thuộc tính của nó.
+

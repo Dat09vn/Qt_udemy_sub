@@ -1,0 +1,116 @@
+﻿1
+00:00:08,440 --> 00:00:14,310
+Tôi là Ben Hoff và chào mừng các bạn đến với 'Mastering Qt5 GUI Programming' (Làm chủ Lập trình GUI với Qt 5) xuất bản bởi Packt.
+
+2
+00:00:14,310 --> 00:00:20,160
+Như 1 lời giới thiệu ngàn về bản thân, tôi thực ra có nhiều kinh nghiệm với Qt, bắt đầu lập trình với cả C++ và
+
+3
+00:00:20,160 --> 00:00:23,400
+Qt, phát triển đồ hoạ mô phỏng theo thời gian thực (realtime graphical simulation).
+
+4
+00:00:23,400 --> 00:00:29,820
+Tôi cũng có nhiều kinh nghiệm với PyQt, tạo giao diện chat (Chat GUI) và thành công tích hợp
+
+5
+00:00:29,880 --> 00:00:33,990
+OpenCV và Qt để cung cấp ứng dụng nhận dạng khuôn mặt.
+
+6
+00:00:34,140 --> 00:00:39,720
+Nếu các bạn muốn bắt đầu với tôi trên web, cứ tự nhiên truy cập blog, kênh YouTube của tôi hay theo dõi tôi trên
+
+7
+00:00:39,720 --> 00:00:40,560
+Github.
+
+8
+00:00:40,770 --> 00:00:45,990
+Khoá học này sẽ cung cấp cho các bạn một cái nhìn sâu về Qt framework , bao gồm cả những khái niệm của C++ truyền thống
+
+9
+00:00:45,990 --> 00:00:52,780
+cũng như khám phá những lựa chọn mới của QML. Để cung cấp sâu hơn một chút,
+
+10
+00:00:52,800 --> 00:00:58,320
+chúng ta sẽ nhìn xa hơn các ứng dụng GUI trong đó bao gồm làm thế nào làm dòng lệnh chương trình
+
+11
+00:00:58,380 --> 00:01:05,420
+cũng như khám phá và sử dụng một số khả năng mạng để tạo một khung siêu máy tính đơn giản.
+
+12
+00:01:05,460 --> 00:01:10,870
+Một khi các bạn xong với nó, chúng ta sẽ đến model view, nơi mà chúng ta sẽ khám phá sâu hơn về Qt model view
+
+13
+00:01:10,950 --> 00:01:15,010
+và tìm một số hoạt động bên trong nó.
+
+14
+00:01:15,030 --> 00:01:21,420
+Chúng ta cũng tìm hiểu về tương tác với web, chỉ ra làm thế nào để embed (nhúng) trang web trong ứng dụng của chúng ta
+
+15
+00:01:21,420 --> 00:01:25,120
+cũng như vươn ra và tiếp xúc với JavaScript trên các trang.
+
+16
+00:01:25,290 --> 00:01:32,310
+Khi chúng ta xong với Web, chúng ta sẽ chuyển sang thế giới của đa phương tiện (multimedia), bao gồm ghi âm, ghi hình và
+
+17
+00:01:32,310 --> 00:01:34,540
+photo trong ứng dụng của chúng ta.
+
+18
+00:01:34,740 --> 00:01:41,310
+Ngoài ra, thêm vào OpenCV (Open computer vision) và Qt 3D module, chúng ta sẽ chuyển sang phần Qt đầu tiên
+
+19
+00:01:41,310 --> 00:01:49,900
+bao gồm giao tiếp giữa QML và C++ cũng như tạo riêng module và type của chúng ta.
+
+20
+00:01:49,920 --> 00:01:57,950
+Một khi chúng ta xong phần giới thiệu QML, chúng ta sẽ đi sâu với bảng biểu (chart), hoạt hình (animation), particle và 3D trong
+
+21
+00:01:57,960 --> 00:02:00,000
+phần hiện thị hình ảnh (visual representation).
+
+22
+00:02:00,180 --> 00:02:05,640
+Chúng ta sẽ bắt đầu tới phần cuối của khoá trong đó bao gồm biên dịch và phân phối cho cả trên desktop
+
+23
+00:02:05,700 --> 00:02:13,470
+và mobile. Chúng ta sẽ bao gồm cả phân phối trên Windows, Linux và cách thiết lập
+
+24
+00:02:13,470 --> 00:02:16,860
+và phân phối ứng dụng cho Google trên điện thoại.
+
+25
+00:02:17,220 --> 00:02:23,340
+Tôi mong đợi người học có hiểu biết cơ bản về Qt và C++ nhưng tôituwj tin rằng nếu các bạn sẵn sàng
+
+26
+00:02:23,340 --> 00:02:26,830
+học, các bạn có thể hiểu tất cả các tài liệu trong khoá này.
+
+27
+00:02:26,970 --> 00:02:31,830
+Đến cuối khoá này, các bạn sẽ có kiến thức sâu và kinh nghiệm để phân phối
+
+28
+00:02:31,830 --> 00:02:34,780
+ứng dụng của các bạn trên bất cứ nền tảng nào.
+
+29
+00:02:34,950 --> 00:02:37,860
+Vì vậy, hãy tiếp tục và bắt đầu.
+

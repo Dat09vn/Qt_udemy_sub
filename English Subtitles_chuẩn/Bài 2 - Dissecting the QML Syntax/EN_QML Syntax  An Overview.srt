@@ -1,0 +1,1316 @@
+1
+00:00:00,000 --> 00:00:01,770
+In this lecture we're going to start to
+
+2
+00:00:01,770 --> 00:00:04,140
+look at the syntax for the qml language.
+
+3
+00:00:04,140 --> 00:00:06,720
+Rather than giving you a full lecture on
+
+4
+00:00:06,720 --> 00:00:10,260
+the semantics of qml, I think it's more
+
+5
+00:00:10,260 --> 00:00:13,049
+effective to go to QT creator, start
+
+6
+00:00:13,049 --> 00:00:15,150
+building something fun and then explain
+
+7
+00:00:15,150 --> 00:00:17,430
+the syntax as we go. What we're going to
+
+8
+00:00:17,430 --> 00:00:18,990
+build is something like this you can
+
+9
+00:00:18,990 --> 00:00:21,090
+click on the red window, it's going to
+
+10
+00:00:21,090 --> 00:00:23,039
+show the color you clicked in the dodger
+
+11
+00:00:23,039 --> 00:00:26,789
+blue circle here, you click on green you
+
+12
+00:00:26,789 --> 00:00:29,039
+see it says green here, you click on blue
+
+13
+00:00:29,039 --> 00:00:31,380
+it says blue. And you see that we have
+
+14
+00:00:31,380 --> 00:00:34,440
+some logs in the application output panel.
+
+15
+00:00:34,440 --> 00:00:36,690
+When you click on the dodger blue
+
+16
+00:00:36,690 --> 00:00:39,480
+rectangle you see that it says loop and when
+
+17
+00:00:39,480 --> 00:00:42,149
+you click nothing happens anymore even
+
+18
+00:00:42,149 --> 00:00:45,660
+though we see the log output here. So
+
+19
+00:00:45,660 --> 00:00:47,250
+we're going to build this thing and
+
+20
+00:00:47,250 --> 00:00:49,590
+along the way explain the QML syntax
+
+21
+00:00:49,590 --> 00:00:52,590
+that we will be using. So we are going to
+
+22
+00:00:52,590 --> 00:00:53,899
+create a new project.
+
+23
+00:00:53,899 --> 00:00:57,329
+It's a QT quick application that is
+
+24
+00:00:57,329 --> 00:00:59,910
+empty. We are going to save it in a
+
+25
+00:00:59,910 --> 00:01:03,420
+location on our drive, we use this as the
+
+26
+00:01:03,420 --> 00:01:06,450
+default project location for now. We're
+
+27
+00:01:06,450 --> 00:01:09,570
+going to call it Qml syntax demo, hit
+
+28
+00:01:09,570 --> 00:01:12,689
+next, choose Q make as your build tool,
+
+29
+00:01:12,689 --> 00:01:15,210
+choose the latest version of qt you
+
+30
+00:01:15,210 --> 00:01:18,270
+have installed. And you choose your
+
+31
+00:01:18,270 --> 00:01:20,820
+desktop kit. The first thing I want you
+
+32
+00:01:20,820 --> 00:01:23,520
+to notice is this import statements here.
+
+33
+00:01:23,520 --> 00:01:25,619
+The first one is importing the QT quick
+
+34
+00:01:25,619 --> 00:01:27,930
+libraries that we are going to use, and
+
+35
+00:01:27,930 --> 00:01:31,320
+the second one is going to import a part
+
+36
+00:01:31,320 --> 00:01:34,500
+of QT quick that deals with showing this
+
+37
+00:01:34,500 --> 00:01:36,210
+window here if you see this window
+
+38
+00:01:36,210 --> 00:01:38,850
+component is coming from this one. And if
+
+39
+00:01:38,850 --> 00:01:40,799
+we comment that out you see that the
+
+40
+00:01:40,799 --> 00:01:43,020
+window here is not recognized. So it is
+
+41
+00:01:43,020 --> 00:01:45,990
+coming from this import here. They
+
+42
+00:01:45,990 --> 00:01:48,240
+basically import other libraries and
+
+43
+00:01:48,240 --> 00:01:50,490
+make them available for you to use in
+
+44
+00:01:50,490 --> 00:01:52,799
+our file here. The first thing we want to
+
+45
+00:01:52,799 --> 00:01:55,170
+do is to give this window of ours here
+
+46
+00:01:55,170 --> 00:01:58,880
+an ID we're going to call it rootId. And
+
+47
+00:01:58,880 --> 00:02:03,299
+the ID like a flag that uniquely
+
+48
+00:02:03,299 --> 00:02:05,579
+identifies your qml component.
+
+49
+00:02:05,579 --> 00:02:08,119
+You're going to be using this a lot so
+
+50
+00:02:08,119 --> 00:02:11,459
+keep this in mind. The next thing we want
+
+51
+00:02:11,459 --> 00:02:13,710
+to do is to tell this window
+
+52
+00:02:13,710 --> 00:02:15,930
+to say that it is a QML Syntax Demo
+
+53
+00:02:15,930 --> 00:02:19,500
+because that's what it is. And we
+
+54
+00:02:19,500 --> 00:02:24,120
+want to define one property. It's going
+
+55
+00:02:24,120 --> 00:02:26,700
+to be a string it's going to say testToShow
+
+56
+00:02:26,700 --> 00:02:30,030
+and it's going to be initialized
+
+57
+00:02:30,030 --> 00:02:33,240
+to an empty string like this. This is how
+
+58
+00:02:33,240 --> 00:02:35,550
+you define variables or properties in
+
+59
+00:02:35,550 --> 00:02:38,040
+QML and we are going to have a chance to
+
+60
+00:02:38,040 --> 00:02:39,750
+talk more about this when we talk about
+
+61
+00:02:39,750 --> 00:02:43,230
+variables and data types. We are going to
+
+62
+00:02:43,230 --> 00:02:47,310
+create a row component, we are going to
+
+63
+00:02:47,310 --> 00:02:51,420
+give it an ID of Row 1 and remember an
+
+64
+00:02:51,420 --> 00:02:54,600
+ID uniquely identifies a qml
+
+65
+00:02:54,600 --> 00:02:58,080
+element in your qml code. And we can
+
+66
+00:02:58,080 --> 00:03:00,450
+refer to this row from anywhere in this
+
+67
+00:03:00,450 --> 00:03:03,150
+file by using this ID here you're going
+
+68
+00:03:03,150 --> 00:03:04,440
+to see how we use this.
+
+69
+00:03:04,440 --> 00:03:07,260
+We want this row to be in the center, the
+
+70
+00:03:07,260 --> 00:03:10,230
+way we say that we say anchors.centerIn: Parent.
+
+71
+00:03:10,230 --> 00:03:13,890
+We are going to talk about
+
+72
+00:03:13,890 --> 00:03:16,020
+anchors later in the course but right
+
+73
+00:03:16,020 --> 00:03:18,750
+now we are using this to tell a program
+
+74
+00:03:18,750 --> 00:03:21,870
+to show this row in the center of this
+
+75
+00:03:21,870 --> 00:03:24,450
+window here, the row is going to be in
+
+76
+00:03:24,450 --> 00:03:26,880
+the center of the window. We want to add
+
+77
+00:03:26,880 --> 00:03:30,300
+some spacing and let's make it 20 because
+
+78
+00:03:30,300 --> 00:03:32,670
+we want the content of our row component
+
+79
+00:03:32,670 --> 00:03:35,820
+here to have some space between them. And
+
+80
+00:03:35,820 --> 00:03:37,920
+I don't think I said this but the row
+
+81
+00:03:37,920 --> 00:03:39,920
+component allows you to lay out
+
+82
+00:03:39,920 --> 00:03:43,680
+components on one row, okay from left to
+
+83
+00:03:43,680 --> 00:03:47,040
+right if you will. And right now we are
+
+84
+00:03:47,040 --> 00:03:49,080
+ready to put some things inside we are
+
+85
+00:03:49,080 --> 00:03:52,320
+going to put in a rectangle element. Okay
+
+86
+00:03:52,320 --> 00:03:54,180
+so we're going to say rectangle like
+
+87
+00:03:54,180 --> 00:03:56,960
+this we are going to give it a width of
+
+88
+00:03:56,960 --> 00:04:04,950
+150 and a height of 150. And if you
+
+89
+00:04:04,950 --> 00:04:07,230
+haven't noticed this is how you specify
+
+90
+00:04:07,230 --> 00:04:11,220
+properties for your qml components, this
+
+91
+00:04:11,220 --> 00:04:13,200
+is not the first time we do it but I
+
+92
+00:04:13,200 --> 00:04:14,850
+think it is the first time that I
+
+93
+00:04:14,850 --> 00:04:18,329
+explained it. On top here you see that a
+
+94
+00:04:18,329 --> 00:04:20,070
+window component also has some
+
+95
+00:04:20,070 --> 00:04:22,380
+properties, we have a visible property to
+
+96
+00:04:22,380 --> 00:04:25,110
+make it visible it also has a width and
+
+97
+00:04:25,110 --> 00:04:27,510
+a height and the title that is shown in
+
+98
+00:04:27,510 --> 00:04:30,630
+the title bar for our window here. We are
+
+99
+00:04:30,630 --> 00:04:32,730
+doing the same thing specify the
+
+100
+00:04:32,730 --> 00:04:35,070
+width and height for this rectangle. We
+
+101
+00:04:35,070 --> 00:04:37,200
+also have other properties and this
+
+102
+00:04:37,200 --> 00:04:39,300
+rectangle element we are going to have a
+
+103
+00:04:39,300 --> 00:04:41,370
+chance to talk about it but for now we
+
+104
+00:04:41,370 --> 00:04:44,880
+want to specify a color. That is going to
+
+105
+00:04:44,880 --> 00:04:46,740
+be its background so we're going to make
+
+106
+00:04:46,740 --> 00:04:52,260
+it red. We want to give it a radius we
+
+107
+00:04:52,260 --> 00:04:54,510
+want its borders to be round a little
+
+108
+00:04:54,510 --> 00:04:57,000
+bit we're going to make this 20. And
+
+109
+00:04:57,000 --> 00:04:59,280
+inside we want to put a component that
+
+110
+00:04:59,280 --> 00:05:02,580
+we call a MouseArea. A MouseArea is
+
+111
+00:05:02,580 --> 00:05:04,470
+basically a thing that allows you to
+
+112
+00:05:04,470 --> 00:05:07,050
+make something clickable okay so we're
+
+113
+00:05:07,050 --> 00:05:09,210
+going to make it fill our rectangle and
+
+114
+00:05:09,210 --> 00:05:11,400
+we're going to use anchors again. We're
+
+115
+00:05:11,400 --> 00:05:15,110
+going to say anchors.fill:parent. And
+
+116
+00:05:15,110 --> 00:05:20,100
+we want to put an event handler that is
+
+117
+00:05:20,100 --> 00:05:21,930
+going to be called when you click on it.
+
+118
+00:05:21,930 --> 00:05:24,450
+The way you do it is like in JavaScript
+
+119
+00:05:24,450 --> 00:05:28,830
+you say onClicked and you specify the
+
+120
+00:05:28,830 --> 00:05:31,680
+code that you want to be executed when
+
+121
+00:05:31,680 --> 00:05:34,200
+you click on it inside here. For now we
+
+122
+00:05:34,200 --> 00:05:38,370
+want to say console.log and we want to
+
+123
+00:05:38,370 --> 00:05:45,720
+say "click on the red rectangle". And we
+
+124
+00:05:45,720 --> 00:05:47,700
+should give an ID to this rectangle too
+
+125
+00:05:47,700 --> 00:05:52,490
+so we're going to say ID : redRectId.
+
+126
+00:05:52,490 --> 00:05:55,020
+Okay now that we've done this I want to
+
+127
+00:05:55,020 --> 00:05:58,740
+copy this rectangle and paste it in
+
+128
+00:05:58,740 --> 00:06:02,160
+three times. You see that they are giving
+
+129
+00:06:02,160 --> 00:06:04,710
+us this error saying that red rect has
+
+130
+00:06:04,710 --> 00:06:07,770
+been used it's a duplicate ID. This
+
+131
+00:06:07,770 --> 00:06:11,010
+rectangle is going to be green so we
+
+132
+00:06:11,010 --> 00:06:17,430
+should say greenRectId and this
+
+133
+00:06:17,430 --> 00:06:21,330
+one is going to be blue we should say
+
+134
+00:06:21,330 --> 00:06:25,470
+blueRectId here. And we should change
+
+135
+00:06:25,470 --> 00:06:27,870
+the message that are shown here so we're
+
+136
+00:06:27,870 --> 00:06:30,810
+going to say green here when a rectangle
+
+137
+00:06:30,810 --> 00:06:34,050
+and blue here. Now that we have this I
+
+138
+00:06:34,050 --> 00:06:35,760
+want to run the application and show you
+
+139
+00:06:35,760 --> 00:06:38,880
+what it looks like. Hit the green button
+
+140
+00:06:38,880 --> 00:06:40,639
+here to run a
+
+141
+00:06:40,639 --> 00:06:43,840
+and boom you see that we have our
+
+142
+00:06:43,840 --> 00:06:46,969
+rectangles and they have round borders
+
+143
+00:06:46,969 --> 00:06:50,029
+which is specified by this radius
+
+144
+00:06:50,029 --> 00:06:53,120
+property here on the rectangle. Another
+
+145
+00:06:53,120 --> 00:06:54,770
+thing I want you to see is that what
+
+146
+00:06:54,770 --> 00:06:57,110
+text has taken effect, the title that we
+
+147
+00:06:57,110 --> 00:06:59,779
+specified. And if you increase the size
+
+148
+00:06:59,779 --> 00:07:01,370
+of the window you see that the
+
+149
+00:07:01,370 --> 00:07:04,729
+rectangles stay centered in the window
+
+150
+00:07:04,729 --> 00:07:08,120
+as we specified here. We want everything
+
+151
+00:07:08,120 --> 00:07:10,819
+in the road to be centered in the parent.
+
+152
+00:07:10,819 --> 00:07:13,159
+And by now hope you see that the row
+
+153
+00:07:13,159 --> 00:07:17,210
+component lays out its contents in one
+
+154
+00:07:17,210 --> 00:07:20,270
+row from left to the right. Okay you see
+
+155
+00:07:20,270 --> 00:07:22,099
+that the first element we put in was
+
+156
+00:07:22,099 --> 00:07:24,590
+the red rectangle, the second was the
+
+157
+00:07:24,590 --> 00:07:26,750
+green rectangle, the third was the blue
+
+158
+00:07:26,750 --> 00:07:28,909
+rectangle and you see that they are in
+
+159
+00:07:28,909 --> 00:07:32,240
+this order from left to right. Okay if
+
+160
+00:07:32,240 --> 00:07:34,520
+you click on the red rectangle you see
+
+161
+00:07:34,520 --> 00:07:36,229
+that they say you clicked on the red
+
+162
+00:07:36,229 --> 00:07:38,839
+rectangle, click on green you see the
+
+163
+00:07:38,839 --> 00:07:41,120
+message, click on blue you see the
+
+164
+00:07:41,120 --> 00:07:43,669
+message. But this doesn't look like what
+
+165
+00:07:43,669 --> 00:07:46,339
+we set out to do in this lecture. So the
+
+166
+00:07:46,339 --> 00:07:48,139
+next thing we want to do is to add that
+
+167
+00:07:48,139 --> 00:07:54,379
+dodger blue circle how do we do it. We're
+
+168
+00:07:54,379 --> 00:07:56,629
+going to copy the code here for the
+
+169
+00:07:56,629 --> 00:07:58,189
+rectangle again because that's what
+
+170
+00:07:58,189 --> 00:08:01,159
+we're going to adapt to make it look
+
+171
+00:08:01,159 --> 00:08:05,419
+like a circle. We are going to paste it
+
+172
+00:08:05,419 --> 00:08:08,120
+down here. We are going to change the ID
+
+173
+00:08:08,120 --> 00:08:13,219
+to textRectId and inside we want to
+
+174
+00:08:13,219 --> 00:08:15,680
+show some text. The way we do that we put
+
+175
+00:08:15,680 --> 00:08:18,500
+the text component inside we have done
+
+176
+00:08:18,500 --> 00:08:20,330
+this in the previous lecture so we are
+
+177
+00:08:20,330 --> 00:08:23,719
+to going say text and we want its value to be
+
+178
+00:08:23,719 --> 00:08:26,960
+textToShow the property that we
+
+179
+00:08:26,960 --> 00:08:30,439
+defined on top here. We also want this to
+
+180
+00:08:30,439 --> 00:08:33,589
+show in the center of the parent so
+
+181
+00:08:33,589 --> 00:08:37,429
+we're going to say anchors.centerIn: parent.
+
+182
+00:08:37,429 --> 00:08:42,919
+And just to test let's say hello
+
+183
+00:08:42,919 --> 00:08:46,370
+here to see that we see this text in the
+
+184
+00:08:46,370 --> 00:08:48,860
+rectangle that we define here. We also
+
+185
+00:08:48,860 --> 00:08:51,709
+want to make it look like a circle so we
+
+186
+00:08:51,709 --> 00:08:54,329
+want to increase the radius to
+
+187
+00:08:54,329 --> 00:08:57,239
+something really big, let's make it 100 and
+
+188
+00:08:57,239 --> 00:08:59,850
+see what it looks like. And before we run
+
+189
+00:08:59,850 --> 00:09:06,269
+let's make this color dodger blue. These are
+
+190
+00:09:06,269 --> 00:09:08,429
+some predefined colors that you can use
+
+191
+00:09:08,429 --> 00:09:11,339
+in your qml applications, we're going to
+
+192
+00:09:11,339 --> 00:09:12,959
+talk more about this when we talk about
+
+193
+00:09:12,959 --> 00:09:15,420
+the color property. Let's run the
+
+194
+00:09:15,420 --> 00:09:19,259
+application to see what we have. And boom
+
+195
+00:09:19,259 --> 00:09:21,959
+we see that we have a Dodger blue circle
+
+196
+00:09:21,959 --> 00:09:24,389
+that says hello. The next thing we want
+
+197
+00:09:24,389 --> 00:09:26,670
+to do is to change this property when we
+
+198
+00:09:26,670 --> 00:09:30,540
+click on the rectangles here how do we
+
+199
+00:09:30,540 --> 00:09:34,170
+do that. If you look the ID for this text
+
+200
+00:09:34,170 --> 00:09:36,720
+is not there so this is a good time to
+
+201
+00:09:36,720 --> 00:09:39,689
+define it so we're going to say is textId.
+
+202
+00:09:39,689 --> 00:09:42,839
+Okay so when somebody click we
+
+203
+00:09:42,839 --> 00:09:45,480
+want to change this textToShow
+
+204
+00:09:45,480 --> 00:09:47,970
+property and this is going to change the
+
+205
+00:09:47,970 --> 00:09:50,759
+text property here for us because we
+
+206
+00:09:50,759 --> 00:09:53,189
+have bound this property to this
+
+207
+00:09:53,189 --> 00:09:55,019
+property here. Let me show you what I
+
+208
+00:09:55,019 --> 00:09:55,499
+mean.
+
+209
+00:09:55,499 --> 00:09:57,540
+Okay so we're going to say here textToShow
+
+210
+00:09:57,540 --> 00:10:04,259
+equals red - blue because this is the
+
+211
+00:10:04,259 --> 00:10:07,589
+blue rectangle. Here we're going to say
+
+212
+00:10:07,589 --> 00:10:14,279
+textToShow equals green and here we're
+
+213
+00:10:14,279 --> 00:10:19,669
+going to say textToShow equals red.
+
+214
+00:10:19,669 --> 00:10:29,429
+Let's run. Uh-huh so you see that it says
+
+215
+00:10:29,429 --> 00:10:33,959
+red it says screen say it's blue. Okay so
+
+216
+00:10:33,959 --> 00:10:35,999
+how is this work and why is it changing
+
+217
+00:10:35,999 --> 00:10:39,149
+the text in the Dodger blue circle. When
+
+218
+00:10:39,149 --> 00:10:41,699
+we only change the property of testToShow
+
+219
+00:10:41,699 --> 00:10:43,709
+remember we define this thing on
+
+220
+00:10:43,709 --> 00:10:46,949
+top here. It is happening because we did
+
+221
+00:10:46,949 --> 00:10:49,410
+the binding when we assign textToShow
+
+222
+00:10:49,410 --> 00:10:52,439
+to the text here. So when you do this for
+
+223
+00:10:52,439 --> 00:10:54,239
+the first time we're doing what we call
+
+224
+00:10:54,239 --> 00:10:57,329
+property binding in Qml, you are actually
+
+225
+00:10:57,329 --> 00:10:59,100
+telling your system to keep track of
+
+226
+00:10:59,100 --> 00:11:01,619
+changes in the textToShow property and
+
+227
+00:11:01,619 --> 00:11:04,529
+whenever something changes that change
+
+228
+00:11:04,529 --> 00:11:06,419
+is going to be propagated to any
+
+229
+00:11:06,419 --> 00:11:07,450
+interested
+
+230
+00:11:07,450 --> 00:11:09,250
+property and in this case to the text
+
+231
+00:11:09,250 --> 00:11:11,380
+property of our text component here, I
+
+232
+00:11:11,380 --> 00:11:15,190
+hope this make sense. Let's run again so
+
+233
+00:11:15,190 --> 00:11:18,280
+that you see this in action red, green,
+
+234
+00:11:18,280 --> 00:11:21,970
+blue. Okay I actually want to do
+
+235
+00:11:21,970 --> 00:11:24,730
+something to break this contruct here. So
+
+236
+00:11:24,730 --> 00:11:26,170
+when you click on the Dodger blue
+
+237
+00:11:26,170 --> 00:11:28,090
+rectangle here I want to change the text
+
+238
+00:11:28,090 --> 00:11:31,000
+in here to some static text. So I'm going
+
+239
+00:11:31,000 --> 00:11:37,750
+to say textId.text equals something
+
+240
+00:11:37,750 --> 00:11:40,690
+like loop. Okay this is some dummy text I
+
+241
+00:11:40,690 --> 00:11:43,450
+put here. So when I run the application
+
+242
+00:11:43,450 --> 00:11:45,760
+I'm going to still be able to click on
+
+243
+00:11:45,760 --> 00:11:48,100
+red, green, blue rectangle and change the
+
+244
+00:11:48,100 --> 00:11:50,470
+text in here but when I click on the
+
+245
+00:11:50,470 --> 00:11:52,510
+Dodger blue rectangle I'm going to break
+
+246
+00:11:52,510 --> 00:11:54,610
+this contruct here because I am
+
+247
+00:11:54,610 --> 00:11:57,670
+assigning something else to the property
+
+248
+00:11:57,670 --> 00:12:00,280
+here. Let's run the application and show
+
+249
+00:12:00,280 --> 00:12:05,410
+you what I mean. Okay the application is
+
+250
+00:12:05,410 --> 00:12:09,130
+here I can click on red, I see red here, I
+
+251
+00:12:09,130 --> 00:12:12,250
+click on green see green here, I click on
+
+252
+00:12:12,250 --> 00:12:15,010
+blue I see blue here. Let's click on this
+
+253
+00:12:15,010 --> 00:12:18,160
+guy we're going to see a loop here. But
+
+254
+00:12:18,160 --> 00:12:20,530
+when I click on red again notice that I
+
+255
+00:12:20,530 --> 00:12:23,230
+get the message here but the changes are
+
+256
+00:12:23,230 --> 00:12:25,630
+not reflected in the Dodger blue
+
+257
+00:12:25,630 --> 00:12:27,640
+rectangle because I broke that property.
+
+258
+00:12:27,640 --> 00:12:32,110
+I have broken the binding between the
+
+259
+00:12:32,110 --> 00:12:34,960
+textToShow property and the text of
+
+260
+00:12:34,960 --> 00:12:37,030
+the text component here. I hope this
+
+261
+00:12:37,030 --> 00:12:39,280
+makes sense. Of course this is just an
+
+262
+00:12:39,280 --> 00:12:40,870
+introduction we're going to have more
+
+263
+00:12:40,870 --> 00:12:43,180
+chances to talk about this but for now
+
+264
+00:12:43,180 --> 00:12:45,850
+you should have an idea that qml is a
+
+265
+00:12:45,850 --> 00:12:49,120
+language that is declarative. It is
+
+266
+00:12:49,120 --> 00:12:51,100
+declarative because you define your
+
+267
+00:12:51,100 --> 00:12:53,320
+components as you need them. And another
+
+268
+00:12:53,320 --> 00:12:55,840
+thing you should notice is that elements
+
+269
+00:12:55,840 --> 00:12:57,520
+are all hierarchy there is a
+
+270
+00:12:57,520 --> 00:13:00,820
+parent-child relationship between your
+
+271
+00:13:00,820 --> 00:13:03,550
+elements in your qml file. For example
+
+272
+00:13:03,550 --> 00:13:05,980
+the row component is a child of the
+
+273
+00:13:05,980 --> 00:13:08,350
+window here the rectangle here is a
+
+274
+00:13:08,350 --> 00:13:11,020
+child of this row component here and
+
+275
+00:13:11,020 --> 00:13:14,200
+these rectangles are siblings. And you
+
+276
+00:13:14,200 --> 00:13:16,600
+can see that each rectangle has a child
+
+277
+00:13:16,600 --> 00:13:19,529
+of its own, a mouse area.
+
+278
+00:13:19,529 --> 00:13:21,720
+And down here we have a rectangle that
+
+279
+00:13:21,720 --> 00:13:23,459
+has two children
+
+280
+00:13:23,459 --> 00:13:26,279
+text component and a mouseArea
+
+281
+00:13:26,279 --> 00:13:28,529
+component. Another thing you notice is
+
+282
+00:13:28,529 --> 00:13:31,379
+that we give our components unique IDs.
+
+283
+00:13:31,379 --> 00:13:35,509
+We didn't use this row ID here but
+
+284
+00:13:35,509 --> 00:13:40,920
+notice that we changed the text inside
+
+285
+00:13:40,920 --> 00:13:43,740
+this component here using its ID we use
+
+286
+00:13:43,740 --> 00:13:48,660
+text ID.text. If we did text only
+
+287
+00:13:48,660 --> 00:13:50,819
+just like this we should have an error
+
+288
+00:13:50,819 --> 00:13:53,399
+when we run the application because this
+
+289
+00:13:53,399 --> 00:13:55,290
+property is not recognized.
+
+290
+00:13:55,290 --> 00:13:58,050
+Okay so let's click on this and you see
+
+291
+00:13:58,050 --> 00:14:00,209
+that error invalid write to global
+
+292
+00:14:00,209 --> 00:14:03,180
+property "text". The mouseArea doesn't
+
+293
+00:14:03,180 --> 00:14:05,610
+have a text property to work with. That's
+
+294
+00:14:05,610 --> 00:14:08,160
+why we are seeing this error here and it
+
+295
+00:14:08,160 --> 00:14:11,040
+gives us the line where we have this
+
+296
+00:14:11,040 --> 00:14:13,470
+error here. So we should fix this by
+
+297
+00:14:13,470 --> 00:14:16,350
+hitting ctrl Z to bring what we had
+
+298
+00:14:16,350 --> 00:14:19,529
+before. Okay IDs are very important when
+
+299
+00:14:19,529 --> 00:14:21,839
+you plan to work with that component
+
+300
+00:14:21,839 --> 00:14:24,480
+later in the code like we did here.
+
+301
+00:14:24,480 --> 00:14:27,269
+Another thing you saw is that in qml you
+
+302
+00:14:27,269 --> 00:14:30,120
+can respond to events. We had this mouseArea 
+
+303
+00:14:30,120 --> 00:14:32,519
+component and we could click and
+
+304
+00:14:32,519 --> 00:14:35,730
+respond to the click in this code
+
+305
+00:14:35,730 --> 00:14:38,610
+snippet here. Okay we show the message by
+
+306
+00:14:38,610 --> 00:14:41,579
+logging into the console we also change
+
+307
+00:14:41,579 --> 00:14:43,889
+the value of the textToShow property
+
+308
+00:14:43,889 --> 00:14:46,980
+here. Okay so you can do this things in
+
+309
+00:14:46,980 --> 00:14:49,500
+qml you can handle events and we are
+
+310
+00:14:49,500 --> 00:14:51,569
+going to have more chances to talk about
+
+311
+00:14:51,569 --> 00:14:53,939
+this later in the course. Okay I hope
+
+312
+00:14:53,939 --> 00:14:56,550
+this gives you a good introduction to
+
+313
+00:14:56,550 --> 00:14:59,759
+the general syntax of qml it really is
+
+314
+00:14:59,759 --> 00:15:02,309
+not that hard if you are familiar with
+
+315
+00:15:02,309 --> 00:15:05,339
+the things like HTML and CSS, this
+
+316
+00:15:05,339 --> 00:15:08,220
+shouldn't really scare you because it is
+
+317
+00:15:08,220 --> 00:15:10,319
+similar even if the syntax is a little
+
+318
+00:15:10,319 --> 00:15:11,339
+bit different.
+
+319
+00:15:11,339 --> 00:15:14,189
+Ok this covers what we set out to do in
+
+320
+00:15:14,189 --> 00:15:15,839
+this lecture. I hope you had a good
+
+321
+00:15:15,839 --> 00:15:17,939
+introduction to the Qml language. I
+
+322
+00:15:17,939 --> 00:15:20,189
+would recommend to go through this again
+
+323
+00:15:20,189 --> 00:15:23,040
+and try to run it or modify a few things
+
+324
+00:15:23,040 --> 00:15:25,829
+on your own to see the effect of your
+
+325
+00:15:25,829 --> 00:15:28,170
+changes. In the next lecture we're going
+
+326
+00:15:28,170 --> 00:15:30,420
+to look at some data types in QML and
+
+327
+00:15:30,420 --> 00:15:32,490
+how you can use them in your QT quick
+
+328
+00:15:32,490 --> 00:15:34,679
+applications. I'll see you in the next
+
+329
+00:15:34,679 --> 00:00:00,000
+lecture.
+

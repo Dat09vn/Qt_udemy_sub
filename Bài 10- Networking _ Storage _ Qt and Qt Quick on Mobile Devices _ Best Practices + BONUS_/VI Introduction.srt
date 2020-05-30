@@ -1,0 +1,1016 @@
+﻿1
+00:00:00,030 --> 00:00:01,920
+Trong bài này, chúng ta sẽ học về 
+
+2
+00:00:01,920 --> 00:00:04,770
+những tính năng networking của
+
+3
+00:00:04,770 --> 00:00:06,390
+QT Quick.
+
+4
+00:00:06,390 --> 00:00:09,090
+Đầu tiên, tôi muốn nhắc lại rằng trong
+
+5
+00:00:09,090 --> 00:00:12,150
+lập trình Qt, những thao tác
+
+6
+00:00:12,150 --> 00:00:14,910
+mà tiêu tốn nhiều tài nguyên thì nên làm trên C++ 
+
+7
+00:00:14,910 --> 00:00:17,699
+thôi. Ta đã từng bàn đến việc có 
+
+8
+00:00:17,699 --> 00:00:20,460
+2 thành phần chính khi làm việc với Qt:
+
+9
+00:00:20,460 --> 00:00:23,550
+bạn có thể phát triển ứng dụng bằng C++
+
+10
+00:00:23,550 --> 00:00:26,490
+thuần túy, hoặc bạn có thể phát triển UI 
+
+11
+00:00:26,490 --> 00:00:28,710
+bằng Qt Quick, thì đây mới là mục đích 
+
+12
+00:00:28,710 --> 00:00:31,260
+của cái Qt này. Công ty phát triển Qt 
+
+13
+00:00:31,260 --> 00:00:34,110
+đang muốn mọi người làm UI bằng Qt Quick,
+
+14
+00:00:34,110 --> 00:00:38,489
+và thực hiện những thao tác nặng nề trong C++,
+
+15
+00:00:38,489 --> 00:00:41,489
+vì cái đó hợp hơn. Ở đây 
+
+16
+00:00:41,489 --> 00:00:44,579
+bạn có thể thấy những class C++
+
+17
+00:00:44,579 --> 00:00:47,730
+với những tính năng rất khủng về networking.
+
+18
+00:00:47,730 --> 00:00:50,640
+Bạn có thể thực hiện những thao tác ở tầng rất thấp
+
+19
+00:00:50,640 --> 00:00:53,550
+trong networking với class TCP và UDP. Bạn
+
+20
+00:00:53,550 --> 00:00:56,190
+muốn làm gì cũng được. Bạn có thể làm DNS
+
+21
+00:00:56,190 --> 00:00:58,620
+bằng class QHostInfo và
+
+22
+00:00:58,620 --> 00:01:01,379
+QNDSLookup. Bạn có thể làm SSL/TLS.
+
+23
+00:01:01,379 --> 00:01:04,229
+Bạn có thể dùng 2 class đó. Và
+
+24
+00:01:04,229 --> 00:01:07,290
+còn các class tầng cao để làm việc
+
+25
+00:01:07,290 --> 00:01:10,110
+với HTTP. Bạn có thể dùng
+
+26
+00:01:10,110 --> 00:01:12,360
+QNetworkAccessManager và QNetworkReply.
+
+27
+00:01:12,360 --> 00:01:14,520
+Ta đã học qua về cái này trong một
+
+28
+00:01:14,520 --> 00:01:17,310
+khóa học về Q rồi. Nếu bạn 
+
+29
+00:01:17,310 --> 00:01:20,490
+làm việc bên phía C++ của Qt, thì những
+
+30
+00:01:20,490 --> 00:01:22,680
+class này sẽ rất hữu dụng, nhưng 
+
+31
+00:01:22,680 --> 00:01:24,900
+ta sẽ không học về những những cái đó trong
+
+32
+00:01:24,900 --> 00:01:27,030\
+khóa này, vì khóa học này thuần túy là 
+
+33
+00:01:27,030 --> 00:01:29,700
+về QM trong phía Qt Quick,
+
+34
+00:01:29,700 --> 00:01:31,890
+sẽ không có nhiều thứ cho bạn làm 
+
+35
+00:01:31,890 --> 00:01:34,110
+về mảng networking. Có một vài 
+
+36
+00:01:34,110 --> 00:01:35,790
+tính năng bạn có thể làm qua
+
+37
+00:01:35,790 --> 00:01:38,579
+JavaScript. Ở dây tôi có 2 trường hợp 
+
+38
+00:01:38,579 --> 00:01:41,610
+use case mà tôi thấy quan trọng. Đầu tiên là khả năng
+
+39
+00:01:41,610 --> 00:01:44,610
+tải QML component từ xa. Trong trường hợp này,
+
+40
+00:01:44,610 --> 00:01:46,680
+bạn cung cấp các tập tin QML của bạn
+
+41
+00:01:46,680 --> 00:01:48,869
+qua internet, và 
+
+42
+00:01:48,869 --> 00:01:50,700
+ứng dụng của bạn thì như là một
+
+43
+00:01:50,700 --> 00:01:52,979
+ứng dụng web, tức là bạn cung cấp
+
+44
+00:01:52,979 --> 00:01:56,130
+UI qua internet, và người dùng cũng
+
+45
+00:01:56,130 --> 00:01:58,799
+như là tải một trang web vậy, nhưng cái 
+
+46
+00:01:58,799 --> 00:02:00,689
+bạn tải lên là QML. Đây là cái
+
+47
+00:02:00,689 --> 00:02:03,149
+mục tiêu của nó. Tôi chỉ cho bạn
+
+48
+00:02:03,149 --> 00:02:05,100
+biết qua cái use case này thôi chứ ta sẽ không
+
+49
+00:02:05,100 --> 00:02:08,068
+học kĩ về nó, vì
+
+50
+00:02:08,068 --> 00:02:10,758
+cá nhân tôi cũng chưa dùng nó mấy,
+
+51
+00:02:10,758 --> 00:02:12,920
+và bạn có thể tham khảo tài liệu nếu 
+
+52
+00:02:12,920 --> 00:02:14,540
+bạn cần thêm thông tin về chủ đê fnafy.
+
+53
+00:02:14,540 --> 00:02:16,489
+Còn nội dung mà ta sẽ học
+
+54
+00:02:16,489 --> 00:02:20,060
+trong chương này là về XmlHTTPRequest, là một
+
+55
+00:02:20,060 --> 00:02:22,760
+đối tượng JavaScript mà bạn có thể dùng trong
+
+56
+00:02:22,760 --> 00:02:25,129
+QML. Và bạn có thể dùng nó để nhận
+
+57
+00:02:25,129 --> 00:02:28,610
+dữ liệu HTTP. Giờ ta sẽ xem qua 
+
+58
+00:02:28,610 --> 00:02:32,209
+các tính năng của XmlHTTPRequest. Ta sẽ
+
+59
+00:02:32,209 --> 00:02:34,430
+vào xem tài liệu của nó,
+
+60
+00:02:34,430 --> 00:02:36,620
+tài liệu JavaScript ở trên
+
+61
+00:02:36,620 --> 00:02:39,859
+developer.mozilla.org. Họ có rất 
+
+62
+00:02:39,859 --> 00:02:42,530
+nhiều thông tin chi tiết về JavaScript, và 
+
+63
+00:02:42,530 --> 00:02:44,959
+đây là cái bạn cần đọc nếu bạn cần
+
+64
+00:02:44,959 --> 00:02:47,810
+tìm hiểu thêm về việc dùng JavaScript trong 
+
+65
+00:02:47,810 --> 00:02:50,329
+QML. Ta đã động đến vấn đề này trong
+
+66
+00:02:50,329 --> 00:02:53,510
+mục JavaScript của khóa này rồi. Ta sẽ 
+
+67
+00:02:53,510 --> 00:02:56,690
+dùng đối tượng XmlHTTPRequest để 
+
+68
+00:02:56,690 --> 00:02:58,849
+tương tác với server. Bạn có thể lấy
+
+69
+00:02:58,849 --> 00:03:01,310
+dữ liệu từ URL mà không phải
+
+70
+00:03:01,310 --> 00:03:04,489
+tải lại cả trang. Tài liệu có nói hết về những 
+
+71
+00:03:04,489 --> 00:03:08,450
+thứ này. Dù tên nó là XmlHTTPRequest nhưng
+
+72
+00:03:08,450 --> 00:03:10,790
+nó có thể dùng để nhận mọi kiểu dữ liệu,
+
+73
+00:03:10,790 --> 00:03:14,780
+không chỉ XML. Dưới này bạn thấy có
+
+74
+00:03:14,780 --> 00:03:16,910
+constructor(). Ta sẽ dùng cái này để 
+
+75
+00:03:16,910 --> 00:03:19,069
+tạo đối tượng. Bạn nhìn vào 
+
+76
+00:03:19,069 --> 00:03:20,720
+properties, có một số thứ mà ta sẽ cần dùng 
+
+77
+00:03:20,720 --> 00:03:23,359
+trong bài đấy. Một cái cần dùng là
+
+78
+00:03:23,359 --> 00:03:26,480
+onreadystatechange. Ta sẽ dùng cái này
+
+79
+00:03:26,480 --> 00:03:30,949
+để handle event, để biết xem ta đã nhận được dữ liệu về hay chưa,
+
+80
+00:03:30,949 --> 00:03:33,079
+hay là có nhận lỗi error nào không
+
+81
+00:03:33,079 --> 00:03:35,780
+trong quá trình tải dữ liệu về. Được rồi,
+
+82
+00:03:35,780 --> 00:03:38,239
+dưới này bạn thấy có các giá trị readyState.
+
+83
+00:03:38,239 --> 00:03:39,889
+Bạn có thể click vào đây để xem
+
+84
+00:03:39,889 --> 00:03:41,959
+các giá trị mà nó có thể có: unsent,
+
+85
+00:03:41,959 --> 00:03:45,069
+opened, headers_received, loading, hoặc là done,
+
+86
+00:03:45,069 --> 00:03:48,010
+tức là khi thao tác đã hoàn thành. 
+
+87
+00:03:48,010 --> 00:03:50,569
+Còn một các khác có thể bạn cũng cần quan tâm là
+
+88
+00:03:50,569 --> 00:03:52,819
+cái responseText, tức là 
+
+89
+00:03:52,819 --> 00:03:55,120
+câu trả lời từ server mà bạn nhận được:
+
+90
+00:03:55,120 --> 00:03:58,180
+trả về một đoạn text từ server 
+
+91
+00:03:58,180 --> 00:04:01,669
+sau khi bạn gửi request. Một 
+
+92
+00:04:01,669 --> 00:04:03,409
+cái khác bạn nên nhìn là 
+
+93
+00:04:03,409 --> 00:04:07,370
+status: trả về một số kiểu unsigned short với
+
+94
+00:04:07,370 --> 00:04:09,739
+trạng thái status của câu trả lời repsonse của
+
+95
+00:04:09,739 --> 00:04:14,060
+request. Đây là những mã trạng thái HTTP status tiêu chuẩn
+
+96
+00:04:14,060 --> 00:04:16,488
+mà server sẽ trả về sau mỗi request.
+
+97
+00:04:16,488 --> 00:04:18,409
+Hình như còn có một trang riêng về 
+
+98
+00:04:18,409 --> 00:04:21,139
+cái này. Mã status được trả về là 
+
+99
+00:04:21,139 --> 00:04:24,010
+mã HTTP status tiêu chuẩn.
+
+100
+00:04:24,010 --> 00:04:26,200
+Nếu bạn click vào đây, mở cái này ra
+
+101
+00:04:26,200 --> 00:04:29,260
+một tab khác, bạn sẽ thấy chi tiết hơn. Bạn
+
+102
+00:04:29,260 --> 00:04:31,930
+có mã 200, tức là mọi thứ ổn cả, nhận
+
+103
+00:04:31,930 --> 00:04:35,560
+được đúng dữ liệu. Có mã 404 là khi
+
+104
+00:04:35,560 --> 00:04:38,070
+page not found hay đại loại thế.
+
+105
+00:04:38,070 --> 00:04:42,940
+Ta sẽ xem 404 page not found. Bạn có thể
+
+106
+00:04:42,940 --> 00:04:44,950
+xem kĩ từng cái status này, có 
+
+107
+00:04:44,950 --> 00:04:47,860
+hết trong tài liệu rồi. Được rồi, giờ ta
+
+108
+00:04:47,860 --> 00:04:50,470
+hiểu thêm một chút về
+
+109
+00:04:50,470 --> 00:04:52,870
+đối tượng XmlHTTPRequest và tính năng của nó rồi,
+
+110
+00:04:52,870 --> 00:04:55,570
+ta sẽ xem sử dụng nó thế nào.
+
+111
+00:04:55,570 --> 00:04:57,550
+Đầu tiên ta sẽ dùng nó để tải 
+
+112
+00:04:57,550 --> 00:04:59,710
+một số dữ liệu HTTMP. Ta sẽ tải 
+
+113
+00:04:59,710 --> 00:05:02,380
+trang web về, và ta sẽ viết
+
+114
+00:05:02,380 --> 00:05:04,270
+một hàm như thế này để tải dữ liệu xuống.
+
+115
+00:05:04,270 --> 00:05:06,970
+Nó sẽ nhận vào cái URL mà ta muốn
+
+116
+00:05:06,970 --> 00:05:09,790
+tải. Ta sẽ tạo một 
+
+117
+00:05:09,790 --> 00:05:12,400
+đối tượng XmlHTTPRequest mới. Bạn tạo mới
+
+118
+00:05:12,400 --> 00:05:14,530
+thế này. Ta vừa xem cái constructor 
+
+119
+00:05:14,530 --> 00:05:18,460
+trong tài liệu rồi, và ta lắng nghe bằng
+
+120
+00:05:18,460 --> 00:05:21,790
+cái handler onreadystatechange này.
+
+121
+00:05:21,790 --> 00:05:23,620
+Ta viết thêm một hàm để
+
+122
+00:05:23,620 --> 00:05:27,190
+lưu giữ liệu vào. Nếu
+
+123
+00:05:27,190 --> 00:05:29,770
+readystate là headers_received, thì ta báo 
+
+124
+00:05:29,770 --> 00:05:32,140
+là đã nhận được headers rồi. 
+
+125
+00:05:32,140 --> 00:05:34,450
+Cái quan trọng nhất mà ta cần biết là xem
+
+126
+00:05:34,450 --> 00:05:37,360
+khi nào request hoàn tất, và cần lưu
+
+127
+00:05:37,360 --> 00:05:40,600
+cái đó vào khi mà readystate có giá trị
+
+128
+00:05:40,600 --> 00:05:43,390
+XmlHTTPRequest.done. Sau đó ta lấy
+
+129
+00:05:43,390 --> 00:05:45,970
+dữ liệu từ trong đoạn response text, và 
+
+130
+00:05:45,970 --> 00:05:48,310
+trả về một string. Sau khi nhận được
+
+131
+00:05:48,310 --> 00:05:50,560
+đoạn string này rồi thì bạn muốn làm gì
+
+132
+00:05:50,560 --> 00:05:51,070
+với nó cũng được.
+
+133
+00:05:51,070 --> 00:05:53,410
+Trong trường hợp này, ta chỉ đơn giản là nhét 
+
+134
+00:05:53,410 --> 00:05:56,650
+đoạn text đó vào một text area trên UI, đặt vào
+
+135
+00:05:56,650 --> 00:05:58,930
+thuộc tính text của nó. Và nếu status này
+
+136
+00:05:58,930 --> 00:06:01,900
+không phải 200, tức là ta không
+
+137
+00:06:01,900 --> 00:06:03,640
+nhận được đúng thứ ta cần, thì ta báo 
+
+138
+00:06:03,640 --> 00:06:07,840
+là có lỗi rồi. Sau khi định nghĩ XmlHTTPRequest,
+
+139
+00:06:07,840 --> 00:06:11,170
+ta dùng nó bằng cách nhập cái URL
+
+140
+00:06:11,170 --> 00:06:13,630
+mà ta nhận được lúc gọi 
+
+141
+00:06:13,630 --> 00:06:15,760
+hàm này, rồi gửi cái request đi.
+
+142
+00:06:15,760 --> 00:06:17,860
+Đây là cách bạn dùng đối tượng
+
+143
+00:06:17,860 --> 00:06:21,580
+XmlHTTPRequest. Và khi bạn xong cái này 
+
+144
+00:06:21,580 --> 00:06:23,650
+rồi, bạn gọi hàm thế này, 
+
+145
+00:06:23,650 --> 00:06:26,830
+lại nhập URL vào. Ta sẽ làm một
+
+146
+00:06:26,830 --> 00:06:29,320
+demo về cái này, nên đừng lo nếu mà bạn
+
+147
+00:06:29,320 --> 00:06:31,570
+chưa hiểu lắm. Rồi bạn sẽ thấy hiểu rõ thôi
+
+148
+00:06:31,570 --> 00:06:33,610
+và bạn sẽ trực tiếp thấy cách hoạt động
+
+149
+00:06:33,610 --> 00:06:35,890
+của nó. Còn một cái tôi muốn nhắc đến là
+
+150
+00:06:35,890 --> 00:06:37,090
+những hoạt động
+
+151
+00:06:37,090 --> 00:06:40,900
+vừa rồi đây là asynchronous (không đồng bộ), 
+
+152
+00:06:40,900 --> 00:06:43,690
+tức là UI của bạn có thể bị chết cứng nếu
+
+153
+00:06:43,690 --> 00:06:46,050
+việc download này bị nghẽn.
+
+154
+00:06:46,050 --> 00:06:48,729
+Tưởng tượng nếu bạn phải mất
+
+155
+00:06:48,729 --> 00:06:51,550
+5-10 giấyz mới nhận được dữ liệu về 
+
+156
+00:06:51,550 --> 00:06:54,340
+vì mạng chậm, hoàn toàn có thể lắm, thì
+
+157
+00:06:54,340 --> 00:06:56,290
+cái này sẽ đóng băng UI của bạn lại
+
+158
+00:06:56,290 --> 00:06:58,510
+và người dùng sẽ không tương tác được
+
+159
+00:06:58,510 --> 00:07:01,419
+với ứng dụng cùar bạn. Vậy nên cái này
+
+160
+00:07:01,419 --> 00:07:04,840
+chỉ nên dùng với những thao tác rất nhanh,
+
+161
+00:07:04,840 --> 00:07:08,020
+không mất quá lâu. Tôi thậm chí
+
+162
+00:07:08,020 --> 00:07:11,080
+còn khuyên mọi người không nên dùng cái này trừ khi bạn
+
+163
+00:07:11,080 --> 00:07:13,210
+có lí do thật chính đáng để dùng, 
+
+164
+00:07:13,210 --> 00:07:15,430
+vì bạn có thể gọi hàm này
+
+165
+00:07:15,430 --> 00:07:18,250
+kiểu asynchronous. Để gọi hàm kiểu synchronous 
+
+166
+00:07:18,250 --> 00:07:20,860
+thì bạn nhập vào một hàm callback, hàm này 
+
+167
+00:07:20,860 --> 00:07:23,050
+sẽ được gọi khi request này hoàn thành.
+
+168
+00:07:23,050 --> 00:07:25,360
+Và khi hàm này được gọi, bạn có thể
+
+169
+00:07:25,360 --> 00:07:27,370
+làm những việc bình thường như là
+
+170
+00:07:27,370 --> 00:07:29,620
+đọc text, hiện nó ra UI.
+
+171
+00:07:29,620 --> 00:07:31,870
+Thế điểm khác biệt so với hàm asynchronous 
+
+172
+00:07:31,870 --> 00:07:34,180
+là khi bạn nhận dữ liệu,
+
+173
+00:07:34,180 --> 00:07:38,050
+bạn thấy đấy trông nó cũng giống dữ liệu
+
+174
+00:07:38,050 --> 00:07:40,660
+ta có lúc trước, nhưng ở đây khi có dữ liệu rồi
+
+175
+00:07:40,660 --> 00:07:43,300
+thì ta mới gọi hàm callback với
+
+176
+00:07:43,300 --> 00:07:46,120
+cái dữ liệu mà ta nhận được từ server.
+
+177
+00:07:46,120 --> 00:07:48,520
+Bạn thấy ta gọi hàm callback đây, rồi ta
+
+178
+00:07:48,520 --> 00:07:51,550
+nhập vào đoạn response, và gọi 
+
+179
+00:07:51,550 --> 00:07:53,470
+hàm toString() lên đoạn text đó để chuyển nó thành
+
+180
+00:07:53,470 --> 00:07:55,720
+kiểu string để ta còn dùng được trong QML.
+
+181
+00:07:55,720 --> 00:07:58,180
+Nếu không nhận được response thì ta
+
+182
+00:07:58,180 --> 00:08:00,970
+gọi hàm callback với null,
+
+183
+00:08:00,970 --> 00:08:03,400
+nghĩa là có lỗi error rồi, rồi ta
+
+184
+00:08:03,400 --> 00:08:05,590
+bắt đầu download giống như
+
+185
+00:08:05,590 --> 00:08:07,960
+ta đã làm với hàm synchronous. Nó cũng 
+
+186
+00:08:07,960 --> 00:08:09,910
+giống hệt thôi. Điểm khác biệt là khi nào
+
+187
+00:08:09,910 --> 00:08:11,349
+bạn nhận dữ liệu, bạn mới gọi hàm callback.
+
+188
+00:08:11,349 --> 00:08:14,050
+Giờ làm sao để gọi hàm này
+
+189
+00:08:14,050 --> 00:08:16,780
+trong ứng dụng của bạn? Bằng hàm
+
+190
+00:08:16,780 --> 00:08:19,270
+downloadData. Cách làm thế này.
+
+191
+00:08:19,270 --> 00:08:21,849
+Bạn gọi downloadData, rồi nhập vào
+
+192
+00:08:21,849 --> 00:08:24,610
+URL, rồi nhập vào một hàm vô danh
+
+193
+00:08:24,610 --> 00:08:26,950
+để làm hàm callback ở đây.
+
+194
+00:08:26,950 --> 00:08:29,919
+Khi nhận được dữ liệu thì 
+
+195
+00:08:29,919 --> 00:08:31,840
+hàm vô danh này sẽ được gọi. Bạn
+
+196
+00:08:31,840 --> 00:08:33,849
+thấy đây, nó nhận một tham số, chính là
+
+197
+00:08:33,849 --> 00:08:36,580
+cái response này đây. Ta kiểm tra xem
+
+198
+00:08:36,580 --> 00:08:38,950
+response có null không, rồi ta
+
+199
+00:08:38,950 --> 00:08:41,409
+xử lý dữ liệu mà ta nhận được từ 
+
+200
+00:08:41,409 --> 00:08:43,900
+server. Trong trường hợp này, ta lấy
+
+201
+00:08:43,900 --> 00:08:46,780
+dữ liệu và nhét nó và một textarea 
+
+202
+00:08:46,780 --> 00:08:50,290
+trên UI. Nếu response là null thì ta 
+
+203
+00:08:50,290 --> 00:08:52,269
+báo lỗi error. Vừa rồi 
+
+204
+00:08:52,269 --> 00:08:54,310
+là cách dùng hàm đó đấy.
+
+205
+00:08:54,310 --> 00:08:55,870
+Việc đầu tiên cần làm là
+
+206
+00:08:55,870 --> 00:08:58,570
+tải dữ liệu HTTP xuống. Thứ 2 là 
+
+207
+00:08:58,570 --> 00:09:01,389
+dùng RESTful API và
+
+208
+00:09:01,389 --> 00:09:03,940
+xử lý dữ liệu json data mà ta nhận được trong
+
+209
+00:09:03,940 --> 00:09:06,759
+ứng dụng Qt. Nhắc lại, cái này sẽ 
+
+210
+00:09:06,759 --> 00:09:08,949
+hoạt động trên dữ liệu 
+
+211
+00:09:08,949 --> 00:09:12,310
+mà ta đã tải xuống qua HTTP bằng hàm trong
+
+212
+00:09:12,310 --> 00:09:16,120
+XmlHTTPRequest. Hàm để nhận dữ liệu về
+
+213
+00:09:16,120 --> 00:09:17,800
+sẽ trông như thế này. Bạn thâys đây 
+
+214
+00:09:17,800 --> 00:09:21,130
+ta nhập vào một URL. Đây là 
+
+215
+00:09:21,130 --> 00:09:23,769
+cái URL. Ta nhập vào một hàm callback.
+
+216
+00:09:23,769 --> 00:09:26,680
+Ta nhận response. Cái response này
+
+217
+00:09:26,680 --> 00:09:28,839
+sẽ là dữ liệu JSON. Ta cần
+
+218
+00:09:28,839 --> 00:09:31,899
+nhập dữ liệu JSON này vào một đối tượng,
+
+219
+00:09:31,899 --> 00:09:34,269
+làm việc đó ở đây. Khi nhận đượ c
+
+220
+00:09:34,269 --> 00:09:37,360
+đối tượng rồi thì ta chạy vòng lặp lên nó để nhận
+
+221
+00:09:37,360 --> 00:09:40,029
+đúng dữ liệu ta cần. Cái này cũng sẽ 
+
+222
+00:09:40,029 --> 00:09:42,940
+là một đối tượng. Cơ bản là ta 
+
+223
+00:09:42,940 --> 00:09:45,089
+đang chọn lấy đúng dữ liệu ta cần, và
+
+224
+00:09:45,089 --> 00:09:47,829
+nhét dữ liệu đó vào một cái list như
+
+225
+00:09:47,829 --> 00:09:49,870
+thế này. Cái tôi muốn bạn để ý ở đây là 
+
+226
+00:09:49,870 --> 00:09:51,910
+rằng ta đang nhập một cái ảnh vào như là một
+
+227
+00:09:51,910 --> 00:09:54,610
+đối tượng ở đây, và cái ở trong 
+
+228
+00:09:54,610 --> 00:09:57,519
+dấu ngoặc kép này sẽ là {???} và ta 
+
+229
+00:09:57,519 --> 00:10:00,069
+sẽ dùng cái này trong delegate để
+
+230
+00:10:00,069 --> 00:10:02,050
+nhận dữ liệu để hiện ra 
+
+
+231
+00:10:02,050 --> 00:10:04,360
+ListView, tức là bước tiếp theo.
+
+
+232
+00:10:04,360 --> 00:10:05,889
+đây là cái delegate 
+
+
+233
+00:10:05,889 --> 00:10:07,990
+component. Không có gì đặc biệt cả. Ta 
+
+
+
+234
+00:10:07,990 --> 00:10:10,810
+đã học những cái này rồi. ta có
+
+
+235
+00:10:10,810 --> 00:10:12,760
+một hình chữ nhật với một đống
+
+
+
+236
+00:10:12,760 --> 00:10:14,500
+thuộc tính ở trong, ta có một 
+
+
+237
+00:10:14,500 --> 00:10:16,209
+text component để hiển thị dữ liệu ra.
+
+
+238
+00:10:16,209 --> 00:10:19,269
+Nhưng mà text property sẽ cần 
+
+
+239
+00:10:19,269 --> 00:10:22,000
+{???}, là cái mà ta có được từ trước, 
+
+
+240
+00:10:22,000 --> 00:10:24,519
+khi ta thêm dữ liệu vào 
+
+241
+00:10:24,519 --> 00:10:26,860
+model. Đây là cái tôi muốn bạn thấy. Bạn 
+
+242
+00:10:26,860 --> 00:10:29,440
+có thể dùng joke ở đây, hoặc có thể dùng
+
+243
+00:10:29,440 --> 00:10:32,500
+modelData như ta từng dùng 
+
+244
+00:10:32,500 --> 00:10:35,589
+với model trực tiếp rồi. Bạn có thể xem lại
+
+245
+00:10:35,589 --> 00:10:38,290
+chương về Model View architecture nếu 
+
+246
+00:10:38,290 --> 00:10:40,750
+bạn chưa xem, thì sẽ hiểu tôi 
+
+247
+00:10:40,750 --> 00:10:42,970
+đang nói về cái gì. Ok, vừa rồi là những thứ ta
+
+248
+00:10:42,970 --> 00:10:45,010
+sẽ học trong chương này. Trong 
+
+249
+00:10:45,010 --> 00:10:46,420
+bài tới ta sẽ bắt đầu bằng việc
+
+250
+00:10:46,420 --> 00:10:48,970
+tải về một số sữ liệu từ internet
+
+251
+00:10:48,970 --> 00:00:00,000
+bằng XmlHTTPRequest. Hẹn gặp các bạn.
+

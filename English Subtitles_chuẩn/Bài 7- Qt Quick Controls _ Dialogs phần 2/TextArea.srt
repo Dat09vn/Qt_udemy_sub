@@ -1,0 +1,484 @@
+1
+00:00:00,000 --> 00:00:02,460
+in this lecture we are looking at the
+
+2
+00:00:02,460 --> 00:00:05,520
+text area Qt Quick Control, this
+
+3
+00:00:05,520 --> 00:00:08,610
+control is used to collect multi-line
+
+4
+00:00:08,610 --> 00:00:11,429
+text information from the user. We're
+
+5
+00:00:11,429 --> 00:00:13,620
+going to go to QT creator and play with
+
+6
+00:00:13,620 --> 00:00:16,260
+that okay here we are in Qt creator.
+
+7
+00:00:16,260 --> 00:00:19,859
+we're going to create a new project so
+
+8
+00:00:19,859 --> 00:00:22,920
+Qt Quick application as usual we call it
+
+9
+00:00:22,920 --> 00:00:28,080
+text area demo hit next choose our
+
+10
+00:00:28,080 --> 00:00:32,308
+Qt version, we choose our kit here
+
+11
+00:00:32,308 --> 00:00:39,079
+and finish we want to import QT quick
+
+12
+00:00:39,079 --> 00:00:44,579
+controls we import the latest version we
+
+13
+00:00:44,579 --> 00:00:48,300
+have install which is 2.4 we say what
+
+14
+00:00:48,300 --> 00:00:51,420
+this demo is about I want you to put in
+
+15
+00:00:51,420 --> 00:00:55,730
+a column component give it a spacing of
+
+16
+00:00:55,730 --> 00:01:01,140
+40 and make its width equal to the width
+
+17
+00:01:01,140 --> 00:01:06,030
+of the parent inside the one to put a
+
+18
+00:01:06,030 --> 00:01:09,150
+label that is label what we wanted, 
+
+19
+00:01:09,150 --> 00:01:12,570
+do ctrl a and ctrl I to align this and
+
+20
+00:01:12,570 --> 00:01:15,619
+down here I want to put a text area
+
+21
+00:01:15,619 --> 00:01:22,490
+component I wanted to have a width of
+
+22
+00:01:22,490 --> 00:01:29,759
+600 a height of 115 I want it to be
+
+23
+00:01:29,759 --> 00:01:31,740
+centered so I'm going to say 
+
+24
+00:01:31,740 --> 00:01:35,759
+anchor.horizontalCenter is parent horizontal
+
+25
+00:01:35,759 --> 00:01:39,299
+Center we can give it a color which is
+
+26
+00:01:39,299 --> 00:01:42,119
+going to be the color of the text let's
+
+27
+00:01:42,119 --> 00:01:46,220
+put in red we can give it a wrap mode
+
+28
+00:01:46,220 --> 00:01:52,470
+we're going to put in TextArea.wrapMode, if
+
+29
+00:01:52,470 --> 00:01:56,040
+we go back to text area and look at some
+
+30
+00:01:56,040 --> 00:02:00,299
+of its properties it inherits from text
+
+31
+00:02:00,299 --> 00:02:02,520
+edit I don't think we explained this
+
+32
+00:02:02,520 --> 00:02:05,729
+wrapMode so this is a good chance
+
+33
+00:02:05,729 --> 00:02:08,580
+to talk about it. Set this property to
+
+34
+00:02:08,580 --> 00:02:12,239
+wrap the text to the TextEdit item's
+
+35
+00:02:12,239 --> 00:02:12,780
+width
+
+36
+00:02:12,780 --> 00:02:15,540
+okay if the text is longer than the
+
+37
+00:02:15,540 --> 00:02:18,120
+available width these are different ways
+
+38
+00:02:18,120 --> 00:02:20,459
+you can wrap it to the next line and
+
+39
+00:02:20,459 --> 00:02:23,459
+they say what all these things do so you
+
+40
+00:02:23,459 --> 00:02:25,290
+should read this if you are interested
+
+41
+00:02:25,290 --> 00:02:28,110
+okay you see the default is NoWrap if
+
+42
+00:02:28,110 --> 00:02:30,690
+you don't set wrapping it's not going to
+
+43
+00:02:30,690 --> 00:02:32,670
+wrap it's going to try and show this on
+
+44
+00:02:32,670 --> 00:02:36,030
+one line I also want to put in a text
+
+45
+00:02:36,030 --> 00:02:39,510
+property it is going to show a long
+
+46
+00:02:39,510 --> 00:02:42,840
+piece of text that cannot fit on one
+
+47
+00:02:42,840 --> 00:02:48,510
+line we want this let's run and you see
+
+48
+00:02:48,510 --> 00:02:52,680
+that we have our text displayed in here
+
+49
+00:02:52,680 --> 00:02:55,380
+we are using this text area for now to
+
+50
+00:02:55,380 --> 00:02:57,900
+display some text but you can also use
+
+51
+00:02:57,900 --> 00:03:00,450
+it to do edit on and capture what the
+
+52
+00:03:00,450 --> 00:03:02,330
+user has typed then for example you can
+
+53
+00:03:02,330 --> 00:03:05,880
+delete some text and put in some text of
+
+54
+00:03:05,880 --> 00:03:09,780
+your own and you see that as we type
+
+55
+00:03:09,780 --> 00:03:13,550
+more gibberish here the text disappears
+
+56
+00:03:13,550 --> 00:03:18,209
+in the area that we cannot see so if you
+
+57
+00:03:18,209 --> 00:03:20,519
+want to see all your text it is a good
+
+58
+00:03:20,519 --> 00:03:23,519
+idea to wrap your text area inside a
+
+59
+00:03:23,519 --> 00:03:26,370
+scroll view and that's what we're going
+
+60
+00:03:26,370 --> 00:03:29,370
+to do so we're going to put a scrollView
+
+61
+00:03:29,370 --> 00:03:35,970
+component here and take all our text and
+
+62
+00:03:35,970 --> 00:03:44,100
+put that inside our Center and should
+
+63
+00:03:44,100 --> 00:03:48,060
+move to the top so the root level of
+
+64
+00:03:48,060 --> 00:03:51,420
+this ScrollView, and our width and height
+
+65
+00:03:51,420 --> 00:03:54,480
+properties should also fall out the same
+
+66
+00:03:54,480 --> 00:03:56,840
+they should move to the root level and
+
+67
+00:03:56,840 --> 00:04:00,959
+if you run now it looks like it is the
+
+68
+00:04:00,959 --> 00:04:03,150
+same but when we have hover on top of this
+
+69
+00:04:03,150 --> 00:04:05,670
+you see that there is a scroll bar to
+
+70
+00:04:05,670 --> 00:04:08,880
+the right indicating that we can scroll
+
+71
+00:04:08,880 --> 00:04:12,329
+up and down in our text here and another
+
+72
+00:04:12,329 --> 00:04:13,980
+thing I want you to see is that you can
+
+73
+00:04:13,980 --> 00:04:16,649
+specify a background component for your
+
+74
+00:04:16,649 --> 00:04:19,339
+text area so you can say something like
+
+75
+00:04:19,339 --> 00:04:22,950
+that ground and we are going to put in a
+
+76
+00:04:22,950 --> 00:04:25,380
+rectangle component why not
+
+77
+00:04:25,380 --> 00:04:32,040
+and even the color of black and we want
+
+78
+00:04:32,040 --> 00:04:34,560
+to change the text to white because it's
+
+79
+00:04:34,560 --> 00:04:38,010
+going to be on top of a black background
+
+80
+00:04:38,010 --> 00:04:41,340
+let's run mm-hmm
+
+81
+00:04:41,340 --> 00:04:45,840
+this is better I like it now when you
+
+82
+00:04:45,840 --> 00:04:48,930
+want to use your text area as a data
+
+83
+00:04:48,930 --> 00:04:51,750
+collection element how do you capture
+
+84
+00:04:51,750 --> 00:04:54,060
+the text that the user type then we're
+
+85
+00:04:54,060 --> 00:04:57,150
+going to disable the text property here
+
+86
+00:04:57,150 --> 00:05:01,680
+and put in some placeholder text they're
+
+87
+00:05:01,680 --> 00:05:05,550
+going to say placeholder and we're going
+
+88
+00:05:05,550 --> 00:05:11,640
+to say Type in your query when we run
+
+89
+00:05:11,640 --> 00:05:17,160
+this it's going to say type in your
+
+90
+00:05:17,160 --> 00:05:19,530
+query we should provide a button
+
+91
+00:05:19,530 --> 00:05:22,650
+component at the bottom of the ScrollView
+
+92
+00:05:22,650 --> 00:05:30,960
+component and say submit in the
+
+93
+00:05:30,960 --> 00:05:32,240
+button
+
+94
+00:05:32,240 --> 00:05:38,540
+we should Center it in the middle and
+
+95
+00:05:38,540 --> 00:05:43,230
+when the button is clicked we would want
+
+96
+00:05:43,230 --> 00:05:45,990
+to capture the text inside this text
+
+97
+00:05:45,990 --> 00:05:48,030
+area so it is a good idea to give it an
+
+98
+00:05:48,030 --> 00:05:56,550
+ID right now and we should say console.log
+
+99
+00:05:56,550 --> 00:06:09,650
+the text inside the text area is and
+
+100
+00:06:09,650 --> 00:06:12,510
+put in the text that we have in there so
+
+101
+00:06:12,510 --> 00:06:18,920
+we're going to say text area ID text
+
+102
+00:06:18,920 --> 00:06:24,810
+let's run okay this is what we have it
+
+103
+00:06:24,810 --> 00:06:26,910
+says type in your query the moment you
+
+104
+00:06:26,910 --> 00:06:29,280
+start typing something the placeholder
+
+105
+00:06:29,280 --> 00:06:31,800
+goes away and if you delete again the
+
+106
+00:06:31,800 --> 00:06:35,790
+placeholder comes back and if you type
+
+107
+00:06:35,790 --> 00:06:38,720
+in some text for example
+
+108
+00:06:52,520 --> 00:06:55,680
+something like this if you click Submit
+
+109
+00:06:55,680 --> 00:06:58,530
+you see the text here and of course in a
+
+110
+00:06:58,530 --> 00:07:00,479
+real application you should do some
+
+111
+00:07:00,479 --> 00:07:03,389
+validation on the text that you get from
+
+112
+00:07:03,389 --> 00:07:05,849
+the user okay this is all I have to say
+
+113
+00:07:05,849 --> 00:07:08,639
+about the text area component it really
+
+114
+00:07:08,639 --> 00:07:11,250
+is easy to use you just stuff it in your
+
+115
+00:07:11,250 --> 00:07:13,500
+user interface if you want to have
+
+116
+00:07:13,500 --> 00:07:15,750
+scroll bars around it when you have a
+
+117
+00:07:15,750 --> 00:07:18,330
+longer piece of text you should wrap
+
+118
+00:07:18,330 --> 00:07:21,240
+this inside the scroll view element in
+
+119
+00:07:21,240 --> 00:07:23,069
+the next lecture we're going to talk
+
+120
+00:07:23,069 --> 00:07:26,219
+about the text field QT quick control
+
+121
+00:07:26,219 --> 00:00:00,000
+I'll see you then
+

@@ -1,0 +1,780 @@
+1
+00:00:00,000 --> 00:00:01,740
+In this lecture, we're going to see how we
+
+2
+00:00:01,740 --> 00:00:05,310
+can work with custom settings in qml. We
+
+3
+00:00:05,310 --> 00:00:07,440
+have looked at the documentation for
+
+4
+00:00:07,440 --> 00:00:10,860
+settings, and we just saw a way to let
+
+5
+00:00:10,860 --> 00:00:13,019
+the system save everything for you
+
+6
+00:00:13,019 --> 00:00:16,920
+without you doing much more, but when you
+
+7
+00:00:16,920 --> 00:00:19,080
+do things this way you pay a performance
+
+8
+00:00:19,080 --> 00:00:22,320
+cost of saving the data whenever any of
+
+9
+00:00:22,320 --> 00:00:24,840
+this property changes, and sometimes you
+
+10
+00:00:24,840 --> 00:00:27,300
+don't want this. A solution for that is
+
+11
+00:00:27,300 --> 00:00:29,609
+to save the data yourself, and they give
+
+12
+00:00:29,609 --> 00:00:32,130
+an example of how you can do that. You
+
+13
+00:00:32,130 --> 00:00:34,320
+basically have a settings component, it
+
+14
+00:00:34,320 --> 00:00:36,809
+has an ID and it has a set of properties
+
+15
+00:00:36,809 --> 00:00:38,550
+that you want to save. In this case we
+
+16
+00:00:38,550 --> 00:00:41,010
+want to save this state. And you see that
+
+17
+00:00:41,010 --> 00:00:43,500
+this item here is reading state
+
+18
+00:00:43,500 --> 00:00:46,500
+information from our Settings component
+
+19
+00:00:46,500 --> 00:00:49,350
+here. This is one thing you need to do,
+
+20
+00:00:49,350 --> 00:00:51,270
+you need to read whatever property you
+
+21
+00:00:51,270 --> 00:00:52,890
+want to save from these Settings
+
+22
+00:00:52,890 --> 00:00:55,920
+component, and you have to choose a time
+
+23
+00:00:55,920 --> 00:00:58,440
+when you want to save your data. In this
+
+24
+00:00:58,440 --> 00:01:00,629
+case, we are saving the data when this
+
+25
+00:01:00,629 --> 00:01:03,480
+component is destroyed. We are saying 
+
+26
+00:01:03,480 --> 00:01:07,170
+settings.state = page.state. We are taking
+
+27
+00:01:07,170 --> 00:01:08,880
+this state from this component and
+
+28
+00:01:08,880 --> 00:01:12,210
+saving it in the Settings component here
+
+29
+00:01:12,210 --> 00:01:15,659
+when this component dies. And notice that
+
+30
+00:01:15,659 --> 00:01:18,090
+as you use your application, you may get
+
+31
+00:01:18,090 --> 00:01:21,810
+a chance to change the states, and this
+
+32
+00:01:21,810 --> 00:01:23,700
+changes are going to be saved in here.
+
+33
+00:01:23,700 --> 00:01:26,820
+Notice that you pass the default value
+
+34
+00:01:26,820 --> 00:01:29,970
+here, so if you don't have the state set,
+
+35
+00:01:29,970 --> 00:01:33,630
+it is going to be "active" by default. To
+
+36
+00:01:33,630 --> 00:01:35,939
+play with this, we are going to go to 
+
+37
+00:01:35,939 --> 00:01:38,880
+Qt creator, find a project we have done
+
+38
+00:01:38,880 --> 00:01:41,009
+before, so I'm going to go into recent
+
+39
+00:01:41,009 --> 00:01:43,259
+projects, and I'm going to find the
+
+40
+00:01:43,259 --> 00:01:46,890
+project we did, that project is 
+
+41
+00:01:46,890 --> 00:01:50,189
+StatesWithGradiant. I want you to go and find
+
+42
+00:01:50,189 --> 00:01:55,140
+it, and open it in Qt creator like
+
+43
+00:01:55,140 --> 00:02:00,630
+this. If we run it, you see that it had a
+
+44
+00:02:00,630 --> 00:02:03,210
+scene like this, and we were able to
+
+45
+00:02:03,210 --> 00:02:07,110
+change between summer and spring, okay, by
+
+46
+00:02:07,110 --> 00:02:09,628
+changing states like this. So what we
+
+47
+00:02:09,628 --> 00:02:11,730
+want is to save the state
+
+48
+00:02:11,730 --> 00:02:14,489
+that we are in, and when we close the
+
+49
+00:02:14,489 --> 00:02:17,580
+application, we want to save the state,
+
+50
+00:02:17,580 --> 00:02:20,190
+and when we run it, we want to pick up
+
+51
+00:02:20,190 --> 00:02:23,819
+the state we saved last time. To be able
+
+52
+00:02:23,819 --> 00:02:25,349
+to play with this, we're going to create a
+
+53
+00:02:25,349 --> 00:02:28,080
+new project and copy over all the files
+
+54
+00:02:28,080 --> 00:02:30,660
+so that things are nice and clean, I
+
+55
+00:02:30,660 --> 00:02:33,060
+don't like to do things over other
+
+56
+00:02:33,060 --> 00:02:36,599
+projects, because it confuses students. So
+
+57
+00:02:36,599 --> 00:02:38,099
+what we're going to do is create a new
+
+58
+00:02:38,099 --> 00:02:40,709
+project. I want to do all this live so
+
+59
+00:02:40,709 --> 00:02:44,370
+that you see everything. Qt Quick application.
+
+60
+00:02:44,370 --> 00:02:46,950
+We're going to call it SettingsDemo2
+
+61
+00:02:46,950 --> 00:02:49,650
+because this is the second one. Save it
+
+62
+00:02:49,650 --> 00:02:52,590
+in the usual location, hit next, choose
+
+63
+00:02:52,590 --> 00:02:57,319
+your QT version, choose your kit, and
+
+64
+00:02:57,319 --> 00:03:01,500
+finish. We want to change this to "Custom
+
+65
+00:03:01,500 --> 00:03:07,530
+settings", because you are saving things
+
+66
+00:03:07,530 --> 00:03:11,010
+yourself. We want to go to the states
+
+67
+00:03:11,010 --> 00:03:15,690
+with gradient demo project, go in 
+
+68
+00:03:15,690 --> 00:03:20,220
+QML, and find our QML file. We don't have
+
+69
+00:03:20,220 --> 00:03:22,980
+any special import, but we want to copy
+
+70
+00:03:22,980 --> 00:03:25,290
+everything in here. So we're going to
+
+71
+00:03:25,290 --> 00:03:27,959
+grab everything in the window here, as
+
+72
+00:03:27,959 --> 00:03:32,160
+you see, except for the properties of the
+
+73
+00:03:32,160 --> 00:03:34,049
+window, because we have our own
+
+74
+00:03:34,049 --> 00:03:37,049
+properties in this new project of ours
+
+75
+00:03:37,049 --> 00:03:39,480
+here. We're going to paste the data in
+
+76
+00:03:39,480 --> 00:03:41,639
+here, and if you look, you see that we
+
+77
+00:03:41,639 --> 00:03:44,519
+have images in here, so we need to also
+
+78
+00:03:44,519 --> 00:03:47,579
+import those images. What I want to do, I
+
+79
+00:03:47,579 --> 00:03:49,919
+want to go where this project is saved,
+
+80
+00:03:49,919 --> 00:03:56,160
+and go Show in Explorer... I have a folder
+
+81
+00:03:56,160 --> 00:04:00,169
+of images here, I want to copy it, go
+
+82
+00:04:00,169 --> 00:04:04,230
+where my project is saved here, right
+
+83
+00:04:04,230 --> 00:04:09,690
+click, Show in Explorer, and I am going to
+
+84
+00:04:09,690 --> 00:04:12,480
+paste in this folder of images. Now I
+
+85
+00:04:12,480 --> 00:04:15,329
+have it in SettingsDemo2. I can
+
+86
+00:04:15,329 --> 00:04:19,728
+close this, add a new resource file, add a
+
+87
+00:04:19,728 --> 00:04:25,320
+new, choose Qt, resource file,
+
+88
+00:04:25,320 --> 00:04:30,030
+it's going to be resources, next, next,
+
+89
+00:04:30,030 --> 00:04:32,520
+until the finish, add the prefix, take
+
+90
+00:04:32,520 --> 00:04:35,400
+this out, hit enter, because we don't want
+
+91
+00:04:35,400 --> 00:04:39,240
+to have a prefix, add files, images, and
+
+92
+00:04:39,240 --> 00:04:43,110
+we put in our spring and summer images.
+
+93
+00:04:43,110 --> 00:04:47,190
+We save this. And if we run this project
+
+94
+00:04:47,190 --> 00:04:50,340
+of ours, SettingsDemo2, we should
+
+95
+00:04:50,340 --> 00:04:53,640
+have everything we had in this 
+
+96
+00:04:53,640 --> 00:04:57,900
+StatesWithGradientsDemo project. Let's wait
+
+97
+00:04:57,900 --> 00:05:01,650
+and see, and we can change between states.
+
+98
+00:05:01,650 --> 00:05:04,380
+We can close this application and close
+
+99
+00:05:04,380 --> 00:05:06,960
+these StatesWithGradientsDemo project
+
+100
+00:05:06,960 --> 00:05:09,200
+because we don't need it anymore,
+
+101
+00:05:09,200 --> 00:05:11,670
+close everything in here because we
+
+102
+00:05:11,670 --> 00:05:16,470
+don't want things confusing us, and open
+
+103
+00:05:16,470 --> 00:05:18,720
+our QML file because this is where we
+
+104
+00:05:18,720 --> 00:05:21,090
+want to work. First thing we want to do
+
+105
+00:05:21,090 --> 00:05:23,880
+is to import the settings, because that's
+
+106
+00:05:23,880 --> 00:05:27,030
+what we are going to be using in this
+
+107
+00:05:27,030 --> 00:05:31,140
+lecture, and we want to go back to the
+
+108
+00:05:31,140 --> 00:05:33,840
+documentation and adapt this example to
+
+109
+00:05:33,840 --> 00:05:36,630
+save our state. Notice that they have a
+
+110
+00:05:36,630 --> 00:05:38,850
+settings block here, we can copy it,
+
+111
+00:05:38,850 --> 00:05:43,830
+come back to our project, we want to go
+
+112
+00:05:43,830 --> 00:05:46,170
+at the end of the rectangle component,
+
+113
+00:05:46,170 --> 00:05:51,960
+this rectangle here, and it is ending
+
+114
+00:05:51,960 --> 00:05:54,390
+here, and we want to put in the settings
+
+115
+00:05:54,390 --> 00:05:56,520
+that we copied from the documentation.
+
+116
+00:05:56,520 --> 00:05:59,400
+The id is settings... we can keep that,
+
+117
+00:05:59,400 --> 00:06:01,890
+there's no problem... Ctrl+A Ctrl+I to align...
+
+118
+00:06:01,890 --> 00:06:06,000
+Down here you see that we are saving the property
+
+119
+00:06:06,000 --> 00:06:09,080
+of State. We want to make this state
+
+120
+00:06:09,080 --> 00:06:13,440
+spring by default, and we want to make
+
+121
+00:06:13,440 --> 00:06:17,190
+the application read the state data from
+
+122
+00:06:17,190 --> 00:06:19,830
+our settings component, so we should take
+
+123
+00:06:19,830 --> 00:06:29,120
+this out, and say state : settings.state.
+
+124
+00:06:29,990 --> 00:06:32,420
+This is the second thing you have
+
+125
+00:06:32,420 --> 00:06:34,850
+to do. The first one is put in your
+
+126
+00:06:34,850 --> 00:06:36,890
+settings component like this, give it an
+
+127
+00:06:36,890 --> 00:06:41,840
+ID, make your application read whatever
+
+128
+00:06:41,840 --> 00:06:44,090
+that are you saved from the settings. And
+
+129
+00:06:44,090 --> 00:06:46,100
+the last thing you need to do to make
+
+130
+00:06:46,100 --> 00:06:49,100
+this work is to provide a component 
+
+131
+00:06:49,100 --> 00:06:56,270
+on destroyed.. onDestruction, that's what
+
+132
+00:06:56,270 --> 00:07:01,010
+we want, okay. We choose to do it here, but
+
+133
+00:07:01,010 --> 00:07:02,660
+you can really save it whenever you want.
+
+134
+00:07:02,660 --> 00:07:04,610
+You can even do this when a user presses
+
+135
+00:07:04,610 --> 00:07:07,580
+some button or whatever. We are doing it
+
+136
+00:07:07,580 --> 00:07:08,240
+right now
+
+137
+00:07:08,240 --> 00:07:11,120
+when this rectangle is destroyed. And in
+
+138
+00:07:11,120 --> 00:07:14,950
+here we should say settings.state
+
+139
+00:07:14,950 --> 00:07:18,790
+equals whatever state is saved in the
+
+140
+00:07:18,790 --> 00:07:21,560
+rectangle here. And notice that this
+
+141
+00:07:21,560 --> 00:07:25,070
+state is part of the rectangle component
+
+142
+00:07:25,070 --> 00:07:29,750
+that contains everything, okay. This is
+
+143
+00:07:29,750 --> 00:07:32,180
+where this state is defined, so we should
+
+144
+00:07:32,180 --> 00:07:35,930
+save it by saying RectId, I think
+
+145
+00:07:35,930 --> 00:07:39,670
+that's our ID here for this rectangle...
+
+146
+00:07:39,670 --> 00:07:43,850
+containerRectId... that's what we have, so
+
+147
+00:07:43,850 --> 00:07:48,850
+we should say containerRectId.state
+
+148
+00:07:48,850 --> 00:07:52,880
+like this. And before we run the
+
+149
+00:07:52,880 --> 00:07:55,100
+application, we need to remember to go
+
+150
+00:07:55,100 --> 00:07:58,550
+back to the main cpp file, and put in our
+
+151
+00:07:58,550 --> 00:08:01,730
+application information ctrl A ctrl I to
+
+152
+00:08:01,730 --> 00:08:05,210
+align, and I want to change this because
+
+153
+00:08:05,210 --> 00:08:07,640
+it might conflict with the settings we
+
+154
+00:08:07,640 --> 00:08:10,100
+did in the last lecture. You don't want
+
+155
+00:08:10,100 --> 00:08:12,890
+to have two applications with the same
+
+156
+00:08:12,890 --> 00:08:14,780
+set of information, you're just going to
+
+157
+00:08:14,780 --> 00:08:16,060
+mess up things.
+
+158
+00:08:16,060 --> 00:08:20,840
+Let's run. If everything works, we should
+
+159
+00:08:20,840 --> 00:08:25,610
+be able to save our state, whether spring
+
+160
+00:08:25,610 --> 00:08:28,850
+or summer. So we are in spring right now.
+
+161
+00:08:28,850 --> 00:08:32,690
+We can change to be in summer, close the
+
+162
+00:08:32,690 --> 00:08:37,880
+application, run it, we start in summer, we
+
+163
+00:08:37,880 --> 00:08:40,419
+change to spring, close the application,
+
+164
+00:08:40,419 --> 00:08:43,629
+run it,
+
+165
+00:08:43,789 --> 00:08:46,760
+you see that we are in spring. Let's
+
+166
+00:08:46,760 --> 00:08:49,790
+change to summer again we should see
+
+167
+00:08:49,790 --> 00:08:53,540
+summer when we run, ok, summer. Let's
+
+168
+00:08:53,540 --> 00:08:54,770
+change to spring,
+
+169
+00:08:54,770 --> 00:08:57,290
+close the application, we should see
+
+170
+00:08:57,290 --> 00:09:00,740
+spring when we run, and it is spring here.
+
+171
+00:09:00,740 --> 00:09:03,340
+Now you know how to save your data
+
+172
+00:09:03,340 --> 00:09:06,350
+customally when you close the application,
+
+173
+00:09:06,350 --> 00:09:09,440
+or whenever you want to save the data. We
+
+174
+00:09:09,440 --> 00:09:11,480
+are saving when the rectangle component
+
+175
+00:09:11,480 --> 00:09:13,700
+is destroyed, but you can really save it
+
+176
+00:09:13,700 --> 00:09:16,940
+anywhere. The bulk of this is defining
+
+177
+00:09:16,940 --> 00:09:19,640
+the settings component, make your
+
+178
+00:09:19,640 --> 00:09:21,740
+application read its properties from the
+
+179
+00:09:21,740 --> 00:09:24,350
+Settings component, and choose a time
+
+180
+00:09:24,350 --> 00:09:26,540
+when you want to save the data, in this
+
+181
+00:09:26,540 --> 00:09:29,090
+case we saved the data when the
+
+182
+00:09:29,090 --> 00:09:31,340
+rectangle component is destroyed. And
+
+183
+00:09:31,340 --> 00:09:33,590
+ladies and gentlemen, this is how you
+
+184
+00:09:33,590 --> 00:09:35,750
+work with settings to save your data, you
+
+185
+00:09:35,750 --> 00:09:37,820
+can completely let the settings
+
+186
+00:09:37,820 --> 00:09:40,130
+component handle the data for you, pay
+
+187
+00:09:40,130 --> 00:09:42,380
+the price in performance of saving the
+
+188
+00:09:42,380 --> 00:09:44,990
+data whenever a property changes, or you
+
+189
+00:09:44,990 --> 00:09:46,880
+can choose when you want to save the
+
+190
+00:09:46,880 --> 00:09:49,340
+data yourself and do it like we did in
+
+191
+00:09:49,340 --> 00:09:50,360
+this lecture here.
+
+192
+00:09:50,360 --> 00:09:52,160
+In the next lecture, we're going to see
+
+193
+00:09:52,160 --> 00:09:54,650
+how you can save your data using SQLite,
+
+194
+00:09:54,650 --> 00:09:57,740
+an internal database that is built in
+
+195
+00:09:57,740 --> 00:00:00,000
+your system. I'll see you in the next lecture.
+

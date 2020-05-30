@@ -1,0 +1,458 @@
+﻿1
+00:00:00,740 --> 00:00:06,580
+Video này sẽ nói về Custom Models (model tùy chỉnh), chúng ta sẽ tìm hiểu tại sao phải sử dụng custom model và chọn lớp con cho model
+
+2
+00:00:06,580 --> 00:00:10,930
+như thế nào dựa trên câu trúc dữ liệu và sau đó đi xem một ví dụ làm về
+
+3
+00:00:10,930 --> 00:00:12,420
+custom list model (model tùy chỉnh cho danh sách).
+
+4
+00:00:12,430 --> 00:00:14,500
+Nào hãy bắt đầu.
+
+5
+00:00:14,500 --> 00:00:19,930
+Đầu tiên là tại sao chúng ta phải tạo model tùy chỉnh khi mà chúng ta đã có những
+
+6
+00:00:19,930 --> 00:00:21,930
+model có sẵn hết sức tốt trong Qt.
+
+7
+00:00:22,000 --> 00:00:24,580
+Trong một số trường hợp, dữ liệu của chúng ta thì phức tạp.
+
+8
+00:00:24,610 --> 00:00:26,100
+Nó đến từ nhiều nguồn khác nhau.
+
+9
+00:00:26,140 --> 00:00:31,090
+Dữ liệu động hoặc là phải truy vấn phwucs tạp nên chúng ta cần tạo ra model riêng phục vụ cho mục đích của mình
+
+10
+00:00:31,090 --> 00:00:32,200
+để không bị hạn chế.
+
+11
+00:00:32,220 --> 00:00:36,760
+Bạn sẽ có cơ hội tiếp cận một khía cạnh của Qt framework, ở chỗ các classes có sẵn thì không
+
+12
+00:00:36,760 --> 00:00:41,200
+đủ tính năng để thực hiện điều bạn muốn
+và bạn cần phải tạo cái của riêng bạn để làm được.
+
+13
+00:00:41,200 --> 00:00:45,520
+Và khi bạn cần một model tùy biến, câu hỏi là nó sẽ dựa trên lớp cơ sở nào.
+
+14
+00:00:45,520 --> 00:00:47,620
+Và điều đó thì tùy thuộc vào cấu trúc dữ liệu của bạn.
+
+15
+00:00:47,710 --> 00:00:52,030
+Nếu dữ liệu của bạn được biểu diễn dưới dạng danh sách thì hãy sử dụng Qt abstract list model (model danh sách trừu tượng).
+
+16
+00:00:52,030 --> 00:00:52,870
+Còn nếu nó là một bảng biểu.
+
+17
+00:00:52,900 --> 00:00:58,900
+thì sử dụng Qt abstract table model, còn là cấu trúc cây thì là Qt abstract item model.
+
+18
+00:00:58,900 --> 00:01:01,930
+Tôi thì khuyến khích bạn nên đơn giản hóa model của bạn nếu có thể.
+
+19
+00:01:01,930 --> 00:01:02,600
+tại sao lại như thế ?
+
+20
+00:01:02,610 --> 00:01:03,830
+ví dụ bạn có một cấu trúc cây,
+
+21
+00:01:03,840 --> 00:01:09,250
+Nó có thể được biểu diễn bằng một bảng, nếu bạn thực hiện nó khéo léo như thế này, nó sẽ giúp giảm bới độ phức tạp
+
+22
+00:01:09,250 --> 00:01:09,840
+code của bạn.
+
+23
+00:01:09,910 --> 00:01:13,180
+Rồi bây giờ hãy đi thực hiện một ví dụ đơn giản nhất.
+
+24
+00:01:13,180 --> 00:01:15,070
+một Qt abstract model.
+
+25
+00:01:15,070 --> 00:01:18,610
+Thứ thú vị ở model này là dữ liệu có phân cấp.
+
+26
+00:01:18,610 --> 00:01:22,320
+Chúng ta không cần phải lo lắng về 2 phương thức, ta sẽ nói về nó ở phần 2.
+
+27
+00:01:22,350 --> 00:01:25,360
+Và ở đây là một PhotoModel,
+
+28
+00:01:25,360 --> 00:01:30,640
+chúng ta cần viết lại hàm rowCount, data, setData và flags.
+
+29
+00:01:30,640 --> 00:01:35,320
+Và như tôi đã đề cập trước đó, hai phương thức mà ta không cần phải bận tâm đó là phương thức index
+
+30
+00:01:35,320 --> 00:01:38,230
+và phương thức parent bởi vì dữ liệu của ta là dữ liệu có phân cấp.
+
+31
+00:01:38,380 --> 00:01:40,550
+Rồi bắt đầu thực hiện nào.
+
+32
+00:01:40,660 --> 00:01:45,490
+Nếu ta xuống phần hàm rowCount, hàm này thì rất đơn giản.
+
+33
+00:01:45,490 --> 00:01:50,350
+chỉ là node root(gốc) sẽ trả về kích thước của danh sách của tất cả các nốt có tồn tại.
+
+34
+00:01:50,350 --> 00:01:53,130
+hàm rowCount sẽ trả về 0.
+
+35
+00:01:53,150 --> 00:01:54,570
+Hãy tiến hành kiểm tra điều đó.
+
+36
+00:01:54,580 --> 00:02:00,950
+Tỗi sẽ gõ nếu index.isValid() chúng ta sẽ trả về 0.
+
+37
+00:02:00,950 --> 00:02:05,480
+Lý do là tại vì model của chúng ta giống một mô hình cây.
+
+38
+00:02:05,540 --> 00:02:13,130
+với mỗi node không tồn tại, thì nôt gốc sẽ đảm nhận và trả về dữ liệu bên trong
+
+39
+00:02:13,130 --> 00:02:19,160
+ví dụ như color và nó là một kiểu vector do đó ta có thể gọi hàm size(). Để thực hiện
+
+40
+00:02:19,250 --> 00:02:20,390
+cho phương thức data() của ta.
+
+41
+00:02:20,390 --> 00:02:24,200
+Phần tử mà ta quan tâm là Qt Decoration role.
+
+42
+00:02:24,290 --> 00:02:27,420
+và vì thế ta sẽ đi kiểm tra và trả về dữ liệu dựa trên phần tử đó.
+
+43
+00:02:27,470 --> 00:02:32,210
+Và một lần nữa ta cần bắt 2 trường hợp, nếu index không tồn tại chúng ta sẽ trả về
+
+44
+00:02:32,240 --> 00:02:37,950
+QVariant() và ở cuối của phương thức ta cũng trả về giống như vậy
+
+45
+00:02:38,180 --> 00:02:40,410
+phục vụ cho tất cả role hiển thị.
+
+46
+00:02:40,430 --> 00:02:45,860
+Role duy nhất mà ta cần quan tâm là chúng ta sẽ kiểm tra nếu Role mà bằng QtDeclareation
+
+47
+00:02:45,860 --> 00:02:51,020
+thì điều đó có nghĩa là chúng ta sẽ trả về thông tin về màu sắc, nên chúng ta sẽ thực hiện điều đó.
+
+48
+00:02:51,020 --> 00:02:52,780
+Chúng ta lại gõ return,
+
+49
+00:02:52,820 --> 00:02:54,120
+trả về colors.
+
+50
+00:02:54,140 --> 00:03:00,260
+Và nó là một kiểu vector nên ta sẽ truy cập hàm row và truyền index vào,
+
+51
+00:03:00,260 --> 00:03:01,520
+trả về nó trực tiếp thế này.
+
+52
+00:03:01,520 --> 00:03:05,320
+Thứ kế tiếp ta cần làm là thực hiện hàm setData().
+
+53
+00:03:05,360 --> 00:03:09,520
+Đầu tiên ta cần chắc chắn là dữ liệu đã thay đổi.
+
+54
+00:03:09,530 --> 00:03:11,830
+Nên hãy kiểm tra nó trước tiên.
+
+55
+00:03:11,870 --> 00:03:17,540
+Cách đơn giản nhất để làm điều đó là truy cập dữ liệu sử dụng hàm data(), hàm này có 2 tham số một là index
+
+56
+00:03:17,540 --> 00:03:22,850
+là cái mà ta đã có, và thứ 2 là role ta cũng đã có rồi, ta cần chắc là ta không
+
+57
+00:03:22,850 --> 00:03:24,850
+truyền vào dữ liệu đã có rồi.
+
+58
+00:03:24,860 --> 00:03:30,530
+vì thế ta sẽ kiểm tra giá trị truyền vào phải là dữ liệu mới
+
+59
+00:03:30,530 --> 00:03:35,150
+nghĩa là ta kiểm tra dữ liệu tại vị trí đó thì không phải là dữ liệu mà ta đang thêm vào.
+
+60
+00:03:35,510 --> 00:03:40,940
+Khi ta đã kiểm tra điều đó ta sẽ tiến hành thay đổi dữ liệu và lại là colors
+
+61
+00:03:41,030 --> 00:03:47,960
+và ta sẽ truy xuất nó bằng cách dùng chỉ số trong list, ta sẽ lấy chỉ số row và ta
+
+62
+00:03:47,960 --> 00:03:51,200
+gán cho nó bằng với value.
+
+63
+00:03:51,200 --> 00:03:58,790
+Nhưng chúng ta không muốn thay đổi kiểu dữ liệu nên ta sẽ để kiểu value trong đây để lấy được Qt color ra.
+
+64
+00:03:58,790 --> 00:04:04,130
+Bây giờ một thứ quan trọng khác là khi ta gán dữ liệu (data) ta cần báo cho View biết
+
+65
+00:04:04,130 --> 00:04:08,390
+là chúng cần cập nhật dữ liệu và để làm điều đó ta sẽ phát ra một tín hiệu (signal) và tín hiệu đó
+
+66
+00:04:08,390 --> 00:04:12,530
+chính là tín hiệu dataChanged() mà thường gặp ở nhiều thứ.
+
+67
+00:04:12,530 --> 00:04:17,900
+chỉ số topLeft, chỉ số bottomRight  là giống nhau trong trường hợp này.
+
+68
+00:04:17,900 --> 00:04:19,310
+Chúng ta chỉ cần thay đổi một cái.
+
+69
+00:04:19,370 --> 00:04:24,620
+Và sau đó là role mà chúng ta thay đổi, chúng ta chỉ thay single role
+
+70
+00:04:24,650 --> 00:04:27,290
+Chúng ta không cần lo lắng về gì cả.
+
+71
+00:04:27,290 --> 00:04:33,950
+Chúng ta tiếp tục, truyền hai chỉ số trái topLeft và bottomRight, sau đó chúng ta tạo một Qt quick vector
+
+72
+00:04:34,070 --> 00:04:38,240
+có kiểu integer và ta sẽ gán role của chúng ta vào nó
+
+73
+00:04:38,450 --> 00:04:41,050
+Và cuối cùng là ta sẽ return
+
+74
+00:04:41,150 --> 00:04:45,620
+giá trị để biết là nó có hoạt động hay không, nó trả về kết quả của việc
+
+75
+00:04:45,620 --> 00:04:46,720
+kiểm tra dữ liệu.
+
+76
+00:04:46,730 --> 00:04:49,860
+Đây là một model rất đơn giản mà chúng ta làm,
+
+77
+00:04:49,910 --> 00:04:56,090
+và nếu việc kiểm tra dữ liệu thất bại ta cần thông báo cho người dùng biết rằng cái họ
+
+78
+00:04:56,090 --> 00:04:57,470
+thử thì không hoạt động.
+
+79
+00:04:57,500 --> 00:05:01,230
+Nên chúng ta trả về các giá trị boolean như ở đây.
+
+80
+00:05:01,700 --> 00:05:02,150
+Tuyệt vời.
+
+81
+00:05:02,150 --> 00:05:06,030
+Và việc cuối cùng là chúng ta viết lại hàm flags
+
+82
+00:05:06,390 --> 00:05:13,100
+flags mặc định thì chứa phần tử chính là màu sắc mà ta chọn
+
+83
+00:05:13,100 --> 00:05:14,280
+một phần tử trên view
+
+84
+00:05:14,420 --> 00:05:19,790
+Bạn có thể nhìn thấy code có sẵn ở đây, nếu index không tồn tại thì có nghĩa đó là index của phần tử root (gốc)
+
+85
+00:05:19,790 --> 00:05:24,450
+thì chúng ta trả về NoItemFlags bởi vì root thì không cần trang trí với bất kỳ kiểu flag nào.
+
+86
+00:05:24,650 --> 00:05:29,000
+Tiếp theo chúng ta sẽ cho trả về tất cả phần tử khác,
+
+87
+00:05:29,000 --> 00:05:35,500
+cho view biết rằng đó là phần tử đã được bật.
+
+88
+00:05:35,540 --> 00:05:40,670
+Nếu bạn không trả về phần tử này thì hình ảnh có thể sẽ bị thành ảnh xám
+
+89
+00:05:40,760 --> 00:05:44,330
+Nếu bạn không biết xem ở đâu thì hãy quay trở lại lúc trước.
+
+90
+00:05:44,330 --> 00:05:50,690
+Cần lưu ý là chúng ta đang thử hệ thống ở đây bởi vì chúng ta không trả về phần tử có thể chỉnh sửa được.
+
+91
+00:05:50,690 --> 00:05:53,600
+Nhưng nếu bạn chạy code này bạn sẽ thấy bạn có thể chỉnh sửa chèn vào.
+
+92
+00:05:53,600 --> 00:06:00,230
+Như ta thấy ở đây có item role này là có thể chỉnh sửa (editable), nhưng đó là điều mà ta
+
+93
+00:06:00,230 --> 00:06:06,050
+không muốn để, đây là chính xác cách bạn thực hiện các kết hợp các kiểu item roles
+
+94
+00:06:06,050 --> 00:06:06,540
+với nhau.
+
+95
+00:06:06,590 --> 00:06:12,980
+Và lý do ta ko làm là bởi vì một item thì thật sự có thể được chỉnh sửa vì nó có cơ chế delegate.
+
+96
+00:06:13,100 --> 00:06:15,050
+Nó thì không chạy tốt với các Qt dialogue.
+
+97
+00:06:15,050 --> 00:06:20,150
+
+Nên nếu ta chạy và xem cửa số chính thì thấy slot mà ta đổi màu
+
+98
+00:06:20,210 --> 00:06:22,500
+thì nó đã đổi.
+
+99
+00:06:22,820 --> 00:06:27,240
+đầu tiên ta lấy màu hiện tại ra sau đó chúng ta gọi dialog này
+
+100
+00:06:27,430 --> 00:06:33,230
+Và để mà làm cho dialog hoạt động, chúng ta cần làn bên ngoài quá trình chỉnh sửa thông thường
+
+101
+00:06:33,230 --> 00:06:36,670
+Đó là lý do chúng ta ko trả về một editable flag bởi vì chúng ta làm nó bên ngoài.
+
+102
+00:06:36,690 --> 00:06:38,940
+Rồi hãy chạy chương trình và chắc là nó hoạt động.
+
+103
+00:06:39,990 --> 00:06:46,310
+Chúng ta có nhầm lẫn nhỏ ở đây chỗ này phải để là parent thay vì index.
+
+104
+00:06:46,310 --> 00:06:48,880
+Rồi ở đây chúng ta có một bảng hình ảnh màu ngẫu nhiên.
+
+105
+00:06:48,920 --> 00:06:54,950
+và như đã làm chúng ta click vào một ô thì một cửa sổ dialog hiện lên và ta có thể chỉnh sửa
+
+106
+00:06:54,950 --> 00:06:58,550
+thành bất kỳ
+
+107
+00:06:58,550 --> 00:07:04,190
+Nếu bạn nhìn lại slot thì chúng đã thay đổi khi chúng ta
+
+108
+00:07:04,190 --> 00:07:04,780
+đóng cửa sổ dialog lại.
+
+109
+00:07:04,970 --> 00:07:09,320
+CHúng ta sử dụng cửa sổ dialog để lấy màu và sau đó chúng ta gán màu vào model của ta bằng cách gọi hàm set
+
+110
+00:07:09,540 --> 00:07:14,540
+và truyền index màu và Qt decoration role.
+
+111
+00:07:14,690 --> 00:07:18,780
+và thế là chúng ta đã thành công.
+
+112
+00:07:19,070 --> 00:07:22,070
+Thành công khi thực hiện một model tùy biến.
+
+113
+00:07:22,070 --> 00:07:28,370
+Chúng ta đã nói về mối quan hệ của dữ liệu model cũng như nói về tại sao chúng ta cần
+
+114
+00:07:28,400 --> 00:07:35,680
+tạo mới một model tùy biến. Hãy tham gia cùng chúng tôi ở bài kế, chúng ta sẽ đi thực hiện một TreeView, một phần của serie bài học này.
+

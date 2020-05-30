@@ -1,0 +1,544 @@
+1
+00:00:00,000 --> 00:00:02,310
+Trong bài học này, ta sẽ cùng tìm hiểu các cách 
+
+2
+00:00:02,310 --> 00:00:05,250
+mà ta có thể dùng JavaScript trong QML. 
+
+3
+00:00:05,250 --> 00:00:08,160
+Ta sẽ tìm hiểu cách mà ta có thể dùng 
+
+4
+00:00:08,160 --> 00:00:10,290
+JavaScript trong các liên kết thuộc tính (property bindings), 
+
+5
+00:00:10,290 --> 00:00:13,349
+các hàm tự tạo (custom functions), và các hàm xử lý
+
+6
+00:00:13,349 --> 00:00:16,470
+tín hiệu (signal handlers). Bây giờ, ta hãy mở Qt Creator 
+
+7
+00:00:16,470 --> 00:00:19,109
+và tìm hiểu. Ok. Đây là Qt Creator. 
+
+8
+00:00:19,109 --> 00:00:21,359
+Như thường lệ, ta sẽ tạo một dự án mới. 
+
+9
+00:00:21,359 --> 00:00:24,570
+Ta chọn "Qt Quick Application" (Ứng dụng Nhanh Qt). 
+
+10
+00:00:24,570 --> 00:00:27,810
+Ta sẽ gọi dự án này là "JSUsageDemo" (Thực hành sử dụng Javascript), 
+
+11
+00:00:27,810 --> 00:00:30,960
+lưu dự án vào trong ổ đĩa,  
+
+12
+00:00:30,960 --> 00:00:34,320
+đây sẽ là vị trí mặc định 
+
+13
+00:00:34,320 --> 00:00:38,809
+cho các dự án mà ta sẽ tạo sau này. 
+
+14
+00:00:38,809 --> 00:00:43,860
+Tiến hành lựa chọn phiên bản Qt, lựa chọn Qt kit. 
+
+15
+00:00:43,860 --> 00:00:48,289
+Ta sẽ đổi tiêu đề thành 
+
+16
+00:00:48,289 --> 00:00:53,910
+"JS Usage Demo". Để có được ví dụ 
+
+17
+00:00:53,910 --> 00:00:55,980
+cụ thể, ta sẽ tạo một hình chữ nhật 
+
+18
+00:00:55,980 --> 00:00:58,980
+ở đây. Đây là cách mà ta luôn làm. 
+
+19
+00:00:58,980 --> 00:01:06,180
+Chiều rộng của hình chữ nhật phụ thuộc vào 
+
+20
+00:01:06,180 --> 00:01:08,340
+chiều cao của hình. Ta có, chiều rộng bằng 
+
+21
+00:01:08,340 --> 00:01:14,760
+chiều cao nhân 2. Chiều cao của hình 
+
+22
+00:01:14,760 --> 00:01:18,869
+sẽ là 100. Màu của hình chữ nhật này 
+
+23
+00:01:18,869 --> 00:01:22,740
+là màu xanh lá. Hình chữ nhật này sẽ nằm ở vị trí trung tâm 
+
+24
+00:01:22,740 --> 00:01:25,229
+của phần tử cha (parent). Phần tử cha chính là 
+
+25
+00:01:25,229 --> 00:01:28,080
+phần tử Window (cửa sổ) ở đây. Như vậy, ở đây 
+
+26
+00:01:28,080 --> 00:01:33,270
+ta có anchors.centerIn: parent. Chạy chương trình
+
+27
+00:01:33,270 --> 00:01:36,479
+và xem ta đã làm được gì. Okay. 
+
+28
+00:01:36,479 --> 00:01:38,790
+Đây là hình chữ nhật mà ta có. Hình chữ nhật này 
+
+29
+00:01:38,790 --> 00:01:41,790
+nằm ở giữa Window. Tôi không biết các bạn 
+
+30
+00:01:41,790 --> 00:01:45,060
+có thấy không nhưng đây là JavaScript
+
+31
+00:01:45,060 --> 00:01:49,140
+sử dụng trong liên kết thuộc tính. Ta liên kết 
+
+32
+00:01:49,140 --> 00:01:51,240
+chiều rộng của hình chữ nhật với chiều cao 
+
+33
+00:01:51,240 --> 00:01:53,790
+của hình. Đây là một cách
+
+34
+00:01:53,790 --> 00:01:56,520
+sử dụng JavaScript trong các QML. 
+
+35
+00:01:56,520 --> 00:01:58,740
+Các bạn đã thấy tôi thực hiện rất nhiều lần, 
+
+36
+00:01:58,740 --> 00:02:01,259
+ các bạn có thể tự thực hiện
+
+37
+00:02:01,259 --> 00:02:03,930
+để đặt thuộc tính mà mình có phụ thuộc 
+
+38
+00:02:03,930 --> 00:02:06,240
+vào nhau. Để thấy rõ hơn, 
+
+39
+00:02:06,240 --> 00:02:08,490
+tôi sẽ tạo phần tử MouseArea ở trong. 
+
+40
+00:02:08,490 --> 00:02:16,880
+Phần từ này sẽ phủ tràn hết cha của nó. 
+
+41
+00:02:16,880 --> 00:02:21,420
+Ta sẽ cho phép MouseArea này kéo thả
+
+42
+00:02:21,420 --> 00:02:24,660
+hình chữ nhật ở đây. Ta viết 
+
+43
+00:02:24,660 --> 00:02:32,760
+drag.target: containerRectId. Các bạn đã biết 
+
+44
+00:02:32,760 --> 00:02:34,470
+thao tác này bởi ta đã từng thực hiện trước đó. 
+
+45
+00:02:34,470 --> 00:02:41,160
+Trục sẽ là XAxis. 
+
+46
+00:02:41,160 --> 00:02:49,160
+Giá trị nhỏ nhất sẽ bằng 0. 
+
+47
+00:02:49,760 --> 00:02:56,120
+Giá trị lớn nhất sẽ là chiều rộng của phần tử cha 
+
+48
+00:02:56,120 --> 00:03:01,170
+trừ đi chiều rộng của containerRecId. 
+
+49
+00:03:01,170 --> 00:03:06,140
+Ta làm như vậy. 
+
+50
+00:03:08,030 --> 00:03:10,980
+Ta sẽ tiến hành kéo hình chữ nhật này, 
+
+51
+00:03:10,980 --> 00:03:13,320
+do đó, ta không cần nhất thiết phải neo nó 
+
+52
+00:03:13,320 --> 00:03:15,020
+vào trong phần tử cha. Các thuộc tính này 
+
+53
+00:03:15,020 --> 00:03:16,980
+sẽ xung đột lẫn nhau. Ta sẽ chú thích  
+
+54
+00:03:16,980 --> 00:03:21,030
+phần này lại. Chạy ứng dụng. Hình chữ nhật sẽ nằm 
+
+55
+00:03:21,030 --> 00:03:23,310
+ở phía trên trái của cửa sổ, 
+
+56
+00:03:23,310 --> 00:03:28,290
+ta có thể kéo hình chữ nhật này từ trái qua phải, 
+
+57
+00:03:28,290 --> 00:03:30,120
+có thể tăng kích thước của cửa sổ, và 
+
+58
+00:03:30,120 --> 00:03:33,270
+vẫn có thể kéo thả hình chữ nhật. Tiếp theo, ta muốn làm với 
+
+59
+00:03:33,270 --> 00:03:37,050
+hình chữ nhật này là thay đổi màu của nó 
+
+60
+00:03:37,050 --> 00:03:40,590
+khi hình đi qua tọa độ X 300. 
+
+61
+00:03:40,590 --> 00:03:44,790
+Ta làm như sau: ta sẽ đặt thuộc tính
+
+62
+00:03:44,790 --> 00:03:47,760
+màu của hình chữ nhật phụ thuộc vào tọa độ x của nó. 
+
+63
+00:03:47,760 --> 00:03:52,830
+Ta gõ: nếu x lớn hơn 300, 
+
+64
+00:03:52,830 --> 00:03:59,480
+thì hình chữ nhật có màu đỏ. 
+
+65
+00:03:59,480 --> 00:04:02,910
+Ngược lại, hình có màu xanh lá. Đây là 
+
+66
+00:04:02,910 --> 00:04:05,730
+toán tử ba ngôi (ternary operator). Với những ai chưa biết về toán tử ba ngôi, 
+
+67
+00:04:05,730 --> 00:04:07,380
+các bạn có thể xem trong tài liệu JavaScript, 
+
+68
+00:04:07,380 --> 00:04:10,250
+hoặc ở những tài liệu về, 
+
+69
+00:04:10,250 --> 00:04:13,920
+ngôn ngữ lập trình giống C khác 
+
+70
+00:04:13,920 --> 00:04:15,690
+Toán tử ba ngôi rất phổ biến, ta sẽ nhìn thấy rất nhiều 
+
+71
+00:04:15,690 --> 00:04:18,750
+trong các ví dụ QML. Chạy ứng dụng này. 
+
+72
+00:04:18,750 --> 00:04:21,910
+Nếu ta kéo hình chữ nhật đi qua một vị trí 
+
+73
+00:04:21,910 --> 00:04:25,030
+trên trục x, thì màu của hình chữ nhật sẽ 
+
+74
+00:04:25,030 --> 00:04:27,990
+chuyển sang đỏ. Ta thấy, hình chữ nhật chuyển sang màu đỏ
+
+75
+00:04:27,990 --> 00:04:31,660
+ngay tại đây. Ta sẽ thêm vào chương trình để
+
+76
+00:04:31,660 --> 00:04:34,660
+để hiển thị những thay đổi trên tọa độ x, 
+
+77
+00:04:34,660 --> 00:04:39,250
+và để nhận được tín hiệu khi x thay đổi. 
+
+78
+00:04:39,250 --> 00:04:41,620
+Ta gõ, 
+
+79
+00:04:41,620 --> 00:04:53,580
+onXChanged, console.log "Giá trị hiện tại của x". Chạy lại lần nữa. 
+
+80
+00:04:53,580 --> 00:04:56,530
+Okay. Ta kéo hình chữ nhật sang bên phải. 
+
+81
+00:04:56,530 --> 00:05:00,550
+Ta thấy, hình chữ nhật đi qua 100, 200, và khi tiến gần 
+
+82
+00:05:00,550 --> 00:05:03,520
+đến 300, hình chữ nhật 
+
+83
+00:05:03,520 --> 00:05:10,090
+chuyển sang màu đỏ. Rồi, màu đỏ rồi. 
+
+84
+00:05:10,090 --> 00:05:12,610
+Như vậy đoạn code đã hoạt động. Tuy nhiên, điều mà tôi  
+
+85
+00:05:12,610 --> 00:05:15,280
+thực sự muốn bạn tập trung vào là đây. 
+
+86
+00:05:15,280 --> 00:05:18,370
+Đoạn code ở đây là JavaScript. 
+
+87
+00:05:18,370 --> 00:05:20,290
+Ta cũng có một trường hợp khác sử dụng JavaScript, 
+
+88
+00:05:20,290 --> 00:05:24,670
+đó là trong liên kết thuộc tính. Okay. 
+
+89
+00:05:24,670 --> 00:05:26,560
+Ta đã thấy ở đây rồi, do đó, tôi sẽ chỉ cho các bạn 
+
+90
+00:05:26,560 --> 00:05:29,290
+cách sử dụng các hàm tự tạo (custom functions). 
+
+91
+00:05:29,290 --> 00:05:31,600
+Những gì ta có thể làm là chuyển 
+
+92
+00:05:31,600 --> 00:05:34,450
+liên kết thuộc tính ở đây vào trong một hàm. 
+
+93
+00:05:34,450 --> 00:05:35,950
+Cách mà ta thực hiện như sau: tạo 
+
+94
+00:05:35,950 --> 00:05:38,380
+một hàm dưới đây, nằm trong hình chữ nhật này. 
+
+95
+00:05:38,380 --> 00:05:47,050
+Tôi gọi hàm này là getHeight (lấy chiều cao), và hàm này sẽ
+
+96
+00:05:47,050 --> 00:05:52,090
+trả lại những gì mà ta vừa thực hiện ở đây, 
+
+97
+00:05:52,090 --> 00:05:55,600
+trả lại biểu thức này. Tôi biết ví dụ này 
+
+98
+00:05:55,600 --> 00:05:58,570
+khá là cơ bản và đơn giản. Tuy nhiên, tôi chỉ muốn 
+
+99
+00:05:58,570 --> 00:06:01,210
+cho các bạn thấy ta có thể dùng Javascript như thế này. 
+
+100
+00:06:01,210 --> 00:06:03,070
+Nếu muốn thực hiện các phần phức tạp hơn, 
+
+101
+00:06:03,070 --> 00:06:06,520
+các bạn hãy cứ thực hiện. Ta có thể đặt hàm getHeight
+
+102
+00:06:06,520 --> 00:06:08,860
+ở đây. Okay. Đây là hàm mà ta đã định nghĩa 
+
+103
+00:06:08,860 --> 00:06:11,830
+trong hình chữ nhật này. Ta sẽ gọi hàm này ở đây. 
+
+104
+00:06:11,830 --> 00:06:14,350
+Chạy ứng dụng này 
+
+105
+00:06:14,350 --> 00:06:16,930
+và xem mọi thứ có giống với lúc trước 
+
+106
+00:06:16,930 --> 00:06:19,900
+hay không. Ta thấy, chiều rộng bằng 
+
+107
+00:06:19,900 --> 00:06:22,810
+2 lần chiều cao, và đoạn code vẫn hoạt động. 
+
+108
+00:06:22,810 --> 00:06:25,720
+Chú thích hàm này là hàm tự tạo 
+
+109
+00:06:25,720 --> 00:06:28,990
+để bạn có thể dễ dàng hiểu và tham chiếu. 
+
+110
+00:06:28,990 --> 00:06:31,660
+Một lần nữa, ta có thể thấy
+
+111
+00:06:31,660 --> 00:06:34,600
+ở chỗ này, 
+
+112
+00:06:34,600 --> 00:06:35,529
+onXChanged,
+
+113
+00:06:35,529 --> 00:06:37,779
+ta đã sử dụng JavaScript trong hàm xử lý 
+
+114
+00:06:37,779 --> 00:06:41,009
+tín hiệu. Okay. Chú thích lại ở đây. 
+
+115
+00:06:41,009 --> 00:06:45,279
+Như vậy, đó là tất cả những gì mà tôi muốn 
+
+116
+00:06:45,279 --> 00:06:47,589
+chỉ cho các bạn thấy trong bài này. Ở đây, các bạn 
+
+117
+00:06:47,589 --> 00:06:50,349
+đã được giới thiệu về cách sử dụng JavaScript trong các QML. 
+
+118
+00:06:50,349 --> 00:06:53,309
+Tổng kết lại, ta có thể dùng JavaScript trong 
+
+119
+00:06:53,309 --> 00:06:56,379
+liên kết thuộc tính như ta vừa thực hiện. 
+
+120
+00:06:56,379 --> 00:06:59,079
+Theo tôi, chỗ này đã chuyển vào hàm, 
+
+121
+00:06:59,079 --> 00:07:03,309
+do đó, ta có thể chú thích lại "JavaScript trong hàm". Ta có thể dùng 
+
+122
+00:07:03,309 --> 00:07:05,889
+JavaScript trong các liên kết thuộc tính. Ta cũng có thể 
+
+123
+00:07:05,889 --> 00:07:09,279
+dùng JavaScript trong các hàm. Ta đã định nghĩa
+
+124
+00:07:09,279 --> 00:07:11,559
+hàm tự tạo ở đây, và ta gọi hàm đó ở đây, 
+
+125
+00:07:11,559 --> 00:07:14,919
+ở thuộc tính chiều rộng, để đặt chiều rộng 
+
+126
+00:07:14,919 --> 00:07:17,799
+phụ thuộc vào chiều cao mà ta đã đinh nghĩa ở đây. 
+
+127
+00:07:17,799 --> 00:07:21,129
+Ta cũng đã sử dụng JavaScript trong các hàm xử lý 
+
+128
+00:07:21,129 --> 00:07:23,619
+tín hiệu, ở đó, ta dùng console.log
+
+129
+00:07:23,619 --> 00:07:27,009
+để in ra giá trị hiện tại của x. Okay. 
+
+130
+00:07:27,009 --> 00:07:28,899
+Sau khi tìm hiểu các kiến thức trong bài này, 
+
+131
+00:07:28,899 --> 00:07:31,209
+tôi hy vọng các bạn đã có cái nhìn rõ hơn 
+
+132
+00:07:31,209 --> 00:07:33,759
+về các cách sử dụng JavaScript trong QML. 
+
+133
+00:07:33,759 --> 00:07:36,009
+Trong bài tiếp theo, ta sẽ 
+
+134
+00:07:36,009 --> 00:07:37,959
+tìm hiểu sâu hơn nữa về các hàm 
+
+135
+00:07:37,959 --> 00:07:40,599
+và xét đến phạm vi mà ta có thể sử dụng những hàm đó. 
+
+136
+00:07:40,599 --> 00:00:00,000
+Hẹn gặp lại các bạn trong bài giảng tiếp theo. 
+

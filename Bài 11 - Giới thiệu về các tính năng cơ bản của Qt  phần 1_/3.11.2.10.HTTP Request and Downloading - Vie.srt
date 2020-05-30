@@ -1,0 +1,204 @@
+﻿1
+00:00:01,330 --> 00:00:10,190
+Yêu cầu HTTP và download. Chúng ta đã học cách gửi một yêu cầu HTTP tới một server để lấy tài nguyên
+
+2
+00:00:10,280 --> 00:00:13,150
+ở các server từ xa.
+
+3
+00:00:13,310 --> 00:00:23,940
+Hãy khởi động Qt creator và tạo một console application project
+
+4
+00:00:23,940 --> 00:00:26,590
+Để sử dụng module mạng của Qt,
+
+5
+00:00:26,790 --> 00:00:30,120
+ta cần thêm nó vào cấu hình của project.
+
+6
+00:00:30,120 --> 00:00:40,860
+Click đúp vào project file và thêm dòng lệnh QT += network vào file. Bây giờ, ta chạy lại qmake
+
+7
+00:00:40,860 --> 00:00:44,260
+để chắc chắn các chức năng như auto-complete sẽ hoạt động trong trình soạn thảo code.
+
+8
+00:00:48,530 --> 00:00:50,820
+Sau đó, ta quay lại file main.cpp.
+
+9
+00:00:53,450 --> 00:00:59,410
+Đầu tiên, ta cần include các file header cần thiết.
+
+10
+00:00:59,520 --> 00:01:05,400
+Sau đó, ta khởi tạo QNetwork Access Manager. Qt cung cấp
+
+11
+00:01:05,490 --> 00:01:11,130
+QNetworkAccessManager để cung cấp lớp các ứng dụng cho việc truy cập mạng.
+
+12
+00:01:11,430 --> 00:01:19,300
+Nó sẽ nhận một đối tượng QNetwork Request và trả về một đối tượng QNetwork Reply.
+
+13
+00:01:19,350 --> 00:01:30,360
+Nó cũng cung cấp các phương pháp phổ dụng như Get, Post và Put. Ta xây dựng một đối tượng QNetwork Request
+
+14
+00:01:30,890 --> 00:01:36,370
+với URL trỏ tới một Qt Blog.
+
+15
+00:01:36,380 --> 00:01:42,150
+QNetworkRequest là lớp lưu giữ các thông tin cần thiết để gửi các yêu cầu qua một mạng.
+
+16
+00:01:42,270 --> 00:01:49,830
+Ngoài URL, ta còn có thể đặt các header và thuộc tính để cụ thể hóa yêu cầu.
+
+17
+00:01:49,850 --> 00:01:55,300
+Ở đây, ta đặt UserAgentHeader cho string đã được tùy chỉnh của ta.
+
+18
+00:01:55,410 --> 00:02:01,920
+Sau đó, ta sử dụng Get để lấy nội dung đích.
+
+19
+00:02:02,030 --> 00:02:10,600
+Do API truy cập mạng chỉ cung cấp cho ta các cài đặt không đồng bộ, ta cần kết nối
+
+20
+00:02:10,600 --> 00:02:19,230
+các tín hiệu trả về và bảo đảm là vòng lặp sự kiện (Event Loop) đang chạy. Ở đây ta sử dụng hàm Lambda, được giới thiệu trong
+
+21
+00:02:19,290 --> 00:02:24,840
+C++ 11 như một slot để thay thế cho các tín hiệu đã hoàn thành.
+
+22
+00:02:24,890 --> 00:02:31,760
+Một tín hiệu sẽ được phát ra nếu như trả về đã xử lý xong và không còn thêm cập nhật nào với các dữ liệu hoặc
+
+23
+00:02:31,880 --> 00:02:37,590
+metadata, hoặc là ta gọi lệnh Close hoặc Abort.
+
+24
+00:02:37,640 --> 00:02:42,620
+Ta vẫn có thể đọc dữ liệu từ trả về. Trong hàm Lambda này,
+
+25
+00:02:42,620 --> 00:02:45,310
+ta in dữ liệu trả về.
+
+26
+00:02:45,620 --> 00:02:48,350
+Sau đó ta đóng và lên lịch để xóa dữ liệu.
+
+27
+00:02:48,350 --> 00:02:55,660
+Cuối cùng, ta gọi lệnh Quit để dừng vòng lặp sự kiện chính và thoát khỏi ứng dụng.
+
+28
+00:02:55,660 --> 00:03:04,540
+Bây giờ, ta sẽ rebuild và chạy ứng dụng.
+
+29
+00:03:04,660 --> 00:03:09,580
+Bạn sẽ thấy rằng nội dung HTML của Qt blog này đã được in ra.
+
+30
+00:03:13,980 --> 00:03:19,310
+Tương tự, ta có thể dùng cách này để download một file từ một server từ xa,
+
+31
+00:03:19,310 --> 00:03:27,920
+hoặc để download một file.
+
+32
+00:03:28,070 --> 00:03:33,020
+Trong ví dụ này, ta sẽ download một file license từ GNU,
+
+33
+00:03:38,970 --> 00:03:44,220
+Nhưng thay vì in ra màn hình console, ta sẽ ghi dữ liệu
+
+34
+00:03:44,220 --> 00:03:45,000
+vào một file local.
+
+35
+00:03:47,740 --> 00:03:48,250
+Để làm được điều đó,
+
+36
+00:03:48,250 --> 00:03:52,800
+đầu tiên ta cần include QFile.
+
+37
+00:03:52,880 --> 00:03:54,790
+Điều này cho ta lớp QFile.
+
+38
+00:04:03,270 --> 00:04:09,330
+QFile cung cấp cho ta một tập hợp các API để đọc và ghi vào các file.
+
+39
+00:04:09,420 --> 00:04:18,670
+Ở đây ta xây dựng đối tượng QFile out với một file local tên là lgpl-3.0.txt, sau đó ta ghi dữ liệu trả về của
+
+40
+00:04:18,680 --> 00:04:21,560
+mạng Q vào file này.
+
+41
+00:04:21,560 --> 00:04:23,580
+Cuối cùng, ta gọi lệnh close
+
+42
+00:04:23,720 --> 00:04:25,530
+để đóng file.
+
+43
+00:04:25,730 --> 00:04:27,320
+Bây giờ, ta sẽ build và chạy lại.
+
+44
+00:04:46,110 --> 00:04:47,890
+Khi mà ứng dụng thoát ra
+
+45
+00:04:47,920 --> 00:04:51,740
+thì file đã được download xong.
+
+46
+00:04:51,800 --> 00:04:53,210
+Mở browser,
+
+47
+00:04:57,580 --> 00:05:02,240
+bạn sẽ thấy file lgpl-3.0.txt
+
+48
+00:05:02,260 --> 00:05:05,090
+đã được download.
+
+49
+00:05:05,110 --> 00:05:10,630
+Và nếu bạn mở file trên bằng Notepad, bạn sẽ thấy nó đã được download một cách chính xác.
+
+50
+00:05:16,810 --> 00:05:18,570
+Trong video tiếp theo,
+
+51
+00:05:18,580 --> 00:05:23,080
+chúng ta sẽ học về cách viết một TCP server với module QtNetwork.
+

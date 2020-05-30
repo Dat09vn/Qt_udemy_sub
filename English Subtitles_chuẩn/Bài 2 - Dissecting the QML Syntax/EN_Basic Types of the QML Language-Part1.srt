@@ -1,0 +1,848 @@
+1
+00:00:00,000 --> 00:00:01,979
+In this lecture we're going to look at
+
+2
+00:00:01,979 --> 00:00:05,100
+qml basic types. Before we start looking
+
+3
+00:00:05,100 --> 00:00:07,680
+at the data types in QML I'd like to go
+
+4
+00:00:07,680 --> 00:00:09,719
+in the documentation in qt creator
+
+5
+00:00:09,719 --> 00:00:12,269
+and show you somethings. You go to the
+
+6
+00:00:12,269 --> 00:00:14,519
+documentation by clicking on this help
+
+7
+00:00:14,519 --> 00:00:18,810
+tab here. And in the search bar here make
+
+8
+00:00:18,810 --> 00:00:21,119
+sure that you have index selected like
+
+9
+00:00:21,119 --> 00:00:23,189
+me here if you want to see exactly the
+
+10
+00:00:23,189 --> 00:00:25,920
+same things I'm saying. And in here type
+
+11
+00:00:25,920 --> 00:00:30,119
+qml basic types. Okay you are going to see
+
+12
+00:00:30,119 --> 00:00:31,320
+some choices here.
+
+13
+00:00:31,320 --> 00:00:33,030
+We're going to choose the second one
+
+14
+00:00:33,030 --> 00:00:35,130
+here and we're going to look at it. If
+
+15
+00:00:35,130 --> 00:00:38,520
+you look the title says qml basic types
+
+16
+00:00:38,520 --> 00:00:41,399
+and down here they show you the basic
+
+17
+00:00:41,399 --> 00:00:43,020
+types that we're going to look at.
+
+18
+00:00:43,020 --> 00:00:45,570
+There is boolean data types, there is
+
+19
+00:00:45,570 --> 00:00:48,059
+double, enumeration, integer and lists
+
+20
+00:00:48,059 --> 00:00:50,850
+real, string and all these things. Right
+
+21
+00:00:50,850 --> 00:00:52,980
+now we're going to create a qml project
+
+22
+00:00:52,980 --> 00:00:55,860
+and play with these things. So we're going to
+
+23
+00:00:55,860 --> 00:00:58,829
+start a new project, it's going to be a
+
+24
+00:00:58,829 --> 00:01:01,590
+qt quick application an empty one. We're
+
+25
+00:01:01,590 --> 00:01:04,049
+going to call it qmlDatatypesDemo.
+
+26
+00:01:04,049 --> 00:01:06,479
+We're going to save it in a location on
+
+27
+00:01:06,479 --> 00:01:09,450
+our drive, hit next, choose our build
+
+28
+00:01:09,450 --> 00:01:14,310
+system as qmake and you choose the
+
+29
+00:01:14,310 --> 00:01:17,820
+lastest version of Qt have installed. We
+
+30
+00:01:17,820 --> 00:01:21,720
+choose the desktop kit and finish. After
+
+31
+00:01:21,720 --> 00:01:23,580
+this we're going to have our starter
+
+32
+00:01:23,580 --> 00:01:25,710
+project. We're going to change the title
+
+33
+00:01:25,710 --> 00:01:29,610
+here and make it say QML Datatypes Demo.
+
+34
+00:01:29,610 --> 00:01:31,650
+Because we don't want an empty project,
+
+35
+00:01:31,650 --> 00:01:33,900
+we're going to put a rectangle in the
+
+36
+00:01:33,900 --> 00:01:38,520
+middle. We're going to give it a width of
+
+37
+00:01:38,520 --> 00:01:45,470
+200 and a height of 100 why not. And
+
+38
+00:01:45,470 --> 00:01:47,790
+inside the rectangle we're going to put
+
+39
+00:01:47,790 --> 00:01:50,220
+a text element the id is going to be
+
+40
+00:01:50,220 --> 00:01:54,180
+mTextId and the text is going to say
+
+41
+00:01:54,180 --> 00:01:57,329
+hello world. If you look here you see the
+
+42
+00:01:57,329 --> 00:02:01,200
+text is wrapped into this qsTr function,
+
+43
+00:02:01,200 --> 00:02:04,110
+it is a function that helps when you
+
+44
+00:02:04,110 --> 00:02:05,969
+want to translate your application into
+
+45
+00:02:05,969 --> 00:02:08,459
+multiple languages. We're not going to go
+
+46
+00:02:08,459 --> 00:02:12,420
+into that right now just take this as if
+
+47
+00:02:12,420 --> 00:02:13,270
+it was
+
+48
+00:02:13,270 --> 00:02:15,820
+piece of text that we put here. We want
+
+49
+00:02:15,820 --> 00:02:18,310
+to Center this rectangle in the parent
+
+50
+00:02:18,310 --> 00:02:22,060
+so we're going to say anchors.centerIn: parent.
+
+51
+00:02:22,060 --> 00:02:26,500
+And we want to give it a color of
+
+52
+00:02:26,500 --> 00:02:31,570
+yellow so that it is visible. We also
+
+53
+00:02:31,570 --> 00:02:34,330
+want to anchor this text in the center
+
+54
+00:02:34,330 --> 00:02:36,850
+of the rectangle to have thing lay out
+
+55
+00:02:36,850 --> 00:02:40,600
+nicely so let's do that we're going to
+
+56
+00:02:40,600 --> 00:02:43,030
+copy that property and paste it here, we
+
+57
+00:02:43,030 --> 00:02:45,250
+can do that. Let's run the application
+
+58
+00:02:45,250 --> 00:02:48,430
+and see what it looks like. Mm-hmm, you
+
+59
+00:02:48,430 --> 00:02:50,200
+see we have hello world in the middle
+
+60
+00:02:50,200 --> 00:02:52,960
+this is our design. From the last lecture
+
+61
+00:02:52,960 --> 00:02:55,060
+you must be starting to be familiar with
+
+62
+00:02:55,060 --> 00:02:57,490
+this thing. These are the properties for
+
+63
+00:02:57,490 --> 00:03:00,010
+our window element, inside we have a
+
+64
+00:03:00,010 --> 00:03:02,500
+rectangle and the rectangle has a child
+
+65
+00:03:02,500 --> 00:03:05,020
+of its own which is this text element
+
+66
+00:03:05,020 --> 00:03:07,930
+here. Okay you can put in any properties
+
+67
+00:03:07,930 --> 00:03:10,660
+that this element supports, and if you
+
+68
+00:03:10,660 --> 00:03:12,490
+want to look at the documentation for
+
+69
+00:03:12,490 --> 00:03:16,420
+any element. You can select it hit f1 and
+
+70
+00:03:16,420 --> 00:03:19,060
+you're going to be taken into the
+
+71
+00:03:19,060 --> 00:03:22,060
+documentation on the right here. If you
+
+72
+00:03:22,060 --> 00:03:26,110
+want to show the help mode in full, you
+
+73
+00:03:26,110 --> 00:03:28,420
+can click on this button here "Open in help mode"
+
+74
+00:03:28,420 --> 00:03:30,310
+and it's going to show the
+
+75
+00:03:30,310 --> 00:03:33,070
+documentation for that element. In this
+
+76
+00:03:33,070 --> 00:03:35,320
+case it is the text element. But we're
+
+77
+00:03:35,320 --> 00:03:36,760
+going to look at this later in the
+
+78
+00:03:36,760 --> 00:03:40,780
+course. Let's go back to our project. The
+
+79
+00:03:40,780 --> 00:03:42,520
+first thing I want to do is to create
+
+80
+00:03:42,520 --> 00:03:45,160
+this string data type how do I do that,
+
+81
+00:03:45,160 --> 00:03:50,620
+I say property string I'm going to call
+
+82
+00:03:50,620 --> 00:03:56,770
+this mString and let it say hello world
+
+83
+00:03:56,770 --> 00:04:02,980
+why not. One thing I can do with this
+
+84
+00:04:02,980 --> 00:04:05,560
+string is really assign it to anything.
+
+85
+00:04:05,560 --> 00:04:08,140
+Okay so the first thing I can do I can
+
+86
+00:04:08,140 --> 00:04:10,959
+assign it as the text of this text
+
+87
+00:04:10,959 --> 00:04:15,489
+element. So let's do that, I can do
+
+88
+00:04:15,489 --> 00:04:17,910
+something like this.
+
+89
+00:04:17,910 --> 00:04:22,660
+Sorry and if I run it guess what we are
+
+90
+00:04:22,660 --> 00:04:26,620
+going to see in the middle, Hello World.
+
+91
+00:04:26,620 --> 00:04:29,380
+A variable here is being assigned to the
+
+92
+00:04:29,380 --> 00:04:32,530
+text element right here. The other thing
+
+93
+00:04:32,530 --> 00:04:35,199
+we can do is show this string in a log
+
+94
+00:04:35,199 --> 00:04:38,110
+statement when this widow component here
+
+95
+00:04:38,110 --> 00:04:41,139
+has been loaded. So we're going to say
+
+96
+00:04:41,139 --> 00:04:44,729
+component, we've done this before
+
+97
+00:04:44,820 --> 00:04:51,870
+oncompleted and we can say console.log
+
+98
+00:04:51,990 --> 00:04:59,949
+the value of mString is and then
+
+99
+00:04:59,949 --> 00:05:02,680
+we're going to say to your mString. If
+
+100
+00:05:02,680 --> 00:05:04,810
+run the application we're going to see
+
+101
+00:05:04,810 --> 00:05:07,840
+this message here and the value is going
+
+102
+00:05:07,840 --> 00:05:09,850
+to be hello world and we're also going
+
+103
+00:05:09,850 --> 00:05:11,860
+to see hello world in this text element
+
+104
+00:05:11,860 --> 00:05:15,699
+here. Let's run the application hello
+
+105
+00:05:15,699 --> 00:05:18,789
+world the value of mString is Hello World
+
+106
+00:05:18,789 --> 00:05:22,240
+in the application output panel
+
+107
+00:05:22,240 --> 00:05:25,449
+here. Okay so you should really notice
+
+108
+00:05:25,449 --> 00:05:28,960
+this console.log thing it is a way that
+
+109
+00:05:28,960 --> 00:05:32,289
+JavaScript gives you to output log
+
+110
+00:05:32,289 --> 00:05:34,570
+messages. There is another one you can
+
+111
+00:05:34,570 --> 00:05:36,910
+use which is called print and we can say
+
+112
+00:05:36,910 --> 00:05:42,460
+print. And if we run we're going to see
+
+113
+00:05:42,460 --> 00:05:43,599
+the same thing.
+
+114
+00:05:43,599 --> 00:05:47,320
+Okay the value of mString is Hello World.
+
+115
+00:05:47,320 --> 00:05:49,690
+Now that you've seen how to work
+
+116
+00:05:49,690 --> 00:05:51,639
+with the string datatype we can try
+
+117
+00:05:51,639 --> 00:05:53,800
+other ones. So let's try an integer so
+
+118
+00:05:53,800 --> 00:05:57,729
+we're going to say property int it's
+
+119
+00:05:57,729 --> 00:05:59,550
+going to be called
+
+120
+00:05:59,550 --> 00:06:05,139
+mInt and let's call this 45. Okay you can
+
+121
+00:06:05,139 --> 00:06:09,250
+also output this console.log the value
+
+122
+00:06:09,250 --> 00:06:12,370
+of mInt. If we run the application we're going
+
+123
+00:06:12,370 --> 00:06:16,030
+to see that okay it's 45. And you can
+
+124
+00:06:16,030 --> 00:06:18,099
+work with this value in your application
+
+125
+00:06:18,099 --> 00:06:20,020
+whenever you need an integer value. For
+
+126
+00:06:20,020 --> 00:06:22,720
+example we can add this to the height of
+
+127
+00:06:22,720 --> 00:06:25,710
+our middle rectangle here. So we can say
+
+128
+00:06:25,710 --> 00:06:30,520
+mInt and add it like this. And if we run
+
+129
+00:06:30,520 --> 00:06:32,740
+we're going to see the rectangle become
+
+130
+00:06:32,740 --> 00:06:36,159
+a little bit bigger in height. Another
+
+131
+00:06:36,159 --> 00:06:37,960
+data type we want to look at is a
+
+132
+00:06:37,960 --> 00:06:40,480
+boolean data type. So we
+
+133
+00:06:40,480 --> 00:06:44,470
+going to say property bool let's call
+
+134
+00:06:44,470 --> 00:06:50,140
+this isFemale and say false. In the
+
+135
+00:06:50,140 --> 00:06:52,480
+oncompleted method here we can do some
+
+136
+00:06:52,480 --> 00:06:59,080
+tests. Let's say if (isFemale) do a console.log
+
+137
+00:06:59,080 --> 00:07:04,540
+for example and say else if it's not
+
+138
+00:07:04,540 --> 00:07:10,500
+a female we're going to say console log
+
+139
+00:07:10,500 --> 00:07:17,470
+you may wear a suit. Okay so let's run the
+
+140
+00:07:17,470 --> 00:07:20,650
+application you may wear a suit because
+
+141
+00:07:20,650 --> 00:07:23,920
+you're not a female. Remember isFemale is
+
+142
+00:07:23,920 --> 00:07:26,410
+false here so let's change this to true
+
+143
+00:07:26,410 --> 00:07:30,220
+run again and you may wear a dress
+
+144
+00:07:30,220 --> 00:07:33,220
+because you are a female, isFemale is true
+
+145
+00:07:33,220 --> 00:07:35,920
+here. So you can also use this property
+
+146
+00:07:35,920 --> 00:07:39,250
+in your code. Let's change this text here
+
+147
+00:07:39,250 --> 00:07:42,250
+to bold if we are dealing with a female,
+
+148
+00:07:42,250 --> 00:07:43,990
+how do we do that.
+
+149
+00:07:43,990 --> 00:07:47,140
+So we can say font.bold, it's a property
+
+150
+00:07:47,140 --> 00:07:50,770
+of the text element and we can put a
+
+151
+00:07:50,770 --> 00:07:53,710
+value here for example true okay to make
+
+152
+00:07:53,710 --> 00:07:54,340
+it bold.
+
+153
+00:07:54,340 --> 00:07:56,560
+If you run we're going to see the text
+
+154
+00:07:56,560 --> 00:08:00,790
+become bold. Okay it's bold but we can
+
+155
+00:08:00,790 --> 00:08:03,580
+make this depend on this boolean
+
+156
+00:08:03,580 --> 00:08:06,250
+property that we had here. So we're going
+
+157
+00:08:06,250 --> 00:08:11,950
+to say isFemale so if it's a female
+
+158
+00:08:11,950 --> 00:08:17,830
+we're going to make it bold if it's not
+
+159
+00:08:17,830 --> 00:08:20,860
+we're going to not make it bold. This is
+
+160
+00:08:20,860 --> 00:08:24,010
+a ternary operator in programming
+
+161
+00:08:24,010 --> 00:08:25,980
+languages you might have seen it
+
+162
+00:08:25,980 --> 00:08:29,110
+somewhere else. Okay we are making some
+
+163
+00:08:29,110 --> 00:08:31,480
+progress. We can also work with double
+
+164
+00:08:31,480 --> 00:08:37,750
+values you can say property double
+
+165
+00:08:37,750 --> 00:08:40,140
+mDouble.
+
+166
+00:08:40,140 --> 00:08:45,370
+Let's say somebody 77.5 for example and
+
+167
+00:08:45,370 --> 00:08:49,170
+you can output this value. Let's do that
+
+168
+00:08:49,170 --> 00:08:52,870
+console.log okay is it called mDouble?
+
+169
+00:08:52,870 --> 00:08:54,330
+Yes it is.
+
+170
+00:08:54,330 --> 00:08:58,270
+Let's run we should see the value of
+
+171
+00:08:58,270 --> 00:09:01,270
+mDouble is 77.5. Okay
+
+172
+00:09:01,270 --> 00:09:04,060
+We have worked with string, integers,
+
+173
+00:09:04,060 --> 00:09:06,550
+boolean and doubles. Another datatype
+
+174
+00:09:06,550 --> 00:09:08,890
+that we may use is the URL
+
+175
+00:09:08,890 --> 00:09:12,130
+datatype here so let's try this. It has
+
+176
+00:09:12,130 --> 00:09:14,529
+many similarities to the string datatype
+
+177
+00:09:14,529 --> 00:09:17,770
+but it is specifically used for URLs. So
+
+178
+00:09:17,770 --> 00:09:23,080
+let's do property url and i call
+
+179
+00:09:23,080 --> 00:09:28,600
+it mUrl and inside put in our website,
+
+180
+00:09:28,600 --> 00:09:38,140
+why not. And we can output it as we've
+
+181
+00:09:38,140 --> 00:09:42,850
+been doing before console.log "the value of mUrl:"+mUrl.
+
+182
+00:09:42,850 --> 00:09:56,140
+ And if we run we see it here. To show
+
+183
+00:09:56,140 --> 00:09:58,390
+you that this is very different from a
+
+184
+00:09:58,390 --> 00:10:02,470
+string in terms of data types, let's take
+
+185
+00:10:02,470 --> 00:10:07,120
+this URL here and paste it in our text
+
+186
+00:10:07,120 --> 00:10:12,160
+here and down here we are going to do a
+
+187
+00:10:12,160 --> 00:10:16,410
+test. We're going to say if mString
+
+188
+00:10:16,410 --> 00:10:20,020
+equals we use a triple equals because
+
+189
+00:10:20,020 --> 00:10:23,140
+this thing in JavaScript tests for value
+
+190
+00:10:23,140 --> 00:10:25,720
+and the data type, it checks to see if
+
+191
+00:10:25,720 --> 00:10:28,149
+the values are equal, it also looks at
+
+192
+00:10:28,149 --> 00:10:30,070
+the data types to make sure that they
+
+193
+00:10:30,070 --> 00:10:33,040
+are equal. So we are going to check this
+
+194
+00:10:33,040 --> 00:10:36,220
+against mURL and if they are equal
+
+195
+00:10:36,220 --> 00:10:38,440
+value in data type, we're going to say
+
+196
+00:10:38,440 --> 00:10:47,079
+console.log, let's copy this. And if they
+
+197
+00:10:47,079 --> 00:10:49,959
+are not equal we're going to say they
+
+198
+00:10:49,959 --> 00:10:53,380
+are not the same.
+
+199
+00:10:53,380 --> 00:10:57,020
+Let's run the application. Mmm they are
+
+200
+00:10:57,020 --> 00:10:59,780
+not the same but if you use a double
+
+201
+00:10:59,780 --> 00:11:03,700
+equal sign to only test for the value,
+
+202
+00:11:03,700 --> 00:11:06,170
+you're going to see that they are equal
+
+203
+00:11:06,170 --> 00:11:08,600
+because we are only checking to see if
+
+204
+00:11:08,600 --> 00:11:11,750
+the values are equal and you see they
+
+205
+00:11:11,750 --> 00:11:14,000
+are equal. Now you know a little bit
+
+206
+00:11:14,000 --> 00:11:15,830
+about the difference between a string
+
+207
+00:11:15,830 --> 00:11:18,410
+datatype and the URL datatype and we're
+
+208
+00:11:18,410 --> 00:11:19,760
+going to have a chance to use these
+
+209
+00:11:19,760 --> 00:11:21,440
+later in the course.
+
+210
+00:11:21,440 --> 00:11:23,750
+This lecture is getting pretty long so
+
+211
+00:11:23,750 --> 00:11:25,480
+we're going to stop here and continue
+
+212
+00:11:25,480 --> 00:00:00,000
+exploring this subject in the next one.
+

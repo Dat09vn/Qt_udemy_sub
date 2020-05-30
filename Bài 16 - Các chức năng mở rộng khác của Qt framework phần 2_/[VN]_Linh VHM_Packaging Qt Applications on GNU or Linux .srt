@@ -1,0 +1,360 @@
+﻿1
+00:00:00,840 --> 00:00:07,050
+Và đây là video 7.2 nói về Qt trên máy tính, cụ thể là đóng gói trên GNU và Linux. Trong video này, chúng tôi
+
+2
+00:00:07,050 --> 00:00:11,960
+sẽ trình bày một số phạm vi truy cập QMake Linux đặc biệt, cách thiết lập đóng gói Debian,
+
+3
+00:00:11,970 --> 00:00:15,360
+Và cuối cùng làm thế nào để gỡ cài đặt và cài đặt gói.
+
+4
+00:00:15,360 --> 00:00:17,880
+Chúng ta hãy cùng bắt đầu với phạm vi truy cập QMake.
+
+5
+00:00:18,000 --> 00:00:24,660
+Chúng ta sẽ cần mở profile của chúng ta. Hoàn hảo. Khi chúng ta chạy câu lệnh này, chúng ta sẽ chạy chương trình dưới dạng
+
+6
+00:00:24,660 --> 00:00:26,120
+một cấu hình phát hành (release configuration).
+
+7
+00:00:26,130 --> 00:00:31,720
+Chúng ta muốn cấu hình phát hành của chúng ta trên Linux có một vài giá trị đặc biệt.
+
+8
+00:00:31,740 --> 00:00:35,310
+Vậy hãy tiếp tục và thiết lập một số điều kiện phạm vi để làm điều đó.
+
+9
+00:00:35,330 --> 00:00:40,720
+Vì vậy, có hai điều mà chúng ta đặc biệt muốn ở đây, một là thiết lập đường dẫn đích. Vì vậy,
+
+10
+00:00:40,720 --> 00:00:45,250
+"TARGET" sẽ là "colors", đây là tệp nhị phân của chúng ta, nó được tạo ra khi bạn chạy chương trình này.
+
+11
+00:00:45,250 --> 00:00:50,390
+Chúng ta sẽ thiết lập đường dẫn là "/urs/bin" và tôi thực sự muốn chắc chắn rằng khi nào
+
+12
+00:00:50,390 --> 00:00:55,800
+chúng ta chạy cài đặt, nó sẽ trỏ đúng tới đường dẫn đích này. Hoàn hảo.
+
+13
+00:00:55,800 --> 00:01:00,660
+Nếu bạn nhìn vào thư mục này ở đây, bạn có thể nói rằng tôi đang sử dụng mô tả kỹ thuật (semantic versioning)
+
+14
+00:01:00,660 --> 00:01:06,630
+Điều này quan trọng vì hàm hỗ trợ dh_make sử dụng tên thư mục và mô tả kĩ thuật
+
+15
+00:01:06,630 --> 00:01:08,490
+như một phần của thiết lập.
+
+16
+00:01:08,490 --> 00:01:10,840
+Vì vậy hãy tiếp tục và cài đặt thật nhanh dh-make.
+
+17
+00:01:12,480 --> 00:01:13,420
+Tuyệt vời.
+
+18
+00:01:13,710 --> 00:01:15,990
+Tiếp đó chúng ta chạy nó.
+
+19
+00:01:15,990 --> 00:01:21,390
+Nó sẽ hỏi chúng ta rằng: Đây là một thư viện đơn, thư viện độc lập hay là Python. Ở đây thì nó sẽ là một
+
+20
+00:01:21,390 --> 00:01:21,930
+thư viện đơn.
+
+21
+00:01:21,990 --> 00:01:26,940
+Và đây là một số thông tin cấu hình mà chúng ta có thể thay đổi sau đó, do đó đừng lo lắng về các thông tin chi tiết.
+
+22
+00:01:27,230 --> 00:01:31,350
+Và điều đầu tiên chương trình sẽ làm là nói với chúng ta rằng nó không thể tìm thấy mã nguồn gốc,
+
+23
+00:01:31,350 --> 00:01:37,210
+tệp tar và bạn có thể chỉ định một hoặc tạo một mã nguồn gốc bằng cách sử dụng "createorig".
+
+24
+00:01:37,230 --> 00:01:40,550
+nếu chúng ta nhìn vào mục này, bạn sẽ thấy rằng chúng ta đã có mã nguồn ở đây.
+
+25
+00:01:40,560 --> 00:01:46,580
+Chúng ta sẽ sử dụng "creatorig" đó để khiến dh_make tạo một mã nguồn gốc cho chúng ta.
+
+26
+00:01:46,620 --> 00:01:51,270
+Nếu chúng ta nhìn vào thư mục, đằng sau cái này, chúng ta đã có "orig.tar.xz", đây chính là
+
+27
+00:01:51,270 --> 00:01:53,110
+mã nguồn gốc của chúng ta bây giờ.
+
+28
+00:01:53,510 --> 00:01:53,960
+Tuyệt.
+
+29
+00:01:53,970 --> 00:01:59,400
+dh_make sẽ tạo mục Debian này cho chúng ta. Vì vậy, hãy tiếp tục và thay đổi ở đó và
+
+30
+00:01:59,400 --> 00:02:02,270
+Nếu chúng ta chạy nó, chúng ta có thể thấy có rất nhiều tệp ở đây.
+
+31
+00:02:02,310 --> 00:02:06,510
+Và điều đầu tiên tôi có thể làm là bỏ qua tất cả các tệp ví dụ hoặc bạn có thể xem xét kĩ lưỡng chúng nếu bạn muốn
+
+32
+00:02:06,540 --> 00:02:14,710
+nhưng tôi muốn chúng ta hãy tập trung vào những gì thực sự cần thiết. Tuyệt vời. Bây giờ chúng ta đã có tính tương thích "changelog"
+
+33
+00:02:14,710 --> 00:02:18,380
+cái mà được sử dụng cho các quy tắc và nguồn dh_make.
+
+34
+00:02:18,380 --> 00:02:20,110
+Và trong tất cả những tệp này,
+
+35
+00:02:20,110 --> 00:02:22,980
+chỉ có 2 tệp là quan trọng cho điều khiển và các quy tắc.
+
+36
+00:02:22,990 --> 00:02:27,670
+Điều đầu tiên chúng ta sẽ làm là sử dụng tệp điều khiển để định nghĩa một số
+
+37
+00:02:27,670 --> 00:02:31,730
+tùy thuộc và bạn có nhớ tôi đã nói rằng chúng ta có thể thay dổi mọi thứ.
+
+38
+00:02:31,750 --> 00:02:32,610
+Đây là nơi thực hiện thay đổi.
+
+39
+00:02:32,620 --> 00:02:37,610
+Nếu cần thì bạn có thể thay đổi tên nguồn hoặc mức độ ưu tiên bảo trì hoặc bất cứ điều gì tương tự..
+
+40
+00:02:37,630 --> 00:02:40,450
+Nhưng hai điều mà chúng ta sẽ thay đổi ở đây đều liên quan đến sự tùy thuộc.
+
+41
+00:02:40,480 --> 00:02:45,220
+Đó là tùy thuộc build và tùy thuộc đóng gói và chúng ta sẽ thiết lập cho chúng tùy thuộc
+
+42
+00:02:45,250 --> 00:02:46,300
+trên qt5,
+
+43
+00:02:46,720 --> 00:02:50,520
+bạn có thể thu hẹp lại nhưng đối với trường hợp của chúng ta thì đây là 5.
+
+44
+00:02:51,380 --> 00:02:55,360
+Và "Depends" này sử dụng một số hàm trợ giúp để tìm ra chính xác nó phụ thuộc vào cái gì.
+
+45
+00:02:55,360 --> 00:03:01,340
+Chúng ta tạm bỏ qua điều đó và tiếp tục, chúng ta thêm vào "qt5-default". Hoàn hảo.
+
+46
+00:03:01,340 --> 00:03:03,920
+Một tập tin quan trọng khác ở đây là tập tin các quy tắc.
+
+47
+00:03:03,950 --> 00:03:05,620
+Chúng ta hãy cùng mở nó ra.
+
+48
+00:03:05,690 --> 00:03:09,010
+Nếu bạn nhìn vào phía trên cùng ở đây bạn có thể thấy đây thực chất là một tệp "make -f".
+
+49
+00:03:09,050 --> 00:03:11,910
+Và dh này là lệnh hỗ trợ cho chúng ta.
+
+50
+00:03:11,990 --> 00:03:17,120
+Và tiếp theo chúng ta hãy chạy 3 lệnh cơ bản này cho bất kì qmake nào.
+
+51
+00:03:17,120 --> 00:03:18,840
+Chương trình đang được chạy.
+
+52
+00:03:19,220 --> 00:03:22,870
+Vậy có 3 lệnh mà lệnh dh sẽ tiến hành thực thi, chạy
+
+53
+00:03:22,990 --> 00:03:28,820
+qmake cho tới khi tạo ta tệp phát hành (release file) và sau đó build và
+
+54
+00:03:28,850 --> 00:03:29,910
+cài đặt nó.
+
+55
+00:03:30,140 --> 00:03:35,660
+Kể từ phiên bản 7.4.12 của phương thức trợ giúp này, qmake đã được tích hợp sẵn.
+
+56
+00:03:35,660 --> 00:03:38,580
+Vì vậy, chúng ta sẽ không làm gì cả, chúng ta sẽ không chạm vào tập tin này.
+
+57
+00:03:38,660 --> 00:03:43,580
+Nhưng nếu bạn cần một số chức năng tùy chỉnh cho đến khi build và thực hiện. Đây là nơi bạn
+
+58
+00:03:43,580 --> 00:03:50,770
+thực hiện nó. Lấy ví dụ như bạn có thể ghi đè cấu hình và thực hiện thiết lập là "this example for Cmake". Đó là tất cả điều
+
+59
+00:03:50,770 --> 00:03:51,460
+chúng ta cần làm.
+
+60
+00:03:51,460 --> 00:03:57,340
+Chúng ta sẽ tiếp tục sao lưu một thư mục vào thư mục mã nguồn của chúng ta, chúng ta sử dụng
+
+61
+00:03:57,720 --> 00:04:01,100
+"dpkg-buildpackage" để sao lưu.
+
+62
+00:04:04,390 --> 00:04:05,380
+Có một vài điều lưu ý.
+
+63
+00:04:05,380 --> 00:04:10,180
+Điều đầu tiên là bạn có thể thấy một lỗi error ở đây, lỗi này nói rằng chúng ta không thể
+
+64
+00:04:10,510 --> 00:04:15,190
+đăng ký thành công điều này. Trong trường hợp của chúng ta thì đây không phải là vấn đề bởi vì chúng ta chỉ phân phối nó
+
+65
+00:04:15,190 --> 00:04:15,810
+cục bộ.
+
+66
+00:04:15,820 --> 00:04:21,220
+Nhưng nếu bạn cố gắng đẩy nó vào các tệp debian thì bạn thực sự cần có một public
+
+67
+00:04:21,310 --> 00:04:21,940
+key.
+
+68
+00:04:21,940 --> 00:04:26,080
+Điều thứ hai mà bạn cần lưu ý là nếu sao lưu thư mục, chúng ta có thể đồng thời tạo ra một
+
+69
+00:04:26,080 --> 00:04:27,190
+lượng nhỏ các tệp tin.
+
+70
+00:04:27,190 --> 00:04:31,920
+Chúng ta vẫn đang có tệp mã nguồn gốc "orig.tar.xz".
+
+71
+00:04:31,990 --> 00:04:37,270
+Chúng ta cũng có "debian.tar.xz" này, nó sẽ ghi lại bất kỳ loại bản vá nào mà chúng ta áp dụng cho
+
+72
+00:04:37,270 --> 00:04:40,510
+mã nguồn và sau đó chúng ta đã có tệp chữ ký (signature file).
+
+73
+00:04:40,510 --> 00:04:45,040
+tệp dsc ở ngay đây, tệp tin quản lí "buildinfo".
+
+74
+00:04:45,040 --> 00:04:52,530
+và "changes" này cho tệp tin thay đổi. Và trong "amd64" này, kiến ​​trúc thực tế amd64 là máy tính của tôi
+
+75
+00:04:52,630 --> 00:04:54,310
+".deb" đó là các tệp đóng gói.
+
+76
+00:04:54,320 --> 00:04:57,480
+Hãy cùng cài đặt nào.
+
+77
+00:04:57,600 --> 00:05:01,720
+Và một điều cần kiểm tra trước khi chúng ta cài đặt là nếu chúng ta sử dụng lệnh "which" để xem màu sắc, chúng ta có thể nhận thấy rằng
+
+78
+00:05:01,720 --> 00:05:06,170
+Chúng ta thực sự không có màu nhị phân hiện được cài đặt trong hệ thống của chúng ta.
+
+79
+00:05:06,520 --> 00:05:11,380
+Và bây giờ nếu ta chạy lệnh "which colors" chúng ta có thể nhận thấy rằng chúng ta đã cài đặt thành công màu sắc
+
+80
+00:05:11,380 --> 00:05:18,790
+trong hệ thống và nếu chúng ta mở giao diện đồ họa người dùng, chạy lệnh "colors", chúng ta có thể thấy màu nhị phân này hiển thị
+
+81
+00:05:18,790 --> 00:05:25,060
+trên release form, chúng ta có thể thay đổi bất cứ màu sắc nào chúng ta muốn ở đây, nếu chúng ta sử dụng
+
+82
+00:05:25,060 --> 00:05:26,260
+Qt creator.
+
+83
+00:05:26,260 --> 00:05:31,430
+Nhưng bây giờ thì nó nằm trong trình quản lý gói tệp của chúng ta và được theo dõi ở đó.
+
+84
+00:05:32,560 --> 00:05:36,480
+Và điều tuyệt vời khi nó ở trong trình quản lý gói là chúng ta có thể sử dụng trình quản lý gói của chúng ta
+
+85
+00:05:36,490 --> 00:05:38,350
+để loại bỏ nó.
+
+86
+00:05:38,590 --> 00:05:42,110
+Nếu bạn sử dụng lệnh "which" ở đây, bạn sẽ thấy rằng màu nhị phân đã được xóa bỏ.
+
+87
+00:05:42,310 --> 00:05:48,910
+Vậy là chúng ta đã học được làm thế nào để cài đặt và gỡ cài đặt gói, làm một ví dụ đơn giản
+
+88
+00:05:48,910 --> 00:05:51,710
+về gói Debian và tìm hiểu được một số phạm vi truy cập
+
+89
+00:05:51,710 --> 00:05:54,250
+QMake Linux đặc biệt.
+
+90
+00:05:54,290 --> 00:05:58,060
+Hãy tham gia cùng chúng tôi vào lần tới, chúng tôi sẽ giới thiệu về Liên kết tĩnh cho các ứng dụng Qt.
+

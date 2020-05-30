@@ -1,0 +1,265 @@
+1
+00:00:00,000 --> 00:00:02,939
+Trong bài học này, ta sẽ nói về 
+
+2
+00:00:02,939 --> 00:00:06,240
+Qt Quick Dialogs. Dialog (hộp thoại) cho phép ra 
+
+3
+00:00:06,240 --> 00:00:08,490
+hiển thị thông tin tạm thời, 
+
+4
+00:00:08,490 --> 00:00:10,440
+thông tin mà người dùng sẽ thấy trong 
+
+5
+00:00:10,440 --> 00:00:12,900
+một hoặc hai giây và để người dùng quyết định 
+
+6
+00:00:12,900 --> 00:00:14,370
+muốn làm gì với 
+
+7
+00:00:14,370 --> 00:00:16,859
+thông tin đó. Ta cũng có thể sử dụng chúng để 
+
+8
+00:00:16,859 --> 00:00:19,020
+người dùng lựa chọn một số thứ, ví dụ như 
+
+9
+00:00:19,020 --> 00:00:24,510
+họ có thể dùng Dialog để chọn các file (tệp)
+ 
+0:00:21.359,0:00:26.699
+trong hệ thống file, họ có thể dùng Dialog 
+
+10
+00:00:24,510 --> 00:00:26,699
+để chọn màu, font và những thứ 
+
+11
+00:00:26,699 --> 00:00:29,160
+tương tự. Ở đây chúng ta có vài loại dialog
+
+12
+00:00:29,160 --> 00:00:30,900
+mà ta sẽ tìm hiểu hôm nay. Ta 
+
+13
+00:00:30,900 --> 00:00:32,340
+sẽ tìm hiểu lớp "Dialog", 
+
+14
+00:00:32,340 --> 00:00:34,530
+đây là lớp cha của các lớp 
+
+15
+00:00:34,530 --> 00:00:37,860
+Dialog khác: ColorDialog, FileDialog,
+
+16
+00:00:37,860 --> 00:00:40,079
+FontDialog và MessageDialog. Chúng 
+
+17
+00:00:40,079 --> 00:00:42,120
+cho phép ta làm những thứ được mô tả 
+
+18
+00:00:42,120 --> 00:00:44,340
+phía bên phải đây. Và nếu ta vào phần 
+
+19
+00:00:44,340 --> 00:00:46,770
+tài liệu, ta sẽ thấy 
+
+20
+00:00:46,770 --> 00:00:49,440
+chi tiết hơn về chúng ở đây. Một điều nữa 
+
+21
+00:00:49,440 --> 00:00:51,780
+ta cần lưu ý là 
+
+22
+00:00:51,780 --> 00:00:54,570
+"Qt Quick Dialog" là một phần của module (mô đun) 
+
+23
+00:00:54,570 --> 00:00:57,390
+QtQuick.Dialogs mà ta sẽ thấy. 
+
+24
+00:00:57,390 --> 00:01:00,449
+Hầu hết chúng được sử dụng 
+
+25
+00:01:00,449 --> 00:01:02,879
+trên nền tảng desktop. Ta sẽ học 
+
+26
+00:01:02,879 --> 00:01:05,010
+cách sử dụng chúng trên thiết bị điện thoại 
+
+27
+00:01:05,010 --> 00:01:09,450
+vào cuối chương này, tuy nhiên 
+ 
+0:01:07.619,0:01:12.180
+hầu hết ta sẽ sử dụng những 
+
+28
+00:01:09,450 --> 00:01:12,180
+Dialog trên nền tảng desktop. Giờ ta 
+
+29
+00:01:12,180 --> 00:01:13,979
+sẽ đi qua một vài
+
+30
+00:01:13,979 --> 00:01:16,590
+thuộc tính chung của các Dialog. Dialog 
+
+31
+00:01:16,590 --> 00:01:20,310
+có thể dùng là cửa sổ modal,
+
+32
+00:01:20,310 --> 00:01:22,740
+là cửa sổ chỉ cho phép người dùng tiếp tục thao tác khác sau khi họ 
+
+33
+00:01:22,740 --> 00:01:25,290
+đóng Dialog lại. Cửa sổ modal này 
+
+34
+00:01:25,290 --> 00:01:27,930
+có thể chặn thao tác 
+
+35
+00:01:27,930 --> 00:01:30,479
+của toàn ứng dụng ,
+
+36
+00:01:30,479 --> 00:01:33,210
+hoặc nó có thể chỉ chặn thao tác 
+
+37
+00:01:33,210 --> 00:01:37,950
+cho một cửa sổ nhất định window. Trong 
+ 
+0:01:35.880,0:01:40.049
+những Dialog cho phép người dùng lựa chọn 
+
+38
+00:01:37,950 --> 00:01:40,049
+gì đó, ví dụ như File Dialog, 
+
+39
+00:01:40,049 --> 00:01:42,659
+Color Dialog, Font Dialog thì ta 
+
+40
+00:01:42,659 --> 00:01:45,270
+dùng thuộc tính này. Với File Dialog, ta 
+
+41
+00:01:45,270 --> 00:01:47,759
+cần biết tệp mà người dùng 
+
+42
+00:01:47,759 --> 00:01:50,490
+chọn hay các tệp nếu người dùng 
+
+43
+00:01:50,490 --> 00:01:53,670
+chọn nhiều lần. Ta cũng có thể cho 
+
+44
+00:01:53,670 --> 00:01:55,590
+người dùng chọn thư mục, tương tự như 
+
+45
+00:01:55,590 --> 00:01:58,649
+với màu sắc. Color giữ
+
+46
+00:01:58,649 --> 00:02:01,610
+màu mà người dùng đã chọn. 
+
+47
+00:02:01,610 --> 00:02:04,680
+Current Color (màu hiện tại) giữ màu mà 
+
+48
+00:02:04,680 --> 00:02:07,020
+người dùng chọn nhưng chưa xác nhận. 
+
+49
+00:02:07,020 --> 00:02:09,300
+Ta sẽ thấy điều đó. Font và 
+
+50
+00:02:09,300 --> 00:02:12,720
+Current Font cũng tương tự như vậy. Dialog 
+
+51
+00:02:12,720 --> 00:02:13,710
+bị ẩn 
+
+52
+00:02:13,710 --> 00:02:16,050
+theo mặc định. Để có thể hiển thị nó, ta có thể dùng
+
+53
+00:02:16,050 --> 00:02:18,090
+một trong hai cách sau: ta có thể đặt 
+
+54
+00:02:18,090 --> 00:02:20,460
+thuộc tính "visible" (hiển thị) hoặc ta có thể gọi
+
+55
+00:02:20,460 --> 00:02:22,860
+phương thức "open", nó sẽ cũng đặt thuộc tính
+
+56
+00:02:22,860 --> 00:02:24,960
+"visible" cho bạn. Để ẩn nó đi, 
+
+57
+00:02:24,960 --> 00:02:27,540
+ta đặt "visible" về false hoặc
+
+58
+00:02:27,540 --> 00:02:30,750
+gọi phương thức "close". Và đây là 
+
+59
+00:02:30,750 --> 00:02:33,510
+tất cả những gì cần được giới thiệu trước khi 
+
+60
+00:02:33,510 --> 00:02:35,550
+làm việc với Dialog trong Qt Quick. Trong
+
+61
+00:02:35,550 --> 00:02:37,380
+bài giảng tiếp theo, ta sẽ bắt đầu 
+
+62
+00:02:37,380 --> 00:02:38,970
+thực hành với chúng và ta sẽ bắt đầu 
+
+63
+00:02:38,970 --> 00:02:41,730
+với Color Dialog. 
+
+64
+00:02:41,730 --> 00:00:00,000
+Hẹn gặp lại các bạn. 
+

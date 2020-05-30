@@ -1,0 +1,652 @@
+﻿1
+00:00:00,800 --> 00:00:06,770
+Chào mừng đến với video 4.4 Quản lý đa phương tiên về Qt 3D. Trong video này chúng ta sẽ tìm hiểu
+
+2
+00:00:07,070 --> 00:00:13,630
+về Qt 3-D FrameGraph, Entity-Component-System trước khi kết thúc với quản lý light và camera.
+
+3
+00:00:13,640 --> 00:00:18,530
+Vậy mô-đun Qt3D là gì? Qt đảm nhận vai trò lập trình 3D trong một thời gian dài.
+
+4
+00:00:18,530 --> 00:00:23,820
+Nhưng mãi đến Qt 5.7 ta mới có phương tiện cao cấp để quản lý openGL. Với mô-đun
+
+5
+00:00:23,950 --> 00:00:24,900
+Qt 3D
+
+6
+00:00:24,920 --> 00:00:30,910
+ta đã có một mô-đun cao cấp đem lại phương thức tiếp cận 3D rendering mang tính dữ liệu nhiều hơn.
+
+7
+00:00:31,250 --> 00:00:37,070
+Có 2 khái niệm quan trọng trong mô-đun Qt3D mà ta cần nắm được để có thể
+
+8
+00:00:37,070 --> 00:00:37,430
+điều hướng.
+
+9
+00:00:37,430 --> 00:00:41,870
+Khái niệm thứ nhất là framegraph và khái niệm thứ hai là entity-component-system.
+
+10
+00:00:41,870 --> 00:00:47,030
+Ta cùng bắt đầu với framegraph. Framegraph xác định phương thức
+
+11
+00:00:47,030 --> 00:00:48,820
+rendering. Qt3D mặc định
+
+12
+00:00:48,830 --> 00:00:53,890
+sử dụng forward rendering. Với forward rendering, mọi thứ sẽ được kết xuất về back buffer,
+
+13
+00:00:53,900 --> 00:00:59,860
+từng object một, shading cho từng object mà không cần bất cứ tương tác nào.
+
+14
+00:00:59,900 --> 00:01:03,690
+Phương thức rendering phổ biến khác là deferred rendering. Trong deferred rendering
+
+15
+00:01:03,700 --> 00:01:08,360
+mỗi object đều được kết xuất tới intermediate buffer trước khi shading được áp dụng.
+
+16
+00:01:08,370 --> 00:01:13,490
+Các bạn có thể thấy một ví dụ về deferred rendering ở đây, và điểm khác biệt giữa deferred rendering và immediate
+
+17
+00:01:13,490 --> 00:01:18,530
+là deferred rendering sẽ có bóng vì như ta thấy 4 object này đang tương tác
+
+18
+00:01:18,800 --> 00:01:23,050
+với nhau trong khi intermediate hoàn toàn không có bóng.
+
+19
+00:01:23,060 --> 00:01:26,050
+Ta sẽ chỉ có các hình khối mà thôi.
+
+20
+00:01:26,060 --> 00:01:31,400
+Có một điều quan trọng về framegraph mà ta phải hiểu, đó là khi ta muốn chuyển sang
+
+21
+00:01:31,400 --> 00:01:37,210
+deferred rendering thì ta sẽ thực hiện thao tác ở phần định nghĩa framegraph.
+
+22
+00:01:37,210 --> 00:01:40,350
+Hiện tại ta sẽ chỉ sử dụng framegraph mặc định cho ví dụ này.
+
+23
+00:01:40,350 --> 00:01:43,750
+Ta cùng bắt đầu nhé.
+
+24
+00:01:44,240 --> 00:01:49,580
+Đầu tiên ta sẽ mở main.cpp và tiếp tục tạo
+
+25
+00:01:49,670 --> 00:01:55,940
+window rồi đưa tham chiếu vào QForwardRenderer.
+
+26
+00:01:58,110 --> 00:01:58,620
+Tuyệt vời.
+
+27
+00:01:58,620 --> 00:02:05,670
+Sau khi đã truy cập được ForwardRenderer mặc định, ta sẽ thiết lập ClearColor,
+
+28
+00:02:05,670 --> 00:02:07,220
+với chúng ta đó sẽ là màu nền.
+
+29
+00:02:08,620 --> 00:02:09,530
+Tuyệt vời.
+
+30
+00:02:09,580 --> 00:02:14,590
+Lưu ý rằng ta luôn luôn có thể thiết lập renderer của riêng mình nếu không muốn sử dụng renderer mặc định, và ta sẽ
+
+31
+00:02:14,590 --> 00:02:18,120
+sử dụng hàm setActiveFrameGraph.
+
+32
+00:02:18,180 --> 00:02:23,730
+Tiếp theo ta sẽ tự thêm định nghĩa framegraph vào đây nếu muốn sử dụng một định nghĩa khác.
+
+33
+00:02:23,730 --> 00:02:25,320
+Được rồi vậy là ta đã tạo xong window.
+
+34
+00:02:25,320 --> 00:02:27,440
+Ta đã có forward_renderer, thiết lập xong ClearColor.
+
+35
+00:02:27,450 --> 00:02:30,450
+Ta cùng tiếp tục nhúng window vào QWidget.
+
+36
+00:02:30,450 --> 00:02:35,580
+Như vậy QWidget có thể quản lý phần hình học và phần trực quan cho chúng ta.
+
+37
+00:02:35,810 --> 00:02:40,670
+Nếu nhìn vào cuối đoạn mã này, kéo xuống dưới cùng, các bạn sẽ thấy ta đang gọi
+
+38
+00:02:40,670 --> 00:02:47,660
+hàm show khi gọi container.show. Tuyệt vời. Sau khi đã nắm được cách
+
+39
+00:02:47,660 --> 00:02:54,110
+truy cập và thiết lập framegraph, ta cùng thảo luận về khái niệm quan trọng thứ 2 của Qt3D,
+
+40
+00:02:54,110 --> 00:02:56,990
+entity-component-system. Entity-component-system
+
+41
+00:02:57,050 --> 00:03:02,270
+là một mô hình kiến trúc có chức năng xử lý những thiếu hụt khi lạm dụng kế thừa. Cụ thể
+
+42
+00:03:02,270 --> 00:03:07,880
+entity-component-system sẽ giải quyết những vấn đề với kế thừa sâu rộng và hỗ trợ kiểm soát
+
+43
+00:03:07,880 --> 00:03:10,860
+tình trạng cấp bạc object đối với mã chung.
+
+44
+00:03:10,880 --> 00:03:14,180
+Nó nhấn mạnh vào cấu tạo hơn là kế thừa.
+
+45
+00:03:14,210 --> 00:03:19,370
+Để xác định được từng phần của entity-component-system, entity là các object
+
+46
+00:03:19,370 --> 00:03:20,650
+mục đích chung.
+
+47
+00:03:20,660 --> 00:03:26,960
+Đó là tag cho mọi object. Component tượng trưng dữ liệu thô cho một aspect của object và
+
+48
+00:03:26,960 --> 00:03:33,080
+thể hiện cách tương tác với thế giới, system thực hiện các hành vi toàn cầu đối với từng entity sở hữu
+
+49
+00:03:33,140 --> 00:03:36,560
+component trên cùng aspect của system đó.
+
+50
+00:03:36,560 --> 00:03:41,330
+Bây giờ tôi mới nhận ra điều này khá khó hiểu nhưng ta vẫn phải ghi nhớ khi tìm hiểu về
+
+51
+00:03:41,330 --> 00:03:46,850
+mô-đun Qt3D. Hơi khó hiểu nhưng ta nên ghi nhớ khái niệm này, vì khi
+
+52
+00:03:46,850 --> 00:03:51,720
+đi sâu vào mô-đun Qt3D ta sẽ hiểu ra được chức năng của từng class.
+
+53
+00:03:51,770 --> 00:03:55,730
+Nếu nhìn vào một số tài liệu tham khảo các bạn có thể thấy rằng class ta đang xét kế thừa từ
+
+54
+00:03:55,730 --> 00:04:00,870
+QComponent. Vậy thì đó là gợi ý để ta minh hoạ đồ thị class này trên một entity,
+
+55
+00:04:00,950 --> 00:04:08,000
+hai aspect đã cho hay system vì sẽ khá thú vị khi Qt chuyển từ entity-component-system
+
+56
+00:04:08,000 --> 00:04:14,620
+sang các aspect của component, nhưng 2 aspect đã cho của mô-đun là Qt 3DRender và
+
+57
+00:04:14,620 --> 00:04:16,490
+Qt 3DInput.
+
+58
+00:04:16,490 --> 00:04:22,390
+Bây giờ ta cùng quan sát. Đây là một ví dụ trừu tượng về cách hoạt động của khái niệm trên trong Qt.
+
+59
+00:04:22,440 --> 00:04:23,820
+Ta có QEntity.
+
+60
+00:04:23,960 --> 00:04:30,620
+Ta có nhiều QComponent khác nhau, mesh cung cấp thể tích và material cung cấp kiểu như diện mạo
+
+61
+00:04:30,620 --> 00:04:35,720
+bên ngoài, transform giúp di chuyển object xung quanh, và một số aspect khác mà ta sẽ không
+
+62
+00:04:35,720 --> 00:04:41,660
+tìm hiểu, nhưng như các bạn thấy ta có thể có thêm audio, có thêm rigid body, có thêm collision volume và
+
+63
+00:04:41,670 --> 00:04:47,090
+AI trên đây. Và ở cột bên phải ngoài cùng
+
+64
+00:04:47,150 --> 00:04:53,950
+là tất cả các aspect, thể hiện các nhóm trong từng aspect. Vậy ta đã có một QEntity.
+
+65
+00:04:53,960 --> 00:04:59,030
+Trong trường hợp này đó sẽ là một khối cầu mà ta sẽ gắn vào một mesh, do đó mesh sẽ diễn tả
+
+66
+00:04:59,030 --> 00:05:04,160
+thể tích thực của khối cầu, còn material sẽ các định phương thức kết xuất, sau đó
+
+67
+00:05:04,160 --> 00:05:09,610
+ta sẽ đặt một transform vào một trong hai để lệnh cho chúng xoay quanh nhau.
+
+68
+00:05:09,770 --> 00:05:13,180
+Bây giờ ta sẽ áp dụng luôn.
+
+69
+00:05:13,190 --> 00:05:18,620
+Như đã nói chúng ta sẽ tạo một sphere entity và thêm 3 component vào khối cầu,
+
+70
+00:05:18,680 --> 00:05:21,460
+mesh, transform, và material.
+
+71
+00:05:21,490 --> 00:05:24,860
+Có một số bước mà thi thoảng ta sẽ phải áp dụng.
+
+72
+00:05:24,860 --> 00:05:32,060
+Trước hết ta sẽ tạo một RootEntity. Sau đó ta sẽ đặt
+
+73
+00:05:32,060 --> 00:05:34,200
+làm root trên window.
+
+74
+00:05:35,160 --> 00:05:39,000
+Sau khi thiết lập xong RootEntity, ta sẽ lôi camera ra.
+
+75
+00:05:42,880 --> 00:05:49,540
+Rồi ta sẽ thiết lập một loạt default ở đây, bao gồm Perspective, Position,
+
+76
+00:05:49,600 --> 00:05:52,900
+UpVector và ViewCenter.
+
+77
+00:05:53,080 --> 00:05:53,470
+Hoàn hảo.
+
+78
+00:05:53,470 --> 00:05:55,360
+Giờ ta cùng tạo light.
+
+79
+00:05:55,370 --> 00:06:01,760
+Chúng ta sẽ tag light vào cùng vị trí với camera. Điều quan trọng là
+
+80
+00:06:01,760 --> 00:06:06,770
+mỗi khi tạo entity mới, bằng cách nào đó chúng đều bị truy về RootEntity nên ta sẽ tạo
+
+81
+00:06:06,770 --> 00:06:07,520
+light_entity mới.
+
+82
+00:06:07,530 --> 00:06:10,670
+Nhưng đó là con của RootEntity.
+
+83
+00:06:10,850 --> 00:06:16,970
+Hiện tại QPointLight light_entity mới chỉ là một entity, vẫn chưa có chức năng gì hết, nên nếu ta muốn nó
+
+84
+00:06:16,970 --> 00:06:22,100
+có vai trò như một light, thì ta phải thêm component đó vào. Ta sẽ làm điều đó bằng
+
+85
+00:06:22,100 --> 00:06:22,680
+QPointLight.
+
+86
+00:06:22,670 --> 00:06:24,620
+Giờ chúng ta sẽ tạo luôn.
+
+87
+00:06:26,070 --> 00:06:30,890
+Sau khi tạo xong ta tiếp tục thiết lập một số biến ở đây.
+
+88
+00:06:31,160 --> 00:06:34,910
+Những biến tôi vừa thiết lập sẽ đặt màu sắc thành trắng và ta sẽ đặt
+
+89
+00:06:35,000 --> 00:06:36,540
+intensity là 1.
+
+90
+00:06:36,660 --> 00:06:41,660
+Sau khi đã thiết lập xong component, tức point_light_component, ta sẽ đưa nó
+
+91
+00:06:41,660 --> 00:06:49,590
+trở lại entity. Xin nhắc lại các entity chỉ mang chức năng miêu tả, do đó thường chỉ là
+
+92
+00:06:49,590 --> 00:06:52,800
+một số nguyên. Để có được chức năng thực sự
+
+93
+00:06:52,790 --> 00:06:59,280
+ta phải tạo các component và đưa chúng trở lại entity. Đó là bước rất quan trọng đối với
+
+94
+00:06:59,280 --> 00:07:01,980
+mô-đun Qt3D. Được rồi.
+
+95
+00:07:01,980 --> 00:07:07,720
+Ta cùng tiếp tục tạo một transform và đặt tại vị trí của camera rồi
+
+96
+00:07:07,750 --> 00:07:11,240
+thêm vào cả light_entity nữa.
+
+97
+00:07:14,500 --> 00:07:20,110
+Hiện tại light_entity ta vừa tạo có một PointLine và một Transform được liên kết với
+
+98
+00:07:20,110 --> 00:07:25,060
+addComponent. Bước cuối cùng ta cần thực hiện trước khi thêm các sphere vào là
+
+99
+00:07:25,060 --> 00:07:28,480
+thiết lập trình quản lý camera góc nhìn thứ nhất.
+
+100
+00:07:28,480 --> 00:07:31,970
+Ta sẽ tạo nó ở đây.
+
+101
+00:07:32,170 --> 00:07:37,100
+Ta phải đảm bảo nó kế thừa từ RootEntity. Sau khi khởi tạo xong
+
+102
+00:07:37,100 --> 00:07:41,640
+chúng ta tiếp tục gọi hàm setCamera và đưa vào entity camera.
+
+103
+00:07:43,200 --> 00:07:45,750
+Tuyệt vời. Vậy là ta đã thiết lập xong mọi thứ.
+
+104
+00:07:45,750 --> 00:07:49,910
+Tiếp theo ta cần tạo một số object, nên ta sẽ tạo 2 khối cầu.
+
+105
+00:07:49,910 --> 00:07:54,910
+Một khối sẽ nằm ở trung tâm và khối còn lại sẽ quay xung quanh khối kia.
+
+106
+00:07:54,960 --> 00:07:57,170
+Ta cùng tạo khối cầu đầu tiên nằm ở trung tâm.
+
+107
+00:07:57,180 --> 00:07:59,600
+Ta sẽ tạo một entity.
+
+108
+00:07:59,630 --> 00:08:02,690
+Một lần nữa entity không có gì đáng chú ý cả.
+
+109
+00:08:02,690 --> 00:08:04,450
+Ta phải thêm một số component vào nữa.
+
+110
+00:08:04,450 --> 00:08:06,380
+Ta cùng bắt đầu với mesh.
+
+111
+00:08:06,380 --> 00:08:13,810
+Ta sẽ sử dụng class QSphereMesh từ mô-đun Qt3DExtras để đặt thể tích. Sau đó
+
+112
+00:08:13,810 --> 00:08:19,660
+ta sẽ đặt số ring, slice và radius trên QSphereMesh.
+
+113
+00:08:22,950 --> 00:08:23,830
+Tuyệt vời.
+
+114
+00:08:24,000 --> 00:08:29,190
+Vậy là đầy đủ rồi đấy. Giờ ta sẽ đưa trở lại vào sphere_entity bằng
+
+115
+00:08:29,190 --> 00:08:33,170
+hàm addComponent.
+
+116
+00:08:33,180 --> 00:08:41,560
+Tiếp theo chúng ta kết hợp Diffuse và chỉ định bằng class QPhongMaterial.
+
+117
+00:08:41,590 --> 00:08:43,580
+Ta sẽ tạo instance ở đây.
+
+118
+00:08:46,750 --> 00:08:48,700
+Sau đó ta đặt Diffuse.
+
+119
+00:08:48,700 --> 00:08:54,400
+Từ đó màu sắc sẽ được thiết lập, đó mới chỉ là màu tôi vừa nghĩ ra thôi.
+
+120
+00:08:54,460 --> 00:08:57,150
+Đó là 2 thứ duy nhất ta cần thực hiện.
+
+121
+00:08:57,340 --> 00:09:02,800
+Còn lại ta có thể đưa nó quay trở về sphere_entity bằng
+
+122
+00:09:02,800 --> 00:09:09,780
+addComponent. Xong. Sau khi tạo xong một khối cầu, ta tiếp tục tạo khối cầu thứ 2
+
+123
+00:09:09,780 --> 00:09:17,530
+xoay quanh khối cầu thứ 1. Ta sẽ tạo một QEntity mới. Tiếp tục thêm material
+
+124
+00:09:17,590 --> 00:09:21,170
+và mesh mà ta vừa tạo cho khối cầu trước
+
+125
+00:09:21,170 --> 00:09:24,620
+vào khối cầu này. Được rồi.
+
+126
+00:09:24,610 --> 00:09:26,720
+Hiện tại các khối cầu đang giống hệt nhau.
+
+127
+00:09:26,720 --> 00:09:31,370
+Chúng đều đang ở vị trí gốc, có cùng mesh và cùng material.
+
+128
+00:09:31,390 --> 00:09:34,800
+Ta tiếp tục thêm một transform.
+
+129
+00:09:34,960 --> 00:09:37,990
+Ta cần khối cầu này xoay quanh khối thứ 1 theo thời gian.
+
+130
+00:09:37,990 --> 00:09:42,790
+Ta sẽ kết hợp QTransform với QPropertyAnimation, transform
+
+131
+00:09:42,790 --> 00:09:43,630
+mà tôi đã thêm vào từ trước.
+
+132
+00:09:43,630 --> 00:09:49,380
+Chính là RotateTransform này. Nếu nhìn vào file header này, các bạn sẽ thấy điều quan trọng ở đây là ta phải
+
+133
+00:09:49,390 --> 00:09:53,050
+xuất thuộc tính user_angle.
+
+134
+00:09:53,200 --> 00:09:56,650
+Thao tác này sẽ rút trực tiếp class con từ QTransform.
+
+135
+00:09:56,710 --> 00:10:01,510
+Điều khác biệt duy nhất là nó sẽ xuất thuộc tính user_angle mà ta sử dụng
+
+136
+00:10:01,510 --> 00:10:08,260
+nhằm, với QPropertyAnimation, thay đổi user_angle từ 0 tới 360 để
+
+137
+00:10:08,250 --> 00:10:12,280
+khối cầu xoay đủ 1 vòng quanh object gốc.
+
+138
+00:10:12,400 --> 00:10:17,470
+Hãy nhìn vào class này, cơ bản là một class triển khai, chính là slot private ngay đây
+
+139
+00:10:17,470 --> 00:10:23,650
+với tên gọi rotate, trong đó ta tạo một matrix, và xoay dựa trên angle, rồi biên dịch, các bạn
+
+140
+00:10:23,650 --> 00:10:30,730
+biết đấy, 20 đơn vị, sau đó ta đặt matrix trên instance này làm matrix mà ta vừa tạo
+
+141
+00:10:30,730 --> 00:10:31,390
+ở trên.
+
+142
+00:10:31,390 --> 00:10:34,210
+Về cơ bản công việc là như thế.
+
+143
+00:10:34,210 --> 00:10:39,280
+Điều quan trọng nhất ta cần làm là thiết lập QPropertyAnimation.
+
+144
+00:10:39,280 --> 00:10:41,470
+Ta tiến hành tạo nhanh một chút.
+
+145
+00:10:41,470 --> 00:10:44,080
+Trong hàm tạo này ta cần có 2 thứ.
+
+146
+00:10:44,080 --> 00:10:47,260
+Thứ nhất là mục tiêu và thứ hai là tên thuộc tính.
+
+147
+00:10:47,260 --> 00:10:53,390
+Mục tiêu của chúng ta sẽ là rotate_transform và tên thuộc tính sẽ là user_angle.
+
+148
+00:10:53,390 --> 00:10:56,350
+Bây giờ ta sẽ tạo QPropertyAnimation này.
+
+149
+00:11:00,390 --> 00:11:08,530
+Tuyệt vời. Tiếp theo ta sẽ đặt thời gian là 10 giây và biến thiên từ 0 đến 360 độ.
+
+150
+00:11:12,520 --> 00:11:18,430
+Sau đó ta sử dụng setLoopCount -1 để cho phép lặp số lần vô hạn và
+
+151
+00:11:18,430 --> 00:11:22,740
+khởi chạy. Điều cuối cùng cần làm
+
+152
+00:11:22,740 --> 00:11:29,440
+sau khi thiết lập xong là thêm transform, rotate_transform vào entity rotating_sphere
+
+153
+00:11:29,530 --> 00:11:34,680
+Hoàn hảo. Bây giờ ta sẽ chạy thử chương trình.
+
+154
+00:11:34,820 --> 00:11:39,740
+Có vẻ như tôi đặt nhầm tên. Ta cùng đặt lại widget_container này thành window_container.
+
+155
+00:11:42,900 --> 00:11:43,910
+Ta cùng chạy thử một lần nữa.
+
+156
+00:11:47,640 --> 00:11:52,500
+Tuyệt vời. Các bạn có thể thấy chúng ta đã có 2 khối cầu. Cùng màu, cùng kích thước vì chúng có
+
+157
+00:11:52,500 --> 00:11:54,410
+cùng mesh và material.
+
+158
+00:11:54,420 --> 00:11:59,190
+Rồi một khối cầu đang xoay xung quanh khối còn lại. Nếu click và giữ chuột các bạn có thể dò theo
+
+159
+00:11:59,190 --> 00:12:00,180
+chuyển động của khối cầu.
+
+160
+00:12:00,270 --> 00:12:05,270
+Đó là khối cầu thứ 2 được áp dụng rotation_animation.
+
+161
+00:12:05,280 --> 00:12:10,580
+Như vậy ta đã tìm hiểu xong ví dụ về quản lý light và camera sơ cấp.
+
+162
+00:12:10,590 --> 00:12:17,460
+Ta cũng đã nắm được entity-component-system và lý do tại sao Qt3D framegraph lại có vài trò quan trọng như vậy.
+
+163
+00:12:18,690 --> 00:12:22,080
+Hãy theo dõi video tiếp theo của chúng tôi về giao tiếp với Qt.
+

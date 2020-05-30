@@ -1,0 +1,453 @@
+0:00:00.000 --> 0:00:05.250
+In this lecture we want to look at the
+
+0:00:01.979 --> 0:00:07.980
+focus scope qml component. This component
+
+0:00:05.250 --> 0:00:11.219
+is very helpful when you are using
+
+0:00:07.980 --> 0:00:14.460
+external components in your main.qml
+
+0:00:11.219 --> 0:00:16.350
+file. Let's go to QT Creator, create a
+
+0:00:14.460 --> 0:00:19.439
+new project and show you what I mean.
+
+0:00:16.350 --> 0:00:21.900
+Okay so here we are in QT Creator. We
+
+0:00:19.439 --> 0:00:26.420
+are going to create a new project. We
+
+0:00:21.900 --> 0:00:30.840
+call it focus scope demo. Hit Next.
+
+0:00:26.420 --> 0:00:34.380
+Choose your QT version here and your
+
+0:00:30.840 --> 0:00:39.930
+desktop kit as usual. Let's change the
+
+0:00:34.380 --> 0:00:43.140
+title to say focus. We want to create a
+
+0:00:39.930 --> 0:00:50.129
+rectangle component inside. Give it a
+
+0:00:43.140 --> 0:00:55.940
+width of 300, a height of 50, a color of
+
+0:00:50.129 --> 0:00:58.559
+beige. I love page.And we make it focused.
+
+0:00:55.940 --> 0:01:02.030
+Inside we are going to put a text
+
+0:00:58.559 --> 0:01:06.840
+component. The text is going to say
+
+0:01:02.030 --> 0:01:11.760
+default by default. And it's going to be
+
+0:01:06.840 --> 0:01:14.130
+centered in the parent. Its parent
+
+0:01:11.760 --> 0:01:20.520
+happens to be this rectangle here. Let's
+
+0:01:14.130 --> 0:01:22.530 
+call this container red. Because we want
+
+0:01:20.520 --> 0:01:24.810
+this rectangle to tell us when it has
+
+0:01:22.530 --> 0:01:33.450
+focus ,we are going to use the keys
+
+0:01:24.810 --> 0:01:35.790
+attached property. And we are going to
+
+0:01:33.450 --> 0:01:38.610
+check if it is the key number one that is
+
+0:01:35.790 --> 0:01:49.740
+correct. So you already know how to do
+
+0:01:38.610 --> 0:01:51.990
+this if event key equals Qt key one. Be
+
+0:01:49.740 --> 0:01:57.509
+careful on the spelling that you use
+
+0:01:51.990 --> 0:02:01.320
+here. Here it is lowercase K. Here it is
+
+0:01:57.509 --> 0:02:04.710
+capital K. We are going to set the text
+
+0:02:01.320 --> 0:02:07.409
+of this text component to let us know
+
+0:02:04.710 --> 0:02:10.310
+that we have pressed on the key one here. So
+
+0:02:07.409 --> 0:02:10.310
+let's give it an ID
+
+0:02:10.690 --> 0:02:25.460
+and we are going to say text ID text
+
+0:02:18.460 --> 0:02:36.080
+equals. We want to test for at least
+
+0:02:25.460 --> 0:02:39.530
+another key. If the key is two, we are
+
+0:02:36.080 --> 0:02:43.300
+going to say we pressed on key two. Else
+
+0:02:39.530 --> 0:02:47.480
+we are going to say pressed on another
+
+0:02:43.300 --> 0:02:52.880
+key. And we are going to say whatever key
+
+0:02:47.480 --> 0:02:55.510
+it is by adding it's key to this
+
+0:02:52.880 --> 0:03:00.520
+string here. So we're going to say event
+
+0:02:55.510 --> 0:03:03.500
+key. Let's run the application.
+
+0:03:00.520 --> 0:03:07.940
+Okay we have our base rectangle, I click
+
+0:03:03.500 --> 0:03:10.820
+on one, press on one. I press
+
+0:03:07.940 --> 0:03:13.700
+two. I press some other key and it gives
+
+0:03:10.820 --> 0:03:15.709
+me the key that I pressed. This is what
+
+0:03:13.700 --> 0:03:18.110
+we want. So let's say we want to
+
+0:03:15.709 --> 0:03:20.540
+instantiate our rectangle component
+
+0:03:18.110 --> 0:03:22.220
+multiple times. And we don't want to go
+
+0:03:20.540 --> 0:03:25.100
+copy paste since we already know how to
+
+0:03:22.220 --> 0:03:26.840
+create custom components. We are going to
+
+0:03:25.100 --> 0:03:29.900
+create an external component of this
+
+0:03:26.840 --> 0:03:33.050
+rectangle and instantiate it whenever we
+
+0:03:29.900 --> 0:03:35.570
+need it in the main.qml file. Let's
+
+0:03:33.050 --> 0:03:43.370
+create another qml file. So we're going
+
+0:03:35.570 --> 0:03:51.110
+to add new  qml file QT quick two - and
+
+0:03:43.370 --> 0:03:54.380
+we call it MButton. It is going to be in
+
+0:03:51.110 --> 0:03:59.930
+this project. So we go into main.qml file
+
+0:03:54.380 --> 0:04:02.690
+and copy our rectangle here. We are going
+
+0:03:59.930 --> 0:04:06.440
+to get rid of this and paste it in here
+
+0:04:02.690 --> 0:04:09.200
+and change the import here to 2.11,
+
+0:04:06.440 --> 0:04:12.920
+because that the version of QT Quick we
+
+0:04:09.200 --> 0:04:15.470
+are using. And because we are arguing qml
+
+0:04:12.920 --> 0:04:21.940
+citizens, we are going to wrap this into
+
+0:04:15.470 --> 0:04:21.940
+an item element. So let's do that
+
+0:04:22.980 --> 0:04:31.600
+and expose the width of this thing. So
+
+0:04:28.720 --> 0:04:34.960
+that we can put it in positioners like
+
+0:04:31.600 --> 0:04:43.660
+row and columns. Its width is going to be
+
+0:04:34.960 --> 0:04:52.210
+container rect ID width. And its height
+
+0:04:43.660 --> 0:04:54.370
+is going to be container high. And we
+
+0:04:52.210 --> 0:04:56.320
+also want to expose this color so that
+
+0:04:54.370 --> 0:05:01.240
+we can specify it whenever we
+
+0:04:56.320 --> 0:05:02.920
+instantiate it in the main.qml file. So
+
+0:05:01.240 --> 0:05:11.500
+we are going to use the property
+
+0:05:02.920 --> 0:05:12.220
+alias. And it is going to refer to the
+
+0:05:11.500 --> 0:05:20.290
+container
+
+0:05:12.220 --> 0:05:22.570
+rect ID color. And an alias is really a
+
+0:05:20.290 --> 0:05:24.760
+way to give your properties a nickname.
+
+0:05:22.570 --> 0:05:27.010
+So that you can use them under that
+
+0:05:24.760 --> 0:05:30.460
+different name. But this time we are
+
+0:05:27.010 --> 0:05:32.800
+defining this alias in the root scope of
+
+0:05:30.460 --> 0:05:35.470
+this item. So it will be available for
+
+0:05:32.800 --> 0:05:37.960
+other components from the main qml file.
+
+0:05:35.470 --> 0:05:39.910
+So what we want to do is to instantiate
+
+0:05:37.960 --> 0:05:42.610
+our MButton component. We are going to
+
+0:05:39.910 --> 0:05:45.340
+say BMutton and you see that it is
+
+0:05:42.610 --> 0:05:47.980
+recognized. So this is the first one. And
+
+0:05:45.340 --> 0:05:53.470
+we are going to instantiate the second
+
+0:05:47.980 --> 0:05:55.630
+one. But for the second one, we want to
+
+0:05:53.470 --> 0:05:59.230
+change the color to green so that we can
+
+0:05:55.630 --> 0:06:01.990
+differentiate them. Remember that we
+
+0:05:59.230 --> 0:06:05.770
+exposed the color property through this
+
+0:06:01.990 --> 0:06:07.840
+property alias. Okay to position this
+
+0:06:05.770 --> 0:06:14.020
+things nicely, we're going to wrap them
+
+0:06:07.840 --> 0:06:19.690
+into a column and component. Copy this
+
+0:06:14.020 --> 0:06:22.600
+and paste it it down here. Run the
+
+0:06:19.690 --> 0:06:25.900
+application and see what we get. Which
+
+0:06:22.600 --> 0:06:29.200
+one has focus. Let's click on one and you
+
+0:06:25.900 --> 0:06:33.510
+see that number one has focus. So let's
+
+0:06:29.200 --> 0:06:33.510
+give the first button focus.
+
+0:06:35.400 --> 0:06:45.070
+Run the application. I click on one, no
+
+0:06:41.830 --> 0:06:47.380
+effect. I click on two, no effect. I click
+
+0:06:45.070 --> 0:06:50.490
+on other buttons, no effect. You see that
+
+0:06:47.380 --> 0:06:54.190
+it seems like neither button has focus.
+
+0:06:50.490 --> 0:07:02.130
+Let's comment this out. Give the second
+
+0:06:54.190 --> 0:07:02.130
+rectangle focus. Run the application. And
+
+0:07:03.480 --> 0:07:09.760
+if we click on one, you see that it looks
+
+0:07:06.160 --> 0:07:13.390
+like the first button has focused even
+
+0:07:09.760 --> 0:07:16.090
+if we explicitly told the second button
+
+0:07:13.390 --> 0:07:17.830
+to have the focus. This is the problem
+
+0:07:16.090 --> 0:07:20.470
+that comes with using external
+
+0:07:17.830 --> 0:07:23.020
+components in your qml files when
+
+0:07:20.470 --> 0:07:25.450
+transferring focus. Research can be
+
+0:07:23.020 --> 0:07:28.150
+unpredictable when you set focused your
+
+0:07:25.450 --> 0:07:30.490
+components. To solve this problem, you
+
+0:07:28.150 --> 0:07:33.100
+just have to wrap your components into a
+
+0:07:30.490 --> 0:07:39.790
+focused scope component. So let's do that.
+
+0:07:33.100 --> 0:07:41.920
+Just like this. Let's go to the main file
+
+0:07:39.790 --> 0:07:44.260
+and change it a little bit. Because
+
+0:07:41.920 --> 0:07:47.530
+sometimes when you don't change the main
+
+0:07:44.260 --> 0:07:49.960
+qml file, QT Creator doesn't pick the
+
+0:07:47.530 --> 0:07:52.270
+changes you made in external components.
+
+0:07:49.960 --> 0:07:58.690
+So I'm going to add a space here. Run
+
+0:07:52.270 --> 0:08:01.660
+again. Click on one and you see that the
+
+0:07:58.690 --> 0:08:02.470
+second button has focus. This is what we
+
+0:08:01.660 --> 0:08:06.450
+set here.
+
+0:08:02.470 --> 0:08:06.450
+Let's move the focus to the first button
+
+0:08:07.530 --> 0:08:18.820
+like this. Run our application. Click on
+
+0:08:16.120 --> 0:08:21.010
+one, you see one has focus. And you can
+
+0:08:18.820 --> 0:08:23.800
+see that by wrapping your external
+
+0:08:21.010 --> 0:08:26.020
+component into a FocusScope, the
+
+0:08:23.800 --> 0:08:28.510
+results of setting you focus property on
+
+0:08:26.020 --> 0:08:30.640
+your component is much more predictable.
+
+0:08:28.510 --> 0:08:32.860
+This is what I wanted you to see in this
+
+0:08:30.640 --> 0:08:34.870
+lecture. If you want to learn more about
+
+0:08:32.860 --> 0:08:37.870
+the focus scope component, you can select
+
+0:08:34.870 --> 0:08:39.970
+it and hit F1. And you're going to have a
+
+0:08:37.870 --> 0:08:42.970
+piece of documentation that you can read.
+
+0:08:39.970 --> 0:08:45.580
+But it just says that focus scopes assist
+
+0:08:42.970 --> 0:08:46.630
+in keyboard focus handling when building
+
+0:08:45.580 --> 0:08:49.200
+reusable
+
+0:08:46.630 --> 0:08:51.550
+components. And this is what we just did.
+
+0:08:49.200 --> 0:08:53.530
+Discoverers always setup during this
+
+0:08:51.550 --> 0:08:55.720
+lecture. In the next chapter, we're going
+
+0:08:53.530 --> 0:08:56.950
+to start and look at javascript and see
+
+0:08:55.720 --> 0:08:59.770
+how you can use it to add some
+
+0:08:56.950 --> 0:09:01.900
+interactivity to your qml. And if you
+
+0:08:59.770 --> 0:09:04.150
+noticed, we have been using JavaScript
+
+0:09:01.900 --> 0:09:06.520
+all along. But we are going to explain
+
+0:09:04.150 --> 0:09:10.110
+these things and shed some light on them.
+
+0:09:06.520 --> 0:09:10.110
+I see you in the next lecture.
+

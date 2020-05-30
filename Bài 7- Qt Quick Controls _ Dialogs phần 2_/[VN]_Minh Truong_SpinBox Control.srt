@@ -1,0 +1,424 @@
+﻿1
+00:00:00,000 --> 00:00:02,550
+Trong video hôm nay chúng ta sẽ đi qua phần
+
+2
+00:00:02,550 --> 00:00:05,640
+SpinBox Qt Quick control. Phần tử
+
+3
+00:00:05,640 --> 00:00:07,440
+này cho phép ta chọn số bằng cách
+
+4
+00:00:07,440 --> 00:00:09,870
+nhấn vào nút. Ở phần trên này
+
+5
+00:00:09,870 --> 00:00:11,790
+ta có thể chọn số bằng cách
+
+6
+00:00:11,790 --> 00:00:14,370
+nhấn vào nút nhỏ ở đây và ở
+
+7
+00:00:14,370 --> 00:00:16,379
+phía dưới là giao diện khác
+
+8
+00:00:16,379 --> 00:00:19,109
+của Qt Quick, và đây là phần mà ta sẽ
+
+9
+00:00:19,109 --> 00:00:22,109
+tìm hiểu. Ta nhấn vào dấu cộng
+
+10
+00:00:22,109 --> 00:00:24,570
+để tăng số và nhấn vào dấu trừ
+
+11
+00:00:24,570 --> 00:00:28,140
+để giảm, và ta có thể xử lý khi
+
+12
+00:00:28,140 --> 00:00:30,810
+các giá trị thay đổi này bằng các phương pháp
+
+13
+00:00:30,810 --> 00:00:33,120
+ta đã từng học qua. Ta sẽ mở Qt creator
+
+14
+00:00:33,120 --> 00:00:34,820
+và thực hành.
+
+15
+00:00:34,820 --> 00:00:38,550
+Ta đang ở trong Qt creator, ta
+
+16
+00:00:38,550 --> 00:00:41,160
+lập một project mới như thông thường. Nhấn
+
+17
+00:00:41,160 --> 00:00:45,210
+"Qt Quick Application", ta đặt nó là "SpinBox Demo",
+
+18
+00:00:45,210 --> 00:00:47,940
+lưu tại thư mục mà ta hay lưu và
+
+19
+00:00:47,940 --> 00:00:53,670
+nhấn Next, chọn phiên bản Qt, ta chọn
+
+20
+00:00:53,670 --> 00:00:58,800
+bộ kit và "Finish". Điều đầu tiên ta
+
+21
+00:00:58,800 --> 00:01:01,170
+cần làm là import "Qt Quick controls".
+
+22
+00:01:01,170 --> 00:01:08,790
+Vì vậy ta gõ import, di xuống dưới
+
+23
+00:01:08,790 --> 00:01:12,810
+và chọn 2.4, đổi tiêu đề ở đây
+
+24
+00:01:12,810 --> 00:01:21,150
+thành "SpinBox Demo". Ta cần tạo một phần tử
+
+25
+00:01:21,150 --> 00:01:28,979
+Column (cột) ở đây, "spacing" sẽ là
+
+26
+00:01:28,979 --> 00:01:31,979
+20 và chiều rộng sẽ giống với
+
+27
+00:01:31,979 --> 00:01:36,659
+phần tử cha nó. Nếu ta vào phần
+
+28
+00:01:36,659 --> 00:01:42,420
+tài liệu và đọc về SpinBox,
+
+29
+00:01:42,420 --> 00:01:45,270
+trong phần mô tả nói rằng đây là
+
+30
+00:01:45,270 --> 00:01:47,250
+phần tử này cho phép người dùng
+
+31
+00:01:47,250 --> 00:01:49,860
+chọn một số nguyên bằng cách nhấn nút chỉ lên
+
+32
+00:01:49,860 --> 00:01:52,920
+hoặc xuống, hoặc nhấn vào nút lên
+
+33
+00:01:52,920 --> 00:01:55,680
+hoặc xuống trên bàn phím. Nó trông
+
+34
+00:01:55,680 --> 00:01:58,409
+như thế này, và đây là cách ta tạo ra nó. Ta
+
+35
+00:01:58,409 --> 00:02:01,500
+sẽ quay lại phần code và tạo
+
+36
+00:02:01,500 --> 00:02:11,550
+SpinBox. Ta gán id cho nó. Ta đặt
+
+37
+00:02:11,550 --> 00:02:14,640
+giá trị nhỏ nhất của nó, nó bắt đầu từ 1
+
+38
+00:02:14,640 --> 00:02:18,450
+và đến 100, đây là điều chúng ta vẫn
+
+39
+00:02:18,450 --> 00:02:21,360
+thường làm. Và giá trị
+
+40
+00:02:21,360 --> 00:02:24,120
+ban đầu là 20, ta có thể chọn
+
+41
+00:02:24,120 --> 00:02:32,010
+bất cứ giá trị nào ta thích. Ta đặt nó ở trung tâm và muốn
+
+42
+00:02:32,010 --> 00:02:51,330
+biết khi nào giá trị thay đổi. Hãy chạy thử
+
+43
+00:02:51,330 --> 00:02:55,800
+và xem chúng ta có gì rồi.
+
+44
+00:02:55,800 --> 00:02:58,230
+Ta có một SpinBox
+
+45
+00:02:58,230 --> 00:03:02,099
+ở đây, giá trị mặc định là 20, như ta
+
+46
+00:03:02,099 --> 00:03:05,310
+đặt. Ta có thể giảm số bằng cách nhấn
+
+47
+00:03:05,310 --> 00:03:08,010
+vào nút trừ ở đây và ta thấy
+
+48
+00:03:08,010 --> 00:03:11,400
+giá trị thay đổi theo, và khi
+
+49
+00:03:11,400 --> 00:03:13,830
+ta nhấn vào nút cộng thì giá trị
+
+50
+00:03:13,830 --> 00:03:16,260
+tăng lên và ta có thể nhìn thấy
+
+51
+00:03:16,260 --> 00:03:19,290
+giá trị thay đổi trong console. Một thuộc tính nữa ta có thể
+
+52
+00:03:19,290 --> 00:03:22,560
+đặt là step size (bước nhảy),
+
+53
+00:03:22,560 --> 00:03:24,840
+đó là mức tăng/giảm mỗi khi
+
+54
+00:03:24,840 --> 00:03:27,900
+ta nhấn vào nút cộng hoặc trừ.
+
+55
+00:03:27,900 --> 00:03:31,950
+Ta đặt thuộc tính này
+
+56
+00:03:31,950 --> 00:03:35,819
+với "stepSize". Ví dụ như ta có thể
+
+57
+00:03:35,819 --> 00:03:39,900
+đặt là 5. Nếu ta chạy lại,
+
+58
+00:03:39,900 --> 00:03:43,230
+ta sẽ ở mức 20. Ta nhấn nút cộng, nó sẽ
+
+59
+00:03:43,230 --> 00:03:46,739
+thành 25. Ta nhấn cộng lần nữa, nó sẽ
+
+60
+00:03:46,739 --> 00:03:49,080
+thành 30. Ta đang tăng lên hoặc
+
+61
+00:03:49,080 --> 00:03:53,099
+giảm bớt 5 đơn vị mỗi lần ta nhấn
+
+62
+00:03:53,099 --> 00:03:55,980
+nút. Một điều nữa ta cần
+
+63
+00:03:55,980 --> 00:03:59,700
+thấy là ta không thể click vào bên trong
+
+64
+00:03:59,700 --> 00:04:02,849
+SpinBox và gõ giá trị. Tôi đang
+
+65
+00:04:02,849 --> 00:04:04,470
+thử làm nhưng nó không
+
+66
+00:04:04,470 --> 00:04:07,319
+cho phép. Nếu ta muốn thực hiện điều này,
+
+67
+00:04:07,319 --> 00:04:09,420
+ta cần thiết lập để SpinBox này
+
+68
+00:04:09,420 --> 00:04:13,230
+có thể chỉnh sửa được. Vậy dùng thuộc tính "editable"
+
+69
+00:04:13,230 --> 00:04:17,820
+và đặt là "true", chạy ứng dụng và giờ ta có thể
+
+70
+00:04:17,820 --> 00:04:21,209
+xoá giá trị bên trong
+
+71
+00:04:21,209 --> 00:04:25,680
+và gõ 55. Nhấn Enter và
+
+72
+00:04:25,680 --> 00:04:28,319
+giá trị được thay đổi, và ta có thể tăng
+
+73
+00:04:28,319 --> 00:04:30,650
+hoặc giảm nó. Ta có thể thay đổi giá trị
+
+74
+00:04:30,650 --> 00:04:34,110
+một cách thủ công khi ta đặt thuộc tính "editable"
+
+75
+00:04:34,110 --> 00:04:36,509
+thành true. Điều cuối cùng ta cần
+
+76
+00:04:36,509 --> 00:04:38,400
+làm trong bài học này là lấy
+
+77
+00:04:38,400 --> 00:04:40,770
+giá trị của SpinBox một cách thủ công mà không dùng
+
+78
+00:04:40,770 --> 00:04:44,520
+hàm onValueChanged. Ta đã
+
+79
+00:04:44,520 --> 00:04:47,310
+làm cái này nhiều lần vì nó
+
+80
+00:04:47,310 --> 00:04:49,139
+thuật tiện hơn. Khi ta cần giá trị, ta
+
+81
+00:04:49,139 --> 00:04:51,270
+dùng nó mà không cần đợi tín hiệu
+
+82
+00:04:51,270 --> 00:04:54,090
+ở đây. Phần này rất dễ dàng.
+
+83
+00:04:54,090 --> 00:04:57,780
+Ta tạo một Button ở đây. Ta căn chỉnh giữa bằng cách sử dụng
+
+84
+00:04:57,780 --> 00:05:00,690
+dòng này và sao chép nó, dán nó
+
+85
+00:05:00,690 --> 00:05:06,020
+xuống đây, và ta cần gán
+
+86
+00:05:06,020 --> 00:05:12,659
+thuộc tính text, gõ: "Capture value". Và ta muốn
+
+87
+00:05:12,659 --> 00:05:16,500
+biết khi nào nó được nhấn vào .
+
+88
+00:05:16,500 --> 00:05:20,280
+Ta sẽ gõ: console.log "The
+
+89
+00:05:20,280 --> 00:05:29,940
+current value in the spinbox is :” +
+
+90
+00:05:29,940 --> 00:05:37,169
+spinBoxId.value.
+
+91
+00:05:37,169 --> 00:05:41,219
+Nếu ta chạy, đổi giá trị ở đây
+
+92
+00:05:41,219 --> 00:05:45,360
+thành 41. Ta nhấn Enter
+
+93
+00:05:45,360 --> 00:05:49,020
+để thay đổi nó, giá tri hiện tại đổi thành 41, ta
+
+94
+00:05:49,020 --> 00:05:53,820
+cộng lên một chút thành 61. Nhấn "Capture value",
+
+95
+00:05:53,820 --> 00:05:56,520
+giá trị hiện tại là 61. Ta có thể lấy giá trị
+
+96
+00:05:56,520 --> 00:05:59,820
+và sử dụng nó trong ứng dụng. Đây là
+
+97
+00:05:59,820 --> 00:06:01,740
+tất cả những gì ta phải đi qua trong phần SpinBox Control,
+
+98
+00:06:01,740 --> 00:06:04,320
+Ta có thể tìm hiểu nhiều hơn về nó
+
+99
+00:06:04,320 --> 00:06:07,530
+và các thuộc tính của nó tại đây.
+
+100
+00:06:07,530 --> 00:06:10,080
+Có khá là nhiều thứ, vì vậy nếu bạn cần và
+
+101
+00:06:10,080 --> 00:06:12,150
+quan tâm, bạn có thể xem ở đây và
+
+102
+00:06:12,150 --> 00:06:14,009
+xem chúng có thể làm được gì
+
+103
+00:06:14,009 --> 00:06:16,409
+trong tài liệu này. Trong bài học sau
+
+104
+00:06:16,409 --> 00:06:17,759
+ta sẽ học phẩn Application Window Component
+
+105
+00:06:17,759 --> 00:06:21,000
+trong Qt Quick control.
+
+106
+00:06:21,000 --> 00:00:00,000
+Hẹn gặp lại.
+

@@ -1,0 +1,274 @@
+WEBVTT
+
+00:00.890 --> 00:06.060
+This is the video 6.2 visual representations which covers Animations and Visual Transformations.
+
+00:06.700 --> 00:12.690
+In this video we're going to cover Common Animation/Transformations, Demo of Sequential Animation before
+
+00:12.690 --> 00:15.480
+finishing up by demoing a Rotational Transformation.
+
+00:15.510 --> 00:21.630
+So let's get started. What are Animations? In Qml animations are applied to property values in order
+
+00:21.630 --> 00:25.380
+to smoothly interplay between current and future property values.
+
+00:25.380 --> 00:29.850
+So for example we could apply an animation to a rectangle to get it to shift to the right.
+
+00:29.850 --> 00:35.610
+Thirty pixels, barely make room for something else or to smoothly change it between vertical and horizontal
+
+00:35.610 --> 00:36.380
+views.
+
+00:36.390 --> 00:42.960
+The most common types of animations include X and Y, Scale, Rotation and Transforming the origin.
+
+00:42.960 --> 00:47.320
+It's important to understands animations are applied to both the object gets originally applied to
+
+00:47.370 --> 00:53.190
+as well as any child higher fees that that object might have. In this video,
+
+00:53.190 --> 00:58.070
+We're going to make a loading screen that lets our user know our application is still working.
+
+00:58.140 --> 01:02.610
+You might see this for application has a bunch of networking or maybe a bunch of processing required
+
+01:02.610 --> 01:03.930
+in the background.
+
+01:03.930 --> 01:08.130
+So when I open up our project and go ahead and open up our main document and the first thing that we're
+
+01:08.130 --> 01:16.330
+going to do is go ahead and create a blue_ball.
+
+01:16.340 --> 01:19.400
+Now let's animate this to bounce up and down.
+
+01:19.580 --> 01:23.640
+We want to pick the ball up from its min height to its max and then let it back down.
+
+01:23.690 --> 01:28.460
+So we use a sequential animation type to let you know that we want these things to happen one after
+
+01:28.460 --> 01:33.860
+another, instead of doing everything in parallel. We'll be manipulating the Y variable and let's have
+
+01:33.860 --> 01:36.720
+this loop an infinite number of times.
+
+01:37.910 --> 01:43.460
+Now let's set in our first animation where we pick the ball up from its min height to its max height.
+
+01:43.610 --> 01:49.600
+And we'll use the NumberAnimation type to do this. We also want to get a time frame for it to
+
+01:49.610 --> 01:54.780
+complete in and easing.type which controls how it looks when it gets animated.
+
+01:56.340 --> 02:00.250
+Now let's put a pause in this and then we'll go ahead and run this.
+
+02:00.720 --> 02:02.250
+So let's go out and run this now.
+
+02:03.590 --> 02:09.020
+And you see that our ball picks straight up from its min height up to its max height and then it pauses
+
+02:09.020 --> 02:13.790
+for half a second and you can also notice this kind of stuttering right now because it's jumping from
+
+02:14.060 --> 02:17.170
+the top down to the bottom without any bounce between.
+
+02:17.180 --> 02:21.240
+So once you take this ball up let's go ahead and drop it and have it bounce.
+
+02:21.260 --> 02:24.680
+So we'll add in another NumberAnimation in order to do that
+
+02:29.390 --> 02:29.780
+All right.
+
+02:29.780 --> 02:32.100
+Now let's play this and see.
+
+02:32.120 --> 02:37.550
+Now we've got this smooth pick up. Before we drop it down and it bounces slightly which happens from
+
+02:37.550 --> 02:39.710
+OutBounce easing.type
+
+02:39.710 --> 02:45.920
+Now if you're wondering what the different types of easing are, you can go ahead and go to the Animation
+
+02:45.920 --> 02:46.930
+QML Type.
+
+02:47.180 --> 02:53.670
+And if you scroll down you'll see all of the available types for easing in this documentation.
+
+02:53.690 --> 02:58.100
+And if you look to the far right you can see graphics of how each of those look and how they actually
+
+02:58.110 --> 03:00.460
+animate. Sweet.
+
+03:00.460 --> 03:01.350
+So that's pretty good.
+
+03:01.350 --> 03:03.440
+It's pretty simple but it's pretty easy.
+
+03:03.440 --> 03:05.280
+But let's go out and take this a little further.
+
+03:05.320 --> 03:10.750
+And now instead of just doing straight property animations, let's go ahead and apply our first rotational
+
+03:10.750 --> 03:11.740
+transform.
+
+03:11.750 --> 03:17.320
+So the reason for doing this is maybe our app has a loading section or it's loaded and our user needs
+
+03:17.320 --> 03:19.150
+to take action to progress.
+
+03:19.150 --> 03:23.440
+Now if our user gets stuck or distracted for too long, it's possible that they don't know what they need
+
+03:23.440 --> 03:25.320
+to press or what they need to do.
+
+03:25.330 --> 03:29.090
+So let's go ahead and create a button that makes it clear for them.
+
+03:32.830 --> 03:37.130
+We went ahead and made a button and we gave it a property which we called the wiggle_value which is what
+
+03:37.130 --> 03:42.560
+we're going to do to actually wiggle the button back and forth to draw our users' attention to our button.
+
+03:42.560 --> 03:46.830
+So in order to do that we're going to need to use a transform and transform that we're going to use
+
+03:46.920 --> 03:52.970
+is a rotation and we need to get this the X origin and the y origin which for us is just going
+
+03:52.970 --> 03:58.610
+to be the center of the button and then we'll go ahead and set the angle to be our property, which we
+
+03:58.610 --> 03:59.630
+just called wiggle_value.
+
+04:02.520 --> 04:02.990
+Perfect.
+
+04:03.000 --> 04:09.000
+So whenever we change this angle, we want this to do any other specified transformation here and other
+
+04:09.210 --> 04:10.470
+sequential animation.
+
+04:10.470 --> 04:13.830
+So let's go ahead and define that by using a behavioral type.
+
+04:13.830 --> 04:18.650
+So we'll set Behavior on angle and then we'll go ahead and start our sequential animation.
+
+04:19.220 --> 04:23.070
+And we're going to go ahead and run this twice. Since we've got everything set up,
+
+04:23.070 --> 04:31.380
+We go to the down into the right for 60 seconds and then we'll go all the way back for 120 seconds and
+
+04:31.380 --> 04:33.360
+then back to zero for 60 seconds.
+
+04:35.350 --> 04:39.820
+So now the only thing I need to do is actually go ahead and change these values.
+
+04:39.820 --> 04:44.470
+So when we originally change our value we're going to go ahead and use a timer to do that.
+
+04:44.470 --> 04:48.780
+I'm just going to copy and paste this code in. So we'll look at this quote,
+
+04:48.780 --> 04:49.960
+We're creating a timer.
+
+04:49.960 --> 04:54.720
+We've got this "first" property which means it's the first time through, an "interval" and you see this 
+
+04:54.720 --> 05:00.360
+OnTriggered callback or handler wiggle original and we check to see if the go_buttons.wiggle_value is equal to
+
+05:00.360 --> 05:02.500
+zero and if it is we change it to 10.
+
+05:02.550 --> 05:06.610
+And if it's not currently zero then it does tend to change it to zero.
+
+05:06.750 --> 05:11.290
+And then we reset this interval to make sure that it's a little bit longer on the second and third go
+
+05:11.290 --> 05:11.900
+around.
+
+05:12.040 --> 05:15.810
+So now we've got that when we change the wiggle_value from 0 to 10.
+
+05:15.810 --> 05:18.330
+This NumberAnimation will handle that first.
+
+05:18.390 --> 05:24.450
+But we want to do is go ahead and set some values for the wiggle back which is going to be to
+
+05:24.450 --> 05:26.140
+a negative 10.
+
+05:26.190 --> 05:27.330
+This is all angle.
+
+05:27.330 --> 05:28.410
+This is all in degree.
+
+05:28.410 --> 05:31.260
+So the first change goes to 10 degrees.
+
+05:31.260 --> 05:35.020
+The second change is going to go all the way back to negative 10 degrees.
+
+05:35.040 --> 05:36.330
+And then we're going to go to zero.
+
+05:36.330 --> 05:39.380
+So let's go ahead and set that up real quick with those values.
+
+05:40.090 --> 05:47.120
+Perfect. So let's go ahead and run this and see how it looks. See down here at the bottom we've
+
+05:47.120 --> 05:52.250
+got our button which will actually go ahead and wiggle let our users know: Hey you need to push this
+
+05:52.250 --> 05:53.300
+button.
+
+05:53.510 --> 05:55.050
+So that looks great.
+
+05:55.190 --> 06:00.670
+With that we've gone ahead and covered how to use rotational transforms, sequential animations,
+
+06:00.710 --> 06:07.790
+in addition to covering common animations and transformations. Join us in the next video which covers Graphical
+
+06:07.790 --> 06:09.290
+Effects and Particles.

@@ -1,0 +1,469 @@
+1
+00:00:00,000 --> 00:00:01,829
+Trong bài này, ta sẽ cùng tìm hiểu về 
+
+2
+00:00:01,829 --> 00:00:04,620
+các hàm và phạm vi trong JavaScript được dùng 
+
+3
+00:00:04,620 --> 00:00:08,790
+trong QML. Ta mở QT Creator. Ta làm 
+
+4
+00:00:08,790 --> 00:00:10,889
+như thường lệ, tạo một dự án. 
+
+5
+00:00:10,889 --> 00:00:13,500
+Ta gọi dự án này là "FuncionAndScopeDemo" (Thực hành hàm và phạm vi). 
+
+6
+00:00:13,500 --> 00:00:22,109
+Chọn "Next", chọn desktop kit (bộ kit để phát triển ứng dụng trên desktop), 
+
+7
+00:00:22,109 --> 00:00:26,010
+và chọn "Finish". Đổi tên thành "Function..." 
+
+8
+00:00:26,010 --> 00:00:29,160
+Ta làm như thường lệ, 
+
+9
+00:00:29,160 --> 00:00:33,780
+tạo một hình chữ nhật bên trong, đặt id cho hình
+
+10
+00:00:33,780 --> 00:00:41,550
+hình. Hình chữ nhật có chiều rộng là 300, 
+
+11
+00:00:41,550 --> 00:00:48,260
+chiều cao là 100. Đặt hình chữ nhật vào vị trí trung tâm, 
+
+12
+00:00:48,260 --> 00:00:53,309
+lần này, ta đặt màu xanh biển cho hình chữ nhật. 
+
+13
+00:00:53,309 --> 00:00:56,780
+Ở phần tử ngoài cùng (root level), tôi sẽ tạo một hàm, 
+
+14
+00:00:56,780 --> 00:01:02,750
+hàm này dùng để tìm giá trị nhỏ nhất của hai số. 
+
+15
+00:01:05,030 --> 00:01:10,830
+Và hàm này sẽ trả lại kết quả 
+
+16
+00:01:10,830 --> 00:01:14,670
+là một đối tượng Math (toán), đối tượng này có thẻ dùng
+
+17
+00:01:14,670 --> 00:01:17,700
+ở phạm vi toàn cục trong JavaScript. Ta có thể sử dụng nó để 
+
+18
+00:01:17,700 --> 00:01:19,920
+tìm giá trị nhỏ nhất của hai số. 
+
+19
+00:01:19,920 --> 00:01:22,320
+Như vậy, ta truyền a và b vào đây. 
+
+20
+00:01:22,320 --> 00:01:24,990
+Và hàm sẽ trả lại kết quả là giá trị nhỏ nhất. 
+
+21
+00:01:24,990 --> 00:01:27,930
+Okay. Những gì mà ta có thể làm là 
+
+22
+00:01:27,930 --> 00:01:30,270
+sử dụng hàm này để tính toán, ví dụ như, 
+
+23
+00:01:30,270 --> 00:01:33,920
+chiều rộng của hình chữ nhật. Ví dụ, 
+
+24
+00:01:33,920 --> 00:01:39,000
+ta có thể gõ "min" (giá trị nhỏ nhất) của 300 và 400. 
+
+25
+00:01:39,000 --> 00:01:41,400
+Đây là một ví dụ đơn giản, chỉ dùng 
+
+26
+00:01:41,400 --> 00:01:43,020
+để chỉ cho các bạn cách sử dụng hàm. 
+
+27
+00:01:43,020 --> 00:01:45,509
+Nó không thực sự cần thiết ở đây, tuy nhiên, mục đích 
+
+28
+00:01:45,509 --> 00:01:47,970
+ở đây là chỉ cho các bạn cách sử dụng các hàm trong QML. 
+
+29
+00:01:47,970 --> 00:01:51,720
+Chạy ứng dụng. Không có gì 
+
+30
+00:01:51,720 --> 00:01:53,670
+thay đổi ở đây cả. Chiều rộng là 300. 
+
+31
+00:01:53,670 --> 00:01:57,420
+Tuy nhiên, nếu bạn truyền 500 vào đây, 
+
+32
+00:01:57,420 --> 00:02:02,880
+ta tạo một hàm xử lý tín hiệu component.onCompleted 
+
+33
+00:02:02,880 --> 00:02:08,220
+và dùng console.log để in "chiều rộng của hình chữ nhật", 
+
+34
+00:02:08,220 --> 00:02:10,229
+ta sẽ thấy được rõ hơn
+
+35
+00:02:10,229 --> 00:02:12,560
+this.
+hàm này. 
+
+36
+00:02:15,150 --> 00:02:19,420
+Ta sử dụng id của hình chữ nhật. Hãy chạy ứng dụng. 
+
+37
+00:02:19,420 --> 00:02:24,460
+Kết quả nên là 400, và ta có 400 ở đây. 
+
+38
+00:02:24,460 --> 00:02:26,490
+Như vậy, hàm đo đang chạy đúng.  
+
+39
+00:02:26,490 --> 00:02:29,350
+Một điều mà tôi muốn các bạn nắm được ở đây, là hàm 
+
+40
+00:02:29,350 --> 00:02:31,780
+mà ta định nghĩa ở trong phần từ ngoài cùng (root level) 
+
+41
+00:02:31,780 --> 00:02:35,170
+có thể được gọi ở bất kỳ đâu trong 
+
+42
+00:02:35,170 --> 00:02:37,630
+phần tử này. Okay, ví dụ, ta có thể gọi 
+
+43
+00:02:37,630 --> 00:02:39,970
+hàm này trong hình chữ nhật. Ta có thể 
+
+44
+00:02:39,970 --> 00:02:42,580
+gọi hàm này trong component.onCompleted. 
+
+45
+00:02:42,580 --> 00:02:45,100
+Để hiểu rõ hơn, thay đổi đoạn code này một chút, 
+
+46
+00:02:45,100 --> 00:02:47,650
+và dùng hàm "min" ở đây. 
+
+47
+00:02:47,650 --> 00:02:53,670
+Tương tự, ta truyền tham số 500, 400. 
+
+48
+00:02:53,670 --> 00:02:57,520
+Chạy ứng dụng. Và kết quả vẫn như vậy. 
+
+49
+00:02:57,520 --> 00:02:59,980
+Như vậy, ta có thể gọi hàm ở bất kỳ đâu. 
+
+50
+00:02:59,980 --> 00:03:02,860
+Tuy nhiên, nếu ta tạo một phần tử MouseArea ở đây, 
+
+51
+00:03:02,860 --> 00:03:04,480
+tôi sẽ chỉ cho các bạn thấy. 
+
+52
+00:03:04,480 --> 00:03:09,630
+Cái này thì không quá rõ ràng. Cho phần tử MouseArea
+
+53
+00:03:09,630 --> 00:03:16,120
+này phủ tràn hết cha của nó, fill: parent và onClicked, 
+
+54
+00:03:16,120 --> 00:03:18,250
+ta thêm đoạn code mà ta thường làm.  
+
+55
+00:03:18,250 --> 00:03:26,470
+Ta đặt cho MouseArea một id và tạo một 
+
+56
+00:03:26,470 --> 00:03:29,680
+hàm dưới đây. Ta gõ
+
+57
+00:03:29,680 --> 00:03:37,660
+"function" và hàm này sẽ in cho ta biết một thứ gì đó  
+
+58
+00:03:37,660 --> 00:03:40,870
+trong "console", ví dụ như "hello world" (chào thế giới)
+
+59
+00:03:40,870 --> 00:03:45,220
+hay "hello there" (xin chào). Ta in dòng này đi. 
+
+60
+00:03:45,220 --> 00:03:51,010
+Khi ta click vào đây, ta sẽ gọi hàm "sayMessage". Okay. 
+
+61
+00:03:51,010 --> 00:03:53,260
+ta đã tạo một hàm trong phần tử MouseArea, 
+
+62
+00:03:53,260 --> 00:03:55,750
+sau đó ta gọi hàm này khi ta click vào 
+
+63
+00:03:55,750 --> 00:03:58,180
+nó. Nếu chạy lại thì ứng dụng 
+
+64
+00:03:58,180 --> 00:04:01,330
+sẽ hoạt động như thường. Click vào, nó in ra "hello there". 
+
+65
+00:04:01,330 --> 00:04:04,030
+Dòng "hello there" này được in ra
+
+66
+00:04:04,030 --> 00:04:07,060
+từ hàm này. Một điều mà 
+
+67
+00:04:07,060 --> 00:04:09,130
+tôi muốn chỉ cho các bạn là 
+
+68
+00:04:09,130 --> 00:04:11,790
+các bạn không thể gọi hàm sayMessage
+
+69
+00:04:11,790 --> 00:04:15,490
+ở bên ngoài MouseArea nếu không sử dụng id của 
+
+70
+00:04:15,490 --> 00:04:18,670
+MouseArea. Ví dụ, 
+
+71
+00:04:18,670 --> 00:04:21,880
+trong phương thức component.onCompleted, 
+
+72
+00:04:21,880 --> 00:04:24,580
+ta không thể gọi sayMessage. 
+
+73
+00:04:24,580 --> 00:04:26,750
+Okay, ta thấy ở đây sayMessage còn không 
+
+74
+00:04:26,750 --> 00:04:30,410
+được tìm thấy bởi autocomplete. Ngay cả khi ta chạy ứng dụng, 
+
+75
+00:04:30,410 --> 00:04:33,050
+ta phải chạy ứng dụng để thấy rõ hơn vì đôi khi QT Creator 
+
+76
+00:04:33,050 --> 00:04:36,860
+không chỉ ra được các thành phần không hợp lệ, mm-hmm, 
+
+77
+00:04:36,860 --> 00:04:39,500
+"sayMessage không được định nghĩa". Để có thể 
+
+78
+00:04:39,500 --> 00:04:42,140
+gọi được phương thức nằm trong 
+
+79
+00:04:42,140 --> 00:04:44,660
+phần tử anh em (sibling element), ta phải sử dụng id. 
+
+80
+00:04:44,660 --> 00:04:48,080
+Nếu ta sử dụng id của MouseArea này, 
+
+81
+00:04:48,080 --> 00:04:53,870
+thì ta thực hiện sao chép, dán vào đây, 
+
+82
+00:04:53,870 --> 00:04:55,970
+thêm dấu chấm, ta sẽ thấy phương thức 
+
+83
+00:04:55,970 --> 00:04:56,930
+được tìm thấy bởi autocomplete. 
+
+84
+00:04:56,930 --> 00:04:59,210
+Tôi nghĩ QT Creator sẽ tìm thấy được 
+
+85
+00:04:59,210 --> 00:05:02,390
+phương thức này. Okay, ta thấy QT Creator 
+
+86
+00:05:02,390 --> 00:05:05,060
+đã tìm thấy được. Và ta có chức năng autocomplete 
+
+87
+00:05:05,060 --> 00:05:08,510
+ở đây. Okay. Nếu ta chạy ứng dụng, 
+
+88
+00:05:08,510 --> 00:05:11,150
+khi phần tử được tải lên, ta sẽ thấy dòng chữ 
+
+89
+00:05:11,150 --> 00:05:13,610
+"hello there" ở đây ngay cả khi ta không 
+
+90
+00:05:13,610 --> 00:05:15,800
+click vào hình chữ nhật màu xanh. 
+
+91
+00:05:15,800 --> 00:05:18,440
+Dòng chữ này được in ra từ hàm này 
+
+92
+00:05:18,440 --> 00:05:20,810
+khi component được tải lên ứng dụng thành công. 
+
+93
+00:05:20,810 --> 00:05:23,420
+Tôi muốn nhấn mạnh rằng 
+
+94
+00:05:23,420 --> 00:05:26,450
+để gọi được phương thức, thì phương thức cần phải 
+
+95
+00:05:26,450 --> 00:05:29,150
+được định nghĩa trong phần tử, ví dụ như ở đây 
+
+96
+00:05:29,150 --> 00:05:31,460
+là trong MouseArea, ta định nghĩa phương thức 
+
+97
+00:05:31,460 --> 00:05:34,630
+và gọi phương thức đó. Okay. 
+
+98
+00:05:34,630 --> 00:05:38,510
+Bất kỳ phần tử con nào khác trong MouseArea này 
+
+99
+00:05:38,510 --> 00:05:41,420
+đều có thể gọi hàm này. Tuy nhiên, ta không thể 
+
+100
+00:05:41,420 --> 00:05:44,810
+gọi phương thức nằm ngoài MouseArea này. 
+
+101
+00:05:44,810 --> 00:05:46,640
+Để có thể gọi một phương thức thì phương thức phải được 
+
+102
+00:05:46,640 --> 00:05:50,150
+định nghĩa ở phần tử ngoài cùng (root level) 
+
+103
+00:05:50,150 --> 00:05:54,200
+hoặc nằm trong phần tử
+
+104
+00:05:54,200 --> 00:05:55,760
+nơi mà ta đang gọi phương thức. 
+
+105
+00:05:55,760 --> 00:05:58,460
+Ngược lại, ta sẽ không thể gọi phương thức, 
+
+106
+00:05:58,460 --> 00:06:00,530
+ta phải sử dụng 
+
+107
+00:06:00,530 --> 00:06:03,980
+id của phần tử phần tử mà định nghĩa 
+
+108
+00:06:03,980 --> 00:06:07,160
+phương thức để gọi phương thức đó. Đây là những gì 
+
+109
+00:06:07,160 --> 00:06:09,710
+ta cần nắm được khi nhắc đến hàm và phạm vi. 
+
+110
+00:06:09,710 --> 00:06:11,690
+Để ta sử dụng hàm 
+
+111
+00:06:11,690 --> 00:06:13,340
+mà không xảy ra lỗi. 
+
+112
+00:06:13,340 --> 00:06:16,010
+Okay. Đây là toàn bộ bài giảng. 
+
+113
+00:06:16,010 --> 00:06:17,750
+Trong bài giảng tiếp theo, ta sẽ cùng nhau tìm hiểu 
+
+114
+00:06:17,750 --> 00:06:19,880
+cách thức import (tải) code JavaScript bên ngoài 
+
+115
+00:06:19,880 --> 00:06:23,120
+và sử dụng code đó trong  
+
+116
+00:06:23,120 --> 00:06:25,400
+QML. Hẹn gặp lại các bạn 
+
+117
+00:06:25,400 --> 00:00:00,000
+trong bài giảng tiếp theo. 
+

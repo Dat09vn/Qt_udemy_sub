@@ -1,0 +1,184 @@
+﻿1
+00:00:00,710 --> 00:00:08,700
+Chào mừng các bạn đến với phần hai của khóa học nói về chủ đề đa luồng(multithreading) và đa xử lý(multiprocessing). Trong phần này ta sẽ được học về
+
+2
+00:00:08,710 --> 00:00:19,510
+luồng(thread) và quá trình(process). Và thực hành sử dụng luồng(thread) và quá trình(process)trong Qt. Nội dung video đầu tiên trong phần hai này là
+
+3
+00:00:19,530 --> 00:00:26,100
+Giới thiệu tổng quan về luồng(thread) và quá trình(process).
+
+4
+00:00:26,150 --> 00:00:33,380
+và điểm khác nhau giữa luồng(thread) và quá trình(process).
+
+5
+00:00:33,380 --> 00:00:37,100
+Trước tiên là về quá trình(process). Khái niệm về quá trình(process) khá dễ hiểu
+
+6
+00:00:37,140 --> 00:00:45,180
+Khi một quá trình hoạt động của một chương trình được bắt đầu, quá trình này
+
+7
+00:00:45,180 --> 00:00:49,920
+bao gồm các dòng lệnh, trạng thái thực thi của các dòng lệnh đó và tài nguyên được phân phối.
+
+8
+00:00:50,160 --> 00:00:52,710
+Thì quá trình hoạt động đó được gọi là process.
+
+9
+00:00:53,100 --> 00:00:58,160
+Ví dụ, bạn có thể kiểm tra tất cả các
+
+10
+00:00:58,170 --> 00:00:59,860
+quá trình(process) đang chạy trên máy tính bằng công cụ task manager.
+
+11
+00:01:00,000 --> 00:01:02,490
+Lấy ví dụ trong thực tế.
+
+12
+00:01:02,910 --> 00:01:09,510
+Bạn có thể bật trình duyệt và trình nghe nhạc cùng lúc để vừa nghe nhạc, vừa xem tin nhắn
+
+13
+00:01:09,510 --> 00:01:11,770
+và đọc báo.
+
+14
+00:01:12,060 --> 00:01:16,410
+Khi đó, trình duyệt và trình nghe nhạc được chạy trên hai quá trình(process) khác nhau.
+
+15
+00:01:16,440 --> 00:01:25,320
+Nếu như để ý thì mấy trình duyệt,ví dụ như Google Chrome, cũng chạy nhiều quá trình(process) cùng lúc.
+
+16
+00:01:25,320 --> 00:01:27,960
+Một trình nghe nhạc thì lại bao gồm nhiều luồng(thread).
+
+17
+00:01:31,240 --> 00:01:38,240
+Luồng(thread) là một bước điều hành được quản lý độc lập bởi trình lên lịch(scheduler)
+
+18
+00:01:38,600 --> 00:01:41,110
+Luồng(thread) có bắt đầu và kết thúc.
+
+19
+00:01:41,120 --> 00:01:50,170
+Thêm vào đó nữa là không thể bắt đầu luồng(thread)
+
+20
+00:01:50,320 --> 00:01:54,200
+bên ngoài chương trình.
+
+21
+00:01:54,220 --> 00:01:58,180
+Luồng(thread) chỉ có thể được tạo ra trong một chương trình máy tính.
+
+22
+00:01:58,180 --> 00:02:06,220
+Ví dụ chương trình nghe nhạc có một luồng(thread) để xử lý giao diện khi người dùng sử dụng
+
+23
+00:02:06,220 --> 00:02:13,800
+và một luồng song song để chơi nhạc.
+
+24
+00:02:13,810 --> 00:02:16,710
+Luồng(thread) chỉ có thể được tạo ra trong một chương trình máy tính.
+
+25
+00:02:16,990 --> 00:02:24,250
+Ví dụ chương trình nghe nhạc có một luồng(thread) để xử lý giao diện khi người dùng sử dụng
+
+26
+00:02:24,250 --> 00:02:32,190
+và một luồng song song để chơi nhạc.
+
+27
+00:02:32,360 --> 00:02:39,080
+Luồng(thread) cũng có một vài điểm tương đồng với quá trình(process)
+
+28
+00:02:39,110 --> 00:02:40,370
+và đôi khi nó cũng được gọi là một quá trình nhỏ, nhẹ(lightweight process)
+
+29
+00:02:40,790 --> 00:02:45,010
+Một vài điểm khác biệt lớn giữa hai khái niệm là
+
+30
+00:02:45,350 --> 00:02:53,030
+Luồng(thread) nằm trong quá trình(process) và dùng chung tài nguyên(resources) được phân cấp cho
+
+31
+00:02:53,090 --> 00:02:54,920
+quá trình(process) đó.
+
+32
+00:02:55,130 --> 00:03:01,080
+Còn các quá trình(process) là độc lập với nhau và không dùng chung tài nguyên(resources).
+
+33
+00:03:01,190 --> 00:03:08,600
+Nói cách khác, khi một luồng(thread) bị lỗi, cả quá trình(process) chứa nó sẽ bị lỗi theo.
+
+34
+00:03:08,660 --> 00:03:12,690
+Nhưng nếu một quá trình(process) bị lỗi thì quá trình(process) khác không bị ảnh hưởng.
+
+35
+00:03:12,920 --> 00:03:19,800
+Bởi các luồng(thread) dùng chung tài nguyên(resources) nên giao tiếp giữa chúng khá đơn giản.
+
+36
+00:03:19,910 --> 00:03:28,640
+Còn giao tiếp giữa các quá trình(process) khá là phức tạp và có nhiều hạn chế. Bằng cách sử dụng kỹ thuật đa luồng(multiprocessing), đa xử lý(multiprocessing)
+
+37
+00:03:28,710 --> 00:03:36,210
+hay còn gọi là xử lý xong xong(parallelization). Lập trình viên có thể tận dụng được các CPU đa nhân
+
+38
+00:03:36,210 --> 00:03:39,210
+để xử lý hiệu quả hơn.
+
+39
+00:03:39,210 --> 00:03:46,050
+Giúp giảm thời gian xử lý công việc và tăng tính phản hồi(responsiveness) của ứng dụng.
+
+40
+00:03:46,110 --> 00:03:52,770
+Điều này cực kỳ quan trọng đối với giao diện người dùng, bởi khi tách luồng(thread) xử lý giao diện và
+
+41
+00:03:52,770 --> 00:03:57,810
+luồng xử lý các tác vụ nặng sẽ giúp giao diện người dùng không bị đơ.
+
+42
+00:03:58,080 --> 00:04:06,210
+Qt cung cấp rất nhiều lớp(class) để lập trình viên sử dùng luồng(thread) và quá trình(process)
+
+43
+00:04:06,360 --> 00:04:14,400
+Từ lớp Qthread ở tầng thấp(low level) cho tới lớp QConcurrent ở tầng cao(high level).
+
+44
+00:04:14,470 --> 00:04:21,970
+Có thể nói, mặc dù luồng(thread) là một chủ đề khó, nhưng sử dụng nó thì ngày càng đơn giản hơn.
+
+45
+00:04:22,010 --> 00:04:28,540
+Ta đã học xong phần lý thuyết. Video tiếp theo sẽ là thực hành với luồng(thread)
+
+46
+00:04:28,550 --> 00:04:29,330
+trong Qt.
+

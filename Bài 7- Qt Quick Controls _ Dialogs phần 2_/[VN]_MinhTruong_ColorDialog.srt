@@ -1,0 +1,546 @@
+1
+00:00:00,000 --> 00:00:01,740
+Trong bài học này, ta sẽ tìm hiểu 
+
+2
+00:00:01,740 --> 00:00:04,230
+phần thành phần ColorDialog. Đây là 
+
+3
+00:00:04,230 --> 00:00:06,240
+Dialog cho phép ta chọn màu 
+
+4
+00:00:06,240 --> 00:00:08,670
+và sử dụng nó trong ứng dụng. 
+
+5
+00:00:08,670 --> 00:00:10,920
+Ta sẽ mở Qt creator và 
+
+6
+00:00:10,920 --> 00:00:13,710
+thực hành. Ta đang ở Qt 
+
+7
+00:00:13,710 --> 00:00:15,509
+creator, ta sẽ vào phần 
+
+8
+00:00:15,509 --> 00:00:19,910
+tài liệu và gõ ColorDialog. 
+
+9
+00:00:19,910 --> 00:00:22,439
+Ta thấy nó đề xuất nhiều 
+
+10
+00:00:22,439 --> 00:00:25,350
+mục mà ta có thể tìm thấy
+
+11
+00:00:25,350 --> 00:00:28,170
+thành phần ColorDialog này. Ta sẽ không chọn "Qt
+
+12
+00:00:28,170 --> 00:00:30,840
+Labs Platform", ta chọn "Qt Quick 
+
+13
+00:00:30,840 --> 00:00:34,079
+Dialog". Ta vào đây và nhấn vào "More" 
+
+14
+00:00:34,079 --> 00:00:36,690
+để thấy phần mô tả, và ta thấy 
+
+15
+00:00:36,690 --> 00:00:39,780
+nó được sử dụng để chọn màu. 
+
+16
+00:00:39,780 --> 00:00:42,270
+Ban đầu Dialog sẽ bị ẩn. Ta cần đặt
+
+17
+00:00:42,270 --> 00:00:44,670
+các thuộc tính như ta muốn, rồi đặt
+
+18
+00:00:44,670 --> 00:00:48,030
+"visible" về true hoặc gọi "open". 
+
+19
+00:00:48,030 --> 00:00:50,489
+Đây là cách ta sử dụng nó, ta định rõ nó 
+
+20
+00:00:50,489 --> 00:00:53,190
+như thế này. Khi người dùng click "Xác nhận" - 
+
+21
+00:00:53,190 --> 00:00:55,079
+người dùng xác nhận màu mà họ muốn, 
+
+22
+00:00:55,079 --> 00:00:58,289
+ta xử lý trong hàm xử lý tín hiệu
+
+23
+00:00:58,289 --> 00:01:00,899
+onAccepted. Và khi bị "Bỏ qua" - 
+
+24
+00:01:00,899 --> 00:01:02,520
+người dùng không chọn gì trong 
+
+25
+00:01:02,520 --> 00:01:06,060
+ColorDialog, ta xử lý trong hàm xử lý 
+
+26
+00:01:06,060 --> 00:01:08,250
+tín hiệu ở đây. Và nếu ta đi lên phía trên, ta 
+
+27
+00:01:08,250 --> 00:01:10,049
+sẽ nhìn thấy một vài thuộc tính. Ta có 
+
+28
+00:01:10,049 --> 00:01:13,369
+thuộc tính "color" được dùng để 
+
+29
+00:01:13,369 --> 00:01:16,259
+lưu trữ màu mà người dùng đã 
+
+30
+00:01:16,259 --> 00:01:19,650
+chọn, đó là màu đã được xác nhận. Ta 
+
+31
+00:01:19,650 --> 00:01:22,080
+cũng có currentColor, đó là 
+
+32
+00:01:22,080 --> 00:01:24,270
+màu mà người dùng đã chọn nhưng 
+
+33
+00:01:24,270 --> 00:01:27,030
+chưa được xác nhận. Ta sẽ 
+
+34
+00:01:27,030 --> 00:01:30,229
+tạo một project và sử dụng nó. 
+
+35
+00:01:30,229 --> 00:01:33,150
+Nhấn vào "File", "New File or Project". Đây là loại ứng dụng
+
+36
+00:01:33,150 --> 00:01:36,509
+"Qt Quick". Ta đặt nó là
+
+37
+00:01:36,509 --> 00:01:42,329
+"ColorDialogDemo", lưu nó tại một nơi trong 
+ 
+0:01:39.689,0:01:45.030
+ổ đĩa và đặt nó là nơi 
+
+38
+00:01:42,329 --> 00:01:45,030
+lưu trữ project (dự án) mặc định. Ta có thể chọn
+
+39
+00:01:45,030 --> 00:01:48,180
+nếu bạn muốn. nhấn "Next", chọn phiên bản 
+
+40
+00:01:48,180 --> 00:01:51,270
+Qt và ta sẽ sử dụng bộ  
+
+41
+00:01:51,270 --> 00:01:57,420
+kit desktop. Đây là project, 
+
+42
+00:01:57,420 --> 00:01:59,659
+ta đổi tiêu đề thành: 
+
+43
+00:01:59,659 --> 00:02:05,850
+"ColorDialog Demo" và import  
+
+44
+00:02:05,850 --> 00:02:08,600
+QtQuick.Dialogs. 
+
+45
+00:02:10,560 --> 00:02:13,540
+Import được đề xuất 
+
+46
+00:02:13,540 --> 00:02:17,290
+là phiên bản 1.2 nhưng phiên bản cuối cùng 
+
+47
+00:02:17,290 --> 00:02:20,950
+của nó là phiên 1.3 theo như tôi nhớ. 
+
+48
+00:02:20,950 --> 00:02:22,330
+Ta sẽ đặt 
+
+49
+00:02:22,330 --> 00:02:24,790
+hình chữ nhật trong này và người dùng 
+
+50
+00:02:24,790 --> 00:02:26,560
+sẽ nhấn vào nút để xuất hiện 
+
+51
+00:02:26,560 --> 00:02:28,480
+Dialog cho người dùng chọn màu, 
+
+52
+00:02:28,480 --> 00:02:30,700
+và ta sẽ sử dụng màu đó làm 
+
+53
+00:02:30,700 --> 00:02:33,790
+màu của hình chữ nhật. 
+
+54
+00:02:33,790 --> 00:02:37,050
+Ta sẽ tạo phần tử Column, 
+
+55
+00:02:37,050 --> 00:02:41,020
+đặt khoảng cách là 20 và nó sẽ 
+
+56
+00:02:41,020 --> 00:02:43,990
+được đặt giữa trong parent (phần tử cha) của nó. Ta 
+
+57
+00:02:43,990 --> 00:02:47,790
+sẽ tạo một Button ở phía trên, và 
+
+58
+00:02:47,790 --> 00:02:51,160
+để có dùng Button, 
+
+59
+00:02:51,160 --> 00:02:53,200
+ta cần import QtQuick Controls.
+
+60
+00:02:53,200 --> 00:03:00,420
+Vì vậy ta gõ: QtQuick.Controls,
+
+61
+00:03:00,420 --> 00:03:08,260
+Ta chọn 2.4. Ta  
+
+62
+00:03:08,260 --> 00:03:10,390
+đặt dòng chữa mà nút sẽ hiển thị. 
+
+63
+00:03:10,390 --> 00:03:16,810
+Ta gõ: "Choose Color" (chọn màu). Nó 
+
+64
+00:03:16,810 --> 00:03:23,680
+sẽ được đặt ở trung tâm, và khi nó được 
+
+65
+00:03:23,680 --> 00:03:26,050
+nhấn vào, chúng ta sẽ biết và làm gì đó. 
+
+66
+00:03:26,050 --> 00:03:29,100
+Ở dưới này ta sẽ tạo một phần tử Rectangle.
+
+67
+00:03:29,100 --> 00:03:32,140
+Ta sẽ đặt một vài 
+
+68
+00:03:32,140 --> 00:03:34,810
+thuộc tính bên trong. Nhấn Ctrl A, Ctrl I 
+
+69
+00:03:34,810 --> 00:03:38,800
+để căn chỉnh. Nó có chiều rộng, chiều dài và 
+
+70
+00:03:38,800 --> 00:03:42,670
+id. Viền sẽ có màu đen và  
+
+71
+00:03:42,670 --> 00:03:45,459
+chiều rộng. Hình chữ nhật chưa được đặt màu, 
+
+72
+00:03:45,459 --> 00:03:47,860
+vì vậy nó sẽ có màu trắng 
+
+73
+00:03:47,860 --> 00:03:51,040
+mặc định. Ta cũng muốn hình chữ nhật 
+
+74
+00:03:51,040 --> 00:03:54,310
+ở trung tâm nên ta sẽ sao chép cái này 
+
+75
+00:03:54,310 --> 00:03:58,090
+và đưa xuống dưới, xoá bớt dòng trắng ở đây
+
+76
+00:03:58,090 --> 00:04:01,000
+để nhìn rõ hơn. Ở dưới này 
+
+77
+00:04:01,000 --> 00:04:04,420
+ta sẽ tạo một ColorDialog, ta 
+
+78
+00:04:04,420 --> 00:04:07,530
+sẽ gán id và 
+
+79
+00:04:08,260 --> 00:04:13,099
+tiêu đề. Đây là   
+
+80
+00:04:13,099 --> 00:04:15,049
+những thuộc tính mà ta có thể xem trong 
+
+81
+00:04:15,049 --> 00:04:19,089
+tài liệu. Ta sẽ điền: "Please 
+
+82
+00:04:19,089 --> 00:04:30,889
+Choose a Color" ("Hãy chọn một màu"). Khi người dùng "Accepted" (xác nhận)  
+
+83
+00:04:30,889 --> 00:04:35,960
+ta sẽ xử lý ở đây. 
+
+84
+00:04:35,960 --> 00:04:40,820
+Ta làm tương tự khi người dùng "Rejected" ("Bỏ qua").
+
+85
+00:04:40,820 --> 00:04:42,800
+Ta sẽ in màu mà người dùng chon ra
+
+86
+00:04:42,800 --> 00:04:52,250
+console. Ta gõ: console.log. Ta 
+
+87
+00:04:52,250 --> 00:04:54,770
+cần in ra màu mà người dùng 
+
+88
+00:04:54,770 --> 00:04:57,169
+chọn, nó được giữa bởi 
+
+89
+00:04:57,169 --> 00:05:00,110
+thuộc tính "color". Ta cũng cần 
+
+90
+00:05:00,110 --> 00:05:03,110
+dùng onCurrentColorChanged để xem người dùng thay đổi màu hiện tại, 
+
+91
+00:05:03,110 --> 00:05:14,590
+ta gõ: console.log(“Current color changed”) ("Màu hiện tại thay đổi").
+
+92
+00:05:14,590 --> 00:05:19,280
+Khi Dialog được xác nhận, ta cần đặt màu 
+
+93
+00:05:19,280 --> 00:05:22,070
+của hình chữa nhật này thành màu 
+
+94
+00:05:22,070 --> 00:05:24,620
+mà người dùng đã chọn. Vì vậy ta gõ: 
+
+95
+00:05:24,620 --> 00:05:26,870
+rectangleId.color = color. Đây là 
+
+96
+00:05:26,870 --> 00:05:35,090
+thuộc tính color của Dialog ở đây. 
+
+97
+00:05:35,090 --> 00:05:37,280
+Và khi người dùng bỏ qua Dialog, 
+
+98
+00:05:37,280 --> 00:05:41,389
+ta không cần làm gì nhiều, nhưng  
+
+99
+00:05:41,389 --> 00:05:44,270
+ta cần in ra console để ta biết được điều đó
+
+100
+00:05:44,270 --> 00:05:48,080
+trong ứng dụng, ta sẽ gõ: 
+
+101
+00:05:48,080 --> 00:05:57,490
+"User rejected dialog" (người dùng bỏ qua hộp thoại). 
+
+102
+00:05:57,830 --> 00:06:00,330
+Tôi biết bạn muốn 
+
+103
+00:06:00,330 --> 00:06:02,340
+chạy thử ứng dụng và  
+
+104
+00:06:02,340 --> 00:06:04,590
+xem nó trông thế nào, nhưng nếu bạn nhấn 
+
+105
+00:06:04,590 --> 00:06:05,879
+vào nút thì sẽ không có gì xảy ra 
+
+106
+00:06:05,879 --> 00:06:08,550
+vì thực sự thì ta chưa làm gì 
+
+107
+00:06:08,550 --> 00:06:09,030
+ở đây cả. 
+
+108
+00:06:09,030 --> 00:06:11,069
+Ta sẽ phải mở Dialog bằng cách gọi: 
+
+109
+00:06:11,069 --> 00:06:16,979
+colorDialogId.open. Ta sẽ mở 
+
+110
+00:06:16,979 --> 00:06:20,280
+Dialog. Giờ ta có thể chạy để xem 
+
+111
+00:06:20,280 --> 00:06:23,849
+có gì khi nhấn vào nút này. Ta thấy
+
+112
+00:06:23,849 --> 00:06:27,030
+giao diện  ở đây, nhấn vào nút và ta thấy
+
+113
+00:06:27,030 --> 00:06:29,039
+Dialog mà cho phép ta chọn 
+
+114
+00:06:29,039 --> 00:06:31,590
+màu. Để ý khi ta  
+
+115
+00:06:31,590 --> 00:06:34,349
+chọn màu, ta thấy currentColor 
+
+116
+00:06:34,349 --> 00:06:38,340
+thay đổi và mọi người sẽ 
+
+117
+00:06:38,340 --> 00:06:41,069
+thấy sự khác biệt giữa "currentColor"
+
+118
+00:06:41,069 --> 00:06:44,430
+và "color". "color" là màu mà 
+
+119
+00:06:44,430 --> 00:06:47,729
+người dùng đã xác nhận. Khi ta nhấn 
+
+120
+00:06:47,729 --> 00:06:50,699
+OK để chọn màu, ví dụ như màu xanh xanh này, 
+
+121
+00:06:50,699 --> 00:06:52,560
+màu sẽ đặt cho 
+
+122
+00:06:52,560 --> 00:06:55,889
+hình chữ nhật. Đây là 
+
+123
+00:06:55,889 --> 00:06:59,430
+thuộc tính color, và chừng nào 
+
+124
+00:06:59,430 --> 00:07:02,009
+ta chưa xác nhận, thứ mà ta 
+
+125
+00:07:02,009 --> 00:07:04,379
+đang thay đổi là "currentColor". 
+
+126
+00:07:04,379 --> 00:07:06,719
+Khi ta nhấn 
+
+127
+00:07:06,719 --> 00:07:09,569
+OK, ta thấy màu được đặt 
+
+128
+00:07:09,569 --> 00:07:12,240
+cho hình chữ nhật, và đây là 
+
+129
+00:07:12,240 --> 00:07:16,020
+những gì ta làm trong hàm xử lý khi 
+
+130
+00:07:16,020 --> 00:07:19,650
+người dùng xác nhận (onAccepted). Ta đặt thuộc tính màu đó 
+
+131
+00:07:19,650 --> 00:07:24,870
+thành màu của hình chữ nhật.
+ 
+0:07:22.289,0:07:28.319
+Đây là cách ta sử dụng ColorDialog 
+
+132
+00:07:24,870 --> 00:07:28,319
+để chọn màu và sử dụng nó 
+
+133
+00:07:28,319 --> 00:07:30,930
+trong ứng dụng. Trong bài giảng tiếp theo, 
+
+134
+00:07:30,930 --> 00:07:33,180
+ta sẽ tìm hiểu phần 
+
+135
+00:07:33,180 --> 00:00:00,000
+File Dialog . Hẹn gặp lại. 
+

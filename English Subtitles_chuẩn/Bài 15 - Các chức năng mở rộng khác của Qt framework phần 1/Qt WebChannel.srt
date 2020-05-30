@@ -1,0 +1,490 @@
+WEBVTT
+
+00:01.150 --> 00:06.680
+And this is the video 3.3 of interacting with the web which covers the Qt WebChannel. In this video we're
+
+00:06.680 --> 00:09.140
+going to cover how QWebChannel works.
+
+00:09.140 --> 00:11.450
+The C++ WebChannel API.
+
+00:11.450 --> 00:14.180
+And lastly the Javascript WebChannel API.
+
+00:14.180 --> 00:20.180
+So first let's talk about how Qt WebChannel works. WebChannel works by publishing a QObject through
+
+00:20.180 --> 00:25.140
+an instance of QWebChannel on the application side. On the web site side,
+
+00:25.140 --> 00:29.200
+there's a corresponding QWebChannel.JS, which translates the published
+
+00:29.200 --> 00:31.010
+QObject into javascript.
+
+00:31.010 --> 00:36.740
+QWebChannels on both the application and the website side are responsible for translating objects
+
+00:36.740 --> 00:43.370
+between C++ and Javascript so that they both have the same data members and methods which include signals,
+
+00:43.430 --> 00:45.540
+slots, and published
+
+00:45.540 --> 00:51.170
+QProperties. QWebChannel does not implement any method to actually send the ones and zeros between
+
+00:51.170 --> 00:52.520
+the two platforms.
+
+00:52.520 --> 00:57.890
+So we'll have to implement that ourselves. Part of implementing this transportation method means that
+
+00:57.890 --> 01:03.770
+we have to implement our transportation in both C++ and javascript which is the reason we will be using
+
+01:03.770 --> 01:04.820
+web sockets.
+
+01:05.000 --> 01:09.470
+So now that we have a basic idea of how Qt WebChannel works, lets get into the nitty gritty of this
+
+01:09.470 --> 01:10.640
+example.
+
+01:10.670 --> 01:15.710
+Now as I mentioned before, we're going to be using web sockets. Web sockets are nice because the javascript
+
+01:15.740 --> 01:21.050
+implementation is in Chromium and launching a Web socket server in Qt is really easy, which means
+
+01:21.050 --> 01:25.520
+the only thing that were on the hook for is providing the interface between QWebChannel and the web
+
+01:25.520 --> 01:26.290
+socket.
+
+01:26.300 --> 01:30.620
+Now since this example is already pretty involved we're going to leverage some of the open source code
+
+01:30.620 --> 01:35.300
+from the other QWebChannel examples and go ahead and skip that implementation.
+
+01:35.300 --> 01:37.510
+Feel free to read the source code if you'd like.
+
+01:37.610 --> 01:39.580
+So let's go ahead and get into the code.
+
+01:39.680 --> 01:45.320
+So if you look at our header and source files, the code that we're not going to cover is this
+
+01:45.320 --> 01:51.770
+websocketclientwrapper and websockettransport. So all that code is just straight from other QWebChannel examples.
+
+01:51.780 --> 01:53.980
+You can go ahead and read through it if you'd like them.
+
+01:54.020 --> 01:59.400
+The other code that we're not going to cover if you open up the resources and then go to the QWebChannel.JS
+
+01:59.520 --> 02:04.980
+This is how Qt actually implements the QWebChannel for the javascript API.
+
+02:05.210 --> 02:09.830
+So we're more interested in how we're going to use QWebChannel than how Qt provides it, so we won't be
+
+02:09.830 --> 02:11.150
+looking at this code either.
+
+02:11.390 --> 02:15.920
+But if we go to our MainWindow, we can start looking at some of the code that we are going to be looking
+
+02:15.920 --> 02:16.590
+at.
+
+02:16.610 --> 02:22.460
+So if we scroll down to our data members you'll see we have the Web browser, the Web Channel, a Web Socket
+
+02:22.460 --> 02:28.870
+Server a Web Socket to QWebChannel interface, which is again something we won't be covering.
+
+02:28.910 --> 02:32.550
+And our object which we're going to publish over QWebChannel.
+
+02:32.570 --> 02:32.960
+Cool.
+
+02:32.960 --> 02:40.880
+So let's go ahead and open up this .cpp file and if we scroll up to our constructor you can see that we create
+
+02:40.880 --> 02:46.810
+our browser, load a web page and set the browser as the central widget in the MainWindow.
+
+02:46.910 --> 02:51.100
+The next thing that we want to do is go ahead and start our web socket servers.
+
+02:51.110 --> 02:53.080
+Let's go down to this method.
+
+02:53.210 --> 02:59.840
+We need to create an instance of QWebSocket server and then call the listen method onto port 1 2 3
+
+02:59.840 --> 03:05.960
+4 5. The Listen method returns a boolean which lets us know if it was successfully attached to the requested
+
+03:05.960 --> 03:09.300
+port or not.
+
+03:09.310 --> 03:15.400
+Now please note as part of the implementation we're using a NonSecureMode on this WebSocketServer
+
+03:15.400 --> 03:19.120
+which we're only doing because we're putting it over the LocalHost, so please make sure that if you
+
+03:19.120 --> 03:24.000
+put this over the web that you use something other than a NonSecureMode.
+
+03:24.190 --> 03:24.670
+Awesome.
+
+03:24.670 --> 03:27.990
+So now that we've got our web socket server up and running,
+
+03:28.000 --> 03:31.630
+let's go ahead and create our QWebChannel. Sweet.
+
+03:31.630 --> 03:36.120
+So let's go ahead and register the object that we're going to be playing with on the javascript side.
+
+03:36.160 --> 03:41.170
+We'll be using the register method and we'll need to pass in a string that we use to identify the object
+
+03:41.170 --> 03:45.200
+on the javascript side and pass in a reference to the object itself.
+
+03:46.910 --> 03:51.900
+Now we need to set up the transportation or communication between our two key web channels.
+
+03:52.010 --> 03:57.830
+So if we look at the setup_webchannel_transport method, remember that we're just taking this code from
+
+03:57.890 --> 04:04.220
+other Qt WebChannel tutorials, but basically we need to wrap the incoming web socket clients so that
+
+04:04.220 --> 04:11.420
+whenever one comes in, it emits a WebSocketTransport class. A WebSocketTransport class is a concrete
+
+04:11.420 --> 04:14.000
+implementation of the base class.
+
+04:14.000 --> 04:17.040
+QWebChannelAbstractTransport. Again
+
+04:17.060 --> 04:18.670
+don't get too wrapped up in this code.
+
+04:18.680 --> 04:20.630
+It's purely an implementation thing.
+
+04:20.630 --> 04:24.630
+And if I was doing another example like this I would simply reuse this code.
+
+04:24.710 --> 04:32.240
+But with that we'll have successfully set up our web channel, we'll have set up the transportation and published
+
+04:32.300 --> 04:33.350
+an object.
+
+04:33.350 --> 04:36.130
+So we're pretty much ready from the application side.
+
+04:36.230 --> 04:39.940
+So the next thing that we need to do is go ahead and focus on the website side.
+
+04:40.250 --> 04:44.150
+Now we've already loaded our webpage in line 17.
+
+04:44.150 --> 04:47.860
+The only other thing that we need to do is go ahead and inject our Javascript.
+
+04:47.990 --> 04:50.760
+So let's go ahead and scroll down to this method.
+
+04:50.870 --> 04:57.770
+So in order to inject javascript we first need to grab the page out of our WebView first, we'll then load
+
+04:57.770 --> 05:03.620
+our custom javascript from the files with a helper method before finally inserting the javascript into
+
+05:03.620 --> 05:04.280
+the page.
+
+05:09.460 --> 05:10.160
+Awesome.
+
+05:10.170 --> 05:15.300
+So if we go ahead and look at this custom method get_custom_javascript or you can see we're actually creating
+
+05:15.300 --> 05:21.120
+this QByteArray which we're calling javascript. And then we're just basically opening up these
+
+05:21.120 --> 05:28.290
+files here and dumping those into our javascript QByteArray. Eventually we create a
+
+05:28.290 --> 05:33.450
+QWebEngineScript which we'll just call script and we go ahead and pass in the source code of
+
+05:33.440 --> 05:38.670
+QByteArray in on that line and then go ahead and set the name and set a couple of other variables here before
+
+05:38.670 --> 05:41.420
+returning that javascript back out.
+
+05:41.540 --> 05:41.960
+Awesome.
+
+05:41.970 --> 05:48.890
+So that's how we go ahead and inject the javascript, but what are we actually doing in the javascript?
+
+05:49.020 --> 05:51.530
+Well let's go ahead and open it up.
+
+05:51.690 --> 05:56.580
+So we're going to do all of this on the onload function and you see the first thing that we're going
+
+05:56.580 --> 06:02.340
+to go ahead and do is create a WebSocket and we're going to be listening on the localhost port
+
+06:02.340 --> 06:08.250
+12345 just like our WebSocketServer is. Whenever our socket gets open, we go ahead
+
+06:08.280 --> 06:15.390
+and create a callback where we immediately create our javascript QWebChannel and that will take
+
+06:15.390 --> 06:22.730
+in our socket and then we create another callback which will actually get our channel passed in.
+
+06:22.830 --> 06:25.140
+And now we can actually start coding.
+
+06:25.140 --> 06:30.420
+So the first thing that we want to do is get access to the interactive objects that we registered or
+
+06:30.420 --> 06:31.220
+published.
+
+06:31.290 --> 06:35.940
+So as part of this channel object, it's actually going to have a data member called objects which we
+
+06:35.940 --> 06:41.700
+can use to access our interactive object that we published. Awesome.
+
+06:41.700 --> 06:45.630
+So let's go ahead and look at the Class of that object that we just got access to.
+
+06:45.630 --> 06:51.150
+So if we go back and we look at the interactor.h we see a pretty complicated class.
+
+06:51.180 --> 06:57.090
+So QWebChannel will only publish signals, slots, and Qt properties.
+
+06:57.090 --> 07:03.030
+You can see in this class header file, we've got several slots, a signal and one QProperty. We'll get
+
+07:03.080 --> 07:06.520
+in the QProperties more as we start working with QML.
+
+07:06.540 --> 07:11.970
+But for now just understand that if we want to access data members we need to tell Qt what the
+
+07:11.970 --> 07:17.830
+type of the data member is, what the name will be in, the name will be in this case who_changed_this_string.
+
+07:17.850 --> 07:24.810
+The method to read which is get_string, the method to write which is set_string, and the signal that will
+
+07:24.810 --> 07:30.090
+notify of us of changes which in this case is the string_changed signal.
+
+07:30.150 --> 07:33.820
+Again we'll get lots more practice with writing and understanding how
+
+07:33.830 --> 07:37.090
+Q properties working when we get into QML.
+
+07:37.260 --> 07:41.720
+So let's go ahead and look at our slots.
+
+07:41.880 --> 07:45.530
+So we've got a method that launches a new window.
+
+07:45.570 --> 07:51.630
+We've got a method that returns a string and a method that just tells us to call it.
+
+07:51.630 --> 07:57.460
+So let's switch back to the javascripts. And now that we've got access to the actual object,
+
+07:57.570 --> 08:02.640
+let's go ahead and use all of these signals, slots, and Q properties.
+
+08:02.640 --> 08:09.720
+So the first thing we want to do is go ahead and invoke a C++ slot. And we'll invoke the slot that the
+
+08:09.750 --> 08:14.120
+code told us to call. Very easy.
+
+08:14.160 --> 08:20.370
+So how do we handle a slot if it returns a value, like our method that returns a string?
+
+08:20.430 --> 08:29.180
+Well since the communication is asynchronous, we'll need to use a callback.
+
+08:29.300 --> 08:33.380
+So now that we've called a slot, how do we connect a signal?
+
+08:33.530 --> 08:35.110
+Well it's remarkably similar.
+
+08:35.110 --> 08:37.640
+We need to use a callback as well.
+
+08:38.650 --> 08:44.060
+And I guess one thing to note is we don't have to use a callback here but we do need to set this equal
+
+08:44.060 --> 08:50.620
+to something.
+
+08:50.710 --> 08:56.050
+So if we look at this code real quick, notice how we were able to call this who_changed_this_string
+
+08:56.320 --> 08:57.610
+data member directly.
+
+08:57.610 --> 09:00.670
+So if we look back at our interactor, right.
+
+09:00.730 --> 09:07.150
+This is basically happens because of this Q property because we actually set this read method here as
+
+09:07.150 --> 09:13.900
+get_string, that enables us to call who_change_this_string exactly like this and get a return value like
+
+09:13.900 --> 09:15.180
+we expect.
+
+09:15.190 --> 09:21.550
+So guess what we can do if we've defined this write function with the set_string.
+
+09:21.550 --> 09:26.760
+Well if you guess that we'd be able to assign the value using the assignment operator,
+
+09:26.800 --> 09:28.040
+you guessed correctly.
+
+09:28.060 --> 09:32.830
+So let's go ahead and demonstrate that. Awesome.
+
+09:32.840 --> 09:39.230
+So if we look at the Html real quick that we're doing all these operations on, you're going to see a very
+
+09:39.230 --> 09:40.820
+sparse example.
+
+09:40.880 --> 09:47.000
+It basically only includes the instructions to "press F12 to bring up the javascript debugger" which we've
+
+09:47.000 --> 09:53.110
+included is the getfirebug script right here. And then we've also got a button.
+
+09:53.150 --> 09:58.290
+So far we haven't really included our user in any of this interactivity that we've been doing.
+
+09:58.310 --> 10:04.520
+So let's go ahead and fix this by adding an event listener which listens for a click on the button and
+
+10:04.520 --> 10:07.870
+launches a new window in response.
+
+10:07.990 --> 10:08.300
+Right.
+
+10:08.300 --> 10:13.100
+And so if you would just note "Add an event listener to HTML buttons 'click' method which calls the C++ method
+
+10:13.160 --> 10:14.270
+launch_new_window".
+
+10:18.160 --> 10:18.560
+Awesome.
+
+10:18.560 --> 10:25.330
+So with that we were able to successfully use connect to a signal, we called two different types of slots,
+
+10:25.340 --> 10:32.180
+one without a return value and one with the return value. We were able to read our Q property.
+
+10:32.210 --> 10:40.310
+We were able to write to our Q property and we actually hooked up an HTML element in the form of a button
+
+10:40.550 --> 10:42.230
+to our launch_new_window.
+
+10:42.230 --> 10:44.830
+So let's go ahead and run this and see if it works.
+
+10:46.150 --> 10:46.570
+Awesome.
+
+10:46.570 --> 10:48.050
+So looks like everything is working
+
+10:48.070 --> 10:55.270
+so far so well. So let's go ahead and press F12, and we can see here if we look back at our javascript
+
+10:55.270 --> 11:02.470
+code and we look at the output from our application output, we can actually see some of the results of
+
+11:02.470 --> 11:08.130
+our activity. And if we clicked this button you can see that a dialog pops open for us.
+
+11:08.170 --> 11:15.610
+So we've got we've been successfully able to call signals and slots using javascript and see the results
+
+11:15.670 --> 11:16.770
+in the console here.
+
+11:16.840 --> 11:24.040
+And we've been able to successfully interact and call and change stuff from our actual javascript and
+
+11:24.040 --> 11:27.300
+you can play around more with this example on your own.
+
+11:27.370 --> 11:34.630
+So we successfully integrated our gooey and our Website elements, where would we actually use this?
+
+11:34.720 --> 11:39.730
+Well one of the biggest things would be if your company that is in the middle of transitioning from
+
+11:39.880 --> 11:42.880
+desktop to the web or maybe vice versa.
+
+11:42.880 --> 11:48.540
+A lot of times we've got to make that transition very slowly as developer time is really expensive.
+
+11:48.580 --> 11:51.930
+So we don't want to rewrite all our services at once.
+
+11:51.970 --> 11:57.350
+So leveraging QWebChannel like this can be a good way to actually ease that transition
+
+11:57.400 --> 12:01.410
+If you're transitioning from the web to the desktop or from the desktop to the Web.
+
+12:01.540 --> 12:08.320
+But with that we've successfully learned how QWebChannel works, including both the C++ and Javascript
+
+12:08.410 --> 12:14.870
+APIs. So join us in the next section where we go over how to control multimedia.

@@ -1,0 +1,516 @@
+﻿1
+00:00:01,040 --> 00:00:07,050
+Đây là video 5.3 về giao tiếp với Qt, cụ thể là các type và mô-đun trong Qml. Trong video này, chúng tôi
+
+2
+00:00:07,050 --> 00:00:13,710
+sẽ giới thiệu về cách tạo các Qml type, tạo các mô-đun Qml và kết thúc bài giảng với việc định nghĩa các mô-đun
+
+3
+00:00:13,770 --> 00:00:16,350
+và các Qml type từ C++.
+
+4
+00:00:16,380 --> 00:00:22,590
+Vì vậy, nếu chúng ta nhìn vào project của chúng ta và quan sát "main.qml" ngay bây giờ, chúng ta đã có 130 dòng code
+
+5
+00:00:22,860 --> 00:00:25,980
+mà không có lời gợi ý logic thực sự nào nhằm giải thích về bất cứ điều gì ở đây.
+
+6
+00:00:26,010 --> 00:00:31,380
+Vì vậy, nếu một người khác đang cố gắng tạo ra các thay đổi, người đó phải đọc tất cả 130 dòng để hiểu
+
+7
+00:00:31,440 --> 00:00:32,610
+chương trình đang thực hiện điều gì.
+
+8
+00:00:32,790 --> 00:00:35,310
+Điều này quả thực hơi thô lỗ đối với những người lén lúc ở phía sau chúng ta.
+
+9
+00:00:35,310 --> 00:00:38,310
+Vậy, hãy tiếp tục và chia code này thành nhiều phần.
+
+10
+00:00:38,310 --> 00:00:43,330
+Hãy bắt đầu bằng phân tách đoạn code của chúng ta thành kiểu đối tượng của chính nó bằng một tệp mới.
+
+11
+00:00:43,380 --> 00:00:50,880
+Chúng ta chọn File, chọn New File or Project, chọn Qt và sau đó bấm vào QML File. Chọn Choose. Chúng ta
+
+12
+00:00:50,880 --> 00:00:57,360
+sẽ đặt tên ở đây là "ColorChangeDialog" và click vào Next, chọn Finish.
+
+13
+00:00:57,360 --> 00:01:00,980
+Bây giờ chúng ta cần xóa và di chuyển tất cả code chúng ta qua.
+
+14
+00:01:01,110 --> 00:01:02,260
+Chúng ta hãy cùng tiến hành nào.
+
+15
+00:01:04,540 --> 00:01:07,250
+Và sau đó chúng ta cần thụt lề dòng một chút.
+
+16
+00:01:07,270 --> 00:01:12,030
+Và cuối cùng, chúng ta cần các "import". Chúng ta đi đến đầu trang.
+
+17
+00:01:12,120 --> 00:01:16,100
+3 cái này sẽ đều được sử dụng. Tuyệt vời.
+
+18
+00:01:16,100 --> 00:01:20,960
+Hãy tiếp tục và xóa thuộc tính "id" này để chúng ta có thể định nghĩa nó
+
+19
+00:01:20,960 --> 00:01:25,940
+khi chúng ta sử dụng loại type mới của chúng ta. Chúng ta sẽ trở lại main.qml của chúng ta, kéo xuống phía dưới
+
+20
+00:01:25,970 --> 00:01:32,550
+và chỉ cần tạo lại "ColorChangeDialog" của chúng ta với tên loại là "ColorChangeDialog" và
+
+21
+00:01:32,550 --> 00:01:34,970
+tạo "id" ở đây và như vậy đó.
+
+22
+00:01:34,970 --> 00:01:40,160
+Các loại được định nghĩa theo cách này đều phù hợp cho tất cả các tệp Qml khác trong cùng thư mục
+
+23
+00:01:40,430 --> 00:01:41,890
+Điều này thật dễ phải không.
+
+24
+00:01:41,890 --> 00:01:46,430
+Bây giờ cuối cùng bạn sẽ có một số code Qml mà bạn muốn chia sẻ giữa hai dự án.
+
+25
+00:01:46,520 --> 00:01:50,860
+Lúc này chúng ta chỉ biết cách xác định một type từ trong cùng một thư mục.
+
+26
+00:01:50,900 --> 00:01:56,580
+Vì vậy, để chia sẻ code giữa hai dự án, chúng ta phải sao chép tệp trong cả hai project.
+
+27
+00:01:56,720 --> 00:02:02,330
+Và khi chúng ta thực hiện các thay đổi ở một trong những project đó, nó sẽ không được tự động thay đổi ở trong project còn lại
+
+28
+00:02:02,870 --> 00:02:04,120
+Điều này thật tệ.
+
+29
+00:02:04,250 --> 00:02:09,620
+Vì vậy, đây là nơi các mô-đun được thực hiện khi chúng ta chia sẻ các Qml type giữa các project khác nhau.
+
+30
+00:02:09,680 --> 00:02:12,830
+Bây giờ để tạo một mô-đun mới, chúng ta cần ba thứ.
+
+31
+00:02:12,890 --> 00:02:17,420
+Đầu tiên là một thư mục mới, một thư mục cho các loại cửa sổ (window) của bạn.
+
+32
+00:02:17,450 --> 00:02:22,060
+Thứ hai là một Qml type mới, được đặt trong thư mục chúng ta vừa đề cập.
+
+33
+00:02:22,130 --> 00:02:27,200
+Có lẽ sẽ dễ dàng hơn khi nghĩ về một Qml type mới như một tệp Qml mới bởi vì đó thường là cách
+
+34
+00:02:27,200 --> 00:02:28,360
+mà chúng được định nghĩa.
+
+35
+00:02:28,370 --> 00:02:32,280
+Nói tóm lại, điều thứ hai chúng ta cần là một tệp Qml mới.
+
+36
+00:02:32,450 --> 00:02:39,770
+Điều thứ ba cũng là điều cuối cùng, chúng ta cần một qmldir, một tệp văn bản đặc biệt nằm trong thư mục mới của chúng ta.
+
+37
+00:02:39,860 --> 00:02:44,930
+Hãy tạo một mô-đun mới và để làm được điều này, chúng ta sẽ tạo ra một thư mục mới
+
+38
+00:02:44,930 --> 00:02:51,290
+Đầu tiên chúng ta chọn File, chọn New file or Project, chọn Qt, chúng ta sẽ tạo một QML File.
+
+39
+00:02:51,280 --> 00:02:56,420
+Click vào Choose, và sau đó, điều đầu tiên cần làm là đi đến Path (đường dẫn), chọn Browse, tới nơi bạn muốn
+
+40
+00:02:56,420 --> 00:02:58,350
+tạo thư mục mới của bạn.
+
+41
+00:02:58,580 --> 00:03:03,380
+Thực chất chúng ta sẽ tạo ra hai tệp, tệp đầu tiên sẽ được gọi là mục "imports".
+
+42
+00:03:03,770 --> 00:03:09,290
+Và ngay sau khi chúng ta tạo mục "imports", chúng ta sẽ tạo một mục khác mà chúng ta sẽ gọi là
+
+43
+00:03:09,290 --> 00:03:15,290
+"blue_elephants", đây sẽ là tên gọi mô-đun của chúng ta. Bây giờ, chúng ta sẽ chọn OK và tiếp đó
+
+44
+00:03:15,290 --> 00:03:25,040
+chọn tệp hay thư mục "blue_elephants" của chúng ta, dựa theo đường dẫn (path) và sau đó chúng ta muốn tạo ra tệp Qml
+
+45
+00:03:25,430 --> 00:03:31,010
+đây là tệp thứ hai và chúng ta đặt tên nó là "MyModuleType" bởi vì đây là loại type mới của chúng ta
+
+46
+00:03:31,100 --> 00:03:34,580
+và nó nằm trong mô-đun mới được đặt tên là "blue_elephants".
+
+47
+00:03:34,580 --> 00:03:35,930
+Chúng ta nhấn vào Next.
+
+48
+00:03:36,020 --> 00:03:40,040
+Và, có một điều là chúng ta muốn đảm bảo rằng chúng ta không thêm nó vào project hiện tại của mình. Vì vậy, chúng ta sẽ
+
+49
+00:03:40,040 --> 00:03:41,870
+thay đổi nó thành "None".
+
+50
+00:03:41,870 --> 00:03:46,860
+Vào giữ nguyên version control nếu bạn muốn hoặc không thì nó cũng không ảnh hưởng gì hết, và click vào Finish.
+
+51
+00:03:47,060 --> 00:03:53,900
+Sau đó ở trong "MyModuleType", tạo một hàm ở đây.
+
+52
+00:03:54,050 --> 00:03:56,870
+Chỉ là xuất ra một dòng log hello world đơn giản.
+
+53
+00:03:58,350 --> 00:04:03,250
+Và chúng ta sẽ gọi hàm này bất cứ khi nào đối tượng được khởi tạo bằng cách sử dụng hàm xử lý "onCompleted"
+
+54
+00:04:03,270 --> 00:04:09,210
+Tuyệt vời. Vậy là chúng ta vừa tạo mục (folder) hoặc thư mục (directory) mới, chúng ta đã tạo type của chúng ta.
+
+55
+00:04:09,210 --> 00:04:11,420
+Điều cuối cùng mà chúng ta cần là qmldir.
+
+56
+00:04:11,450 --> 00:04:18,260
+Chọn File, chọn New File or Project, nhấn vào "General" và tạo một tệp trống bởi vì
+
+57
+00:04:18,270 --> 00:04:20,810
+qmldir chỉ là một tệp trống.
+
+58
+00:04:20,810 --> 00:04:25,390
+Ở đây chúng ta muốn đảm bảo rằng chúng ta vẫn ở trong đường dẫn "blue_elephants", cái mà bạn quan sát thấy ở đây.
+
+59
+00:04:25,490 --> 00:04:27,590
+Và tiếp theo bạn cần phải đặt tên đúng.
+
+60
+00:04:27,590 --> 00:04:30,120
+Đặt tên là qmldir và chúng ta nhấn vào Next.
+
+61
+00:04:30,150 --> 00:04:35,840
+Hãy chắc chắn rằng đây không phải là một phần project của chúng ta, vì đây sẽ là một phần tách biệt, một project nhỏ
+
+62
+00:04:35,840 --> 00:04:37,760
+Chúng ta chọn Next.
+
+63
+00:04:38,090 --> 00:04:43,910
+Chúng ta tiếp tục và đặt tên cho mô-đun của chúng ta, tên mô-đun ở đây và tên mô-đun của
+
+64
+00:04:43,910 --> 00:04:48,830
+folder phải giống nhau, nếu nó được gọi là blue_elephants thì các folder cũng được gọi là blue_elephants.
+
+65
+00:04:48,870 --> 00:04:51,710
+Tên mô-đun của chúng ta trong Qml sẽ là "blue_elephants".
+
+66
+00:04:51,740 --> 00:04:58,970
+Và sau đó chúng ta cần đặt tên cho type, xác định số phiên bản và xác định tên tệp.
+
+67
+00:04:59,030 --> 00:05:01,840
+Chúng ta chỉ có một loại type đó là "MyModuleType".
+
+68
+00:05:01,850 --> 00:05:06,490
+Chúng ta cùng đi tiếp và xác định loại, số phiên bản và tên tệp.
+
+69
+00:05:08,080 --> 00:05:10,830
+Đây sẽ là tên loại trong mô-đun của chúng ta.
+
+70
+00:05:10,840 --> 00:05:14,520
+Đây là phiên bản 1.0 và đây là tên tệp thực tế.
+
+71
+00:05:14,560 --> 00:05:18,760
+Tôi cố tình cho những tên này không khớp nhau để cho bạn thấy nơi bạn có thể custom.
+
+72
+00:05:18,760 --> 00:05:22,080
+Thông thường thay vì đặt tên, bạn sẽ giữ tên trùng nhau.
+
+73
+00:05:22,090 --> 00:05:25,870
+"MyModuleType" sẽ là tên loại thực tế mà bạn khai báo ở đây
+
+74
+00:05:25,900 --> 00:05:30,130
+và tên tệp, nhưng tôi muốn cho bạn thấy sự tùy chỉnh trong một số trường hợp đôi khi lại rất hữu ích
+
+75
+00:05:30,130 --> 00:05:31,110
+cho bạn.
+
+76
+00:05:31,480 --> 00:05:33,930
+Bây giờ đó là tất cả những gì chúng ta cần cho các mô-đun của chúng ta.
+
+77
+00:05:33,930 --> 00:05:40,270
+Chúng ta vừa tạo ra thư mục, tạo một type là MyModuleType và tạo
+
+78
+00:05:40,270 --> 00:05:41,760
+ra tệp qmldir.
+
+79
+00:05:41,770 --> 00:05:45,390
+Hãy tiếp tục và import nó vào project của chúng ta ở đây.
+
+80
+00:05:45,640 --> 00:05:52,060
+Bạn cần đi đến "main.cpp" và điều đầu tiên chúng ta sẽ làm là thêm mô-đun vào đường dẫn import.
+
+81
+00:05:52,060 --> 00:05:55,590
+Có nhiều cách để làm điều này nhưng chúng ta sẽ thêm nó bằng cách sử dụng "engine".
+
+82
+00:05:55,630 --> 00:05:57,220
+Hiện tại thì điều này rất quan trọng..
+
+83
+00:05:57,220 --> 00:06:03,180
+Ta cần add đường dẫn trực tiếp đến thư mục cha chứa module chứ không phải trỏ thẳng tới module ấy.
+
+84
+00:06:03,490 --> 00:06:08,860
+Bởi vậy, thay vì lấy đường dẫn trực tiếp tới mục "blue_elephants" thì ta sẽ lấy
+
+85
+00:06:08,860 --> 00:06:13,180
+đường dẫn tới thư mục cha có chứa "blue_elephants" này.
+
+86
+00:06:13,180 --> 00:06:18,210
+Và nếu bạn theo sát bài giảng của tôi thì đó sẽ là đường dẫn import.
+
+87
+00:06:18,220 --> 00:06:22,180
+Vì vậy hãy sao chép nhanh ở đây và sử dụng điều đó.
+
+88
+00:06:25,860 --> 00:06:30,770
+Chúng ta có thể thêm phần này vào "engine" bằng phương thức "addImportPath". Tuyệt vời.
+
+89
+00:06:30,770 --> 00:06:37,930
+Vì vậy, bây giờ nếu chúng ta thay đổi code Qml và kéo lên phía trên cùng, chúng ta có thể import được mô-đun blue_elephants.
+
+90
+00:06:37,930 --> 00:06:42,540
+Lưu ý rằng chúng ta sẽ phải cung cấp số phiên bản mà chúng ta muốn, trong trường hợp của chúng ta sẽ là 1.0 và sau đó
+
+91
+00:06:42,540 --> 00:06:47,280
+Hãy kéo xuống tạn phía dưới cùng và khởi tạo nó.
+
+92
+00:06:47,520 --> 00:06:48,510
+Và đó là tất cả những gì chúng ta cần.
+
+93
+00:06:48,510 --> 00:06:50,960
+Lưu ý rằng điều này chỉ là bề nổi vấn đề thôi.
+
+94
+00:06:50,960 --> 00:06:54,010
+Mô-đun Qml và tôi khuyến khích bạn đào sâu tìm hiểu hơn nữa.
+
+95
+00:06:54,030 --> 00:06:59,600
+Tôi sẽ nói với bạn cùng với một số kinh nghiệm đau thương rằng việc import của các mô-đun Qml không xịn lắm.
+
+96
+00:06:59,610 --> 00:07:04,710
+Vì vậy, nếu bạn có gặp lỗi trong code mô-đun của mình, bạn rất có khả năng đã mắc lỗi import chứ không phải là
+
+97
+00:07:04,710 --> 00:07:06,710
+mô-đun của bạn thực sự có vấn đề.
+
+98
+00:07:06,900 --> 00:07:08,720
+Do đó hãy cẩn thận với điều này.
+
+99
+00:07:08,760 --> 00:07:15,210
+Điều cuối cùng mà chúng ta muốn làm là tạo một type mới từ code C ++.
+
+100
+00:07:15,210 --> 00:07:17,060
+Vậy chúng ta làm điều đó như thế nào.
+
+101
+00:07:17,370 --> 00:07:23,610
+Nếu chúng ta nhìn vào code "colorpicker", chúng ta có thể thấy một ví dụ về cách tích hợp code C ++ vào
+
+102
+00:07:23,610 --> 00:07:24,970
+code Qml.
+
+103
+00:07:24,960 --> 00:07:28,030
+hãy chú ý một vài điều ở đây với tệp tiêu đề này.
+
+104
+00:07:28,050 --> 00:07:29,980
+Đầu tiên là chúng ta phân lớp
+
+105
+00:07:29,980 --> 00:07:31,550
+"QQuickPaintedItem".
+
+106
+00:07:31,590 --> 00:07:36,570
+Lớp này cho phép chúng tôi sử dụng công cụ Qt raster engine để tạo một số đồ họa bằng cách ghi đè (override)
+
+107
+00:07:36,570 --> 00:07:38,070
+hàm paint.
+
+108
+00:07:38,070 --> 00:07:41,160
+Một điều khác cần lưu ý trong lớp này là việc sử dụng câu lệnh
+
+109
+00:07:41,170 --> 00:07:47,540
+"Q_INVOKABLE". Để xuất các method lên qml chúng ta cần thêm vào các hàm của chúng ta macro
+
+110
+00:07:47,540 --> 00:07:53,550
+"Q_INVOKABLE", biến chúng thành các public slot hoặc sử dụng các thuộc tính macro cho cụ thể code này.
+
+111
+00:07:53,550 --> 00:07:56,890
+Cách dễ nhất để làm là sử dụng "Q_INVOKABLE".
+
+112
+00:07:56,890 --> 00:08:02,190
+Bây giờ lưu ý nếu bạn muốn mở rộng một số code C ++ thành Qml, bạn thực sự không cần phải phân lớp
+
+113
+00:08:02,190 --> 00:08:06,980
+"QQuickPaintedItem". Bất kỳ lớp con của đối tượng QObject sẽ làm điều đó. Vì vậy,
+
+114
+00:08:06,990 --> 00:08:13,540
+Khi chúng ta thực hiện xong, chúng ta chỉ cần điều hướng đến bất cứ nơi nào chúng ta khởi tạo
+
+115
+00:08:13,570 --> 00:08:18,020
+QQmlApplicationEngine và gọi "qmlRegisterType".
+
+116
+00:08:18,240 --> 00:08:21,630
+Hãy tiếp tục và đặt vào bên trong hàm đó
+
+117
+00:08:21,630 --> 00:08:24,910
+Không gian tên (namespace), phiên bản và số loại (type number).
+
+118
+00:08:24,990 --> 00:08:27,590
+Chúng ta cùng thực hiện điều đó ngay bây giờ nào.
+
+119
+00:08:32,280 --> 00:08:36,150
+Lưu ý rằng chúng ta đã sử dụng code này như một phần của việc implement.
+
+120
+00:08:36,300 --> 00:08:42,780
+Vì vậy, nếu chúng ta thay đổi thành "ColorChangeDialog", bạn có thể thấy tên mô-đun thực tế mà chúng ta đã
+
+121
+00:08:42,780 --> 00:08:49,350
+định nghĩa trong "main.cpp" vì vậy chúng tôi đã đặt tên mô-đun ở đây là "ColorPicker" và type là
+
+122
+00:08:49,350 --> 00:08:50,430
+"ColorPicker".
+
+123
+00:08:50,430 --> 00:08:55,980
+Một lần nữa, nếu bạn thay đổi và bạn sẽ thấy "import ColorPickers 1.0".
+
+124
+00:08:55,980 --> 00:08:59,640
+Tiếp tục và nhấn Play, đảm bảo rằng bạn đang làm đúng mọi thứ.
+
+125
+00:09:01,740 --> 00:09:10,550
+Bây giờ như bạn thấy chúng ta đã có "hello world!", do vậy mô-đun của chúng ta đã được import chính xác và sử dụng đúng như mong muốn.
+
+126
+00:09:10,580 --> 00:09:17,210
+Vậy là chúng tôi đã tạo thành công và trình diễn cách tạo type và mô-đun Qml từ
+
+127
+00:09:17,210 --> 00:09:18,410
+C++,
+
+128
+00:09:18,620 --> 00:09:25,500
+bên cạnh việc tạo một mô-đun Qml mới cũng như demo được cách tạo một Qml type mới.
+
+129
+00:09:25,650 --> 00:09:29,110
+Hãy tham gia cùng chúng tôi trong phần tiếp theo nói về Các biểu diễn trực quan (Visual Representations).
+

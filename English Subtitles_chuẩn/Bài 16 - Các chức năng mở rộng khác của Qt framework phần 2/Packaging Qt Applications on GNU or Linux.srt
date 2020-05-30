@@ -1,0 +1,271 @@
+WEBVTT
+
+00:00.840 --> 00:07.050
+And this is video 7.2 of Qt on desktop which covers packaging on GNU and Linux. In this video, we're
+
+00:07.050 --> 00:11.960
+going to cover some specific Linux QMake scopes, how to set up for Debian packaging,
+
+00:11.970 --> 00:15.360
+And lastly how to uninstall and install our package.
+
+00:15.360 --> 00:17.880
+So let's go ahead and start with QMake scopes.
+
+00:18.000 --> 00:24.660
+So we're going to want to open our profile. Perfect. So, when we run this we're going to run this as the
+
+00:24.660 --> 00:26.120
+release configuration.
+
+00:26.130 --> 00:31.720
+So we want our release configuration on Linux to have a couple of specific values.
+
+00:31.740 --> 00:35.310
+So let's go ahead and set up some scope conditionals to do that.
+
+00:35.330 --> 00:40.720
+So there are two things that we want specifically here and the one is to set up the target path. So, our
+
+00:40.720 --> 00:45.250
+"TARGET" is "colors", which is going to be our binary file that gets produce when you run this.
+
+00:45.250 --> 00:50.390
+So we want to go ahead and set that path up to be "/urs/bin" and I really want to make sure that when
+
+00:50.390 --> 00:55.800
+we run making install, ưe actually install this target. Perfect.
+
+00:55.800 --> 01:00.660
+So if you look at this directory here you can tell that I actually put this using semantic versioning
+
+01:00.660 --> 01:06.630
+which is important because our helper function dh makes actually uses the directory name and semantic
+
+01:06.630 --> 01:08.490
+versioning as part of its setup.
+
+01:08.490 --> 01:10.840
+So let's go ahead and install dh-make quick.
+
+01:12.480 --> 01:13.420
+Perfect.
+
+01:13.710 --> 01:15.990
+And then we'll go ahead and run it.
+
+01:15.990 --> 01:21.390
+So it was going to ask if it's a single binary, independent library or Python. So, this is going to be a single
+
+01:21.390 --> 01:21.930
+binary.
+
+01:21.990 --> 01:26.940
+And then this is some configuration information which we can change later so the details can be fine
+
+01:27.230 --> 01:31.350
+and the first thing that's going to do is go ahead and tell us that it couldn't find the original source
+
+01:31.350 --> 01:37.210
+code tar file and you can either specify one or create one using "createorig".
+
+01:37.230 --> 01:40.550
+So if we look at this folder you'll see that we've got the source code here.
+
+01:40.560 --> 01:46.580
+So we're just going to go ahead and use that "createorig" to have dh_make make one for us.
+
+01:46.620 --> 01:51.270
+So if we look in the directory, behind this, we've got this "orig.tar.xz" which stands for
+
+01:51.270 --> 01:53.110
+our original source code now.
+
+01:53.510 --> 01:53.960
+Awesome.
+
+01:53.970 --> 01:59.400
+So dh_make is going to make this Debian folder for us. So, let's go ahead and change into there and
+
+01:59.400 --> 02:02.270
+if we run into this we can see there's a lot of files in here.
+
+02:02.310 --> 02:06.510
+And the first thing I can do is remove all of the example files or you can go through these if you want
+
+02:06.540 --> 02:14.710
+but for us I want to focus on what's absolutely essential. Awesome. So, now we've got our "changelog" compatibility
+
+02:14.710 --> 02:18.380
+which is used for dh_make control rules and source.
+
+02:18.380 --> 02:20.110
+And so really all of these files,
+
+02:20.110 --> 02:22.980
+The only two that are important are control and rules.
+
+02:22.990 --> 02:27.670
+So the first thing that we're going to do is use the control file to go ahead and define some of our
+
+02:27.670 --> 02:31.730
+dependence and remember how I said that we could change everything.
+
+02:31.750 --> 02:32.610
+Here's where it changes.
+
+02:32.620 --> 02:37.610
+So if needed change the source name or the priority of the maintainer or anything like that.
+
+02:37.630 --> 02:40.450
+But the two things that we're going to change in here are the dependence.
+
+02:40.480 --> 02:45.220
+And there's a build dependent and a package dependent and we're going to set these both to be dependent
+
+02:45.250 --> 02:46.300
+on qt5,
+
+02:46.720 --> 02:50.520
+which you could probably narrow down some but for our case this is 5.
+
+02:51.380 --> 02:55.360
+And this "Depends" use some helper methods to figure out what exactly it depends on.
+
+02:55.360 --> 03:01.340
+So we'll just go ahead and leave that alone and add our "qt5-default". Perfect.
+
+03:01.340 --> 03:03.920
+So the other important file in here is the rules file.
+
+03:03.950 --> 03:05.620
+So let's go out and open that up.
+
+03:05.690 --> 03:09.010
+If you look at the very top here you can see this is an actual "make -f".
+
+03:09.050 --> 03:11.910
+And so this dh is the help command for us.
+
+03:11.990 --> 03:17.120
+And what this is going to do is actually run the three basic commands for us for any qmake.
+
+03:17.120 --> 03:18.840
+So it's going to run.
+
+03:19.220 --> 03:22.870
+So these are the three commands that the dh command is going to run in a
+
+03:22.990 --> 03:28.820
+qmake until it's in make the release file and then it's going to actually build it and then go ahead
+
+03:28.850 --> 03:29.910
+and install it.
+
+03:30.140 --> 03:35.660
+Ever since version 7.4.12 of this helper method, qmake already built in.
+
+03:35.660 --> 03:38.580
+So we're not going to do anything, we're not going to touch this file at all.
+
+03:38.660 --> 03:43.580
+But if you needed some custom functionality as far as the actual building and making. Here's where you
+
+03:43.580 --> 03:50.770
+do it. For example, you can override the configuration to set "this example for Cmake". That's all
+
+03:50.770 --> 03:51.460
+we need to do.
+
+03:51.460 --> 03:57.340
+So we're going to go ahead and back up a directory into our source code directory and go ahead and use
+
+03:57.720 --> 04:01.100
+the "dpkg-buildpackage" to build this out.
+
+04:04.390 --> 04:05.380
+So a couple of things.
+
+04:05.380 --> 04:10.180
+The first thing you need to see is you're probably going to see an error here that says that we were not able
+
+04:10.510 --> 04:15.190
+to successfully sign this. For our case and purposes it's not going to matter since we're just distributing
+
+04:15.190 --> 04:15.810
+it locally.
+
+04:15.820 --> 04:21.220
+But if you're trying to push it up into the debian files, you need to actually have a new public
+
+04:21.310 --> 04:21.940
+key.
+
+04:21.940 --> 04:26.080
+The second thing that we should note if we backup directory, we can see we've actually created quite
+
+04:26.080 --> 04:27.190
+a few files.
+
+04:27.190 --> 04:31.920
+So we still have our original source code file the "orig.tar.xz".
+
+04:31.990 --> 04:37.270
+We also have this "debian.tar.xz", which would capture any sort of patches that we applied to the
+
+04:37.270 --> 04:40.510
+source code and then we had our signature file.
+
+04:40.510 --> 04:45.040
+The dsc file right here, couple other administrative files "buildinfo".
+
+04:45.040 --> 04:52.530
+And this "changes" for the change file. And in this "amd64" which is the actual architecture amd64 is my computer
+
+04:52.630 --> 04:54.310
+".deb" that's the actual package files.
+
+04:54.320 --> 04:57.480
+Let's go ahead and install that.
+
+04:57.600 --> 05:01.720
+And one thing to check before we do this if we use that "which" command to see colors we can see that
+
+05:01.720 --> 05:06.170
+we don't actually have the binary colors currently installed in our system.
+
+05:06.520 --> 05:11.380
+And now if we run "which colors" we can see that we've actually successfully been able to put that binary
+
+05:11.380 --> 05:18.790
+in there and if we go to a graphic user interface and run "colors" you can see this binary it pops up in the
+
+05:18.790 --> 05:25.060
+release form and we can go ahead and change anything in here just like we want for if we run it out
+
+05:25.060 --> 05:26.260
+of our Qt creator.
+
+05:26.260 --> 05:31.430
+But now it's actually in our file package manager and being tracked there.
+
+05:32.560 --> 05:36.480
+And so the nice thing about being in our package manager is that we can actually use our package manager
+
+05:36.490 --> 05:38.350
+to remove it for us.
+
+05:38.590 --> 05:42.110
+And now for using which command, you see that binary is removed.
+
+05:42.310 --> 05:48.910
+So with that we successfully manage to learn how to install and uninstall our package, went through a simple
+
+05:48.910 --> 05:51.710
+example of Debian package and went through some Linux
+
+05:51.710 --> 05:54.250
+Qmakes specific scopes.
+
+05:54.290 --> 05:58.060
+Please join us next time where we go over Static Linking for Qt apps.

@@ -1,0 +1,154 @@
+WEBVTT
+
+00:00.810 --> 00:07.040
+And this is video 7.1: Qt on desktop which covers packaging on Windows. And in this video we're going to
+
+00:07.040 --> 00:10.440
+cover building for release, building an installer,
+
+00:10.580 --> 00:13.990
+and lastly how to install and install our package.
+
+00:14.050 --> 00:17.720
+So the first thing that we need to do is go ahead and make a release build.
+
+00:17.930 --> 00:23.810
+So we need to actually open up our colors.pro file and then we're going to go down to this project
+
+00:23.810 --> 00:28.330
+thing right here and we're going to change from de-bug into a release build.
+
+00:28.490 --> 00:31.630
+And give that a second to work through what that means.
+
+00:31.760 --> 00:35.560
+And then when the icon comes back we'll go ahead and click the build project.
+
+00:35.600 --> 00:40.490
+Now if we go to our project tab we can actually see the directory that we've got.
+
+00:40.490 --> 00:44.050
+So we'll go ahead and we're going to change into this directory.
+
+00:45.580 --> 00:48.860
+And we need to change into the release directory as well.
+
+00:48.870 --> 00:58.300
+Now we need to run windeployqt on color.pro file. As soon as it's done building, it is still compiling.
+
+00:58.330 --> 01:03.370
+So we need to run windeployqt command on colors.exe.
+
+01:03.370 --> 01:04.830
+So let's go ahead and do that now.
+
+01:05.950 --> 01:09.830
+So this is going to go ahead and create some of the background files that we need now.
+
+01:09.970 --> 01:14.390
+I've got windeployqt linked in my path environmental variable.
+
+01:14.410 --> 01:17.460
+But you might not see to have to run this from the actual source.
+
+01:17.530 --> 01:26.210
+So, for example, windeployqt for me is located in the 
+
+01:26.230 --> 01:28.620
+C:\Qt\Qt5.10.0\5.10.0\mingw53_32\bin\windeployedqt.exe.
+
+01:28.780 --> 01:32.650
+So it'll depend where you actually installed Qt on your directory but you'll need to go find it
+
+01:32.680 --> 01:36.540
+and go ahead and run that so it can create some of the folders and files that we need
+
+01:36.670 --> 01:41.890
+So now that we've done that let's go ahead and make our installer, so we'll go to Visual Studio and we
+
+01:41.890 --> 01:43.810
+need to make a new project.
+
+01:44.050 --> 01:49.060
+Now where we need to do is actually do a new visual studio installer.
+
+01:49.090 --> 01:54.600
+So it should be located in Installed> Other project types> Visual Studio installer
+
+01:54.790 --> 02:00.670
+If not you'll need to run the install Visual Studio installer debility and install this into your local
+
+02:00.670 --> 02:07.440
+computer to do that and I'm gonna change the names, and change it to be colors. Awesome!
+
+02:07.490 --> 02:13.300
+So we need to go ahead and dump all the files that we just created into this directory.
+
+02:13.490 --> 02:15.650
+So let's go ahead and do that now.
+
+02:16.010 --> 02:23.750
+And basically we need to grab everything except for the object files which are .o and the actual Mocs.
+
+02:23.790 --> 02:25.130
+So you need to grab everything.
+
+02:25.130 --> 02:30.350
+Other than that and then we'll just drag it into our application folder.
+
+02:31.380 --> 02:31.740
+Awesome.
+
+02:31.800 --> 02:35.810
+So the last thing that we want to do is go ahead and make a shortcut on our user desktop.
+
+02:35.820 --> 02:40.680
+So right click on colors.exe, create a shortcut and then we'll drag that over to the user's
+
+02:40.680 --> 02:44.740
+desktop and then we'll go ahead and change it name to be colors.
+
+02:44.760 --> 02:49.920
+I think it can be helpful to change the default name, 
+
+02:49.920 --> 02:53.730
+So I’ll change the name of the author and the manufacturer.
+
+02:53.910 --> 02:58.500
+So I'll change the author to be my name and the manufacturer to be the course name. With that we need
+
+02:58.500 --> 03:03.270
+to change from debug to release and we'll go ahead and build the solution.
+
+03:06.690 --> 03:12.070
+Awesome! So once we get the build succeeds we'll go ahead and change into that repo go into the release
+
+03:12.130 --> 03:16.880
+and then we'll go ahead and run our installer. Perfect.
+
+03:16.880 --> 03:22.100
+So now if we minimize everything we should see the shortcut on our desktop and if we run that we can
+
+03:22.100 --> 03:28.640
+see that we successfully installed this program and we can run and change colors as we need.
+
+03:28.640 --> 03:29.230
+So let's go ahead to 
+
+03:29.240 --> 03:29.930
+Uninstall now. 
+
+03:29.930 --> 03:36.460
+So if we click the installer one more time and we select to remove colors we have successfully uninstalled 
+
+03:36.460 --> 03:36.890
+it.
+
+03:36.910 --> 03:42.190
+So with that we successfully learn how to install and unstaller project, buil a Windows Installer and
+
+03:42.190 --> 03:46.910
+also build a qt project ready for release.
+
+03:46.990 --> 03:50.920
+Please follow the next video we’ll talk about packaging on GNU/Linux.

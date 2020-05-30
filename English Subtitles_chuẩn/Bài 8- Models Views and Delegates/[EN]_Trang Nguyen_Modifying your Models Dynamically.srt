@@ -1,0 +1,784 @@
+1
+00:00:00,000 --> 00:00:01,770
+in this lecture, we're going to look in
+
+2
+00:00:01,770 --> 00:00:04,890
+detail at how you can manipulate your
+
+3
+00:00:04,890 --> 00:00:07,799
+models dynamically. we're going to go to
+
+4
+00:00:07,799 --> 00:00:10,349
+QT creator and play with it. here we are
+
+5
+00:00:10,349 --> 00:00:11,759
+in Qt creator.
+
+6
+00:00:11,759 --> 00:00:14,299
+we're going to create our new project.
+
+7
+00:00:14,299 --> 00:00:17,670
+it's a QT quick application as usual.
+
+8
+00:00:17,670 --> 00:00:20,039
+we're going to call it DynamicModelsDemo.
+
+9
+00:00:20,039 --> 00:00:24,539
+Save it in the usual location, hit Next.
+
+10
+00:00:24,539 --> 00:00:25,430
+
+
+11
+00:00:25,430 --> 00:00:30,269
+choose our QT version, choose our kit and
+
+12
+00:00:30,269 --> 00:00:35,480
+finish. we want to change the title here,
+
+13
+00:00:36,469 --> 00:00:38,610
+because we are going to need a few
+
+14
+00:00:38,610 --> 00:00:40,590
+buttons, we're going to import Qt Quick Controls.
+
+15
+00:00:40,590 --> 00:00:49,469
+we want 2.4. and we want to
+
+16
+00:00:49,469 --> 00:00:56,850
+import QT quick layouts. let's use 1.4. we
+
+17
+00:00:56,850 --> 00:01:01,680
+want to put in a column layout. it is
+
+18
+00:01:01,680 --> 00:01:05,640
+going to fill the parent. and inside,
+
+19
+00:01:05,640 --> 00:01:10,110
+we're going to have a listview whose
+
+20
+00:01:10,110 --> 00:01:13,530
+ID is going to be mListView here as usual.
+
+21
+00:01:13,530 --> 00:01:15,110
+
+
+22
+00:01:15,110 --> 00:01:18,689
+it's going to have a model assigned to
+
+23
+00:01:18,689 --> 00:01:21,420
+it, and the delegate, but we don't have
+
+24
+00:01:21,420 --> 00:01:24,570
+those defined yet. we're going to define
+
+25
+00:01:24,570 --> 00:01:27,600
+them in a while, but we want to make this
+
+26
+00:01:27,600 --> 00:01:29,310
+fillwidth, we're going to say
+
+27
+00:01:29,310 --> 00:01:36,530
+layout, fillwidth, set this to true and
+
+28
+00:01:36,530 --> 00:01:42,210
+layout, fillheight, set this to true. to
+
+29
+00:01:42,210 --> 00:01:44,340
+save on some typing, I'm going to put in
+
+30
+00:01:44,340 --> 00:01:47,280
+a model that I have prepared before. it's
+
+31
+00:01:47,280 --> 00:01:49,649
+nothing you haven't seen before. it is a
+
+32
+00:01:49,649 --> 00:01:52,320
+list model, and inside we have list
+
+33
+00:01:52,320 --> 00:01:55,350
+elements. we should go down in our list
+
+34
+00:01:55,350 --> 00:01:58,439
+view, and specify this model. let's look
+
+35
+00:01:58,439 --> 00:02:02,100
+at the ID, the ID is mListModel, so
+
+36
+00:02:02,100 --> 00:02:06,119
+this should be our model. the same as for
+
+37
+00:02:06,119 --> 00:02:08,970
+the model, the delegate is also prepared
+
+38
+00:02:08,970 --> 00:02:11,850
+before. control a control I to align,
+
+39
+00:02:11,850 --> 00:02:14,280
+and it is nothing you haven't seen
+
+40
+00:02:14,280 --> 00:02:17,250
+before also. inside we have a rectangle,
+
+41
+00:02:17,250 --> 00:02:20,130
+which has a bunch of properties. inside
+
+42
+00:02:20,130 --> 00:02:22,440
+we have a text element, and we have a
+
+43
+00:02:22,440 --> 00:02:24,720
+mouse area to make this delegate
+
+44
+00:02:24,720 --> 00:02:26,640
+clickable. so we're going to be able to
+
+45
+00:02:26,640 --> 00:02:30,690
+click on each row of our listview that
+
+46
+00:02:30,690 --> 00:02:34,200
+we have in this column layout here. okay
+
+47
+00:02:34,200 --> 00:02:37,470
+now we can specify "delegateID" to be
+
+48
+00:02:37,470 --> 00:02:40,860
+our delegate. it's not "delegated", it is
+
+49
+00:02:40,860 --> 00:02:44,730
+"delegate". this is good, and you see that
+
+50
+00:02:44,730 --> 00:02:46,890
+we are printing the first name and the
+
+51
+00:02:46,890 --> 00:02:51,420
+last name, which are the roles that we
+
+52
+00:02:51,420 --> 00:02:53,730
+have in our list element here. now we
+
+53
+00:02:53,730 --> 00:02:56,310
+want to put a few buttons below the list
+
+54
+00:02:56,310 --> 00:02:58,500
+view here. we are going to use these
+
+55
+00:02:58,500 --> 00:03:02,400
+buttons to dynamically manipulate this
+
+56
+00:03:02,400 --> 00:03:05,580
+model here. let's go down here, and put in
+
+57
+00:03:05,580 --> 00:03:11,160
+a button. the text is going to say "add
+
+58
+00:03:11,160 --> 00:03:16,290
+item", and we want to know when it is
+
+59
+00:03:16,290 --> 00:03:18,780
+clicked. that's where we're going to add
+
+60
+00:03:18,780 --> 00:03:21,840
+stuff to our model here. we want to copy
+
+61
+00:03:21,840 --> 00:03:24,960
+this button, and paste it a couple of
+
+62
+00:03:24,960 --> 00:03:25,860
+times.
+
+63
+00:03:25,860 --> 00:03:28,020
+I think we need four buttons here so I'm
+
+64
+00:03:28,020 --> 00:03:31,170
+going to paste this three times. the
+
+65
+00:03:31,170 --> 00:03:34,050
+second one is going to say clear. the
+
+66
+00:03:34,050 --> 00:03:40,200
+third one is going to say delete. we want
+
+67
+00:03:40,200 --> 00:03:42,690
+to delete that item. let's spell this
+
+68
+00:03:42,690 --> 00:03:46,050
+correctly, and the last one is going to
+
+69
+00:03:46,050 --> 00:03:51,060
+say set item at in its tool as well. okay
+
+70
+00:03:51,060 --> 00:03:54,840
+so how do we add items to our model here?
+
+71
+00:03:54,840 --> 00:03:56,790
+the first thing you need to remember is
+
+72
+00:03:56,790 --> 00:03:58,950
+that you're going to use the ID here to
+
+73
+00:03:58,950 --> 00:04:01,860
+manipulate the model. let's go back to
+
+74
+00:04:01,860 --> 00:04:04,530
+the documentation, look at list model.
+
+75
+00:04:04,530 --> 00:04:08,760
+let's go up and find the methods that we
+
+76
+00:04:08,760 --> 00:04:10,740
+have. we have a method that is called
+
+77
+00:04:10,740 --> 00:04:14,130
+Append, and you append things like this. okay
+
+78
+00:04:14,130 --> 00:04:16,350
+so what we can do is actually to take
+
+79
+00:04:16,350 --> 00:04:19,680
+this, because I like to learn from the
+
+80
+00:04:19,680 --> 00:04:21,800
+documentation. I'm going to copy this,
+
+81
+00:04:21,800 --> 00:04:24,660
+come back in our
+
+82
+00:04:24,660 --> 00:04:27,270
+handler for an odd item, we're going to
+
+83
+00:04:27,270 --> 00:04:29,850
+paste this, and I'm going to change fruitmodel
+
+84
+00:04:29,850 --> 00:04:36,450
+to mListModel. I can do that so
+
+85
+00:04:36,450 --> 00:04:39,720
+"cost" is going to be "first name" because
+
+86
+00:04:39,720 --> 00:04:43,590
+that's the role that we have here. I can
+
+87
+00:04:43,590 --> 00:04:48,060
+actually copy this and paste to reduce
+
+88
+00:04:48,060 --> 00:04:51,270
+the chance of having an error. last name,
+
+89
+00:04:51,270 --> 00:04:56,580
+I copy and paste in here, and let's say I
+
+90
+00:04:56,580 --> 00:05:02,850
+want to put in "Daniel", and "Gakwaya".
+
+91
+00:05:02,850 --> 00:05:06,060
+I want to add my name in here, and when
+
+92
+00:05:06,060 --> 00:05:08,100
+we click, we're going to see my name
+
+93
+00:05:08,100 --> 00:05:10,950
+added to the list here. let's run the
+
+94
+00:05:10,950 --> 00:05:14,610
+application. mm-hmm we are here, and you
+
+95
+00:05:14,610 --> 00:05:16,500
+see that these buttons are not filling
+
+96
+00:05:16,500 --> 00:05:19,320
+the available space. we're going to
+
+97
+00:05:19,320 --> 00:05:21,300
+correct this in a moment, but we should
+
+98
+00:05:21,300 --> 00:05:24,900
+click on add item and see my name added
+
+99
+00:05:24,900 --> 00:05:28,260
+here. this is cool, isnt it? let's go
+
+100
+00:05:28,260 --> 00:05:31,260
+back and make the buttons fill the
+
+101
+00:05:31,260 --> 00:05:34,130
+available width. we can do this by
+
+102
+00:05:34,130 --> 00:05:38,970
+copying what is here, and putting that in
+
+103
+00:05:38,970 --> 00:05:43,550
+every single button that we have in here.
+
+104
+00:05:43,610 --> 00:05:50,190
+let's do that for everyone, and we should
+
+105
+00:05:50,190 --> 00:05:52,500
+be fine by now. now we want to clear
+
+106
+00:05:52,500 --> 00:05:55,020
+everything in the model. the way you do
+
+107
+00:05:55,020 --> 00:06:00,180
+that you say mListModel, clear,
+
+108
+00:06:00,180 --> 00:06:05,790
+Easy, right? let's run. okay ready?
+
+109
+00:06:05,790 --> 00:06:09,570
+clear, everything is gone, and we can add
+
+110
+00:06:09,570 --> 00:06:12,419
+a bunch of other pieces of data, and
+
+111
+00:06:12,419 --> 00:06:15,930
+notice that we can still scroll because
+
+112
+00:06:15,930 --> 00:06:19,110
+this is a ListView that has the flickin
+
+113
+00:06:19,110 --> 00:06:22,740
+Bolton. we want to delete the item at
+
+114
+00:06:22,740 --> 00:06:25,440
+index - how do we do that?
+
+115
+00:06:25,440 --> 00:06:27,900
+so if you look here, the first item is
+
+116
+00:06:27,900 --> 00:06:31,260
+that index 0 1 2, and you keep going up
+
+117
+00:06:31,260 --> 00:06:34,950
+like that. so if we delete... let's close
+
+118
+00:06:34,950 --> 00:06:37,770
+the application and run it again, so that
+
+119
+00:06:37,770 --> 00:06:38,520
+you see
+
+120
+00:06:38,520 --> 00:06:41,759
+different pieces of data. Jones snow is at
+
+121
+00:06:41,759 --> 00:06:42,270
+zero,
+
+122
+00:06:42,270 --> 00:06:45,720
+Nikolai Itchenko is at one, Mitch Mathson
+
+123
+00:06:45,720 --> 00:06:50,099
+is at two. okay so if we delete at index
+
+124
+00:06:50,099 --> 00:06:51,930
+two, we're going to delete Mitch Matt's
+
+125
+00:06:51,930 --> 00:06:54,990
+on here. that's what we want to do. let's
+
+126
+00:06:54,990 --> 00:06:57,000
+go back to the documentation and see
+
+127
+00:06:57,000 --> 00:07:00,419
+what they have to say. we can go up to
+
+128
+00:07:00,419 --> 00:07:03,690
+find all these methods, and we find a
+
+129
+00:07:03,690 --> 00:07:06,810
+method that is called remove. you pass in
+
+130
+00:07:06,810 --> 00:07:08,729
+the index where you want to start
+
+131
+00:07:08,729 --> 00:07:11,580
+removing, and you pass in the number of
+
+132
+00:07:11,580 --> 00:07:14,039
+elements that you want to remove. this is
+
+133
+00:07:14,039 --> 00:07:16,590
+easy right? so we can go back to our
+
+134
+00:07:16,590 --> 00:07:20,509
+signal handler here, and say mListModel,
+
+135
+00:07:20,509 --> 00:07:24,750
+remove, the index is going to be two
+
+136
+00:07:24,750 --> 00:07:26,490
+because that's what we want to remove
+
+137
+00:07:26,490 --> 00:07:29,280
+and we want to remove one element. let's
+
+138
+00:07:29,280 --> 00:07:32,810
+run the application, okay we are here.
+
+139
+00:07:32,810 --> 00:07:34,979
+ready? delete.
+
+140
+00:07:34,979 --> 00:07:38,580
+you see Mitch Madson is gone, now index
+
+141
+00:07:38,580 --> 00:07:41,400
+two is occupied by a Vince Luvky j
+
+142
+00:07:41,400 --> 00:07:42,030
+here.
+
+143
+00:07:42,030 --> 00:07:44,699
+we can also remove him and we can keep
+
+144
+00:07:44,699 --> 00:07:47,460
+removing data. notice that the moment we
+
+145
+00:07:47,460 --> 00:07:50,370
+don't have an item at index two, and
+
+146
+00:07:50,370 --> 00:07:53,159
+we try to remove an item, you see that we
+
+147
+00:07:53,159 --> 00:07:55,110
+have an error here, so you should be
+
+148
+00:07:55,110 --> 00:07:58,740
+careful and check the index before you
+
+149
+00:07:58,740 --> 00:08:01,139
+remove an element. and the check is
+
+150
+00:08:01,139 --> 00:08:04,020
+really not that hard. you just have to
+
+151
+00:08:04,020 --> 00:08:07,080
+see that two is less than the number of
+
+152
+00:08:07,080 --> 00:08:09,930
+items that you have in the model. the way
+
+153
+00:08:09,930 --> 00:08:14,880
+you do that you can say if 2 is less
+
+154
+00:08:14,880 --> 00:08:20,159
+than mListView, the "model" that is
+
+155
+00:08:20,159 --> 00:08:24,599
+attached to that and "count", this is the
+
+156
+00:08:24,599 --> 00:08:27,690
+property that has the number of items in
+
+157
+00:08:27,690 --> 00:08:31,169
+that model. so if this is the case, we can
+
+158
+00:08:31,169 --> 00:08:33,419
+successfully remove the element because
+
+159
+00:08:33,419 --> 00:08:38,299
+it is available. if this is not the case,
+
+160
+00:08:38,299 --> 00:08:41,830
+you can "console.log"
+
+161
+00:08:41,830 --> 00:08:46,420
+"index is invalid", something like this.
+
+162
+00:08:46,420 --> 00:08:53,240
+let's run again. okay we delete all items.
+
+163
+00:08:53,240 --> 00:08:57,529
+Ken Kologorov, we remove this. we remove. if
+
+164
+00:08:57,529 --> 00:09:00,770
+we try to remove again, it says "index is
+
+165
+00:09:00,770 --> 00:09:03,830
+invalid", because the number of items is
+
+166
+00:09:03,830 --> 00:09:07,430
+two now, and two is not less than two.
+
+167
+00:09:07,430 --> 00:09:09,800
+that's why we failed. I hope this
+
+168
+00:09:09,800 --> 00:09:12,649
+makes sense. okay we want to do the last
+
+169
+00:09:12,649 --> 00:09:15,770
+operation, which is setting the item at
+
+170
+00:09:15,770 --> 00:09:20,060
+index two. notice that at index 2, we have
+
+171
+00:09:20,060 --> 00:09:22,279
+Mitch Matheson. we can change that
+
+172
+00:09:22,279 --> 00:09:25,279
+dynamically. let's look at the "set" method
+
+173
+00:09:25,279 --> 00:09:28,730
+in our documentation here. you pass the
+
+174
+00:09:28,730 --> 00:09:31,730
+index and you pass the JSON object
+
+175
+00:09:31,730 --> 00:09:34,850
+containing the data that you want to set
+
+176
+00:09:34,850 --> 00:09:37,279
+your thing with. so we are basically
+
+177
+00:09:37,279 --> 00:09:42,080
+going to use this syntax here, so we
+
+178
+00:09:42,080 --> 00:09:44,209
+should copy this to save some time, and
+
+179
+00:09:44,209 --> 00:09:49,130
+we are going to say "mListModel.set", we
+
+180
+00:09:49,130 --> 00:09:51,800
+passed the index that we want to modify.
+
+181
+00:09:51,800 --> 00:09:54,620
+it is index two and we pass in edges an
+
+182
+00:09:54,620 --> 00:09:59,480
+object like this. first name, last name, so
+
+183
+00:09:59,480 --> 00:10:05,680
+we can say John Doe in here. why not?
+
+184
+00:10:06,279 --> 00:10:12,950
+let's run. index two is Mitch Matson here,
+
+185
+00:10:12,950 --> 00:10:15,650
+and if you "set" that you see that it
+
+186
+00:10:15,650 --> 00:10:18,200
+becomes John Doe, and everything we had
+
+187
+00:10:18,200 --> 00:10:20,750
+before it works. okay we can keep setting
+
+188
+00:10:20,750 --> 00:10:24,709
+the item at index two as we want. and
+
+189
+00:10:24,709 --> 00:10:27,589
+this is really all I hard to show you in
+
+190
+00:10:27,589 --> 00:10:30,230
+this lecture. I hope you have a better
+
+191
+00:10:30,230 --> 00:10:32,740
+understanding of how you can modify your
+
+192
+00:10:32,740 --> 00:10:35,720
+model at run time. you have a bunch of
+
+193
+00:10:35,720 --> 00:10:38,240
+methods available to you that you can
+
+194
+00:10:38,240 --> 00:10:40,370
+play with if you happen to need that. in
+
+195
+00:10:40,370 --> 00:10:41,959
+the next lecture we're going to work
+
+196
+00:10:41,959 --> 00:00:00,000
+with grid view. I see you there.
+

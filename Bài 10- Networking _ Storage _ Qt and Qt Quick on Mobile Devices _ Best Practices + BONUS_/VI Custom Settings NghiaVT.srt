@@ -1,0 +1,780 @@
+﻿1
+00:00:00,000 --> 00:00:01,740
+Trong bài hôm nay, ta sẽ học về cách
+
+2
+00:00:01,740 --> 00:00:05,310
+với việc với settings tùy chỉnh trong qml. Ta
+
+3
+00:00:05,310 --> 00:00:07,440
+sẽ xem tài liệu về
+
+4
+00:00:07,440 --> 00:00:10,860
+settings. Trong bài trước ta đã học một cách để
+
+5
+00:00:10,860 --> 00:00:13,019
+máy tự lưu mọi thứ cho bạn mà bạn
+
+6
+00:00:13,019 --> 00:00:16,920
+không cần làm gì nhiều, nhưng với
+
+7
+00:00:16,920 --> 00:00:19,080
+cách này thì sẽ tiêu tốn tài nguyên
+
+8
+00:00:19,080 --> 00:00:22,320
+của máy khi lưu dữ liệu bất cứ khi nào
+
+9
+00:00:22,320 --> 00:00:24,840
+có dữ liệu nào thay đổi, và không phải lúc nào bạn
+
+10
+00:00:24,840 --> 00:00:27,300
+cũng cần lưu tự động như vậy. Một phương pháp nữa là
+
+11
+00:00:27,300 --> 00:00:29,609
+bạn tự lưu dữ liệu, và có một
+
+12
+00:00:29,609 --> 00:00:32,130
+ví dụ cho cách đó ở đây.
+
+13
+00:00:32,130 --> 00:00:34,320
+Đại khái bạn có một component Setting, nó
+
+14
+00:00:34,320 --> 00:00:36,809
+có một id và một danh sách các property
+
+15
+00:00:36,809 --> 00:00:38,550
+mà bạn cần lưu trữ. Trong ví dụ này, ta
+
+16
+00:00:38,550 --> 00:00:41,010
+cần lưu thông tin về state. Và bạn thấy
+
+17
+00:00:41,010 --> 00:00:43,500
+cái Item này sẽ đọc thông tin về state
+
+18
+00:00:43,500 --> 00:00:46,500
+từ component Settings ở đây.
+
+19
+00:00:46,500 --> 00:00:49,350
+Việc bạn cần làm là
+
+20
+00:00:49,350 --> 00:00:51,270
+đọc property mà bạn
+
+21
+00:00:51,270 --> 00:00:52,890
+muốn lưu lại từ component Settings,
+
+22
+00:00:52,890 --> 00:00:55,920
+và bạn cần chọn thời điểm để
+
+23
+00:00:55,920 --> 00:00:58,440
+lưu thông tin đó. Trong
+
+24
+00:00:58,440 --> 00:01:00,629
+ví dụ này, ta lưu dữ liệu khi
+
+25
+00:01:00,629 --> 00:01:03,480
+component kết thúc. Ta viết
+
+26
+00:01:03,480 --> 00:01:07,170
+settings.state = page.state. Cái này để lấy
+
+27
+00:01:07,170 --> 00:01:08,880
+lấy state từ componenet và
+
+28
+00:01:08,880 --> 00:01:12,210
+lưu nó vào trong component Settings này
+
+29
+00:01:12,210 --> 00:01:15,659
+khi component này kết thúc. Để ý rằng
+
+30
+00:01:15,659 --> 00:01:18,090
+khi bạn dùng ứng dụng, bạn có thể
+
+31
+00:01:18,090 --> 00:01:21,810
+thay đổi state, và sự
+
+32
+00:01:21,810 --> 00:01:23,700
+thay đổi đó sẽ được lưu lại ở đây.
+
+33
+00:01:23,700 --> 00:01:26,820
+Bạn để ý có một giá trị mặc định
+
+34
+00:01:26,820 --> 00:01:29,970
+ở đây, vậy nên nếu bạn không đặt state cụ thể nào,
+
+35
+00:01:29,970 --> 00:01:33,630
+mặc định nó sẽ nhận giá trị 'active'. Để
+
+36
+00:01:33,630 --> 00:01:35,939
+thử cái này, ta sẽ dùng
+
+37
+00:01:35,939 --> 00:01:38,880
+Qt creator, tìm một project ta từng làm
+
+38
+00:01:38,880 --> 00:01:41,009
+từ trước, tôi sẽ vào Recent
+
+39
+00:01:41,009 --> 00:01:43,259
+projects, và tìm một
+
+40
+00:01:43,259 --> 00:01:46,890
+project ta từng làm, và chọn
+
+41
+00:01:46,890 --> 00:01:50,189
+StatesWithGradiant. Bạn cũng tìm cái này đi,
+
+42
+00:01:50,189 --> 00:01:55,140
+và mở nó ra trong Qt Creator thế này.
+
+43
+00:01:55,140 --> 00:02:00,630
+Chạy project đó, và bạn thấy nó hiện ra một
+
+44
+00:02:00,630 --> 00:02:03,210
+bức hình thế này, và ta có thể
+
+45
+00:02:03,210 --> 00:02:07,110
+thay đổi giữa mùa hè và mua xuân, ok, bằng cách
+
+46
+00:02:07,110 --> 00:02:09,628
+thay đổi state thế này. Việc ta
+
+47
+00:02:09,628 --> 00:02:11,730
+cần làm là lưu thông tin về state
+
+48
+00:02:11,730 --> 00:02:14,489
+hiện tại, để khi đóng
+
+49
+00:02:14,489 --> 00:02:17,580
+ứng dụng này đi, thông tin đó sẽ được lưu lại,
+
+50
+00:02:17,580 --> 00:02:20,190
+và khi bật lại lên, ứng dụng sẽ lấy
+
+51
+00:02:20,190 --> 00:02:23,819
+state từ lần đóng trước đó. Để làm
+
+52
+00:02:23,819 --> 00:02:25,349
+việc này, ta sẽ tạo một
+
+53
+00:02:25,349 --> 00:02:28,080
+project mới và copy các tệp từ project này sang
+
+54
+00:02:28,080 --> 00:02:30,660
+cho nó tử tế. Tôi không muốn
+
+55
+00:02:30,660 --> 00:02:33,060
+làm ví dụ này tỏng project cũ
+
+56
+00:02:33,060 --> 00:02:36,599
+vì như thế có thể ảnh hưởng đến các học sinh khác.
+
+57
+00:02:36,599 --> 00:02:38,099
+Ta sẽ tạo một project mới,
+
+58
+00:02:38,099 --> 00:02:40,709
+tôi sẽ làm mọi thứ trực tiếp luôn
+
+59
+00:02:40,709 --> 00:02:44,370
+cho bạn xem. Chọn Qt Quick application.
+
+60
+00:02:44,370 --> 00:02:46,950
+Ta gọi nó là SettingsDemo2,
+
+61
+00:02:46,950 --> 00:02:49,650
+vì đây là ví dụ thứ 2. Lưu nó
+
+62
+00:02:49,650 --> 00:02:52,590
+vào địa chỉ thông thường, chọn Next, chọn
+
+63
+00:02:52,590 --> 00:02:57,319
+phiên bản Qt, chọn kit, và
+
+64
+00:02:57,319 --> 00:03:01,500
+finish. Ta đổi cái này thành "Custom
+
+65
+00:03:01,500 --> 00:03:07,530
+settings", vì bạn sẽ tự lưu dữ liệu.
+
+66
+00:03:07,530 --> 00:03:11,010
+Ta sẽ vào trong project
+
+67
+00:03:11,010 --> 00:03:15,690
+StatesWithGradientDemo, vào
+
+68
+00:03:15,690 --> 00:03:20,220
+qml, tìm tệp qml. Ta không cần
+
+69
+00:03:20,220 --> 00:03:22,980
+import gì đặc biệt, nhưng vẫn cần copy
+
+70
+00:03:22,980 --> 00:03:25,290
+mọi thứ từ đây sang. Ta sẽ
+
+71
+00:03:25,290 --> 00:03:27,959
+copy mọi thứ trong Window này,
+
+72
+00:03:27,959 --> 00:03:32,160
+bạn thấy đấy, trừ những property của
+
+73
+00:03:32,160 --> 00:03:34,049
+Window, vì ta sẽ có
+
+74
+00:03:34,049 --> 00:03:37,049
+những property riêng trong project mới của ta.
+
+75
+00:03:37,049 --> 00:03:39,480
+Ta paste dữ liệu vào
+
+76
+00:03:39,480 --> 00:03:41,639
+đây, và bạn thấy đây, ta có
+
+77
+00:03:41,639 --> 00:03:44,519
+ảnh ở đây, nên ta cũng cần
+
+78
+00:03:44,519 --> 00:03:47,579
+import những ảnh đó nữa. Giờ tôi sẽ
+
+79
+00:03:47,579 --> 00:03:49,919
+tìm địa chỉ của project này,
+
+80
+00:03:49,919 --> 00:03:56,160
+chọn Show in Explorer... có một thư mục
+
+81
+00:03:56,160 --> 00:04:00,169
+các ảnh ở đây, tôi copy nó,
+
+82
+00:04:00,169 --> 00:04:04,230
+đi về chỗ project này,
+
+83
+00:04:04,230 --> 00:04:09,690
+click chuột phải, Show in Explorer, và tôi sẽ
+
+84
+00:04:09,690 --> 00:04:12,480
+paste nó vào thư mục ảnh. Giờ là
+
+85
+00:04:12,480 --> 00:04:15,329
+có ảnh trong SettingsDemo2 rồi. Tôi
+
+86
+00:04:15,329 --> 00:04:19,728
+đóng cái này lại, tạo một tệp mới vào Resource, Add
+
+87
+00:04:19,728 --> 00:04:25,320
+new, chọn Qt, Resource File,
+
+88
+00:04:25,320 --> 00:04:30,030
+đặt tên là resources, next, next,
+
+89
+00:04:30,030 --> 00:04:32,520
+finish, thêm prefix, xóa
+
+90
+00:04:32,520 --> 00:04:35,400
+chỗ này đi, nhấn enter, vì ta không
+
+91
+00:04:35,400 --> 00:04:39,240
+cần prefix nào cả, add files, images, và
+
+92
+00:04:39,240 --> 00:04:43,110
+ta đặt ảnh mùa xuân và hè này vào.
+
+93
+00:04:43,110 --> 00:04:47,190
+Lưu cái này lại. Giờ ta chạy
+
+94
+00:04:47,190 --> 00:04:50,340
+project SettingsDemo2 này, ta sẽ
+
+95
+00:04:50,340 --> 00:04:53,640
+thấy mọi thứ giống hệt như trong
+
+96
+00:04:53,640 --> 00:04:57,900
+project StatesWithGradientsDemo. Ta thử
+
+97
+00:04:57,900 --> 00:05:01,650
+xem, ta có thể thay đổi state rồi.
+
+98
+00:05:01,650 --> 00:05:04,380
+Ta đóng ứng dụng này lại, và đóng
+
+99
+00:05:04,380 --> 00:05:06,960
+cả project StatesWithGradientDemo nữa
+
+100
+00:05:06,960 --> 00:05:09,200
+vì ta không cần nó nữa,
+
+101
+00:05:09,200 --> 00:05:11,670
+đóng mọi thứ trong này đi
+
+102
+00:05:11,670 --> 00:05:16,470
+cho nó đỡ lằng nhằng, và mở
+
+103
+00:05:16,470 --> 00:05:18,720
+tệp qml ra, bởi vì ta sẽ
+
+104
+00:05:18,720 --> 00:05:21,090
+làm việc với tệp này. Việc đầu tiên cần làm
+
+105
+00:05:21,090 --> 00:05:23,880
+làm import settings, bởi vì đó
+
+106
+00:05:23,880 --> 00:05:27,030
+là cái ta sẽ sử dụng trong bài
+
+107
+00:05:27,030 --> 00:05:31,140
+này. Ta sẽ quay lại đọc
+
+108
+00:05:31,140 --> 00:05:33,840
+tài hiện và áp dụng ví dụ này
+
+109
+00:05:33,840 --> 00:05:36,630
+để lưu thông tin về state. Bạn thấy có một
+
+110
+00:05:36,630 --> 00:05:38,850
+Settings ở đây, ta copy nó,
+
+111
+00:05:38,850 --> 00:05:43,830
+quay về project của mình, ta kéo xuống
+
+112
+00:05:43,830 --> 00:05:46,170
+phía cuối component Rectangle,
+
+113
+00:05:46,170 --> 00:05:51,960
+Rectangle này đây, kết thúc ở
+
+114
+00:05:51,960 --> 00:05:54,390
+đây, và ta sẽ đặt vào cái settings
+
+115
+00:05:54,390 --> 00:05:56,520
+mà ta copy từ tài liệu trên mạng đó.
+
+116
+00:05:56,520 --> 00:05:59,400
+Id là settings... ta để nguyên đó,
+
+117
+00:05:59,400 --> 00:06:01,890
+không vấn đề gì cả... Ctrl+A Ctrl+I để chỉnh hàng...
+
+118
+00:06:01,890 --> 00:06:06,000
+Dưới này bạn thấy ta có lưu property
+
+119
+00:06:06,000 --> 00:06:09,080
+của state. Ta cần đặt state này
+
+120
+00:06:09,080 --> 00:06:13,440
+mặc định là spring, và ta cần
+
+121
+00:06:13,440 --> 00:06:17,190
+cho ứng dụng này đọc dữ liệu về state từ
+
+122
+00:06:17,190 --> 00:06:19,830
+component Settings, nên ta bỏ
+
+123
+00:06:19,830 --> 00:06:29,120
+đoạn này ra, và viết state : settings.state.
+
+124
+00:06:29,990 --> 00:06:32,420
+Đây là việc thứ hai bạn cần
+
+125
+00:06:32,420 --> 00:06:34,850
+làm. Còn việc đầu tiên là đặt
+
+126
+00:06:34,850 --> 00:06:36,890
+component Settings vào thế này, đặt
+
+127
+00:06:36,890 --> 00:06:41,840
+id cho nó, cho ứng dụng của bạn đọc
+
+128
+00:06:41,840 --> 00:06:44,090
+thông tin cần lưu từ Settings. Và
+
+129
+00:06:44,090 --> 00:06:46,100
+việc cuối cùng bạn cần làm là
+
+130
+00:06:46,100 --> 00:06:49,100
+tạo một comopnent để lưu khi
+
+131
+00:06:49,100 --> 00:06:56,270
+component này kết thúc... onDestruction là cái
+
+132
+00:06:56,270 --> 00:07:01,010
+ta cần. Ta viết chọn lưu lúc kết thúc trong ví dụ này, nhưng
+
+133
+00:07:01,010 --> 00:07:02,660
+bạn muốn lưu dữ liệu lúc nào cũng được.
+
+134
+00:07:02,660 --> 00:07:04,610
+Bạn có thể đặt để lưu khi người dùng nhấn
+
+135
+00:07:04,610 --> 00:07:07,580
+nút nào đó hoặc đại loại thế, còn ở đây thì
+
+136
+00:07:07,580 --> 00:07:08,240
+ta lưu
+
+137
+00:07:08,240 --> 00:07:11,120
+khi Rectangle này kết thúc. Trong này
+
+138
+00:07:11,120 --> 00:07:14,950
+ta viết settings.state
+
+139
+00:07:14,950 --> 00:07:18,790
+sẽ bằng state được lưu lại từ
+
+140
+00:07:18,790 --> 00:07:21,560
+Rectangle này. Để ý rằng
+
+141
+00:07:21,560 --> 00:07:25,070
+state này thuộc về component Rectangle ở ngoài cùng
+
+142
+00:07:25,070 --> 00:07:29,750
+bao trùm tất cả, ok. Đây
+
+143
+00:07:29,750 --> 00:07:32,180
+là nơi state được định nghĩa. Ta cần
+
+144
+00:07:32,180 --> 00:07:35,930
+lưu thông tin bằng cách RectangleId, tôi nghĩ
+
+145
+00:07:35,930 --> 00:07:39,670
+là id này đây của cái Rectangle này...
+
+146
+00:07:39,670 --> 00:07:43,850
+containerRectId... là id ta cần,
+
+147
+00:07:43,850 --> 00:07:48,850
+ta viết containerRectId.state
+
+148
+00:07:48,850 --> 00:07:52,880
+thế này. Trước khi chạy
+
+149
+00:07:52,880 --> 00:07:55,100
+ứng dụng, ta cần nhớ
+
+150
+00:07:55,100 --> 00:07:58,550
+quay lại tệp main.cpp và điền
+
+151
+00:07:58,550 --> 00:08:01,730
+thông tin của ứng dụng này vào... Ctrl+A Ctrl+I để
+
+152
+00:08:01,730 --> 00:08:05,210
+chỉnh hàng... và tôi sẽ sửa đoạn này đi vì
+
+153
+00:08:05,210 --> 00:08:07,640
+nó có thể ảnh hưởng đến settings ở
+
+154
+00:08:07,640 --> 00:08:10,100
+trong bài trước. Bạn không nên
+
+155
+00:08:10,100 --> 00:08:12,890
+có hai ứng dụng với cùng
+
+156
+00:08:12,890 --> 00:08:14,780
+thông tin thế này, sẽ chỉ làm
+
+157
+00:08:14,780 --> 00:08:16,060
+rối lên thôi.
+
+158
+00:08:16,060 --> 00:08:20,840
+Chạy thử nào. Nếu chương trình chạy đúng, ta sẽ
+
+159
+00:08:20,840 --> 00:08:25,610
+có thể lưu state lại, là mùa xuân
+
+160
+00:08:25,610 --> 00:08:28,850
+hoặc mùa hè. Giờ ta đang ở mùa xuân.
+
+161
+00:08:28,850 --> 00:08:32,690
+Ta chuyển nó thành mùa hè, đóng
+
+162
+00:08:32,690 --> 00:08:37,880
+ứng dụng, bật lên, vào hè rồi, ta
+
+163
+00:08:37,880 --> 00:08:40,419
+đổi về xuân, đóng ứng dụng,
+
+164
+00:08:40,419 --> 00:08:43,629
+bật lên,
+
+165
+00:08:43,789 --> 00:08:46,760
+bạn thấy lại là xuân rồi. Ta
+
+166
+00:08:46,760 --> 00:08:49,790
+lại đổi nó thành mùa hè, sẽ
+
+167
+00:08:49,790 --> 00:08:53,540
+thấy mùa hè khi bật lại, ok hè rồi. Ta
+
+168
+00:08:53,540 --> 00:08:54,770
+đổi thành mùa xuân,
+
+169
+00:08:54,770 --> 00:08:57,290
+đóng ứng dụng, sẽ thấy
+
+170
+00:08:57,290 --> 00:09:00,740
+mùa xuân khi bật lại, đúng là mùa xuân rồi.
+
+171
+00:09:00,740 --> 00:09:03,340
+Giờ bạn biết cách lưu dữ liệu
+
+172
+00:09:03,340 --> 00:09:06,350
+mỗi khi đóng chương trình rồi,
+
+173
+00:09:06,350 --> 00:09:09,440
+hoặc khi nào cũng được tùy ý bạn. Ta
+
+174
+00:09:09,440 --> 00:09:11,480
+lưu dữ liệu trong ví dụ này khi component Rectangle
+
+175
+00:09:11,480 --> 00:09:13,700
+kết thúc, còn bạn muốn lưu lúc nào
+
+176
+00:09:13,700 --> 00:09:16,940
+lúc được. Công việc chính cần làm ở đây là định nghĩa
+
+177
+00:09:16,940 --> 00:09:19,640
+component Settings để
+
+178
+00:09:19,640 --> 00:09:21,740
+ứng dụng của bạn đọc property trong
+
+179
+00:09:21,740 --> 00:09:24,350
+component Settings đó, và chọn thời điểm
+
+180
+00:09:24,350 --> 00:09:26,540
+để lưu dữ liệu. Trong ví dụ này
+
+181
+00:09:26,540 --> 00:09:29,090
+ta lưu dữ liệu khi
+
+182
+00:09:29,090 --> 00:09:31,340
+component Rectangle này kết thúc.
+
+183
+00:09:31,340 --> 00:09:33,590
+Đây là cách bạn
+
+184
+00:09:33,590 --> 00:09:35,750
+làm việc với settings để lưu dữ liệu, bạn
+
+185
+00:09:35,750 --> 00:09:37,820
+có thể để settings hoàn toàn
+
+186
+00:09:37,820 --> 00:09:40,130
+tự động lưu dữ liệu cho bạn, và
+
+187
+00:09:40,130 --> 00:09:42,380
+chịu tiêu tốn tài nguyên để lưu
+
+188
+00:09:42,380 --> 00:09:44,990
+mỗi khi có thay đổi với property, hoặc bạn
+
+189
+00:09:44,990 --> 00:09:46,880
+có thể chỉ định lúc nào thì lưu
+
+190
+00:09:46,880 --> 00:09:49,340
+dữ liệu như ta đã làm
+
+191
+00:09:49,340 --> 00:09:50,360
+trong bài này.
+
+192
+00:09:50,360 --> 00:09:52,160
+Trong bài tới, ta sẽ xem cách
+
+193
+00:09:52,160 --> 00:09:54,650
+bạn có thể lưu dữ liệu với SQLite,
+
+194
+00:09:54,650 --> 00:09:57,740
+một cơ sở dữ liệu có sẵn
+
+195
+00:09:57,740 --> 00:00:00,000
+trong máy. Hẹn gặp lại bạn trong bài sau.
+

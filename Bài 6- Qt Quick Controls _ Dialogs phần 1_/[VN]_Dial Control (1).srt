@@ -1,0 +1,376 @@
+1
+00:00:00,000 --> 00:00:02,639
+trong bài này chúng ta sẽ xem xét về thành phần 
+
+2
+00:00:02,639 --> 00:00:05,819
+dial ở trong Quick, thành phần này
+
+3
+00:00:05,819 --> 00:00:08,160
+căn bản cho phép người dùng có thể chọn giá trị 
+
+4
+00:00:08,160 --> 00:00:12,059
+bằng cách quay quanh vòng và chọn
+
+5
+00:00:12,059 --> 00:00:16,230
+trong một phạm vi được định sẵn, nào hãy mở 
+
+6
+00:00:16,230 --> 00:00:17,670
+QT creator và thử làm xem sao
+
+7
+00:00:17,670 --> 00:00:21,000
+được rồi, ở đây trong QT creator chúng ta
+
+8
+00:00:21,000 --> 00:00:23,820
+sẽ tạo một project và như thường lệ
+
+9
+00:00:23,820 --> 00:00:26,220
+nó sẽ là một ứng dụng QT quick
+
+10
+00:00:26,220 --> 00:00:29,640
+chúng ta đặt tên nó là dialDemo, lưu 
+
+11
+00:00:29,640 --> 00:00:33,450
+nó lại vào đường dẫn như thường lệ, kế tiếp
+
+12
+00:00:33,450 --> 00:00:40,370
+chọn phiên bản QT và chọn desktop kit
+
+13
+00:00:40,370 --> 00:00:44,100
+xong, chúng ta sẽ thay đổi tiêu đề
+
+14
+00:00:44,100 --> 00:00:47,789
+thành Dial Demo và ở trong chúng ta
+
+15
+00:00:47,789 --> 00:00:55,640
+để một thành phần column, import
+
+16
+00:00:55,640 --> 00:01:03,930
+phiên bản mới nhất của QT quick control
+
+17
+00:01:03,930 --> 00:01:07,590
+và hiện tại là 2.4, ta muốn nó có 
+
+18
+00:01:07,590 --> 00:01:13,080
+cùng chiều rộng với đối tượng cha và có
+
+19
+00:01:13,080 --> 00:01:17,720
+khoảng cách là 40 như thường lệ, 
+
+20
+00:01:17,720 --> 00:01:20,759
+ở bên trong ta đặt một nhãn Label 
+
+21
+00:01:20,759 --> 00:01:24,810
+với các thuộc tính như thế này 
+
+22
+00:01:24,810 --> 00:01:30,329
+chúng ta khai báo thành phần Dial và ta 
+
+23
+00:01:30,329 --> 00:01:33,210
+đi tới hướng dẫn sử dụng của nó để xem 
+
+24
+00:01:33,210 --> 00:01:36,689
+nó là gì và làm được gì, nó thì tương tự
+
+25
+00:01:36,689 --> 00:01:39,780
+như cái núm xoay truyền thống mà thường bắt gặp 
+
+26
+00:01:39,780 --> 00:01:42,720
+ở trên các thiết bị như đài casset hay các thành phần 
+
+27
+00:01:42,720 --> 00:01:45,240
+kỹ thuật, nó cho phép người dùng 
+
+28
+00:01:45,240 --> 00:01:48,119
+chỉnh một giá trị trong một phạm vi, căn bản là nó 
+
+29
+00:01:48,119 --> 00:01:50,729
+trông giống thế này, giờ ta xem 
+
+30
+00:01:50,729 --> 00:01:55,579
+các thuộc tính của nó, có một giá trị from 
+
+31
+00:01:55,579 --> 00:01:59,549
+và giá trị to và các thuộc tính khác bạn có thể
+
+32
+00:01:59,549 --> 00:02:02,130
+tìm hiểu thêm nếu bạn hứng thú,
+
+33
+00:02:02,130 --> 00:02:04,829
+trở lại code của chúng ta, xuống dưới này 
+
+34
+00:02:04,829 --> 00:02:06,780
+chúng ta muốn canh giữa theo
+
+35
+00:02:06,780 --> 00:02:08,489
+chiều ngang và do vậy ta gõ 
+
+36
+00:02:08,489 --> 00:02:10,720
+anchor.horizontalCenter
+
+37
+00:02:10,720 --> 00:02:14,560
+parent.horizontalCenter, chúng ta muốn
+
+38
+00:02:14,560 --> 00:02:19,290
+nó sẽ có giá trị từ 1 đến 100 và giá trị 
+
+39
+00:02:19,290 --> 00:02:24,820
+bắt đầu của nó sẽ là 50 là ở 
+
+40
+00:02:24,820 --> 00:02:27,490
+giữa, và ta cũng muốn bắt sự kiện khi 
+
+41
+00:02:27,490 --> 00:02:29,770
+mà giá trị thay đổi, vì vậy ta gõ 
+
+42
+00:02:29,770 --> 00:02:32,830
+onValueChanged và ta sẽ 
+
+43
+00:02:32,830 --> 00:02:43,450
+xuất ra màn hình console chuỗi này cộng với 
+
+44
+00:02:43,450 --> 00:02:48,180
+giá trị của nó 
+
+45
+00:02:48,180 --> 00:02:53,110
+và lưu ý là phải sửa lại chỗ này
+
+46
+00:02:53,110 --> 00:02:56,020
+cho nó có chiều rộng bằng với đối tượng cha 
+
+47
+00:02:56,020 --> 00:02:58,960
+thay vì chỉ ghi mỗi parent bởi vì
+
+48
+00:02:58,960 --> 00:03:02,560
+như vậy mới cho nó có cùng kích thước
+
+49
+00:03:02,560 --> 00:03:05,200
+với cửa sổ chương trình, giờ 
+
+50
+00:03:05,200 --> 00:03:11,140
+chạy chương trình và xem núm vặn của chúng ta 
+
+51
+00:03:11,140 --> 00:03:13,270
+được rồi, bạn thấy là nó bắt đầu đúng 
+
+52
+00:03:13,270 --> 00:03:16,180
+ở giữa và ta thử di chuyển núm vặn, bạn sẽ thấy
+
+53
+00:03:16,180 --> 00:03:20,140
+thông số progress thì chạy lên 100 
+
+54
+00:03:20,140 --> 00:03:23,170
+chúng ta đạt giá trị tối đa, nó báo 100 và ta 
+
+55
+00:03:23,170 --> 00:03:25,660
+có thể vặn nó ngược về, người dùng có thể
+
+56
+00:03:25,660 --> 00:03:28,290
+chọn một giá trị ở khoảng giữa.
+
+57
+00:03:28,290 --> 00:03:30,910
+một vấn đề khác mà mọi người hay làm 
+
+58
+00:03:30,910 --> 00:03:34,209
+đó là nếu bạn không muốn lấy giá trị lẻ
+
+59
+00:03:34,209 --> 00:03:36,970
+bạn có thể chuyển giá trị này về 
+
+60
+00:03:36,970 --> 00:03:39,550
+số nguyên một cách rất dễ dàng, sử dụng
+
+61
+00:03:39,550 --> 00:03:41,500
+hàm javascript có sẵn 
+
+62
+00:03:41,500 --> 00:03:45,160
+bạn có thể viết math.floor để làm tròn xuống
+
+63
+00:03:45,160 --> 00:03:48,820
+giá trị, và như vậy nó sẽ cho số được
+
+64
+00:03:48,820 --> 00:03:53,170
+làm tròn và nếu bạn chạy lại chương trình 
+
+65
+00:03:53,170 --> 00:03:56,980
+bạn sẽ thấy các giá trị giờ là số nguyên
+
+66
+00:03:56,980 --> 00:04:04,230
+bạn cũng có thể làm tròn lên bằng cách gõ math.ciel
+
+67
+00:04:04,230 --> 00:04:09,780
+như thế này, rồi chạy lại chương trình 
+
+68
+00:04:13,240 --> 00:04:16,390
+nó nhìn thì giống lúc nãy, và đây là 
+
+69
+00:04:16,390 --> 00:04:18,640
+vấn đề của bạn, bạn muốn sử dụng 
+
+70
+00:04:18,640 --> 00:04:21,760
+như thế nào tùy thuộc vào yêu cầu của bạn, 
+
+71
+00:04:21,760 --> 00:04:23,920
+ta trở lại phần hướng dẫn, có
+
+72
+00:04:23,920 --> 00:04:25,930
+một số thuộc tính khác tôi muốn bạn
+
+73
+00:04:25,930 --> 00:04:28,840
+chú ý và đây là thuộc tính wrap
+
+74
+00:04:28,840 --> 00:04:31,800
+nó làm cái gì ? nó sẽ giữ vị trí tối đa
+
+75
+00:04:31,800 --> 00:04:34,630
+khi vặn núm, ví dụ nếu thuộc tính này
+
+76
+00:04:34,630 --> 00:04:37,330
+được để là true thì bạn có thể vặn 
+
+77
+00:04:37,330 --> 00:04:40,090
+núm vượt qua vị trí to và 
+
+78
+00:04:40,090 --> 00:04:43,180
+kết quả là nó sẽ có giá trị là giá trị 
+
+79
+00:04:43,180 --> 00:04:45,730
+from (bắt đầu), cụ thể trong trường hợp này
+
+80
+00:04:45,730 --> 00:04:48,490
+nếu ta vặn qua 100 thì nó sẽ thành giá trị 1
+
+81
+00:04:48,490 --> 00:04:50,940
+còn nếu ta vặn qua 1 thì nó trở thành 
+
+82
+00:04:50,940 --> 00:04:54,490
+100, cá nhân tôi thì không thích điều này 
+
+83
+00:04:54,490 --> 00:04:57,100
+bởi vì nó gây nhầm lẫn cho người dùng 
+
+84
+00:04:57,100 --> 00:04:59,890
+nhưng nếu bạn cần sử dụng nó 
+
+85
+00:04:59,890 --> 00:05:04,540
+thì hãy tới đây và gõ wrap và để giá trị 
+
+86
+00:05:04,540 --> 00:05:11,590
+true cho nó và chạy lại chương trình 
+
+87
+00:05:11,590 --> 00:05:15,160
+và nếu bạn vặn quá 100 bạn sẽ thấy nó trở về
+
+88
+00:05:15,160 --> 00:05:18,340
+1 và bạn vặn ngược lên và nếu 
+
+89
+00:05:18,340 --> 00:05:21,370
+giảm nó quá 1 thì nó sẽ thành 
+
+90
+00:05:21,370 --> 00:05:24,100
+100, được rồi bây giờ bạn đã biết làm thế nào 
+
+91
+00:05:24,100 --> 00:05:26,500
+sử dụng phần tử Dial, đó là để người dùng 
+
+92
+00:05:26,500 --> 00:05:29,470
+chọn giá trị trong một phạm vi xác định
+
+93
+00:05:29,470 --> 00:05:31,690
+trong bài kế tiếp chúng ta sẽ tìm hiểu 
+
+94
+00:05:31,690 --> 00:00:00,000
+về phần tử Frame, hẹn gặp lại
+

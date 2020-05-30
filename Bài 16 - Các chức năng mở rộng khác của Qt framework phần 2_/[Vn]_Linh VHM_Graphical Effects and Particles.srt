@@ -1,0 +1,280 @@
+﻿1
+00:00:00,950 --> 00:00:06,590
+Đây là video 6.3 biểu diễn trực quan về Hiệu ứng đồ họa và các hạt (particles). Trong
+
+2
+00:00:06,590 --> 00:00:12,170
+video này, chúng tôi sẽ giới thiệu các kiểu Qt: Hiệu ứng đồ họa, Sử dụng các hạt, Sử dụng Gradient và kết thức bài học
+
+3
+00:00:12,170 --> 00:00:13,600
+với việc tạo ra các hạt.
+
+4
+00:00:13,610 --> 00:00:15,680
+Hãy cùng bắt đầu nào.
+
+5
+00:00:15,680 --> 00:00:20,000
+Qt có một số lượng lớn các hiệu ứng đồ họa có sẵn để tạo đồ họa.
+
+6
+00:00:20,010 --> 00:00:24,180
+Cách tốt nhất để biết những gì có sẵn là thực hành chạy chúng và tiếp đó xem điều chúng có thể làm là gì.
+
+7
+00:00:24,200 --> 00:00:26,110
+Chúng ta hãy thực hành ngay nào.
+
+8
+00:00:26,240 --> 00:00:33,290
+Một số hiệu ứng đồ họa mà bộ hỗ trợ có sẵn: Pha trộn, Hiệu ứng màu sắc, Hiệu ứng Gradient,
+
+9
+00:00:33,680 --> 00:00:41,760
+Độ méo, Bóng đổ, Làm mờ, Motion Blurs (hiệu ứng mờ khung hình khi chuyển động), cuối cùng là hiệu ứng Glow và Masks.
+
+10
+00:00:41,780 --> 00:00:48,440
+Như bạn có thể nhận thấy hầu hết trong số này là thực sự được sử dụng cho hình ảnh, ngoại trừ Gradient.
+
+11
+00:00:48,440 --> 00:00:52,900
+Hãy tiếp tục nào, chúng ta sẽ quay lại ứng dụng tải màn hình mà chúng ta đã tạo lần trước.
+
+12
+00:00:53,000 --> 00:00:59,360
+Chúng ta sẽ sử dụng Gradient thay vì nền trắng để chúng ta có thể chứng minh việc
+
+13
+00:00:59,360 --> 00:01:00,890
+sử dụng gradient là rất hiệu quả.
+
+14
+00:01:00,900 --> 00:01:06,820
+Tôi đã thêm vào đặc tính vào trong "Rectangle" này và hiểu cơ bản là nó sẽ lấp đầy toàn bộ cửa sổ và bao chùm mọi thứ khác.
+
+15
+00:01:06,820 --> 00:01:09,610
+Chúng ta có "blue ball" ngay bên dưới nó.
+
+16
+00:01:09,680 --> 00:01:13,440
+Và nếu chúng ta kéo xuống bên dưới, chúng ta có nút bấm đã tạo từ trước và lung lay qua lại.
+
+17
+00:01:13,460 --> 00:01:15,530
+"Rectangle" sẽ bao chứa cả hai phần đó.
+
+18
+00:01:15,530 --> 00:01:19,120
+Hãy tiếp tục và thêm một "gradient" vào "Rectangle"
+
+19
+00:01:19,430 --> 00:01:24,120
+Để sử dụng các gradient, chúng ta tạo ra một instance của gradient.
+
+20
+00:01:24,140 --> 00:01:27,410
+Tiếp theo chúng ta tạo ra hai "GradientStop".
+
+21
+00:01:27,410 --> 00:01:34,220
+Chúng ta sẽ sử dụng hai "GradientStop": một ở vị trí 0 và một ở vị trí 1.0
+
+22
+00:01:34,310 --> 00:01:38,580
+Tiếp theo là tạo ra một gradient từ đen sang xanh dương.
+
+23
+00:01:40,420 --> 00:01:47,100
+Và bây giờ nếu chúng ta chạy chương trình một lần nữa, chúng ta có thể thấy gradient tuyệt đẹp này bắt đầu đi phía dưới và di chuyển
+
+24
+00:01:47,100 --> 00:01:51,230
+lên phía trên, từ đen sang xanh như chúng ta đã nói từ trước đó.
+
+25
+00:01:51,330 --> 00:01:55,460
+Chúng ta trước đó đã sử dụng quả bóng nảy này để cho người dùng biết rằng mọi thứ đang hoạt động.
+
+26
+00:01:55,470 --> 00:01:57,840
+Nhưng hãy thử dùng thứ gì đó tinh tế hơn một chút.
+
+27
+00:01:57,900 --> 00:02:01,350
+Và thứ mà chúng ta có thể sử dụng thay vào đó là một hệ thống hạt (particle system).
+
+28
+00:02:01,350 --> 00:02:05,900
+Hãy tạo ra hệ thống hạt của chúng ta.
+
+29
+00:02:06,010 --> 00:02:11,260
+Hãy tạo ngay trong "Rectangle" của chúng ta, phía dưới "gradient" và gọi nó là "ParticleSystem"
+
+30
+00:02:11,260 --> 00:02:16,150
+Chúng ta cần đảm bảo rằng "fill" được gán là "parent".  Bây giờ, đối với mọi hệ thống hạt
+
+31
+00:02:16,150 --> 00:02:19,930
+có ba điều chúng ta cần phải điền vào để hệ thống hạt của chúng ta hoạt động.
+
+32
+00:02:19,930 --> 00:02:25,270
+Chúng ta cần "ImageParticle", "Emitter" và một instance "Wander".
+
+33
+00:02:25,270 --> 00:02:30,980
+"image particle instance" sẽ làm giảm/hạ thấp hình ảnh và kiểm soát độ mờ của nó.
+
+34
+00:02:31,010 --> 00:02:37,930
+Qt đi kèm với các hạt hình ảnh tư tưởng 3D: một ngôi sao, một chấm sáng (glow dot) và một chấm mờ (fuzzy dot). Nếu bạn sử dụng chấm sáng thì
+
+35
+00:02:37,930 --> 00:02:41,050
+nó hoạt động tốt nhất với độ mờ thấp hơn.
+
+36
+00:02:41,050 --> 00:02:44,870
+chúng ta hãy tiếp tục và tạo một instance của hạt hình ảnh.
+
+37
+00:02:44,950 --> 00:02:50,870
+Chúng ta sẽ thiết lập nguồn là những thứ mà Qt đi kèm với và thiết lập độ mờ.
+
+38
+00:02:52,670 --> 00:02:53,100
+Tuyệt vời.
+
+39
+00:02:53,120 --> 00:02:59,360
+Bây giờ chúng ta đã định nghĩa hạt của chúng ta là gì. Hãy tiếp tục và xác định cách nó được thực hiện bằng việc định nghĩa
+
+40
+00:02:59,360 --> 00:03:00,000
+"Emitter".
+
+41
+00:03:00,000 --> 00:03:04,490
+Ngay bây giờ tôi sẽ tìm thấy một loạt công cụ thật nhanh chóng và sau đó chúng ta sẽ tìm hiểu từng cái
+
+42
+00:03:04,490 --> 00:03:05,480
+có nhiệm vụ gì.
+
+43
+00:03:11,400 --> 00:03:14,120
+Tuyệt. Chúng ta hãy định nghĩa "Emitter" của chúng ta.
+
+44
+00:03:14,130 --> 00:03:21,570
+Khách quan thì "height" emitter để xác định khoảng cách mà các hạt sẽ di chuyển là bao xa. Chúng ta sẽ đặt (anchor) nó
+
+45
+00:03:21,570 --> 00:03:24,540
+ở phía dưới (bottom). Cách 3 pixel so với bottom.
+
+46
+00:03:24,540 --> 00:03:29,050
+"lifeSpan" này là để đo mỗi hạt sẽ di chuyển trong bao nhiêu mili giây.
+
+47
+00:03:29,250 --> 00:03:35,940
+Và "startTime" là để is when we originally started our application that says how far in advance as you
+
+48
+00:03:35,940 --> 00:03:36,250
+go.
+
+49
+00:03:36,240 --> 00:03:42,540
+Vì vậy, nếu "startTime" và "lifeSpan" của bạn gán giá trị như nhau, có nghĩa là nó sẽ bắt đầu khởi tạo hoàn toàn
+
+50
+00:03:42,600 --> 00:03:45,570
+và "emitRate" là số lượng các hạt mỗi giây.
+
+51
+00:03:45,570 --> 00:03:49,430
+"Size" là kích thước của hạt, "sizeVariation" cho chúng ta một vài biến đổi.
+
+52
+00:03:49,470 --> 00:03:54,450
+Còn "acceleration" là sự biến đổi điểm, nói đúng hơn là dùng cho hướng của điểm.
+
+53
+00:03:54,450 --> 00:03:58,660
+Vì vậy, về cơ bản nó thay đổi X và thay đổi là y của chúng ta.
+
+54
+00:03:58,740 --> 00:04:03,890
+"acceleration" của chúng ta trong bài giảng này sẽ ra lệnh cho các hạt đi lên.
+
+55
+00:04:03,900 --> 00:04:07,200
+Điều cuối cùng mà chúng ta cần là một instance "Wander".
+
+56
+00:04:07,210 --> 00:04:11,700
+Chúng ta muốn các hạt của chúng ta di chuyển tiến lên trên thật chậm rãi.
+
+57
+00:04:11,700 --> 00:04:16,390
+Vì vậy, chúng ta sẽ tạo ra instance. Hãy cùng trải nghiệm điều đó nào.
+
+58
+00:04:17,220 --> 00:04:22,270
+Hoàn hảo. Giờ thì hãy bỏ quả bóng nảy của chúng ta nào, bởi vì chúng ta sẽ không cần đến nó nữa.
+
+59
+00:04:23,590 --> 00:04:25,730
+Hãy chạy chương trình và xem điều gì sẽ xảy ra.
+
+60
+00:04:27,310 --> 00:04:30,940
+Bây giờ bạn có thể thấy chúng ta đã có những hạt đó đang đến từ phía dưới.
+
+61
+00:04:30,940 --> 00:04:32,920
+Chúng ta có một nút bấm lung lay được.
+
+62
+00:04:32,920 --> 00:04:34,510
+Vì vậy, nó hơi khiến bạn mất tập trung.
+
+63
+00:04:34,510 --> 00:04:41,410
+Nhưng nó đỡ hơn là quả bóng bật nảy bởi đôi khi các hoạt ảnh có thể khiến bạn mất tập trung
+
+64
+00:04:41,410 --> 00:04:43,230
+nếu bạn sử dụng chúng quá nhiều.
+
+65
+00:04:43,540 --> 00:04:48,940
+với điều này, chúng ta đã học được cách tạo một hệ thống hạt chuyển động trên nền (background), để cho
+
+66
+00:04:48,940 --> 00:04:50,890
+người dùng biết rằng mọi thứ vẫn đang hoạt động.
+
+67
+00:04:50,890 --> 00:04:56,230
+Chúng tôi đã giới thiệu thành công việc sử dụng hệ thống gradient để loại bỏ việc một màu của nền nhằm có sự thể hiện
+
+68
+00:04:56,230 --> 00:04:58,360
+độ mờ tốt nhất trên nền,
+
+69
+00:04:58,510 --> 00:05:05,480
+khi mà chúng tôi xem xét thông số kỹ thuật trong các hiệu ứng đồ họa. Hãy tham gia với chúng tôi trong video tiếp theo nói về
+
+70
+00:05:05,530 --> 00:05:06,010
+3D trong Qt Quick.
+

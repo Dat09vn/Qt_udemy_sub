@@ -1,0 +1,592 @@
+1
+00:00:00,000 --> 00:00:01,800
+In this lecture we're going to download
+
+2
+00:00:01,800 --> 00:00:03,899
+the tools were going to need in this
+
+3
+00:00:03,899 --> 00:00:06,420
+course. We're going to download the Qt
+
+4
+00:00:06,420 --> 00:00:08,910
+framework itself and we were also going
+
+5
+00:00:08,910 --> 00:00:12,030
+to download QT creator the IDE we're
+
+6
+00:00:12,030 --> 00:00:14,219
+going to be using. We're going to get our
+
+7
+00:00:14,219 --> 00:00:16,410
+tools from this link here so we're going
+
+8
+00:00:16,410 --> 00:00:19,170
+to go there in our browser. And here we
+
+9
+00:00:19,170 --> 00:00:21,840
+are. One might want to go directly to the
+
+10
+00:00:21,840 --> 00:00:24,269
+qt website and try to click on this
+
+11
+00:00:24,269 --> 00:00:26,369
+download button. But they do take you
+
+12
+00:00:26,369 --> 00:00:28,949
+through a number of steps that I'm not
+
+13
+00:00:28,949 --> 00:00:31,349
+willing to go through right now. So let's
+
+14
+00:00:31,349 --> 00:00:34,200
+go directly to the download page, click
+
+15
+00:00:34,200 --> 00:00:37,590
+on official releases here and we click
+
+16
+00:00:37,590 --> 00:00:40,410
+on the qt and we are shown the
+
+17
+00:00:40,410 --> 00:00:42,629
+versions that are available for a qt
+
+18
+00:00:42,629 --> 00:00:44,190
+here. We're going to choose the latest
+
+19
+00:00:44,190 --> 00:00:48,629
+version, which is at the moment 5.10 so
+
+20
+00:00:48,629 --> 00:00:52,020
+we go in there. And we choose 5.10.1.
+
+21
+00:00:52,020 --> 00:00:55,079
+In here we see a number of versions
+
+22
+00:00:55,079 --> 00:00:58,230
+we can choose from. We see QT versions
+
+23
+00:00:58,230 --> 00:01:01,500
+for Windows, we can choose a QT version
+
+24
+00:01:01,500 --> 00:01:04,949
+for Linux and a QT version for a Mac. I
+
+25
+00:01:04,949 --> 00:01:07,439
+am on a Windows machine right now I'm
+
+26
+00:01:07,439 --> 00:01:08,640
+going to choose this one:
+
+27
+00:01:08,640 --> 00:01:14,600
+QT-opensource-windows-x86-5.10.1.exe.
+
+28
+00:01:14,600 --> 00:01:17,939
+I'll click on it and I am
+
+29
+00:01:17,939 --> 00:01:20,040
+given this window to confirm that I want
+
+30
+00:01:20,040 --> 00:01:22,640
+to download it, so I click save file and
+
+31
+00:01:22,640 --> 00:01:26,909
+my download starts here. I already have
+
+32
+00:01:26,909 --> 00:01:29,460
+the file downloaded to save time so I'm
+
+33
+00:01:29,460 --> 00:01:32,040
+going to cancel out of this. You should
+
+34
+00:01:32,040 --> 00:01:34,140
+download it if you don't have qt
+
+35
+00:01:34,140 --> 00:01:36,750
+downloaded already. And I'm going to open
+
+36
+00:01:36,750 --> 00:01:39,990
+the folder where I have it downloaded.
+
+37
+00:01:39,990 --> 00:01:42,840
+I'm going to double click on it and they
+
+38
+00:01:42,840 --> 00:01:44,759
+tell you to open a qt account and
+
+39
+00:01:44,759 --> 00:01:47,280
+things like that. We're not going to go
+
+40
+00:01:47,280 --> 00:01:49,860
+through this click Next and right now we
+
+41
+00:01:49,860 --> 00:01:54,320
+don't want to open a QT account so skip.
+
+42
+00:01:54,320 --> 00:01:58,680
+Hit next and you are given an option to
+
+43
+00:01:58,680 --> 00:02:00,540
+choose where you want to install qt.
+
+44
+00:02:00,540 --> 00:02:05,390
+Mine is going to be installed in "C:\Qt\Qt5.10.1".
+
+45
+00:02:05,390 --> 00:02:09,000
+You can choose a location
+
+46
+00:02:09,000 --> 00:02:11,008
+you like or you can leave the
+
+47
+00:02:11,008 --> 00:02:13,530
+if that's okay with you. We're going to
+
+48
+00:02:13,530 --> 00:02:15,659
+click Next. So I have installed this
+
+49
+00:02:15,659 --> 00:02:17,370
+before but you're not going to have this
+
+50
+00:02:17,370 --> 00:02:19,950
+error, so I'm going to continue. On this
+
+51
+00:02:19,950 --> 00:02:22,170
+screen you can choose the tools that you
+
+52
+00:02:22,170 --> 00:02:25,110
+want to install we want to install QT
+
+53
+00:02:25,110 --> 00:02:28,290
+creator so we selected here under tools
+
+54
+00:02:28,290 --> 00:02:32,099
+and we're going to install the QT
+
+55
+00:02:32,099 --> 00:02:36,299
+pre-built components for mingw. I choose
+
+56
+00:02:36,299 --> 00:02:38,640
+mingw because it's a free compiler so
+
+57
+00:02:38,640 --> 00:02:40,799
+it's freely available anywhere on
+
+58
+00:02:40,799 --> 00:02:43,769
+Windows, Mac and Linux. And we're going to
+
+59
+00:02:43,769 --> 00:02:45,840
+be using it. On Windows you should also
+
+60
+00:02:45,840 --> 00:02:47,849
+know that you can use microsoft visual
+
+61
+00:02:47,849 --> 00:02:50,639
+studio compiler, we're not going to
+
+62
+00:02:50,639 --> 00:02:53,129
+choose it here but you can choose it if
+
+63
+00:02:53,129 --> 00:02:56,129
+you have this IDE from Microsoft
+
+64
+00:02:56,129 --> 00:02:56,909
+installed.
+
+65
+00:02:56,909 --> 00:02:59,069
+I also recommend checking the check
+
+66
+00:02:59,069 --> 00:03:03,810
+boxes for android x86 and android arm v7
+
+67
+00:03:03,810 --> 00:03:06,030
+because in this course we are going to
+
+68
+00:03:06,030 --> 00:03:08,879
+run our applications on Android. We
+
+69
+00:03:08,879 --> 00:03:11,879
+mainly need x86 because it makes it very
+
+70
+00:03:11,879 --> 00:03:14,579
+fast to run your applications on virtual
+
+71
+00:03:14,579 --> 00:03:17,549
+devices but if you happen to have a real
+
+72
+00:03:17,549 --> 00:03:20,250
+devices running this architecture it is
+
+73
+00:03:20,250 --> 00:03:22,169
+also going to be useful. So please make
+
+74
+00:03:22,169 --> 00:03:24,180
+sure these two check boxes are checked
+
+75
+00:03:24,180 --> 00:03:29,459
+android x86 and android arm v7. We're
+
+76
+00:03:29,459 --> 00:03:33,209
+going to hit next and we are given an
+
+77
+00:03:33,209 --> 00:03:37,879
+option to accept the license or deny it.
+
+78
+00:03:37,879 --> 00:03:40,049
+So we're going to accept
+
+79
+00:03:40,049 --> 00:03:43,889
+hit next and we're going to start our
+
+80
+00:03:43,889 --> 00:03:47,430
+installation. You can click on show
+
+81
+00:03:47,430 --> 00:03:50,340
+details here and they're going to show
+
+82
+00:03:50,340 --> 00:03:55,650
+you the progress of your install. Okay
+
+83
+00:03:55,650 --> 00:03:57,840
+our download is done right now and you
+
+84
+00:03:57,840 --> 00:03:59,970
+can see the result of our download. They
+
+85
+00:03:59,970 --> 00:04:03,870
+say that QT has been installed, they tell
+
+86
+00:04:03,870 --> 00:04:05,760
+us the location where it is installed
+
+87
+00:04:05,760 --> 00:04:08,579
+and where we can see the change log for
+
+88
+00:04:08,579 --> 00:04:13,530
+that. Okay so we hit next and we choose
+
+89
+00:04:13,530 --> 00:04:16,589
+to launch QT creator but let's not launch
+
+90
+00:04:16,589 --> 00:04:18,889
+it right now. We're going to close this. I
+
+91
+00:04:18,889 --> 00:04:21,630
+want you to see where it is installed
+
+92
+00:04:21,630 --> 00:04:23,639
+and how to start it just in case you
+
+93
+00:04:23,639 --> 00:04:25,069
+have some down.
+
+94
+00:04:25,069 --> 00:04:28,080
+So you click on start here and they
+
+95
+00:04:28,080 --> 00:04:30,150
+showed QT creator here but we're not
+
+96
+00:04:30,150 --> 00:04:32,490
+going to click that either. So you go
+
+97
+00:04:32,490 --> 00:04:37,199
+down we find QT 5.10.1 and we can click
+
+98
+00:04:37,199 --> 00:04:39,990
+on it. You can see that I have qt 5.5
+
+99
+00:04:39,990 --> 00:04:42,300
+installed, I have some projects that
+
+100
+00:04:42,300 --> 00:04:44,789
+are using it but you can have multiple
+
+101
+00:04:44,789 --> 00:04:47,789
+versions of qt installed so you should
+
+102
+00:04:47,789 --> 00:04:50,240
+know that. So we'd like to go in here
+
+103
+00:04:50,240 --> 00:04:54,410
+click on QT creator 4.5.1 and
+
+104
+00:04:54,410 --> 00:04:58,940
+open it. Ok here is QT creator opened
+
+105
+00:04:58,940 --> 00:05:02,039
+ready for you to use. If you look on the
+
+106
+00:05:02,039 --> 00:05:04,440
+left here we have a few tabs and you can
+
+107
+00:05:04,440 --> 00:05:06,900
+click around and see things. We're going
+
+108
+00:05:06,900 --> 00:05:10,319
+to explain the UI of QT creator in an
+
+109
+00:05:10,319 --> 00:05:12,569
+upcoming lecture. What we're going to do
+
+110
+00:05:12,569 --> 00:05:14,729
+is create one graphical user interface
+
+111
+00:05:14,729 --> 00:05:17,130
+project so that you see what QT creator
+
+112
+00:05:17,130 --> 00:05:23,520
+is capable of. So hit file - new project, we
+
+113
+00:05:23,520 --> 00:05:26,490
+choose QT widgets application. You have
+
+114
+00:05:26,490 --> 00:05:28,080
+to choose where you want to put your
+
+115
+00:05:28,080 --> 00:05:32,509
+project. In my case I want to put it in
+
+116
+00:05:32,509 --> 00:05:38,669
+D:\OnlineCourses\3.Qt gui\CourseCode and call it
+
+117
+00:05:38,669 --> 00:05:47,460
+1-2QtcreatorDemo. I hit next.
+
+118
+00:05:47,460 --> 00:05:53,069
+I choose widget application. You don't
+
+119
+00:05:53,069 --> 00:05:55,560
+have to don't worry if you don't
+
+120
+00:05:55,560 --> 00:05:57,210
+understand all of this I'm going to
+
+121
+00:05:57,210 --> 00:06:00,000
+explain this in upcoming lectures. For
+
+122
+00:06:00,000 --> 00:06:02,069
+now I just want you to be able to run
+
+123
+00:06:02,069 --> 00:06:04,289
+something for the first time
+
+124
+00:06:04,289 --> 00:06:10,940
+in qtcreator. hit next next again and finish.
+
+125
+00:06:10,940 --> 00:06:14,789
+Ok our project is generated and this is
+
+126
+00:06:14,789 --> 00:06:18,870
+what the QT C++ project looks like. For
+
+127
+00:06:18,870 --> 00:06:20,490
+now you don't need to look at the code
+
+128
+00:06:20,490 --> 00:06:23,630
+all you have to do is click on this
+
+129
+00:06:23,630 --> 00:06:27,150
+green button to run your project and
+
+130
+00:06:27,150 --> 00:06:30,900
+make sure it works. You can click on this
+
+131
+00:06:30,900 --> 00:06:36,089
+tab here down compiled output to see the
+
+132
+00:06:36,089 --> 00:06:38,240
+progress of how you
+
+133
+00:06:38,240 --> 00:06:42,750
+application is being worked. And you see
+
+134
+00:06:42,750 --> 00:06:44,520
+that they say that the process of
+
+135
+00:06:44,520 --> 00:06:47,130
+building our application exceeded
+
+136
+00:06:47,130 --> 00:06:52,380
+normally. So we can see our app here and
+
+137
+00:06:52,380 --> 00:06:55,080
+now this is not very exciting but for
+
+138
+00:06:55,080 --> 00:06:56,910
+now you know that your tools are working
+
+139
+00:06:56,910 --> 00:07:00,630
+and we can start building QT applications.
+
+140
+00:07:00,630 --> 00:07:02,370
+And we're going to learn the building
+
+141
+00:07:02,370 --> 00:07:04,940
+blocks of how you do that in the
+
+142
+00:07:04,940 --> 00:07:08,220
+reminder of this course. Okay that's all
+
+143
+00:07:08,220 --> 00:07:10,410
+I had to say in this lecture you have QT
+
+144
+00:07:10,410 --> 00:07:12,750
+creator installed you run your first
+
+145
+00:07:12,750 --> 00:07:15,120
+project. In the next lecture we're going
+
+146
+00:07:15,120 --> 00:07:17,220
+to look at the user interface of QT
+
+147
+00:07:17,220 --> 00:07:19,800
+creator and try to explain it a little
+
+148
+00:07:19,800 --> 00:00:00,000
+bit more. I'll see you there.
+

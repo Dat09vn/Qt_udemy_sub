@@ -1,0 +1,449 @@
+1
+00:00:00,000 --> 00:00:01,709
+Trong bài này chúng ta sẽ đi tìm hiểu về
+
+2
+00:00:01,709 --> 00:00:04,830
+thuộc tính và bộ xử lỹ tín hiệu. Khi các bạn
+
+3
+00:00:04,830 --> 00:00:06,960
+khai báo thuộc tính trong qt quick
+
+4
+00:00:06,960 --> 00:00:10,500
+vài thứ quan trọng xảy ra ở trên nền
+
+5
+00:00:10,500 --> 00:00:13,080
+chương trình và nó xảy ra với mọi thuộc tính
+
+6
+00:00:13,080 --> 00:00:15,780
+các bạn khai báo. Có một tín hiệu mà 
+
+7
+00:00:15,780 --> 00:00:18,660
+được tại ra tự động cho các bạn và 
+
+8
+00:00:18,660 --> 00:00:20,939
+các bạn có thể sử dụng nó để theo dõi các thay đổi trên
+
+9
+00:00:20,939 --> 00:00:23,820
+thuộc tính của mình. Hãy vào qt creator và cho
+
+10
+00:00:23,820 --> 00:00:26,250
+các bạn xem ý của tôi. Tôi sẽ tạo một 
+
+11
+00:00:26,250 --> 00:00:29,160
+dự án mới để chúng ta sẽ làm việc trên đó. Tôi
+
+12
+00:00:29,160 --> 00:00:31,800
+sẽ gọi là PropertisAndHandlersDemo
+
+13
+00:00:31,800 --> 00:00:37,140
+và lưu nó ở vị trí như thường lệ
+
+14
+00:00:37,140 --> 00:00:40,290
+chúng ta sẽ chọn next, nó là một dự án
+
+15
+00:00:40,290 --> 00:00:43,620
+qmake, chọn phiển bản mới nhất của
+
+16
+00:00:43,620 --> 00:00:47,270
+qt mà tôi đã cài đặt, chọn bộ công cụ và
+
+17
+00:00:47,270 --> 00:00:50,129
+chúng ta có một dự án ở đây. Chúng ta sẽ
+
+18
+00:00:50,129 --> 00:01:00,210
+thay đổi tiêu đề ở đây. Chúng ta sẽ
+
+19
+00:01:00,210 --> 00:01:04,049
+đưa vào hình chữ nhật như thường lê, các bạn hẳn
+
+20
+00:01:04,049 --> 00:01:06,110
+đã quen thuộc với việc này.
+
+21
+00:01:06,110 --> 00:01:13,400
+Hãy để chiều rộng là 300, chiều cao là 100,
+
+22
+00:01:13,400 --> 00:01:18,570
+màu sắc hãy để màu lam nhạt ở đây.
+
+23
+00:01:18,570 --> 00:01:21,540
+Tiện đây nếu các bạn đang thắc mắc
+
+24
+00:01:21,540 --> 00:01:24,770
+tôi lấy những tên màu này ở đâu.
+
+25
+00:01:24,770 --> 00:01:29,180
+Hãy đi tới phần giúp đỡ và gõ vào color
+
+26
+00:01:29,180 --> 00:01:36,060
+và các bạn sẽ tìm thấy các kiểu màu sắc
+
+27
+00:01:36,060 --> 00:01:39,240
+cơ bản của qml, ấn vào đó. Và chúng sẽ
+
+28
+00:01:39,240 --> 00:01:41,220
+nói cho các bạn rằng: đây là một kiểu
+
+29
+00:01:41,220 --> 00:01:45,960
+để cho màu sắc và các bạn có thể xác định màu mình muốn
+
+30
+00:01:45,960 --> 00:01:49,020
+bằng một số cách: bằng một tên màu SVG,
+
+31
+00:01:49,020 --> 00:01:51,479
+chính là cái chúng ta đang sử dụng; các bạn cũng có thể
+
+32
+00:01:51,479 --> 00:01:54,540
+sử dụng bộ ba lục giác hoặc bộ tứ hoặc
+
+33
+00:01:54,540 --> 00:01:57,210
+sử dụng phương pháp này từ các đối tượng 
+
+34
+00:01:57,210 --> 00:02:01,170
+toàn thể của qt. Ấn lên đường link của tên màu SVG
+
+35
+00:02:01,170 --> 00:02:03,570
+và các bạn sẽ có một danh sách tất cả
+
+36
+00:02:03,570 --> 00:02:06,060
+các màu để các bạn chọn. Hãy 
+
+37
+00:02:06,060 --> 00:02:08,310
+chép một cái làm ví dụ. Hãy chọn
+
+38
+00:02:08,310 --> 00:02:11,640
+màu xanh nõn này, tôi thích nó. Hãy trở lại
+
+39
+00:02:11,640 --> 00:02:13,300
+qt creator
+
+40
+00:02:13,300 --> 00:02:17,830
+và thay màu xanh nõn này vào, tại sao không.
+
+41
+00:02:17,830 --> 00:02:19,870
+Ở bên trong chúng ta sẽ lập trình
+
+42
+00:02:19,870 --> 00:02:23,950
+một mouseArea, nó sẽ tràn đầy đối tượng
+
+43
+00:02:23,950 --> 00:02:29,020
+cha và khi nó được ấn vào chúng ta muốn
+
+44
+00:02:29,020 --> 00:02:30,880
+làm gì đó. Chúng ta sẽ tạm thời bỏ trống
+
+45
+00:02:30,880 --> 00:02:34,390
+cái này. Chúng ta cũng muốn để chữ nhật
+
+46
+00:02:34,390 --> 00:02:38,490
+này ở trung tâm nên các bạn sẽ viết.
+
+47
+00:02:38,670 --> 00:02:41,590
+hiện tại chúng ta chỉ dùng anchor để sắp xếp
+
+48
+00:02:41,590 --> 00:02:43,300
+mọi thứ cho đẹp mắt
+
+49
+00:02:43,300 --> 00:02:44,770
+nhưng chúng ta sẽ có cơ hội để nói
+
+50
+00:02:44,770 --> 00:02:49,660
+về chúng. Hãy chạy chương trình và 
+
+51
+00:02:49,660 --> 00:02:53,080
+chúng ta có một chữ nhật màu xanh nõn ở giữa
+
+52
+00:02:53,080 --> 00:02:54,910
+các bạn ấn nên nó chưa có gì
+
+53
+00:02:54,910 --> 00:02:57,520
+xáy ra. Okay chúng ta đang nói về
+
+54
+00:02:57,520 --> 00:03:00,100
+thuộc tính và bộ xử lý tín hiệu, hãy
+
+55
+00:03:00,100 --> 00:03:02,680
+khai báo thuộc tính đầy tiên ở đây đặt là
+
+56
+00:03:02,680 --> 00:03:06,370
+kiểu xâu. Nó sẽ nói tên riêng
+
+57
+00:03:06,370 --> 00:03:09,940
+đó chính là cách chúng ta gọi biến
+
+58
+00:03:09,940 --> 00:03:12,610
+này và chúng ta sẽ đặt
+
+59
+00:03:12,610 --> 00:03:17,440
+một giá trị mặc định là Daniel làm ví dụ. Chúng ta
+
+60
+00:03:17,440 --> 00:03:19,930
+cũng muốn xuống dưới này và làm vài thứ
+
+61
+00:03:19,930 --> 00:03:24,239
+khi là các thành phần được nạp.
+
+62
+00:03:24,300 --> 00:03:38,560
+Chúng ta sẽ sử dụng console.log, chúng ta sẽ
+
+63
+00:03:38,560 --> 00:03:41,920
+hiển thị nó. Chạy chương trình và các bạn
+
+64
+00:03:41,920 --> 00:03:44,410
+có thể đoán được chúng ta sẽ thấy gì. Chúng ta
+
+65
+00:03:44,410 --> 00:03:46,090
+sẽ thấy "The firstname is Daniel"
+
+66
+00:03:46,090 --> 00:03:50,500
+Khi chúng ta khai báo mFirstName
+
+67
+00:03:50,500 --> 00:03:53,800
+ở đây qt tự động tạo ra một
+
+68
+00:03:53,800 --> 00:03:55,660
+tín hiệu mà sẽ được kích hoạt
+
+69
+00:03:55,660 --> 00:03:58,660
+bất cứ khi nào thuộc tính thay đổi. Okay
+
+70
+00:03:58,660 --> 00:04:01,540
+ví dụ chúng ta viết on các bạn có thể thấy
+
+71
+00:04:01,540 --> 00:04:03,580
+là chúng ta có một tín hiệu gọi là
+
+72
+00:04:03,580 --> 00:04:07,690
+onMFirstNamechanged. Okay
+
+73
+00:04:07,690 --> 00:04:09,730
+đây là tín hiệu được tạo ra cho các bạn
+
+74
+00:04:09,730 --> 00:04:11,980
+tự động. Các bạn có thể để ý nó
+
+75
+00:04:11,980 --> 00:04:14,980
+bắt đầu với on rooid ký tự 
+
+76
+00:04:14,980 --> 00:04:17,560
+đầu tiên viết hoa của tên thuộc tính và theo sau
+
+77
+00:04:17,560 --> 00:04:21,100
+là đuôi changed. Bất cứ khi nào
+
+78
+00:04:21,100 --> 00:04:22,840
+các bạn muỗn theo dõi thay đổi các bạn
+
+79
+00:04:22,840 --> 00:04:24,729
+nên tìm tín hiệu này. Chúng ta sẽ
+
+80
+00:04:24,729 --> 00:04:26,800
+ấn lên nó.
+
+81
+00:04:26,800 --> 00:04:29,050
+and we are going to do something when
+Và chúng ta sẽ làm thứ gì đó khi
+
+82
+00:04:29,050 --> 00:04:31,060
+mà tên riêng thay đổi chúng ta sẽ dùng
+
+83
+00:04:31,060 --> 00:04:33,819
+console.log các bạn có thể đoán điều
+
+84
+00:04:33,819 --> 00:04:39,310
+chúng ta đang làm và viết
+
+85
+00:04:39,310 --> 00:04:44,650
+"The first name changed to", giá trị mới
+
+86
+00:04:44,650 --> 00:04:48,479
+được lưu trong mFirstName.
+
+87
+00:04:48,479 --> 00:04:51,759
+Okay chúng ta sẽ thay đổi tên riêng 
+
+88
+00:04:51,759 --> 00:04:54,789
+khi chúng ta ấn lên mouseArea này nên
+
+89
+00:04:54,789 --> 00:04:58,240
+chúng ta sẽ viết mFirstName = John
+
+90
+00:04:58,240 --> 00:05:02,229
+làm ví dụ. Hãy chạy 
+
+91
+00:05:02,229 --> 00:05:05,080
+ứng dụng, okay The first name is
+
+92
+00:05:05,080 --> 00:05:08,379
+Daniel, khi tôi ấn vào đây các bạn thấy là nó
+
+93
+00:05:08,379 --> 00:05:10,509
+nói The first name changed to John.
+
+94
+00:05:10,509 --> 00:05:13,120
+bơi vì chúng ta làm thế khi chúng ta ấn
+
+95
+00:05:13,120 --> 00:05:16,780
+vào mouseArea ở đây. Tôi mong điều này
+
+96
+00:05:16,780 --> 00:05:19,210
+đem lại vài điểm răng bất cứ khi nào các bạn
+
+97
+00:05:19,210 --> 00:05:21,819
+khai báo một thuộc tính các bạn cũng có một
+
+98
+00:05:21,819 --> 00:05:24,580
+tín hiệu tự động tạo mà 
+
+99
+00:05:24,580 --> 00:05:26,860
+kích hoạt mỗi khi có gì đó thay đổi trong
+
+100
+00:05:26,860 --> 00:05:29,349
+thuộc tính của các bạn. Và nó hoạt động
+
+101
+00:05:29,349 --> 00:05:32,650
+với bất cứ thuộc tính này mà các bạn khai báo cho dù
+
+102
+00:05:32,650 --> 00:05:34,870
+là một xâu, một boolean và số nguyên hay
+
+103
+00:05:34,870 --> 00:05:37,029
+bất cứ thứ gì. Đó là điều tôi muốn
+
+104
+00:05:37,029 --> 00:05:39,130
+làm rõ trong bài này bởi vì nhiều
+
+105
+00:05:39,130 --> 00:05:41,289
+học viên của tôi nhầm lẫn vì thứ này
+
+106
+00:05:41,289 --> 00:05:43,870
+nên tôi chỉ muốn đảm bảo rằng
+
+107
+00:05:43,870 --> 00:05:47,560
+nó thực sự rõ ràng với bạn. Okay đến đây
+
+108
+00:05:47,560 --> 00:05:49,719
+đã hết những gì tôi muốn nói trong bài giảng và
+
+109
+00:05:49,719 --> 00:05:51,279
+trong chương sau chúng ta sẽ tiếp tục
+
+110
+00:05:51,279 --> 00:05:54,130
+đi sau vào nhiều nội dung để làm việc với
+
+111
+00:05:54,130 --> 00:05:57,219
+qt quick để thiết kế giao diện người dùng trôi chảy.
+
+112
+00:05:57,219 --> 00:00:00,000
+Tôi sẽ gặp lại các bạn trong chương sau.
+

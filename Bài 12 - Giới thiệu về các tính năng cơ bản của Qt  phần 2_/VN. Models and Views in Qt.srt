@@ -1,0 +1,400 @@
+﻿1
+00:00:00,199 --> 00:00:04,350
+Model và View. Trong phần này, ta sẽ cùng
+
+2
+00:00:04,350 --> 00:00:07,319
+tìm hiểu về một kiến trúc quan trọng trong Qt.
+
+3
+00:00:07,319 --> 00:00:11,400
+Đó là Model/View. Tiếp theo,
+
+4
+00:00:11,400 --> 00:00:13,639
+tôi sẽ giới thiệu cho các bạn về Table Model/View
+
+5
+00:00:13,639 --> 00:00:18,690
+và cuối cùng là List Model/View trong Qt.
+
+6
+00:00:18,690 --> 00:00:22,859
+Model và Views in Qt. Trong video này,
+
+7
+00:00:22,859 --> 00:00:24,600
+ta sẽ cùng nhau tìm hiểu định nghĩa
+
+8
+00:00:24,600 --> 00:00:28,230
+của mô hình Model/View, sau đó các bạn sẽ được
+
+9
+00:00:28,230 --> 00:00:30,300
+học về các Model/View
+
+10
+00:00:30,300 --> 00:00:34,739
+có sẵn trong Qt. Có lẽ, bạn đã từng nghe đến
+
+11
+00:00:34,739 --> 00:00:37,739
+cụm từ MVC. MVC là từ viết tắt của Model-View
+
+12
+00:00:37,739 --> 00:00:41,760
+-Controller. MVC thường được
+
+13
+00:00:41,760 --> 00:00:45,059
+sử dụng khi ta xây dựng
+
+14
+00:00:45,059 --> 00:00:48,180
+giao diện cho người dùng. Mục đích là để tăng
+
+15
+00:00:48,180 --> 00:00:51,719
+tính linh hoạt và sử dụng lại mã nguồn. Trong MVC,
+
+16
+00:00:51,719 --> 00:00:54,649
+có ba đối tượng chính:
+
+17
+00:00:54,649 --> 00:00:58,590
+model (mô hình dữ liệu), view (khung nhìn) và controller (bộ điều khiển).. Trong cuốn "design
+
+18
+00:00:58,590 --> 00:01:01,680
+pattern" (mô hình thiết kế), Model là
+
+19
+00:01:01,680 --> 00:01:04,470
+mô hình dữ liệu của ứng dụng, View là phần hiển thị trên màn hình
+
+20
+00:01:04,470 --> 00:01:07,200
+Còn Controller giúp ta xác định
+
+21
+00:01:07,200 --> 00:01:10,290
+cách mà giao diện người dùng tương tác với
+
+22
+00:01:10,290 --> 00:01:15,060
+đầu vào của người dùng. Trước khi có MVC,
+
+23
+00:01:15,060 --> 00:01:17,850
+các đối tượng này thường được đặt gộp lại với nhau:
+
+24
+00:01:17,850 --> 00:01:19,950
+Khi kết hợp controller và view lại với nhau
+
+25
+00:01:19,950 --> 00:01:22,320
+thì ta được kiến trúc Model/View.
+
+26
+00:01:22,320 --> 00:01:29,909
+Mô hình này cũng
+
+27
+00:01:29,909 --> 00:01:31,920
+phân tách dữ liệu và
+
+28
+00:01:31,920 --> 00:01:35,670
+và hiển thị. Tuy nhiên, với mô hình Model/View,
+
+29
+00:01:35,670 --> 00:01:37,530
+kiến trúc của nó
+
+30
+00:01:37,530 --> 00:01:40,049
+đơn giản và hiệu quả hơn. Qt
+
+31
+00:01:40,049 --> 00:01:44,640
+đưa ra một loại đối tượng mới, có tên gọi
+
+32
+00:01:44,640 --> 00:01:47,790
+Delegate (đại diện),  giúp xử lý dữ liệu đầu vào của người dùng
+
+33
+00:01:47,790 --> 00:01:51,600
+theo cách thức linh hoạt hơn. Delegate nằm giữa
+
+34
+00:01:51,600 --> 00:01:54,750
+View và Model, nó có nhiệm vụ tùy chỉnh cách hiển thị
+
+35
+00:01:54,750 --> 00:01:59,280
+và cập nhật dữ liệu. Trong Qt,
+
+36
+00:01:59,280 --> 00:02:02,040
+ba thành phần này được định nghĩa
+
+37
+00:02:02,040 --> 00:02:04,829
+trong các lớp trừu tượng, chúng cung cấp
+
+38
+00:02:04,829 --> 00:02:06,840
+một số phương thức trừu tượng và một số đã được cài đặt
+
+39
+00:02:06,840 --> 00:02:09,720
+Do đây là các lớp trừu tượng,
+
+40
+00:02:09,720 --> 00:02:12,580
+nên ta có thể tự tạo ra các Model/View và các Delegate
+
+41
+00:02:12,580 --> 00:02:16,180
+cho riêng mình. Vậy các đối tượng
+
+42
+00:02:16,180 --> 00:02:18,880
+giao tiếp với nhau theo cách nào? Tất nhiên bằng một cách
+
+43
+00:02:18,880 --> 00:02:23,920
+rất Qt: signals và slots. Bây giờ,
+
+44
+00:02:23,920 --> 00:02:26,080
+ta hãy cùng xem các Model có sẵn
+
+45
+00:02:26,080 --> 00:02:29,320
+trong Qt. Tất cả các Model này đều kế thừa từ
+
+46
+00:02:29,320 --> 00:02:32,440
+lớp QAbstractItemModel,
+
+47
+00:02:32,440 --> 00:02:34,930
+Model này giúp xác định các mà View và
+
+48
+00:02:34,930 --> 00:02:40,360
+Delegate truy cập dữ liệu. Tuy nhiên, Model
+
+49
+00:02:40,360 --> 00:02:42,520
+không lưu trữ dữ liệu. Dữ liệu
+
+50
+00:02:42,520 --> 00:02:44,560
+có thể được lưu trữ trong cơ sở dữ liệu, hoặc
+
+51
+00:02:44,560 --> 00:02:47,590
+được lớp khác. Các Model kế thừa từ QAbstractItemModel
+
+52
+00:02:47,590 --> 00:02:50,980
+sẽ mô hình hóa dữ liệu dưới dạng
+
+53
+00:02:50,980 --> 00:02:53,830
+cấu trúc bảng của những phần tử
+
+54
+00:02:53,830 --> 00:02:57,160
+mà không phụ thuộc
+
+55
+00:02:57,160 --> 00:03:00,330
+ dữ liệu được lưu như thế nào.
+
+56
+00:03:00,330 --> 00:03:03,580
+Đây là một điều kiện bắt buộc,
+
+57
+00:03:03,580 --> 00:03:05,980
+bởi View sẽ truy cập dữ liệu các phần tử trong Model
+
+58
+00:03:05,980 --> 00:03:10,420
+bằng cách dùng chỉ số của phần tử đó trong bảng. Qt
+
+59
+00:03:10,420 --> 00:03:13,270
+cung cấp một số Model. Từ
+
+60
+00:03:13,270 --> 00:03:15,760
+Model đơn giản như QStringListModel
+
+61
+00:03:15,760 --> 00:03:19,930
+đến mô hình QSQLTableModel với đầy đủ các tính năng.
+
+62
+00:03:19,930 --> 00:03:21,940
+Ta cũng có thể tự tạo ra lớp Model
+
+63
+00:03:21,940 --> 00:03:24,580
+riêng cho mình, bằng cách kết thùa một trong các
+
+64
+00:03:24,580 --> 00:03:29,680
+lớp này. Trong View, lớp QAbstractItemView
+
+65
+00:03:29,680 --> 00:03:32,260
+cung cấp giao diện chuẩn
+
+66
+00:03:32,260 --> 00:03:35,050
+ cho một View. Nhìn vào tên gọi,
+
+67
+00:03:35,050 --> 00:03:37,390
+ta cũng đoán được QAbstractItemView sẽ làm việc với
+
+68
+00:03:37,390 --> 00:03:40,360
+giao diện cũng cấp bởi QAbstractItemModel.
+
+69
+00:03:40,360 --> 00:03:43,840
+Nếu ta muốn xem xét sự khác biệt
+
+70
+00:03:43,840 --> 00:03:47,530
+giữa Model và View, thì View thường hiển thị
+
+71
+00:03:47,530 --> 00:03:51,910
+các dữ liệu theo nhiều cách khác nhau.
+
+72
+00:03:51,910 --> 00:03:55,090
+Từ một cấu trúc dữ liệu, View có thể
+
+73
+00:03:55,090 --> 00:03:57,940
+trực tiếp hiển thị các phần tử dữ liệu riêng lẻ
+
+74
+00:03:57,940 --> 00:04:00,520
+hoặc sử dụng các Delegate
+
+75
+00:04:00,520 --> 00:04:04,030
+để hiển thị cũng như cập nhật dữ liệu phần tử. Các View có sẵn
+
+76
+00:04:04,030 --> 00:04:07,060
+trong Qt bao gồm QListView, QTableView
+
+77
+00:04:07,060 --> 00:04:11,860
+và QTreeView. Cuối cùng ta hãy
+
+78
+00:04:11,860 --> 00:04:15,130
+cùng tìm hiểu đến Delegate. Trong kiến trúc
+
+79
+00:04:15,130 --> 00:04:17,560
+Model/View, QAbstractItemDelegate là
+
+80
+00:04:17,560 --> 00:04:21,548
+lớp trừu tượng cho
+
+81
+00:04:21,548 --> 00:04:23,590
+các các Delegate. Lớp cài đặt mặc định
+
+82
+00:04:23,590 --> 00:04:26,620
+ của nó là QStyledItemDelegate
+
+83
+00:04:26,620 --> 00:04:29,500
+và được sử dụng mặc định bởi các lớp View có sẵn Qt.
+
+84
+00:04:29,500 --> 00:04:33,220
+Delegate kiểm soát dữ liệu
+
+85
+00:04:33,220 --> 00:04:36,280
+người dùng  được thu nhận,
+
+86
+00:04:36,280 --> 00:04:39,760
+cũng như cách các phần tử được hiển thị.
+
+87
+00:04:39,760 --> 00:04:42,220
+Tuy nhiên, khác với MVC,
+
+88
+00:04:42,220 --> 00:04:46,330
+Delegate không hoàn toàn xử lý tương tác người dùng.
+
+89
+00:04:46,330 --> 00:04:49,570
+View sẽ có nhiệm vụ
+
+90
+00:04:49,570 --> 00:04:52,180
+xử lý dữ liệu của người dùng, cũng như
+
+91
+00:04:52,180 --> 00:04:54,729
+bố cục của toàn bộ dữ liệu trong Model.
+
+92
+00:04:54,729 --> 00:04:57,040
+Tuy nhiên, khác biệt nhỏ
+
+93
+00:04:57,040 --> 00:05:00,100
+giúp cho kiến trúc Model/View
+
+94
+00:05:00,100 --> 00:05:05,530
+được linh hoạt hơn, cũng như đơn giản hơn. Trong hầu hết
+
+95
+00:05:05,530 --> 00:05:07,840
+ các trường hợp, ta chỉ cần dùng đến Delegate mặc định.
+
+96
+00:05:07,840 --> 00:05:10,810
+Do đó, ở các video tiếp theo,
+
+97
+00:05:10,810 --> 00:05:13,540
+ta sẽ tập trung vào Model và View tiêu biểu.
+
+98
+00:05:13,540 --> 00:05:17,310
+Trong video tiếp,
+
+99
+00:05:17,310 --> 00:05:19,539
+ta sẽ học cách sử dụng
+
+100
+00:05:19,539 --> 00:00:00,000
+TableModel và TableView.
+

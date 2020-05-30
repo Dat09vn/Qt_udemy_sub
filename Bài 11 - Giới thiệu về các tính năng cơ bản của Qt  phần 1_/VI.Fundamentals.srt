@@ -1,0 +1,392 @@
+﻿1
+00:00:01,440 --> 00:00:03,000
+Xin chào tôi là Symeon Huang.
+
+2
+00:00:03,000 --> 00:00:05,590
+Chào mừng bạn quay trở lại với khóa học Qt5.
+
+3
+00:00:06,120 --> 00:00:10,500
+Video này nói về các kiến thức căn bản của Qt5.
+
+4
+00:00:10,520 --> 00:00:19,170
+Ta sẽ học “event loop”(vòng lặp các sự kiện) và trình quản lý bộ nhớ của Qt. Rồi, nếu bạn đã sẵn sàng, ta bắt đầu,
+
+5
+00:00:19,180 --> 00:00:26,020
+Nhớ lại project HelloWorld lần trước, ở dòng cuối, ta không gõ lệnh để trả về
+
+6
+00:00:26,030 --> 00:00:26,480
+0.
+
+7
+00:00:26,560 --> 00:00:29,420
+mà lại trả về “a.exec”.
+
+8
+00:00:29,830 --> 00:00:30,760
+Vậy lệnh exec() hoạt động như thế nào?
+
+9
+00:00:30,760 --> 00:00:35,820
+Theo hướng dẫn viết:
+
+10
+00:00:35,830 --> 00:00:40,640
+Hàm exec() sẽ bắt đầu “event loop” tổng và đợi cho đến khi hàm exit() được gọi.
+
+11
+00:00:40,640 --> 00:00:43,110
+Hơi khó hiểu nhỉ.
+
+12
+00:00:44,880 --> 00:00:47,040
+Đây, nếu ta build và chạy chương trình,
+
+13
+00:00:51,980 --> 00:00:57,890
+Thì thấy nó đã chạy nhưng cứ chạy mãi không dừng
+
+14
+00:00:57,900 --> 00:00:59,320
+Lý do là gì?
+
+15
+00:00:59,430 --> 00:01:07,280
+Đó là bởi vì chương trình đang chạy trong “event loop” tổng và đang chờ event(sự kiện) nào
+
+16
+00:01:07,310 --> 00:01:08,990
+nào đó để gọi các function(hàm)
+
+17
+00:01:09,020 --> 00:01:13,540
+mà bạn đã định nghĩa cho event handler(bộ quản lý sự kiện)
+
+18
+00:01:13,740 --> 00:01:21,540
+Ở ví dụ đơn giản này, chương trình vẫn chờ xem có event(sự kiện) nào không.
+
+19
+00:01:21,810 --> 00:01:26,310
+Nhưng do ta chưa có event handler( bộ quản lý sự kiện) nào để bắt event(sự kiện).
+
+20
+00:01:26,400 --> 00:01:30,490
+Nên chương trình cứ chạy mãi và chẳng làm gì cả.
+
+21
+00:01:32,380 --> 00:01:42,300
+Trong trường hợp này, nếu bạn không muốn chương trình cứ chờ mãi. Thay vì trả về “a.exec()” khiến chương trình bắt đầu “event loop” tổng,
+
+22
+00:01:42,840 --> 00:01:44,310
+Ta trả về 0.
+
+23
+00:01:44,650 --> 00:01:52,740
+Khi này, “event loop” không được bắt đầu nên chương trình sẽ dừng. Thử nhé.
+
+24
+00:01:57,740 --> 00:02:03,310
+Bạn thấy đó, chương trình chạy và dừng luôn.s you can see the application has started and exited.
+
+25
+00:02:03,340 --> 00:02:04,730
+Giờ ta chuyển qua
+
+26
+00:02:04,980 --> 00:02:07,420
+object(đối tượng) trong Qt và trình quản lý bộ nhớ.
+
+27
+00:02:11,290 --> 00:02:20,260
+Ta cần thêm macro (tất cả những phần định nghĩa được viết trong phần Preprocessor) có tên Q_OBJECT. để khai báo MyParentClass là một object class trong Qt và
+
+28
+00:02:20,280 --> 00:02:23,860
+và được quản lý bởi Qt meta object system( Hệ thống quản lý đối tượng)
+
+29
+00:02:27,820 --> 00:02:32,410
+Tôi đã tạo sẵn 2 class(lớp),MyParentClass và MyChild.
+
+30
+00:02:32,410 --> 00:02:40,840
+Chú ý là tên Parent(cha) và Child(con) ở đây không ám chỉ đến đối tượng cha và đối tượng con
+
+31
+00:02:40,840 --> 00:02:44,040
+có tính kế thừa như trong C++.
+
+32
+00:02:44,100 --> 00:02:51,630
+Chỉ đơn giản là tôi sẽ khởi tạo hai class này trong file main.cpp và dùng class MyParentClass
+
+33
+00:02:51,640 --> 00:02:53,730
+làm class cha của MyChild.
+
+34
+00:02:56,430 --> 00:02:59,480
+Tôi cũng đã tạo sẵn các destructive function (hàm tự hủy).
+
+35
+00:03:00,690 --> 00:03:02,540
+Chúng chỉ làm làm nghiệm vụ in ra một chuỗi.
+
+36
+00:03:07,240 --> 00:03:09,220
+Rồi include nó vào trong file main.cpp.he main.cpp
+
+37
+00:03:15,470 --> 00:03:16,790
+rồi khởi tạo các class.
+
+38
+00:03:24,100 --> 00:03:34,080
+Ở đây tôi dùng pointer có tên là “parent” để khởi tạo object kiểu MyChild.
+
+39
+00:03:34,170 --> 00:03:38,590
+Các bạn học C++ cũng biết là khi khởi tạo object tại bộ nhớ heap, thì sau đó bạn phải xóa bỏ và
+
+40
+00:03:38,610 --> 00:03:42,420
+giải phóng toàn bộ tài nguyên cấp cho các object đó.
+
+41
+00:03:42,610 --> 00:03:46,700
+Trong ví dụ này, tôi sẽ phải xóa object “parent”.
+
+42
+00:03:51,700 --> 00:03:53,480
+Vậy có phải xóa object “child”không?
+
+43
+00:03:53,490 --> 00:03:57,250
+Tất nhiên là có, bởi bạn đã khởi tạo nó trong bộ nhớ heap.
+
+44
+00:03:57,720 --> 00:04:04,050
+Nhưng bạn không cần phải làm vậy trong Qt, bởi MyChild và MyParentClass đều là lớp mở rộng(derived class).
+
+45
+00:04:05,370 --> 00:04:09,620
+Và lớp MyParentClass là lớp cha của MyChild.
+
+46
+00:04:09,840 --> 00:04:11,000
+Như vậy nghĩa là gì?
+
+47
+00:04:14,150 --> 00:04:23,380
+Cơ bản là khi object cha được giải phóng thì tất cả object con của nó cũng đồng thời được giải phóng khỏi bộ nhớ
+
+48
+00:04:23,430 --> 00:04:30,450
+Nếu các bạn không tin thì tôi sẽ chạy thử cho xem. Đây, hàm tự hủy của MyParentClass được gọi.
+
+49
+00:04:31,080 --> 00:04:37,620
+Và cả của MyChild nữa.
+
+50
+00:04:38,650 --> 00:04:45,700
+Hay quá phải không nào? Thế nên trong trường hợp này, bạn không cần phải lo quản lý tài nguyên.
+
+51
+00:04:45,790 --> 00:04:48,960
+Khi object cha bị hủy
+
+52
+00:04:49,020 --> 00:04:57,530
+thì các object con của nó cũng được giải phóng theo. Chú ý là chỉ có thể có duy nhất một pointer tên “parent”.
+
+53
+00:04:57,740 --> 00:05:03,010
+Không thể đặt thêm pointer trùng tên nữa.
+
+54
+00:05:03,470 --> 00:05:06,010
+Nhưng bạn có thể thay đổi nó.
+
+55
+00:05:06,080 --> 00:05:12,710
+Chắc có bạn tự hỏi là để cho chắc cú, tôi muốn xóa object “child” đi thì phải làm thế nào.
+
+56
+00:05:13,860 --> 00:05:21,530
+Trong trường hợp đó,thực ra Qt cung cấp cơ chế để gọi hàm xóa object nhiều lần.
+
+57
+00:05:21,760 --> 00:05:34,220
+Đó là dùng hàm tên deleteLater() chứ không phải delete() nữa.
+
+58
+00:05:34,400 --> 00:05:37,670
+Giờ tôi gọi hàm deleteLater() trên object “child”.
+
+59
+00:05:37,690 --> 00:05:37,990
+OK.
+
+60
+00:05:38,110 --> 00:05:49,380
+Chương trình sẽ lỗi nếu ta gọi lại hàm delete(). Phải dùng hàm deleteLater() thì mới chạy được.
+
+61
+00:05:49,880 --> 00:05:53,230
+Let’s find out.
+
+62
+00:05:58,880 --> 00:06:01,470
+Đó, chương trình chạy tốt rồi.
+
+63
+00:06:01,600 --> 00:06:08,690
+Để hàm deleteLater() có hiệu lực, chương trình của bạn phải bắt đầu “event loop”,
+
+64
+00:06:08,740 --> 00:06:11,480
+nếu không thì hàm sẽ không có tác dụng gì.
+
+65
+00:06:11,520 --> 00:06:19,390
+Trong tài liệu đặc tả có nói, hàm deleteLater()
+
+66
+00:06:19,400 --> 00:06:27,580
+sẽ lên lịch xóa object này trong event queue(hàng chờ sự kiện). Nếu không tồn tại “event loop”
+
+67
+00:06:27,600 --> 00:06:31,530
+thì sự kiện xóa sẽ không được thực thi.
+
+68
+00:06:31,770 --> 00:06:33,800
+Nếu chức năng đó không được thực thi,
+
+69
+00:06:33,960 --> 00:06:38,650
+Khi đó đối tượng parent và child sẽ không được giải phóng.
+
+70
+00:06:38,690 --> 00:06:44,430
+Tôi sẽ sửa hàm trả về thành “a.exec()”.
+
+71
+00:06:44,450 --> 00:06:45,940
+Giờ build lại.
+
+72
+00:06:46,070 --> 00:06:46,910
+Và chạy lại chương trình.
+
+73
+00:06:53,600 --> 00:06:56,290
+Như bạn thấy đó, cả 2 hàm destructor(hàm tự hủy) đã được thực thi.
+
+74
+00:06:56,640 --> 00:06:58,730
+Nhưng chương trình vẫn chưa kết thúc.
+
+75
+00:07:00,420 --> 00:07:01,720
+Chắc các bạn đang tự hỏi
+
+76
+00:07:02,140 --> 00:07:08,350
+Làm sao để thoát chương trình
+
+77
+00:07:08,430 --> 00:07:09,450
+sau khi đối tượng “parent” được giải phóng?
+
+78
+00:07:10,530 --> 00:07:12,240
+Đơn giản lắm.
+
+79
+00:07:13,530 --> 00:07:16,340
+Bạn sẽ include thư viện QCoreApplication trên header.
+
+80
+00:07:17,400 --> 00:07:18,410
+Trong hàm destructor(hàm tự hủy),
+
+81
+00:07:21,310 --> 00:07:23,500
+gọi hàm static tên quit().
+
+82
+00:07:26,940 --> 00:07:28,840
+Khi gọi hàm quit(),
+
+83
+00:07:28,860 --> 00:07:37,420
+Chương trình sẽ thoát và trả về code giá trị 0.
+
+84
+00:07:42,170 --> 00:07:47,790
+Vậy là, cả hai đối tượng parent và child đều được xóa,
+
+85
+00:07:47,960 --> 00:07:51,870
+và chương trình cũng thoát ngay sau đó.
+
+86
+00:07:51,870 --> 00:07:57,240
+Nhìn lại dòng code này.Ta đã gọi hàm deleteLater() trên đối tượng này. Nếu gọi hàm này
+
+87
+00:07:57,250 --> 00:08:04,970
+nhiều lần thì sao? Và giả sử,
+
+88
+00:08:04,980 --> 00:08:06,020
+tôi muốn xóa đối tượng parent
+
+89
+00:08:15,690 --> 00:08:22,890
+Nên tôi sẽ code lệnh xóa đối tượng “parent”.
+
+90
+00:08:27,950 --> 00:08:28,610
+Và,
+
+91
+00:08:28,790 --> 00:08:30,670
+giờ nhớ lại khái niệm ở tài liệu đặc tả.
+
+92
+00:08:30,710 --> 00:08:38,310
+Hàm deleteLater() sẽ lên lịch xóa đối tượng trong hàng chờ. Trước khi thực hiện
+
+93
+00:08:38,310 --> 00:08:42,890
+xóa đối tượng, Qt sẽ kiểm tra xem đối tượng đó đã bị xóa hay chưa.
+
+94
+00:08:43,080 --> 00:08:43,980
+Nếu đối tượng đã bị xóa,
+
+95
+00:08:46,930 --> 00:08:47,890
+thì hàm xóa đối tượng sẽ không được thực thi lại nữa.
+
+96
+00:08:47,890 --> 00:08:51,160
+Do đó đảm bảo tính thread-safe (an toàn luồng).
+
+97
+00:08:57,470 --> 00:09:04,660
+Như vậy là chương trình chạy tốt và cả 2 đối tượng đều được xóa.
+
+98
+00:09:04,670 --> 00:09:11,270
+Ở bài học tiếp theo, ta sẽ học kỹ thuật nâng cao ứng dụng console nhận tham số đầu vào.
+

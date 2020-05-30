@@ -1,0 +1,552 @@
+1
+00:00:00,000 --> 00:00:01,740
+In this lecture, we're going to look at
+
+2
+00:00:01,740 --> 00:00:04,230
+the ColorDialog component. It is a
+
+3
+00:00:04,230 --> 00:00:06,240
+Dialog that allows you to choose a color
+
+4
+00:00:06,240 --> 00:00:08,670
+and use it somewhere in your application.
+
+5
+00:00:08,670 --> 00:00:10,920
+We're going to go to Qt creator and
+
+6
+00:00:10,920 --> 00:00:13,710
+play with this. Here we are in Qt
+
+7
+00:00:13,710 --> 00:00:15,509
+creator, we're going to go to the
+
+8
+00:00:15,509 --> 00:00:19,910
+documentation and type in ColorDialog.
+
+9
+00:00:19,910 --> 00:00:22,439
+You see that they suggest multiple
+
+10
+00:00:22,439 --> 00:00:25,350
+places where we can find this UI
+
+11
+00:00:25,350 --> 00:00:28,170
+component. We don't want to choose Qt
+
+12
+00:00:28,170 --> 00:00:30,840
+Labs Platform, we want to choose Qt Quick
+
+13
+00:00:30,840 --> 00:00:34,079
+Dialogs. We go in there, click on More
+
+14
+00:00:34,079 --> 00:00:36,690
+to see the description, and you see that
+
+15
+00:00:36,690 --> 00:00:39,780
+we can use this to select a color. The
+
+16
+00:00:39,780 --> 00:00:42,270
+Dialog is initially invisible. You need
+
+17
+00:00:42,270 --> 00:00:44,670
+to set the properties as desired, then
+
+18
+00:00:44,670 --> 00:00:48,030
+set visible-check to true or call open. 
+
+19
+00:00:48,030 --> 00:00:50,489
+This is how you use it, you define it
+
+20
+00:00:50,489 --> 00:00:53,190
+like this. When it is accepted - when the
+
+21
+00:00:53,190 --> 00:00:55,079
+user confirms the color that they want,
+
+22
+00:00:55,079 --> 00:00:58,289
+you know it in the onAccepted signal
+
+23
+00:00:58,289 --> 00:01:00,899
+handler. And when it is rejected - when the
+
+24
+00:01:00,899 --> 00:01:02,520
+user doesn't choose anything with this
+
+25
+00:01:02,520 --> 00:01:06,060
+ColorDialog, you know in this signal
+
+26
+00:01:06,060 --> 00:01:08,250
+handler here. And if you go up, you're
+
+27
+00:01:08,250 --> 00:01:10,049
+going to see a few properties. You have
+
+28
+00:01:10,049 --> 00:01:13,369
+the color property, which is used to
+
+29
+00:01:13,369 --> 00:01:16,259
+store the color that the user has
+
+30
+00:01:16,259 --> 00:01:19,650
+selected, this is the confirmed color. We
+
+31
+00:01:19,650 --> 00:01:22,080
+also have currentColor, which is the
+
+32
+00:01:22,080 --> 00:01:24,270
+color that the user has selected but
+
+33
+00:01:24,270 --> 00:01:27,030
+hasn't confirmed yet. We are going to
+
+34
+00:01:27,030 --> 00:01:30,229
+create a project and play with this. 
+
+35
+00:01:30,229 --> 00:01:33,150
+Click File, New File or Project. It is an application, 
+
+36
+00:01:33,150 --> 00:01:36,509
+a Qt Quick one. We call it 
+
+37
+00:01:36,509 --> 00:01:39,689
+ColorDialogDemo, store it in a location on
+
+38
+00:01:39,689 --> 00:01:42,329
+our drive and use this as the default
+
+39
+00:01:42,329 --> 00:01:45,030
+project location. You can choose this if
+
+40
+00:01:45,030 --> 00:01:48,180
+you want, click Next, choose the QT
+
+41
+00:01:48,180 --> 00:01:51,270
+version, and we want to use the desktop
+
+42
+00:01:51,270 --> 00:01:57,420
+kit for this. This is our project here,
+
+43
+00:01:57,420 --> 00:01:59,659
+we want to change the title here to say:
+
+44
+00:01:59,659 --> 00:02:05,850
+ColorDialog Demo and import Qt Quick
+
+45
+00:02:05,850 --> 00:02:08,600
+Dialogs.
+
+46
+00:02:10,560 --> 00:02:13,540
+You see that the import they
+
+47
+00:02:13,540 --> 00:02:17,290
+suggest is 2 but the latest one is
+
+48
+00:02:17,290 --> 00:02:20,950
+3 as far as I know. So 
+
+49
+00:02:20,950 --> 00:02:22,330
+we're going to put the
+
+50
+00:02:22,330 --> 00:02:24,790
+rectangle inside here and the user is
+
+51
+00:02:24,790 --> 00:02:26,560
+going to click a button to pop up a
+
+52
+00:02:26,560 --> 00:02:28,480
+Dialog to let the user choose a color,
+
+53
+00:02:28,480 --> 00:02:30,700
+and we are going to use that color as
+
+54
+00:02:30,700 --> 00:02:33,790
+the color of the rectangle. 
+
+55
+00:02:33,790 --> 00:02:37,050
+I am going to put in a Column component,
+
+56
+00:02:37,050 --> 00:02:41,020
+the spacing is going to be 20, and it is
+
+57
+00:02:41,020 --> 00:02:43,990
+going to be centered in the parent. We
+
+58
+00:02:43,990 --> 00:02:47,790
+are going to have a Button on top and
+
+59
+00:02:47,790 --> 00:02:51,160
+for having access to Button,
+
+60
+00:02:51,160 --> 00:02:53,200
+we need to import Qt Quick
+
+61
+00:02:53,200 --> 00:03:00,420
+Controls. So we say: QtQuick.Controls,
+
+62
+00:03:00,420 --> 00:03:08,260
+let's choose 2.4 and it is recognized. We
+
+63
+00:03:08,260 --> 00:03:10,390
+give it the text that is going to show.
+
+64
+00:03:10,390 --> 00:03:16,810
+You're going to say: Choose Color. It is
+
+65
+00:03:16,810 --> 00:03:23,680
+going to be centered, and when it is
+
+66
+00:03:23,680 --> 00:03:26,050
+clicked, we want to know and do something.
+
+67
+00:03:26,050 --> 00:03:29,100
+Down here we're going to put a Rectangle
+
+68
+00:03:29,100 --> 00:03:32,140
+component. We want to put a bunch of
+
+69
+00:03:32,140 --> 00:03:34,810
+properties inside. Click Ctrl A, Ctrl I
+
+70
+00:03:34,810 --> 00:03:38,800
+to align. It has a width and height and
+
+71
+00:03:38,800 --> 00:03:42,670
+id. The color of the border is black and
+
+72
+00:03:42,670 --> 00:03:45,459
+it has a width. It doesn't have any color
+
+73
+00:03:45,459 --> 00:03:47,860
+set for now, so it is going to be white
+
+74
+00:03:47,860 --> 00:03:51,040
+by default. We also want this rectangle
+
+75
+00:03:51,040 --> 00:03:54,310
+centered, so we can copy this and put
+
+76
+00:03:54,310 --> 00:03:58,090
+that down here, kill this space to make
+
+77
+00:03:58,090 --> 00:04:01,000
+things a little bit nicer. And down here
+
+78
+00:04:01,000 --> 00:04:04,420
+we're going to put a ColorDialog, we're
+
+79
+00:04:04,420 --> 00:04:07,530
+going to give it an id,
+
+80
+00:04:08,260 --> 00:04:13,099
+we’re going to give it a title. These are
+
+81
+00:04:13,099 --> 00:04:15,049
+the properties that you can check in the
+
+82
+00:04:15,049 --> 00:04:19,089
+documentation. We're going to say: Please
+
+83
+00:04:19,089 --> 00:04:30,889
+Choose a Color. And when it is accepted, we
+
+84
+00:04:30,889 --> 00:04:35,960
+want to do something and we also want to
+
+85
+00:04:35,960 --> 00:04:40,820
+do something when it is rejected. We want
+
+86
+00:04:40,820 --> 00:04:42,800
+to console log the color that the user
+
+87
+00:04:42,800 --> 00:04:52,250
+chose. We're going to say: console.log. We
+
+88
+00:04:52,250 --> 00:04:54,770
+want to output the color that the user
+
+89
+00:04:54,770 --> 00:04:57,169
+chose, it is going to be stored in the
+
+90
+00:04:57,169 --> 00:05:00,110
+color property. We also want to do an
+
+91
+00:05:00,110 --> 00:05:03,110
+experiment and say onCurrentColorChanged
+
+92
+00:05:03,110 --> 00:05:14,590
+and say: console.log(“Current color changed”).
+
+93
+00:05:14,590 --> 00:05:19,280
+When the Dialog is
+
+94
+00:05:19,280 --> 00:05:22,070
+accepted, we want to set the color that
+
+95
+00:05:22,070 --> 00:05:24,620
+the user chose as the color for this
+
+96
+00:05:24,620 --> 00:05:26,870
+rectangle here. So we're going to say:
+
+97
+00:05:26,870 --> 00:05:35,090
+rectangleId.color = color. This is
+
+98
+00:05:35,090 --> 00:05:37,280
+the color property of the Dialog here.
+
+99
+00:05:37,280 --> 00:05:41,389
+And when the user rejects the Dialog,
+
+100
+00:05:41,389 --> 00:05:44,270
+we don't want to do anything special, but
+
+101
+00:05:44,270 --> 00:05:48,080
+we want to log that so that we know in
+
+102
+00:05:48,080 --> 00:05:51,400
+our application, so we're going to say:
+
+103
+00:05:51,400 --> 00:05:57,490
+User rejected dialog.
+
+104
+00:05:57,830 --> 00:06:00,330
+I know you have a
+
+105
+00:06:00,330 --> 00:06:02,340
+temptation to run the application and
+
+106
+00:06:02,340 --> 00:06:04,590
+see how it looks, but if you click on the
+
+107
+00:06:04,590 --> 00:06:05,879
+button, nothing is going to happen
+
+108
+00:06:05,879 --> 00:06:08,550
+because we really didn't do anything in
+
+109
+00:06:08,550 --> 00:06:09,030
+here.
+
+110
+00:06:09,030 --> 00:06:11,069
+So we want to say:
+
+111
+00:06:11,069 --> 00:06:16,979
+colorDialogId.open. We want to open the
+
+112
+00:06:16,979 --> 00:06:20,280
+Dialog. Now you can run to see something
+
+113
+00:06:20,280 --> 00:06:23,849
+when you click on the button here. We see
+
+114
+00:06:23,849 --> 00:06:27,030
+the UI here, click on the button, you see
+
+115
+00:06:27,030 --> 00:06:29,039
+a Dialog that allows you to choose a
+
+116
+00:06:29,039 --> 00:06:31,590
+color. Notice what happen when we
+
+117
+00:06:31,590 --> 00:06:34,349
+choose a color, you see that currentColor
+
+118
+00:06:34,349 --> 00:06:38,340
+changed and I hope this shows the
+
+119
+00:06:38,340 --> 00:06:41,069
+point of the difference between currentColor
+
+120
+00:06:41,069 --> 00:06:44,430
+and color. color is the color that
+
+121
+00:06:44,430 --> 00:06:47,729
+the user has chosen. When you click
+
+122
+00:06:47,729 --> 00:06:50,699
+OK to choose this greenish color for
+
+123
+00:06:50,699 --> 00:06:52,560
+example, it is going to go in the
+
+124
+00:06:52,560 --> 00:06:55,889
+rectangle here. This is
+
+125
+00:06:55,889 --> 00:06:59,430
+the color property right now, but as long
+
+126
+00:06:59,430 --> 00:07:02,009
+as you haven't confirmed, what you are
+
+127
+00:07:02,009 --> 00:07:04,379
+changing is the currentColor. I
+
+128
+00:07:04,379 --> 00:07:06,719
+hope this makes sense. And when you click
+
+129
+00:07:06,719 --> 00:07:09,569
+OK, you see that your color is applied to
+
+130
+00:07:09,569 --> 00:07:12,240
+the rectangle here, and this is the
+
+131
+00:07:12,240 --> 00:07:16,020
+effect of what we did in the accepted
+
+132
+00:07:16,020 --> 00:07:19,650
+signal. We set that color property
+
+133
+00:07:19,650 --> 00:07:22,289
+to be the color of this rectangle here.
+
+134
+00:07:22,289 --> 00:07:24,870
+And this is really how you use a ColorDialog
+
+135
+00:07:24,870 --> 00:07:28,319
+to choose a color and use it in
+
+136
+00:07:28,319 --> 00:07:30,930
+your application. In the next lecture,
+
+137
+00:07:30,930 --> 00:07:33,180
+we're going to look at the File Dialog
+
+138
+00:07:33,180 --> 00:00:00,000
+UI component. I’ll see you there. 
+

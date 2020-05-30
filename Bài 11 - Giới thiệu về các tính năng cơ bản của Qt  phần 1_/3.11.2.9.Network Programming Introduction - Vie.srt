@@ -1,0 +1,272 @@
+﻿1
+00:00:00,980 --> 00:00:09,500
+Phần ba của khóa học nói về Networking(Mạng). Phần này sẽ giới thiệu tổng quan về kỹ thuật lập trình mạng,
+
+2
+00:00:09,860 --> 00:00:18,100
+hướng dẫn cách tạo HTTP request và download files. Ta sẽ học về máy chủ TCP(TCP server) ở bài học cuối của phần ba.
+
+3
+00:00:18,290 --> 00:00:26,390
+Bây giờ ta sẽ xem tổng quan về kỹ lập trình mạng. Có các chủ đề chính sau POSIX sockets, TCP và UDP
+
+4
+00:00:26,960 --> 00:00:33,080
+và HTTP. Trước tiên, để làm được ứng dụng có khả năng truy cập mạng
+
+5
+00:00:33,080 --> 00:00:39,920
+ta cần học kiến thức căn bản về bộ giao thức mạng(Internet Protocol suite),
+
+6
+00:00:39,920 --> 00:00:48,050
+hay còn gọi là bộ giao thức TCP/IP, nó được gọi vậy bởi vì giao thức gốc của nó là Giao thức kiểm soát truyền tín hiệu(Transmission Control Protocol) và Giao thức mạng Internet(Internet Protocol)
+
+7
+00:00:48,050 --> 00:00:56,080
+Bộ giao thức hay được sử dụng hiện nay trên các ứng dụng và thiết bị giúp chúng có thể giao tiếp với nhau đó là
+
+8
+00:00:56,230 --> 00:01:00,610
+bộ giao thức mạng Internet(Internet Protocol suit).
+
+9
+00:01:01,500 --> 00:01:11,730
+Socket là một điểm kết nối có thể gửi hoặc nhận tín hiệu trong mạng máy tính. Trong bộ giao thức TCP/IP, mỗi socket
+
+10
+00:01:11,820 --> 00:01:18,420
+sẽ có một địa chỉ socket(socket address) nhất định. Vậy địa chỉ của socket(socket address) là gì?
+
+11
+00:01:18,440 --> 00:01:25,080
+Nó là tổ hợp của địa chỉ IP và cổng giao tiếp(port).
+
+12
+00:01:25,270 --> 00:01:35,720
+Thông thường một máy chủ HTTP sẽ chạy trên cổng 80 và địa chỉ IP nội bộ (local IP address) là
+
+13
+00:01:35,860 --> 00:01:36,500
+127...
+
+14
+00:01:36,520 --> 00:01:41,750
+Nếu địa chỉ IP là 127.0.0.1
+
+15
+00:01:41,780 --> 00:01:48,980
+Thì địa chỉ socket của máy chủ HTTP đó sẽ là 127.0.0.1:80
+
+16
+00:01:49,320 --> 00:01:57,110
+Nội bộ(local) nghĩa là máy chủ đó không giao tiếp với các máy chủ khác(node) trong mạng máy tính.
+
+17
+00:01:57,270 --> 00:02:05,480
+Thuật ngữ gắn kết(binding) ám chỉ việc gắn kết socket với địa chỉ của nó(socket address).
+
+18
+00:02:05,690 --> 00:02:08,620
+Giờ chuyển sang kỹ thuật lập trình.
+
+19
+00:02:08,760 --> 00:02:19,290
+Ta dùng Giao diện lập trình ứng dụng(API) tên Berkeley socket, hay còn gọi là BSD, để lập trình socket.
+
+20
+00:02:19,290 --> 00:02:24,800
+Sau này nó được cải tiến thành POSIX
+
+21
+00:02:24,800 --> 00:02:29,080
+và trở thành giao diện chuẩn để kết nối đến mạng Internet.
+
+22
+00:02:29,390 --> 00:02:37,670
+Tất cả các hệ điều hành hiện nay đều triển khai Berkeley socket hay POSIX socket.
+
+23
+00:02:37,670 --> 00:02:42,410
+Ví dụ như Microsoft Windows, hay ngay như Winsock( đặc điểm kỹ thuật định nghĩa cách thức phần mềm trên Windows truy cập mạng)
+
+24
+00:02:42,450 --> 00:02:50,440
+cũng tuân theo tiêu chuẩn này. Socket có thể chạy trên nhiều giao thức khác nhau.
+
+25
+00:02:50,560 --> 00:03:01,940
+Phổ biến như là Giao thức kiểm soát truyền tín hiều(Transmission Control Protocol-TCP) và Giao thức truyền gói tin(User datagram protocol-UDP).
+
+26
+00:03:01,940 --> 00:03:03,210
+Do có điểm mạnh về tính ổn định và chuẩn xác
+
+27
+00:03:03,210 --> 00:03:04,330
+nên
+
+28
+00:03:04,340 --> 00:03:08,930
+giao thức TCP được sử dụng nhiều trong mạng máy tính
+
+29
+00:03:08,930 --> 00:03:17,330
+Đa số các dịch vụ mạng đều sử dụng TCP, ví dụ như Worl Wide Web, dịch vụ truyền file và e-mail.
+
+30
+00:03:17,480 --> 00:03:26,860
+Tính năng nổi bật nhất của TCP đó là nó bảo toàn thứ tự và tính toàn vẹn các gói tin.
+
+31
+00:03:26,930 --> 00:03:35,390
+Nghĩa là dữ liệu nhận được sẽ giống hoàn toàn dữ liệu được gửi đi cả về nội dung và thứ tự.
+
+32
+00:03:35,390 --> 00:03:39,230
+Do mạng truyền tin vật lý( physical network) không phải lúc nào cũng ổn định
+
+33
+00:03:39,230 --> 00:03:45,520
+Nên gói dữ liệu được truyền có thể bị mất, bị trùng lặp hay bị xáo trộn thứ tự.
+
+34
+00:03:45,680 --> 00:03:53,660
+Trong trường hợp này, giao thức TCP sẽ yêu cầu bên truyền dữ liệu gửi lại gói dữ liệu bị mất và sắp xếp lại chúng để đảm bảo
+
+35
+00:03:54,260 --> 00:04:01,140
+tính chính xác và toàn vẹn của dữ liệu. Nếu vẫn không nhận lại được gói dữ liệu chuẩn
+
+36
+00:04:01,140 --> 00:04:06,320
+giao thức TCP sẽ báo lỗi cho bên truyền dữ liệu
+
+37
+00:04:06,340 --> 00:04:14,300
+Với một mớ thứ phải làm chắc sẽ khiến bạn cảm thấy lập trình mạng sẽ rất phức tạp.
+
+38
+00:04:14,310 --> 00:04:22,620
+Tuy nhiên bạn không cần phải tự tay làm giao thức kết truyền dữ liệu khi dùng TCP
+
+39
+00:04:23,780 --> 00:04:28,060
+bởi nó đã được làm sẵn ở các tầng dưới(lower level) rồi.
+
+40
+00:04:28,350 --> 00:04:38,190
+UDP không được sử dụng nhiều như TCP
+
+41
+00:04:38,190 --> 00:04:40,640
+Nó đa phần được áp dụng những dịch vụ yêu cầu độ trễ(latency) thấp.
+
+42
+00:04:40,650 --> 00:04:45,300
+Ngược lại với TCP, Giao thức UDP không phải là một kết nối đảm bảo dữ liệu.
+
+43
+00:04:45,300 --> 00:04:52,710
+Nó có cơ chế liên lạc phi kết nối(connectionless) nên không có cơ chế
+
+44
+00:04:52,710 --> 00:04:53,370
+bảo vệ dữ liệu khi dữ liệu bị mất
+
+45
+00:04:53,550 --> 00:04:56,220
+xáo trộn thứ tự hay trùng lặp.
+
+46
+00:04:56,490 --> 00:05:04,590
+Do đó UDP phù hợp với các ứng dụng không yêu cầu báo lỗi hay xử lý
+
+47
+00:05:04,640 --> 00:05:06,700
+lỗi dữ liệu.
+
+48
+00:05:06,780 --> 00:05:14,970
+Trong trường hợp cần có độ trễ(latency) thấp, ta nên dùng UDP thay vì TCP
+
+49
+00:05:14,970 --> 00:05:24,400
+bởi thà là bỏ dữ liệu còn hơn là đợi nó được gửi lại. Do đặc thù của UDP nên nó không được sử dụng rộng rãi như TCP
+
+50
+00:05:24,460 --> 00:05:32,460
+nó thường được dùng trong các dịch vị truyền tải video, âm thanh.
+
+51
+00:05:32,620 --> 00:05:41,390
+Đặc biệt là Hệ thống tên miền( Domain name system-DNS) và Giao thức đồng bộ thời gian (Network time protocol-NTP) đều sử dụng UDP.
+
+52
+00:05:41,770 --> 00:05:52,120
+Ngoài ra còn có một vài dịch vị lớn như Dịch vụ chia sẻ dữ liệu(Network file system-NFS), IPTV và Skype.
+
+53
+00:05:53,930 --> 00:06:00,670
+Tổng kết lại, TCP là giao thức đảm bảo dữ liệu
+
+54
+00:06:00,800 --> 00:06:09,490
+còn UDP là giao thức đơn giản và nhanh. Tiếp theo là giao thức
+
+55
+00:06:10,040 --> 00:06:10,990
+truyền tải siêu văn bản (hypertext transfer protocol-HTTP).
+
+56
+00:06:13,810 --> 00:06:19,590
+Nó là thành phần cốt lõi của mạng lưới toàn cầu(World Wide Web). Nó cũng là một giao thức
+
+57
+00:06:19,630 --> 00:06:26,250
+tuy nhiên HTTP là giao thức được triển khai trên tầng ứng dụng thay vì ở tầng truyền dữ liệu.
+
+58
+00:06:26,500 --> 00:06:34,060
+Nó cũng được coi là một giao thức đảm bảo dữ liệu thường được dùng với TCP.
+
+59
+00:06:34,490 --> 00:06:43,380
+HTTP hoạt động theo kiểu máy chủ-máy khách(client-server). Máy khách sẽ gửi yêu cầu và máy chủ sẽ gửi phản hồi.
+
+60
+00:06:43,470 --> 00:06:50,120
+Ta lấy ví dụ cụ thể để tổng kết bài học.
+
+61
+00:06:50,330 --> 00:06:59,450
+Khi bạn mở trình duyệt và nhập www.Google.com. Một lệnh truy vấn dùng giao thức UDP được gửi đến máy chủ DNS
+
+62
+00:06:59,450 --> 00:07:04,850
+để tìm địa chỉ IP của trang www.Google.com.
+
+63
+00:07:04,890 --> 00:07:06,950
+Khi nhận được kết quả
+
+64
+00:07:06,980 --> 00:07:15,290
+trình duyệt sẽ gửi yêu cầu HTTP( HTTP request) để gắn kết TCP với máy chủ web
+
+65
+00:07:15,290 --> 00:07:16,400
+để nó trả về kết quả.
+
+66
+00:07:18,600 --> 00:07:22,750
+Nội dung trang www.Google.com là kết quả trả về.
+
+67
+00:07:22,950 --> 00:07:35,490
+Bạn cũng có thể gửi truy vấn DNS qua giao thức TCP và sử dụng HTTP qua giao thức UDP.
+
+68
+00:07:35,490 --> 00:07:40,000
+Trong video tiếp theo, ta sẽ thực hành với HTTP request trong Qt.
+

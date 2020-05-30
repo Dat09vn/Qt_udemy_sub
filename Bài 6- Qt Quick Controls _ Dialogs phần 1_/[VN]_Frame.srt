@@ -1,0 +1,224 @@
+1
+00:00:00,650 --> 00:00:04,110
+Bạn sử dụng thành phần Frame khi bạn muốn 
+
+2
+00:00:04,110 --> 00:00:07,649
+có một nhóm các phần tử qml cần hiển thị 
+
+3
+00:00:07,649 --> 00:00:10,290
+hãy cùng vào Qt creator
+
+4
+00:00:10,290 --> 00:00:13,559
+và làm thử với thành phần này 
+
+5
+00:00:13,559 --> 00:00:15,509
+chúng ta tạo mới 
+
+6
+00:00:15,509 --> 00:00:16,820
+project
+
+7
+00:00:16,820 --> 00:00:20,250
+nó là một ứng dụng QT quick và đặt tên nó 
+
+8
+00:00:20,250 --> 00:00:22,380
+là FrameDemo, lưu nó lại vào đường dẫn 
+
+9
+00:00:22,380 --> 00:00:28,199
+quen thuộc, chọn phiên bản QT, chọn
+
+10
+00:00:28,199 --> 00:00:30,510
+kit và nếu bạn muốn chạy nó trên 
+
+11
+00:00:30,510 --> 00:00:32,910
+Android bạn có thể chọn kit này và sử dụng 
+
+12
+00:00:32,910 --> 00:00:36,300
+như chúng ta đã từng thấy, ở đây tôi không
+
+13
+00:00:36,300 --> 00:00:40,920
+sử dụng nó và tôi bỏ tích nó,
+
+14
+00:00:40,920 --> 00:00:42,899
+ta thay đổi tiêu đề thành Frame Demo
+
+15
+00:00:42,899 --> 00:00:50,120
+và cập nhật thư viện QT quick control
+
+16
+00:00:53,719 --> 00:00:58,469
+bản 2.4, tôi muốn có một frame
+
+17
+00:00:58,469 --> 00:01:03,059
+ở đây, bên trong nó tôi có 
+
+18
+00:01:03,059 --> 00:01:08,549
+một ColumnLayout, bạn thấy là ColumnLayout
+
+19
+00:01:08,549 --> 00:01:11,130
+thì không được nhận, bạn biết tại sao không, 
+
+20
+00:01:11,130 --> 00:01:14,610
+tại vì ta chưa cập nhật thư viện layout
+
+21
+00:01:14,610 --> 00:01:19,640
+vì vậy nên ta sẽ gõ QT quick
+
+22
+00:01:19,640 --> 00:01:25,110
+layout và chọn bản 1.4
+
+23
+00:01:25,110 --> 00:01:28,650
+ở trong này chúng ta để 3
+
+24
+00:01:28,650 --> 00:01:36,860
+nút, đây là nút thứ nhất 
+
+25
+00:01:36,860 --> 00:01:38,420
+copy nó 
+
+26
+00:01:38,420 --> 00:01:41,880
+dán 2 lần và ta có 3 
+
+27
+00:01:41,880 --> 00:01:46,829
+cái nút, nút thứ 2 và nút thứ 3 và trước khi 
+
+28
+00:01:46,829 --> 00:01:48,689
+chạy chương trình, tôi muốn frame này
+
+29
+00:01:48,689 --> 00:01:51,210
+được canh giữa với đối tượng cha, vì thế ta
+
+30
+00:01:51,210 --> 00:01:53,610
+gõ anchors.centerIn: parent
+
+31
+00:01:53,610 --> 00:01:59,509
+và chạy chương trình bạn sẽ thấy có
+
+32
+00:01:59,509 --> 00:02:03,090
+một hình chữ nhật bao quang những nút này, 
+
+33
+00:02:03,090 --> 00:02:06,390
+nó chính là thành phần Frame, thành phần này 
+
+34
+00:02:06,390 --> 00:02:09,690
+giúp bạn có một thể hiện của
+
+35
+00:02:09,690 --> 00:02:11,810
+một nhóm các phần tử
+
+36
+00:02:11,810 --> 00:02:13,790
+qml và bạn có thể làm các việc
+
+37
+00:02:13,790 --> 00:02:15,800
+thông thường với các thành phần này
+
+38
+00:02:15,800 --> 00:02:17,540
+ví dụ quản lý sự kiện click vào những 
+
+39
+00:02:17,540 --> 00:02:20,390
+nút này hay làm bất cứ gì bạn muốn 
+
+40
+00:02:20,390 --> 00:02:24,140
+với các cái nút này, hãy xem 
+
+41
+00:02:24,140 --> 00:02:27,069
+hướng dẫn sử dụng để có thể hình dung
+
+42
+00:02:27,069 --> 00:02:30,080
+tổng quát về nó, chúng ta sẽ 
+
+43
+00:02:30,080 --> 00:02:33,800
+nhấn F1 sau khi chọn Frame 
+
+44
+00:02:33,800 --> 00:02:37,430
+hãy đóng chỗ này lại và vào
+
+45
+00:02:37,430 --> 00:02:40,940
+phần hướng dẫn đầy đủ, nó làm được gì, nó
+
+46
+00:02:40,940 --> 00:02:43,190
+được dùng để layout (bố cục) một nhóm các
+
+47
+00:02:43,190 --> 00:02:46,459
+thành phần với nhau với hiệu ứng bao bới
+
+48
+00:02:46,459 --> 00:02:50,030
+Frame (khung), rồi, Frame thì không cung cấp
+
+49
+00:02:50,030 --> 00:02:52,850
+bố cục của riêng nó nhưng đòi hỏi bạn 
+
+50
+00:02:52,850 --> 00:02:55,280
+xác định vị trí cho nội dung của nó cụ thể
+
+51
+00:02:55,280 --> 00:02:57,830
+bằng cách tạo RowLayout hay ColumnLayout
+
+52
+00:02:57,830 --> 00:03:00,080
+cho các thành phần bên trong và
+
+53
+00:03:00,080 --> 00:03:02,870
+trên đây là tất cả về
+
+54
+00:03:02,870 --> 00:03:05,450
+thành phần Frame, ở bài kế tiếp
+
+55
+00:03:05,450 --> 00:03:07,970
+chúng ta sẽ tìm hiểu về GroupBox, RadioButton
+
+56
+00:03:07,970 --> 00:00:00,000
+và CheckBox, hẹn gặp lại các bạn.
+

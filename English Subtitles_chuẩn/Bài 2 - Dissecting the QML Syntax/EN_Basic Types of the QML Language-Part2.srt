@@ -1,0 +1,1300 @@
+1
+00:00:02,570 --> 00:00:04,950
+Another data type that we want to look
+
+2
+00:00:04,950 --> 00:00:07,770
+at is the VAR data type. If you look at
+
+3
+00:00:07,770 --> 00:00:10,440
+it, the VAR type is the generic property
+
+4
+00:00:10,440 --> 00:00:14,009
+type that can refer to any data type. So
+
+5
+00:00:14,009 --> 00:00:15,960
+basically what you can do, you can also
+
+6
+00:00:15,960 --> 00:00:19,230
+use a var to store this integer, you can
+
+7
+00:00:19,230 --> 00:00:21,779
+use a var to store a boolean data type,
+
+8
+00:00:21,779 --> 00:00:24,539
+you can use the VAR to store any value
+
+9
+00:00:24,539 --> 00:00:26,760
+and it's going to work. It is very useful
+
+10
+00:00:26,760 --> 00:00:28,859
+when you don't know the data type that
+
+11
+00:00:28,859 --> 00:00:31,560
+you are dealing with. So to play with it
+
+12
+00:00:31,560 --> 00:00:34,860
+I am going to copy these examples here
+
+13
+00:00:34,860 --> 00:00:36,960
+in the documentation and play with them
+
+14
+00:00:36,960 --> 00:00:39,840
+in our code. Okay so I'm going to copy
+
+15
+00:00:39,840 --> 00:00:42,300
+this. This is the beauty of working with
+
+16
+00:00:42,300 --> 00:00:45,570
+QT creator. There are tons and tons of
+
+17
+00:00:45,570 --> 00:00:48,719
+pieces of code you can copy and use in
+
+18
+00:00:48,719 --> 00:00:50,940
+your application. And this is not a bad
+
+19
+00:00:50,940 --> 00:00:53,670
+thing. If you wonder how I align this
+
+20
+00:00:53,670 --> 00:00:58,260
+thing I just hit ctrl+A, ctrl+I to have
+
+21
+00:00:58,260 --> 00:01:00,629
+this things aligned. And if you see here
+
+22
+00:01:00,629 --> 00:01:03,690
+you see that there are warnings telling
+
+23
+00:01:03,690 --> 00:01:05,909
+us that we should use specific data
+
+24
+00:01:05,909 --> 00:01:08,729
+types instead of using the VAR data type
+
+25
+00:01:08,729 --> 00:01:11,159
+here. Okay it says you should use int
+
+26
+00:01:11,159 --> 00:01:14,810
+or real instead of var, bool instead of var,
+
+27
+00:01:14,810 --> 00:01:18,270
+string instead of var. But you can see
+
+28
+00:01:18,270 --> 00:01:20,939
+that var can store integers, boolean,
+
+29
+00:01:20,939 --> 00:01:23,790
+strings. You can see that we can define
+
+30
+00:01:23,790 --> 00:01:27,110
+our own string using this JavaScript
+
+31
+00:01:27,110 --> 00:01:30,930
+constructor. We can define colors we are
+
+32
+00:01:30,930 --> 00:01:32,759
+going to play with these variables and
+
+33
+00:01:32,759 --> 00:01:34,619
+try to output some information about
+
+34
+00:01:34,619 --> 00:01:36,299
+them, we're going to start with this
+
+35
+00:01:36,299 --> 00:01:38,130
+number here and show you that you can
+
+36
+00:01:38,130 --> 00:01:40,320
+output it just like you did for these
+
+37
+00:01:40,320 --> 00:01:44,820
+numbers here. So let's do that, we're
+
+38
+00:01:44,820 --> 00:01:49,140
+going to console.log let's separate
+
+39
+00:01:49,140 --> 00:01:51,840
+things a little bit so we're going to
+
+40
+00:01:51,840 --> 00:01:56,040
+say console.log the value of what is it
+
+41
+00:01:56,040 --> 00:01:56,610
+called again.
+
+42
+00:01:56,610 --> 00:02:05,460
+let's look aNumber is aNumber. And if
+
+43
+00:02:05,460 --> 00:02:07,979
+we run this we should see the value that
+
+44
+00:02:07,979 --> 00:02:12,530
+is stored here which is 100,
+
+45
+00:02:12,830 --> 00:02:15,110
+100 here. We can do the same thing
+
+46
+00:02:15,110 --> 00:02:17,900
+for bool, string and this string here. So
+
+47
+00:02:17,900 --> 00:02:19,760
+I'm going to do this and come back and
+
+48
+00:02:19,760 --> 00:02:21,770
+show you these things running. Okay I
+
+49
+00:02:21,770 --> 00:02:24,140
+went ahead and typed this things to save
+
+50
+00:02:24,140 --> 00:02:25,040
+you some time.
+
+51
+00:02:25,040 --> 00:02:28,190
+We're going to output the boolean data
+
+52
+00:02:28,190 --> 00:02:31,430
+type, string and another string that we
+
+53
+00:02:31,430 --> 00:02:34,370
+initialized using the constructor here.
+
+54
+00:02:34,370 --> 00:02:38,210
+Let's run the application, mm-hmm you see
+
+55
+00:02:38,210 --> 00:02:42,020
+the bool is false, the value of a string
+
+56
+00:02:42,020 --> 00:02:44,750
+is hello world which is here and the
+
+57
+00:02:44,750 --> 00:02:47,330
+other string has this thing here and you
+
+58
+00:02:47,330 --> 00:02:50,150
+see that we output it without a problem.
+
+59
+00:02:50,150 --> 00:02:53,570
+Var can also be used to store other more
+
+60
+00:02:53,570 --> 00:02:56,030
+complex data types for example a color
+
+61
+00:02:56,030 --> 00:02:58,820
+so this is a color for example and we
+
+62
+00:02:58,820 --> 00:03:02,060
+are storing it as a var. You can see that
+
+63
+00:03:02,060 --> 00:03:04,400
+they are giving us a warning that we
+
+64
+00:03:04,400 --> 00:03:07,850
+should use the color datatype instead of
+
+65
+00:03:07,850 --> 00:03:11,180
+var but var can store this too so it is
+
+66
+00:03:11,180 --> 00:03:13,880
+possible to use it if you need to use it
+
+67
+00:03:13,880 --> 00:03:14,540
+this way.
+
+68
+00:03:14,540 --> 00:03:16,340
+To show you that you can use this color
+
+69
+00:03:16,340 --> 00:03:18,560
+we're going to use it to set the
+
+70
+00:03:18,560 --> 00:03:22,070
+background of this rectangle here. So we
+
+71
+00:03:22,070 --> 00:03:24,530
+can take out this yellow here and say aColor 
+
+72
+00:03:24,530 --> 00:03:28,160
+and it's going to work. Let's run
+
+73
+00:03:28,160 --> 00:03:30,709
+the application, we are going to see this
+
+74
+00:03:30,709 --> 00:03:34,640
+color. Mm-hmm this is the color. We
+
+75
+00:03:34,640 --> 00:03:36,350
+can change it again we can play with
+
+76
+00:03:36,350 --> 00:03:38,840
+these numbers. What this is really doing
+
+77
+00:03:38,840 --> 00:03:41,150
+it is changing the components of the
+
+78
+00:03:41,150 --> 00:03:43,940
+color, this is the red component, this is
+
+79
+00:03:43,940 --> 00:03:46,489
+the green component, this is the blue
+
+80
+00:03:46,489 --> 00:03:48,890
+component and this is the opacity. You
+
+81
+00:03:48,890 --> 00:03:50,959
+can look at the documentation for the
+
+82
+00:03:50,959 --> 00:03:53,660
+color qml type to have more information
+
+83
+00:03:53,660 --> 00:03:58,810
+about this. Let's turn the others to zero
+
+84
+00:04:00,160 --> 00:04:04,790
+make the opacity one to make it
+
+85
+00:04:04,790 --> 00:04:07,600
+completely opaque and make it completely
+
+86
+00:04:07,600 --> 00:04:13,459
+red. Run the application, we should have a
+
+87
+00:04:13,459 --> 00:04:16,880
+red background on our text here which is
+
+88
+00:04:16,880 --> 00:04:19,190
+what we have. Ok so let's turn it back
+
+89
+00:04:19,190 --> 00:04:21,310
+because this red is really annoying.
+
+90
+00:04:21,310 --> 00:04:24,169
+There's another data type that is called
+
+91
+00:04:24,169 --> 00:04:26,620
+rect that you used to represent
+
+92
+00:04:26,620 --> 00:04:28,750
+rectangles let's go back to the doc and
+
+93
+00:04:28,750 --> 00:04:35,889
+show you this thing, rect. The rect
+
+94
+00:04:35,889 --> 00:04:38,979
+type refers to a value with X, Y, width
+
+95
+00:04:38,979 --> 00:04:41,260
+and height. It really represents a
+
+96
+00:04:41,260 --> 00:04:43,780
+rectangle. So to show you the properties
+
+97
+00:04:43,780 --> 00:04:45,820
+inside this thing I'm going to output
+
+98
+00:04:45,820 --> 00:04:48,520
+this component. Okay so let's go back
+
+99
+00:04:48,520 --> 00:04:54,810
+to our oncompleted method here and say
+
+100
+00:04:54,810 --> 00:05:00,729
+console.log - a rect height - okay you can
+
+101
+00:05:00,729 --> 00:05:03,550
+access these things I think this is
+
+102
+00:05:03,550 --> 00:05:07,330
+correct. And let's change the values to
+
+103
+00:05:07,330 --> 00:05:12,340
+not make it completely square. So let's
+
+104
+00:05:12,340 --> 00:05:16,800
+change this to 17, change this to 56,
+
+105
+00:05:16,800 --> 00:05:22,180
+change this to 46, change this to leave
+
+106
+00:05:22,180 --> 00:05:24,760
+this to a ten, no problem. Let's run the
+
+107
+00:05:24,760 --> 00:05:27,310
+application, this is X, this is y ,this is
+
+108
+00:05:27,310 --> 00:05:30,370
+the width, this is the height. Okay and you
+
+109
+00:05:30,370 --> 00:05:37,479
+can see that X is 17 Y, is 56, width is 46
+
+110
+00:05:37,479 --> 00:05:40,330
+and height is 10 which is what we
+
+111
+00:05:40,330 --> 00:05:42,250
+specified. You can access these values.
+
+112
+00:05:42,250 --> 00:05:44,550
+There's another data type that is called
+
+113
+00:05:44,550 --> 00:05:47,950
+point. Let's go to the documentation
+
+114
+00:05:47,950 --> 00:05:52,870
+and see what it is about. Okay it refers
+
+115
+00:05:52,870 --> 00:05:55,510
+to a value with X&Y attributes you can
+
+116
+00:05:55,510 --> 00:05:58,990
+use it to store pairs of data with one
+
+117
+00:05:58,990 --> 00:06:01,840
+being X and the other being Y. I'm not
+
+118
+00:06:01,840 --> 00:06:03,729
+going to show you how to output this
+
+119
+00:06:03,729 --> 00:06:07,510
+things because it really is the same. So
+
+120
+00:06:07,510 --> 00:06:09,970
+size is the another data type that
+
+121
+00:06:09,970 --> 00:06:13,300
+refers to value with width and height.
+
+122
+00:06:13,300 --> 00:06:16,919
+And if you look at this you can see that
+
+123
+00:06:16,919 --> 00:06:21,789
+rectangle really groups point and size
+
+124
+00:06:21,789 --> 00:06:24,580
+into one thing. These are some other data
+
+125
+00:06:24,580 --> 00:06:26,530
+types you can use. You can check them out
+
+126
+00:06:26,530 --> 00:06:29,020
+if you are interested but for now we are
+
+127
+00:06:29,020 --> 00:06:31,570
+going to play with this array data type
+
+128
+00:06:31,570 --> 00:06:34,150
+and this function here. If you look at
+
+129
+00:06:34,150 --> 00:06:36,580
+this array it is storing different data
+
+130
+00:06:36,580 --> 00:06:40,210
+types these are integers, these are
+
+131
+00:06:40,210 --> 00:06:43,389
+strings. Okay if you look here this is a
+
+132
+00:06:43,389 --> 00:06:45,840
+function you can do this thing's in
+
+133
+00:06:45,840 --> 00:06:48,759
+JavaScript if you have been programming
+
+134
+00:06:48,759 --> 00:06:51,880
+in languages like C, C++ or Java. You're
+
+135
+00:06:51,880 --> 00:06:54,580
+going to find this a little bit weird
+
+136
+00:06:54,580 --> 00:06:57,190
+because usually you don't put different
+
+137
+00:06:57,190 --> 00:06:59,680
+data types in array but you can do this
+
+138
+00:06:59,680 --> 00:07:02,050
+in JavaScript. So what we're going to do,
+
+139
+00:07:02,050 --> 00:07:04,780
+we're going to play with this array. For
+
+140
+00:07:04,780 --> 00:07:07,870
+example we can output its length if you
+
+141
+00:07:07,870 --> 00:07:11,020
+look at its contents this is one - two -
+
+142
+00:07:11,020 --> 00:07:14,289
+three - four - five - six elements in the
+
+143
+00:07:14,289 --> 00:07:18,190
+array. So if we want to output that we
+
+144
+00:07:18,190 --> 00:07:23,650
+can do something like console.log ("the
+
+145
+00:07:23,650 --> 00:07:29,530
+length of the array is, what is it called
+
+146
+00:07:29,530 --> 00:07:35,099
+again I forgot, anArray. So let's do that
+
+147
+00:07:35,099 --> 00:07:39,849
+and you can see that you can output its
+
+148
+00:07:39,849 --> 00:07:43,360
+length. Let's run the application. Hmm the
+
+149
+00:07:43,360 --> 00:07:45,789
+length is 6, we have 6 elements in the
+
+150
+00:07:45,789 --> 00:07:48,759
+array. What if you want to output these
+
+151
+00:07:48,759 --> 00:07:51,639
+elements in the array? What you can do is
+
+152
+00:07:51,639 --> 00:07:53,650
+loop through all these elements and
+
+153
+00:07:53,650 --> 00:07:56,830
+output them. The way you do that, this is
+
+154
+00:07:56,830 --> 00:07:59,169
+really JavaScript knowledge, so if you
+
+155
+00:07:59,169 --> 00:08:01,030
+find this a little bit confusing you
+
+156
+00:08:01,030 --> 00:08:03,570
+should consider it looking at some
+
+157
+00:08:03,570 --> 00:08:06,490
+JavaScript tutorial to get these basics,
+
+158
+00:08:06,490 --> 00:08:08,409
+but if you have some programming
+
+159
+00:08:08,409 --> 00:08:10,479
+experience this is really nothing new.
+
+160
+00:08:10,479 --> 00:08:15,849
+What you can do is say anArray and say
+
+161
+00:08:15,849 --> 00:08:19,509
+forEach and inside passing a callback
+
+162
+00:08:19,509 --> 00:08:22,060
+function. So the way you do that you say
+
+163
+00:08:22,060 --> 00:08:26,169
+function and you say value this is going
+
+164
+00:08:26,169 --> 00:08:28,719
+to be the value that you are working on.
+
+165
+00:08:28,719 --> 00:08:32,130
+So we put this on a separate line and
+
+166
+00:08:32,130 --> 00:08:35,679
+what we can do inside we can output this
+
+167
+00:08:35,679 --> 00:08:38,078
+value here. So what this is doing is
+
+168
+00:08:38,078 --> 00:08:40,750
+really looping through the array and at
+
+169
+00:08:40,750 --> 00:08:43,659
+each iteration it is storing the value
+
+170
+00:08:43,659 --> 00:08:46,899
+of the element we are at in the array in
+
+171
+00:08:46,899 --> 00:08:49,480
+this variable here called value so we
+
+172
+00:08:49,480 --> 00:08:52,540
+can output it. To prove our case let's do
+
+173
+00:08:52,540 --> 00:08:53,380
+console.log(value).
+
+174
+00:08:53,380 --> 00:08:57,940
+Just to show you that we are
+
+175
+00:08:57,940 --> 00:09:00,970
+retrieving the values in the array. If we
+
+176
+00:09:00,970 --> 00:09:03,460
+run the application we should see them 1
+
+177
+00:09:03,460 --> 00:09:07,780
+2 3 four five and we have function here, what
+
+178
+00:09:07,780 --> 00:09:10,180
+the heck is this? We are seeing function
+
+179
+00:09:10,180 --> 00:09:12,430
+here because the last element in the
+
+180
+00:09:12,430 --> 00:09:15,250
+array is a function. If we wanted this
+
+181
+00:09:15,250 --> 00:09:18,160
+function to print the returned value
+
+182
+00:09:18,160 --> 00:09:20,800
+here which is six we would need to call
+
+183
+00:09:20,800 --> 00:09:24,040
+this as a function and the way we could
+
+184
+00:09:24,040 --> 00:09:27,490
+do that is to also pass in the index as
+
+185
+00:09:27,490 --> 00:09:30,150
+a second parameter in our function. And
+
+186
+00:09:30,150 --> 00:09:40,840
+say if (index === 5) console.log (value())
+
+187
+00:09:40,840 --> 00:09:44,770
+and call this as a function, if it's not
+
+188
+00:09:44,770 --> 00:09:47,230
+equal to 5 we're going to do the usual
+
+189
+00:09:47,230 --> 00:09:51,210
+thing we've done before console.log(value).
+
+190
+00:09:51,210 --> 00:09:55,620
+I know this might sound cryptic
+
+191
+00:09:55,620 --> 00:09:58,570
+for people who are not familiar with
+
+192
+00:09:58,570 --> 00:10:01,300
+JavaScript but if you take some tutorial
+
+193
+00:10:01,300 --> 00:10:03,340
+or some course on JavaScript this is
+
+194
+00:10:03,340 --> 00:10:05,650
+going to make sense. We are actually
+
+195
+00:10:05,650 --> 00:10:08,470
+checking to see if we are dealing with
+
+196
+00:10:08,470 --> 00:10:11,170
+this value here if we are dealing with
+
+197
+00:10:11,170 --> 00:10:13,540
+this value here we call it as a function
+
+198
+00:10:13,540 --> 00:10:16,870
+notice this set of parentheses we put
+
+199
+00:10:16,870 --> 00:10:19,390
+here and if it's another element we just
+
+200
+00:10:19,390 --> 00:10:22,600
+output it. So if we run again we should
+
+201
+00:10:22,600 --> 00:10:25,810
+see the output as expected one through
+
+202
+00:10:25,810 --> 00:10:28,480
+six. And you see that six is output here.
+
+203
+00:10:28,480 --> 00:10:31,900
+This is one way to output the element of
+
+204
+00:10:31,900 --> 00:10:34,450
+the array that you have if you don't
+
+205
+00:10:34,450 --> 00:10:37,260
+like this notation we can use a regular
+
+206
+00:10:37,260 --> 00:10:41,050
+for loop that you also have in other
+
+207
+00:10:41,050 --> 00:10:44,020
+programming languages. I also take this
+
+208
+00:10:44,020 --> 00:10:45,670
+chance to show you that you can do
+
+209
+00:10:45,670 --> 00:10:48,900
+comments in qml. Okay this is
+
+210
+00:10:48,900 --> 00:10:52,000
+multiple lines comment you can also do
+
+211
+00:10:52,000 --> 00:10:53,920
+comments like this for example if you
+
+212
+00:10:53,920 --> 00:10:55,390
+want to comment this line you can use
+
+213
+00:10:55,390 --> 00:10:58,120
+these two slashes like this to comment
+
+214
+00:10:58,120 --> 00:11:00,040
+it out. Okay it's not going to be
+
+215
+00:11:00,040 --> 00:11:02,890
+processed when this application is being
+
+216
+00:11:02,890 --> 00:11:07,120
+compiled. So we comment this out
+
+217
+00:11:07,120 --> 00:11:14,130
+and we can say for (var i = 0; I < anArray.length; i++)
+
+218
+00:11:14,130 --> 00:11:17,620
+less than the length of the array so
+
+219
+00:11:17,620 --> 00:11:22,410
+we're going to say anArray.length and
+
+220
+00:11:22,410 --> 00:11:28,600
+increment this thing and if we are at
+
+221
+00:11:28,600 --> 00:11:30,700
+index 5 we are going to retrieve the
+
+222
+00:11:30,700 --> 00:11:33,460
+current item. This is how you retrieve it
+
+223
+00:11:33,460 --> 00:11:35,380
+you put in the name of the array
+
+224
+00:11:35,380 --> 00:11:37,540
+you got the square brackets and inside
+
+225
+00:11:37,540 --> 00:11:40,660
+you put the index and you call this as a
+
+226
+00:11:40,660 --> 00:11:43,450
+function also by putting parentheses
+
+227
+00:11:43,450 --> 00:11:45,940
+like we did on top here. And if we are
+
+228
+00:11:45,940 --> 00:11:48,310
+not dealing with the index number 5 we
+
+229
+00:11:48,310 --> 00:11:50,920
+just do the normal thing and output the
+
+230
+00:11:50,920 --> 00:11:54,610
+array element at this index. If we run
+
+231
+00:11:54,610 --> 00:11:56,260
+the application we are going to see the
+
+232
+00:11:56,260 --> 00:11:59,770
+same thing. Ok 1 through six. You can use
+
+233
+00:11:59,770 --> 00:12:02,290
+whatever notation you see it fit many
+
+234
+00:12:02,290 --> 00:12:03,970
+people are going to like this one
+
+235
+00:12:03,970 --> 00:12:06,820
+because it is familiar but this can come
+
+236
+00:12:06,820 --> 00:12:09,310
+in handy and be very easy to understand
+
+237
+00:12:09,310 --> 00:12:11,410
+if you start getting familiar with
+
+238
+00:12:11,410 --> 00:12:14,470
+JavaScript. I currently like to use this
+
+239
+00:12:14,470 --> 00:12:17,589
+one. Ok by now we have seen multiple uses
+
+240
+00:12:17,589 --> 00:12:21,100
+for the VAR data type but there are two
+
+241
+00:12:21,100 --> 00:12:23,470
+other data types that I want you to see
+
+242
+00:12:23,470 --> 00:12:26,470
+one is the font data type that you used
+
+243
+00:12:26,470 --> 00:12:29,440
+to store font information for your text.
+
+244
+00:12:29,440 --> 00:12:32,170
+So if you want to know more about the
+
+245
+00:12:32,170 --> 00:12:34,270
+font data type you can come to the
+
+246
+00:12:34,270 --> 00:12:37,150
+documentation and search for font. It's
+
+247
+00:12:37,150 --> 00:12:39,790
+this easy. If you go down you're going to
+
+248
+00:12:39,790 --> 00:12:44,950
+find the font qml data type and you can
+
+249
+00:12:44,950 --> 00:12:47,320
+see all the information about it and the
+
+250
+00:12:47,320 --> 00:12:49,270
+properties that you can set to them. And
+
+251
+00:12:49,270 --> 00:12:51,940
+if you want to set this font as your
+
+252
+00:12:51,940 --> 00:12:54,760
+font in the text you can do that very
+
+253
+00:12:54,760 --> 00:12:57,400
+easily. You can comment this out for
+
+254
+00:12:57,400 --> 00:13:03,959
+example and say font : aFont.
+
+255
+00:13:06,550 --> 00:13:10,630
+Let's run again and you see that the
+
+256
+00:13:10,630 --> 00:13:13,510
+font has changed. This is the font that
+
+257
+00:13:13,510 --> 00:13:15,790
+we have defined here that we are using.
+
+258
+00:13:15,790 --> 00:13:18,820
+Okay you can specify the font family its
+
+259
+00:13:18,820 --> 00:13:22,120
+size whether or not it's bold. For
+
+260
+00:13:22,120 --> 00:13:24,420
+example if we change this to false and
+
+261
+00:13:24,420 --> 00:13:26,019
+run again.
+
+262
+00:13:26,019 --> 00:13:30,399
+It's not going to be bold again.Okay you
+
+263
+00:13:30,399 --> 00:13:32,950
+seen this. Another property that you can
+
+264
+00:13:32,950 --> 00:13:35,170
+use in qml is the date property.
+
+265
+00:13:35,170 --> 00:13:37,779
+You use it when you are dealing with
+
+266
+00:13:37,779 --> 00:13:40,990
+time information and you can specify a
+
+267
+00:13:40,990 --> 00:13:44,230
+date like this. Okay for example if we go
+
+268
+00:13:44,230 --> 00:13:47,790
+in the oncompleted method of ours here,
+
+269
+00:13:47,790 --> 00:14:02,260
+we can say console.log mDate. Let's run
+
+270
+00:14:02,260 --> 00:14:05,230
+and see what we're going to see. You see
+
+271
+00:14:05,230 --> 00:14:08,529
+that it shows full information of the
+
+272
+00:14:08,529 --> 00:14:11,350
+date in my locale here. Okay it's in
+
+273
+00:14:11,350 --> 00:14:13,779
+Chinese because my local is in Chinese
+
+274
+00:14:13,779 --> 00:14:17,079
+right now but what I want to show you is
+
+275
+00:14:17,079 --> 00:14:19,060
+that you can call all kinds of methods
+
+276
+00:14:19,060 --> 00:14:22,300
+on this date object. For example you can
+
+277
+00:14:22,300 --> 00:14:26,350
+get date, get day, get full year, these are
+
+278
+00:14:26,350 --> 00:14:29,320
+methods that are documented in the data
+
+279
+00:14:29,320 --> 00:14:33,010
+object in the JavaScript documentation. I
+
+280
+00:14:33,010 --> 00:14:35,680
+am going to talk fully about the way you
+
+281
+00:14:35,680 --> 00:14:38,200
+use JavaScript in your code when I talk
+
+282
+00:14:38,200 --> 00:14:40,510
+about JavaScript integration with qml
+
+283
+00:14:40,510 --> 00:14:42,670
+but right now I just want you to get a
+
+284
+00:14:42,670 --> 00:14:45,430
+hang of what is available and how you
+
+285
+00:14:45,430 --> 00:14:47,860
+can use it. And it really is impossible
+
+286
+00:14:47,860 --> 00:14:50,560
+to talk about qml without using
+
+287
+00:14:50,560 --> 00:14:52,839
+javascript, it's just going to be dealed
+
+288
+00:14:52,839 --> 00:14:55,270
+you need to see some JavaScript even if
+
+289
+00:14:55,270 --> 00:14:57,459
+we haven't got to talk about JavaScript
+
+290
+00:14:57,459 --> 00:14:59,949
+in qml yet. The last thing we're
+
+291
+00:14:59,949 --> 00:15:02,410
+going to see is this function here, you
+
+292
+00:15:02,410 --> 00:15:05,560
+can actually assign a function to a
+
+293
+00:15:05,560 --> 00:15:09,430
+variable and call it as a function. So
+
+294
+00:15:09,430 --> 00:15:13,000
+what we can do is go down here and say
+
+295
+00:15:13,000 --> 00:15:15,690
+console.log
+
+296
+00:15:16,170 --> 00:15:20,820
+and call it. Okay we'd like to say
+
+297
+00:15:20,820 --> 00:15:25,380
+aFunction and call it like this. If you
+
+298
+00:15:25,380 --> 00:15:28,200
+don't put the parentheses you're going
+
+299
+00:15:28,200 --> 00:15:30,720
+to see the same thing we saw when we
+
+300
+00:15:30,720 --> 00:15:34,079
+called the last element of the array,
+
+301
+00:15:34,079 --> 00:15:36,930
+which was a function. You're going to see
+
+302
+00:15:36,930 --> 00:15:38,850
+that it is a function but it's not going
+
+303
+00:15:38,850 --> 00:15:41,100
+to show you the value so you need to put
+
+304
+00:15:41,100 --> 00:15:43,110
+these parentheses to actually get the
+
+305
+00:15:43,110 --> 00:15:45,440
+function to do what it's meant to do.
+
+306
+00:15:45,440 --> 00:15:48,630
+Let's run the application again and
+
+307
+00:15:48,630 --> 00:15:49,800
+you're going to see that the function
+
+308
+00:15:49,800 --> 00:15:52,949
+value is one which is what is being
+
+309
+00:15:52,949 --> 00:15:56,310
+returned here. For example if you return
+
+310
+00:15:56,310 --> 00:16:02,279
+Seven and run again it's going to say the
+
+311
+00:16:02,279 --> 00:16:06,570
+function value is 7. And take care to see
+
+312
+00:16:06,570 --> 00:16:08,760
+the syntax here it might be corrected to
+
+313
+00:16:08,760 --> 00:16:11,639
+some people but it is just a way to put
+
+314
+00:16:11,639 --> 00:16:13,980
+this things on one line and it makes
+
+315
+00:16:13,980 --> 00:16:16,709
+things a little bit easier to see. For
+
+316
+00:16:16,709 --> 00:16:18,690
+now this covers all we set out to do in
+
+317
+00:16:18,690 --> 00:16:20,699
+this lecture. I hope you now have a
+
+318
+00:16:20,699 --> 00:16:23,100
+pretty good idea of the data types that
+
+319
+00:16:23,100 --> 00:16:25,560
+are available for you to work with in
+
+320
+00:16:25,560 --> 00:16:28,260
+qml and how you can use some of these
+
+321
+00:16:28,260 --> 00:16:30,870
+data types to affect the code and make
+
+322
+00:16:30,870 --> 00:16:33,630
+things a little bit neater. In the next
+
+323
+00:16:33,630 --> 00:16:35,579
+lecture we are going to explore a very
+
+324
+00:16:35,579 --> 00:16:39,120
+strong concept in qml which is property
+
+325
+00:16:39,120 --> 00:00:00,000
+binding. I'll see you in the next lecture.
+

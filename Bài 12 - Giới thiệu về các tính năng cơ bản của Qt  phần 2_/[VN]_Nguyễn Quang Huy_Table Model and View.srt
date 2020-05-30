@@ -1,0 +1,200 @@
+﻿1
+00:00:02,180 --> 00:00:08,790
+Table model and view. Trong video này chúng ta sẽ tìm hiểu về
+
+2
+00:00:08,910 --> 00:00:17,720
+QSqlTableModel mà dùng để cung cấp một mẫu dữ liệu cho một bảng cơ sở dữ liệu và QTableView mà hiển thị
+
+3
+00:00:17,810 --> 00:00:29,310
+các đối tượng dữ liệu trong bảng. Hãy khởi động qt creator và tạo một dự án ứng dụng tiện ích qt mới.
+
+4
+00:00:29,450 --> 00:00:36,000
+Thêm file dự án, trong trường hợp các bạn quên, nó là file có đuôi .pro
+
+5
+00:00:36,470 --> 00:00:44,870
+và SqlModel vào vùng thiết lập của qt, điều này cho phép chúng ta sử dụng QSqlModel mà
+
+6
+00:00:44,870 --> 00:00:53,220
+cần thiết cho QSqlTableModel. Trước tiên là Ui, bây giờ nếu các bạn ấn đúp vào file mainwindow.ui
+
+7
+00:00:53,220 --> 00:00:59,720
+và chuyển hướng đến trang thái thiết kế. Các bạn có thể tìm thấy tiện ích bảng,
+
+8
+00:01:02,850 --> 00:01:04,360
+hãy chú ý đến các tiện ích.
+
+9
+00:01:04,500 --> 00:01:17,060
+Nó là tiện ích "Table View" mà có phụ thuộc vào mẫu chứ không phải table widget mà phụ thuộc đối tượng. Cho nên nếu các bạn
+
+10
+00:01:17,060 --> 00:01:24,760
+kéo tiện ích Table View vào khung nhìn và thay đổi bố cục là tiện ích teung tâm (central widget) để cho tiện ích
+
+11
+00:01:24,820 --> 00:01:28,870
+Table View có thể sử dụng hết tất cả chỗ trống.
+
+12
+00:01:29,090 --> 00:01:37,900
+Sau đó ở bên trong file mainwindow.h khai báo các hàm thuộc tính peivate initDb
+
+13
+00:01:37,930 --> 00:01:44,070
+và initModel. Chúng sẽ khởi tạo liên kết cơ sở dũ liệu sql và
+
+14
+00:01:44,110 --> 00:01:46,350
+QSqlTableModel theo thứ tự.
+
+15
+00:01:48,280 --> 00:01:52,960
+Hơn nữa initModel sẽ trả về một con trỏ cho QSqlTableModel.
+
+16
+00:01:57,660 --> 00:02:05,370
+Trong hàm tạo của cửa sổ chính trong file đuôi cpp, chúng ta trước tiên gọi đến initDb để khởi tạo kết nối
+
+17
+00:02:05,370 --> 00:02:06,650
+cơ sở dữ liệu.
+
+18
+00:02:06,960 --> 00:02:11,360
+Sau đó chúng ta lấy con trỏ QSqlTableModel cho initModel.
+
+19
+00:02:14,950 --> 00:02:15,850
+Để cho tableview
+
+20
+00:02:15,880 --> 00:02:17,590
+sử dụng mẫu này
+
+21
+00:02:17,860 --> 00:02:20,510
+các bạn chỉ cần gọi phương thức setModel,
+
+22
+00:02:20,560 --> 00:02:25,890
+đơn giản thế thôi. mọi người sẽ xem phần định nghĩa của initDb.
+
+23
+00:02:25,960 --> 00:02:33,670
+Hãy chắc tàng các bạn thêm đầu mục QSqlDatabase và QSqlQuery, chúng cần thiết để
+
+24
+00:02:33,670 --> 00:02:43,360
+tạo một đối tượng QSqlDatabase và thực hiện các câu lệnh Sql. Trong initDb chúng ta đầu tiên cần tạo một
+
+25
+00:02:43,360 --> 00:02:52,510
+đối tượng QSqlDatabase bằng cách gọi hàm thuộc tính cố định addDatabase, biến là một
+
+26
+00:02:52,690 --> 00:02:53,190
+kiểu QSqlDatabase.
+
+27
+00:02:53,230 --> 00:03:02,720
+Ở đây là SQLite vì thế chúng ta không cần biến thứ hai mà chình làm kết nói cơ sở dữ liệu
+
+28
+00:03:02,750 --> 00:03:11,620
+và kết nối cơ sở dữ liệu này sẽ là kết nối cơ sở dữ liệu mặc định. Sau đó chúng ta gọi phương thức setDatabaseName
+
+29
+00:03:13,440 --> 00:03:17,250
+để đặt SQLite như một cơ sở dữ liệu trong bộ nhớ.
+
+30
+00:03:17,450 --> 00:03:21,250
+Chúng ta sau đó mở kết nối này và thực hiện vài câu lệnh Sql cơ bản.
+
+31
+00:03:21,250 --> 00:03:28,300
+Tạo một bảng gọi là price và chèn vào trong bảng một vài hàng.
+
+32
+00:03:28,460 --> 00:03:35,500
+Nói cách khác hàm này tạo một kết nối cơ sở dữ liệu đơn giản để thêm vào cơ sở dữ liệu SQLite trong bộ nhớ
+
+33
+00:03:36,900 --> 00:03:41,450
+và tạo một bảng cơ sở dữ liệu chúng ta sẽ sử dụng sau này.
+
+34
+00:03:41,450 --> 00:03:46,490
+Bây giờ chuyển qua hàm initModel, trong hàm này
+
+35
+00:03:47,000 --> 00:03:50,580
+chúng ta trước tiên tạo một hằng QSqlTableModel.
+
+36
+00:03:50,930 --> 00:03:59,850
+Ở đây chúng ta không đưa vào tham số thứ hai cho hàm tạo này mà chính là kiểu của có sở dữ liệu QSql cho nên mẫu
+
+37
+00:03:59,900 --> 00:04:06,780
+sử dụng kết nối cơ sở dữ liệu mặc định mà chúng ta vừa tạo ở trong initDb.
+
+38
+00:04:07,000 --> 00:04:12,140
+Sau đó chúng ta gọi setTable để đặt bảng cơ sở dữ liệu mà nó sẽ đọc.
+
+39
+00:04:12,160 --> 00:04:19,230
+SAu đó chúng ta gọi select để lấy tất cả dữ liệu từ bảng cơ sở dữ liệu và đẩy
+
+40
+00:04:19,430 --> 00:04:20,850
+chúng vào mẫu này.
+
+41
+00:04:24,110 --> 00:04:29,540
+Cuối cùng chúng ta sử dụng phương thức setHeaderData để tạo các đầu đề cho bảng.
+
+42
+00:04:29,750 --> 00:04:32,110
+Sau đó chúng ta trả về con trỏ này.
+
+43
+00:04:32,360 --> 00:04:40,660
+Nếu các bạn xem lại hàm tạo, nó sẽ dễ hiểu hơn rất nhiều rằng initDb tạo ra cơ sở dữ liệu
+
+44
+00:04:40,660 --> 00:04:44,240
+nền tảng, rằng initModel tạo ra mẫu dữ liệu.
+
+45
+00:04:44,470 --> 00:04:52,460
+Và cuối cùng chúng ta sử dụng xác định mẫu để cho tiện ích tableview truy cập dữ liệu từ mẫu.
+
+46
+00:04:52,570 --> 00:04:59,400
+Và cuối cùng chúng ta sử dụng xác định mẫu để cho tiện ích tableview truy cập dữ liệu từ mẫu.
+
+47
+00:04:59,640 --> 00:05:02,080
+Bây giờ nếu các bạn đóng gói và chạy ứng dụng
+
+48
+00:05:11,820 --> 00:05:16,780
+các bạn có thể thấy một bảng được hiển thị trong cửa sổ, nó hiển thị tất cả dữ liệu từ cơ sở dữ liệu.
+
+49
+00:05:22,380 --> 00:05:23,930
+Trong video tiếp theo
+
+50
+00:05:24,380 --> 00:05:26,700
+các bạn sẽ học về danh sách mẫu và view.
+

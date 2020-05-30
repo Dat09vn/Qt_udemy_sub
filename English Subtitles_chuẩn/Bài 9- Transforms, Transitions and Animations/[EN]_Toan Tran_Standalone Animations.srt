@@ -1,0 +1,436 @@
+1
+00:00:00,000 --> 00:00:02,220
+A standalone animation is an animation
+
+2
+00:00:02,220 --> 00:00:05,670
+where you specify yourself the target
+
+3
+00:00:05,670 --> 00:00:08,010
+element that is going to be animate.
+
+4
+00:00:08,010 --> 00:00:09,660
+If you remember in the last lecture,
+
+5
+00:00:09,660 --> 00:00:12,030
+we didn't do that. We just stuff the
+
+6
+00:00:12,030 --> 00:00:14,219
+animation in a rectangle component and
+
+7
+00:00:14,219 --> 00:00:16,500
+we say what property we want to animate.
+
+8
+00:00:16,500 --> 00:00:18,510
+We're going to do things differently in this lecture.
+
+9
+00:00:18,510 --> 00:00:20,970
+Let's go to Qt Creator and do that.
+
+10
+00:00:20,970 --> 00:00:24,000
+Here we are in Qt Creator.
+
+11
+00:00:24,000 --> 00:00:25,859
+We're going to create our new project.
+
+12
+00:00:25,859 --> 00:00:28,920
+It's a Qt Quick Application.
+
+13
+00:00:28,920 --> 00:00:31,679
+We call it 'StandaloneAnimationDemo'.
+
+14
+00:00:31,679 --> 00:00:35,809
+Save it in the usual location, click next, do the usual
+
+15
+00:00:35,809 --> 00:00:40,890
+choose your kit here and finish.
+
+16
+00:00:40,890 --> 00:00:47,700
+We want to change the title here.
+
+17
+00:00:47,700 --> 00:00:49,980
+And we want to do exactly what we did in the last lecture.
+
+18
+00:00:49,980 --> 00:00:51,719
+But do things a little bit differently.
+
+19
+00:00:51,719 --> 00:00:53,910
+We're going to put in our
+
+20
+00:00:53,910 --> 00:00:58,350
+container rectangle. ID is going to be
+
+21
+00:00:58,350 --> 00:01:05,750
+'containerRectId'. It's going to fill the 'parent'
+
+22
+00:01:05,750 --> 00:01:13,010
+and it's going to be 'beige' background.
+
+23
+00:01:13,010 --> 00:01:14,939
+Inside we're going to have another rectangle.
+
+24
+00:01:14,939 --> 00:01:21,560
+ID is going to be 'containedRectId'.
+
+25
+00:01:23,390 --> 00:01:27,360
+Width's going to be 100, height is
+
+26
+00:01:27,360 --> 00:01:31,470
+going to be 100. The color is going to be
+
+27
+00:01:31,470 --> 00:01:35,250
+dodger blue and it is going to start at
+
+28
+00:01:35,250 --> 00:01:40,280
+the x-value of 50 and the y-value of 50.
+
+29
+00:01:40,280 --> 00:01:44,790
+Now we want to specify our animation.
+
+30
+00:01:44,790 --> 00:01:50,670
+We're going to say 'NumberAnimation'.
+
+31
+00:01:50,670 --> 00:01:53,490
+The element that we want to animate is this rectangle here
+
+32
+00:01:53,490 --> 00:01:56,280
+and we specify it using
+
+33
+00:01:56,280 --> 00:01:59,540
+the 'target' property. So we can say 'target'
+
+34
+00:01:59,540 --> 00:02:04,860
+'containedRectId'. This is our target, the
+
+35
+00:02:04,860 --> 00:02:07,350
+property that we want to animate.
+
+36
+00:02:07,350 --> 00:02:10,679
+You specify it using the 'property' property.
+
+37
+00:02:10,679 --> 00:02:13,680
+You specify x in quotes like this. We want
+
+38
+00:02:13,680 --> 00:02:17,040
+to animate the x-axis of this rectangle
+
+39
+00:02:17,040 --> 00:02:20,430
+and we specify the usual. The duration
+
+40
+00:02:20,430 --> 00:02:23,069
+is going to be two seconds and we want
+
+41
+00:02:23,069 --> 00:02:28,680
+to animate to the location of 530.
+
+42
+00:02:28,680 --> 00:02:30,750
+Okay we have our animation. Let's run the application
+
+43
+00:02:30,750 --> 00:02:34,290
+and see what we have.
+
+44
+00:02:34,290 --> 00:02:36,989
+The first thing you see is that unlike the
+
+45
+00:02:36,989 --> 00:02:38,760
+animations that we did in the last
+
+46
+00:02:38,760 --> 00:02:41,489
+lecture, this one doesn't start
+
+47
+00:02:41,489 --> 00:02:43,829
+automatically. You have to start it
+
+48
+00:02:43,829 --> 00:02:46,950
+yourself explicitly. Let's come back to the code
+
+49
+00:02:46,950 --> 00:02:49,859
+and we want to put in a MouseArea 
+
+50
+00:02:49,859 --> 00:02:52,049
+that is going to allow us to start the animation.
+
+51
+00:02:52,049 --> 00:02:54,540
+We're going to go down the rectangle,
+
+52
+00:02:54,540 --> 00:02:58,980
+say MouseArea and 'anchors.fill: parent'.
+
+53
+00:02:58,980 --> 00:03:01,680
+We want it to fill the beige rectangle
+
+54
+00:03:01,680 --> 00:03:08,400
+and when it is pressed, we want
+
+55
+00:03:08,400 --> 00:03:11,430
+to do something and we want to do
+
+56
+00:03:11,430 --> 00:03:15,870
+something when it is released. We want to
+
+57
+00:03:15,870 --> 00:03:24,510
+give this animation an ID. We call it 'mXAnimationId',
+
+58
+00:03:24,510 --> 00:03:27,449
+and when we press we want
+
+59
+00:03:27,449 --> 00:03:30,239
+to start the animation. So you can copy
+
+60
+00:03:30,239 --> 00:03:36,049
+the ID here and say 'start' like this and
+
+61
+00:03:36,049 --> 00:03:38,669
+stop the animation when you release your
+
+62
+00:03:38,669 --> 00:03:41,470
+mouse, we're going to
+
+63
+00:03:41,470 --> 00:03:42,650
+stop the animation.
+
+64
+00:03:42,650 --> 00:03:46,319
+Let's run and see if our logic here
+
+65
+00:03:46,319 --> 00:03:46,739
+works.
+
+66
+00:03:46,739 --> 00:03:52,349
+I press, the animation goes. I release, the
+
+67
+00:03:52,349 --> 00:03:55,169
+animation stops. This is the behaviour we have.
+
+68
+00:03:55,169 --> 00:03:57,629
+And notice this syntax we are
+
+69
+00:03:57,629 --> 00:03:59,459
+using here to work with this animation.
+
+70
+00:03:59,459 --> 00:04:02,009
+This is what I want you to see.
+
+71
+00:04:02,009 --> 00:04:04,620
+Okay this animation is really independent 
+
+72
+00:04:04,620 --> 00:04:07,349
+and for it to run, you have to start it yourself.
+
+73
+00:04:07,349 --> 00:04:09,930
+You also have to specify the target element
+
+74
+00:04:09,930 --> 00:04:12,389
+that you want to animate and the
+
+75
+00:04:12,389 --> 00:04:15,030
+rest is really what we had before.
+
+76
+00:04:15,030 --> 00:04:17,940
+And you can go to the documentation as usual
+
+77
+00:04:17,940 --> 00:04:21,089
+and look at the properties that are
+
+78
+00:04:21,089 --> 00:04:23,490
+available to you when you want to work with this thing.
+
+79
+00:04:23,490 --> 00:04:25,860
+You see that it is a child
+
+80
+00:04:25,860 --> 00:04:27,370
+animation of
+
+81
+00:04:27,370 --> 00:04:30,190
+PropertyAnimation and you can see all the
+
+82
+00:04:30,190 --> 00:04:32,350
+properties that you can play with this animation.
+
+83
+00:04:32,350 --> 00:04:34,690
+The thing we just did here,
+
+84
+00:04:34,690 --> 00:04:36,520
+you can do with the other animations,
+
+85
+00:04:36,520 --> 00:04:39,190
+that we have seen as well.
+
+86
+00:04:39,190 --> 00:04:42,750
+For example, you can do a RotationAnimation.
+
+87
+00:04:42,750 --> 00:04:48,120
+Let's select it here. ID 'mRotationAnimation'.
+
+88
+00:04:48,120 --> 00:04:57,729
+I want to target 'containedRectId'.
+
+89
+00:04:57,729 --> 00:05:02,340
+The 'property' that I want to animate
+
+90
+00:05:02,340 --> 00:05:10,080
+is 'rotation'. I want it to animate upto,
+
+91
+00:05:10,080 --> 00:05:13,419
+let's say, 2000 degrees. It's going to
+
+92
+00:05:13,419 --> 00:05:16,479
+spin a couple of times and the duration
+
+93
+00:05:16,479 --> 00:05:20,860
+is going to be 2000 as well, 2 seconds.
+
+94
+00:05:20,860 --> 00:05:25,750
+We can run the application. And you see that
+
+95
+00:05:25,750 --> 00:05:29,440
+if I press, the rotation is not applied
+
+96
+00:05:29,440 --> 00:05:32,500
+and that is because we did not start this animation.
+
+97
+00:05:32,500 --> 00:05:35,229
+I just wanted you to see
+
+98
+00:05:35,229 --> 00:05:39,070
+how easy it is to forget to start these animations.
+
+99
+00:05:39,070 --> 00:05:42,550
+So you start it like this and
+
+100
+00:05:42,550 --> 00:05:50,050
+stop it like this. Now, if we run, it's
+
+101
+00:05:50,050 --> 00:05:52,570
+going to run, if we press and it's going
+
+102
+00:05:52,570 --> 00:05:55,960
+to stop if we release as usual. And this
+
+103
+00:05:55,960 --> 00:05:57,699
+is really all I've to share with you in this lecture,
+
+104
+00:05:57,699 --> 00:05:59,919
+a different way if you will
+
+105
+00:05:59,919 --> 00:06:02,699
+to work with animations by explicitly
+
+106
+00:06:02,699 --> 00:06:05,229
+specifying the 'target' and the 'property'
+
+107
+00:06:05,229 --> 00:06:08,199
+that you want to animate on QML element.
+
+108
+00:06:08,199 --> 00:06:10,180
+In the next lecture we're going to work with Easings.
+
+109
+00:06:10,180 --> 00:00:00,000
+I'll see you there.
+

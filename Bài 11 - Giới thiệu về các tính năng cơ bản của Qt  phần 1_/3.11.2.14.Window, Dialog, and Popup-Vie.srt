@@ -1,0 +1,360 @@
+﻿1
+00:00:01,670 --> 00:00:11,120
+Cửa sổ(window), hộp thoại(dialog) và Cửa sổ Popup. Trong video này, ta sẽ học về các tiện ích(widget) có sẵn trong Qt,
+
+2
+00:00:11,120 --> 00:00:18,490
+đó là MainWindow và Dialog. Sau đó ta sẽ hoc cách tạo màn hình Popup.
+
+3
+00:00:18,530 --> 00:00:24,890
+Trước tiên tôi xin nhấn mạnh thuật ngữ cửa sổ(window) ở đây thuộc về mảng giao diện người dùng
+
+4
+00:00:25,490 --> 00:00:27,980
+chứ không phải là kiểu QWindow class.
+
+5
+00:00:27,980 --> 00:00:34,650
+Class đại diện cho cửa sổ(window) trong bài học này là QMainWindow.
+
+6
+00:00:35,090 --> 00:00:36,590
+Từ giờ tôi sẽ gọi bằng tên của class là QMainWindow để phân biệt rõ hai loại.
+
+7
+00:00:36,590 --> 00:00:45,610
+Ta mở project lập trình giao diện đã làm lên hoặc
+
+8
+00:00:45,650 --> 00:00:51,630
+tạo một widget(tiện ích) project mới sử dụng class QMainWindow.
+
+9
+00:00:51,650 --> 00:00:58,320
+Ta cùng xem QMainWindow là gì và các tính năng của nó.
+
+10
+00:00:58,360 --> 00:01:00,560
+Click đúp chuột trái vào file mainwindow.ui.
+
+11
+00:01:00,640 --> 00:01:03,070
+rồi chuyển sang chế độ thiết kế(design).
+
+12
+00:01:03,940 --> 00:01:14,170
+Như bạn thấy là QMainWindow bao gồm một bố cục(layout) chính để có thể chèn thêm thanh công cụ(tool bar), thanh trạng thái(status bar) và thanh menu(menu bar).
+
+13
+00:01:14,170 --> 00:01:23,180
+Nếu đã thêm đầy đủ các thành phần kể trên, thì QMainWindow sẽ thành một màn hình ứng dụng (desktop window) hoàn chỉnh.
+
+14
+00:01:23,230 --> 00:01:25,420
+Nếu để mặc định thì nó sẽ không có thanh công cụ(tool bar) và thanh menu(menu bar).
+
+15
+00:01:25,600 --> 00:01:29,470
+Tôi sẽ dạy bạn cách thêm hành động(action) cho thanh công cụ(tool bar) và thanh menu(menu bar).
+
+16
+00:01:29,830 --> 00:01:34,180
+Khi click đúp vào thẻ placeholder "type here".
+
+17
+00:01:34,390 --> 00:01:36,610
+bạn có thể chèn thêm menu mới.
+
+18
+00:01:43,200 --> 00:01:49,770
+Sau khi chèn xong, click vào menu đó, rồi click đúp vào thẻ placeholder "type here"
+
+19
+00:01:50,010 --> 00:01:58,220
+để chèn hành động(action) cho menu.
+
+20
+00:01:58,260 --> 00:02:04,050
+Khi hành động đã được tạo, nó sẽ được hiển thị trong mục soạn thảo hành động(action editor)
+
+21
+00:02:04,050 --> 00:02:05,410
+bạn có thể kéo thả hành động(action) vào thanh công cụ(tool bar).
+
+22
+00:02:09,870 --> 00:02:12,070
+Bạn không bắt buộc phải tạo menu action trước thì mới tạo được action cho thanh công cụ(tool bar)
+
+23
+00:02:12,110 --> 00:02:20,580
+Trong mục soạn thảo action. nhấn nút "new" để tạo action.
+
+24
+00:02:20,610 --> 00:02:27,640
+sau đó bạn có thể dùng nó luôn.
+
+25
+00:02:27,660 --> 00:02:34,020
+Giờ ta tạo một đối tượng.
+
+26
+00:02:34,030 --> 00:02:37,630
+Giờ ta tạo một project mới.
+
+27
+00:02:45,510 --> 00:02:49,690
+Chọn QDialog làm class chính.
+
+28
+00:02:53,440 --> 00:03:01,120
+Ta cùng xem hộp thoại(dialog) là gì nhé. Chuyển sang chế độ thiết kế(design) và mở file dialog.ui
+
+29
+00:03:01,720 --> 00:03:10,890
+Hộp thoại(dialog) cũng là một cửa sổ(window) nhưng ít tính năng hơn QMainWindow.
+
+30
+00:03:11,470 --> 00:03:14,500
+Nó không có thanh menu, thanh công cụ hay thanh trạng thái.
+
+31
+00:03:14,730 --> 00:03:21,790
+Nên nó hay được áp dụng cho các tác vụ tạm thời.
+
+32
+00:03:21,790 --> 00:03:27,700
+Chú ý nếu hộp thoại QDialog là con của một màn hình nào đó, khi hiển thị,
+
+33
+00:03:27,850 --> 00:03:29,250
+nó sẽ hiển thị đè lên màn hình cha
+
+34
+00:03:29,360 --> 00:03:37,230
+ở ngay vị trí trung tâm. Đó gọi là tính năng "modal" của QDialog.
+
+35
+00:03:37,690 --> 00:03:46,360
+Bạn có thể thấy tính năng "modal" ở phần QDialog khi kéo bảng tính năng xuống.
+
+36
+00:03:46,360 --> 00:03:51,820
+Hộp thoại(dialog) với tính năng modal sẽ chặn thao tác người dùng trên các màn hình khác của ứng dụng.
+
+37
+00:03:51,850 --> 00:03:58,390
+Ngược lại, Hộp thoại không có tính năng modal(modaless dialog) hoạt động đôc lập với các màn hình khác của ứng dụng(không chặn thao tác người dùng trên màn hình khác).
+
+38
+00:03:59,430 --> 00:04:09,550
+Nói chung QDialog và QMainWindow đều là màn hình(window). Ta cũng có thể dùng QDialog để làm màn hình Popup.
+
+39
+00:04:09,610 --> 00:04:14,520
+Màn hình Popup(Popup window) cở bản cũng là một hộp thoại(dialog) nhưng cài đặt đơn giản hơn.
+
+40
+00:04:14,620 --> 00:04:17,620
+Học lý thuyết đủ rồi.
+
+41
+00:04:17,620 --> 00:04:18,930
+Ta vào ví dụ cụ thể.
+
+42
+00:04:19,710 --> 00:04:22,020
+Tạm đóng project làm hộp thoại này lại.
+
+43
+00:04:30,320 --> 00:04:38,960
+Mở lại project mainwindow và sửa file ui.
+
+44
+00:04:38,990 --> 00:04:42,010
+Trước tiên, cài đặt hành động(action) hiển thị màn hình Popup.
+
+45
+00:04:42,330 --> 00:04:47,920
+Click đúp vào hành động(action) để đổi tên.
+
+46
+00:04:48,180 --> 00:04:49,770
+Click đúp vào hành động(action)
+
+47
+00:04:49,800 --> 00:04:57,330
+để đổi tên.
+
+48
+00:04:57,580 --> 00:05:01,330
+Đổi tên xong thì lưu lại và mở lại file mainwindow.
+
+49
+00:05:05,070 --> 00:05:06,600
+Để xử lý hành động(action)
+
+50
+00:05:06,620 --> 00:05:08,170
+ta định nghĩa một slot.
+
+51
+00:05:20,610 --> 00:05:25,290
+Như bạn đã biết, tín hiệu(signal) truyền đi của hành động(action) cần phải được kết nối tới slot.
+
+52
+00:05:39,860 --> 00:05:41,140
+Khi người dùng nhấn chuột hay gõ bàn phím, thì hành động sẽ phát đi một
+
+53
+00:05:43,910 --> 00:06:00,540
+tín hiệu(signal).
+
+54
+00:06:00,590 --> 00:06:11,730
+Ta định nghĩa cho slot.
+
+55
+00:06:12,010 --> 00:06:17,130
+Ta có thể dùng class QDialog để tạo màn hình Popup.
+
+56
+00:06:20,120 --> 00:06:20,970
+Khi slot gọi hàm
+
+57
+00:06:21,080 --> 00:06:22,550
+exec().
+
+58
+00:06:27,590 --> 00:06:32,230
+Khi slot gọi hàm excec() thì màn hình Popup sẽ hiển thị đè lên trên ứng dụng.
+
+59
+00:06:36,160 --> 00:06:39,690
+Khi người dùng đóng màn hình Popup lại thì mới có thể thao tác tiếp trên màn hình khác.
+
+60
+00:06:43,850 --> 00:06:46,980
+Để kiểm tra xem màn hình thông báo đã đóng chưa, ta sẽ in thông báo ra màn hình.
+
+61
+00:06:54,670 --> 00:07:04,250
+Giờ build và chạy chương trình.
+
+62
+00:07:04,500 --> 00:07:06,570
+Giờ build và chạy chương trình.
+
+63
+00:07:13,300 --> 00:07:14,620
+Nhấn nút ShowPopup.
+
+64
+00:07:14,990 --> 00:07:18,660
+Đó, màn hình Popup được hiển thị.
+
+65
+00:07:18,680 --> 00:07:23,180
+và ta không thể thao tác gì trên các màn hình khác của ứng dụng nữa.
+
+66
+00:07:23,420 --> 00:07:27,210
+Thông báo "onShowPopup finised"
+
+67
+00:07:27,240 --> 00:07:30,740
+vẫn chưa được hiển thị.
+
+68
+00:07:30,890 --> 00:07:35,850
+Chỉ khi ta đóng màn hình này lại thì thông báo mới được hiển thị.
+
+69
+00:07:40,980 --> 00:07:48,740
+Tuy nhiên, nếu bạn dùng hàm show(). Màn hình Popup sẽ không còn tính năng modal nữa(modaless dialog).
+
+70
+00:07:49,500 --> 00:07:51,850
+Hàm sẽ kết thúc luôn
+
+71
+00:07:54,200 --> 00:07:58,970
+nên ta sẽ nhận được thông báo ngay lập tức.
+
+72
+00:07:58,970 --> 00:08:06,390
+Bạn thấy đấy, thông báo "onShowPopup finished" đã được hiển thị
+
+73
+00:08:06,440 --> 00:08:07,660
+và bạn có thể thao tác trên các màn hình khác.
+
+74
+00:08:12,730 --> 00:08:17,610
+Vừa rồi tôi tạo màn hình QDialog bằng code chay.
+
+75
+00:08:17,680 --> 00:08:20,470
+Nhưng tốt nhất nên cài đặt nó trong file đuôi . ui.
+
+76
+00:08:20,530 --> 00:08:22,990
+Làm như thế nào?
+
+77
+00:08:25,010 --> 00:08:37,400
+Chuột phải vào project, chọn mục "Add new", chọn Qt, rồi chọn mục Qt Designer Form Class.
+
+78
+00:08:37,490 --> 00:08:45,020
+Tại màn hình này, bạn có thể chọn bất kỳ mẫu có sẵn nào. Ta dùng mẫu dialog without the buttons(hộp thoại không có sẵn nút).
+
+79
+00:08:46,650 --> 00:08:53,870
+Khi đã thêm mẫu này vào trong project, bạn có thể tùy chỉnh hộp thoại(dialog) trong file .ui.
+
+80
+00:08:58,050 --> 00:09:00,420
+Tùy chỉnh sao tùy bạn đó.
+
+81
+00:09:00,720 --> 00:09:04,320
+Ta tập trung vào cách sử dụng class này.
+
+82
+00:09:04,700 --> 00:09:09,820
+Mở lại file window.cpp để thay class QDialog
+
+83
+00:09:15,570 --> 00:09:20,230
+bằng class đã được tùy chỉnh của bạn.
+
+84
+00:09:27,150 --> 00:09:28,240
+Build và chạy lại chương trình.
+
+85
+00:09:35,530 --> 00:09:41,670
+Khi nhấn nút showPopup, hộp thoại(dialog) sẽ được hiển thị.
+
+86
+00:09:41,860 --> 00:09:47,510
+Bạn thấy là hôp thoại(dialog) này khác so với hộp thoại QDialog mặc định. Nó đã đươc tùy chỉnh trong file dialog.ui.
+
+87
+00:09:47,580 --> 00:09:51,860
+Trong bài học này
+
+88
+00:09:51,890 --> 00:10:00,460
+bạn đã được học cách thiết kế giao diện trên Qt, học về signal và slots, màn hình(window), hôp thoại(dialog) và màn hình Popup.
+
+89
+00:10:00,460 --> 00:10:04,930
+Ở bài học sau, bạn sẽ học tiếp tục học lập trình giao diện đó là về
+
+90
+00:10:04,990 --> 00:10:07,010
+Tiện ích(widget) và Bố cục(Layout).
+

@@ -1,0 +1,432 @@
+1
+00:00:00,000 --> 00:00:01,740
+Trong bài này, chúng ta sẽ xem 
+
+2
+00:00:01,740 --> 00:00:03,929
+cách các bạn làm việc với GridView component (thành phần hiển thị theo lưới) trong QML.
+
+3
+00:00:03,929 --> 00:00:06,180
+Đây là thành phần
+
+4
+00:00:06,180 --> 00:00:09,389
+cho phép các bạn sắp xếp các item
+
+5
+00:00:09,389 --> 00:00:12,179
+từ một mô hình theo cấu trúc dạng lưới.
+
+6
+00:00:12,179 --> 00:00:14,580
+Chúng ta sẽ mở QT Creator và thử với nó.
+
+7
+00:00:14,580 --> 00:00:17,100
+Chúng ta đang ở Qt Creator.
+
+8
+00:00:17,100 --> 00:00:19,170
+Chúng ta sẽ tạo một project (dự án) mới
+
+9
+00:00:19,170 --> 00:00:22,320
+Đây là Qt quick application (trình khởi tạo chương trình nhanh Qt),  
+
+10
+00:00:22,320 --> 00:00:24,689
+chúng ta gọi nó là 'GridViewDemo', lưu tại vị trí thông thường,
+
+11
+00:00:24,689 --> 00:00:29,490
+chọn QT version (phiên bản Qt), chọn kit (bộ hỗ trợ), và hoàn thành.
+
+12
+00:00:29,490 --> 00:00:33,630
+Các bạn sẽ muốn thay đổi tên
+
+13
+00:00:33,630 --> 00:00:39,870
+thành 'GridView Demo' ('Demo cho hiển thị theo lưới').
+
+14
+00:00:39,870 --> 00:00:42,300
+Và nếu chúng ta vào tài liệu hướng dẫn, tìm kiếm GridView,
+
+15
+00:00:42,300 --> 00:00:49,050
+chúng ta sẽ thấy rằng
+
+16
+00:00:49,050 --> 00:00:52,050
+nó hiển thị dữ liệu tạo ra từ các mô hình từ QML
+
+17
+00:00:52,050 --> 00:00:54,210
+như ListView (hiển thị dạng danh sách) và ListModel (mô hình dạng danh sách).
+
+18
+00:00:54,210 --> 00:00:57,090
+Kết quả được trả lại bởi mô hình,
+
+19
+00:00:57,090 --> 00:01:00,000
+delegate sẽ xác định cách mà dữ liệu của các bạn hiển thị
+
+20
+00:01:00,000 --> 00:01:02,910
+và dữ liệu của chúng ta sẽ được hiển thị dưới dạng lưới như thế này.
+
+21
+00:01:02,910 --> 00:01:05,790
+Okay, điều đó thật tốt. 
+
+22
+00:01:05,790 --> 00:01:07,710
+Chúng ta sẽ trở lại với đoạn mã của chúng ta bây giờ,
+
+23
+00:01:07,710 --> 00:01:11,790
+và dùng mô hình đã được chuẩn bị sẵn để tiết kiệm thời gian.
+
+24
+00:01:11,790 --> 00:01:14,490
+Đây là mô hình dạng danh sách
+
+25
+00:01:14,490 --> 00:01:17,009
+Không có gì mới ở đây. 
+
+26
+00:01:17,009 --> 00:01:19,530
+Nó chứa danh sách các thành phần và chúng ta có 2 dòng cho mỗi thành phần:
+
+27
+00:01:19,530 --> 00:01:23,159
+một chữ số - mNumber và
+
+28
+00:01:23,159 --> 00:01:26,729
+màu sắc - mColor cho vai trò này. 
+
+29
+00:01:26,729 --> 00:01:28,710
+Thật tế chúng ta có thể thu nhỏ lại
+
+30
+00:01:28,710 --> 00:01:31,530
+cho dễ đọc và thêm vào dạng hiển thị lưới.
+
+31
+00:01:31,530 --> 00:01:34,409
+ID sẽ là 'mGridViewId'.
+
+32
+00:01:34,409 --> 00:01:42,770
+Chúng ta sẽ khai báo parent.
+
+33
+00:01:42,770 --> 00:01:49,310
+model sẽ là modelId và
+
+34
+00:01:49,310 --> 00:01:52,829
+chúng ta cũng sẽ có delegate
+
+35
+00:01:52,829 --> 00:01:55,740
+như chúng ta có trong ListView.
+
+36
+00:01:55,740 --> 00:02:00,000
+Chúng ta đã chuẩn bị sẵn delegat. Ctrl+A , Ctrl+I để căn chỉnh lại.
+
+37
+00:02:00,000 --> 00:02:03,240
+Cũng không có gì đặc biệt ở đây
+
+38
+00:02:03,240 --> 00:02:07,860
+nhưng chúng ta sẽ dùng role (vai trò) trong mô hình của chúng ta
+
+39
+00:02:07,860 --> 00:02:12,480
+để đặt dự liệu trong delegate tại đây. 
+
+40
+00:02:12,480 --> 00:02:13,640
+Các bạn có thể thấy màu sắc
+
+41
+00:02:13,640 --> 00:02:16,970
+đến từ danh sách các thành phần tại đây.
+
+42
+00:02:16,970 --> 00:02:19,850
+Đây là role (vai trò) cho màu sắc
+
+43
+00:02:19,850 --> 00:02:22,520
+và chúng ta cũng sẽ hiển thị 
+
+44
+00:02:22,520 --> 00:02:26,000
+các chữ số từ mô hình.
+
+45
+00:02:26,000 --> 00:02:28,790
+Các bạn có thể thấy các chữ số vai trò mà chúng ta dùng tại đây.
+
+46
+00:02:28,790 --> 00:02:31,490
+Còn lại thì chúng ta đã thấy trước đây.
+
+47
+00:02:31,490 --> 00:02:35,030
+Chúng ta sẽ canh giữa văn bản, 
+
+48
+00:02:35,030 --> 00:02:37,490
+và phông chữ sẽ được lấy từ đây.
+
+49
+00:02:37,490 --> 00:02:40,790
+Giờ chúng ta sẽ chạy thử chương trình và xem kết quả
+
+50
+00:02:40,790 --> 00:02:44,209
+Mm-hmm. Đây là cách xem dạng lưới của chúng ta.
+
+51
+00:02:44,209 --> 00:02:46,580
+Chúng ta có thể thấy rằng chiều rộng được lấp đầy bởi các hình vuông như thế này,
+
+52
+00:02:46,580 --> 00:02:49,640
+nhưng nếu chúng ta giảm chiều rộng
+
+53
+00:02:49,640 --> 00:02:53,420
+các hình vuông sẽ nhảy xuống hàng dưới
+
+54
+00:02:53,420 --> 00:02:55,430
+cho đến khi dữ liệu lấp đầy các khoảng trống.
+
+55
+00:02:55,430 --> 00:02:58,250
+Ok. Đây là hành vi
+
+56
+00:02:58,250 --> 00:02:59,980
+mà các bạn có với chế độ xem dạng lưới.
+
+57
+00:02:59,980 --> 00:03:02,870
+Có vài xác lập các bạn có thể thực hiện 
+
+58
+00:03:02,870 --> 00:03:05,300
+cho chế độ hiển thị dạng lưới của mình. 
+
+59
+00:03:05,300 --> 00:03:08,209
+Ví dụ như các bạn có thể điều chỉnh hướng sắp xếp của bố cục.
+
+60
+00:03:08,209 --> 00:03:11,090
+Ngay bây giờ, nó đang đi từ trái sang phải, nhưng
+
+61
+00:03:11,090 --> 00:03:13,870
+chúng ta có thể khiến nó thành phải sang trái.
+
+62
+00:03:13,870 --> 00:03:16,790
+Okay, khi chúng ta làm thế, chúng ta
+
+63
+00:03:16,790 --> 00:03:19,760
+sẽ đếm từ 1 đến 3 từ phải sang trái.
+
+64
+00:03:19,760 --> 00:03:22,700
+Thử nó nào.
+
+65
+00:03:22,700 --> 00:03:25,579
+Trở lại đoạn mã của chúng ta và
+
+66
+00:03:25,579 --> 00:03:31,930
+khai báo layoutDirection (hướng bố cục) là Qt.RightToLeft (từ phải sang trái) như thế này.
+
+67
+00:03:31,930 --> 00:03:38,810
+Chạy thử nào. Mm-hmm
+
+68
+00:03:38,810 --> 00:03:42,950
+1 2 3 từ phải sang trái và đây không phải là tất cả.
+
+69
+00:03:42,950 --> 00:03:45,320
+Các bạn có thể xem lại tài liệu hướng dẫn,
+
+70
+00:03:45,320 --> 00:03:48,709
+kiếm GridView, 
+
+71
+00:03:48,709 --> 00:03:50,420
+và các bạn có thể thấy hàng loạt thuộc tính mà các bạn có thể dùng
+
+72
+00:03:50,420 --> 00:03:53,209
+và 1 trong số chúng là layoutDirection
+
+73
+00:03:53,209 --> 00:03:55,579
+và nó cũng sẽ cho chúng ta biết
+
+74
+00:03:55,579 --> 00:03:58,549
+chúng ta cần khai báo nó như thế nào.
+
+75
+00:03:58,549 --> 00:04:00,290
+Nếu các bạn nhìn ở đây, chúng ta cũng có 1 thuộc tính khác gọi là 'flow' ('dòng chảy)
+
+76
+00:04:00,290 --> 00:04:03,769
+và chúng ta sẽ dùng nó để kiểm soát dòng chảy của các ô.
+
+77
+00:04:03,769 --> 00:04:07,220
+Okay, hiện tại nó đang chảy
+
+78
+00:04:07,220 --> 00:04:10,790
+từ trái sang phải như mặc định,
+
+79
+00:04:10,790 --> 00:04:13,910
+nhưng chúng ta có thể khiến nó chảy từ trên xuống dưới.
+
+80
+00:04:13,910 --> 00:04:18,350
+Trở lại đoạn mã của chúng ta và
+
+81
+00:04:18,350 --> 00:04:23,830
+thêm vào thuộc tính flow với giá trị
+
+82
+00:04:23,830 --> 00:04:27,660
+'GridView.FlowTopToBottom'
+
+83
+00:04:27,660 --> 00:04:33,039
+Chạy chương trình và các bạn có thể thấy
+
+84
+00:04:33,039 --> 00:04:35,830
+1 2 3 từ trên xuống dưới.
+
+85
+00:04:35,830 --> 00:04:38,020
+Nếu không có xác lập thuộc tính flow, nó sẽ đi từ trái sang phải
+
+86
+00:04:38,020 --> 00:04:41,169
+và được gói lại theo dòng.
+
+87
+00:04:41,169 --> 00:04:43,630
+Nhưng giờ nó đi từ trên xuống dưới
+
+88
+00:04:43,630 --> 00:04:46,840
+và đượ gói lại theo cột trong khi đi từ phải sang trái.
+
+89
+00:04:46,840 --> 00:04:49,449
+Tôi hy vọng điều này có ý nghĩa.
+
+90
+00:04:49,449 --> 00:04:52,690
+Chúng ta có thể xem lại điều này
+
+91
+00:04:52,690 --> 00:04:55,539
+vì đôi khi, nó thật dễ để quên.
+
+92
+00:04:55,539 --> 00:04:58,569
+Và các bạn có thể thấy rằng
+
+93
+00:04:58,569 --> 00:05:01,900
+1 2 3 từ trái sang phải.
+
+94
+00:05:01,900 --> 00:05:03,940
+Các bạn có thể thử với các thuộc tính còn lại để xem chúng làm được gì.
+
+95
+00:05:03,940 --> 00:05:06,280
+Và nếu cạc bạn cần dùng chúng,
+
+96
+00:05:06,280 --> 00:05:09,039
+chúng luôn sẵn sàng để dùng.
+
+97
+00:05:09,039 --> 00:05:11,710
+Và đây là tất cả những gì mà tôi muốn
+
+98
+00:05:11,710 --> 00:05:13,599
+chia sẻ về thành phần hiện thị theo lưới.
+
+99
+00:05:13,599 --> 00:05:16,300
+Rất dễ để sử dụng nó 
+
+100
+00:05:16,300 --> 00:05:18,819
+và nó cho phép chúng ta sắp xếp bố cục dự liệu
+
+101
+00:05:18,819 --> 00:05:21,729
+theo dạng lưới. 
+
+102
+00:05:21,729 --> 00:05:23,500
+Và các bạn có nhiều thuộc tính để sử dụng
+
+103
+00:05:23,500 --> 00:05:26,319
+để đạt được thiết kế như mong muốn.
+
+104
+00:05:26,319 --> 00:05:28,479
+Trong bài giảng tới, chúng ta sẽ tìm hiểu vể 
+
+105
+00:05:28,479 --> 00:05:30,969
+thành phần XmlListModel và 
+
+106
+00:05:30,969 --> 00:05:33,430
+và xem làm thế nào các bạn có thể dùng dữ liệu 
+
+107
+00:05:33,430 --> 00:05:34,330
+từ XML với nó.
+
+108
+00:05:34,330 --> 00:00:00,000
+Hẹn gặp lại các bạn ở bài sau.
+

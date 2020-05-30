@@ -1,0 +1,760 @@
+1
+00:00:00,000 --> 00:00:01,890
+Trong bài này, ta sẽ cùng nhau thảo luận về 
+
+2
+00:00:01,890 --> 00:00:05,210
+JavaScript trong QML. 
+
+3
+00:00:05,210 --> 00:00:08,309
+JavaScript là thành phần đầu tiên trong QML. 
+
+4
+00:00:08,309 --> 00:00:11,639
+JavaScript có khá nhiều điểm tương đồng với  
+
+5
+00:00:11,639 --> 00:00:13,799
+JavaScript trong
+
+6
+00:00:13,799 --> 00:00:17,760
+các trình duyệt hay NodeJs, 
+
+7
+00:00:17,760 --> 00:00:20,160
+tuy nhiên, JavaScript trong QML có 
+
+8
+00:00:20,160 --> 00:00:23,369
+một vài đặc điểm khác biệt. JavaScript trong QML cài đặt 
+
+9
+00:00:23,369 --> 00:00:26,990
+theo chuẩn ECMA-Script ES55, đây là một chuẩn của  
+
+10
+00:00:26,990 --> 00:00:29,760
+JavaScript được triển khai ở hầu hết các 
+
+11
+00:00:29,760 --> 00:00:32,700
+trình duyệt hiện nay như Firefox, Chrome,
+
+12
+00:00:32,700 --> 00:00:35,430
+Safari. Chuẩn này cho phép ta dùng 
+
+13
+00:00:35,430 --> 00:00:38,460
+các đối tượng JavaScript quen thuộc như Math (toán học)
+
+14
+00:00:38,460 --> 00:00:41,190
+hay các đối tượng khác mà ta sẽ được học trong bài này. 
+
+15
+00:00:41,190 --> 00:00:44,550
+Ta cũng có Đối tượng toàn cục QML, 
+
+16
+00:00:44,550 --> 00:00:46,860
+bao gồm đối tượng Qt toàn cục Qt mà ta đã được học.
+
+17
+00:00:46,860 --> 00:00:49,440
+Ta cũng có rất nhiều 
+
+18
+00:00:49,440 --> 00:00:51,420
+đối tượng và hàm JavaScript
+
+19
+00:00:51,420 --> 00:00:54,660
+mà ta có thể sử dụng để dễ dàng 
+
+20
+00:00:54,660 --> 00:00:57,360
+khi thêm tương tác vào 
+
+21
+00:00:57,360 --> 00:01:00,809
+ QML. Nhiệm vụ chính của JavaScript 
+
+22
+00:01:00,809 --> 00:01:03,270
+là thêm một tầng tương tác vào QML, 
+
+23
+00:01:03,270 --> 00:01:06,659
+tương tự như JavaScript đối với
+
+24
+00:01:06,659 --> 00:01:10,200
+ HTML và CSS. Mặc dù 
+
+25
+00:01:10,200 --> 00:01:12,390
+JavaScript trong QML 
+
+26
+00:01:12,390 --> 00:01:14,040
+khá giống với những gì mà ta thấy trong các 
+
+27
+00:01:14,040 --> 00:01:16,380
+trình duyệt, tuy nhiên, ta cũng cần phải 
+
+28
+00:01:16,380 --> 00:01:18,479
+chú ý đến một số điểm khác biệt. 
+
+29
+00:01:18,479 --> 00:01:21,299
+Ví dụ như, JavaScript Engine trong QML 
+
+30
+00:01:21,299 --> 00:01:23,850
+không cài đặt DOM API.
+
+31
+00:01:23,850 --> 00:01:26,400
+JavaScript theo chuẩn ES5 cho phép ta dùng 
+
+32
+00:01:26,400 --> 00:01:29,009
+ các đối tượng như Math (toán học), Array (Mảng) 
+
+33
+00:01:29,009 --> 00:01:31,680
+và nhiều đối tượng khác mà ta sẽ được thấy sau đây. 
+
+34
+00:01:31,680 --> 00:01:33,860
+Một điều mà ta cần chú ý, đó là 
+
+35
+00:01:33,860 --> 00:01:36,659
+JavaScript không có tài liệu chính thức
+
+36
+00:01:36,659 --> 00:01:38,970
+trên trang chủ Qt (Qt documentation). Do đó, nếu ta muốn 
+
+37
+00:01:38,970 --> 00:01:41,280
+tìm kiếm các định nghĩa như Date (ngày) trong trang chủ Qt, 
+
+38
+00:01:41,280 --> 00:01:43,320
+các thông tin mà ta tìm được sẽ rất giới hạn, 
+
+39
+00:01:43,320 --> 00:01:46,049
+và ta sẽ phải tìm
+
+40
+00:01:46,049 --> 00:01:48,600
+tài liệu JavaScript online khác. 
+
+41
+00:01:48,600 --> 00:01:50,880
+Tôi sẽ cho các bạn xem một tài liệu online. 
+
+42
+00:01:50,880 --> 00:01:52,860
+Tài liệu này rất hữu ích.
+
+43
+00:01:52,860 --> 00:01:56,009
+Ok. Đây rồi. Đây là website dành cho lập trình viên
+
+44
+00:01:56,009 --> 00:01:59,369
+về JavaScript. 
+
+45
+00:01:59,369 --> 00:02:01,920
+Website này khá là tốt. Ví dụ, nếu ta muốn tìm kiếm 
+
+46
+00:02:01,920 --> 00:02:04,020
+thông tin về Date (ngày), 
+
+47
+00:02:04,020 --> 00:02:06,210
+ta có thể đi đến các đối tượng nguyên thủy (built-in objects), 
+
+48
+00:02:06,210 --> 00:02:09,119
+và ta sẽ thấy một danh sách các đối tượng 
+
+49
+00:02:09,119 --> 00:02:10,669
+mà ta có thể tham chiếu. 
+
+50
+00:02:10,669 --> 00:02:15,140
+Ở đó, ta có đối tượng Boolean, Date (ngày), 
+
+51
+00:02:15,140 --> 00:02:16,970
+và nhiều đối tượng khác. Từ đây, ta có thể  
+
+52
+00:02:16,970 --> 00:02:18,950
+tìm kiếm những gì mà ta đang muốn tìm. 
+
+53
+00:02:18,950 --> 00:02:22,060
+Nếu ta click vào Date, 
+
+54
+00:02:22,060 --> 00:02:24,349
+ta sẽ có nhiều cách khác nhau để sử dụng 
+
+55
+00:02:24,349 --> 00:02:26,450
+sử dụng Date. Ta có được ví dụ ở đây. 
+
+56
+00:02:26,450 --> 00:02:28,790
+Ta có thể chạy ví dụ này bằng cách 
+
+57
+00:02:28,790 --> 00:02:30,080
+click vào Run. 
+
+58
+00:02:30,080 --> 00:02:32,510
+Về cơ bản, đây là một cách khá tốt để kiểm tra các đoạn mã
+
+59
+00:02:32,510 --> 00:02:35,030
+JavaScript. Bây giờ tôi sẽ cho các bạn thấy rõ hơn về 
+
+60
+00:02:35,030 --> 00:02:37,459
+hạn chế của tài liệu Javascript trong QML mà tôi nói lúc trước. Nếu ta đi đến phần
+
+61
+00:02:37,459 --> 00:02:42,250
+tài liệu ở đây, và tìm kiếm Date (Ngày),
+
+62
+00:02:42,250 --> 00:02:48,950
+đây là Date theo kiểu QML. Như ta thấy, ta chỉ thu được 
+
+63
+00:02:48,950 --> 00:02:51,290
+một vài thứ, và cách mà ta sử dụng thứ đó
+
+64
+00:02:51,290 --> 00:02:53,900
+trong QML. Tuy nhiên, để có được nhiều thông tin hơn,
+
+65
+00:02:53,900 --> 00:02:56,090
+ta cần phải xem đối tượng Date 
+
+66
+00:02:56,090 --> 00:02:59,480
+trong tài liệu JavaScript mà ta vừa tìm thấy ở đây. 
+
+67
+00:02:59,480 --> 00:03:02,540
+Đối tượng toàn cục QML là đối tượng mặc định 
+
+68
+00:03:02,540 --> 00:03:04,670
+mà ta sẽ bắt gặp khi 
+
+69
+00:03:04,670 --> 00:03:07,670
+viêt QML. Chú ý là 
+
+70
+00:03:07,670 --> 00:03:10,790
+khi lập trình QML, ta có thể dùng các đối tượng 
+
+71
+00:03:10,790 --> 00:03:13,940
+như console, print. Đây đều là 
+
+72
+00:03:13,940 --> 00:03:17,120
+đối tượng toàn cục trong QML.
+
+73
+00:03:17,120 --> 00:03:19,070
+Chúng bao gồm các đối tượng như đối tượng toàn cục Qt 
+
+74
+00:03:19,070 --> 00:03:21,079
+mà ta đã dùng.
+
+75
+00:03:21,079 --> 00:03:24,829
+Ta đã sử dụng phương thức Qt.quit,
+
+76
+00:03:24,829 --> 00:03:27,650
+và nhiều phương thức khác. Đối tượng toàn cục này cũng chứa các đối tượng như 
+
+77
+00:03:27,650 --> 00:03:30,170
+"print", để in ra các thông tin khi debug (tìm và sửa lỗi). 
+
+78
+00:03:30,170 --> 00:03:33,049
+Nó có một đối tượng "console"
+
+79
+00:03:33,049 --> 00:03:35,420
+mà ta sử dụng đối tượng này khá nhiều. 
+
+80
+00:03:35,420 --> 00:03:38,600
+Khi ta gõ "console", ta sẽ thu được một vài thông tin. 
+
+81
+00:03:38,600 --> 00:03:41,690
+Đối tượng toàn cục cũng có các phương thức liên quan đến dịch ngôn ngữ. 
+
+82
+00:03:41,690 --> 00:03:43,790
+tuy nhiên, ta sẽ không tìm hiểu quá kỹ vào phần này  
+
+83
+00:03:43,790 --> 00:03:46,489
+trong khóa học này. Tuy nhiên, chúng  
+
+84
+00:03:46,489 --> 00:03:48,200
+rất quan trọng khi bạn muốn ứng dụng của mình 
+
+85
+00:03:48,200 --> 00:03:51,260
+chạy bằng nhiều ngôn ngữ.
+
+86
+00:03:51,260 --> 00:03:53,390
+Đối tượng toàn cục QML cũng chứa một đối tượng 
+
+87
+00:03:53,390 --> 00:03:56,900
+mà ta gọi là XMLHttpRequest. Ta sẽ sử dụng đối tượng này 
+
+88
+00:03:56,900 --> 00:03:58,579
+trong các bài học tiếp theo để có thể lấy 
+
+89
+00:03:58,579 --> 00:04:01,040
+các dữ liệu HTTP từ Internet. 
+
+90
+00:04:01,040 --> 00:04:03,980
+Đối tượng toàn cục QML được như môi trường chính của bạn 
+
+91
+00:04:03,980 --> 00:04:07,010
+khi ta viết QML. 
+
+92
+00:04:07,010 --> 00:04:09,799
+Ta cũng có một danh sách các hàm và đối tượng 
+
+93
+00:04:09,799 --> 00:04:12,260
+của JavaScript mà ta có thể sử dụng. 
+
+94
+00:04:12,260 --> 00:04:14,810
+Theo tôi, các bạn có thể hiểu rõ hơn về phần này 
+
+95
+00:04:14,810 --> 00:04:16,850
+khi tự đọc, do đó, ta sẽ không đi quá sâu 
+
+96
+00:04:16,850 --> 00:04:19,130
+vào phần này. Về cơ bản, đây là danh sách 
+
+97
+00:04:19,130 --> 00:04:21,589
+các đối tượng và các hàm 
+
+98
+00:04:21,589 --> 00:04:23,370
+mà ta có sẵn trong JavaScript Engine
+
+99
+00:04:23,370 --> 00:04:26,400
+của QML. Ta có đối tượng toàn cục 
+
+100
+00:04:26,400 --> 00:04:28,440
+chứa các đối tượng như 
+
+101
+00:04:28,440 --> 00:04:31,260
+NaN, infinity (số vô hạn), undefined (không xác định). 
+
+102
+00:04:31,260 --> 00:04:33,240
+Ở đây cũng có các hàm và thuộc tính mà ta có thể dùng. 
+
+103
+00:04:33,240 --> 00:04:35,490
+Ta cũng có thể sử dụng các hàn khởi tạo. 
+
+104
+00:04:35,490 --> 00:04:37,530
+Ví dụ, ta có thể sử dụng hàm này,  
+
+105
+00:04:37,530 --> 00:04:39,720
+để tạo đối tượng Date, đối tượng Boolean 
+
+106
+00:04:39,720 --> 00:04:42,780
+hay đối tượng Number (số). Ta có thể sử dụng chúng 
+
+107
+00:04:42,780 --> 00:04:44,910
+nếu ta cần khi viết QML. 
+
+108
+00:04:44,910 --> 00:04:48,449
+Đây là những đối tượng liên quan đến đối tượng,
+
+109
+00:04:48,449 --> 00:04:50,699
+là đối tượng của tất cả các đối tượng 
+
+110
+00:04:50,699 --> 00:04:53,220
+trong JavaScript. Đây là các hàm 
+
+111
+00:04:53,220 --> 00:04:55,130
+mà ta có thể sử dụng trên đối tượng.
+
+112
+00:04:55,130 --> 00:04:57,990
+Đây là một danh sách dài bất tận các đối tượng 
+
+113
+00:04:57,990 --> 00:04:59,910
+mà ta có thể sử dụng. Do đó, nếu ta làm việc với Array (mảng), 
+
+114
+00:04:59,910 --> 00:05:01,949
+thì đây là những hàm mà ta có.
+
+115
+00:05:01,949 --> 00:05:04,620
+Một hàm mà ta đã sử dụng trước đây 
+
+116
+00:05:04,620 --> 00:05:08,100
+là hàm forEach. Ta sử dụng hàm này
+
+117
+00:05:08,100 --> 00:05:11,580
+để có thể duyệt các phần tử trong mảng, và hàm này 
+
+118
+00:05:11,580 --> 00:05:13,620
+khá là tiện lợi. Do đó, nếu ta muốn tìm thông tin về hàm này, 
+
+119
+00:05:13,620 --> 00:05:16,260
+ta có thể đến phần 
+
+120
+00:05:16,260 --> 00:05:19,260
+tài liệu JavaScript, quay trở lại, 
+
+121
+00:05:19,260 --> 00:05:23,160
+đến các đối tượng nguyên thủy (built-in), nhìn vào mảng. 
+
+122
+00:05:23,160 --> 00:05:26,190
+Nếu ta kéo xuống đây, ta sẽ tìm được 
+
+123
+00:05:26,190 --> 00:05:28,440
+Array.prototype.forEach(). 
+
+124
+00:05:28,440 --> 00:05:31,020
+Nếu ta click vào đây, ta sẽ có 
+
+125
+00:05:31,020 --> 00:05:32,940
+ví dụ về cách ta sử dụng đối tượng. 
+
+126
+00:05:32,940 --> 00:05:35,849
+Vậy đó, tài liệu ở đây là khá tốt. 
+
+127
+00:05:35,849 --> 00:05:37,590
+Xuống dưới này, ta sẽ nhìn thấy một vài 
+
+128
+00:05:37,590 --> 00:05:39,479
+ví dụ có vẻ hay ho, 
+
+129
+00:05:39,479 --> 00:05:42,360
+nếu ta tiếp tục kéo. Các bạn nên tìm hiểu phần này 
+
+130
+00:05:42,360 --> 00:05:45,270
+nếu muốn học về
+
+131
+00:05:45,270 --> 00:05:47,669
+Javascript. Tôi biết là từ đầu đến giờ 
+
+132
+00:05:47,669 --> 00:05:49,530
+các bạn đang ngập trong một đống kiến thức mới, tuy nhiên, 
+
+133
+00:05:49,530 --> 00:05:51,900
+có một điều mà bạn cần biết ở đây là 
+
+134
+00:05:51,900 --> 00:05:54,720
+ JavaScript Engine trong cài đặt theo chuẩn ECMA-Script 5.
+
+135
+00:05:54,720 --> 00:05:58,169
+Đây là tiêu chuẩn được 
+
+136
+00:05:58,169 --> 00:06:00,180
+cài đặt ở hầu hết các trình duyệt. 
+
+137
+00:06:00,180 --> 00:06:03,389
+Chuẩn này bao gồm đối tượng QML - môi trường chính 
+
+138
+00:06:03,389 --> 00:06:06,990
+trong QML. Tiêu chuẩn cũng đưa cho ta 
+
+139
+00:06:06,990 --> 00:06:09,479
+một danh sách các đối tượng và hàm JavaScript
+
+140
+00:06:09,479 --> 00:06:11,760
+mà ta có thể sử dụng một cách
+
+141
+00:06:11,760 --> 00:06:14,520
+dễ dàng hơn. Okay. 
+
+142
+00:06:14,520 --> 00:06:16,260
+Tôi không muốn chỉ đưa ra kiến thức xuông, 
+
+143
+00:06:16,260 --> 00:06:18,570
+mà không có ví dụ. 
+
+144
+00:06:18,570 --> 00:06:20,699
+Ta sẽ đi đến phần tài liệu online,
+
+145
+00:06:20,699 --> 00:06:22,560
+ở đó tôi sẽ chỉ cho các bạn thấy nơi mà bạn có thể 
+
+146
+00:06:22,560 --> 00:06:25,380
+tìm hiểu thêm về bài mà ta đang học. Ở đây, ta có thể học về  
+
+147
+00:06:25,380 --> 00:06:27,810
+JavaScript trong QML. 
+
+148
+00:06:27,810 --> 00:06:30,630
+Ở đây có chỉ ra rằng, JavaScript cài đặt theo chuẩn 5 của 
+
+149
+00:06:30,630 --> 00:06:34,110
+ECMA-Script. Ta thấy 
+
+150
+00:06:34,110 --> 00:06:36,080
+đối tượng toàn cục QML, danh sách các hàm 
+
+151
+00:06:36,080 --> 00:06:37,699
+mà ta có thể dùng. Ta có thể 
+
+152
+00:06:37,699 --> 00:06:39,800
+đọc ở đây. Những ai muốn tìm hiểu thêm về 
+
+153
+00:06:39,800 --> 00:06:42,110
+đối tượng toàn cục QML thì có thể xem 
+
+154
+00:06:42,110 --> 00:06:44,210
+ở phần này. Phần này cho ta biết rằng 
+
+155
+00:06:44,210 --> 00:06:46,639
+đối tượng toàn cục QML bao gồm đối tượng toàn cục Qt 
+
+156
+00:06:46,639 --> 00:06:49,159
+mà ta vừa thấy ở phần trước. Ta thấy có 
+
+157
+00:06:49,159 --> 00:06:51,199
+hàm print, đối tượng console, 
+
+158
+00:06:51,199 --> 00:06:54,289
+đối tượng XMLHttpRequest. Các bạn có thể 
+
+159
+00:06:54,289 --> 00:06:55,789
+xem phần này nếu muốn tìm hiểu thêm
+
+160
+00:06:55,789 --> 00:06:58,610
+thông tin. Okay. Đến đây, ta đã 
+
+161
+00:06:58,610 --> 00:07:00,319
+nắm được một vài kiến thức về
+
+162
+00:07:00,319 --> 00:07:02,509
+JavaScript trong QML,  
+
+163
+00:07:02,509 --> 00:07:05,419
+Vậy ta có thể dùng JavaScript 
+
+164
+00:07:05,419 --> 00:07:08,569
+ở đâu trong QML? 
+
+165
+00:07:08,569 --> 00:07:11,210
+Ta có thể dùng trong các liên kết thuộc tính (property bidings), 
+
+166
+00:07:11,210 --> 00:07:14,090
+hàm xử lý signal, tạo hàm JavaScript độc lạp,
+
+167
+00:07:14,090 --> 00:07:17,270
+và trong cái file Javascript nhúng.
+
+168
+00:07:17,270 --> 00:07:19,909
+Về các liên kết thuộc tính, trên thực tế ta đã sử dụng 
+
+169
+00:07:19,909 --> 00:07:22,129
+khi ta lấy chiều dài bằng 
+
+170
+00:07:22,129 --> 00:07:24,949
+chiều rộng nhân với một số. 
+
+171
+00:07:24,949 --> 00:07:27,289
+Đây là JavaScript mà ta viết trong 
+
+172
+00:07:27,289 --> 00:07:29,779
+đối tượng hình chữ nhật. Ta có thể sử dụng JavaScript 
+
+173
+00:07:29,779 --> 00:07:32,029
+theo cách này. Ta cũng có thể dùng 
+
+174
+00:07:32,029 --> 00:07:34,639
+JavaScript trong các hàm xử lý signal . Ở 
+
+175
+00:07:34,639 --> 00:07:37,669
+MouseArea, trong phương thức onclick,
+
+176
+00:07:37,669 --> 00:07:39,529
+ta có thể dùng Javascript ở đây.
+
+177
+00:07:39,529 --> 00:07:41,599
+Có hai trường hợp sử dụng JavaScript khác 
+
+178
+00:07:41,599 --> 00:07:43,669
+mà ta chưa nhắc đến,
+
+179
+00:07:43,669 --> 00:07:45,860
+tuy nhiên, hai trường hợp này sẽ là chủ đề khác trong chương, 
+
+180
+00:07:45,860 --> 00:07:47,599
+và ta sẽ cùng tìm hiểu cách ta sử dụng JavaScript 
+
+181
+00:07:47,599 --> 00:07:50,060
+trong các hàm độc lập 
+
+182
+00:07:50,060 --> 00:07:52,550
+và trong các file JavaScript nhúng. 
+
+183
+00:07:52,550 --> 00:07:54,560
+Ở thời điểm hiện tại, tôi hy vọng qua bài học này, 
+
+184
+00:07:54,560 --> 00:07:56,659
+các bạn đã nắm được những kiến thức cơ bản 
+
+185
+00:07:56,659 --> 00:07:59,089
+về các đặc điểm của JavaScript trong QML. 
+
+186
+00:07:59,089 --> 00:08:02,240
+Ở các bài học tiếp theo, ta sẽ  
+
+187
+00:08:02,240 --> 00:08:04,580
+tìm hiểu sâu, đặc biệt sẽ thực hành sử dung 
+
+188
+00:08:04,580 --> 00:08:07,219
+Qt Creator để thực hành.
+
+189
+00:08:07,219 --> 00:08:09,229
+Ta sẽ bắt đầu với những bài học tiếp theo. 
+
+190
+00:08:09,229 --> 00:00:00,000
+Hẹn gặp lại các bạn. 
+

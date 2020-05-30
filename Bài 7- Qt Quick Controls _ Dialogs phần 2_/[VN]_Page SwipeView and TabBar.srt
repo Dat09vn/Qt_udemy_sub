@@ -1,0 +1,528 @@
+1
+00:00:00,000 --> 00:00:02,310
+Trong bài học này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,310 --> 00:00:05,400
+thành phần Page và TabBar, để làm cho  
+
+3
+00:00:05,400 --> 00:00:07,950
+ví dụ được sinh động hơn ta sẽ
+
+4
+00:00:07,950 --> 00:00:10,469
+sử dụng lại thành phần SwipeView
+
+5
+00:00:10,469 --> 00:00:13,139
+và một số phần tử khác, vui lòng
+
+6
+00:00:13,139 --> 00:00:15,630
+theo dõi những gì ta sẽ làm trong hôm nay,
+
+7
+00:00:15,630 --> 00:00:18,960
+ta mở QT creator và bắt đầu làm thử, okay
+
+8
+00:00:18,960 --> 00:00:21,779
+chúng ta đã mở QT creator, trước khi ta
+
+9
+00:00:21,779 --> 00:00:23,970
+bắt đầu bất cứ project nào, tôi muốn đi xem
+
+10
+00:00:23,970 --> 00:00:26,519
+phần trợ giúp ở đây và xem những thứ ta
+
+11
+00:00:26,519 --> 00:00:29,490
+quan tâm, tôi sẽ xem về
+
+12
+00:00:29,490 --> 00:00:34,230
+thành phần Page và nếu bạn xem ở đây, Page
+
+13
+00:00:34,230 --> 00:00:36,690
+là một khung chứa  giúp bạn thuận lợi hơn
+
+14
+00:00:36,690 --> 00:00:40,170
+để thêm phần header (phần đầu) và footer (phần cuối) vào một trang 
+
+15
+00:00:40,170 --> 00:00:42,690
+okay, bạn có header ở đây, có 
+
+16
+00:00:42,690 --> 00:00:44,940
+phần nội dung và có phần footer, nếu 
+
+17
+00:00:44,940 --> 00:00:47,219
+bạn hứng thú với thành phần Page
+
+18
+00:00:47,219 --> 00:00:50,219
+thì bạn hãy xem
+
+19
+00:00:50,219 --> 00:00:52,140
+một số thuộc tính khác
+
+20
+00:00:52,140 --> 00:00:55,469
+mà ta có thể sử dụng. Hãy xem
+
+21
+00:00:55,469 --> 00:01:02,100
+thử thành phần TabBar, nó cung cấp một 
+
+22
+00:01:02,100 --> 00:01:05,479
+thanh điều hướng dạng tab, đơn giản là
+
+23
+00:01:05,479 --> 00:01:09,290
+giống như chỉ số trang (page indicator) mà ta đã học qua nhưng
+
+24
+00:01:09,290 --> 00:01:13,020
+giờ chúng ta sử dụng tab, nếu bạn cuộn xuống
+
+25
+00:01:13,020 --> 00:01:15,920
+đây bạn sẽ thấy một thể hiện đẹp hơn
+
+26
+00:01:15,920 --> 00:01:18,540
+của các thẻ tab, và nó là cái
+
+27
+00:01:18,540 --> 00:01:21,390
+mà chúng ta đang thử nghiệm. Rồi bây giờ hãy tạo một
+
+28
+00:01:21,390 --> 00:01:22,170
+project mới
+
+29
+00:01:22,170 --> 00:01:26,250
+nó sẽ là project dạng QT Quick Application, ta đặt tên nó là
+
+30
+00:01:26,250 --> 00:01:29,400
+PageTabBarDemo, lưu nó vào đường dẫn
+
+31
+00:01:29,400 --> 00:01:35,189
+thường lệ, chọn phiên bản Qt, chọn 
+
+32
+00:01:35,189 --> 00:01:39,990
+Kit và nhấn finish. Ta sẽ thay đổi
+
+33
+00:01:39,990 --> 00:01:48,299
+tiêu đề này và để nó là Page ...
+
+34
+00:01:48,299 --> 00:01:52,110
+như thế này, rồi ta sẽ khai báo thư viện
+
+35
+00:01:52,110 --> 00:01:56,329
+QT Quick Control
+
+36
+00:02:02,970 --> 00:02:06,070
+chúng ta đang cố làm một thứ như 
+
+37
+00:02:06,070 --> 00:02:08,619
+thế này, là chương trình mà người dùng có thể
+
+38
+00:02:08,619 --> 00:02:11,290
+vuốt qua vuốt lại thế này
+
+39
+00:02:11,290 --> 00:02:13,750
+và bên dưới này bạn thấy nó có thêm một
+
+40
+00:02:13,750 --> 00:02:17,110
+thanh tab để người dùng có thể nhấn vào để di chuyển
+
+41
+00:02:17,110 --> 00:02:20,140
+tới trang mong muốn, và ta có thể
+
+42
+00:02:20,140 --> 00:02:22,590
+sử dụng một thanh tab như thế này.
+
+43
+00:02:22,590 --> 00:02:25,450
+Bây giờ mục tiêu là như vậy,
+
+44
+00:02:25,450 --> 00:02:28,240
+Giờ hãy bắt đầu với code của chúng ta, ta cần
+
+45
+00:02:28,240 --> 00:02:33,640
+thêm một đối tượng Page vào, đặt cho nó một ID
+
+46
+00:02:33,640 --> 00:02:38,140
+và nếu ta muốn nó lấp đầy hết
+
+47
+00:02:38,140 --> 00:02:42,070
+đối tượng cha, bên trong này ta để một thành phần SwipeView
+
+48
+00:02:42,070 --> 00:02:44,320
+vì ta muốn người dùng  
+
+49
+00:02:44,320 --> 00:02:47,370
+có thể vuốt qua lại màn hình 
+
+50
+00:02:47,370 --> 00:02:54,060
+id sẽ là swipeViewId và
+
+51
+00:02:54,060 --> 00:02:58,300
+nó cũng sẽ tràn hết đối tượng cha, đối tượng mà
+
+52
+00:02:58,300 --> 00:03:00,280
+đang chứa thành phần Page.
+
+53
+00:03:00,280 --> 00:03:04,450
+Một thành phần Page thì phải có một thành phần con
+
+54
+00:03:04,450 --> 00:03:06,730
+làm thành phần chính bên trong và
+
+55
+00:03:06,730 --> 00:03:09,790
+SwipeView là đối tượng đóng vai trò đó.
+
+56
+00:03:09,790 --> 00:03:12,489
+Tiếp theo ta cần làm là 
+
+57
+00:03:12,489 --> 00:03:17,470
+cung cấp một footer, footer của ta sẽ
+
+58
+00:03:17,470 --> 00:03:22,330
+là thành phần TabBar và ta sẽ
+
+59
+00:03:22,330 --> 00:03:26,080
+đặt môt số tab vào trong này, ta đặt 
+
+60
+00:03:26,080 --> 00:03:32,680
+cho nó một ID, và ta muốn chỉ số tab hiện tại
+
+61
+00:03:32,680 --> 00:03:35,590
+sẽ giống với chỉ số hiện tại
+
+62
+00:03:35,590 --> 00:03:38,650
+của SwipeView ở đây.
+
+63
+00:03:38,650 --> 00:03:40,840
+vì thế ta sẽ gõ swipeViewId.currentIndex
+
+64
+00:03:40,840 --> 00:03:44,230
+Sau đó ta lên đây
+
+65
+00:03:44,230 --> 00:03:48,870
+và làm tương tự để currentIndex của nó
+
+66
+00:03:48,870 --> 00:03:52,570
+bằng với currentIndex của TabBar
+
+67
+00:03:52,570 --> 00:03:57,790
+giờ ta cần để một vài
+
+68
+00:03:57,790 --> 00:04:00,370
+nội dung cho TabBar, nên ta sẽ 
+
+69
+00:04:00,370 --> 00:04:06,610
+gõ TabButton và ta cho nó một thuộc tính
+
+70
+00:04:06,610 --> 00:04:09,150
+text nội dung là First
+
+71
+00:04:09,150 --> 00:04:11,670
+ta copy nó 2 lần
+
+72
+00:04:11,670 --> 00:04:13,709
+bởi vì ta muốn có 3 thành phần
+
+73
+00:04:13,709 --> 00:04:19,649
+để hiển thị, cái này là  
+
+74
+00:04:19,649 --> 00:04:23,460
+Second, cái này là cái Third, bạn có thể
+
+75
+00:04:23,460 --> 00:04:25,830
+làm như thế và giờ ta muốn để một vài thứ bên 
+
+76
+00:04:25,830 --> 00:04:29,100
+trong thành phần SwipeView, ta sẽ 
+
+77
+00:04:29,100 --> 00:04:34,169
+để 3 phần tử hình ảnh và đặt
+
+78
+00:04:34,169 --> 00:04:37,229
+đường dẩn của nó là gì đó, ta
+
+79
+00:04:37,229 --> 00:04:39,150
+sẽ dùng tất cả ảnh trên 
+
+80
+00:04:39,150 --> 00:04:41,340
+mạng lần này, và nếu bạn muốn sử dụng
+
+81
+00:04:41,340 --> 00:04:44,310
+hình ảnh trên máy tính thì bạn đã biết cách làm rồi đấy
+
+82
+00:04:44,310 --> 00:04:47,370
+hãy xem lại bài SwipeView và 
+
+83
+00:04:47,370 --> 00:04:50,370
+PageIndicator, và thực tế
+
+84
+00:04:50,370 --> 00:04:53,490
+à ta sẽ sử dụng lại các ảnh mà ta đã sử dụng
+
+85
+00:04:53,490 --> 00:04:57,600
+ở bài đấy, cho nên tôi sẽ copy và dán
+
+86
+00:04:57,600 --> 00:05:00,090
+nó vài lần và thay đổi 
+
+87
+00:05:00,090 --> 00:05:06,930
+tên cho 3 ảnh này, rồi giờ chạy 
+
+88
+00:05:06,930 --> 00:05:11,759
+chương trình, mm-hmm, chúng ta có mọi thứ
+
+89
+00:05:11,759 --> 00:05:15,090
+ở đây và nó đang tải hình ảnh 
+
+90
+00:05:15,090 --> 00:05:18,510
+từ trên mạng, rồi okay bạn thấy 
+
+91
+00:05:18,510 --> 00:05:21,510
+hình ảnh của chúng ta rồi, nhấn vào tab thứ 2 bạn thấy đây rồi
+
+92
+00:05:21,510 --> 00:05:25,380
+nhấn vào tab thứ 3 và chúng đã 
+
+93
+00:05:25,380 --> 00:05:27,750
+xuất hiện ở đây, được tải từ trên internet xuống
+
+94
+00:05:27,750 --> 00:05:29,880
+Nhưng tôi muốn bạn chú ý vào
+
+95
+00:05:29,880 --> 00:05:33,210
+giao diện này, bạn thấy ở đây được bao bởi
+
+96
+00:05:33,210 --> 00:05:35,849
+một thành phần Page và ta ko phải 
+
+97
+00:05:35,849 --> 00:05:38,729
+canh lề để thanh tab
+
+98
+00:05:38,729 --> 00:05:41,099
+hiển thị ở đây, chúng ta chỉ sử dụng thành phần
+
+99
+00:05:41,099 --> 00:05:43,830
+Page, và chúng ta cho đưa cho nó thành phần chính
+
+100
+00:05:43,830 --> 00:05:46,320
+để hiển thị chính là SwipeView,
+
+101
+00:05:46,320 --> 00:05:49,590
+và chúng ta có một footer, ta chỉ
+
+102
+00:05:49,590 --> 00:05:52,830
+khai báo thành phần footer nhưng nếu ta
+
+103
+00:05:52,830 --> 00:05:56,400
+tới phần tài liệu hướng dẫn cho thành phần Page,
+
+104
+00:05:56,400 --> 00:05:58,530
+bạn sẽ thấy rằng nó cũng có thể
+
+105
+00:05:58,530 --> 00:06:02,280
+có một thành phần header, nó có thể là bất cứ thành phần gì,
+
+106
+00:06:02,280 --> 00:06:05,669
+vì thế hãy xem phần header ở đây, ta có thể
+
+107
+00:06:05,669 --> 00:06:09,030
+copy cái ví dụ này và bỏ vào
+
+108
+00:06:09,030 --> 00:06:13,700
+phần header ở trên của SwipeView,
+
+109
+00:06:13,700 --> 00:06:17,360
+rồi ta thay đổi chữ ở đây
+
+110
+00:06:17,360 --> 00:06:20,480
+bởi vì ta muốn có một vài nội dung tĩnh, ta có thể
+
+111
+00:06:20,480 --> 00:06:25,670
+để là Page and TabBar Demo chính là
+
+112
+00:06:25,670 --> 00:06:29,050
+cái mà ta đang thực hành, rồi hãy chạy
+
+113
+00:06:29,050 --> 00:06:32,840
+chương trình và bạn thấy header được
+
+114
+00:06:32,840 --> 00:06:35,300
+hiển thị, nếu bạn muốn bạn có thể sử dụng
+
+115
+00:06:35,300 --> 00:06:37,580
+nó như thế này và bạn có thể thay Label bằng bất cứ thứ gì
+
+116
+00:06:37,580 --> 00:06:39,980
+thậm chí bạn có thể để một
+
+117
+00:06:39,980 --> 00:06:46,070
+hình chữ nhật ở đây, và cho nó có chiều rộng bằng đối tượng cha,
+
+118
+00:06:46,070 --> 00:06:52,790
+chiều cao là 50 và cho nó 
+
+119
+00:06:52,790 --> 00:06:58,330
+có màu đỏ, rồi chạy thử lên,
+
+120
+00:06:58,330 --> 00:07:02,030
+bạn thấy hình chữ nhật ở trên header
+
+121
+00:07:02,030 --> 00:07:04,100
+và phần footer bạn cũng có thể
+
+122
+00:07:04,100 --> 00:07:07,010
+để bất cứ gì bạn muốn để phục vụ 
+
+123
+00:07:07,010 --> 00:07:10,520
+cho nhu cầu của riêng bạn. Đây là tất cả
+
+124
+00:07:10,520 --> 00:07:12,380
+những gì tôi muốn trình bày trong bài này, rất đơn giản
+
+125
+00:07:12,380 --> 00:07:15,710
+để sử dụng một thành phần Page, bạn chỉ cần
+
+126
+00:07:15,710 --> 00:07:19,190
+cung cấp một thành phần chính đó chính là
+
+127
+00:07:19,190 --> 00:07:21,800
+SwipeView trong trường hợp này sau đó
+
+128
+00:07:21,800 --> 00:07:23,420
+bạn có thể để thêm thành phần header và footer
+
+129
+00:07:23,420 --> 00:07:25,520
+và thêm vào trong đó bất cứ gì bạn muốn.
+
+130
+00:07:25,520 --> 00:07:28,040
+Trong bài kế tiếp, chúng ta sẽ đi tìm hiểu
+
+131
+00:07:28,040 --> 00:07:30,830
+về thành phần TextArea, hẹn gặp lại bạn
+
+132
+00:07:30,830 --> 00:00:00,000
+ở bài đó.
+

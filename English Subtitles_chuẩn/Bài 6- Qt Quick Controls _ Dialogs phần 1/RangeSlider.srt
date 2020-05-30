@@ -1,0 +1,356 @@
+1
+00:00:00,000 --> 00:00:02,070
+in this lecture we are looking at
+
+2
+00:00:02,070 --> 00:00:05,190
+another QT quick control component which
+
+3
+00:00:05,190 --> 00:00:08,790
+is range slider it basically allows you
+
+4
+00:00:08,790 --> 00:00:11,580
+to choose a range specifying the minimum
+
+5
+00:00:11,580 --> 00:00:14,519
+value and the maximum value let's go to
+
+6
+00:00:14,519 --> 00:00:17,369
+Qt creator and look at this okay
+
+7
+00:00:17,369 --> 00:00:20,189
+here we are in QT creator we are going
+
+8
+00:00:20,189 --> 00:00:24,119
+to create our new project QT quick
+
+9
+00:00:24,119 --> 00:00:26,670
+application it's going to be called
+
+10
+00:00:26,670 --> 00:00:29,939
+range slider demo save it in the usual
+
+11
+00:00:29,939 --> 00:00:33,719
+location and next choose your tutee
+
+12
+00:00:33,719 --> 00:00:39,300
+version your kit and next we want to
+
+13
+00:00:39,300 --> 00:00:41,460
+change the title here to range slider
+
+14
+00:00:41,460 --> 00:00:47,700
+demo and import our 2.4 quick
+
+15
+00:00:47,700 --> 00:00:54,210
+controls module to that form that is but
+
+16
+00:00:54,210 --> 00:00:56,219
+before we do anything with this land I
+
+17
+00:00:56,219 --> 00:00:58,410
+want to go to the documentation and show
+
+18
+00:00:58,410 --> 00:01:03,140
+it to you so we say a range slider
+
+19
+00:01:03,140 --> 00:01:07,950
+and if you look at it it is from the QT
+
+20
+00:01:07,950 --> 00:01:11,189
+quick controls module what it does it is
+
+21
+00:01:11,189 --> 00:01:13,320
+used to select the range specified by
+
+22
+00:01:13,320 --> 00:01:16,439
+two values by sliding each handle along
+
+23
+00:01:16,439 --> 00:01:17,310
+the track
+
+24
+00:01:17,310 --> 00:01:19,070
+you basically have something like this
+
+25
+00:01:19,070 --> 00:01:22,710
+let's go back to our code put in a row
+
+26
+00:01:22,710 --> 00:01:24,750
+component that is going to contain our
+
+27
+00:01:24,750 --> 00:01:28,140
+range sliders you want the spacing to
+
+28
+00:01:28,140 --> 00:01:33,240
+be 40 and the width is going to be the
+
+29
+00:01:33,240 --> 00:01:38,009
+same as for the parent inside we want to
+
+30
+00:01:38,009 --> 00:01:40,619
+put a range slider we don't wait anymore
+
+31
+00:01:40,619 --> 00:01:44,070
+if you go back to the documentation and
+
+32
+00:01:44,070 --> 00:01:46,619
+look at its properties you see that you
+
+33
+00:01:46,619 --> 00:01:49,649
+can specify the first value and the
+
+34
+00:01:49,649 --> 00:01:51,930
+second value the first value is
+
+35
+00:01:51,930 --> 00:01:53,820
+basically the starting value for your
+
+36
+00:01:53,820 --> 00:01:56,700
+range and the second value is the ending
+
+37
+00:01:56,700 --> 00:01:59,729
+value we want to specify a first value
+
+38
+00:01:59,729 --> 00:02:06,420
+of 25 and the second value
+
+39
+00:02:06,420 --> 00:02:12,000
+of 75 after we specify this we also have
+
+40
+00:02:12,000 --> 00:02:14,310
+to specify the from and to
+
+41
+00:02:14,310 --> 00:02:17,310
+properties because it needs to know the
+
+42
+00:02:17,310 --> 00:02:20,190
+range where it is operating okay we're
+
+43
+00:02:20,190 --> 00:02:28,340
+going to say from 1 and to 100 let's run
+
+44
+00:02:28,340 --> 00:02:35,010
+and you see our range slider here okay
+
+45
+00:02:35,010 --> 00:02:37,140
+if you move it you're going to change
+
+46
+00:02:37,140 --> 00:02:39,330
+the values for the first component and
+
+47
+00:02:39,330 --> 00:02:41,640
+you're going to change the value for the
+
+48
+00:02:41,640 --> 00:02:44,250
+second component by dragging this second
+
+49
+00:02:44,250 --> 00:02:46,830
+handle here if you need to know the
+
+50
+00:02:46,830 --> 00:02:49,260
+values as they change you can do
+
+51
+00:02:49,260 --> 00:02:55,170
+something like first on value changed
+
+52
+00:02:55,170 --> 00:03:09,840
+and you can counselor okay
+
+53
+00:03:09,840 --> 00:03:12,030
+and you can do the same thing for the
+
+54
+00:03:12,030 --> 00:03:35,579
+second value second let's run mm-hmm you
+
+55
+00:03:35,579 --> 00:03:37,260
+see that when you first run the
+
+56
+00:03:37,260 --> 00:03:38,190
+application
+
+57
+00:03:38,190 --> 00:03:42,410
+the signals are emitted okay as you drag
+
+58
+00:03:42,410 --> 00:03:45,180
+the first handle you're going to see the
+
+59
+00:03:45,180 --> 00:03:49,190
+value change okay you can drag it up to
+
+60
+00:03:49,190 --> 00:03:53,180
+the second handle you can't go past it
+
+61
+00:03:53,180 --> 00:03:56,310
+the second handle can be dragged up to
+
+62
+00:03:56,310 --> 00:03:59,819
+100 the maximum if you drag it down it
+
+63
+00:03:59,819 --> 00:04:04,139
+can't go past the first handle this is
+
+64
+00:04:04,139 --> 00:04:06,810
+what this control does if you happen to
+
+65
+00:04:06,810 --> 00:04:09,930
+need it it is available to you another
+
+66
+00:04:09,930 --> 00:04:11,459
+thing you should see is that you can
+
+67
+00:04:11,459 --> 00:04:14,040
+make this vertical okay you can
+
+68
+00:04:14,040 --> 00:04:17,390
+basically use the orientation property
+
+69
+00:04:17,390 --> 00:04:20,389
+okay and make it vertical
+
+70
+00:04:20,389 --> 00:04:22,669
+you want it is horizontal by default
+
+71
+00:04:22,669 --> 00:04:29,419
+we're going to copy this and come back
+
+72
+00:04:29,419 --> 00:04:34,939
+to our code and say orientation and
+
+73
+00:04:34,939 --> 00:04:38,539
+passing the vertical orientation if we
+
+74
+00:04:38,539 --> 00:04:43,729
+run this our rangerslider is vertical
+
+75
+00:04:43,729 --> 00:04:45,860
+okay when it is vertical the first
+
+76
+00:04:45,860 --> 00:04:49,699
+handle is to the bottom as you can see
+
+77
+00:04:49,699 --> 00:04:52,490
+here as we drag it we see that the first
+
+78
+00:04:52,490 --> 00:04:55,580
+value changes to something the second
+
+79
+00:04:55,580 --> 00:04:59,840
+handle is to the top okay this is weird
+
+80
+00:04:59,840 --> 00:05:02,389
+I thought that the first handle should
+
+81
+00:05:02,389 --> 00:05:05,330
+be to the top and the second one to the
+
+82
+00:05:05,330 --> 00:05:07,669
+bottom but you can play with us and
+
+83
+00:05:07,669 --> 00:05:10,580
+organize things as you want okay this is
+
+84
+00:05:10,580 --> 00:05:12,259
+all i have to say about the range
+
+85
+00:05:12,259 --> 00:05:14,210
+slider it is available to you if you
+
+86
+00:05:14,210 --> 00:05:16,009
+happen to need it in the next lecture
+
+87
+00:05:16,009 --> 00:05:18,259
+we're going to see how you work with the
+
+88
+00:05:18,259 --> 00:05:21,110
+flickable component and scrollbars I'll
+
+89
+00:05:21,110 --> 00:00:00,000
+see you there
+

@@ -1,0 +1,1180 @@
+1
+00:00:00,000 --> 00:00:01,890
+In this lecture, we're going to do an
+
+2
+00:00:01,890 --> 00:00:05,100
+animated ball bounce. This is going to be
+
+3
+00:00:05,100 --> 00:00:07,560
+a slightly different demo that we're
+
+4
+00:00:07,560 --> 00:00:09,719
+going to be doing. Because I am going to
+
+5
+00:00:09,719 --> 00:00:12,179
+show you a reference that is very good
+
+6
+00:00:12,179 --> 00:00:14,639
+to learn about QML. We're going to find a
+
+7
+00:00:14,639 --> 00:00:16,619
+good example inside and we're going to
+
+8
+00:00:16,619 --> 00:00:18,960
+run it. I think this is a good way to let
+
+9
+00:00:18,960 --> 00:00:22,199
+you know of ways you can find things you
+
+10
+00:00:22,199 --> 00:00:24,630
+don't know yet. Okay, the reference, I was
+
+11
+00:00:24,630 --> 00:00:27,300
+talking about, is this book here. It is a
+
+12
+00:00:27,300 --> 00:00:29,910
+book that is available online. It is
+
+13
+00:00:29,910 --> 00:00:30,390
+called
+
+14
+00:00:30,390 --> 00:00:33,420
+'A book about Qt5'. It is contributed by
+
+15
+00:00:33,420 --> 00:00:36,420
+some people. It is open source. It has an
+
+16
+00:00:36,420 --> 00:00:38,489
+open license, you can read it or you can
+
+17
+00:00:38,489 --> 00:00:40,710
+even contribute to it if you happen to
+
+18
+00:00:40,710 --> 00:00:42,960
+have things to add to it. I'm going to
+
+19
+00:00:42,960 --> 00:00:45,090
+let you read on all these things if you
+
+20
+00:00:45,090 --> 00:00:48,739
+want. So what we want to do is to go in
+
+21
+00:00:48,739 --> 00:00:53,730
+chapter 5 on 'Fluid elements' and we want
+
+22
+00:00:53,730 --> 00:00:56,969
+to look at 'Animations'. And you see that
+
+23
+00:00:56,969 --> 00:00:59,100
+they also talk about easing curves. They
+
+24
+00:00:59,100 --> 00:01:01,680
+give you a good lecture about them. You
+
+25
+00:01:01,680 --> 00:01:04,589
+can really look at this. So let's scroll
+
+26
+00:01:04,589 --> 00:01:08,549
+down find our thing and we want to look at
+
+27
+00:01:08,549 --> 00:01:10,710
+'Grouped Animations'. You see that they
+
+28
+00:01:10,710 --> 00:01:13,560
+show how you can animate things. This is
+
+29
+00:01:13,560 --> 00:01:15,060
+basically what we did in the last
+
+30
+00:01:15,060 --> 00:01:18,180
+lecture. A SequentialAnimation, you move
+
+31
+00:01:18,180 --> 00:01:21,810
+on Y and on X and the ParallelAnimation
+
+32
+00:01:21,810 --> 00:01:24,840
+where it happens at the same time. But
+
+33
+00:01:24,840 --> 00:01:26,850
+this is not what we want. We want to do
+
+34
+00:01:26,850 --> 00:01:29,340
+this thing here, a bouncing ball. So we're
+
+35
+00:01:29,340 --> 00:01:31,200
+going to read this together and create a
+
+36
+00:01:31,200 --> 00:01:33,600
+Qt project to play with it.
+
+37
+00:01:33,600 --> 00:01:35,700
+So, grouped animation can also be nested 
+
+38
+00:01:35,700 --> 00:01:37,619
+for example, a sequential animation can have
+
+39
+00:01:37,619 --> 00:01:40,920
+two parallel animations as child
+
+40
+00:01:40,920 --> 00:01:43,799
+animations and so on.
+
+41
+00:01:43,799 --> 00:01:46,470
+Okay so animations can be nested. We can
+
+42
+00:01:46,470 --> 00:01:48,090
+visualise this with the soccer ball
+
+43
+00:01:48,090 --> 00:01:51,119
+example. The idea is to throw a ball from
+
+44
+00:01:51,119 --> 00:01:54,619
+left to right and animate its behaviour.
+
+45
+00:01:54,619 --> 00:01:57,360
+Ok, this is what we want to do.
+
+46
+00:01:57,360 --> 00:01:59,070
+To understand the animation, we are going to
+
+47
+00:01:59,070 --> 00:02:02,549
+break this into three parts. We are going
+
+48
+00:02:02,549 --> 00:02:05,969
+to animate on X from left to right, we
+
+49
+00:02:05,969 --> 00:02:08,580
+are going to animate on Y1 the ball going
+
+50
+00:02:08,580 --> 00:02:12,090
+up, we are going to animate on Y2 the ball
+
+51
+00:02:12,090 --> 00:02:13,330
+going down,
+
+52
+00:02:13,330 --> 00:02:15,310
+and we are going to apply some bouncing
+
+53
+00:02:15,310 --> 00:02:18,130
+on this when the ball goes down, and we
+
+54
+00:02:18,130 --> 00:02:20,140
+are going to rotate the ball over the
+
+55
+00:02:20,140 --> 00:02:23,050
+entire animation. And they try to depict
+
+56
+00:02:23,050 --> 00:02:24,820
+what we are doing here. We are going to
+
+57
+00:02:24,820 --> 00:02:27,460
+animate on Y, we are going to start by
+
+58
+00:02:27,460 --> 00:02:29,740
+animating on Y , we are going to go
+
+59
+00:02:29,740 --> 00:02:33,610
+down and over all this period we are
+
+60
+00:02:33,610 --> 00:02:36,070
+going to be rotating and moving in X.
+
+61
+00:02:36,070 --> 00:02:38,890
+Let's go to Qt Creator, start a project
+
+62
+00:02:38,890 --> 00:02:41,740
+and follow up with us. Okay here we are
+
+63
+00:02:41,740 --> 00:02:43,870
+in Qt Creator, we are going to create our
+
+64
+00:02:43,870 --> 00:02:44,740
+project.
+
+65
+00:02:44,740 --> 00:02:49,450
+It's a Qt Quick Application. We call it
+
+66
+00:02:49,450 --> 00:02:53,470
+'AnimatedBallBounceDemo', save it in the
+
+67
+00:02:53,470 --> 00:02:56,890
+usual location, choose a Qt Version,
+
+68
+00:02:56,890 --> 00:03:02,470
+choose our kit and finish. We are going
+
+69
+00:03:02,470 --> 00:03:05,740
+to do everything in our 'main.qml' file.
+
+70
+00:03:05,740 --> 00:03:08,230
+We're going to skip this. This is kind of
+
+71
+00:03:08,230 --> 00:03:10,209
+a container for everything you are going to do.
+
+72
+00:03:10,209 --> 00:03:12,640
+The next step would be to add the
+
+73
+00:03:12,640 --> 00:03:14,800
+background, which is in our case two
+
+74
+00:03:14,800 --> 00:03:16,630
+rectangles with the green and blue
+
+75
+00:03:16,630 --> 00:03:19,540
+gradients. Okay we are basically going to
+
+76
+00:03:19,540 --> 00:03:22,090
+put in this. The first rectangle is this 'sky'.
+
+77
+00:03:22,090 --> 00:03:25,510
+It has a gradient. A gradient is
+
+78
+00:03:25,510 --> 00:03:27,550
+really a translation from different
+
+79
+00:03:27,550 --> 00:03:31,510
+colors. Okay you see this blue, start out
+
+80
+00:03:31,510 --> 00:03:35,110
+a little bit darker and it goes bright
+
+81
+00:03:35,110 --> 00:03:37,570
+as we go down and the same thing happens
+
+82
+00:03:37,570 --> 00:03:41,080
+to the green it starts out light and it
+
+83
+00:03:41,080 --> 00:03:43,660
+goes dark. So we're going to copy our
+
+84
+00:03:43,660 --> 00:03:45,940
+rectangle here and I think we should
+
+85
+00:03:45,940 --> 00:03:49,480
+actually copy all these, bring them back
+
+86
+00:03:49,480 --> 00:03:53,680
+in our example here. This is good
+
+87
+00:03:53,680 --> 00:03:56,110
+practice to copy and paste in your
+
+88
+00:03:56,110 --> 00:03:58,480
+projects and learn how to insert them.
+
+89
+00:03:58,480 --> 00:04:04,360
+Ctrl+A, Ctrl+I to align. We have our background. The sky
+
+90
+00:04:04,360 --> 00:04:06,880
+is going to be this gradient. The ground
+
+91
+00:04:06,880 --> 00:04:09,610
+is going to be this gradient. And you see
+
+92
+00:04:09,610 --> 00:04:13,420
+that the ground is anchored to the bottom
+
+93
+00:04:13,420 --> 00:04:17,649
+of the sky and it is to touch the
+
+94
+00:04:17,649 --> 00:04:20,228
+bottom of the window. We can actually run
+
+95
+00:04:20,228 --> 00:04:21,940
+the application we have right now and
+
+96
+00:04:21,940 --> 00:04:23,380
+see how it looks.
+
+97
+00:04:23,380 --> 00:04:27,160
+Let's run you see that
+
+98
+00:04:27,160 --> 00:04:30,940
+our ground is not working. So, what is the
+
+99
+00:04:30,940 --> 00:04:35,020
+problem? We want to anchor the rectangle
+
+100
+00:04:35,020 --> 00:04:37,000
+for the ground to the bottom of the
+
+101
+00:04:37,000 --> 00:04:38,770
+parent so we should change this to
+
+102
+00:04:38,770 --> 00:04:42,310
+'parent.bottom'. This is better. Let's run
+
+103
+00:04:42,310 --> 00:04:45,880
+to see what we have now. Okay you see
+
+104
+00:04:45,880 --> 00:04:48,100
+that we have our sky and the ground
+
+105
+00:04:48,100 --> 00:04:50,770
+which is green. The upper rectangle is
+
+106
+00:04:50,770 --> 00:04:54,220
+going to take 200 pixel of the height
+
+107
+00:04:54,220 --> 00:04:56,320
+and the lower one is going to take the
+
+108
+00:04:56,320 --> 00:04:57,370
+remaining height.
+
+109
+00:04:57,370 --> 00:05:00,190
+Let's bring the soccer ball on the
+
+110
+00:05:00,190 --> 00:05:02,380
+canvas. The ball is an image stored under
+
+111
+00:05:02,380 --> 00:05:04,930
+"assets/soccer_ball.png'. For the beginning, we
+
+112
+00:05:04,930 --> 00:05:06,970
+would like to position it in the lower
+
+113
+00:05:06,970 --> 00:05:10,060
+left corner, near the edge. Okay it's going to
+
+114
+00:05:10,060 --> 00:05:12,550
+start out here. So what we're going to do is
+
+115
+00:05:12,550 --> 00:05:15,550
+basically bring in this image here, come
+
+116
+00:05:15,550 --> 00:05:19,110
+back to our project. We put it below the
+
+117
+00:05:19,110 --> 00:05:22,450
+second rectangle, the ground one. We want
+
+118
+00:05:22,450 --> 00:05:24,970
+to add a resource file that is going to
+
+119
+00:05:24,970 --> 00:05:28,420
+contain this image here. So I am going to
+
+120
+00:05:28,420 --> 00:05:32,040
+come here 'Resources', add new,
+
+121
+00:05:32,040 --> 00:05:40,330
+Qt resource file, we call it 'resource'. 
+
+122
+00:05:40,330 --> 00:05:43,630
+This is done. We go back to where our project is stored.
+
+123
+00:05:43,630 --> 00:05:47,410
+That should be here. We want to
+
+124
+00:05:47,410 --> 00:05:50,640
+add the new directory called 'images' and
+
+125
+00:05:50,640 --> 00:05:54,160
+I want to open the directory and put in
+
+126
+00:05:54,160 --> 00:05:57,310
+my image of the ball. So if you don't
+
+127
+00:05:57,310 --> 00:05:59,950
+have this ball, you can come back to this
+
+128
+00:05:59,950 --> 00:06:02,680
+book here. I want to go to the start of
+
+129
+00:06:02,680 --> 00:06:04,780
+it and you're going to see that you can
+
+130
+00:06:04,780 --> 00:06:07,300
+find the chapter examples in the assets
+
+131
+00:06:07,300 --> 00:06:10,750
+folder. We are in chapter 5 so we should
+
+132
+00:06:10,750 --> 00:06:12,970
+look for chapter 5. Let's look at that.
+
+133
+00:06:12,970 --> 00:06:15,640
+You should download chapter 5 here and
+
+134
+00:06:15,640 --> 00:06:17,860
+you're going to extract this and find
+
+135
+00:06:17,860 --> 00:06:20,140
+the balls and the examples that you need.
+
+136
+00:06:20,140 --> 00:06:23,260
+So put that in your images folder like
+
+137
+00:06:23,260 --> 00:06:25,630
+this or you can even copy this image
+
+138
+00:06:25,630 --> 00:06:28,510
+from the project that I provided with
+
+139
+00:06:28,510 --> 00:06:31,210
+the course here. We're going to close
+
+140
+00:06:31,210 --> 00:06:33,460
+this because we don't need it anymore.
+
+141
+00:06:33,460 --> 00:06:37,030
+We're going to add a 'Prefix', take it out
+
+142
+00:06:37,030 --> 00:06:40,229
+because we don't want it, add file,
+
+143
+00:06:40,229 --> 00:06:43,960
+'images', we choose 'soccerball'. Notice the
+
+144
+00:06:43,960 --> 00:06:46,810
+name here, 'soccerball.png'. We save,
+
+145
+00:06:46,810 --> 00:06:50,050
+we come back here and we change this to
+
+146
+00:06:50,050 --> 00:06:55,629
+'images/soccerball.png'. You see that
+
+147
+00:06:55,629 --> 00:06:58,449
+it is recognised and you see that they
+
+148
+00:06:58,449 --> 00:07:00,999
+are saying 'root' here so we should define
+
+149
+00:07:00,999 --> 00:07:04,659
+this 'root' to be this window, because it
+
+150
+00:07:04,659 --> 00:07:08,379
+is parent. So it should say 'root' here.
+
+151
+00:07:08,379 --> 00:07:11,050
+So, it is going to be to the left bottom
+
+152
+00:07:11,050 --> 00:07:15,039
+because X is going to be 0 and the
+
+153
+00:07:15,039 --> 00:07:17,169
+height is going to be the height of the
+
+154
+00:07:17,169 --> 00:07:19,960
+parent which is this 'root' window here
+
+155
+00:07:19,960 --> 00:07:24,189
+minus the height of the ball. And when we
+
+156
+00:07:24,189 --> 00:07:26,259
+click, we are going to reset its X
+
+157
+00:07:26,259 --> 00:07:29,529
+position, its Y position, its rotation and
+
+158
+00:07:29,529 --> 00:07:31,900
+we are going to start the animation.
+
+159
+00:07:31,900 --> 00:07:33,819
+This is not defined yet so you can safely
+
+160
+00:07:33,819 --> 00:07:37,599
+ignore it now. We can actually comment
+
+161
+00:07:37,599 --> 00:07:40,089
+this out. We don't want it to influence
+
+162
+00:07:40,089 --> 00:07:42,639
+what we have. Let's run to see that we
+
+163
+00:07:42,639 --> 00:07:47,580
+have our ball in the correct location.
+
+164
+00:07:48,419 --> 00:07:51,610
+mm-hmm... We have our ball here. This is
+
+165
+00:07:51,610 --> 00:07:54,159
+good and right. Ok we have our image in
+
+166
+00:07:54,159 --> 00:07:56,469
+place. This is what we should have.
+
+167
+00:07:56,469 --> 00:07:58,509
+The image has a mouse area attached to it.
+
+168
+00:07:58,509 --> 00:08:01,000
+If the ball is clicked the position of the
+
+169
+00:08:01,000 --> 00:08:03,009
+ball will reset and the animation
+
+170
+00:08:03,009 --> 00:08:06,219
+restart. Let's start with a sequential
+
+171
+00:08:06,219 --> 00:08:09,099
+animation for the 2 Y transitions.
+
+172
+00:08:09,099 --> 00:08:12,849
+So, they put an a SequentialAnimation
+
+173
+00:08:12,849 --> 00:08:17,379
+to animate the ball to go up and go down.
+
+174
+00:08:17,379 --> 00:08:21,279
+Ok, it is going to animate 'to' 20 and its
+
+175
+00:08:21,279 --> 00:08:25,120
+going to animate back 'to' 240 and the
+
+176
+00:08:25,120 --> 00:08:29,020
+'duration' is going to be 0.4 and 0.6.
+
+177
+00:08:29,020 --> 00:08:33,760
+Let's copy this and put this in our
+
+178
+00:08:33,760 --> 00:08:37,059
+project. You should put that below the
+
+179
+00:08:37,059 --> 00:08:40,360
+image. This would work. So we have
+
+180
+00:08:40,360 --> 00:08:43,448
+SequentialAnimation. Ok the ball is
+
+181
+00:08:43,448 --> 00:08:45,399
+going to animate upwards and it's going
+
+182
+00:08:45,399 --> 00:08:48,160
+to animate downwards and you see that
+
+183
+00:08:48,160 --> 00:08:51,760
+40% of the time is going to be used upwards
+
+184
+00:08:51,760 --> 00:08:54,519
+and 60% of the time is going to be used
+
+185
+00:08:54,519 --> 00:08:57,010
+downwards. So we should define this
+
+186
+00:08:57,010 --> 00:08:59,860
+duration here. Let's go up. I don't think
+
+187
+00:08:59,860 --> 00:09:00,760
+we defined it.
+
+188
+00:09:00,760 --> 00:09:06,630
+Let's do 'property' 'int' call this 'duration'
+
+189
+00:09:06,630 --> 00:09:11,529
+and it is going to be one second (1000).
+
+190
+00:09:11,529 --> 00:09:13,720
+They said three seconds in the book but
+
+191
+00:09:13,720 --> 00:09:15,670
+I like to do one. You can do whatever you
+
+192
+00:09:15,670 --> 00:09:18,370
+want. And we took this chance to change
+
+193
+00:09:18,370 --> 00:09:25,660
+this thing. This should do. You should go
+
+194
+00:09:25,660 --> 00:09:30,720
+down now and uncomment this thing here.
+
+195
+00:09:30,720 --> 00:09:34,360
+Okay I hope you are seeing the process
+
+196
+00:09:34,360 --> 00:09:36,070
+you can go through to design something fun.
+
+197
+00:09:36,070 --> 00:09:41,110
+Let's run. The animation is going to
+
+198
+00:09:41,110 --> 00:09:43,000
+restart and we are going to see the ball
+
+199
+00:09:43,000 --> 00:09:45,449
+go up and down. Okay
+
+200
+00:09:45,449 --> 00:09:49,170
+that's what happens.
+
+201
+00:09:51,850 --> 00:09:55,240
+Now what we want is to put in the edge
+
+202
+00:09:55,240 --> 00:09:59,170
+and rotation animation. Let's go back to
+
+203
+00:09:59,170 --> 00:10:02,380
+the book. Next we need to add the X-translation.
+
+204
+00:10:02,380 --> 00:10:04,779
+The X-translation shall run
+
+205
+00:10:04,779 --> 00:10:06,370
+in parallel with the Y-translation
+
+206
+00:10:06,370 --> 00:10:09,459
+so we need to encapsulate the sequence
+
+207
+00:10:09,459 --> 00:10:12,069
+of Y-translations into a parallel
+
+208
+00:10:12,069 --> 00:10:13,630
+animation together with the X-translation.
+
+209
+00:10:13,630 --> 00:10:15,459
+So this is what we're going
+
+210
+00:10:15,459 --> 00:10:17,920
+to do. This is a SequentialAnimation
+
+211
+00:10:17,920 --> 00:10:20,829
+that we have. We are going to wrap that
+
+212
+00:10:20,829 --> 00:10:22,690
+into a ParallelAnimation and we're
+
+213
+00:10:22,690 --> 00:10:25,269
+going to add a NumberAnimation that is
+
+214
+00:10:25,269 --> 00:10:28,000
+going to animate the ball on the X
+
+215
+00:10:28,000 --> 00:10:31,240
+coordinate. Let's put in our parallel
+
+216
+00:10:31,240 --> 00:10:37,000
+animation. The 'id' is going to be 'anim'
+
+217
+00:10:37,000 --> 00:10:41,019
+and it is going to contain this
+
+218
+00:10:41,019 --> 00:10:44,490
+SequentialAnimation that we have here.
+
+219
+00:10:44,490 --> 00:10:49,899
+Let's take it out, put it in, take out this
+
+220
+00:10:49,899 --> 00:10:52,290
+'id' because we don't want it anymore.
+
+221
+00:10:52,290 --> 00:10:55,540
+But down here we want to put another
+
+222
+00:10:55,540 --> 00:11:01,810
+NumberAnimation and
+
+223
+00:11:01,810 --> 00:11:04,240
+the NumberAnimation is going to be what we have
+
+224
+00:11:04,240 --> 00:11:04,779
+here.
+
+225
+00:11:04,779 --> 00:11:08,680
+So we copied this and put that in here.
+
+226
+00:11:08,680 --> 00:11:12,790
+Ctrl+A, Ctrl+I to align. So we are
+
+227
+00:11:12,790 --> 00:11:14,170
+animating the ball,
+
+228
+00:11:14,170 --> 00:11:17,500
+we are animating on X, it is going to
+
+229
+00:11:17,500 --> 00:11:20,350
+animate up 'to' 400 and the 'duration' is
+
+230
+00:11:20,350 --> 00:11:22,899
+going to be the duration that we have
+
+231
+00:11:22,899 --> 00:11:25,839
+here. Let's run the application and when
+
+232
+00:11:25,839 --> 00:11:28,120
+we start, we are starting the parallel
+
+233
+00:11:28,120 --> 00:11:30,009
+animation and things are going to happen
+
+234
+00:11:30,009 --> 00:11:32,439
+at the same time. You see that the ball
+
+235
+00:11:32,439 --> 00:11:35,860
+animates from left to right. We are
+
+236
+00:11:35,860 --> 00:11:38,589
+making some progress. Right? Okay this is
+
+237
+00:11:38,589 --> 00:11:40,149
+what we have. At the end we would like
+
+238
+00:11:40,149 --> 00:11:42,790
+the ball to be rotating. For this we need
+
+239
+00:11:42,790 --> 00:11:44,740
+to add another animation to the parallel
+
+240
+00:11:44,740 --> 00:11:47,050
+animation. We chose the RotationAnimation
+
+241
+00:11:47,050 --> 00:11:49,600
+because it is specialized for
+
+242
+00:11:49,600 --> 00:11:53,170
+rotation. Our RotatioAnnimation is going
+
+243
+00:11:53,170 --> 00:11:55,720
+to be like this. It is going to happen
+
+244
+00:11:55,720 --> 00:11:58,209
+all along from start to finish.
+
+245
+00:11:58,209 --> 00:12:01,089
+'target' is going to be 'ball' and it is
+
+246
+00:12:01,089 --> 00:12:04,540
+going to rotate up to this angle here.
+
+247
+00:12:04,540 --> 00:12:05,769
+Let's put that
+
+248
+00:12:05,769 --> 00:12:09,189
+in our project. It's going to be below
+
+249
+00:12:09,189 --> 00:12:11,559
+NumberAnimation because it needs to be
+
+250
+00:12:11,559 --> 00:12:16,290
+included in the ParallelAnimation here.
+
+251
+00:12:16,290 --> 00:12:18,670
+This is what we have.
+
+252
+00:12:18,670 --> 00:12:26,069
+Let's run. Okay, as we go, we are rotating.
+
+253
+00:12:26,069 --> 00:12:29,379
+We are having something more similar to
+
+254
+00:12:29,379 --> 00:12:32,019
+what we want. We should go back to the
+
+255
+00:12:32,019 --> 00:12:35,709
+book and see the next step. That's the
+
+256
+00:12:35,709 --> 00:12:37,389
+whole animation sequence. The one thing
+
+257
+00:12:37,389 --> 00:12:39,670
+left is to provide the correct easing
+
+258
+00:12:39,670 --> 00:12:42,610
+curves for the movements of the ball. For
+
+259
+00:12:42,610 --> 00:12:46,239
+Y1 animation I use 'Easing.OutCirc' curve as
+
+260
+00:12:46,239 --> 00:12:48,369
+this should look more like a circular
+
+261
+00:12:48,369 --> 00:12:52,779
+movement. Y2 is enhanced with Easing.OutBounce
+
+262
+00:12:52,779 --> 00:12:55,239
+as the ball should bounce at the end.
+
+263
+00:12:55,239 --> 00:12:58,299
+Okay the ball should bounce as we
+
+264
+00:12:58,299 --> 00:13:01,360
+end the animation. So what they did, they
+
+265
+00:13:01,360 --> 00:13:05,379
+put easing.type to when the ball is
+
+266
+00:13:05,379 --> 00:13:11,759
+going up and it is Easing.OutCirc.
+
+267
+00:13:11,759 --> 00:13:16,379
+When the ball is going up, we... ease OutCirc.
+
+268
+00:13:16,379 --> 00:13:21,279
+This is our animation here. Let's go back
+
+269
+00:13:21,279 --> 00:13:25,449
+to the book. When we go down, we.. ease OutBounce.
+
+270
+00:13:25,449 --> 00:13:31,540
+Let's go back to our code and use that.
+
+271
+00:13:31,540 --> 00:13:35,980
+Let's look at the book again and
+
+272
+00:13:35,980 --> 00:13:38,259
+see what we have. We don't have anything
+
+273
+00:13:38,259 --> 00:13:41,769
+else. This is really all. Let's come to
+
+274
+00:13:41,769 --> 00:13:48,699
+the project, run it and when you click,
+
+275
+00:13:48,699 --> 00:13:52,179
+you have a ball doing a bouncing
+
+276
+00:13:52,179 --> 00:13:54,189
+movement here. And ladies and gentlemen,
+
+277
+00:13:54,189 --> 00:13:56,199
+this is what we had to do in this
+
+278
+00:13:56,199 --> 00:13:58,509
+lecture. I hope you enjoyed it. The most
+
+279
+00:13:58,509 --> 00:14:02,019
+important thing is to see that you can
+
+280
+00:14:02,019 --> 00:14:05,049
+use this book here to learn a few things
+
+281
+00:14:05,049 --> 00:14:07,809
+that you might want to know, that I
+
+282
+00:14:07,809 --> 00:14:10,239
+didn't have a chance to cover. It is very
+
+283
+00:14:10,239 --> 00:14:12,970
+rich in content. They talk about more
+
+284
+00:14:12,970 --> 00:14:15,189
+things than I could cover in this course.
+
+285
+00:14:15,189 --> 00:14:18,540
+You see they talk about multimedia, the
+
+286
+00:14:18,540 --> 00:14:20,400
+talk about shader effects, they talk
+
+287
+00:14:20,400 --> 00:14:22,770
+about the canvas element. These are all
+
+288
+00:14:22,770 --> 00:14:25,530
+very interesting topics and you should
+
+289
+00:14:25,530 --> 00:14:27,480
+refer to this book when you are done
+
+290
+00:14:27,480 --> 00:14:29,550
+with this course. I think you are going
+
+291
+00:14:29,550 --> 00:14:32,220
+to have enough ground to read it and
+
+292
+00:14:32,220 --> 00:14:34,920
+understand it. Okay this is all I had for
+
+293
+00:14:34,920 --> 00:14:36,720
+this lecture. And the next one we're
+
+294
+00:14:36,720 --> 00:14:38,490
+going to look at states and transitions
+
+295
+00:14:38,490 --> 00:00:00,000
+I'll see you there
+

@@ -1,0 +1,208 @@
+﻿1
+00:00:01,190 --> 00:00:08,900
+Đa xử lý(multi-processing). Ở video này, ta sẽ học cách dùng QProcess để khởi động một chương trình mở rộng trên Qt.
+
+2
+00:00:08,980 --> 00:00:18,280
+và học cách dùng đầu vào chuẩn(standard input) và đầu ra chuẩn(standard output) để giao tiếp với QProcess.
+
+3
+00:00:18,430 --> 00:00:24,030
+Nếu bạn đã sẵn sàng thì ta bắt đầu làm vài ví dụ nhỏ nhé.
+
+4
+00:00:24,040 --> 00:00:29,100
+Ta sẽ sử dụng ứng dụng Gzip, một công cụ nén giữ liệu mã nguồn mở.
+
+5
+00:00:29,380 --> 00:00:33,250
+Bạn có thể tải file binaries từ trang web dành cho windows.
+
+6
+00:00:33,460 --> 00:00:37,960
+Tôi đã tải về và giải nén file binaries vào máy tính.
+
+7
+00:00:37,990 --> 00:00:44,770
+Ta mở Qt Creator và tạo một ứng dụng console.
+
+8
+00:00:44,770 --> 00:00:50,120
+Trước tiên, ta cần phải include QProcess header file.
+
+9
+00:00:50,350 --> 00:01:00,550
+Sau đó khai báo một đối tượng QProcess. Đặt Gzip làm chương trình đích cho xử lý(process). Rồi gọi hàm start().
+
+10
+00:01:00,580 --> 00:01:04,970
+Chương trình sẽ được khởi động và ở trạng thái sẵn sàng thực thi(running state).
+
+11
+00:01:05,320 --> 00:01:13,630
+Ta dùng đầu ra chuẩn(standard output) để kiểm tra. Ta sẽ in ra ID của xử lý (process) chính
+
+12
+00:01:13,960 --> 00:01:16,190
+và Id của các xử lý(process) con.
+
+13
+00:01:18,850 --> 00:01:20,880
+Giờ ta build và chạy chương trình.
+
+14
+00:01:25,820 --> 00:01:34,380
+Bạn có thể thấy ID của hai xử lý(process). Khi mở trình quản lý ứng dụng(task manager) lên, bạn sẽ thấy Gzip trong danh sách các xử lý(process list).
+
+15
+00:01:34,400 --> 00:01:41,720
+Đó là bởi vì chương trình chính đang bị dừng lại ở phương thức std::cin.
+
+16
+00:01:44,700 --> 00:01:46,390
+Nếu ta truyền vào một số rồi kiểm tra lại task manager.
+
+17
+00:01:47,560 --> 00:01:49,380
+Gzip đã biến mất.
+
+18
+00:01:49,390 --> 00:01:56,720
+Bởi vì hàm close() đã đóng tất cả các kênh đọc và ghi giữ liệu và hủy xử lý(process).
+
+19
+00:01:56,740 --> 00:02:01,090
+OK, giờ làm sao để giao tiếp với Gzip đây?
+
+20
+00:02:03,130 --> 00:02:09,540
+Để xem danh sách các tùy chọn, ta truyền tham số "-h" cho Gzip.
+
+21
+00:02:09,610 --> 00:02:12,250
+Chỉ cần tạo đối tượng QStringList.
+
+22
+00:02:17,370 --> 00:02:23,700
+QStringList là viết tắt cho
+
+23
+00:02:23,900 --> 00:02:25,660
+QList<QString>
+
+24
+00:02:32,500 --> 00:02:35,060
+Truyền một tham số duy nhất là "-h".
+
+25
+00:02:41,650 --> 00:02:47,490
+Ta dùng hàm setArguments() để truyền tham số cho chương trình.
+
+26
+00:02:51,290 --> 00:02:52,860
+Để đọc dữ liệu từ đối tượng process
+
+27
+00:02:52,910 --> 00:02:57,880
+ta sử dụng hàm readAll(). Do QProcess thừa kế QIODevice
+
+28
+00:02:58,130 --> 00:03:00,880
+nên các đối tượng kiểu QProcess được thừa kế tất cả các hàm input và output.
+
+29
+00:03:11,450 --> 00:03:18,050
+Để in ra được kết quả bằng hàm std::cout, ta cần phải dùng hàm toStdString()
+
+30
+00:03:18,050 --> 00:03:20,960
+để đổi từ kiểu dữ liệu mảng sang kiểu chuỗi chuẩn(standard string).
+
+31
+00:03:27,720 --> 00:03:29,960
+Để chắc chắn là dữ liệu để đọc có tồn tại
+
+32
+00:03:30,000 --> 00:03:32,900
+ta dùng hàm waitForReadyRead().
+
+33
+00:03:41,840 --> 00:03:44,150
+Giờ build và chạy lại chương trình.
+
+34
+00:03:48,520 --> 00:03:56,120
+Ta đã chuyển hướng kết quả trả về của Gzip sang chương trình của mình.
+
+35
+00:03:56,120 --> 00:03:58,280
+Nếu không được chỉ định file nào cụ thể
+
+36
+00:03:58,330 --> 00:04:00,450
+Gzip sẽ mặc định đọc dữ liệu từ đầu vào chuẩn(standard input)
+
+37
+00:04:00,670 --> 00:04:08,170
+Ta cũng có thể truyền vào tham số "-c" để Gzip in kết quả ra màn hình
+
+38
+00:04:08,530 --> 00:04:16,040
+Ta chỉnh sửa chương trình một chút để Gzip in kết quả ra màn hình.
+
+39
+00:04:16,040 --> 00:04:26,750
+Đơn giản lắm, chỉ cần gọi hàm write(), truyền vào một đối tượng kiểu QByteArray.
+
+40
+00:04:26,960 --> 00:04:28,870
+Ta ghi dữ liệu đầu vào cho Gzip một chuỗi "Hello World".
+
+41
+00:04:29,790 --> 00:04:38,820
+Ta dùng hàm waitForByteWriten() để chắc chắn rằng quá trình ghi dữ liệu đã thành công.
+
+42
+00:04:39,000 --> 00:04:40,200
+sau đó đóng kênh ghi dữ liệu lại.
+
+43
+00:04:40,200 --> 00:04:42,650
+Ta bắt buộc phải đóng kênh ghi dữ liệu lại để Gzip
+
+44
+00:04:42,650 --> 00:04:47,570
+biết rằng đầu vào chuẩn(standard input) đã được truyền vào hết.
+
+45
+00:04:48,540 --> 00:04:56,590
+Rồi giờ đối tham số thành "-c". Cuối cùng, để tránh các ký tự thừa
+
+46
+00:04:56,860 --> 00:05:01,200
+ta dùng hàm toBase64() để mã hóa kết quả.
+
+47
+00:05:09,500 --> 00:05:10,600
+Build rồi chạy chương trình.
+
+48
+00:05:16,050 --> 00:05:21,790
+Bạn thấy kết quả in ra là chuỗi đã được mã hóa ở dạng base64 của chuỗi gốc "Hello World".
+
+49
+00:05:22,140 --> 00:05:24,880
+Ta tổng kết lại những gì đã học được ở phần này.
+
+50
+00:05:24,900 --> 00:05:29,250
+Đó là điểm khác nhau giữa luồng(thread) và xử lý(process)
+
+51
+00:05:29,250 --> 00:05:35,120
+Quan trong hơn đó là kỹ thuật sử dụng luồng(thread) và xử lý(process) trong Qt.
+
+52
+00:05:35,160 --> 00:05:37,710
+Ở phần tiếp theo, ta sẽ học về lập trình mạng trên Qt.
+

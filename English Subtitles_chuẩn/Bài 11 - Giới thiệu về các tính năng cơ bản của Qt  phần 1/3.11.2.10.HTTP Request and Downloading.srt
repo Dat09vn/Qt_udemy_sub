@@ -1,0 +1,152 @@
+00:01.330 --> 00:10.190
+HTTP request and downloading. You have learned how to send a HTTP request to a server to retrieve resource
+
+00:10.280 --> 00:13.150
+from a remote server.
+
+00:13.310 --> 00:23.940
+Let's launch Qt Creator and create a new Qt console applications project
+
+00:23.940 --> 00:26.590
+In order to use Qt network module,
+
+00:26.790 --> 00:30.120
+we need to add it to project configuration.
+
+00:30.120 --> 00:40.860
+Doubleclick the project file and add Qt plus equal network into this file. Now, re-run qmake to
+
+00:40.860 --> 00:44.260
+make sure things like auto-complete will work in code editor
+
+00:48.530 --> 00:50.820
+Now, let’s switch back to main.cpp.
+
+00:53.450 --> 00:59.410
+First we need to include necessary header files.
+
+00:59.520 --> 01:05.400
+Then we create a Q Network Access Manager. Qt provides
+
+01:05.490 --> 01:11.130
+Q Network Access Manager to provide the applications layer network access.
+
+01:11.430 --> 01:19.300
+It takes in a Q network request object and then returns a Q network reply object.
+
+01:19.350 --> 01:30.360
+It also provides common methods such as get, post and put. Then we construct a Q network request object
+
+01:30.890 --> 01:36.370
+with the URL pointing to a QT blog.
+
+01:36.380 --> 01:42.150
+QNetworkRequest is a class holding the information necessary to send a request over the network.
+
+01:42.270 --> 01:49.830
+In addition to the URL, we can also set headers and attributes to specialize the request.
+
+01:49.850 --> 01:55.300
+Here we set the UserAgentHeader to our customized string. 
+
+01:55.410 --> 02:01.920
+Then we call get method to obtain the contents of the target.
+
+02:02.030 --> 02:10.600
+Since network access API only provides us with asynchronous implementations we need to connect to the
+
+02:10.600 --> 02:19.230
+signal of reply and then make sure that the event loop is running. Here we use the lambda function, introduced in
+
+02:19.290 --> 02:24.840
+C++11 as a slot to replace the finished signal.
+
+02:24.890 --> 02:31.760
+That signal is emitted when the reply has finished processing and there is no more updates to the data
+
+02:31.880 --> 02:37.590
+or metadata unless we explicitly call close or abort.
+
+02:37.640 --> 02:42.620
+We can still read data from the reply. In this lambda function,
+
+02:42.620 --> 02:45.310
+we print out all the data from that reply.
+
+02:45.620 --> 02:48.350
+Then we close and schedule it for deletion.
+
+02:48.350 --> 02:55.660
+In the end we call quit to stop the main event loop and then quit the application.
+
+02:55.660 --> 03:04.540
+Now let’s rebuild and then run this application.
+
+03:04.660 --> 03:09.580
+You should see that HTML content of Qt blog is printed out.
+
+03:13.980 --> 03:19.310
+Similarly you can also use this method to download a file from remote server.
+
+03:19.310 --> 03:27.920
+Similarly you can also use this method to download a file.
+
+03:28.070 --> 03:33.020
+In this example we are going to download a license from GNU,
+
+03:38.970 --> 03:44.220
+but rather than printing them out in the console, we're going to store the information in the
+
+03:44.220 --> 03:45.000
+local file.
+
+03:47.740 --> 03:48.250
+To do that,
+
+03:48.250 --> 03:52.800
+we should first include QFile.
+
+03:52.880 --> 03:54.790
+This gives us Q file class.
+
+04:03.270 --> 04:09.330
+Q file provides us a set of API to read from and write to files.
+
+04:09.420 --> 04:18.670
+Here we construct a Q file object out with a local file name lgpl-3.0.txt, then we write the data from
+
+04:18.680 --> 04:21.560
+Q network reply to this file.
+
+04:21.560 --> 04:23.580
+We call close method in the end
+
+04:23.720 --> 04:25.530
+to close this file.
+
+04:25.730 --> 04:27.320
+Now let’s build and run again.
+
+04:46.110 --> 04:47.890
+Once the application exits,
+
+04:47.920 --> 04:51.740
+it means the file has already been downloaded.
+
+04:51.800 --> 04:53.210
+Let's open file browser
+
+04:57.580 --> 05:02.240
+and you should find the file lgpl-3.0.txt
+
+05:02.260 --> 05:05.090
+has already been downloaded.
+
+05:05.110 --> 05:10.630
+If you open it with Notepad you should find that this text file was correctly downloaded
+
+05:16.810 --> 05:18.570
+Into next video,
+
+05:18.580 --> 05:23.080
+we will talk about how to write a TCP server with Qt network module.

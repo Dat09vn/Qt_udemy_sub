@@ -1,0 +1,561 @@
+1
+00:00:00,000 --> 00:00:06,270
+Trong bài này chúng ta sẽ
+
+2
+00:00:02,939 --> 00:00:08,309
+tìm hiểu về các control của QT Quick.
+Đó là tập hợp các yếu tố
+
+3
+00:00:06,270 --> 00:00:12,090
+QML cho phép bạn tạo
+
+4
+00:00:08,309 --> 00:00:14,610
+giao diện người dùng đẹp và ít tốn thời gian.
+
+5
+00:00:12,090 --> 00:00:17,699
+Với QT Quick Controls, bạn có thể
+
+6
+00:00:14,610 --> 00:00:20,730
+tạo các giao diện người dùng như thế này.
+
+7
+00:00:17,699 --> 00:00:23,519
+Nếu bạn nhìn kĩ hơn, ta có nút radio,
+
+8
+00:00:20,730 --> 00:00:26,310
+có thanh trượt, có nút.
+
+9
+00:00:23,519 --> 00:00:28,830
+Tất nhiên đây là một tập hợp con
+
+10
+00:00:26,310 --> 00:00:30,929
+của các control khả dụng trong QT Quick,
+
+11
+00:00:28,830 --> 00:00:34,050
+nhưng bạn có thể thấy bạn có thể áp dụng
+
+12
+00:00:30,929 --> 00:00:36,809
+các phong cách và chủ đề khác nhau vào
+
+13
+00:00:34,050 --> 00:00:40,260
+giao diện người dùng để tạo các thiết kế và
+
+14
+00:00:36,809 --> 00:00:42,960
+cảm nhận khác biệt. Đây là một tập hợp sẵn có
+
+15
+00:00:40,260 --> 00:00:45,960
+các phong cách khả dụng trong QT Quick
+
+16
+00:00:42,960 --> 00:00:47,879
+control. Chúng được liệt kê ở đây nếu
+
+17
+00:00:45,960 --> 00:00:50,190
+bạn muốn tìm hiểu.
+
+18
+00:00:47,879 --> 00:00:53,969
+Nếu bạn không cài đặt phong cách,
+
+19
+00:00:50,190 --> 00:00:57,000
+phong cách fusion sẽ tìm cách đáp ứng
+
+20
+00:00:53,969 --> 00:00:59,850
+các nền tảng máy tính để bàn. Imagine là
+
+21
+00:00:57,000 --> 00:01:02,910
+phong cách có thể tùy chỉnh bằng
+
+22
+00:00:59,850 --> 00:01:04,650
+các biểu tượng riêng được lưu trong thư mục
+
+23
+00:01:02,910 --> 00:01:08,040
+dự án và tự động được sử dụng
+
+24
+00:01:04,650 --> 00:01:10,590
+dưới dạng các icon. Bạn sử dụng
+
+25
+00:01:08,040 --> 00:01:12,540
+phong cách material nếu muốn
+
+26
+00:01:10,590 --> 00:01:15,450
+ứng dụng QT Quick có dạng giống
+
+27
+00:01:12,540 --> 00:01:17,820
+ứng dụng Android, và phong cách
+
+28
+00:01:15,450 --> 00:01:20,340
+universal nếu bạn muốn ứng dụng
+
+29
+00:01:17,820 --> 00:01:23,430
+QT Quick trông giống với ứng dụng
+
+30
+00:01:20,340 --> 00:01:25,950
+chuẩn Microsoft trên thiết bị di động,
+
+31
+00:01:23,430 --> 00:01:28,020
+hoặc các giao diện mượt mà bạn có
+
+32
+00:01:25,950 --> 00:01:31,560
+thể thấy trong các phiên bản hệ
+
+33
+00:01:28,020 --> 00:01:33,960
+điều hành Microsoft mới hơn. Có hai phiên bản
+
+34
+00:01:31,560 --> 00:01:37,020
+QT Quick Control cần biết.
+
+35
+00:01:33,960 --> 00:01:40,020
+QT Quick Control series 1.
+
+36
+00:01:37,020 --> 00:01:42,600
+Nhằm vào các thiết bị máy tính. Chúng
+
+37
+00:01:40,020 --> 00:01:45,540
+ra đời đã khá lâu và sắp bị
+
+38
+00:01:42,600 --> 00:01:47,820
+khai tử. Bạn nên
+
+39
+00:01:45,540 --> 00:01:50,820
+sử dụng QT Quick Control
+
+40
+00:01:47,820 --> 00:01:53,520
+2, hoạt động tốt hơn với các thiết bị
+
+41
+00:01:50,820 --> 00:01:55,259
+di động. Nếu đang hoạt động trên
+
+42
+00:01:53,520 --> 00:01:58,170
+các thiết bị di động, thì chúng cũng
+
+43
+00:01:55,259 --> 00:02:01,860
+có thể hoạt động trên thiết bị máy tính. Nếu
+
+44
+00:01:58,170 --> 00:02:04,920
+bạn có thể sử dụng QT Quick Control 2,
+
+45
+00:02:01,860 --> 00:02:07,950
+ở đây ta có tài liệu trực tuyến của QT Quick
+
+46
+00:02:04,920 --> 00:02:11,640
+Control 1. Bạn có thể thấy
+
+47
+00:02:07,950 --> 00:02:14,160
+module được giới thiệu vào QT 5 1
+
+48
+00:02:11,640 --> 00:02:16,650
+và khi cuộn xuống bạn sẽ thấy
+
+49
+00:02:14,160 --> 00:02:20,160
+các thành phần có trong QT Quick
+
+50
+00:02:16,650 --> 00:02:23,010
+Control 1. Chúng ta có cửa sổ ứng dụng,
+
+51
+00:02:20,160 --> 00:02:25,470
+có thể có cửa sổ chính
+
+52
+00:02:23,010 --> 00:02:26,040
+với menu, thanh trạng thái và
+
+53
+00:02:25,470 --> 00:02:28,890
+vân vân.
+
+54
+00:02:26,040 --> 00:02:30,840
+Ta có các control như nút, checkbox,
+
+55
+00:02:28,890 --> 00:02:33,300
+combo box. Chúng ta sẽ tìm hiểu
+
+56
+00:02:30,840 --> 00:02:35,820
+về những thứ này sau. Ở đây bạn có thể thấy
+
+57
+00:02:33,300 --> 00:02:38,100
+tài liệu trực tuyến của QT Quick Control2,
+
+58
+00:02:35,820 --> 00:02:41,459
+về cơ bản là giống với
+
+59
+00:02:38,100 --> 00:02:43,790
+QT Quick Control 1. Nhưng về
+
+60
+00:02:41,459 --> 00:02:47,130
+hiệu suất thì chúng rất khác
+
+61
+00:02:43,790 --> 00:02:50,010
+so với QT Quick control 1, vì họ
+
+62
+00:02:47,130 --> 00:02:53,640
+đã dành rất nhiều nỗ lực để khiến chúng
+
+63
+00:02:50,010 --> 00:02:55,920
+ít tiêu hao tài nguyên hơn. OK.
+
+64
+00:02:53,640 --> 00:02:58,709
+Để sử dụng chúng bạn cần nhập chúng vào.
+
+65
+00:02:55,920 --> 00:03:03,989
+Phiên bản mới nhất của QT Quick
+
+66
+00:02:58,709 --> 00:03:07,530
+Control là 2.4 đi kèm với Q 5 11.
+
+67
+00:03:03,989 --> 00:03:10,230
+Bạn có thể xem ở đây. Nếu kéo xuống
+
+68
+00:03:07,530 --> 00:03:15,030
+bạn sẽ thấy các phiên bản QT Quick
+
+69
+00:03:10,230 --> 00:03:18,420
+Control khác nhau và phiên bản QT tương ứng.
+
+70
+00:03:15,030 --> 00:03:22,049
+Như vậy nếu đang chạy QT 5 7 bạn cần
+
+71
+00:03:18,420 --> 00:03:24,450
+sử dụng QT Quick Control 2.0. Và khi
+
+72
+00:03:22,049 --> 00:03:26,340
+kéo lên bạn sẽ thấy các phiên bản thay đổi.
+
+73
+00:03:24,450 --> 00:03:28,140
+Bạn có thể thấy nhiều thứ có thể dùng,
+
+74
+00:03:26,340 --> 00:03:30,989
+nhuwgn hiện tại chúng ta chỉ quan tâm đến
+
+75
+00:03:28,140 --> 00:03:33,780
+QT Quick Control.
+
+76
+00:03:30,989 --> 00:03:35,670
+Nếu bạn nhấn vào QT Quick Controls ở đây
+
+77
+00:03:33,780 --> 00:03:39,739
+bạn sẽ thấy danh sách các yếu tố
+
+78
+00:03:35,670 --> 00:03:42,930
+khả dụng trong QT Quick Controls 2.
+
+79
+00:03:39,739 --> 00:03:44,610
+Bạn có thể thấy ta có những thứ
+
+80
+00:03:42,930 --> 00:03:47,610
+giống với QT Quick
+
+81
+00:03:44,610 --> 00:03:51,030
+Control 1, nhưng lại rất khác nhau,
+
+82
+00:03:47,610 --> 00:03:54,180
+theo vẻ bề ngoài và lương
+
+83
+00:03:51,030 --> 00:03:56,730
+tài nguyên tiêu thụ
+
+84
+00:03:54,180 --> 00:03:58,799
+trên thiết bị khi chạy. OK. Bạn có thể nhấn
+
+85
+00:03:56,730 --> 00:04:01,769
+vào bất kì yếu tố nào để biết thêm
+
+86
+00:03:58,799 --> 00:04:04,829
+về yếu tố đó. Nhưng chương này
+
+87
+00:04:01,769 --> 00:04:08,190
+ta chỉ tìm hiểu về ác yếu tố này,
+
+88
+00:04:04,829 --> 00:04:09,930
+vì vậy chúng ta sẽ có các bài học
+về một số các yếu tố đó thật chi tiết.
+
+89
+00:04:08,190 --> 00:04:12,239
+Tôi cũng muốn trình bày
+
+90
+00:04:09,930 --> 00:04:15,959
+thêm thông tin về các phong cách
+
+91
+00:04:12,239 --> 00:04:19,140
+có thể sử dụng. Bạn có thể thấy phong cách default
+
+92
+00:04:15,959 --> 00:04:22,620
+có dạng như thế này, và họ nói rằng
+
+93
+00:04:19,140 --> 00:04:24,540
+đây là một phong cách toàn diện, nhẹ, đơn giản
+
+94
+00:04:22,620 --> 00:04:26,670
+có hiệu suất
+
+95
+00:04:24,540 --> 00:04:29,100
+tối đa. Nếu bạn muốn
+
+96
+00:04:26,670 --> 00:04:32,160
+có hiệu suất tối đa đặc biệt là trên thiết bị
+
+97
+00:04:29,100 --> 00:04:35,280
+di động, bạn nên sử dụng phong cách này. Phong cách
+
+98
+00:04:32,160 --> 00:04:37,800
+Fusion được thiết kế để tạo
+
+99
+00:04:35,280 --> 00:04:40,740
+trải nghiệm máy tính. Phong cách này được thiết kế để
+
+100
+00:04:37,800 --> 00:04:43,410
+trông như một nền tảng máy tính. Phong cách Imagine
+
+101
+00:04:40,740 --> 00:04:46,410
+được thiết kế để tùy chỉnh, và bạn
+
+102
+00:04:43,410 --> 00:04:48,930
+có thể tạo một thư mục trong dự án
+
+103
+00:04:46,410 --> 00:04:50,670
+chứa các icon của phong cách và
+
+104
+00:04:48,930 --> 00:04:52,800
+các icon này sẽ được tự động
+
+105
+00:04:50,670 --> 00:04:56,340
+sử dụng. Nếu bạn thấy, ở đây
+
+106
+00:04:52,800 --> 00:04:58,380
+họ quy định rằng phong cách dựa trên các tài sản hình ảnh,
+
+107
+00:04:56,340 --> 00:05:00,690
+phong cách có tập hợp mặc định các
+
+108
+00:04:58,380 --> 00:05:03,120
+hình ảnh, có thể thay đổi dễ dàng
+
+109
+00:05:00,690 --> 00:05:05,550
+bằng cách cung cấp thư mục có các hình ảnh
+
+110
+00:05:03,120 --> 00:05:08,010
+đã được đặt tên theo quy ước sẵn có.
+
+111
+00:05:05,550 --> 00:05:10,590
+Bạn có thể làm như vậy nếu
+
+112
+00:05:08,010 --> 00:05:12,960
+muốn cung cấp riêng các icon cho phong cách.
+
+113
+00:05:10,590 --> 00:05:15,510
+Nhưng chúng ta sẽ không làm vậy
+
+114
+00:05:12,960 --> 00:05:16,920
+trong khóa học này. Nếu thấy quan tâm hãy
+
+115
+00:05:15,510 --> 00:05:19,890
+nhấn vào đường dẫn và bạn sẽ
+
+116
+00:05:16,920 --> 00:05:23,070
+có thêm thông tin. Phong cách Material được
+
+117
+00:05:19,890 --> 00:05:25,110
+dành cho các thiết bị Android. Điểm đáng chú
+
+118
+00:05:23,070 --> 00:05:26,340
+ý ở đây đó là phong cách này
+
+119
+00:05:25,110 --> 00:05:29,820
+tiêu hao nhiều tài nguyên.
+
+120
+00:05:26,340 --> 00:05:33,830
+Phong cách này giống với
+
+121
+00:05:29,820 --> 00:05:37,130
+phong cách Universal hướng tới
+
+122
+00:05:33,830 --> 00:05:40,110
+các chỉ dẫn thiết kế toàn cầu của Microsoft.
+
+123
+00:05:37,130 --> 00:05:42,450
+Phong cách này cũng giống với phong cách
+
+124
+00:05:40,110 --> 00:05:44,760
+material đó là ngốn tài nguyên. Ta sẽ có cơ hội
+
+125
+00:05:42,450 --> 00:05:47,820
+tìm hiểu về các phong cách và
+
+126
+00:05:44,760 --> 00:05:50,790
+vẻ ngoài của các phong cách này khi tìm hiểu
+
+127
+00:05:47,820 --> 00:05:53,400
+về QT Quick Controls. Ta sẽ tập trung vào
+
+128
+00:05:50,790 --> 00:05:55,710
+QT Controls 2 vì
+
+129
+00:05:53,400 --> 00:05:58,560
+phần mềm đã được cải tiến. Bạn không cần
+
+130
+00:05:55,710 --> 00:06:00,720
+phải tập trung vào bản số 1 vì
+
+131
+00:05:58,560 --> 00:06:03,570
+phiên bản này sẽ bị ngừng hỗ trợ sớm.
+
+132
+00:06:00,720 --> 00:06:05,790
+Nhưng nếu muốn sử dụng thì API
+
+133
+00:06:03,570 --> 00:06:07,860
+vẫn như vây, tất cả những gì cần làm
+
+134
+00:06:05,790 --> 00:06:11,040
+là xem tài liệu về một số điểm
+
+135
+00:06:07,860 --> 00:06:12,480
+cần lưu ý. Như vậy
+
+136
+00:06:11,040 --> 00:06:14,580
+bài học kết thúc ở đây.
+
+137
+00:06:12,480 --> 00:06:16,440
+Trong bài tiếp theo ta sẽ tìm hiểu về các
+
+138
+00:06:14,580 --> 00:06:18,810
+QT Quick Control,
+
+139
+00:06:16,440 --> 00:06:23,240
+bắt đầu là nút.
+
+140
+00:06:18,810 --> 00:06:23,240
+Hẹn gặp lại.

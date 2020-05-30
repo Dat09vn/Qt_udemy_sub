@@ -1,0 +1,312 @@
+1
+00:00:00,030 --> 00:00:01,650
+in this lecture we're going to look at
+
+2
+00:00:01,650 --> 00:00:04,140
+the progress bar to to quick component
+
+3
+00:00:04,140 --> 00:00:06,210
+you use this when you want to show the
+
+4
+00:00:06,210 --> 00:00:08,250
+progress of something that is going on
+
+5
+00:00:08,250 --> 00:00:11,309
+sometimes it is very similar to the busy
+
+6
+00:00:11,309 --> 00:00:13,410
+indicator that we have seen before but
+
+7
+00:00:13,410 --> 00:00:17,130
+it also can show specific progress of an
+
+8
+00:00:17,130 --> 00:00:18,990
+action if you happen to have the data
+
+9
+00:00:18,990 --> 00:00:21,240
+for that we're going to go to QT creator
+
+10
+00:00:21,240 --> 00:00:22,410
+and play with us
+
+11
+00:00:22,410 --> 00:00:26,160
+okay here we are in Qt creator we're
+
+12
+00:00:26,160 --> 00:00:29,310
+going to create our project the Qt Quick
+
+13
+00:00:29,310 --> 00:00:31,650
+application we're going to call it
+
+14
+00:00:31,650 --> 00:00:34,739
+progress bar demo save it in the usual
+
+15
+00:00:34,739 --> 00:00:38,520
+location yet next choose your QT version
+
+16
+00:00:38,520 --> 00:00:44,940
+and choose your desktop kit we are going
+
+17
+00:00:44,940 --> 00:00:47,430
+to change the title here and say
+
+18
+00:00:47,430 --> 00:00:57,059
+progress bar demo we want to import QT
+
+19
+00:00:57,059 --> 00:01:07,170
+quick controls 2.4 and we want
+
+20
+00:01:07,170 --> 00:01:10,380
+to lay things out from top to bottom
+
+21
+00:01:10,380 --> 00:01:14,580
+we're going to use a column component we
+
+22
+00:01:14,580 --> 00:01:16,350
+want it to be the same width as the
+
+23
+00:01:16,350 --> 00:01:21,360
+parent and we want some space and let's
+
+24
+00:01:21,360 --> 00:01:23,549
+do 20 let's see we'd like to see how
+
+25
+00:01:23,549 --> 00:01:24,150
+this looks
+
+26
+00:01:24,150 --> 00:01:26,939
+we want to put in a button component the
+
+27
+00:01:26,939 --> 00:01:31,740
+text is going to say start some action
+
+28
+00:01:31,740 --> 00:01:35,570
+and it's going to be in the center
+
+29
+00:01:35,570 --> 00:01:41,700
+horizontally down we want to input a
+
+30
+00:01:41,700 --> 00:01:48,240
+progress bar component we wanted to
+
+31
+00:01:48,240 --> 00:01:54,060
+start from one and finish at 100 we give
+
+32
+00:01:54,060 --> 00:02:00,479
+it an ID of progress bar and we wanted
+
+33
+00:02:00,479 --> 00:02:05,250
+to have a volume of 40 so what we want
+
+34
+00:02:05,250 --> 00:02:08,008
+to do is that when the user clicks we
+
+35
+00:02:08,008 --> 00:02:09,568
+want to change the value of this
+
+36
+00:02:09,568 --> 00:02:12,239
+progress bar to something else I'm going
+
+37
+00:02:12,239 --> 00:02:13,290
+to say onClicked
+
+38
+00:02:13,290 --> 00:02:17,069
+in the button and we like to do progress
+
+39
+00:02:17,069 --> 00:02:24,739
+bar value let's set this to 78 why not
+
+40
+00:02:24,739 --> 00:02:27,629
+we also want to Center this progress bar
+
+41
+00:02:27,629 --> 00:02:32,129
+so we can actually copy this and put it
+
+42
+00:02:32,129 --> 00:02:40,859
+here and run the application mm-hmm if I
+
+43
+00:02:40,859 --> 00:02:43,079
+click you see that the progress changes
+
+44
+00:02:43,079 --> 00:02:45,239
+this is one way to change the value in
+
+45
+00:02:45,239 --> 00:02:48,389
+the progress bar but you can also do
+
+46
+00:02:48,389 --> 00:02:50,310
+another kind of progress bar that
+
+47
+00:02:50,310 --> 00:02:56,519
+doesn't have a specific value to show
+
+48
+00:02:56,519 --> 00:02:59,760
+okay let's call this progress bar ID 1
+
+49
+00:02:59,760 --> 00:03:02,459
+to make it different from this we don't
+
+50
+00:03:02,459 --> 00:03:05,370
+need to specify from 2 of value
+
+51
+00:03:05,370 --> 00:03:08,040
+properties but you need to make it in
+
+52
+00:03:08,040 --> 00:03:13,049
+the terminal and you do it like this if
+
+53
+00:03:13,049 --> 00:03:17,609
+we run this we're going to see something
+
+54
+00:03:17,609 --> 00:03:19,979
+going on like this it basically is the
+
+55
+00:03:19,979 --> 00:03:24,810
+same as a busy indicator it is just a
+
+56
+00:03:24,810 --> 00:03:27,419
+different kind of that okay to make
+
+57
+00:03:27,419 --> 00:03:30,510
+things a little bit interesting and give
+
+58
+00:03:30,510 --> 00:03:32,849
+you a chance to do some practice we're
+
+59
+00:03:32,849 --> 00:03:35,940
+going to put a dial control on top of
+
+60
+00:03:35,940 --> 00:03:39,989
+the first progress bar here and what we
+
+61
+00:03:39,989 --> 00:03:45,000
+can do is basically very easy we change
+
+62
+00:03:45,000 --> 00:03:51,690
+this to a dial control let's call this
+
+63
+00:03:51,690 --> 00:03:56,549
+DialId the inside is not going to
+
+64
+00:03:56,549 --> 00:04:02,430
+change but when value changes okay we
+
+65
+00:04:02,430 --> 00:04:04,379
+want to change the value in the progress
+
+66
+00:04:04,379 --> 00:04:08,699
+bar we're going to say progress bar ID
+
+67
+00:04:08,699 --> 00:04:12,560
+we want the first one I'd say value
+
+68
+00:04:12,560 --> 00:04:17,060
+equals value the value from this dial
+
+69
+00:04:17,060 --> 00:04:20,720
+let's run the application
+
+70
+00:04:23,840 --> 00:04:27,949
+and you see that as I increase the value
+
+71
+00:04:27,949 --> 00:04:31,340
+in the progress bar also changes this is
+
+72
+00:04:31,340 --> 00:04:34,250
+cool isn't it, this should give you a
+
+73
+00:04:34,250 --> 00:04:36,169
+good introduction on how you work with
+
+74
+00:04:36,169 --> 00:04:39,350
+progress bars to show that something is
+
+75
+00:04:39,350 --> 00:04:41,600
+going on in the next lecture we're going
+
+76
+00:04:41,600 --> 00:04:43,760
+to look at another UI component and that
+
+77
+00:04:43,760 --> 00:04:46,130
+is range slider
+
+78
+00:04:46,130 --> 00:00:00,000
+I'll see you there
+

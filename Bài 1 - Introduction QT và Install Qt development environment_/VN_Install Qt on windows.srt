@@ -1,0 +1,593 @@
+1
+00:00:00,000 --> 00:00:01,800
+Trong bài này chúng ta sẽ tải
+
+2
+00:00:01,800 --> 00:00:03,899
+những công cụ cần thiết cho
+
+3
+00:00:03,899 --> 00:00:06,420
+khóa học. Chúng ta sẽ tải về khung phầm mềm
+
+4
+00:00:06,420 --> 00:00:08,910
+Qt và chúng ta cũng sẽ tải
+
+5
+00:00:08,910 --> 00:00:12,030
+Qt creator - IDE mà chúng ta 
+
+6
+00:00:12,030 --> 00:00:14,219
+sẽ sử dụng. Chúng ta sẽ lấy những
+
+7
+00:00:14,219 --> 00:00:16,410
+công cụ từ đường link này nên chúng ta sẽ
+
+8
+00:00:16,410 --> 00:00:19,170
+đi đến nó bằng trình duyệt. Và chúng ta đã tới.
+
+9
+00:00:19,170 --> 00:00:21,840
+Ai đó sẽ muốn đi trực tiếp vào
+
+10
+00:00:21,840 --> 00:00:24,269
+website của qt và thử nhấn nút
+
+11
+00:00:24,269 --> 00:00:26,369
+download này. Nhưng họ sẽ bắt bạn
+
+12
+00:00:26,369 --> 00:00:28,949
+đi qua rất nhiều bước mà tôi không
+
+13
+00:00:28,949 --> 00:00:31,349
+muốn thực hiện bây giờ. Nên hãy tới
+
+14
+00:00:31,349 --> 00:00:34,200
+thẳng trang download, ấn
+
+15
+00:00:34,200 --> 00:00:37,590
+vào các phiên bản chính thức ở dây và chúng ta ấn
+
+16
+00:00:37,590 --> 00:00:40,410
+vào qt và chúng ta thấy
+
+17
+00:00:40,410 --> 00:00:42,629
+rất nhiều phiên bản của qt
+
+18
+00:00:42,629 --> 00:00:44,190
+ở đây. Chúng ta sẽ chọn bản mới
+
+19
+00:00:44,190 --> 00:00:48,629
+nhất, mà chính lad bản 5.10 nên
+
+20
+00:00:48,629 --> 00:00:52,020
+chúng ta sẽ đi vào đó. Và chúng ta chọn 5.10.1.
+
+21
+00:00:52,020 --> 00:00:55,079
+Trong đây chúng ta thấy rất nhiều phiên bản
+
+22
+00:00:55,079 --> 00:00:58,230
+chúng ta có thể chọn. Chúng ta thấy các phiên bản Qt
+
+23
+00:00:58,230 --> 00:01:01,500
+cho Windows, chúng ta có thể chọn phiên bản Qt
+
+24
+00:01:01,500 --> 00:01:04,949
+cho Linux và phiên bản qt cho Mac. Tôi
+
+25
+00:01:04,949 --> 00:01:07,439
+đang sử dụng máy có hệ điều hành Windows lúc này nên tôi
+
+26
+00:01:07,439 --> 00:01:08,640
+sẽ chọn cái này:
+
+27
+00:01:08,640 --> 00:01:14,600
+QT-opensource-windows-x86-5.10.1.exe.
+
+28
+00:01:14,600 --> 00:01:17,939
+Tôi sẽ nhấn vào vào và tôi được
+
+29
+00:01:17,939 --> 00:01:20,040
+đưa tới của sổ xác nhận rằng tôi có muốn
+
+30
+00:01:20,040 --> 00:01:22,640
+tải nó về không, nên tôi chọn lưu file và
+
+31
+00:01:22,640 --> 00:01:26,909
+phần tải về bắt đầu ở đây. Tôi đã có
+
+32
+00:01:26,909 --> 00:01:29,460
+dile tải về để tiết kiệm thời gian nên tôi
+
+33
+00:01:29,460 --> 00:01:32,040
+sẽ hủy cái này đi, Bạn nên
+
+34
+00:01:32,040 --> 00:01:34,140
+tải nó nếu bạn chưa có qt
+
+35
+00:01:34,140 --> 00:01:36,750
+tải sẳn về. Và tôi sẽ mở
+
+36
+00:01:36,750 --> 00:01:39,990
+thư mục chỗ tôi đã tải nó về.
+
+37
+00:01:39,990 --> 00:01:42,840
+Tôi sẽ click đúp vào nó và nó
+
+38
+00:01:42,840 --> 00:01:44,759
+bản các bạn tạo một tài khoản qt và
+
+39
+00:01:44,759 --> 00:01:47,280
+mấy thứ như thế. Chúng ta sẽ không làm thế
+
+40
+00:01:47,280 --> 00:01:49,860
+ấn Next và bây giờ chúng ta không 
+
+41
+00:01:49,860 --> 00:01:54,320
+tạo một tài khoản qt nên bỏ qua.
+
+42
+00:01:54,320 --> 00:01:58,680
+Ấn Next và các bạn sẽ được lựa chọn
+
+43
+00:01:58,680 --> 00:02:00,540
+vị trí cài đặt qt.
+
+44
+00:02:00,540 --> 00:02:05,390
+Của tôi sẽ được cài vào thư mục "C:\Qt\Qt5.10.1".
+
+45
+00:02:05,390 --> 00:02:09,000
+Các bạn có thể chọn một thu mục
+
+46
+00:02:09,000 --> 00:02:11,008
+các bạn thích hoặc có thể để như mặc định
+
+47
+00:02:11,008 --> 00:02:13,530
+nếu các bạn thích. Chúng ta sẽ
+
+48
+00:02:13,530 --> 00:02:15,659
+ấn Next. Vì tôi đã cài nó
+
+49
+00:02:15,659 --> 00:02:17,370
+trước đây nên các bạn sẽ không gặp
+
+50
+00:02:17,370 --> 00:02:19,950
+phải lỗi này, tôi sẽ tiếp tục. Trên
+
+51
+00:02:19,950 --> 00:02:22,170
+màn hình này các bạn có thể chọn công cụ mà mình
+
+52
+00:02:22,170 --> 00:02:25,110
+muốn cài vào, chúng ta muốn cài đặt Qt
+
+53
+00:02:25,110 --> 00:02:28,290
+creator nên chúng ta sẽ chọn ở dưới phần tools
+
+54
+00:02:28,290 --> 00:02:32,099
+và chúng ta sẽ cài đặt các thành phần
+
+55
+00:02:32,099 --> 00:02:36,299
+Qt dựng sẵn cho MinGW. Tôi chọn
+
+56
+00:02:36,299 --> 00:02:38,640
+MinGWW vì nó là một bộ nén miễn phí nên
+
+57
+00:02:38,640 --> 00:02:40,799
+nó có sẵn miễn phí ở mọi nền tảng
+
+58
+00:02:40,799 --> 00:02:43,769
+như Windows, Mac và Linux. Và chúng ta sẽ
+
+59
+00:02:43,769 --> 00:02:45,840
+sử dụng nó. Trên Windows các bạn cũng nên
+
+60
+00:02:45,840 --> 00:02:47,849
+biết là các bạn có thể sử dụng bộ nén
+
+61
+00:02:47,849 --> 00:02:50,639
+của microsoft visual studio, chúng ta sẽ không
+
+62
+00:02:50,639 --> 00:02:53,129
+chọn nó ở đâu nhưng các bạn có thể chọn nó nếu
+
+63
+00:02:53,129 --> 00:02:56,129
+các bạn đã cài đặt IDE từ
+
+64
+00:02:56,129 --> 00:02:56,909
+Microsoft.
+
+65
+00:02:56,909 --> 00:02:59,069
+Tôi cũng khuyến khích các bạn check vào
+
+66
+00:02:59,069 --> 00:03:03,810
+ô cho android x86 và android arm v7
+
+67
+00:03:03,810 --> 00:03:06,030
+bởi vì trong khóa học này chúng ta sẽ
+
+68
+00:03:06,030 --> 00:03:08,879
+chạy các chương trình trên cả Andriod. Chúng ta
+
+69
+00:03:08,879 --> 00:03:11,879
+chủ yếu cấn x86 bởi vì nó khiến cho
+
+70
+00:03:11,879 --> 00:03:14,579
+ứng dụng của bạn chạy rất nhau trên các
+
+71
+00:03:14,579 --> 00:03:17,549
+thiết bị giả lập nhưng nếu bạn có một thiết bị
+
+72
+00:03:17,549 --> 00:03:20,250
+thật chạy các cấu trúc này nó cũng
+
+73
+00:03:20,250 --> 00:03:22,169
+sẽ hữu dụng. Cho nên hãy chắc chắn
+
+74
+00:03:22,169 --> 00:03:24,180
+2 ô này được dánh dấu - 
+
+75
+00:03:24,180 --> 00:03:29,459
+android x86 và android arm v7. Chúng ta
+
+76
+00:03:29,459 --> 00:03:33,209
+sẽ ấn Next và chúng ta được
+
+77
+00:03:33,209 --> 00:03:37,879
+lựa chọn xem chấp nhận giấy phép hay từ chối.
+
+78
+00:03:37,879 --> 00:03:40,049
+Chúng ta sẽ chấp nhận
+
+79
+00:03:40,049 --> 00:03:43,889
+hit next and we're going to start our
+ấn Next và chúng ta sẽ bắt đầu phần
+
+80
+00:03:43,889 --> 00:03:47,430
+cài đặt. Các bạn có thể ấn hiển thị
+
+81
+00:03:47,430 --> 00:03:50,340
+chi tiết ở đây và chúng sẽ hiển thị
+
+82
+00:03:50,340 --> 00:03:55,650
+cho bạn tiến trình cài đặt. Được rồi
+
+83
+00:03:55,650 --> 00:03:57,840
+phần tải xuống đã xong xuôi và các bạn
+
+84
+00:03:57,840 --> 00:03:59,970
+có thể thấy kết quả của quá trình tải về. Chúng
+
+85
+00:03:59,970 --> 00:04:03,870
+nói rằng Qt đã được cài đặt, chúng nói
+
+86
+00:04:03,870 --> 00:04:05,760
+cho chúng ta vị trí cài đặt
+
+87
+00:04:05,760 --> 00:04:08,579
+và chỗ chúng ta có thể xem bản ghi thay đổi
+
+88
+00:04:08,579 --> 00:04:13,530
+Được rồi vạy chúng ta ấn Next và chúng ta chọn
+
+89
+00:04:13,530 --> 00:04:16,589
+chạy Qt creator nhưng hãy không chạy nó
+
+90
+00:04:16,589 --> 00:04:18,889
+luôn bây giờ. Chúng ta sẽ đóng cái này xuống. Tôi
+
+91
+00:04:18,889 --> 00:04:21,630
+muốn các bạn thấy chỗ nó được cài đặt
+
+92
+00:04:21,630 --> 00:04:23,639
+và các chạy nó trong trường hợp bạn
+
+93
+00:04:23,639 --> 00:04:25,069
+gặp vấn đề.
+
+94
+00:04:25,069 --> 00:04:28,080
+Các bạn sẽ ấn Start ở đây và chúng
+
+95
+00:04:28,080 --> 00:04:30,150
+hiển thị Qt creator ở đâu nhưng chúng ta sẽ không
+
+96
+00:04:30,150 --> 00:04:32,490
+ấn vào nó. Các bạn đi
+
+97
+00:04:32,490 --> 00:04:37,199
+xuống chúng ta tìm Qt 5.10.1 và chúng ta nhấn
+
+98
+00:04:37,199 --> 00:04:39,990
+vào nó. Các bạn có thể thấy là tôi có qt 5.5
+
+99
+00:04:39,990 --> 00:04:42,300
+đã cài đặt ở đây, tôi có vào dự án mà
+
+100
+00:04:42,300 --> 00:04:44,789
+đang sử dụng nó nhưng các bạn có thể có nhiều
+
+101
+00:04:44,789 --> 00:04:47,789
+phiên bản Qt cùng cài đặt, các bạn nên
+
+102
+00:04:47,789 --> 00:04:50,240
+biết điều đó. Chúng ta sẽ vào đây
+
+103
+00:04:50,240 --> 00:04:54,410
+ấn vào Qt creator 4.5.1 và
+
+104
+00:04:54,410 --> 00:04:58,940
+mở nó lên. Vậy đây là Qt creator được mở lên
+
+105
+00:04:58,940 --> 00:05:02,039
+sẵn sàng cho bạn sử dụng. Nếu bạn nhìn ở
+
+106
+00:05:02,039 --> 00:05:04,440
+bên trái chúng ta có một vài thẻ và các bạn có thể
+
+107
+00:05:04,440 --> 00:05:06,900
+ấn vào để xem xét. Chúng ta sẽ
+
+108
+00:05:06,900 --> 00:05:10,319
+giải thích vè giao diện của Qt creator trong một
+
+109
+00:05:10,319 --> 00:05:12,569
+bài tiếp đây. Điều chúng ta sắp làm
+
+110
+00:05:12,569 --> 00:05:14,729
+là tạo một dự án giao diện đồ họa
+
+111
+00:05:14,729 --> 00:05:17,130
+để các bạn thấy Qt creator
+
+112
+00:05:17,130 --> 00:05:23,520
+có thể làm gì. Nên ấn file - new project, chúng ta
+
+113
+00:05:23,520 --> 00:05:26,490
+chọn Qt widgets application. Các bạn phải
+
+114
+00:05:26,490 --> 00:05:28,080
+chọn nơi các bạn sẽ đặt
+
+115
+00:05:28,080 --> 00:05:32,509
+dự án của mình. Trong trường hợp của tôi tôi muốn để nó ở
+
+116
+00:05:32,509 --> 00:05:38,669
+D:\OnlineCourses\3.Qt gui\CourseCode và gọi nó là
+
+117
+00:05:38,669 --> 00:05:47,460
+1-2QtcreatorDemo. Tôi ấn Next.
+
+118
+00:05:47,460 --> 00:05:53,069
+Tôi chọn widget application. Các bạn không
+
+119
+00:05:53,069 --> 00:05:55,560
+phải lo lắng nếu các bạn không
+
+120
+00:05:55,560 --> 00:05:57,210
+hiểu tất cả chỗ này, tôi sẽ
+
+121
+00:05:57,210 --> 00:06:00,000
+giải thích trong các bài tiếp theo.
+
+122
+00:06:00,000 --> 00:06:02,069
+Bây giờ tôi muốn các bạn có thể chạy
+
+123
+00:06:02,069 --> 00:06:04,289
+thứ gì đó trong lần đầu
+
+124
+00:06:04,289 --> 00:06:10,940
+trong qt creator. Ấn Next, Next lần nữa và finish.
+
+125
+00:06:10,940 --> 00:06:14,789
+Được rồi dự án của chúng ta đã được tạo ra và đây là
+
+126
+00:06:14,789 --> 00:06:18,870
+hình thức của một dự án At C++.
+
+127
+00:06:18,870 --> 00:06:20,490
+Bây giờ các bạn không cần bận tâm đền code
+
+128
+00:06:20,490 --> 00:06:23,630
+tấ cả các bạn cần làm là ấn cái
+
+129
+00:06:23,630 --> 00:06:27,150
+nút màu xanh này để chạy dự án của mình và
+
+130
+00:06:27,150 --> 00:06:30,900
+đảm bảo là nó hoạt động. Bạn có thể ấn lên thẻ
+
+131
+00:06:30,900 --> 00:06:36,089
+này ở dưới phần biên soạn đầu ra để xem
+
+132
+00:06:36,089 --> 00:06:38,240
+quá trình chương trình
+
+133
+00:06:38,240 --> 00:06:42,750
+của mình được thực hiện. Và các bạn thấy rằng
+
+134
+00:06:42,750 --> 00:06:44,520
+chúng nói là tiến trình
+
+135
+00:06:44,520 --> 00:06:47,130
+tạo chương trình của chúng ta hoàn thành
+
+136
+00:06:47,130 --> 00:06:52,380
+bình thường. Nên chúng ta có thể chương trình iwr đây và
+
+137
+00:06:52,380 --> 00:06:55,080
+hiện tại nó không có vẻ gì là thú vị nhưng
+
+138
+00:06:55,080 --> 00:06:56,910
+bây giờ các bạn biết công cụ của mình hoạt động
+
+139
+00:06:56,910 --> 00:07:00,630
+và chúng ta có thể bắt đầu xây dựng các chương trình Qt.
+
+140
+00:07:00,630 --> 00:07:02,370
+Và chúng ta sẽ học cách xây dựng
+
+141
+00:07:02,370 --> 00:07:04,940
+các khối và cách làm thế ở
+
+142
+00:07:04,940 --> 00:07:08,220
+phần nhắc nhở của khóa học. Được rồi đó là
+
+143
+00:07:08,220 --> 00:07:10,410
+tất cả những gì tôi muốn nói trong bài này các bạn đã có
+
+144
+00:07:10,410 --> 00:07:12,750
+Qt creator cài đặt, các bạn đã chạy dự án
+
+145
+00:07:12,750 --> 00:07:15,120
+đầu tiên. Trong bài tiếp theo chúng ta sẽ
+
+146
+00:07:15,120 --> 00:07:17,220
+xem xét giao diện người dùng của Qt
+
+147
+00:07:17,220 --> 00:07:19,800
+creator và đi giải thích nó thêm chút
+
+148
+00:07:19,800 --> 00:00:00,000
+chút nữa. Tôi sẽ gặp các bạn ở đấy.
+

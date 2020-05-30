@@ -1,0 +1,436 @@
+1
+00:00:00,000 --> 00:00:02,280
+in this lecture we are looking at how
+
+2
+00:00:02,280 --> 00:00:05,100
+you can use the group box component to
+
+3
+00:00:05,100 --> 00:00:06,930
+group radio buttons and checkboxes
+
+4
+00:00:06,930 --> 00:00:09,870
+together let's go to Qt creator and
+
+5
+00:00:09,870 --> 00:00:12,509
+play with us, here we are in QT creator
+
+6
+00:00:12,509 --> 00:00:15,590
+we are going to create our project
+
+7
+00:00:15,590 --> 00:00:18,930
+it's a QT quick application we are
+
+8
+00:00:18,930 --> 00:00:22,439
+calling that GroupBoxDemo, saving it in
+
+9
+00:00:22,439 --> 00:00:28,019
+the usual location choose our QT version
+
+10
+00:00:28,019 --> 00:00:33,930
+and choose our desktop kit, we want to
+
+11
+00:00:33,930 --> 00:00:36,660
+change the title here to reflect what we
+
+12
+00:00:36,660 --> 00:00:42,149
+are doing inside we want to quote a
+
+13
+00:00:42,149 --> 00:00:49,590
+column component set the spacing to 10
+
+14
+00:00:49,590 --> 00:00:55,110
+and I wanted to feel the parent we have
+
+15
+00:00:55,110 --> 00:00:59,489
+to include QT quick controls so we say
+
+16
+00:00:59,489 --> 00:01:08,490
+QT quick controls 2.4 and we also put in
+
+17
+00:01:08,490 --> 00:01:11,310
+a Label component that says what this
+
+18
+00:01:11,310 --> 00:01:14,520
+does okay it's a group box that is going
+
+19
+00:01:14,520 --> 00:01:16,830
+to wrap around radio buttons that we're
+
+20
+00:01:16,830 --> 00:01:19,020
+going to look at right now we're going
+
+21
+00:01:19,020 --> 00:01:25,229
+to put in a group box component it is
+
+22
+00:01:25,229 --> 00:01:28,229
+going to have a title that says choose
+
+23
+00:01:28,229 --> 00:01:33,180
+corners we're basically going to let the
+
+24
+00:01:33,180 --> 00:01:35,009
+user choose what they want to take a
+
+25
+00:01:35,009 --> 00:01:38,070
+step on us and we want it centered in
+
+26
+00:01:38,070 --> 00:01:45,360
+the parent horizontally the group box
+
+27
+00:01:45,360 --> 00:01:47,729
+doesn't have a layout system of its own
+
+28
+00:01:47,729 --> 00:01:50,130
+so you have to layout your own pants
+
+29
+00:01:50,130 --> 00:01:52,590
+inside we're going to put a column
+
+30
+00:01:52,590 --> 00:01:58,829
+component and we're going to say radio
+
+31
+00:01:58,829 --> 00:02:04,710
+button to put one radio button text is
+
+32
+00:02:04,710 --> 00:02:08,280
+going to be cook ok we're going to put a
+
+33
+00:02:08,280 --> 00:02:12,020
+bunch of other radio buttons
+
+34
+00:02:13,489 --> 00:02:22,680
+let's say green tea and why not by now
+
+35
+00:02:22,680 --> 00:02:25,590
+if we run this application we will have
+
+36
+00:02:25,590 --> 00:02:29,700
+three radio buttons laid out vertically
+
+37
+00:02:29,700 --> 00:02:34,140
+and in a group box component this group
+
+38
+00:02:34,140 --> 00:02:37,620
+box is not only visual because it groups
+
+39
+00:02:37,620 --> 00:02:40,380
+these radio buttons together allowing
+
+40
+00:02:40,380 --> 00:02:43,920
+you to only check one let's run and show
+
+41
+00:02:43,920 --> 00:02:46,200
+you what I mean mm-hmm
+
+42
+00:02:46,200 --> 00:02:49,200
+you see that we have our title on top
+
+43
+00:02:49,200 --> 00:02:55,470
+and we can only check one check box
+
+44
+00:02:55,470 --> 00:02:59,310
+inside this group box this is the effect
+
+45
+00:02:59,310 --> 00:03:01,799
+you usually want with radio buttons to
+
+46
+00:03:01,799 --> 00:03:05,280
+let the user only choose one thing among
+
+47
+00:03:05,280 --> 00:03:07,890
+a list of options that you give them and
+
+48
+00:03:07,890 --> 00:03:10,650
+you can know when one is checked by
+
+49
+00:03:10,650 --> 00:03:13,590
+handling the checked signal for example
+
+50
+00:03:13,590 --> 00:03:16,049
+let's choose the coke radio button here
+
+51
+00:03:16,049 --> 00:03:21,269
+we can say on check state changed okay
+
+52
+00:03:21,269 --> 00:03:30,359
+and say if checked equals to true I like
+
+53
+00:03:30,359 --> 00:03:33,900
+to do it this way because it is more
+
+54
+00:03:33,900 --> 00:03:36,840
+understandable and easier to see we say
+
+55
+00:03:36,840 --> 00:03:52,730
+console.log and if it's not checked
+
+56
+00:03:52,730 --> 00:04:03,500
+we're going to say it's not checked
+
+57
+00:04:03,500 --> 00:04:10,230
+let's run again mm-hmm I check it they
+
+58
+00:04:10,230 --> 00:04:12,959
+say that the button is checked I click
+
+59
+00:04:12,959 --> 00:04:16,320
+on another button the cock button is
+
+60
+00:04:16,320 --> 00:04:19,470
+unchecked and we know here ok you can
+
+61
+00:04:19,470 --> 00:04:21,510
+capture all this information in your
+
+62
+00:04:21,510 --> 00:04:25,260
+handlers if you happen to need that
+
+63
+00:04:25,260 --> 00:04:27,240
+this is really all there is to working
+
+64
+00:04:27,240 --> 00:04:30,480
+with group box and radio button I am
+
+65
+00:04:30,480 --> 00:04:33,780
+going to add another group box that
+
+66
+00:04:33,780 --> 00:04:38,070
+wraps around checkboxes just to show you
+
+67
+00:04:38,070 --> 00:04:46,650
+how you can use that and in fact I can
+
+68
+00:04:46,650 --> 00:04:51,570
+copy this group box to save some type in
+
+69
+00:04:51,570 --> 00:04:55,050
+let you copy and paste that down here
+
+70
+00:04:55,050 --> 00:04:59,250
+and I'm going to change this to check
+
+71
+00:04:59,250 --> 00:05:07,920
+box paste paste here we're going to say
+
+72
+00:05:07,920 --> 00:05:12,780
+choose cute soap or red platform for
+
+73
+00:05:12,780 --> 00:05:21,480
+example and here we can say Windows Mac
+
+74
+00:05:21,480 --> 00:05:29,340
+Linux and let's specify Desktop 
+
+75
+00:05:29,340 --> 00:05:29,970
+platform here
+
+76
+00:05:29,970 --> 00:05:35,100
+to be specific okay if we run this
+
+77
+00:05:35,100 --> 00:05:39,540
+application what shall we see we will
+
+78
+00:05:39,540 --> 00:05:42,150
+see check boxes down ok a group box
+
+79
+00:05:42,150 --> 00:05:44,910
+wrapping around check boxes you see the
+
+80
+00:05:44,910 --> 00:05:47,760
+title here choose support a desktop
+
+81
+00:05:47,760 --> 00:05:50,550
+platform and you can choose one okay it
+
+82
+00:05:50,550 --> 00:05:53,580
+says coke button checked I don't want
+
+83
+00:05:53,580 --> 00:05:54,030
+this
+
+84
+00:05:54,030 --> 00:06:02,550
+it should say windows button checked, this
+
+85
+00:06:02,550 --> 00:06:07,910
+is the evil thing about cookie tasting
+
+86
+00:06:07,910 --> 00:06:15,030
+run again and you can now when the
+
+87
+00:06:15,030 --> 00:06:18,450
+windows checkbox is checked and I want
+
+88
+00:06:18,450 --> 00:06:20,730
+to draw your attention to something and
+
+89
+00:06:20,730 --> 00:06:23,640
+that is that when you group checkboxes
+
+90
+00:06:23,640 --> 00:06:25,910
+inside the group box they are not
+
+91
+00:06:25,910 --> 00:06:29,100
+exclusive you can choose multiple stuff
+
+92
+00:06:29,100 --> 00:06:32,220
+together like here when we have when
+
+93
+00:06:32,220 --> 00:06:34,500
+it's much selected but notice that
+
+94
+00:06:34,500 --> 00:06:36,580
+with radio buttons you can only
+
+95
+00:06:36,580 --> 00:06:39,970
+one so if you need to have your choices
+
+96
+00:06:39,970 --> 00:06:43,090
+exclusive use radio buttons if you need
+
+97
+00:06:43,090 --> 00:06:46,479
+your choices to be not exclusive use
+
+98
+00:06:46,479 --> 00:06:50,379
+check boxes from the c++ side of Qt it
+
+99
+00:06:50,379 --> 00:06:53,370
+is possible to make check boxes also
+
+100
+00:06:53,370 --> 00:06:57,310
+exclusive but from QT quick I still have
+
+101
+00:06:57,310 --> 00:06:59,680
+to see a way to do that but you probably
+
+102
+00:06:59,680 --> 00:07:01,780
+not going to need that because radio
+
+103
+00:07:01,780 --> 00:07:05,020
+buttons are enough for this purpose okay
+
+104
+00:07:05,020 --> 00:07:06,849
+this is really all I wanted to show you
+
+105
+00:07:06,849 --> 00:07:08,860
+about the GroupBox component in the
+
+106
+00:07:08,860 --> 00:07:10,509
+next lecture we're going to look at the
+
+107
+00:07:10,509 --> 00:07:12,940
+page indicator component and how you can
+
+108
+00:07:12,940 --> 00:07:15,550
+use it with this wide view I'll see you
+
+109
+00:07:15,550 --> 00:00:00,000
+there
+

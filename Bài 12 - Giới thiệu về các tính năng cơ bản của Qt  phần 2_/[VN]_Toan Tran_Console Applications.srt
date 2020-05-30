@@ -1,0 +1,460 @@
+﻿1
+00:00:01,100 --> 00:00:06,430
+Và đây là phần 1 - 'Moving beyond GUI Application' (Di chuyển ra ngoài Ứng dụng GUI), bao gồm dùng Qt để tạo ứng dụng điều khiển (console application).
+
+2
+00:00:06,890 --> 00:00:11,750
+Trong video này, chúng ta sẽ bao gồm tại sao chúng ta muốn dùng Qt cho ứng dụng điều khiển, thao tác
+
+3
+00:00:11,750 --> 00:00:14,500
+tập tin với Qt và tin nhắn lỗi Qt.
+
+4
+00:00:14,510 --> 00:00:16,330
+Vậy, trước tiên hãy trả lời câu hỏi rõ ràng.
+
+5
+00:00:16,460 --> 00:00:20,980
+Tại sao chúng ta dùng một nền tảng phát triển GUI cho các ứng dụng điều khiển hay các ứng dụng không có giao diện?
+
+6
+00:00:21,050 --> 00:00:24,320
+Vâng, Qt thì nhiều hơn rất nhiều một nền tảng phát triển GUI.
+
+7
+00:00:24,320 --> 00:00:28,330
+Trong thực tế, tôi sẽ không cung cấp cho các bạn một lý do để sử dụng Qt vì điều khiển.
+
+8
+00:00:28,340 --> 00:00:35,000
+Tôi sẽ cho các bạn 6 lý do. Vậy, nếu đoạn mã của các bạn có liên quan đến truy cập dữ liệu SQL, phân tích XML (XML parsing), phân tích JSON (JSON parsing), quản lý
+
+9
+00:00:35,000 --> 00:00:41,180
+luồng (thread management), xử lý sự kiện (event handling), bất ky sự kết hợp của những nhiệm vụ nói trên và tốt hơn
+
+10
+00:00:41,180 --> 00:00:46,400
+cho các bạn sử dụng C++, các bạn nên xem xét sử dụng Qt. Không cần phải tái tạo lại bánh xe chương trình.
+
+11
+00:00:46,400 --> 00:00:50,360
+Một lý do khác để sử dụng Qt cho các ứng dụng không dùng đồ họa giao diện đó là môi trường có giới hạn
+
+12
+00:00:50,360 --> 00:00:52,220
+các bạn sử dụng GUI cho bất cứ điều gì.
+
+13
+00:00:52,220 --> 00:00:57,050
+Các ví dụ phổ biến của khi nào áp dụng việc này là khi các bạn chạy trên server, tạo 1 tiện ích đơn giản
+
+14
+00:00:57,260 --> 00:01:00,950
+hay tạo một loạt các dịch vụ cho kiến trúc vi dịch vụ (microservice architecture).
+
+15
+00:01:00,980 --> 00:01:07,700
+Vì vậy, chúng ta đã giải thích tại sao, bây giờ chúng ta sẽ giải quyết làm thế nào chúng ta tạo ra một dự án không có GUI. Chúng ta sẽ giải quyết
+
+16
+00:01:07,700 --> 00:01:10,500
+ví dụ không lặp sự kiện (non-event loop based example) trong bài học này.
+
+17
+00:01:10,520 --> 00:01:13,430
+Nhưng chúng ta sẽ tìm hiểu ví dụ lặp sự kiện (event loop based example) trong bài tới.
+
+18
+00:01:13,820 --> 00:01:22,240
+Vậy chúng ta sẽ chuyển qua Qt Creator, đến 'File', 'New File or Project', 'Non-Qt Project', 'Plain C++ Application'.
+
+19
+00:01:22,370 --> 00:01:28,550
+Chọn một vị trí dự án, chúng ta sẽ gắn với hệ thống xây dựng qmake' và chọn desktop kit và
+
+20
+00:01:28,550 --> 00:01:33,850
+sau đó chọn cách quản lý phiên bản (version control) và tiếp tục và chạy dự án này.
+
+21
+00:01:33,850 --> 00:01:38,900
+Cái các bạn thấy là một ví dụ 'Hello World' đơn giản nhưng chúng ta sẽ có
+
+22
+00:01:38,900 --> 00:01:40,350
+popup mỗi khi chúng ta chạy nó.
+
+23
+00:01:40,480 --> 00:01:46,500
+Nếu chúng ta không muốn popup, chúng ta có thể vào tập tin '.pro', dưới 'console' này,
+
+24
+00:01:46,510 --> 00:01:52,900
+chúng ta sẽ xoá nó ra và bây giờ nếu chúng ta chạy lại nó, đầu ra của chương trình này thực sự sẽ hiện ra ở trong đây.
+
+25
+00:01:54,700 --> 00:01:56,190
+Tuyệt vời. Vì vậy, bây giờ, chúng ta biết làm thế nào để làm việc đó.
+
+26
+00:01:56,190 --> 00:01:58,690
+Chúng ta hãy đi tiếp và tạo ra một tiện ích nhỏ.
+
+27
+00:01:58,690 --> 00:02:01,560
+Bây giờ chúng tôi phải tạo ra một số hình ảnh để sử dụng trong phần tiếp theo.
+
+28
+00:02:01,570 --> 00:02:04,190
+Chính xác là một đống các hình ảnh màu ngẫu nhiên.
+
+29
+00:02:04,360 --> 00:02:07,700
+Vì vậy, chúng ta hãy tạo một ứng dụng để tạo ra các hình ảnh.
+
+30
+00:02:07,900 --> 00:02:08,940
+Chúng ta thay đổi mã.
+
+31
+00:02:08,960 --> 00:02:14,080
+Xem tôi đã vạch ra những gì chúng ta cần phải làm ở đây và bước đầu tiên là thao tác đường dẫn tập tin.
+
+32
+00:02:14,110 --> 00:02:19,300
+Tôi không thường ghi nhớ các thứ về lập trình, nhưng nếu có một thứ tôi luôn ghi nhớ,
+
+33
+00:02:19,330 --> 00:02:21,250
+đó là thao tác đường dẫn tập tin.
+
+34
+00:02:21,250 --> 00:02:27,810
+Có thể thay đổi đường dẫn, tạo tập tin, tạo thư mục
+
+35
+00:02:27,850 --> 00:02:29,340
+là huyết mạch của chương trình.
+
+36
+00:02:29,380 --> 00:02:30,910
+Vì vậy chúng ta sẽ tìm hiểu về nó bây giờ.
+
+37
+00:02:30,910 --> 00:02:37,210
+Qt cung cấp phương pháp đa nền tảng cho thao tác tập tin trong QDir. QDir có thể được sử dụng để thao tác
+
+38
+00:02:37,210 --> 00:02:42,610
+với tên đường dẫn, truy cập thông tin liên quan với đường dẫn và tập tin và thao tác với tập tin hệ thống cơ bản.
+
+39
+00:02:42,610 --> 00:02:47,300
+Vậy hãy tiếp tục và truy cập vào thư mục làm việc hiện tại của chúng ta. Tuyệt vời.
+
+40
+00:02:47,310 --> 00:02:52,350
+Vậy giờ chúng ta đã có thể truy cập vào thư mục hiện tại của chúng ta, chúng ta cần quay lại thư mục nguồn của dự án
+
+41
+00:02:52,350 --> 00:02:57,120
+có nghĩa là chúng ta cần trả lại 2 thư mục và sau đó đổi sang thư mục cho Phần 2.
+
+42
+00:02:57,150 --> 00:03:01,140
+Chúng ta sẽ tạo 1 thư mục gọi là 'pics' nằm trong thư mục của phần 2.
+
+43
+00:03:01,230 --> 00:03:03,920
+Vậy hãy đi và đổi sang phần 2 bây giờ.
+
+44
+00:03:05,230 --> 00:03:10,090
+Bây giờ dĩ nhiên tôi có thể nói chương trình làm như thế nhưng liệu đây là 1 hoạt động hợp lệ hay không là
+
+45
+00:03:10,090 --> 00:03:11,350
+1 câu hỏi hoàn toàn khác.
+
+46
+00:03:11,350 --> 00:03:15,910
+Vậy tiếp tục và chắc chắn rằng đó là 1 thay đổi thư mục hợp lệ và nếu nó không phải chúng ta
+
+47
+00:03:15,910 --> 00:03:18,730
+sẽ tiếp tục và thông báo cho người dùng. Tốt.
+
+48
+00:03:18,760 --> 00:03:21,900
+Vậy bây giờ chúng ta có boolean này. Làm thế nào chúng ta thông báo người dùng?
+
+49
+00:03:22,030 --> 00:03:25,880
+Qt có 1 framework cho tin nhắn lỗi.
+
+50
+00:03:25,900 --> 00:03:30,670
+Điều tốt khi sử dụng framework là chúng ta có thể thay đổi flag và nó có thể được biên dịch ra.
+
+51
+00:03:30,670 --> 00:03:35,090
+Chúng ta sẽ dùng QFtal ở đây, bởi vì đây là 1 ngõ cụt cho ứng dụng của chúng ta.
+
+52
+00:03:35,110 --> 00:03:40,150
+Người dùng sẽ cần phải có 1 bước thay đổi mạnh mẽ để có thể làm cho nó chạy hợp lệ
+
+53
+00:03:40,480 --> 00:03:50,510
+nhưng nếu nó không như thế, chúng ta cũng có QInfo, QWarning, QCritical và QDebug
+
+54
+00:03:50,550 --> 00:03:56,890
+Vậy, nếu các bạn thực sự thấy tin nhắn này, nó cho chúng ta biết rằng thư mục 2_section không
+
+55
+00:03:56,890 --> 00:04:02,170
+tìm thấy được và rằng chúng ta cần thay đổi đoạn mã ở 'cd' thầy đương dẫn tuyệt đối cho hệ thống thay vào đó,
+
+56
+00:04:02,170 --> 00:04:07,090
+hay di chuyển chương trình xây dụng đến thư mục dự kiến, mà sau đó nó cung cấp cho chúng ta thư mục dự kiến.
+
+57
+00:04:07,090 --> 00:04:10,240
+Bây giờ chúng ta muốn nói cho người dùng đường dẫn tuyệt đối là gì.
+
+58
+00:04:10,240 --> 00:04:15,100
+Vậy hãy tiếp tục và làm điều đó ngay bây giờ trước khi chúng ta thực sự thoát khỏi chương trình này.
+
+59
+00:04:15,100 --> 00:04:20,410
+Vậy vì chúng ta không thể đi tiếp từ đây, chúng ta sẽ tiếp tục và trả về tập tin chính của chúng ta hoặc
+
+60
+00:04:20,410 --> 00:04:21,160
+chức năng chính của chúng ta ở đây.
+
+61
+00:04:22,380 --> 00:04:27,100
+Vậy bây giờ chúng ta đã đảm bảo được rằng chúng ta đang ở đúng thư mục hay ít nhất đảm bảo nó tồn tại.
+
+62
+00:04:27,120 --> 00:04:30,310
+Hãy tiếp tục và tạo thư mục 'pics' của chúng ta.
+
+63
+00:04:30,450 --> 00:04:34,580
+Vận, chúng ta chỉ thực sự tạo nó nếu nó không tồn tại ngay lúc đầu.
+
+64
+00:04:36,160 --> 00:04:40,690
+Đoạn mã này có 1 chút tầm thường bởi vì nếu chúng ta nhìn vào chức năng mkdir này, nó thực sự
+
+65
+00:04:40,730 --> 00:04:42,060
+trả lại 1 boolean.
+
+66
+00:04:42,070 --> 00:04:45,290
+Nhưng tôi muốn tìm cái cớ để dùng chức năng này.
+
+67
+00:04:45,430 --> 00:04:49,180
+Vậy để các bạn biết rằng chức năng 'exists' tồn tại.
+
+68
+00:04:49,180 --> 00:04:53,560
+Các bạn cũng cần thay đổi sang thư mục này, vào nó bây giờ.
+
+69
+00:04:53,590 --> 00:04:54,220
+Hoàn hảo.
+
+70
+00:04:54,220 --> 00:04:57,010
+Bây giờ chúng ta cần phải xoá bất cứ hình ảnh cũ nào.
+
+71
+00:04:57,010 --> 00:05:00,840
+Chúng ta dùng 1 từ khoá Qt  để khiến việc này dễ dàng hơn,
+
+72
+00:05:00,850 --> 00:05:06,490
+lệnh 'foreach' mà làm đơn giản hơn nhiều việc lặp lại trên vật chứa.
+
+73
+00:05:07,700 --> 00:05:13,580
+entryList sẽ được xem xét và chung cấp cho chúng ta 1 loạt filepath và nếu chúng ta tìm thấy bất cứ
+
+74
+00:05:13,640 --> 00:05:18,640
+filepath nào trong thư mục 'pics', chúng ta sẽ xoá nó. Tuyệt vời.
+
+75
+00:05:18,640 --> 00:05:25,460
+Vậy bây giờ khi chúng ta cần tạo ra 100 tấm hình, chúng ta sẽ làm điều này bằng 1 vòng lặp for lớn.
+
+76
+00:05:25,490 --> 00:05:30,050
+Điều đầu tiên chúng ta cần làm cho vòng lặp for là tạo QImage của chúng ta.
+
+77
+00:05:30,050 --> 00:05:33,390
+Và đây là sẽ là 100 nhân 100 điểm ảnh.
+
+78
+00:05:33,390 --> 00:05:38,050
+Vậy chúng ta sẽ xác định nó ở đây và cung cấp định dạng hợp lệ.
+
+79
+00:05:38,060 --> 00:05:40,010
+Bây giờ chúng ta cần thêm màu sắc cho hình.
+
+80
+00:05:40,040 --> 00:05:44,380
+Thực tế chúng ta cần phải chọn màu trước.
+
+81
+00:05:44,480 --> 00:05:46,430
+Có vài điểm cần lưu ý ở đây.
+
+82
+00:05:47,120 --> 00:05:53,240
+Đầu tiên, chúng ta tạo 'colors' ở đầu chương trình của chúng ta. Nó chỉ là QVector của QColor mà
+
+83
+00:05:53,240 --> 00:05:59,000
+chúng ta nhận được từ phương thức get_virdis_values(), mà đến từ tập tin tiêu đề này, mà định nghĩa 1 loạt
+
+84
+00:05:59,000 --> 00:06:00,310
+các màu.
+
+85
+00:06:00,320 --> 00:06:03,380
+Điều lưu ý kế tiếp là chúng ta đang dùng modulus operator
+
+86
+00:06:03,380 --> 00:06:08,570
+Các bạn thấy rằng dùng qrand và modulus operator như cách để nhận được
+
+87
+00:06:08,570 --> 00:06:10,540
+một loại giới hạn số ngẫu nhiên.
+
+88
+00:06:10,560 --> 00:06:15,980
+Vì vậy, điều này là không thực sự chính xác bởi vì các bạn không biết số tối đa là nhiêu nhưng nó không
+
+89
+00:06:16,000 --> 00:06:19,220
+gia tăng về cơ bản trong 256.
+
+90
+00:06:19,220 --> 00:06:24,800
+Vì vậy, những gì tôi muốn chứng tỏ về cơ bản là một cách tốt để thực sự tạo ra một phân phối ngẫu nhiên .
+
+91
+00:06:25,010 --> 00:06:29,000
+Chúng ta sẽ dùng lớp QRandomGenerator và chúng ta sẽ tạo nó.
+
+92
+00:06:29,000 --> 00:06:37,430
+Và thay vì dùng cái này, chúng ta có thể gọi hàm 'bounded' trên hàm 'random' và cung cấp giá trị lớn nhât
+
+93
+00:06:37,430 --> 00:06:39,170
+mà đó sẽ là 255.
+
+94
+00:06:39,300 --> 00:06:45,410
+Điều này sẽ trả lại cho chúng ta số ngãu nhiên tốt hơn là dùng qrand với modulus operator.
+
+95
+00:06:45,430 --> 00:06:49,220
+Cái này vẫn hợp lệ nếu các bạn không thật sự quan tâm đến khuyết điểm của nó.
+
+96
+00:06:49,240 --> 00:06:50,680
+Nhưng nó rất quan trọng để biết.
+
+97
+00:06:50,990 --> 00:06:51,410
+Tuyệt vời.
+
+98
+00:06:51,410 --> 00:06:54,910
+Bây giờ chúng ta đã có màu của chúng ta, tiếp tục và điền vào hình ảnh của chúng ta.
+
+99
+00:06:56,120 --> 00:07:01,040
+Và một khi chúng ta lấp đầy nó, điều cuối cùng chúng ta cần làm là lưu nó. Trước khi chúng ta lưu nó,
+
+100
+00:07:01,040 --> 00:07:07,130
+chúng ta cần đường dẫn, vậy nên hãy tạo nó và sau đó đảm bảo rằng
+
+101
+00:07:07,130 --> 00:07:07,930
+chúng ta có tất cả mọi thứ đúng,
+
+102
+00:07:07,960 --> 00:07:14,150
+hãy đưa nó vào QDebug trước khi thật sự lưu tập tin của chúng ta. Và nó đó. Hãy làm
+
+103
+00:07:14,150 --> 00:07:14,620
+và chạy cái này để
+
+104
+00:07:14,620 --> 00:07:15,950
+đảm bảo nó hoạt động
+
+105
+00:07:15,950 --> 00:07:18,140
+Có vẻ như mọi thứ đã làm việc OK.
+
+106
+00:07:18,230 --> 00:07:20,690
+Bây giờ điều này có thể không có vẻ giống như một việc lớn.
+
+107
+00:07:20,780 --> 00:07:22,220
+Hãy suy nghĩ về điều này một chút.
+
+108
+00:07:22,310 --> 00:07:28,100
+Nếu không có giúp đỡ của Qt, chúng ta có lẽ phải nhảy vào PNG (portable network graphic)
+
+109
+00:07:28,130 --> 00:07:31,870
+và tìm hiểu xem làm thế nào chúng ta có thể lưu thủ công 1 tập tin PNG.
+
+110
+00:07:31,880 --> 00:07:36,590
+Thêm vào nữa, nếu chúng ta muốn đoạn mã này trở thành đa nền tảng, chúng ta phải triển khai riêng lẻ
+
+111
+00:07:36,590 --> 00:07:42,570
+thao tác tập tin, mà nó có thể là 1 sự trở ngại lớn, và đó là lý do chúng ta dùng Qt trong trường hợp này cho
+
+112
+00:07:42,800 --> 00:07:45,420
+điều khiển ứng dụng và là lý do tại sao nó hữu ích.
+
+113
+00:07:45,680 --> 00:07:50,750
+Và với nó, chúng ta đã thành công tạo ra hình ảnh cho thư viện tương lai của chúng ta, đồng thời thể hiện
+
+114
+00:07:50,750 --> 00:07:55,760
+hệ thống tin nhắn lỗi Qt và lớp QDir cho thao tác tập tin.
+
+115
+00:07:55,790 --> 00:08:01,320
+Tham gia với chúng tôi trong bài tới, nơi mà chúng ta sẽ tìm hiểu ứng dụng lặp sự kiện và vượt ra ngoài lập trình GUI.
+

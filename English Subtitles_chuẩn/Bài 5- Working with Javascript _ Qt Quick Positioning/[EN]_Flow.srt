@@ -1,0 +1,604 @@
+1
+00:00:00,000 --> 00:00:01,800
+In this lecture, we're going to look at
+
+2
+00:00:01,800 --> 00:00:05,130
+the flow qml component. According to the
+
+3
+00:00:05,130 --> 00:00:07,770
+documentation, the flow item positions
+
+4
+00:00:07,770 --> 00:00:11,059
+its child items like words on a page,
+
+5
+00:00:11,059 --> 00:00:13,650
+wrapping them to create rows or columns
+
+6
+00:00:13,650 --> 00:00:16,800
+of items. This is really all this
+
+7
+00:00:16,800 --> 00:00:19,199
+component does. We're going to create a
+
+8
+00:00:19,199 --> 00:00:23,119
+new project and play with this thing. File,
+
+9
+00:00:23,119 --> 00:00:24,960
+new project,
+
+10
+00:00:24,960 --> 00:00:27,539
+It's a QT Quick Application. We're going
+
+11
+00:00:27,539 --> 00:00:30,300
+to call it "flow demo", stir it in the
+
+12
+00:00:30,300 --> 00:00:33,469
+usual location, hit "next", choose your
+
+13
+00:00:33,469 --> 00:00:37,110
+latest version of Qt, and choose your
+
+14
+00:00:37,110 --> 00:00:42,360
+kit. And we have our project here. We want
+
+15
+00:00:42,360 --> 00:00:44,850
+to change the title here and make it say
+
+16
+00:00:44,850 --> 00:00:49,079
+"flow demo". And inside, we want to put a
+
+17
+00:00:49,079 --> 00:00:52,440
+flow component. Inside, ID is going to be
+
+18
+00:00:52,440 --> 00:01:00,090
+container. Width is going to be, let's
+
+19
+00:01:00,090 --> 00:01:04,619
+spell width correctly, and the height is
+
+20
+00:01:04,619 --> 00:01:09,869
+going to be the height of the parent. To
+
+21
+00:01:09,869 --> 00:01:11,909
+speed things up, I'm going to put in a
+
+22
+00:01:11,909 --> 00:01:14,310
+few rectangles that I have prepared
+
+23
+00:01:14,310 --> 00:01:19,530
+before. This one is a regular rectangle
+
+24
+00:01:19,530 --> 00:01:22,500
+with an ID, width and the height, a color and
+
+25
+00:01:22,500 --> 00:01:24,869
+inside we have a text element that is
+
+26
+00:01:24,869 --> 00:01:28,110
+centered in the rectangle. And it has a
+
+27
+00:01:28,110 --> 00:01:31,229
+black color, a font.pointSize of 30 and
+
+28
+00:01:31,229 --> 00:01:34,049
+the text inside, the text element, is
+
+29
+00:01:34,049 --> 00:01:36,960
+going to be 1. Let's hit control + A and
+
+30
+00:01:36,960 --> 00:01:40,170
+control + I to align things nicely. And we
+
+31
+00:01:40,170 --> 00:01:42,299
+want to add more rectangles like this. We
+
+32
+00:01:42,299 --> 00:01:44,759
+want to do a grid structure like we've
+
+33
+00:01:44,759 --> 00:01:47,040
+been doing in the last few lectures. We
+
+34
+00:01:47,040 --> 00:01:50,790
+put in the top center rectangle looks
+
+35
+00:01:50,790 --> 00:01:51,540
+like this.
+
+36
+00:01:51,540 --> 00:01:55,920
+The color is beige, the size is 100 100
+
+37
+00:01:55,920 --> 00:01:58,350
+width and height, and his text is saying 2. 
+
+38
+00:01:58,350 --> 00:02:02,460
+Control + A, Control + I to align things.
+
+39
+00:02:02,460 --> 00:02:06,689
+We put in the top right rectangle, we put
+
+40
+00:02:06,689 --> 00:02:10,739
+in the left center rectangle, we put in
+
+41
+00:02:10,739 --> 00:02:13,410
+our Center rectangle, right center
+
+42
+00:02:13,410 --> 00:02:17,400
+rectangle, bottom left rectangle, bottom
+
+43
+00:02:17,400 --> 00:02:20,520
+Center rectangle, and finally bottom
+
+44
+00:02:20,520 --> 00:02:23,880
+right rectangle. We need to hit Control + A, 
+
+45
+00:02:23,880 --> 00:02:27,420
+Control + I to align these things. And I
+
+46
+00:02:27,420 --> 00:02:30,750
+want to collapse this rectangle so that
+
+47
+00:02:30,750 --> 00:02:33,870
+we see what we have in here, very easily,
+
+48
+00:02:33,870 --> 00:02:36,540
+to basically have a flow component and
+
+49
+00:02:36,540 --> 00:02:39,240
+rectangles inside and it is nine
+
+50
+00:02:39,240 --> 00:02:41,850
+rectangles, and we can run to see what
+
+51
+00:02:41,850 --> 00:02:45,090
+our application looks like. mm-hmm.
+
+52
+00:02:45,090 --> 00:02:48,900
+You see that our rectangles are laid out
+
+53
+00:02:48,900 --> 00:02:53,130
+from left to right. And when the width is
+
+54
+00:02:53,130 --> 00:02:56,430
+not enough to contain them, they wrap to
+
+55
+00:02:56,430 --> 00:03:00,630
+the next line just like text flows in a
+
+56
+00:03:00,630 --> 00:03:02,310
+page. And I think that's a really good
+
+57
+00:03:02,310 --> 00:03:05,490
+comparison to help people understand how
+
+58
+00:03:05,490 --> 00:03:08,790
+the flow component works. Okay, if we try
+
+59
+00:03:08,790 --> 00:03:11,550
+and extend the width, you see that they
+
+60
+00:03:11,550 --> 00:03:14,240
+try and fill the available width. As the
+
+61
+00:03:14,240 --> 00:03:17,850
+width decreases, we start wrapping to the
+
+62
+00:03:17,850 --> 00:03:22,020
+next lines. And if we keep decreasing the
+
+63
+00:03:22,020 --> 00:03:24,390
+size of the width enough, we're going to
+
+64
+00:03:24,390 --> 00:03:26,340
+have a grid structure like we've had
+
+65
+00:03:26,340 --> 00:03:29,130
+before. And you see that it flows from
+
+66
+00:03:29,130 --> 00:03:32,510
+left to right and from top to bottom.
+
+67
+00:03:32,510 --> 00:03:35,520
+Okay, a property we can set inside the
+
+68
+00:03:35,520 --> 00:03:38,780
+flow component is the flow property,
+
+69
+00:03:38,780 --> 00:03:46,140
+which can be flow left to right. Okay,
+
+70
+00:03:46,140 --> 00:03:49,230
+which is what we have by default. We're
+
+71
+00:03:49,230 --> 00:03:52,470
+not going to see any difference, left to
+
+72
+00:03:52,470 --> 00:03:57,200
+right, but it can also be ToptoBottom.
+
+73
+00:03:57,200 --> 00:04:01,410
+Okay, something like this. We run and we
+
+74
+00:04:01,410 --> 00:04:03,840
+should see one, two, three from top to
+
+75
+00:04:03,840 --> 00:04:05,970
+bottom and it's going to wrap to the
+
+76
+00:04:05,970 --> 00:04:10,590
+columns as we run out of height to
+
+77
+00:04:10,590 --> 00:04:13,590
+contain our items. This is how you use
+
+78
+00:04:13,590 --> 00:04:15,570
+the flow property if you happen to need
+
+79
+00:04:15,570 --> 00:04:17,640
+this behavior. We're going to comment
+
+80
+00:04:17,640 --> 00:04:19,829
+this out. We can also do a layout
+
+81
+00:04:19,829 --> 00:04:24,840
+direction, like we did for the grid
+
+82
+00:04:24,840 --> 00:04:26,410
+layout component.
+
+83
+00:04:26,410 --> 00:04:33,490
+It can be Qt.RightToLeft. Let's run
+
+84
+00:04:33,490 --> 00:04:36,190
+and we should have one, two, three
+
+85
+00:04:36,190 --> 00:04:38,590
+starting from the right. Okay, you see
+
+86
+00:04:38,590 --> 00:04:41,470
+this is the behavior we have. It can also
+
+87
+00:04:41,470 --> 00:04:49,270
+be left to right. Run again, which is the
+
+88
+00:04:49,270 --> 00:04:51,670
+default behavior. And you might think
+
+89
+00:04:51,670 --> 00:04:54,210
+what could happen if we try and combine
+
+90
+00:04:54,210 --> 00:04:58,120
+flow and layout direction. So let's do
+
+91
+00:04:58,120 --> 00:05:01,030
+flow.TopToBottom and the layout
+
+92
+00:05:01,030 --> 00:05:06,400
+direction of right to left. What do we
+
+93
+00:05:06,400 --> 00:05:07,060
+have?
+
+94
+00:05:07,060 --> 00:05:12,910
+Let's run. mm-hmm, so it flows from top to
+
+95
+00:05:12,910 --> 00:05:16,060
+bottom, but it starts from the right
+
+96
+00:05:16,060 --> 00:05:18,580
+rather than starting to the left as we
+
+97
+00:05:18,580 --> 00:05:22,300
+had in the default behavior. And you can
+
+98
+00:05:22,300 --> 00:05:24,970
+try and match different values for flow
+
+99
+00:05:24,970 --> 00:05:27,310
+and layout direction and see the result
+
+100
+00:05:27,310 --> 00:05:29,530
+of what you have. Another property we
+
+101
+00:05:29,530 --> 00:05:32,860
+have seen in positioners and QT quick
+
+102
+00:05:32,860 --> 00:05:35,890
+layout is the spacing property which we
+
+103
+00:05:35,890 --> 00:05:37,930
+also have in the flow component. So we
+
+104
+00:05:37,930 --> 00:05:43,060
+can say "spacing", let's say 20, and if we
+
+105
+00:05:43,060 --> 00:05:44,740
+run, we're going to have some spacing
+
+106
+00:05:44,740 --> 00:05:48,460
+between the elements. Okay, what we just
+
+107
+00:05:48,460 --> 00:05:51,070
+saw is a section of what is really
+
+108
+00:05:51,070 --> 00:05:54,040
+available from the flow component. If you
+
+109
+00:05:54,040 --> 00:05:55,810
+need to have more information, you can
+
+110
+00:05:55,810 --> 00:05:58,419
+read on all these properties and see how
+
+111
+00:05:58,419 --> 00:05:59,890
+you can use them in your real
+
+112
+00:05:59,890 --> 00:06:02,710
+application. And as this is the last
+
+113
+00:06:02,710 --> 00:06:05,320
+lecture in positioners, I think this is a
+
+114
+00:06:05,320 --> 00:06:08,530
+good time to wrap up what we just saw. So
+
+115
+00:06:08,530 --> 00:06:11,440
+this is the documentation entry for Qt
+
+116
+00:06:11,440 --> 00:06:13,990
+Quick layouts. We just saw that they
+
+117
+00:06:13,990 --> 00:06:17,680
+allow you to world resizable pieces of
+
+118
+00:06:17,680 --> 00:06:20,080
+user interfaces. This is what you most
+
+119
+00:06:20,080 --> 00:06:22,960
+likely to use them for. All these layouts
+
+120
+00:06:22,960 --> 00:06:25,090
+are available to you. We used column
+
+121
+00:06:25,090 --> 00:06:27,790
+layout, grid layout and row layout, but
+
+122
+00:06:27,790 --> 00:06:30,940
+feel free to try stack layout. We also
+
+123
+00:06:30,940 --> 00:06:34,990
+saw positioners which are row, column and
+
+124
+00:06:34,990 --> 00:06:37,600
+grid. We use this and we saw how you can
+
+125
+00:06:37,600 --> 00:06:38,910
+blow the structures
+
+126
+00:06:38,910 --> 00:06:41,400
+like this. You use them when resizing is
+
+127
+00:06:41,400 --> 00:06:43,830
+not really your concern and they work
+
+128
+00:06:43,830 --> 00:06:46,500
+pretty well. And if you scroll down, you
+
+129
+00:06:46,500 --> 00:06:48,150
+can see more information about these
+
+130
+00:06:48,150 --> 00:06:50,760
+components. You see the column. This is
+
+131
+00:06:50,760 --> 00:06:53,670
+how your word done. You see the row. This
+
+132
+00:06:53,670 --> 00:06:55,530
+is how your world. You see
+
+133
+00:06:55,530 --> 00:06:58,590
+here, down here, we have a grid, we have a
+
+134
+00:06:58,590 --> 00:07:01,710
+flow component. These are different ways
+
+135
+00:07:01,710 --> 00:07:04,500
+to use positioners. They also say that
+
+136
+00:07:04,500 --> 00:07:06,420
+there are several other ways to position
+
+137
+00:07:06,420 --> 00:07:09,210
+items in a user interface. You can use
+
+138
+00:07:09,210 --> 00:07:12,240
+the basic technique of specifying their
+
+139
+00:07:12,240 --> 00:07:15,000
+x and y coordinates directly. We saw that. 
+
+140
+00:07:15,000 --> 00:07:18,030
+You can also position elements relative
+
+141
+00:07:18,030 --> 00:07:20,550
+to other items with anchors and we also
+
+142
+00:07:20,550 --> 00:07:22,920
+looked at that. So when you need to
+
+143
+00:07:22,920 --> 00:07:25,320
+position elements in your user interface,
+
+144
+00:07:25,320 --> 00:07:27,570
+you have all these things in your
+
+145
+00:07:27,570 --> 00:07:31,110
+astronaut to really build what you want
+
+146
+00:07:31,110 --> 00:07:34,620
+and use the most flexible way. These
+
+147
+00:07:34,620 --> 00:07:36,480
+covers all I have to say in this chapter.
+
+148
+00:07:36,480 --> 00:07:38,520
+In the next chapter, we're going to keep
+
+149
+00:07:38,520 --> 00:07:40,920
+exploring more concepts on QT quick
+
+150
+00:07:40,920 --> 00:07:41,790
+development.
+
+151
+00:07:41,790 --> 00:00:00,000
+I'll see you in the next chapter.
+

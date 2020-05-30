@@ -1,0 +1,271 @@
+WEBVTT
+
+00:01.670 --> 00:11.120
+Window, dialog, Popup. In this video we will talk about some built-in top level widgets in Qt, namely
+
+00:11.120 --> 00:18.490
+MainWindow and Dialog. And then we'll see how we can create Popups in Qt.
+
+00:18.530 --> 00:24.890
+At fist, let me get your attention that the term window here means a window in terms of graphical user interface
+
+00:25.490 --> 00:27.980
+not the QWindow class.
+
+00:27.980 --> 00:34.650
+In fact the class that represents the window is QMainWindow. To make them distinct.
+
+00:35.090 --> 00:36.590
+I'll use the class name QMainWindow from now on.
+
+00:36.590 --> 00:45.610
+Launch Qt Creator and open the GUI project from previous videos or create
+
+00:45.650 --> 00:51.630
+new Qt widgets application project with QMainWindows as the base class.
+
+00:51.650 --> 00:58.320
+Let's check what QMainWindow is and what features that a QMainWindow has.
+
+00:58.360 --> 01:00.560
+If you double click mainwindow.ui.
+
+01:00.640 --> 01:03.070
+And switch to design mode.
+
+01:03.940 --> 01:14.170
+You can see that a QMainWindow has it's layout to which you can add tool bar, status bar and the menu bar.
+
+01:14.170 --> 01:23.180
+Once you added everything it becomes a traditionally classic desktop window. But by default the toolbar
+
+01:23.230 --> 01:25.420
+and the menu bar are empty.
+
+01:25.600 --> 01:29.470
+So I'll show you how to add actions into tool bar and the menu bar.
+
+01:29.830 --> 01:34.180
+If you double click the "type here" placeholder in the menu bar.
+
+01:34.390 --> 01:36.610
+Then you can insert a new menu.
+
+01:43.200 --> 01:49.770
+Once you've done that you can just click the menu you just inserted and double click "type here" placeholder
+
+01:50.010 --> 01:58.220
+in the menu and then you can insert an action.
+
+01:58.260 --> 02:04.050
+Once you've got the action you can see the action would appear in the action editor and you can drag and drop
+
+02:04.050 --> 02:05.410
+it into the toolbar.
+
+02:09.870 --> 02:12.070
+Of course, you don't need a menu action to have a tool bar action.
+
+02:12.110 --> 02:20.580
+In the action editor, you can click the new button to create a new action and then
+
+02:20.610 --> 02:27.640
+you can make use of it in the tool box directly.
+
+02:27.660 --> 02:34.020
+Now let's go back and create a new object.
+
+02:34.030 --> 02:37.630
+Now let's get back in and create a new project.
+
+02:45.510 --> 02:49.690
+This time let's choose QDialog as the base class.
+
+02:53.440 --> 03:01.120
+And let's see what the dialog looks like. Let's go to design mode again editing dialog.ui.
+
+03:01.720 --> 03:10.890
+As you can see, dialog is basically a window but without many features that we have in QMainWindow.
+
+03:11.470 --> 03:14.500
+For example there is no menu bar or toolbar.
+
+03:14.730 --> 03:21.790
+There is no status bar, hence a QDialog normally is used for short term tasks.
+
+03:21.790 --> 03:27.700
+Another interested thing worth mentioning is that a QDialog will be placed on the top of the parent
+
+03:27.850 --> 03:29.250
+widget's center.
+
+03:29.360 --> 03:37.230
+If it has a parent. That is also a property called "modal" that you can set for QDialog.
+
+03:37.690 --> 03:46.360
+If you scroll down the property panel, you can see the modal property under QDialog section. A modal dialog
+
+03:46.360 --> 03:51.820
+will block input to other visible windows in the same application.
+
+03:51.850 --> 03:58.390
+By contrast, a modaless dialog operate independently off other windows in the same application.
+
+03:59.430 --> 04:09.550
+After all a QDialog and a QMainWindow are both windows. We can use QDialog as a Popup.
+
+04:09.610 --> 04:14.520
+Essentially, a Popup window is just a dialog that requires even less communication.
+
+04:14.620 --> 04:17.620
+So you are ready for some hands on exercises.
+
+04:17.620 --> 04:18.930
+Let's get started.
+
+04:19.710 --> 04:22.020
+Let's close this dialog project for now.
+
+04:30.320 --> 04:38.960
+Now let's open the Qt mainwindow project and editing the .ui file.
+
+04:38.990 --> 04:42.010
+Firstly, let's make the action show Popup.
+
+04:42.330 --> 04:47.920
+You can double click the action, change the text name.
+
+04:48.180 --> 04:49.770
+You can double click the action.
+
+04:49.800 --> 04:57.330
+Change the text.
+
+04:57.580 --> 05:01.330
+Once you've done, save and go back to mainwindow
+
+05:05.070 --> 05:06.600
+Here we're going to define a slot
+
+05:06.620 --> 05:08.170
+to handle the action.
+
+05:20.610 --> 05:25.290
+As you've already known, the signal of the action needs to be connected to this slot.
+
+05:39.860 --> 05:41.140
+This signal trigger
+
+05:43.910 --> 06:00.540
+is emitted whenever the action is activated by user either by clicking or keyboard shortcuts.
+
+06:00.590 --> 06:11.730
+Now let's define the slot.
+
+06:12.010 --> 06:17.130
+We can create a new Popup using the built-in QDialog class.
+
+06:20.120 --> 06:20.970
+In the slot,
+
+06:21.080 --> 06:22.550
+If you call exec()
+
+06:27.590 --> 06:32.230
+In the slot, if you call exec() method, then pop up will block user input.
+
+06:36.160 --> 06:39.690
+It will not return until the user closes the dialog.
+
+06:43.850 --> 06:46.980
+We can use a simple print statement to check these out.
+
+06:54.670 --> 07:04.250
+If you build and run the application now.
+
+07:04.500 --> 07:06.570
+If you build and run the application now.
+
+07:13.300 --> 07:14.620
+Click ShowPopup.
+
+07:14.990 --> 07:18.660
+Yes, see, the popup is shown and the user input to other windows
+
+07:18.680 --> 07:23.180
+are blocked.
+
+07:23.420 --> 07:27.210
+You can also see it the application output.
+
+07:27.240 --> 07:30.740
+onShowPopup finised is not printed.
+
+07:30.890 --> 07:35.850
+It will only be printed when we close the dialog.
+
+07:40.980 --> 07:48.740
+However if you call the show() method, then the popup will be shown as a modaless dialog.
+
+07:49.500 --> 07:51.850
+The function will return immediately.
+
+07:54.200 --> 07:58.970
+Hence we are expected to see the message immediately.
+
+07:58.970 --> 08:06.390
+As you can see, "onShowPopup finished" has been printed and the user input to other windows are
+
+08:06.440 --> 08:07.660
+not blocked.
+
+08:12.730 --> 08:17.610
+Now I just created a QDialog programmatically. As we said before
+
+08:17.680 --> 08:20.470
+It's better to get it from .ui file.
+
+08:20.530 --> 08:22.990
+So how do we add a new class like that.
+
+08:25.010 --> 08:37.400
+Just right click the project, select "Add new", select Qt, Qt Designer Form Class. Here, you can choose
+
+08:37.490 --> 08:45.020
+all the templates you like. Template... dialog without the buttons are what we're looking for.
+
+08:46.650 --> 08:53.870
+If you add it to this project. You're immediately be able to edit dialog.ui
+
+08:58.050 --> 09:00.420
+I'll leave the customization to you.
+
+09:00.720 --> 09:04.320
+But for now we are going to focus on how to use this class.
+
+09:04.700 --> 09:09.820
+If you go back to mainwindow.cpp just to include the header file
+
+09:15.570 --> 09:20.230
+and replace QDialog with your custom dialog class.
+
+09:27.150 --> 09:28.240
+Rebuild and run.
+
+09:35.530 --> 09:41.670
+And you get the dialog Popup when you activate showPopup action.
+
+09:41.860 --> 09:47.510
+As you can see this dialog is different from the QDialog. It's designed in dialog.ui.
+
+09:47.580 --> 09:51.860
+In this section.
+
+09:51.890 --> 10:00.460
+You've learnt how to design Qt Creator, signals and slots, Window, dialog and Popup.
+
+10:00.460 --> 10:04.930
+In the next section, you'll continue your Qt programming learning process
+
+10:04.990 --> 10:07.010
+in Widgets and Layouts.

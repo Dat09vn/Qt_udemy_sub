@@ -1,0 +1,1132 @@
+1
+00:00:00,000 --> 00:00:01,860
+In this lecture, we'd like to see how you
+
+2
+00:00:01,860 --> 00:00:04,830
+can upword custom dialogues that look
+
+3
+00:00:04,830 --> 00:00:06,990
+decent enough to be used on mobile
+
+4
+00:00:06,990 --> 00:00:09,719
+devices. This time we're going to do
+
+5
+00:00:09,719 --> 00:00:11,490
+something a little bit different than
+
+6
+00:00:11,490 --> 00:00:14,070
+we've been doing all along. I want you to
+
+7
+00:00:14,070 --> 00:00:16,949
+come to the Welcome tab here in Qt Creator, 
+
+8
+00:00:16,949 --> 00:00:19,109
+I want you to come here
+
+9
+00:00:19,109 --> 00:00:21,300
+in the search tab and type in "Gallery", 
+
+10
+00:00:21,300 --> 00:00:25,380
+and you're going to have a few example
+
+11
+00:00:25,380 --> 00:00:28,170
+applications in here. I want you to click
+
+12
+00:00:28,170 --> 00:00:31,769
+on this one, the greenish one. We're going
+
+13
+00:00:31,769 --> 00:00:33,780
+to run it and see what we can learn from
+
+14
+00:00:33,780 --> 00:00:38,370
+it. Okay, you are going to see it opened
+
+15
+00:00:38,370 --> 00:00:41,010
+here. I want you to close this window
+
+16
+00:00:41,010 --> 00:00:43,469
+here, and you're going to see a configure
+
+17
+00:00:43,469 --> 00:00:46,340
+project message here. It is basically
+
+18
+00:00:46,340 --> 00:00:49,410
+wanting you to configure the kit for
+
+19
+00:00:49,410 --> 00:00:51,360
+this project here because we can click
+
+20
+00:00:51,360 --> 00:00:54,210
+on it and directly run it into to Qt Creator, 
+
+21
+00:00:54,210 --> 00:00:57,170
+I am going to choose the desktop kit
+
+22
+00:00:57,170 --> 00:01:00,210
+but I do recommend to run this on a
+
+23
+00:01:00,210 --> 00:01:02,010
+mobile device because it really looks
+
+24
+00:01:02,010 --> 00:01:04,500
+good there. Now that I have my kits
+
+25
+00:01:04,500 --> 00:01:07,460
+selected, I'm going to configure project.
+
+26
+00:01:07,460 --> 00:01:11,760
+And it's going to configure stuff. You
+
+27
+00:01:11,760 --> 00:01:14,520
+see that we had a few errors and now
+
+28
+00:01:14,520 --> 00:01:16,890
+they've gone away because Qt has done
+
+29
+00:01:16,890 --> 00:01:19,110
+the configuration for us. You're going to
+
+30
+00:01:19,110 --> 00:01:21,270
+see a new project open here on the Left,
+
+31
+00:01:21,270 --> 00:01:23,790
+it's called the gallery. If you go in,
+
+32
+00:01:23,790 --> 00:01:26,220
+you're going to find resources. If you
+
+33
+00:01:26,220 --> 00:01:28,259
+go down here, you see the resources. This
+
+34
+00:01:28,259 --> 00:01:31,259
+is where we have our qml files, but I
+
+35
+00:01:31,259 --> 00:01:33,450
+don't know why Qt creator is not
+
+36
+00:01:33,450 --> 00:01:35,970
+showing the contents of the qml files.
+
+37
+00:01:35,970 --> 00:01:39,479
+But no worries, we can actually click on
+
+38
+00:01:39,479 --> 00:01:42,899
+the gallery.cpp file here, show in
+
+39
+00:01:42,899 --> 00:01:47,159
+Explorer. We're going to open where it is
+
+40
+00:01:47,159 --> 00:01:49,350
+located and we're going to see a folder
+
+41
+00:01:49,350 --> 00:01:49,799
+called
+
+42
+00:01:49,799 --> 00:01:52,049
+pages here, which contains different
+
+43
+00:01:52,049 --> 00:01:54,960
+pages that we can show. I want you to run
+
+44
+00:01:54,960 --> 00:02:00,719
+this application. And you see that we
+
+45
+00:02:00,719 --> 00:02:02,820
+have an application like this. It is a
+
+46
+00:02:02,820 --> 00:02:07,020
+good one. Okay, you see that if you click
+
+47
+00:02:07,020 --> 00:02:09,389
+on this then you see a drawer come up
+
+48
+00:02:09,389 --> 00:02:11,970
+here, and they have a bunch of buttons
+
+49
+00:02:11,970 --> 00:02:13,980
+that you can click to do the
+
+50
+00:02:13,980 --> 00:02:15,840
+different things. For example, we can show the
+
+51
+00:02:15,840 --> 00:02:18,599
+group box here. They basically showcase
+
+52
+00:02:18,599 --> 00:02:20,879
+different Qt Quick Controls that you can
+
+53
+00:02:20,879 --> 00:02:24,209
+use in here. We have seen a lot of this
+
+54
+00:02:24,209 --> 00:02:27,629
+things if not all. But what I want you to
+
+55
+00:02:27,629 --> 00:02:30,780
+see now is the dialogue because they
+
+56
+00:02:30,780 --> 00:02:33,420
+have pretty good dialogues that we can
+
+57
+00:02:33,420 --> 00:02:36,379
+learn from. Click on dialogue here and
+
+58
+00:02:36,379 --> 00:02:39,060
+they have a few things that you can try.
+
+59
+00:02:39,060 --> 00:02:41,549
+Click on message here, it shows a
+
+60
+00:02:41,549 --> 00:02:43,530
+dialogue with a message, this is pretty
+
+61
+00:02:43,530 --> 00:02:46,129
+good for mobile devices. Click on
+
+62
+00:02:46,129 --> 00:02:48,569
+confirmation here, you have a dialogue. It
+
+63
+00:02:48,569 --> 00:02:51,209
+has a title, it has a message and you can
+
+64
+00:02:51,209 --> 00:02:53,400
+let the user check some boxes like this,
+
+65
+00:02:53,400 --> 00:02:55,440
+and you can accept or reject the
+
+66
+00:02:55,440 --> 00:02:58,470
+dialogue. We have content dialogue that
+
+67
+00:02:58,470 --> 00:03:01,140
+you can use to show some content and let
+
+68
+00:03:01,140 --> 00:03:04,170
+the user scroll. The user can close this
+
+69
+00:03:04,170 --> 00:03:06,209
+when they are done with it. And we have
+
+70
+00:03:06,209 --> 00:03:08,519
+another one that can collect user input.
+
+71
+00:03:08,519 --> 00:03:11,220
+I think these dialogs look very good and
+
+72
+00:03:11,220 --> 00:03:12,870
+we're going to try them in our
+
+73
+00:03:12,870 --> 00:03:15,720
+application. But before we try them we
+
+74
+00:03:15,720 --> 00:03:17,519
+need to see the source code that is
+
+75
+00:03:17,519 --> 00:03:19,849
+generating them. The way we see that,
+
+76
+00:03:19,849 --> 00:03:22,530
+unfortunately, this is not opening up in
+
+77
+00:03:22,530 --> 00:03:24,750
+Qt Creator but we can go there
+
+78
+00:03:24,750 --> 00:03:27,329
+ourselves and find this things. Click on
+
+79
+00:03:27,329 --> 00:03:35,370
+gallery.cpp here, show in explorer, go in
+
+80
+00:03:35,370 --> 00:03:37,950
+pages inside here, and you're going to
+
+81
+00:03:37,950 --> 00:03:41,459
+say a file called dialog page. I want you
+
+82
+00:03:41,459 --> 00:03:45,720
+to open it with an editor of your choice
+
+83
+00:03:45,720 --> 00:03:47,700
+you can actually open it with Qt Creator, 
+
+84
+00:03:47,700 --> 00:03:51,090
+I guess, you can choose an
+
+85
+00:03:51,090 --> 00:03:53,190
+application that you want to open it
+
+86
+00:03:53,190 --> 00:03:57,389
+with. I chose Qt Creator here and it's
+
+87
+00:03:57,389 --> 00:03:59,879
+going to open here. What we want to see
+
+88
+00:03:59,879 --> 00:04:02,489
+is how these buttons are generated. You
+
+89
+00:04:02,489 --> 00:04:04,169
+see we have a Label here that says
+
+90
+00:04:04,169 --> 00:04:07,169
+dialogue blah blah blah. We have a button
+
+91
+00:04:07,169 --> 00:04:11,220
+here, and this generates our dialogue.
+
+92
+00:04:11,220 --> 00:04:13,470
+Okay, when you click you open this
+
+93
+00:04:13,470 --> 00:04:16,199
+dialogue here. so what we can do is copy
+
+94
+00:04:16,199 --> 00:04:19,199
+these things and adapt them to be run in
+
+95
+00:04:19,199 --> 00:04:22,079
+our own application. so I am going to
+
+96
+00:04:22,079 --> 00:04:24,659
+keep this dialogue page open here, keep
+
+97
+00:04:24,659 --> 00:04:25,349
+it open,
+
+98
+00:04:25,349 --> 00:04:27,870
+I can close gallery here because
+
+99
+00:04:27,870 --> 00:04:30,690
+we don't need it anymore, and create a
+
+100
+00:04:30,690 --> 00:04:33,660
+new project. It's going to be Qt
+
+101
+00:04:33,660 --> 00:04:36,210
+Quick Application, we're going to call it
+
+102
+00:04:36,210 --> 00:04:38,910
+CustomDialogDemo, save it in a location
+
+103
+00:04:38,910 --> 00:04:41,280
+on our drive. Hit "next", 
+
+104
+00:04:41,280 --> 00:04:44,220
+the usual thing really, choose the QT
+
+105
+00:04:44,220 --> 00:04:49,820
+version, choose the desktop kit, and
+
+106
+00:04:49,820 --> 00:04:53,160
+"Finish". Okay, we have our project here. We
+
+107
+00:04:53,160 --> 00:04:59,250
+want to say Custom Dialogue Demo. We also
+
+108
+00:04:59,250 --> 00:05:02,039
+want to do our imports. We want to import
+
+109
+00:05:02,039 --> 00:05:04,800
+QtQquick.controls and QtQquick.Layouts
+
+110
+00:05:04,800 --> 00:05:07,020
+because we're going to use those as well.
+
+111
+00:05:07,020 --> 00:05:11,900
+We want to put in a column component.
+
+112
+00:05:11,990 --> 00:05:15,720
+This spacing is going to be 40 and it's
+
+113
+00:05:15,720 --> 00:05:18,360
+going to be the same width as its parent,
+
+114
+00:05:18,360 --> 00:05:21,690
+so we're going to say "parent.width" here.
+
+115
+00:05:21,690 --> 00:05:24,389
+What we want to do is to go to dialogue
+
+116
+00:05:24,389 --> 00:05:27,449
+page here and copy these two components, 
+
+117
+00:05:27,449 --> 00:05:30,870
+this label here and this button here. We
+
+118
+00:05:30,870 --> 00:05:37,200
+select, copy this, come back in main.qml
+
+119
+00:05:37,200 --> 00:05:40,169
+and put them here. This is a column
+
+120
+00:05:40,169 --> 00:05:42,000
+component so things are going to be laid
+
+121
+00:05:42,000 --> 00:05:44,130
+out from top to bottom. We're going to
+
+122
+00:05:44,130 --> 00:05:46,680
+see this label here and this button, and
+
+123
+00:05:46,680 --> 00:05:49,320
+when we click this button, this dialogue is
+
+124
+00:05:49,320 --> 00:05:53,789
+going to pop up. One thing you see is
+
+125
+00:05:53,789 --> 00:05:55,590
+that we have a property that is not
+
+126
+00:05:55,590 --> 00:05:58,410
+defined, this button width property is
+
+127
+00:05:58,410 --> 00:06:00,900
+not defined, and if we run without having
+
+128
+00:06:00,900 --> 00:06:04,199
+it defined, we're going to run into
+
+129
+00:06:04,199 --> 00:06:06,810
+problems. so we can come to the top here
+
+130
+00:06:06,810 --> 00:06:13,889
+and say "property int"  and say "buttonWidth"
+
+131
+00:06:13,889 --> 00:06:17,580
+It is called like that, buttonWidth. 
+
+132
+00:06:17,580 --> 00:06:20,010
+I think it is true and we want to make
+
+133
+00:06:20,010 --> 00:06:24,060
+this 300. Another thing you might do to
+
+134
+00:06:24,060 --> 00:06:26,220
+improve security, you can make this
+
+135
+00:06:26,220 --> 00:06:30,710
+readonly in Qt and you can do that.
+
+136
+00:06:30,710 --> 00:06:33,210
+You can make it readonly, you can do
+
+137
+00:06:33,210 --> 00:06:38,099
+that. Okay, we have our thing here. so we
+
+138
+00:06:38,099 --> 00:06:39,659
+have our label, I don't think there's
+
+139
+00:06:39,659 --> 00:06:41,670
+much to say about the Lable, you're ready
+
+140
+00:06:41,670 --> 00:06:44,520
+how to work with that. But the button
+
+141
+00:06:44,520 --> 00:06:47,310
+here, it has a text that is going to be
+
+142
+00:06:47,310 --> 00:06:49,380
+shown in. It's going to be this width and
+
+143
+00:06:49,380 --> 00:06:51,210
+when it's clicked, we're going to open
+
+144
+00:06:51,210 --> 00:06:54,840
+this dialogue here that we defined. And it
+
+145
+00:06:54,840 --> 00:06:57,930
+has an Id. Okay, so look at the position
+
+146
+00:06:57,930 --> 00:07:00,060
+we gave it here, we really want to Center
+
+147
+00:07:00,060 --> 00:07:02,730
+it in the parent. The dialog has also a
+
+148
+00:07:02,730 --> 00:07:06,090
+title and it has a label inside. Let's
+
+149
+00:07:06,090 --> 00:07:08,070
+run the application and see what it
+
+150
+00:07:08,070 --> 00:07:10,170
+looks like now. Okay, 
+
+151
+00:07:10,170 --> 00:07:13,890
+you see we have this thing here. If we
+
+152
+00:07:13,890 --> 00:07:16,560
+click here, you have your message here.
+
+153
+00:07:16,560 --> 00:07:19,020
+This is very easy to do and we just
+
+154
+00:07:19,020 --> 00:07:21,720
+learned this from a Qt example. The
+
+155
+00:07:21,720 --> 00:07:23,040
+next button is going to be a
+
+156
+00:07:23,040 --> 00:07:26,010
+confirmation button. We want to capture
+
+157
+00:07:26,010 --> 00:07:31,430
+it and copy it. We go to
+
+158
+00:07:31,430 --> 00:07:37,440
+main.qml which is here, go below the
+
+159
+00:07:37,440 --> 00:07:41,640
+button that we had for message and paste
+
+160
+00:07:41,640 --> 00:07:46,440
+them the confirmation button. Okay, it has
+
+161
+00:07:46,440 --> 00:07:49,740
+a width as well, we have this dialogue that
+
+162
+00:07:49,740 --> 00:07:53,430
+we open, and we have a few properties for
+
+163
+00:07:53,430 --> 00:08:00,090
+this dialogue here. We can run it, click
+
+164
+00:08:00,090 --> 00:08:02,670
+on confirmation, and you see the title
+
+165
+00:08:02,670 --> 00:08:05,370
+here, they say a text here, and we have a
+
+166
+00:08:05,370 --> 00:08:08,190
+checkbox in here. Down below we have two
+
+167
+00:08:08,190 --> 00:08:10,980
+buttons yes and no. If you click yes, it's
+
+168
+00:08:10,980 --> 00:08:13,500
+going to accept. If you click no, it's
+
+169
+00:08:13,500 --> 00:08:16,470
+going to reject. Let's see what we have
+
+170
+00:08:16,470 --> 00:08:19,650
+in here. This is how you specify the
+
+171
+00:08:19,650 --> 00:08:21,720
+buttons. Okay, you say standardButtons
+
+172
+00:08:21,720 --> 00:08:24,990
+and you pass in these values here. We
+
+173
+00:08:24,990 --> 00:08:27,060
+want to have a yes button and the no
+
+174
+00:08:27,060 --> 00:08:29,310
+button. This is how you specify the
+
+175
+00:08:29,310 --> 00:08:32,970
+content inside the dialogue. We have this
+
+176
+00:08:32,970 --> 00:08:35,490
+label here, we have this checkbox here,
+
+177
+00:08:35,490 --> 00:08:38,580
+and the buttons are going to be below
+
+178
+00:08:38,580 --> 00:08:40,620
+these components that you specify in
+
+179
+00:08:40,620 --> 00:08:43,409
+here. And the dialog is also going to be
+
+180
+00:08:43,409 --> 00:08:48,660
+centered in the parent. We want to go to
+
+181
+00:08:48,660 --> 00:08:51,420
+dialog page again and look at the next
+
+182
+00:08:51,420 --> 00:08:53,430
+piece of content we
+
+183
+00:08:53,430 --> 00:09:02,779
+have. so we want to copy this button here,
+
+184
+00:09:03,200 --> 00:09:06,930
+come back to main.qml, go below this
+
+185
+00:09:06,930 --> 00:09:13,860
+button here, paste it in. Okay, this is a
+
+186
+00:09:13,860 --> 00:09:17,550
+pretty long one. We give it a close
+
+187
+00:09:17,550 --> 00:09:21,020
+button like this. It is a modal dialogue,
+
+188
+00:09:21,020 --> 00:09:23,520
+Inside, we have applicable component
+
+189
+00:09:23,520 --> 00:09:27,000
+because we want to be able to scroll to
+
+190
+00:09:27,000 --> 00:09:30,839
+see all the content inside the dialogue.
+
+191
+00:09:30,839 --> 00:09:33,209
+Notice that we specified the content
+
+192
+00:09:33,209 --> 00:09:35,880
+height property here. This is because we
+
+193
+00:09:35,880 --> 00:09:39,209
+might have more content to display than
+
+194
+00:09:39,209 --> 00:09:42,300
+our window could possibly display, so
+
+195
+00:09:42,300 --> 00:09:43,440
+we're going to have to scroll through
+
+196
+00:09:43,440 --> 00:09:46,020
+the content to be able to see everything
+
+197
+00:09:46,020 --> 00:09:48,630
+in there. so we have a Flickable, that is
+
+198
+00:09:48,630 --> 00:09:51,510
+going to allow us to flick through the
+
+199
+00:09:51,510 --> 00:09:53,550
+contents. Inside, we have a column
+
+200
+00:09:53,550 --> 00:09:56,880
+component that contains an image and a
+
+201
+00:09:56,880 --> 00:09:59,339
+label with some text. so we need to
+
+202
+00:09:59,339 --> 00:10:02,550
+provide this image here, and the way I'm
+
+203
+00:10:02,550 --> 00:10:04,709
+going to do that, I'm going to add it as
+
+204
+00:10:04,709 --> 00:10:07,620
+a resource file. so I'm going to select
+
+205
+00:10:07,620 --> 00:10:11,130
+the project here, and say add new. It's
+
+206
+00:10:11,130 --> 00:10:14,190
+going to be Qt Fesource File. I'm
+
+207
+00:10:14,190 --> 00:10:21,240
+going to say resource here, I'm going to
+
+208
+00:10:21,240 --> 00:10:23,190
+add the prefix and take it out
+
+209
+00:10:23,190 --> 00:10:27,089
+because I want to not use a prefix. I
+
+210
+00:10:27,089 --> 00:10:29,880
+want to go where my main.qml file
+
+211
+00:10:29,880 --> 00:10:32,790
+is stored we've been doing this quite a
+
+212
+00:10:32,790 --> 00:10:36,450
+lot. And I want to add in an images
+
+213
+00:10:36,450 --> 00:10:39,150
+folder. I am going to open this folder
+
+214
+00:10:39,150 --> 00:10:42,930
+here and put in my logo here that I'd
+
+215
+00:10:42,930 --> 00:10:47,270
+prepared. It is called LearnQtLogo,
+
+216
+00:10:47,270 --> 00:10:49,800
+so I'm going to come back to our project
+
+217
+00:10:49,800 --> 00:10:53,220
+and select add files, put in images and
+
+218
+00:10:53,220 --> 00:10:55,860
+I'm going to find my local in there. I'm
+
+219
+00:10:55,860 --> 00:10:59,010
+going to save this, come back to main.qml, 
+
+220
+00:10:59,010 --> 00:11:04,290
+not main.cpp and here I'm
+
+221
+00:11:04,290 --> 00:11:07,250
+going to say "images...
+
+222
+00:11:07,250 --> 00:11:11,370
+LearnQtLogo.png. Let's run this
+
+223
+00:11:11,370 --> 00:11:16,110
+so that you see what it is. Okay, we have
+
+224
+00:11:16,110 --> 00:11:22,640
+content here, and if we run, you see that
+
+225
+00:11:23,990 --> 00:11:27,019
+the button is not displayed correctly.
+
+226
+00:11:27,019 --> 00:11:29,910
+Why is that? Let's look at this error
+
+227
+00:11:29,910 --> 00:11:34,230
+here, 92, and it says page here is not
+
+228
+00:11:34,230 --> 00:11:38,040
+defined. We should change this to parent
+
+229
+00:11:38,040 --> 00:11:41,100
+because we don't have the page component
+
+230
+00:11:41,100 --> 00:11:47,760
+defined. And we want to display this
+
+231
+00:11:47,760 --> 00:11:50,700
+dialogue here in relation to its parent
+
+232
+00:11:50,700 --> 00:11:55,670
+which is the button here. Let's run again,
+
+233
+00:11:57,170 --> 00:12:01,970
+click this, and you see that we have our
+
+234
+00:12:01,970 --> 00:12:05,640
+content here. Okay, you can scroll to see
+
+235
+00:12:05,640 --> 00:12:10,110
+things. We can close and open it again. This
+
+236
+00:12:10,110 --> 00:12:12,570
+is the behavior you have. and in fact, this
+
+237
+00:12:12,570 --> 00:12:15,120
+dialog is usable on mobile devices. It
+
+238
+00:12:15,120 --> 00:12:18,180
+looks pretty decent. so we want to go
+
+239
+00:12:18,180 --> 00:12:22,050
+back to the DialogPage.qml file and copy
+
+240
+00:12:22,050 --> 00:12:24,660
+the last button that we have in there,
+
+241
+00:12:24,660 --> 00:12:26,130
+that's the one we're going to look at
+
+242
+00:12:26,130 --> 00:12:28,949
+right now. And it is a dialog that you
+
+243
+00:12:28,949 --> 00:12:32,670
+can use to collect data from the user. We
+
+244
+00:12:32,670 --> 00:12:38,579
+go down here, paste it inside, look and
+
+245
+00:12:38,579 --> 00:12:42,029
+see if we have no boo-boos inside. You
+
+246
+00:12:42,029 --> 00:12:44,250
+can't really see the skin mean. We 
+
+247
+00:12:44,250 --> 00:12:46,310
+have to run it to see if it works, and
+
+248
+00:12:46,310 --> 00:12:51,240
+let qml catch the errors for us. Ok, it
+
+249
+00:12:51,240 --> 00:12:54,300
+looks like this. It has a title Input and
+
+250
+00:12:54,300 --> 00:12:57,440
+you can type in stuff, ok,
+
+251
+00:12:57,440 --> 00:13:02,250
+John Doe, for example, and you can
+
+252
+00:13:02,250 --> 00:13:05,010
+navigate through the tab key. This is
+
+253
+00:13:05,010 --> 00:13:07,380
+pretty design. And if you look at how
+
+254
+00:13:07,380 --> 00:13:10,380
+it's made, it's no different than what we
+
+255
+00:13:10,380 --> 00:13:12,990
+have seen before. We have a button, we
+
+256
+00:13:12,990 --> 00:13:15,149
+have a dialog inside. It is centered in
+
+257
+00:13:15,149 --> 00:13:18,089
+the parent. It has focus, it has a title
+
+258
+00:13:18,089 --> 00:13:19,080
+we have a bunch of
+
+259
+00:13:19,080 --> 00:13:21,570
+buttons that we can show in it, and we
+
+260
+00:13:21,570 --> 00:13:23,850
+have a layout that contains things we
+
+261
+00:13:23,850 --> 00:13:26,190
+want to see. Okay, this is a layout of our
+
+262
+00:13:26,190 --> 00:13:30,030
+own input fields, we have a label and we
+
+263
+00:13:30,030 --> 00:13:33,780
+have a text field for the username and
+
+264
+00:13:33,780 --> 00:13:36,060
+the text fields for the password.
+
+265
+00:13:36,060 --> 00:13:39,540
+It really is nothing fancy but it is
+
+266
+00:13:39,540 --> 00:13:42,180
+very usable on mobile devices. And I
+
+267
+00:13:42,180 --> 00:13:44,010
+thought it was a good idea to show you
+
+268
+00:13:44,010 --> 00:13:44,970
+this things.
+
+269
+00:13:44,970 --> 00:13:47,760
+I didn't want to type all these things. I
+
+270
+00:13:47,760 --> 00:13:49,980
+could have done that. But I wanted you to
+
+271
+00:13:49,980 --> 00:13:52,050
+have the information that you can go to
+
+272
+00:13:52,050 --> 00:13:54,870
+the examples here and find some useful
+
+273
+00:13:54,870 --> 00:13:56,970
+things you can even learn from and
+
+274
+00:13:56,970 --> 00:13:59,130
+learn things that I didn't even have a
+
+275
+00:13:59,130 --> 00:14:00,900
+chance to tell you about in this course.
+
+276
+00:14:00,900 --> 00:14:03,390
+Okay, this is really all I had to say in
+
+277
+00:14:03,390 --> 00:14:05,190
+this lecture. I hope you know how to
+
+278
+00:14:05,190 --> 00:14:08,580
+display good looking and useful
+
+279
+00:14:08,580 --> 00:14:10,350
+dialogues that you can use on mobile
+
+280
+00:14:10,350 --> 00:14:13,830
+devices. And in the next lecture, we're
+
+281
+00:14:13,830 --> 00:14:16,110
+going to look at the interesting subject
+
+282
+00:14:16,110 --> 00:14:19,320
+of Model View architecture using QT
+
+283
+00:14:19,320 --> 00:00:00,000
+quick. I'll see you there. 
+

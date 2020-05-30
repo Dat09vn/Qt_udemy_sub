@@ -1,0 +1,216 @@
+﻿1
+00:00:00,540 --> 00:00:07,890
+Chào mừng đền với bài học Qt5: command-line. Trong video này ta sẽ học cách tạo
+
+2
+00:00:07,890 --> 00:00:12,560
+một project bằng Qt creator,
+
+3
+00:00:12,680 --> 00:00:14,520
+Project có tên là "Hello Qt World!"
+
+4
+00:00:14,520 --> 00:00:22,110
+Sau đó tôi sẽ hướng dẫn bạn cách debug trương trình bằng Qt creator. Bật Qt creator lên
+
+5
+00:00:22,170 --> 00:00:32,430
+và tạo project. Nhấn nút ""New Project"" chọn mục Qt console application(ứng dụng console),
+
+6
+00:00:32,510 --> 00:00:36,910
+là ứng dụng không có giao diện GUI, chỉ sử dụng bằng lệnh command-line thôi.
+
+7
+00:00:36,960 --> 00:00:42,770
+Đặt tên project là
+
+8
+00:00:42,820 --> 00:00:50,320
+HelloWorld.Chọn thư mục lưu project,sau đó chọn công cụ Qt(Qt Kit)
+
+9
+00:00:53,180 --> 00:00:57,170
+Cuối cùng là chọn công cụ quản lý version của source code.
+
+10
+00:00:57,180 --> 00:00:58,220
+Chọn Git.
+
+11
+00:01:02,110 --> 00:01:08,230
+Thông thường với những dự án lớn, bạn nên dùng một công cụ quản lý version của source code hay đơn giản chỉ là công cụ quản lý
+
+12
+00:01:08,230 --> 00:01:11,670
+để theo dõi lịch sử thay đổi và commit log.
+
+13
+00:01:13,920 --> 00:01:17,900
+Ở góc trên bên trái của Qt creator
+
+14
+00:01:17,910 --> 00:01:23,360
+là danh sách tất cả các file của project.
+
+15
+00:01:23,610 --> 00:01:30,870
+Góc dưới bên trái hiển thị tên file đang được mở, bên phải là editor(công cụ chỉnh sửa).
+
+16
+00:01:30,890 --> 00:01:33,980
+Giờ ta bắt đầu code
+
+17
+00:01:34,160 --> 00:01:34,890
+ứng dụng Hello Qt
+
+18
+00:01:34,900 --> 00:01:35,690
+World.
+
+19
+00:01:36,280 --> 00:01:44,750
+Bạn có thể dùng hàm qDebug, hàm này giống như hàm printf
+
+20
+00:01:45,030 --> 00:01:53,120
+trong C vậy.
+
+21
+00:01:53,270 --> 00:02:01,140
+Hàm đầu tiên chỉ đơn giản là in ra màn hình console một chuỗi. Giờ ta build ứng dụng,
+
+22
+00:02:04,530 --> 00:02:06,780
+khi buid xong nhấn nút ''run''.
+
+23
+00:02:09,550 --> 00:02:14,090
+Chuỗi ''Hello Qt World'' đã được in ra trên màn hình console.
+
+24
+00:02:14,170 --> 00:02:19,070
+Đó, hàm qDebug xử lý giống hàm printf trong C vậy.
+
+25
+00:02:19,420 --> 00:02:25,300
+Ta có thể truyền vào biến số thứ hai là kiểu số để in ra màn hình console.
+
+26
+00:02:25,450 --> 00:02:31,030
+Thử nhé. Build,
+
+27
+00:02:31,040 --> 00:02:32,090
+rồi chạy thử.
+
+28
+00:02:40,260 --> 00:02:44,930
+Chuỗi ''Hello Qt  Word My 1 application'' đã được in ra trên màn hình console.
+
+29
+00:02:53,220 --> 00:03:02,160
+Nếu bạn include QtDebug trên mục header, thì bạn có thể dùng nó như một dòng dữ liệu xuất ra(output stream) thay vì dùng các hàm của C.
+
+30
+00:03:02,840 --> 00:03:06,330
+Chỉ cần viết qDebug() << là bạn sẽ có một dòng dữ liệu xuất ra(output stream).
+
+31
+00:03:06,570 --> 00:03:12,630
+Sử dụng y như hàm cout trong C.
+
+32
+00:03:18,550 --> 00:03:31,370
+Build và chạy lại ứng dụng. ta sử dụng cú pháp khác và kết không thay đổi. Bạn cũng có thể dùng bộ thư viện chuẩn của C++ (iostream) để tạo các dòng dữ liệu(in/output stream)
+
+33
+00:03:31,790 --> 00:03:43,560
+ví dụ dùng hàm std::cout.
+
+34
+00:03:43,730 --> 00:03:45,410
+Bạn không bắt buộc phải nhấn nút build project
+
+35
+00:03:45,440 --> 00:03:53,020
+trước khi chạy project. Chỉ cần nhấn nút ''run'' Qt creator sẽ build và chạy ứng dụng
+
+36
+00:03:53,080 --> 00:03:53,830
+bằng code mới nhất.
+
+37
+00:03:58,670 --> 00:04:09,910
+Giờ ta thử với biến. Gõ int num = 1.
+
+38
+00:04:09,920 --> 00:04:12,280
+Ta sẽ được chuỗi "Hello Qt World
+
+39
+00:04:12,470 --> 00:04:14,960
+My 1 application".
+
+40
+00:04:20,610 --> 00:04:25,050
+Từ đầu bài học đến giờ chương trình chạy rất tốt.
+
+41
+00:04:25,450 --> 00:04:30,890
+Nhưng nếu gặp lỗi thì cũng đừng lo, ta có thể dùng Qt creator để debug chương trình một cách dễ dàng.
+
+42
+00:04:30,900 --> 00:04:38,970
+Chỉ cần nhấn nút ''debug'' ở menu bên trái, chuyển sang chế độ debug.
+
+43
+00:04:39,130 --> 00:04:41,910
+Đặt break point để debug rất đơn giản.
+
+44
+00:04:46,420 --> 00:04:48,790
+Chỉ cần chuột phải vào dòng bên trái(của editor).
+
+45
+00:04:48,940 --> 00:04:54,940
+Tôi đặt break point ở dòng số 7.
+
+46
+00:04:55,130 --> 00:04:56,150
+Chạy trình debug.
+
+47
+00:05:02,540 --> 00:05:03,920
+Ở phần trên cùng bên phải,
+
+48
+00:05:03,920 --> 00:05:07,600
+ta có thể theo dõi tất cả các biến.
+
+49
+00:05:07,720 --> 00:05:11,580
+Chương trình đang dừng lại ở dòng số 7.
+
+50
+00:05:11,770 --> 00:05:16,110
+Như các bạn thấy, biến num chưa được khởi tạo,
+
+51
+00:05:18,580 --> 00:05:28,400
+khi click vào nút ''Step over'', thì biến num được khởi tạo giá trị bằng 1.
+
+52
+00:05:28,550 --> 00:05:36,290
+Để biết thêm về debug trong Qt creator, bạn nên nhấn nút ''Help'' để đọc hướng dẫn sử dụng Qt creator.
+
+53
+00:05:45,620 --> 00:05:46,860
+Ở video tiếp theo,
+
+54
+00:05:47,020 --> 00:05:49,910
+ta sẽ học các kiến thức căn bản của Qt.
+

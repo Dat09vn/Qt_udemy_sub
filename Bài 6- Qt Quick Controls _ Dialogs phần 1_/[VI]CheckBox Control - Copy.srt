@@ -1,0 +1,291 @@
+1
+00:00:00,000 --> 00:00:02,550
+Ở bài giảng này, ta sẽ học về
+
+2
+00:00:02,550 --> 00:00:05,400
+Checkbox, một phần tử trong Qt Quick Controls.
+
+3
+00:00:05,400 --> 00:00:07,589
+Bạn sẽ sử dụng phần tử này
+
+4
+00:00:07,589 --> 00:00:10,530
+khi muốn đưa ra nhiều lựa chọn.
+
+5
+00:00:10,530 --> 00:00:12,450
+Hãy mở Qt Creator. Và thử khám phá một chút nào!
+
+6
+00:00:12,450 --> 00:00:15,420
+Đây là Qt Creator,
+
+7
+00:00:15,420 --> 00:00:17,910
+ta sẽ tạo ra một dự án mới. Đây là một
+
+8
+00:00:17,910 --> 00:00:20,939
+ứng dụng của Qt Quick, ta sẽ đặt tên nó là Checkbox Demo.
+
+9
+00:00:20,939 --> 00:00:25,350
+Hãy chọn phiên bản Qt mà ta đã cài đặt,
+
+10
+00:00:25,350 --> 00:00:27,930
+chọn bộ công cụ theo ý thích, 
+
+11
+00:00:27,930 --> 00:00:32,610
+Android and desktop, và hoàn tất.
+
+12
+00:00:32,610 --> 00:00:39,200
+Ta sẽ nhập Qt Quick Controls...,
+
+13
+00:00:39,200 --> 00:00:46,170
+và đổi tiêu đề ở đây thành... checkbox
+
+14
+00:00:46,170 --> 00:00:48,660
+demo. Bên trong, ta sẽ đặt một phần tử cột...
+
+15
+00:00:48,660 --> 00:00:51,239
+để sắp xếp mọi thứ
+
+16
+00:00:51,239 --> 00:00:54,180
+từ trên xuống dưới.. Bên trong, ta sẽ đặt
+
+17
+00:00:54,180 --> 00:01:00,960
+ba phần tử checkbox. Đây sẽ là
+
+18
+00:01:00,960 --> 00:01:02,789
+lựa chọn thứ nhất.. Ta sẽ
+
+19
+00:01:02,789 --> 00:01:10,189
+sao chép nó thêm hai lần nữa. Lựa chọn hai, lựa chọn ba.
+
+20
+00:01:10,189 --> 00:01:16,220
+Ta sẽ đặt khoảng cách là 20...
+
+21
+00:01:16,220 --> 00:01:19,500
+giữa các phần tử này,
+
+22
+00:01:19,500 --> 00:01:21,900
+cho nằm chính giữa và thuộc lớp parent. Ta sẽ gõ vào đây:
+
+23
+00:01:21,900 --> 00:01:26,869
+anchors, horizontal, center,
+
+24
+00:01:26,869 --> 00:01:33,780
+parent, horizontal, center. Hãy chạy thử xem 
+
+25
+00:01:33,780 --> 00:01:34,670
+trông nó thế nào.
+
+26
+00:01:34,670 --> 00:01:37,979
+mm-hmm  Ta có ba ô checkbox ở đây.
+
+27
+00:01:37,979 --> 00:01:39,900
+Bạn có thể chọn và 
+
+28
+00:01:39,900 --> 00:01:42,689
+bỏ chọn chúng. Điều tôi muốn hướng dẫn là
+
+29
+00:01:42,689 --> 00:01:45,030
+cách để kiểm soát trạng thái lựa chọn... nếu bạn cần
+
+30
+00:01:45,030 --> 00:01:47,280
+tới tính năng đó trong ứng dụng của mình.. Nhu cầu kiểm soát như vậy
+
+31
+00:01:47,280 --> 00:01:50,399
+là hiển nhiên, 
+
+32
+00:01:50,399 --> 00:01:53,310
+đúng không? Nhưng trước đó, tôi muốn các bạn
+
+33
+00:01:53,310 --> 00:01:55,890
+hiểu rằng các bạn có thể kiểm soát được
+
+34
+00:01:55,890 --> 00:01:59,909
+trạng thái lựa chọn ở đây. Các bạn có thể gõ "checked" vào đây,
+
+35
+00:01:59,909 --> 00:02:04,170
+đặt giá trị thành true, ví dụ thế,
+
+36
+00:02:04,170 --> 00:02:08,139
+và đặt giá trị của lựa chọn ba thành false.
+
+37
+00:02:08,139 --> 00:02:11,020
+Nếu ta chạy lại, lựa chọn thứ nhất 
+
+38
+00:02:11,020 --> 00:02:13,690
+sẽ được chọn, còn lựa chọn thứ ba
+
+39
+00:02:13,690 --> 00:02:15,630
+sẽ được bỏ trống. Đây là cài đặt mặc định
+
+40
+00:02:15,630 --> 00:02:19,150
+cho tính năng kiểm soát này. Một việc khác mà các bạn
+
+41
+00:02:19,150 --> 00:02:21,700
+có thể làm là vô hiệu hóa một lựa chọn.
+
+42
+00:02:21,700 --> 00:02:25,290
+Hãy gõ "enabled: false" vào đây.
+
+43
+00:02:25,290 --> 00:02:30,700
+Theo mặc định thì nó vốn được kích hoạt. Chạy thử nào
+
+44
+00:02:30,700 --> 00:02:34,000
+Lựa chọn ba sẽ được bỏ trống...
+
+45
+00:02:34,000 --> 00:02:37,240
+và vô hiệu. Bạn không thể nhấn vào nó nữa.
+
+46
+00:02:37,240 --> 00:02:41,110
+Vậy làm sao để kiểm soátlựa chọn của người dùng?
+
+47
+00:02:41,110 --> 00:02:43,330
+người dùng? Làm sao để biết khi nào có ô được chọn
+
+48
+00:02:43,330 --> 00:02:46,209
+và có ô bị bỏ chọn? Bạn có thể bắt tín hiệu
+
+49
+00:02:46,209 --> 00:02:50,560
+onCheckStateChanged... và kiểm tra
+
+50
+00:02:50,560 --> 00:02:53,020
+xem ô đó có được chọn không. Ở đây, bạn sẽ gõ nội dung
+
+51
+00:02:53,020 --> 00:03:04,709
+nếu giá trị checked...là true, thì console.log có nội dung...
+52
+00:03:04,770 --> 00:03:16,120
+"Option 1 is checked",còn nếu không,
+
+53
+00:03:16,120 --> 00:03:27,580
+ta gõ thế này. Bạn đã kiểm soát được nó
+
+54
+00:03:27,580 --> 00:03:29,860
+trong ứng dụng của mình.Và bạn có thể làm mọi điều bạn muốn
+
+55
+00:03:29,860 --> 00:03:32,760
+với thông tin này.
+
+56
+00:03:32,760 --> 00:03:36,670
+Hãy chạy thử ứng dụng. Khi ta click vào
+
+57
+00:03:36,670 --> 00:03:38,230
+ô thứ nhất. 
+
+58
+00:03:38,230 --> 00:03:41,290
+Ô thứ nhất được bỏ chọn. Ô thứ nhất được chọn.
+
+59
+00:03:41,290 --> 00:03:43,000
+Bạn có thể làm tương tự với các
+
+60
+00:03:43,000 --> 00:03:45,820
+checkbox còn lại. Đây là toàn bộ cách sử dụng
+
+61
+00:03:45,820 --> 00:03:48,430
+phần tử checkbox. 
+
+62
+00:03:48,430 --> 00:03:50,350
+Nếu cần biết thêm thông tin,
+
+63
+00:03:50,350 --> 00:03:53,260
+hãy đi tới mục Help ở đây,gõ từ khóa, 
+
+64
+00:03:53,260 --> 00:03:56,260
+và xem thông tin. Hoặc bạn có thể bôi đen
+
+65
+00:03:56,260 --> 00:03:59,320
+và nhấn F1. Bạn sẽ thấy tài liệu
+
+66
+00:03:59,320 --> 00:04:01,780
+được mở ra ở bên tay phải.
+
+67
+00:04:01,780 --> 00:04:04,480
+Bạn có thể lên đầu, nhấn vào
+
+68
+00:04:04,480 --> 00:04:07,180
+"open in help mode", và làm thử
+
+69
+00:04:07,180 --> 00:04:10,450
+theo hướng dẫn trợ giúp. Đây là toàn bộ bài giảng
+
+70
+00:04:10,450 --> 00:04:12,459
+về phần tử Checkbox.
+
+71
+00:04:12,459 --> 00:04:14,860
+Trong bài sau, chúng ta sẽ
+
+72
+00:04:14,860 --> 00:04:17,500
+nghiên cứu Combo Box,
+
+73
+00:04:17,500 --> 00:00:00,000
+một phần tử trong Qt Quick Controls. Hẹn gặp lại!
+

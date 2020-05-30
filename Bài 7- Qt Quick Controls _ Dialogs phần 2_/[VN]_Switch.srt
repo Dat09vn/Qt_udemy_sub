@@ -1,0 +1,253 @@
+1
+00:00:00,000 --> 00:00:02,250
+Trong bài này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,250 --> 00:00:04,980
+thành phần Switch trong Qt Quick Control, thành
+
+3
+00:00:04,980 --> 00:00:07,740
+phần này thì giống như một checkbox nhưng
+
+4
+00:00:07,740 --> 00:00:10,620
+nó tương thích với các thiết bị di động hơn 
+
+5
+00:00:10,620 --> 00:00:13,650
+hãy mở QT creator và thử nghiệm nó nào,
+
+6
+00:00:13,650 --> 00:00:16,949
+rồi đây là QT creator và ta tạo mới
+
+7
+00:00:16,949 --> 00:00:19,199
+project, nó là một ứng dụng QT Quick
+
+8
+00:00:19,199 --> 00:00:22,470
+và ta đặt tên nó là SwitchDemo, lưu nó vào
+
+9
+00:00:22,470 --> 00:00:28,050
+đường dẫn như thường lệ, chọn phiên bản QT
+
+10
+00:00:28,050 --> 00:00:32,070
+và chọn bộ Kit của chúng ta, nhấn next và
+
+11
+00:00:32,070 --> 00:00:35,670
+finish, ta khai báo thư viện QT quick control
+
+12
+00:00:35,670 --> 00:00:39,390
+Tiếp theo thay đổi tiêu đề là
+
+13
+00:00:39,390 --> 00:00:44,190
+Switch Demo, bên dưới ta đặt một
+
+14
+00:00:44,190 --> 00:00:48,539
+phần tử column với chiều ngang bằng với
+
+15
+00:00:48,539 --> 00:00:54,840
+đối tượng cha và ta cho nó có 
+
+16
+00:00:54,840 --> 00:00:59,550
+khoảng cách là 20, ta sẽ để
+
+17
+00:00:59,550 --> 00:01:03,750
+một vài thành phần Switch, nê ta sẽ 
+
+18
+00:01:03,750 --> 00:01:09,890
+gõ Switch, thuộc tính text sẽ để là
+
+19
+00:01:09,890 --> 00:01:15,420
+WiFi chẳng hạn, sau đó ta copy nó vài
+
+20
+00:01:15,420 --> 00:01:21,810
+lần, cái này sẽ để là Bluetooth
+
+21
+00:01:21,810 --> 00:01:25,520
+và cái này là NFC
+
+22
+00:01:25,520 --> 00:01:27,960
+và giờ hãy hiển thị là ta muốn người dùng
+
+23
+00:01:27,960 --> 00:01:30,090
+chọn loại kết nối mà họ muốn
+
+24
+00:01:30,090 --> 00:01:33,119
+để chia sẻ dữ liệu, nếu bạn xem 
+
+25
+00:01:33,119 --> 00:01:34,829
+hướng dẫn, có một số 
+
+26
+00:01:34,829 --> 00:01:36,960
+thuộc tính mà thành phần Switch này có
+
+27
+00:01:36,960 --> 00:01:40,950
+và một trong số đó là thuộc tính checked, bạn sử
+
+28
+00:01:40,950 --> 00:01:43,860
+dụng nó để điều khiển, để bật switch là on hay
+
+29
+00:01:43,860 --> 00:01:49,790
+off, rồi nếu ta đặt wifi là
+
+30
+00:01:49,790 --> 00:01:55,799
+true và chạy chương trình bạn thấy là nó
+
+31
+00:01:55,799 --> 00:01:58,409
+được bật on, nếu tắt nó, nó sẽ thành off như
+
+32
+00:01:58,409 --> 00:02:02,040
+thế này, nếu bạn bật nó on thì nó sẽ có màu đen,
+
+33
+00:02:02,040 --> 00:02:04,920
+và cái chốt nằm qua bên phải, rồi bạn cũng có thể
+
+34
+00:02:04,920 --> 00:02:07,500
+bật NFC và Bluetooth lên on hay 
+
+35
+00:02:07,500 --> 00:02:11,129
+bất cứ gì bạn muốn. Bây giờ tôi muốn canh giữa
+
+36
+00:02:11,129 --> 00:02:13,770
+các đối tượng này bởi vì 
+
+37
+00:02:13,770 --> 00:02:16,020
+tôi nghĩ như thế nó sẽ đẹp hơn
+
+38
+00:02:16,020 --> 00:02:18,200
+Vì thế ta gõ anchor.horizontalCenter là
+so I'm going to say and chorus
+
+39
+00:02:18,200 --> 00:02:21,600
+parent.horizontalCenter
+
+40
+00:02:21,600 --> 00:02:26,850
+copy nó giống thế này và dán nó 
+
+41
+00:02:26,850 --> 00:02:32,460
+xuống các nút khác bên dưới, một thứ khác
+
+42
+00:02:32,460 --> 00:02:35,070
+mà bạn có thể làm là vô hiệu các nút này
+
+43
+00:02:35,070 --> 00:02:37,610
+và để làm điều đó bản gõ thuộc tính enabled
+
+44
+00:02:37,610 --> 00:02:43,140
+và cho nó giá trị false và chạy chương trình, ta
+
+45
+00:02:43,140 --> 00:02:47,190
+có cái công tắc NFC đã tắt, 
+
+46
+00:02:47,190 --> 00:02:51,120
+nó bị vô hiệu hóa, ngoài ra bạn cũng có thể
+
+47
+00:02:51,120 --> 00:02:54,920
+kiểm tra trạng thái check của nó, bạn gõ onCheckedChanged
+
+48
+00:02:54,920 --> 00:03:06,510
+và kiểm tra nếu thuộc tính checked là true thì Wi-Fi
+
+49
+00:03:06,510 --> 00:03:19,580
+đang được bật, hãy xuất nó ra, và 
+
+50
+00:03:19,580 --> 00:03:32,730
+nếu nó không phải là true thì ta báo Wifi 
+
+51
+00:03:32,730 --> 00:03:38,310
+đang tắt, rồi chạy chương trình nó báo là 
+
+52
+00:03:38,310 --> 00:03:41,430
+công tắc wifi đăng tắt ở dưới này, nếu bật nó lên
+
+53
+00:03:41,430 --> 00:03:43,860
+nó báo là Wifi đang bật, okay bạn có thể với
+
+54
+00:03:43,860 --> 00:03:46,410
+cái này nếu bạn muốn, bạn thấy là nó không
+
+55
+00:03:46,410 --> 00:03:48,540
+khác gì mấy so với checkbox và
+
+56
+00:03:48,540 --> 00:03:51,570
+vấn đề là bạn thích sử dụng cái nào hơn.
+
+57
+00:03:51,570 --> 00:03:54,600
+bạn sử dụng QT quick và nó cung cấp cho bạn
+
+58
+00:03:54,600 --> 00:03:57,480
+nhiều thành phần khác nhau để
+
+59
+00:03:57,480 --> 00:03:59,850
+bạn chọn cái nào phù hợp với yêu cầu
+
+60
+00:03:59,850 --> 00:04:02,820
+của bạn, cho dự án của bạn. Đây là
+
+61
+00:04:02,820 --> 00:04:04,770
+tất cả những gì tôi muốn nói trong bài này, ở bài
+
+62
+00:04:04,770 --> 00:04:06,990
+kế tiếp chúng ta sẽ tìm hiểu về thành phần Page và
+
+63
+00:04:06,990 --> 00:00:00,000
+TabBar, hẹn gặp lại.
+

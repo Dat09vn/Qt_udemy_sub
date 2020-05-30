@@ -1,0 +1,720 @@
+﻿1
+00:00:00,810 --> 00:00:05,940
+Video này đi sâu vào phần Model/View cụ thể là Filtering(lọc). Trong video này chúng ta sẽ ôn tập nhanh
+
+2
+00:00:06,060 --> 00:00:10,890
+về Model/View trong Qt, thứ đã tạo ra nhu cầu sử dụng Filtering để giải quyết một vấn đề thực tế trước khi
+
+3
+00:00:10,890 --> 00:00:13,970
+tìm hiểu về cách filter bằng QSortFilterProxyModel.
+
+4
+00:00:13,980 --> 00:00:15,470
+Ta cùng bắt đầu nhé.
+
+5
+00:00:15,570 --> 00:00:19,510
+Phần này sẽ tương đối đơn giản vì chúng ta đã nắm được nền tảng cơ bản
+
+6
+00:00:19,510 --> 00:00:19,880
+từ lần trước.
+
+7
+00:00:19,890 --> 00:00:24,060
+Nhưng xin nhắc lại, Qt dựa trên framework model/view.
+
+8
+00:00:24,240 --> 00:00:28,350
+Model chịu trách nhiệm kiểm soát data hiển thị trên các view.
+
+9
+00:00:28,350 --> 00:00:32,880
+Thông thường nhìn thấy một phần data sẽ tiện hơn cho người dùng thay vì nhìn thấy toàn bộ.
+
+10
+00:00:32,880 --> 00:00:37,140
+Vì thế ta sẽ tìm cách cắt giảm một ít data mà người dùng đang nhìn thấy bằng cách sử dụng filtering.
+
+11
+00:00:37,140 --> 00:00:41,310
+Vì model chịu trách nhiệm kiểm soát data sẽ hiển thị trên view, nên model sẽ là nơi
+
+12
+00:00:41,310 --> 00:00:44,460
+ta tập trung thực hiện filter để giải quyết vấn đề. Với trường hợp này,
+
+13
+00:00:44,460 --> 00:00:48,390
+chúng ta sẽ tiếp tục xử lý các hình ảnh. Có thể ta đã có ứng dụng thiết kế rồi, và đang xử lý
+
+14
+00:00:48,390 --> 00:00:53,050
+một loạt hình ảnh với các màu sắc ngẫu nhiên khác nhau, ví dụ 6000 bức ảnh khác nhau chẳng hạn.
+
+15
+00:00:53,060 --> 00:00:57,770
+Như vậy là rất nhiều ảnh đấy, và ta muốn gợi ý cho người dùng một giải pháp thu hẹp đống đó lại.
+
+16
+00:00:57,780 --> 00:01:00,200
+Chúng ta sẽ implement(triển khai) vài filtering để xử lý điều này,
+
+17
+00:01:00,240 --> 00:01:03,670
+và trong trường hợp này, ta sẽ lọc ảnh theo giá trị độ sáng.
+
+18
+00:01:03,750 --> 00:01:06,590
+Ta cùng quan sát đoạn code mà ta có được cho đến thời điểm hiện tại.
+
+19
+00:01:06,600 --> 00:01:09,050
+Sẽ hơi nâng cao hơn một chút so với lần trước.
+
+20
+00:01:09,260 --> 00:01:14,460
+Nhưng khi mở filtering.pro và nhìn vào main.cpp, các bạn có thể thấy ta tạo lại
+
+21
+00:01:14,490 --> 00:01:17,540
+một custom MainWindow, và hiển thị nó trước khi chạy chương trình.
+
+22
+00:01:17,610 --> 00:01:22,090
+Và nếu mở MainWindow, ta có thể thấy một vài implement.
+
+23
+00:01:22,110 --> 00:01:27,210
+Cuộn xuống, chúng ta sẽ sử dụng QListView làm Widget trung tâm và cũng là view chính cho
+
+24
+00:01:27,210 --> 00:01:27,820
+ví dụ này.
+
+25
+00:01:27,840 --> 00:01:33,810
+Chúng ta sẽ lại có một PhotoModel, đó là một class con đơn giản của QStandardItemModel, và ta sẽ có
+
+26
+00:01:33,810 --> 00:01:40,050
+2 button, một để set giá trị nhỏ nhất cho filter và một để set giá trị lớn nhất cho
+
+27
+00:01:40,050 --> 00:01:40,730
+filter.
+
+28
+00:01:40,860 --> 00:01:46,890
+Nếu nhìn vào phần implement của MainWindow, các bạn có thể thấy ta tạo một QToolbar để thêm
+
+29
+00:01:46,890 --> 00:01:48,060
+cả 2 button vào.
+
+30
+00:01:48,060 --> 00:01:53,670
+Sau đó ta tạo các button và thêm vào toolbar trước khi thêm toolbar vào MainWindow
+
+31
+00:01:53,730 --> 00:01:57,480
+bằng method addToolbar. Tiếp theo với hàm connect,
+
+32
+00:01:57,480 --> 00:02:04,530
+ta sẽ kết nối(connect) các button, cụ thể là Signal sau khi click button, với các Slot "set_maximum" và "set_minimum"
+
+33
+00:02:04,530 --> 00:02:09,690
+trong class MainWindow này. Chúng ta sẽ xét phần implement này trong ít phút nữa.
+
+34
+00:02:09,690 --> 00:02:14,640
+Nhưng trước đó ta cùng xem đến phần còn lại của đoạn code, trong đó ta tạo view chính, tức QListView,
+
+35
+00:02:14,640 --> 00:02:19,110
+PhotoModel rồi đưa model vào view.
+
+36
+00:02:19,200 --> 00:02:24,000
+Ta cũng thiết lập một số UI trước khi "setCentralWidget" là list_view.
+
+37
+00:02:24,000 --> 00:02:28,800
+Bây giờ nếu chạy đoạn code này, ta sẽ thấy được những gì chúng ta đang làm. Các bạn có thể thấy ta có các bức ảnh
+
+38
+00:02:28,800 --> 00:02:32,220
+được phân loại ngẫu nhiên và thanh công cụ vừa tạo.
+
+39
+00:02:32,220 --> 00:02:33,720
+Nếu các bạn chưa từng làm việc với thanh công cụ,
+
+40
+00:02:33,720 --> 00:02:38,940
+thì thanh công cụ thú vị ở chỗ ta có thể click và kéo đi xung quanh cửa sổ chính đến bất cứ vị trí nào ta muốn.
+
+41
+00:02:38,940 --> 00:02:43,810
+Khi click vào nút này, một hộp thoại sẽ hiện lên, trong đó ta có thể thiết lập,
+
+42
+00:02:43,920 --> 00:02:48,540
+trong trường hợp này, giá trị nhỏ nhất. Bằng cách click và kéo hộp thoại đi tới vị trí bất kỳ
+
+43
+00:02:48,540 --> 00:02:55,200
+và click OK, ta sẽ thấy nó được hiển thị trong minimum trên cửa số chính.
+
+44
+00:02:55,260 --> 00:02:58,430
+Tất cả là nhờ có các slot "set_maximum" và "set_minimum"
+
+45
+00:02:58,420 --> 00:02:59,290
+mà ta vừa đề cập.
+
+46
+00:02:59,310 --> 00:03:02,040
+Bây giờ ta cùng quan sát những phần implement đó.
+
+47
+00:03:02,170 --> 00:03:06,620
+Nếu quay lại đoạn code và nhìn vào "set_minimum" và "set_maximum",
+
+48
+00:03:06,630 --> 00:03:08,500
+về cơ bản các slot là giống nhau.
+
+49
+00:03:08,520 --> 00:03:10,020
+Ta tạo một hộp thoại,
+
+50
+00:03:10,050 --> 00:03:14,200
+trong trường hợp này là VirdisDialogue, và gọi static method của nó là "get_color".
+
+51
+00:03:14,250 --> 00:03:20,070
+Method này mở ra một hộp thoại chọn màu mới, và trả về màu minimum hoặc màu maximum
+
+52
+00:03:20,070 --> 00:03:21,090
+khi kết thúc method.
+
+53
+00:03:21,210 --> 00:03:25,500
+Nếu nhìn vào phần implement của VirdisDialogue, ta sẽ thấy nó rất đơn giản.
+
+54
+00:03:25,500 --> 00:03:32,460
+Ta tạo 2 widget, một ColorPicker và một PushButton, sau đó thêm vào layout ở ngay đây và tiếp tục
+
+55
+00:03:32,490 --> 00:03:36,870
+kết nối Signal khi click PushButton với Slot "accept" của hộp thoại.
+
+56
+00:03:36,870 --> 00:03:42,480
+Hiện tại phần code ColorPicker mà ta sử dụng để chọn màu có hơi phức tạp một chút và
+
+57
+00:03:42,480 --> 00:03:47,130
+nằm ngoài phạm vi của bài học này. Nhưng về cơ bản nó tạo một QImage từ VirdisColorScheme, sau đó
+
+58
+00:03:47,130 --> 00:03:48,680
+xử lý sự kiện chuột(Mouse event).
+
+59
+00:03:48,680 --> 00:03:54,510
+Đó là một phần nhỏ implement lại QColoredDialogue mà ta sẽ sử dụng cho phần sau của serie này.
+
+60
+00:03:54,510 --> 00:04:01,320
+Các bạn có thể tìm hiểu đoạn code thế nào tuỳ thích. Nhưng như tôi đã nói từ trước, phần code chính
+
+61
+00:04:01,770 --> 00:04:07,760
+thực ra sẽ tạo QImage và tiếp tục xử lý. Quay trở lại với phần implement Slot,
+
+62
+00:04:07,860 --> 00:04:15,180
+sau khi đã có màu mới, ta sẽ sử dụng nó để cập nhật button_icon trước khi tính toán
+
+63
+00:04:15,210 --> 00:04:19,930
+độ sáng. Các phép tính độ sáng đều nằm trong luminosity_calc.h,
+
+64
+00:04:19,980 --> 00:04:23,490
+các bạn có thể tham khảo thêm trong ví dụ này.
+
+65
+00:04:23,580 --> 00:04:28,020
+Sau khi đã quan sát toàn bộ đoạn code, vậy điều này có liên quan gì tới vấn đề của chúng ta?
+
+66
+00:04:28,020 --> 00:04:32,190
+Như các bạn đã để ý trong ghi chú của tôi, điều duy nhất ta cần làm là
+
+67
+00:04:32,190 --> 00:04:38,700
+implement một số cách sắp xếp để filter model bằng các giá trị độ sáng từ cả "set_maximum" và
+
+68
+00:04:38,710 --> 00:04:40,940
+"set_minimum".
+
+69
+00:04:41,220 --> 00:04:43,160
+Vậy ta thực hiện điều đó bằng cách nào?
+
+70
+00:04:43,290 --> 00:04:49,140
+Nếu các bạn còn nhớ trong phần trước, class mà ta sử dụng được gọi là
+
+71
+00:04:49,200 --> 00:04:50,240
+QSortFilterProxyModel.
+
+72
+00:04:50,370 --> 00:04:54,920
+Ta cũng sẽ sử dụng cùng một class để implement filtering giống như đối với sorting.
+
+73
+00:04:54,930 --> 00:04:59,700
+Các bạn còn nhớ cách thiết lập một QSortFilterProxyModel trên một model gốc không?
+
+74
+00:04:59,710 --> 00:05:01,370
+Nếu không thì cũng không cần phải lo đâu.
+
+75
+00:05:01,390 --> 00:05:02,740
+Bây giờ ta sẽ thực hiện luôn.
+
+76
+00:05:02,890 --> 00:05:07,840
+Ta sẽ quay trở lại vị trí tạo model và thực hiện luôn.
+
+77
+00:05:07,840 --> 00:05:10,520
+Tôi có một picture_filter cũng khá là đủ rồi.
+
+78
+00:05:10,570 --> 00:05:16,150
+Đó sẽ là phần implement cuối cùng mà ta áp dụng. Nhưng hiện tại ta sẽ tạo một QSortFilterProxyModel.
+
+79
+00:05:16,150 --> 00:05:24,430
+Sau đó đối với picture_filter chúng ta sẽ gọi hàm setSourceModel,
+
+80
+00:05:24,490 --> 00:05:29,140
+và ta sẽ đưa vào model gốc, trong trường hợp này là photo_model.
+
+81
+00:05:29,230 --> 00:05:33,610
+Sau khi hoàn thành, chúng ta sẽ đi tới view, và thay vì đưa vào
+
+82
+00:05:33,610 --> 00:05:39,400
+photo_model gốc, ta sẽ đưa vào proxy model. Ta sẽ đưa picture_filter vào
+
+83
+00:05:39,400 --> 00:05:41,750
+phần gọi hàm. Tuyệt!
+
+84
+00:05:41,790 --> 00:05:45,120
+Như vậy ta đã thực hiện được filter proxy ở mức cao(high level).
+
+85
+00:05:45,120 --> 00:05:48,330
+Bây giờ ta sẽ implement code filtering ở mức thấp(low level).
+
+86
+00:05:48,480 --> 00:05:54,780
+Nếu quay trở lại picturefilter.h, các bạn có thể thấy ta có một class con cơ bản của
+
+87
+00:05:54,790 --> 00:06:01,530
+QSortFilterProxyModel mà tôi vừa tạo. Method mà ta cần thực hiện là hàm filterAcceptsRow,
+
+88
+00:06:01,650 --> 00:06:08,430
+như các bạn có thể thấy ở đây, cần có 2 biến, một source_row và một source_parent, tức là
+
+89
+00:06:08,430 --> 00:06:09,730
+QModelIndex.
+
+90
+00:06:09,840 --> 00:06:15,300
+Sau đó method trả về hoặc true hoặc false đối với hàng thoả mãn hoặc không thoả mãn với
+
+91
+00:06:15,300 --> 00:06:17,330
+2 biến này.
+
+92
+00:06:17,340 --> 00:06:19,890
+Vì vậy ta phải tiếp cận được với data.
+
+93
+00:06:20,010 --> 00:06:24,800
+Cách tốt nhất là lấy QModelIndex đại diện cho hình ảnh riêng lẻ ta đang
+
+94
+00:06:24,810 --> 00:06:29,540
+kiểm tra, chứ không phải index parent, được đưa vào method.
+
+95
+00:06:29,550 --> 00:06:30,970
+Vậy ta làm điều đó bằng cách nào?
+
+96
+00:06:31,020 --> 00:06:38,220
+Nếu nhìn vào model gốc, cụ thể hơn là lệnh set item trong constructor,
+
+97
+00:06:38,310 --> 00:06:45,000
+ta sẽ thấy hàng được set bằng vòng lặp for từ 0 đến 100. Nhưng cột ở vị trí
+
+98
+00:06:45,000 --> 00:06:52,530
+thứ hai luôn được đặt bằng 0 vì ta không có nhiều cột trong list view.
+
+99
+00:06:52,530 --> 00:06:58,650
+Bây giờ method mà ta sẽ sử dụng để lấy index cụ thể từ model nguồn chính là
+
+100
+00:06:58,650 --> 00:06:59,510
+lệnh index.
+
+101
+00:06:59,700 --> 00:07:06,210
+Nếu quay lại, ta sẽ thấy lệnh index cần có 3 biến, row, column và
+
+102
+00:07:06,210 --> 00:07:07,260
+QModelIndex parent.
+
+103
+00:07:07,260 --> 00:07:13,720
+Trong trường hợp này, chúng ta có thể lấy hàng được đưa vào bằng hàm bằng parent QModelIndex .
+
+104
+00:07:13,740 --> 00:07:18,780
+Vì vậy điều duy nhất mà ta cần, mà ta chưa có, là column. Nhưng nhớ lại model gốc,
+
+105
+00:07:18,780 --> 00:07:21,030
+toàn bộ hình ảnh đều nằm trong cột 0.
+
+106
+00:07:21,030 --> 00:07:22,800
+Vậy là ta đã có mọi thứ ta cần.
+
+107
+00:07:22,800 --> 00:07:24,480
+Bây giờ ta cùng đi lấy index.
+
+108
+00:07:24,480 --> 00:07:29,460
+Trước hết ta sẽ tạo một biến column kiểu integer.
+
+109
+00:07:29,460 --> 00:07:34,220
+Ta sẽ đặt nó bằng 0 vì toàn bộ hình ảnh đều nằm trong cột 0. Sau đó ta sẽ tạo
+
+110
+00:07:34,230 --> 00:07:38,090
+picture_index kiểu QModelIndex.
+
+111
+00:07:38,090 --> 00:07:42,810
+Vậy ta sẽ tạo method đó. Ta cần phải tiếp cận được với model nguồn,
+
+112
+00:07:42,870 --> 00:07:45,510
+ta có một phần gọi method đảm nhận chức năng đó.
+
+113
+00:07:45,510 --> 00:07:49,020
+Và method mà ta cần gọi là lệnh index.
+
+114
+00:07:49,080 --> 00:07:54,420
+Như tôi đã nói, lệnh index cần có 3 biến, biến row ta đã tiếp cận được với vai trò
+
+115
+00:07:54,420 --> 00:07:58,470
+source row, biến column hay zero column cho toàn bộ,
+
+116
+00:07:58,500 --> 00:08:02,860
+và cuối cùng là source_parent được đưa vào trên từng phần gọi hàm.
+
+117
+00:08:02,870 --> 00:08:07,560
+Sau khi đã lấy được đúng index, các bạn có nhớ cách xuất data như thế nào không?
+
+118
+00:08:07,560 --> 00:08:13,520
+Nếu không, hãy nhớ các bạn cần sử dụng hàm data trên index và đưa vào item role
+
+119
+00:08:13,560 --> 00:08:15,540
+cụ thể từ model.
+
+120
+00:08:15,540 --> 00:08:19,880
+Trong trường hợp này, vì ta cần thông tin về đồ hoạ, ta sẽ đưa vào Qt DecorationRole.
+
+121
+00:08:19,890 --> 00:08:25,620
+Ta tạo một QVariant và đặt tên là data. Sau đó ta đặt bằng với picture_index, và
+
+122
+00:08:25,620 --> 00:08:31,560
+gọi method "data". Ta sẽ đưa DecorationRole vào
+
+123
+00:08:31,560 --> 00:08:32,170
+phần gọi method này.
+
+124
+00:08:32,430 --> 00:08:32,880
+tuyệt vời.
+
+125
+00:08:32,880 --> 00:08:38,100
+Cuối cùng ta cần phải lấy QIcon từ QVariant, ta có thể thực hiện bằng
+
+126
+00:08:38,100 --> 00:08:39,350
+method value.
+
+127
+00:08:39,670 --> 00:08:45,990
+Ta tiếp tục tạo một biến với tên icon. Ta sẽ đặt bằng với data, và ta luôn có thể sử dụng
+
+128
+00:08:45,990 --> 00:08:51,720
+method "value" trên QVariant để đưa về kiểu data cụ thể mà ta muốn, trong trường hợp này
+
+129
+00:08:51,720 --> 00:08:53,660
+là QIcon.
+
+130
+00:08:53,700 --> 00:08:59,160
+Hiện tại tôi đã cung cấp một method để xuất thông tin màu sắc từ QIcon, từ đó sẽ gọi
+
+131
+00:08:59,160 --> 00:09:06,690
+bằng hàm icon_to_luminosity. Ta sẽ tạo một qreal, và tạo một biến lume.
+
+132
+00:09:07,080 --> 00:09:12,030
+Sau đó ta sẽ gọi hàm icon_to_luminosity và đưa icon vào.
+
+133
+00:09:12,030 --> 00:09:16,830
+Hãy lưu ý rằng hàm này được lấy từ luminosity_calc.h. Các bạn có thể mở file và
+
+134
+00:09:16,830 --> 00:09:20,370
+tham khảo phần implement để biết chính xác cách thực hiện
+
+135
+00:09:20,370 --> 00:09:27,010
+nếu muốn. Được rồi. Vậy là ta đã chuyển đổi thành công source_row và source_parent QModelIndex
+
+136
+00:09:27,010 --> 00:09:28,440
+thành một giá trị độ sáng.
+
+137
+00:09:28,510 --> 00:09:34,240
+Ta cùng kiểm tra xem liệu như vậy đã thoả mãn những giới hạn trên proxy filter hay chưa. Và ta sẽ thực hiện điều này bằng cách kiểm tra
+
+138
+00:09:34,450 --> 00:09:40,750
+giá trị set_min_filter và set_max_filter. Ta chỉ cần làm một câu
+
+139
+00:09:40,750 --> 00:09:43,160
+điều kiện phức kiểu boolean khá đơn giản vì ta cần trả về kiểu boolean.
+
+140
+00:09:43,270 --> 00:09:47,850
+Tiếp theo ta sẽ kiểm tra xem liệu luminosity có lớn hơn min_filter_value hay không,
+
+141
+00:09:48,040 --> 00:09:53,790
+và ta phải đảm bảo luminously nhỏ hơn max_filter_value.
+
+142
+00:09:53,980 --> 00:10:00,360
+Và ta sẽ trả về kết quả để xem filter có chấp nhận row hay không.
+
+143
+00:10:01,030 --> 00:10:01,590
+Và thế là xong.
+
+144
+00:10:01,600 --> 00:10:06,610
+Ta đã thực hiện thành công một filter cho mô hình filter theo độ sáng.
+
+145
+00:10:06,610 --> 00:10:12,310
+Giờ còn duy nhất một vấn đề, đó là "làm thế nào proxy model biết được khi giá trị filter thay đổi?"
+
+146
+00:10:12,310 --> 00:10:14,220
+Hiện tại thì proxy model chưa biết được.
+
+147
+00:10:14,440 --> 00:10:19,360
+Ta sẽ giải quyết vấn đề này bằng cách cung cấp một cặp method setter. Ta sẽ tạo 2 method, một set_min_filter_value và
+
+148
+00:10:19,360 --> 00:10:22,280
+một set_max_filter_value.
+
+149
+00:10:22,360 --> 00:10:27,400
+Trong số các method call(lời gọi hàm) này, có một method mà ta cần phải gọi để proxy model biết
+
+150
+00:10:27,400 --> 00:10:30,640
+filter đã thay đổi và cần phải được tính toán lại.
+
+151
+00:10:30,640 --> 00:10:32,870
+method đó được gọi là method invalidateFilter.
+
+152
+00:10:32,930 --> 00:10:34,720
+Ta cùng tiến hành tạo 2 method này.
+
+153
+00:10:34,830 --> 00:10:43,360
+Void set_min_filter_value. Sẽ cần một qreal của luminosity đầu vào. Đối với phần implement,
+
+154
+00:10:43,410 --> 00:10:49,750
+ta sẽ reset bằng bất kỳ những gì được đưa vào. Và điều cuối cùng
+
+155
+00:10:49,750 --> 00:10:53,660
+ta cần gọi là hàm invalidateFilter.
+
+156
+00:10:53,670 --> 00:10:57,650
+Ta phải triển khai cho những cái này, và ta phải triển khai thêm cái nữa cho phần max nữa.
+
+157
+00:10:57,670 --> 00:11:01,960
+Ta sẽ sao chép và dán thật nhanh. Và thế là xong.
+
+158
+00:11:01,960 --> 00:11:07,960
+Ta cùng quay lại phần triển khai MainWindow. Bây giờ thay vì tạo
+
+159
+00:11:07,960 --> 00:11:08,560
+QSortFilterProxyModel,
+
+160
+00:11:08,560 --> 00:11:13,050
+ta sẽ sử dụng phần triển khai cụ thể hơn, đó là PictureFilter.
+
+161
+00:11:13,270 --> 00:11:19,270
+Cuối cùng ta cần phải gọi các method vừa tạo, đúng hơn là bộ method vừa tạo từ
+
+162
+00:11:19,270 --> 00:11:21,860
+2 slot set_minimum và set_maximum.
+
+163
+00:11:21,880 --> 00:11:22,720
+Kéo xuống đây.
+
+164
+00:11:22,720 --> 00:11:29,120
+Tiếp tục xoá. Trên picture_filter, ta sẽ gọi set_min_filter_value.
+
+165
+00:11:29,240 --> 00:11:34,520
+Ta sẽ đưa vào luminosity. Và thực hiện tương tự đối với set_maximum.
+
+166
+00:11:34,600 --> 00:11:38,310
+Đổi cái này thành max_filter_value.
+
+167
+00:11:38,590 --> 00:11:41,600
+Bây giờ ta cùng chạy chương trình và xem nó hoạt động thế nào.
+
+168
+00:11:42,130 --> 00:11:50,710
+Nếu click vào giá trị set minimum và kéo lên màu sáng thay vì màu siêu tối và ấn OK, ta có thể
+
+169
+00:11:50,710 --> 00:11:57,130
+thấy model đang lọc tất cả những giá trị nằm giữa set maximum và set
+
+170
+00:11:57,130 --> 00:12:03,600
+minimum. Ta có thể tiếp tục tìm hiểu và thêm hoặc bớt bao nhiêu biến tuỳ thích.
+
+171
+00:12:03,610 --> 00:12:08,950
+Tôi đã lấy ra code phân loại từ phần trước, nhưng tôi chỉ muốn nói rằng các bạn không nhất thiết
+
+172
+00:12:08,950 --> 00:12:09,330
+phải làm thế đâu.
+
+173
+00:12:09,370 --> 00:12:15,250
+Và tôi cũng khuyến khích các bạn thử thực hiện và kết hợp filtering(lọc) và
+
+174
+00:12:15,250 --> 00:12:22,360
+sorting(sắp xếp) trong một QSortFilterProxyModel sử dụng picture_filter này như một bước đệm để thực hiện
+
+175
+00:12:22,360 --> 00:12:23,190
+cả hai.
+
+176
+00:12:23,470 --> 00:12:29,740
+Nhưng hiện tại ta đã tìm hiểu xong cách filter model bằng
+
+177
+00:12:29,740 --> 00:12:30,940
+QSortFilterProxyModel.
+
+178
+00:12:30,970 --> 00:12:36,990
+Ta cũng đã ôn tập lại model/view trong Qt và làm một trường hợp đơn giản sử dụng filtering.
+
+179
+00:12:37,030 --> 00:12:41,770
+Hãy theo dõi video tiếp theo, trong đó chúng ta sẽ tiếp tục đào sâu vào model/view bằng cách tạo
+
+180
+00:12:41,770 --> 00:12:42,600
+custom model đầu tiên của chúng ta.
+

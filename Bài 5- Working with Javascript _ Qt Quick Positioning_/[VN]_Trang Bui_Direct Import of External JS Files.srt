@@ -1,0 +1,384 @@
+1
+00:00:00,000 --> 00:00:01,800
+Ở bài này, ta sẽ cùng nhau tìm hiểu cách 
+
+2
+00:00:01,800 --> 00:00:03,540
+import (tải) code từ file JavaScript 
+
+3
+00:00:03,540 --> 00:00:06,540
+vào trong QML và sử dụng trực tiếp 
+
+4
+00:00:06,540 --> 00:00:09,480
+mã code đó. Cùng mở Qt Creator 
+
+5
+00:00:09,480 --> 00:00:12,420
+để tìm hiểu. Okay, đây là Qt Creator. 
+
+6
+00:00:12,420 --> 00:00:14,460
+Ta sẽ tạo một project (dự án) mới. 
+
+7
+00:00:14,460 --> 00:00:17,699
+Ta nhập tên trình này là "JSImportDemo". 
+
+8
+00:00:17,699 --> 00:00:22,590
+Chọn "Next", 
+
+9
+00:00:22,590 --> 00:00:26,220
+chọn phiên bản Qt, chọn bộ kit desktop (bộ kit để xây dựng ứng dụng trên Desktop) 
+
+10
+00:00:26,220 --> 00:00:30,150
+ở đây, ấn "Finish". Ta sẽ 
+
+11
+00:00:30,150 --> 00:00:33,690
+thay đổi "title" (tiêu đề) ở đây. Ta tạo một 
+
+12
+00:00:33,690 --> 00:00:37,950
+hình chữ nhật vào bên trong. Chiều rộng của hình 
+
+13
+00:00:37,950 --> 00:00:43,260
+là 300, chiều cao là 100. Hình chữ nhật này 
+
+14
+00:00:43,260 --> 00:00:47,190
+có màu xanh biển. Hình chữ nhật sẽ được đặt
+
+15
+00:00:47,190 --> 00:00:55,800
+ở chính giữa cha của nó (parent). Bên trong hình chữ nhật, ta sẽ tạo 
+
+16
+00:00:55,800 --> 00:00:59,730
+một phần tử Text (văn bản/chữ) ở đây. 
+
+17
+00:00:59,730 --> 00:01:03,090
+Nhập "text" của phần tử này là "Click Me". Phần tử này 
+
+18
+00:01:03,090 --> 00:01:08,670
+cũng nằm ở vị trí trung tâm cha của nó, chính là 
+
+19
+00:01:08,670 --> 00:01:11,010
+là hình chữ nhật này. Do đó, 
+
+20
+00:01:11,010 --> 00:01:13,200
+dòng chữ sẽ nằm chính giữa 
+
+21
+00:01:13,200 --> 00:01:17,310
+hình chữ nhật. Ta cũng sẽ tạo một phần từ
+
+22
+00:01:17,310 --> 00:01:19,830
+MouseArea và để phần tử này phủ tràn hết hình chữ nhật. 
+
+23
+00:01:19,830 --> 00:01:25,229
+Tôi sẽ đặt MouseArea vào trong hình chữ nhật. 
+
+24
+00:01:25,229 --> 00:01:30,329
+MouseArea này sẽ phủ tràn hết hình chữ nhật. 
+
+25
+00:01:30,329 --> 00:01:37,229
+Khi click vào MouseArea này, ta muốn 
+
+26
+00:01:37,229 --> 00:01:39,840
+thực hiện một vài thao tác. Tạm thời, 
+
+27
+00:01:39,840 --> 00:01:49,470
+ta có thể in ra console với console.log("Hello there") (Xin chào). 
+
+28
+00:01:49,470 --> 00:01:51,479
+Nếu chạy ứng dụng thì cũng không có gì đặc biệt cả. 
+
+29
+00:01:51,479 --> 00:01:53,189
+Ta sẽ nhìn thấy một hình chữ nhật nằm ở chính giữa. 
+
+30
+00:01:53,189 --> 00:01:55,229
+Ở trong hình chữ nhật này sẽ có 
+
+31
+00:01:55,229 --> 00:01:57,689
+dòng chữ, và khi click vào đó, ứng dụng sẽ in ra 
+
+32
+00:01:57,689 --> 00:02:01,500
+"hello there" trong console. Màu này 
+
+33
+00:02:01,500 --> 00:02:04,049
+hơi khó nhìn. Tôi nghĩ là tôi nên đổi thành 
+
+34
+00:02:04,049 --> 00:02:07,439
+màu xanh lá. Để xem thế nào.  
+
+35
+00:02:07,439 --> 00:02:10,199
+Hoặc chuyển sang màu xanh-vàng. Ta đã từng 
+
+36
+00:02:10,199 --> 00:02:12,709
+sử dụng màu này trước đó. 
+
+37
+00:02:13,530 --> 00:02:16,150
+Màu xanh-vàng. Trông sẽ như thế này. 
+
+38
+00:02:16,150 --> 00:02:20,560
+Tôi nghĩ màu này trông dễ nhìn hơn. Okay, trông dễ nhìn hơn rồi. 
+
+39
+00:02:20,560 --> 00:02:23,140
+Nếu ta click vào, dòng chữ "hello there" sẽ hiện lên. 
+
+40
+00:02:23,140 --> 00:02:25,870
+Bây giờ, ta muốn tạo một file JavaScript mới 
+
+41
+00:02:25,870 --> 00:02:28,900
+và gọi phương thức bên trong đó, 
+
+42
+00:02:28,900 --> 00:02:31,690
+và để phương thức đo in ra dòng chữ "hello there". 
+
+43
+00:02:31,690 --> 00:02:33,580
+Ta không muốn in "hello there" trực tiếp từ trong file QML. 
+
+44
+00:02:33,580 --> 00:02:35,560
+Ta muốn dòng chữ này được in ra từ code 
+
+45
+00:02:35,560 --> 00:02:37,930
+trong file JavaScript. 
+
+46
+00:02:37,930 --> 00:02:41,860
+Đó là tất cả những gì mà ta muốn. Ta chuột phải vào 
+
+47
+00:02:41,860 --> 00:02:45,190
+qml.qrc ở đây, 
+
+48
+00:02:45,190 --> 00:02:48,010
+rồi chọn "Add new..." (thêm mới). Ta sẽ click 
+
+49
+00:02:48,010 --> 00:02:53,800
+vào mục thêm "Qt" -> "JS file". Ta sẽ gọi file này 
+
+50
+00:02:53,800 --> 00:02:58,300
+là utilities1 (utilities: các tiện ích), do file này chứa một vài tiện ích 
+
+51
+00:02:58,300 --> 00:03:01,600
+mà ta muốn sử dụng. 
+
+52
+00:03:01,600 --> 00:03:03,910
+Ta thấy, dưới file main.qml, 
+
+53
+00:03:03,910 --> 00:03:06,310
+ta có một file JavaScript mới. 
+
+54
+00:03:06,310 --> 00:03:10,690
+Phần file mở rộng của nó là js. 
+
+55
+00:03:10,690 --> 00:03:13,210
+Ta sẽ xóa nội dung trong file và tạo hàm mới. 
+
+56
+00:03:13,210 --> 00:03:17,620
+Hàm này có tên gọi là "greeting" (Chào hỏi).  
+
+57
+00:03:17,620 --> 00:03:22,750
+Ở bên trong hàm, nó cũng thực hiện tương tự 
+
+58
+00:03:22,750 --> 00:03:26,940
+như những gì mà ta đã có trong onClicked, 
+
+59
+00:03:26,940 --> 00:03:30,490
+okay, ta làm như vậy, và ta có một hàm 
+
+60
+00:03:30,490 --> 00:03:33,580
+trong file JavaScript. 
+
+61
+00:03:33,580 --> 00:03:36,760
+Ta lưu file này lại. Quay trở lại file QML, 
+
+62
+00:03:36,760 --> 00:03:39,670
+bây giờ, ta cần một cách để import (tải) 
+
+63
+00:03:39,670 --> 00:03:42,610
+code JavaScript trong file đó. Cách ta làm như sau: 
+
+64
+00:03:42,610 --> 00:03:49,620
+ta gõ import (tải) "utilities1.js". 
+
+65
+00:03:49,620 --> 00:03:54,610
+Ta viết "as" ("như là")
+
+66
+00:03:54,610 --> 00:03:56,950
+để chỉ rõ một tên mà ta sẽ sử dụng 
+
+67
+00:03:56,950 --> 00:04:00,730
+để gọi các phương thức từ file này. Tên sẽ là
+
+68
+00:04:00,730 --> 00:04:06,640
+"Utilities1", viết hoa chữ cái đầu tiên. 
+
+69
+00:04:06,640 --> 00:04:11,700
+Ở dưới này, ta có thể viết "Utilities1.greeting". 
+
+70
+00:04:11,700 --> 00:04:14,500
+Ta thấy tính năng autocomplete (tự động hoàn thiện) của Qt Creator
+
+71
+00:04:14,500 --> 00:04:17,140
+đã nhận diện
+
+72
+00:04:17,140 --> 00:04:19,870
+được hàm đó. Nếu chạy ứng dụng, 
+
+73
+00:04:19,870 --> 00:04:23,530
+ta click vào đây. Ta thấy, ở đây hiển thị 
+
+74
+00:04:23,530 --> 00:04:25,020
+dòng chữ "hello there", 
+
+75
+00:04:25,020 --> 00:04:28,259
+tuy nhiên dòng chữ này được in ra từ file 
+
+76
+00:04:28,259 --> 00:04:31,080
+JavaScript. Ta sẽ làm rõ điều này 
+
+77
+00:04:31,080 --> 00:04:41,669
+bằng cách thêm một vài từ vào đây. Lưu lại. 
+
+78
+00:04:41,669 --> 00:04:49,319
+Chạy lại lần nữa. Và ta thấy dòng chữ 
+
+79
+00:04:49,319 --> 00:04:52,409
+"hello there từ file JavaScript". 
+
+80
+00:04:52,409 --> 00:04:55,050
+Ta có thể dễ dàng gọi các phương thức trong 
+
+81
+00:04:55,050 --> 00:04:57,509
+file JavaScript,
+
+82
+00:04:57,509 --> 00:04:59,729
+chỉ cần thêm vào "Resouces" (nguồn), giống như 
+
+83
+00:04:59,729 --> 00:05:02,520
+thêm vào các file QML. Ta đặt các phương thức 
+
+84
+00:05:02,520 --> 00:05:03,210
+vào trong file. 
+
+85
+00:05:03,210 --> 00:05:06,479
+Khi import (tải) file JavaScript vào QML, hãy chú ý đến 
+
+86
+00:05:06,479 --> 00:05:08,970
+cú pháp này, chỉ rõ ra tên file 
+
+87
+00:05:08,970 --> 00:05:11,940
+trong nháy đôi. Và đặt một tên mà ta sẽ sử dụng 
+
+88
+00:05:11,940 --> 00:05:13,800
+để gọi các phương thức trong đó, sau đó, ta có thể 
+
+89
+00:05:13,800 --> 00:05:15,990
+dùng các phương thức. Như vậy, sẽ không có vấn đề gì.  
+
+90
+00:05:15,990 --> 00:05:18,150
+Đây là tất cả những gì mà tôi cần giới thiệu
+
+91
+00:05:18,150 --> 00:05:20,400
+trong bài này, nhằm chỉ cho các bạn 
+
+92
+00:05:20,400 --> 00:05:22,979
+cách thức gọi JavaScript từ 
+
+93
+00:05:22,979 --> 00:05:26,310
+một file JavaScript trong QML. 
+
+94
+00:05:26,310 --> 00:05:27,960
+Ở bài tiếp theo, ta sẽ cùng nhau tìm hiểu các cách 
+
+95
+00:05:27,960 --> 00:05:30,360
+import (tải) JavaScript gián tiếp. 
+
+96
+00:05:30,360 --> 00:00:00,000
+Hẹn gặp lại các bạn trong bài giảng lần tới. 
+

@@ -1,0 +1,205 @@
+WEBVTT
+
+00:02.040 --> 00:11.290
+Signals and Slots. In this video, we'll talk about the most prominent trait of Qt: signals and 
+
+00:11.290 --> 00:12.750
+slots.
+
+00:12.750 --> 00:19.800
+It's rare that's a real world Qt application that doesn't use signals and slots at all. It's extremely
+
+00:19.800 --> 00:27.720
+hard to imagine a Qt GUI application without the signals and slots. Signals and slots are the bedrock
+
+00:28.020 --> 00:31.090
+of the asynchronous Qt world.
+
+00:31.130 --> 00:36.160
+So we are going to firstly go through the signals and slots
+
+00:36.190 --> 00:41.850
+mechanism and get some kinds of practices.
+
+00:42.100 --> 00:43.660
+So what's a signal?
+
+00:44.110 --> 00:47.190
+In practice it's a synonym of event.
+
+00:47.290 --> 00:55.720
+Whenever there's a need to notify potential receivers, for example a user interaction such as typing, clicking
+
+00:56.080 --> 01:04.080
+or program flow control such as an execution finishing. The object that emits the signal is called sender.
+
+01:04.950 --> 01:09.760
+The function that can be connected to a signal is called Slot.
+
+01:09.890 --> 01:14.090
+You don't have to connect all signals to all slots.
+
+01:14.100 --> 01:17.150
+Now let's take a look at slots.
+
+01:17.220 --> 01:24.930
+A slot is essentially a function that is called to handle an event by connecting to the signal. The object
+
+01:25.020 --> 01:31.300
+that has the slot and then receives the signal is called receiver. To wrap it up,
+
+01:31.600 --> 01:40.650
+an event happens, which makes the relevant signals emitted. Then the connected slots will be invoked.
+
+01:41.940 --> 01:50.010
+Let's get our hands on some exercises to see how we can define signals and slots and how to connect
+
+01:50.130 --> 01:53.320
+a signal to a slot. If you launch
+
+01:53.340 --> 01:57.350
+Qt Creator and use the project from last video,
+
+01:57.540 --> 02:05.250
+or you can create a new Qt widgets application project. To define a signal, you define it as a regular
+
+02:05.250 --> 02:06.500
+member function
+
+02:06.550 --> 02:08.100
+after the Signals keyword 
+
+02:16.610 --> 02:21.420
+like this. We've just defined a signal code init.
+
+02:21.470 --> 02:30.060
+It must be defined after Signals keyword. Signals are special that the master return void.
+
+02:30.150 --> 02:35.580
+They may have arguments and you only need to declare them in the header file.
+
+02:35.580 --> 02:41.330
+There is no definition of signal function. To emit signal,
+
+02:41.640 --> 02:47.810
+let's just go to the CPP file and emit the signal in the constructor.
+
+02:50.990 --> 02:53.120
+That is the key word "emit"
+
+02:56.320 --> 03:05.060
+and the signal function. Meanwhile a slot function is just a regular function that has the same arguments
+
+03:05.060 --> 03:07.770
+lazed (từ này nữa) as the signal does.
+
+03:08.000 --> 03:13.230
+It is usually a member function that is defined with the slots keyword.
+
+03:17.160 --> 03:23.280
+It can return a value and it can be called directly as a member function.
+
+03:23.300 --> 03:28.030
+It can either be public protected or private.
+
+03:28.070 --> 03:31.660
+And now we are defining a private slots function.
+
+03:40.040 --> 03:42.100
+What are we going to do with this function?
+
+03:46.660 --> 03:49.010
+Well we're simply print a message.
+
+03:55.510 --> 04:04.040
+OK to make the message printed we need to connect the signal to a slot. To do that,
+
+04:04.040 --> 04:09.600
+we just need to call the connect method provided by QObject.
+
+04:09.650 --> 04:14.070
+Since basically all QClasses derive from QObject.
+
+04:14.240 --> 04:22.250
+You just need to type connect.
+
+04:22.340 --> 04:30.470
+There has been a new syntax introduced in 2005 to enable compiler to do some compile time safe checks
+
+04:30.470 --> 04:31.330
+for us.
+
+04:31.400 --> 04:38.160
+So instead of writing it in the old way with signals and slots macros, we use the new signal, 
+
+04:38.510 --> 04:40.520
+we use the new syntax.
+
+04:40.520 --> 04:51.700
+The first argument is the pointer to the sender and at the second the one is the address of the signal.
+
+04:51.780 --> 05:02.850
+The third one is the pointer to the receiver followed by a slot address.
+
+05:02.890 --> 05:11.290
+In this case, we need to connect the signal and the slot before we emit it, only the slots that are already
+
+05:11.290 --> 05:17.480
+connected as the time when signals are emitted will be invoked.
+
+05:17.500 --> 05:24.430
+That means if you connect a signal and a slot after the signal emission, that slot may never be
+
+05:24.440 --> 05:27.360
+called.
+
+05:27.380 --> 05:29.270
+Now if we run the application, 
+
+05:38.840 --> 05:41.430
+we can see that init message is printed.
+
+05:45.570 --> 05:50.510
+A signal has also been connected to C++ 11 lammed pointer.
+
+05:53.770 --> 06:02.130
+Let's doubleclick to main.cpp. Here, we can connect the abuse in signal code destroyed to a functor
+
+06:02.160 --> 06:03.950
+in the main.cpp. 
+
+06:04.290 --> 06:13.700
+And then remember the Connect is a member function of queue object but it is also a static one.
+
+06:15.790 --> 06:21.180
+Hence we can still use it even when we are not in a queue object.
+
+06:21.180 --> 06:21.580
+Close
+
+06:27.420 --> 06:34.910
+the beauty and destroy the signal and a C++ 11 operator and a C++ 11 lambda Foxton
+
+06:46.670 --> 06:49.480
+let's beaute and then run this project in
+
+06:53.060 --> 06:54.170
+meme window.
+
+06:54.260 --> 07:01.980
+In it it meant window has initialized we see in it's printed and with this join it's
+
+07:05.560 --> 07:15.000
+we see men window destroyed message printed it has provided tons of computing signals as well as slots
+
+07:15.210 --> 07:18.070
+to help you to code next for that.
+
+07:18.090 --> 07:25.920
+Be sure to always check the documentation of the butte incudes classes that you are working with in
+
+07:25.920 --> 07:27.260
+the next video.
+
+07:27.310 --> 07:31.560
+We are going to talk about window dialog and the pop up.

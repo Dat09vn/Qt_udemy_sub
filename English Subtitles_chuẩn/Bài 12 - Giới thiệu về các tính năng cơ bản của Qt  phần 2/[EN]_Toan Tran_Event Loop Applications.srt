@@ -1,0 +1,403 @@
+WEBVTT
+
+00:01.160 --> 00:07.130
+A video which covers an event driven GUI list program. We're going to cover types of programming concurrency,
+
+00:07.280 --> 00:12.150
+functor base signal/slot connections and finished by doing an event loop driven example.
+
+00:12.170 --> 00:15.680
+Now one of the key proponents in Qt is it's event driven framework.
+
+00:15.890 --> 00:20.100
+The good news is that even if we're not using graphics, we can still use the event loop.
+
+00:20.210 --> 00:21.790
+So let's figure out how.
+
+00:21.850 --> 00:28.460
+So if we open up Qt Creator, File, New file or project application, Qt Console Application, Choose
+
+00:28.460 --> 00:30.080
+a name and a location.
+
+00:30.110 --> 00:34.740
+We'll stick with the qmake build system, select the kit and do some project management.
+
+00:34.780 --> 00:39.650
+And what we see here is it's going to create a small application and it's going to create a new QCoreApplication
+
+00:39.650 --> 00:40.500
+call exec().
+
+00:40.550 --> 00:45.110
+So this is actually the event loop. How to do the event loop in a non-GUI program?
+
+00:45.110 --> 00:48.710
+So if we run this, it will go ahead and since there's nothing to tell a differently abled just run the
+
+00:48.710 --> 00:49.770
+event loop forever.
+
+00:49.880 --> 00:54.970
+What this means for us is that we can take signals and slots and put them into our console application.
+
+00:54.980 --> 00:56.540
+So where would this be useful?
+
+00:56.540 --> 01:01.630
+Well any application that needs to weigh on IO is always a good target for an event loop.
+
+01:01.640 --> 01:05.480
+Any sort of network application or server would benefit from this application.
+
+01:05.510 --> 01:10.190
+One of the reasons we talked about doing a graphic list application was for the use case of us being run
+
+01:10.190 --> 01:10.930
+on a server.
+
+01:11.030 --> 01:12.740
+So let's work to expand that a little bit.
+
+01:12.740 --> 01:17.660
+Typically we run on servers either because we they have more processing power than our typical desktop
+
+01:17.720 --> 01:22.220
+or we've got a process that needs to run for a long time to provide some kind of service.
+
+01:22.220 --> 01:27.240
+Now the microservice architecture has been one design pattern that has gained a huge amount of steam recently.
+
+01:27.320 --> 01:32.360
+So let's design a small application that would sit on our server and spin up other services as needed
+
+01:32.390 --> 01:35.190
+or on demand using subprocess.
+
+01:35.270 --> 01:40.100
+If you're not familiar programming concurrency has typically gained by either using threading an event
+
+01:40.100 --> 01:44.700
+loop or multiple processes. Each concurrency has its own strengths and weaknesses.
+
+01:44.720 --> 01:49.490
+But the nice part about using multiple processes is that we get to use the operating system to manage
+
+01:49.490 --> 01:52.490
+switching rather than manually programming ourselves.
+
+01:52.490 --> 01:55.070
+This is why microservices have gotten so popular.
+
+01:55.100 --> 01:59.420
+So let's go ahead and design a manager app that would launch our microservices.
+
+01:59.420 --> 02:01.960
+Now typically for this, we'd use a networked application.
+
+02:01.970 --> 02:06.770
+But in order to keep this example simple, we're going to use a timer to simulate some sort of demand.
+
+02:06.970 --> 02:09.820
+We will cover setting up a networked application in the next video.
+
+02:10.040 --> 02:14.720
+So we look at our main.cpp, we're going to create a small class called ProcessManager and go
+
+02:14.720 --> 02:15.770
+ahead and start that.
+
+02:15.800 --> 02:20.480
+And if we look at the header file, this, one important thing that we need know is that we need to subclass
+
+02:20.480 --> 02:24.320
+our ProcessManager from Q_OBJECT and include QObject macro.
+
+02:24.320 --> 02:27.260
+This is going to allow us to use signals and slots.
+
+02:27.260 --> 02:32.900
+So in our case we want to use signals and slots to help us understand how our subprocesses are doing.
+
+02:32.900 --> 02:36.430
+There are several signals we want to collect and several slots we want to vote.
+
+02:36.440 --> 02:42.860
+So if we go up and look at the constructor. Here's our timer that's going to stimulate our demand and
+
+02:42.860 --> 02:48.940
+we connect our 'timer' 'timeout' signal to the start_process command.
+
+02:48.950 --> 02:50.720
+That's part of this class.
+
+02:50.750 --> 02:53.320
+So the start_process is that's where we're actually going to start.
+
+02:53.360 --> 02:58.310
+And you'll note that this start_process command takes in a 'name' so the 'name' should actually be the name
+
+02:58.340 --> 03:01.530
+of the process or the file location.
+
+03:01.580 --> 03:04.440
+In this case we're just going to leave that blank since we're just an example.
+
+03:04.460 --> 03:07.940
+But normally you'd want it to be whatever service that you're trying to start.
+
+03:08.050 --> 03:13.680
+So the first thing that we need to do here is actually create our QProcess and then we'll add this
+
+03:13.680 --> 03:20.550
+to our list of processes and then we'll go ahead and start this with our name that we want to add.
+
+03:20.600 --> 03:25.420
+So this name will be the file path or the name that's linked in your path.
+
+03:25.470 --> 03:30.360
+So let's go ahead and pass this to a helper method to help us setup some of the signals.
+
+03:30.400 --> 03:35.700
+Now what we'd like to do is connect the signal for finish to our processes_finished method.
+
+03:35.710 --> 03:42.150
+We'd also like to pass in the original process name as well which we can't normally do with signals.
+
+03:42.250 --> 03:45.480
+So this is where our functor base signals come to the rescue.
+
+03:45.490 --> 03:50.860
+Now what we'd like to do is connect the signal_finished to our process_finished method as part of this
+
+03:50.860 --> 03:51.460
+class.
+
+03:51.460 --> 03:56.140
+The only challenge here is we'd like to pass in the original process name as well which we typically
+
+03:56.140 --> 03:56.900
+can't do.
+
+03:57.010 --> 03:59.650
+But that's where functor base signals come into the rescue.
+
+03:59.770 --> 04:01.390
+So let's go ahead and implement that.
+
+04:01.400 --> 04:09.960
+Now so since the actual finished signal is overloaded we use this QOverloaded helper method to
+
+04:09.960 --> 04:14.940
+kind of help us connect the signals and slots correctly and then the functor based signal is you never
+
+04:14.940 --> 04:16.550
+seen that before.
+
+04:16.680 --> 04:23.940
+You have an argument list that will pass in, the method list that contains all of our method arguments
+
+04:24.300 --> 04:27.230
+and then the actual code block that we'll use.
+
+04:27.480 --> 04:31.830
+So the first thing that we want to pass in is the variables that will need as part of our function.
+
+04:31.830 --> 04:35.590
+So in this case we all need the actual process, the process_name.
+
+04:35.610 --> 04:40.530
+And then if we want to call a method from the class we'll need a pointer to the instance variable.
+
+04:40.530 --> 04:45.080
+So there's the process, process_name and a pointer to the instance.
+
+04:45.090 --> 04:49.860
+The next thing we'll need to do is go ahead and grab the two variables that are coming in.
+
+04:49.860 --> 04:55.520
+So we've got an integer and the exit status and we'll pass this in to the actual method call here.
+
+04:55.800 --> 04:58.300
+And the int is actually known as the exit_code.
+
+04:58.500 --> 05:01.560
+And then we've got our ExitStatus.
+
+05:01.640 --> 05:06.050
+So now that we've got all of the overhead information, the only thing we need to do is actually call
+
+05:06.050 --> 05:06.740
+the method.
+
+05:06.860 --> 05:12.290
+So in our case, the method that we want to call is part of this class is the process_finished. This
+
+05:12.290 --> 05:16.700
+takes in our exit_code, status, process and process_name
+
+05:19.680 --> 05:20.100
+Awesome.
+
+05:20.110 --> 05:23.830
+So that's a really challenging example of a functor based signal.
+
+05:23.830 --> 05:29.320
+So let's try a a little bit of a simpler one and this one won't be overloaded and the signal that we
+
+05:29.320 --> 05:38.760
+want to connect to is the error occurred and the slot that we want to connect it to is is our error handler.
+
+05:38.770 --> 05:43.720
+So if you remember using functors, this first block is where we pass in the arguments that we want to
+
+05:43.720 --> 05:44.800
+pass and the method.
+
+05:44.800 --> 05:46.300
+This is part of the method call.
+
+05:46.300 --> 05:52.230
+So we'll need to grab both the just the error of this one and then see where we actually run our code.
+
+05:52.300 --> 05:57.850
+So are the methods that we want we want to keep a hold of the process the process name any pointer to
+
+05:57.850 --> 06:00.690
+the instance. And then in our method call,
+
+06:00.700 --> 06:06.140
+the only thing that we're going to grab is the QProcess, ProcessError and then the method call that we want
+
+06:06.140 --> 06:12.890
+to call as part of our class is just the error_handler and we'll go ahead and pass in our error, process
+
+06:12.920 --> 06:19.210
+and process_name. Awesome. So that's a two example of using functor base signal/slot connections.
+
+06:19.240 --> 06:23.350
+One that was overloaded and one that didn't need to actually be overloaded.
+
+06:23.410 --> 06:28.060
+So now that we've got our signals connected up. Let's go ahead and implement our crash process handling.
+
+06:28.120 --> 06:33.730
+So let's assume that if the process exits normally, we'll just let it fade into the background.
+
+06:33.730 --> 06:38.670
+The one thing that we will want to do is remove it from our vector of processes.
+
+06:38.780 --> 06:45.110
+The thing that we do want to do is if our process actually crashes, we want to go ahead and restart it,
+
+06:45.310 --> 06:51.210
+which is part of the reason that we actually passed in the process_name and again to do this, we'll do
+
+06:51.210 --> 06:53.410
+call the start method here.
+
+06:53.630 --> 06:59.360
+Now that we've got our crash process handling set up, let's go ahead and handle a sort of kill signal.
+
+06:59.360 --> 07:04.700
+Normally this we passed in remotely as well but in this instance we're actually going to simulate one
+
+07:04.910 --> 07:09.300
+and we'll simulate it using this single shot from QTimer.
+
+07:09.320 --> 07:15.260
+Now part of the reason we're using this ifdef- else- endif is as mentioned in this comment. Windows
+
+07:15.260 --> 07:19.630
+applications, they may or may not handle the WM_CLOSE message.
+
+07:19.850 --> 07:24.080
+So we're going to bring out the big guns and instead of trying to terminate them, we're going to go ahead
+
+07:24.110 --> 07:29.180
+and call kill() on them. If we're not running in Windows,
+
+07:29.210 --> 07:33.980
+the one thing that we do want to do is give our processes a chance to kind of shut down by themselves
+
+07:34.050 --> 07:36.750
+and the way we do that is to call the actual terminate() method.
+
+07:36.800 --> 07:40.820
+And this way if our processes have any files or anything that they need to clean up first that gives
+
+07:40.820 --> 07:41.710
+them a chance.
+
+07:41.720 --> 07:44.760
+Now you can still actually call the kill() method here.
+
+07:44.780 --> 07:49.280
+But again if you call the kill here, it doesn't give your process the chance to sort of clean up first themselves,
+
+07:49.280 --> 07:55.640
+which is why we like to try and call terminate() first and we probably want to give our users
+
+07:55.700 --> 07:59.720
+some sort of way to actually go in and specify kill if terminate doesn't work.
+
+07:59.720 --> 08:02.320
+Sometimes our processes can hang.
+
+08:02.330 --> 08:05.720
+The last thing that we're not going to touch on here is the error handling.
+
+08:05.720 --> 08:11.000
+So if you look through the code that's left here we've got quite a few possible errors that can pop
+
+08:11.000 --> 08:11.630
+out here.
+
+08:11.660 --> 08:16.370
+We've got Crashed, FailedToStart, Timedout, WriteError etc... But this shows you how you would actually
+
+08:16.460 --> 08:21.020
+go through and have a code block to go ahead and handle all of that.
+
+08:21.410 --> 08:25.760
+But with that, with all the coding that we've done, let's go ahead and run this and make sure it works.
+
+08:26.780 --> 08:36.030
+So if you got to pass in the process name here in a semi-colon there so now you can see is we are going
+
+08:36.030 --> 08:37.820
+to cycle through the code here.
+
+08:37.940 --> 08:45.350
+And as part of the start method will actually reach a maximum process here and actually stop the timer.
+
+08:45.350 --> 08:51.520
+So we're simulating some sort of network process that is going to tell us to start. See the process
+
+08:51.530 --> 08:52.680
+name here is left blank.
+
+08:52.700 --> 08:55.050
+But we could put in any sort of process.
+
+08:55.070 --> 08:57.460
+I just didn't have a good cross-platform one to put in.
+
+08:57.500 --> 09:02.930
+And we'll go ahead and start all four of our processes before we reach our max processes and go and
+
+09:02.930 --> 09:03.840
+stop our timer.
+
+09:03.950 --> 09:08.430
+And then here's our killed process where we actually killed our sacrificial process.
+
+09:08.540 --> 09:14.900
+Awesome all down so we successfully created a small event loop based non-GUI example where we covered
+
+09:15.080 --> 09:21.730
+creating functor signals and slots and touched on how to do programming concurrency.
+
+09:21.770 --> 09:25.520
+Please join us next time where we talked about supercomputing with networks.

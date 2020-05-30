@@ -1,0 +1,328 @@
+﻿1
+00:00:00,890 --> 00:00:05,550
+Đây là phần 6 bài học hướng dẫn bạn thành thạo pập trình về các biểu diễn trực quan.
+
+2
+00:00:05,720 --> 00:00:10,520
+Hãy bắt đầu với các biểu đồ (chart) và Qml. Trong video này, chúng ta sẽ xem xét: các tài nguyên đồ thị tĩnh
+
+3
+00:00:10,520 --> 00:00:15,890
+Đồ thị đường động và cuối cùng là đồ thị phân tán động.
+
+4
+00:00:16,070 --> 00:00:17,390
+Hãy bắt đầu nào.
+
+5
+00:00:17,720 --> 00:00:22,690
+Nếu bạn đang làm việc với dữ liệu tĩnh, ví dụ Qtcharts Qml sẽ là lựa chọn tốt nhất của bạn.
+
+6
+00:00:22,700 --> 00:00:31,840
+Tại đây, bạn có thể tìm thấy các bản demo cho biểu đồ tròn, đường, spline, area scatter và bar series.
+
+7
+00:00:31,850 --> 00:00:34,460
+Những thứ nhìn thấy ở đây đều bao gồm trong bài học.
+
+8
+00:00:34,760 --> 00:00:40,160
+Những ví dụ này là tuyệt vời nếu bạn có dữ liệu tĩnh, bạn biết đấy, dữ liệu mà bạn có thể viết vào
+
+9
+00:00:40,160 --> 00:00:40,840
+mã nguồn của mình
+
+10
+00:00:40,850 --> 00:00:46,100
+Và các ví dụ đồ thị dữ liệu tĩnh của tôi chỉ có là ít các trường hợp về đồ thị mà cần được sử dụng trong
+
+11
+00:00:46,100 --> 00:00:47,360
+các ứng dụng.
+
+12
+00:00:47,360 --> 00:00:51,950
+Hầu hết thời gian chúng ta sẽ chỉ cần tạo dựng nhanh các đồ thị sau khi thực hiện một số phép tính.
+
+13
+00:00:52,100 --> 00:00:54,970
+Vậy làm thế nào để chúng ta tạo dựng thật nhanh các đồ thị.
+
+14
+00:00:55,250 --> 00:00:56,450
+Hãy cùng đi tìm hiểu.
+
+15
+00:00:56,510 --> 00:01:02,510
+Điều đầu tiên cần lưu ý ở đây là qtchart phụ thuộc vào các tiện ích đồ thị Qt (Qt widgets)
+
+16
+00:01:02,510 --> 00:01:07,790
+Trước khi chúng ta sử dụng, nếu bạn dự định dùng qchart với Qml bạn cần phải
+
+17
+00:01:07,790 --> 00:01:11,480
+chuyển sang Qapplication, nó sẽ giúp bạn tiết kiệm được thời gian.
+
+18
+00:01:11,490 --> 00:01:15,510
+Khi bạn đã thực hiện điều đấy xong, điều đầu tiên mà chúng ta sẽ cần là một số dữ liệu.
+
+19
+00:01:15,590 --> 00:01:18,350
+Và ví dụ sau đây thực sự cần một số dữ liệu.
+
+20
+00:01:18,350 --> 00:01:24,250
+Chúng ta sẽ vẽ các bản ghi chép tốc độ chạy trên mặt đất từ ​​60 hoặc 70 năm trở lại đây.
+
+21
+00:01:24,290 --> 00:01:30,040
+Điều đầu tiên chúng ta cần làm cho trường hợp này là dữ liệu về tốc độ, dữ liệu thì đã có sẵn rồi,
+
+22
+00:01:30,080 --> 00:01:31,430
+và ngày thực tế.
+
+23
+00:01:31,520 --> 00:01:39,080
+Vì vậy, chúng ta cần tạo một instance cho dữ liệu của chúng ta. Và một điều cần lưu ý ở đây là dữ liệu của chúng ta
+
+24
+00:01:39,080 --> 00:01:40,390
+trong một list model.
+
+25
+00:01:40,430 --> 00:01:46,370
+Và lý do tôi làm điều này là để nó có thể dễ dàng được tích hợp vào một list view mà bạn có thể hiển thị
+
+26
+00:01:46,370 --> 00:01:48,470
+list view này ngay bên cạnh biểu đồ.
+
+27
+00:01:48,480 --> 00:01:52,660
+Bạn có thể làm điều đó sau khi chúng ta hoàn thành ví dụ này và bạn đã có mọi thứ đang chạy.
+
+28
+00:01:52,670 --> 00:01:57,170
+Bây giờ chúng ta đã có dữ liệu Điều tiếp theo mà chúng ta cần là chart view, nơi mà
+
+29
+00:01:57,170 --> 00:01:58,870
+dữ liệu của chúng ta sẽ được hiển thị.
+
+30
+00:01:58,880 --> 00:02:05,700
+Chúng ta sẽ tạo ra id trong ChartView và đặt tên cho nó là land_speed
+
+31
+00:02:09,300 --> 00:02:15,060
+Tuyệt vời. Vậy dữ liệu hồ sơ tốc độ mặt đất của chúng ta sẽ là ngày thực tế và giá trị
+
+32
+00:02:15,060 --> 00:02:17,450
+được đo bằng km/h.
+
+33
+00:02:17,460 --> 00:02:23,120
+Chúng ta sẽ cần phải tạo ra hai accessory là ValueAis đo tốc độ và DateTimeAxis
+
+34
+00:02:23,130 --> 00:02:27,450
+cho ngày.
+
+35
+00:02:27,530 --> 00:02:32,820
+Điều tiếp theo mà chúng ta sẽ làm là khởi tạo Min và Max cho cả hai accessory của chúng ta vì nếu không
+
+36
+00:02:32,820 --> 00:02:36,400
+dữ liệu sẽ được vẽ ra biểu đồ với các giá trị mặc định
+
+37
+00:02:36,410 --> 00:02:44,050
+Vì vậy, chúng ta sẽ thiết lập các thuộc tính min và max cho cả hai.
+
+38
+00:02:44,050 --> 00:02:49,300
+Điều cuối cùng mà chúng ta sẽ làm là thiết lập định dạng cho DateTimeAxis vì
+
+39
+00:02:49,300 --> 00:02:50,650
+nó ít khi được định dạng sẵn
+
+40
+00:02:50,650 --> 00:02:55,320
+Tuyệt. bây giờ chúng tôi đã có bốn axis để tìm.
+
+41
+00:02:55,320 --> 00:02:59,490
+Chúng ta hãy tiếp tục và tạo ra một biểu đồ line series để phác thảo điều này cho chúng ta.
+
+42
+00:03:02,380 --> 00:03:07,040
+Rất tuyệt. chúng ta sẽ bỏ ghi chú cho khởi tạo Component.onCompleted
+
+43
+00:03:07,040 --> 00:03:13,220
+Hàm bạn nhìn thấy ở đây gọi là _add_data_to_series và chúng ta thực chất là thêm vào  and we actually pass in the
+
+44
+00:03:13,220 --> 00:03:19,090
+line series biểu đồ mà chúng ta vừa tạo ra. Kéo xuống chỗ chúng ta định nghĩa hàm add_data_to_series.
+
+45
+00:03:19,100 --> 00:03:21,310
+Về cơ bản, chúng ta cần lặp lại dữ liệu.
+
+46
+00:03:21,350 --> 00:03:22,250
+Đó là những gì chúng ta sẽ làm ở đây.
+
+47
+00:03:22,250 --> 00:03:29,540
+Chúng ta có một vòng lặp for và chúng ta sẽ đi từ i bằng 0 đến i bằng tổng số dữ liệu chúng ta có và sau đó chúng ta
+
+48
+00:03:29,540 --> 00:03:34,460
+sẽ có quyền truy cập vào từng mục trong danh sách (list item), cũng giống như một mục danh sách nhắc nhở trông giống như thế này
+
+49
+00:03:34,870 --> 00:03:39,620
+và chúng ta sẽ có quyền truy cập vào từng mục bằng cách sử dụng phương thức get truyền vào giá trị i
+
+50
+00:03:39,710 --> 00:03:46,850
+Và chúng ta muốn có hai dữ liệu: đó là tốc độ (speed) và ngày (date). Bây giờ chúng ta cần
+
+51
+00:03:46,850 --> 00:03:52,450
+chuyển đổi năm (year) trong dữ liệu của chúng ta sang date format thay vì stream
+
+52
+00:03:52,490 --> 00:03:55,310
+chúng ta có thể làm điều này bằng cách sử dụng phương thức Parse.
+
+53
+00:03:55,330 --> 00:04:00,550
+Ngay khi chúng ta đã có dữ liệu về tốc độ và ngày, điều cuối cùng chúng ta cần làm là
+
+54
+00:04:00,550 --> 00:04:03,610
+nối thêm (append) hoặc thêm (add) vào chuỗi thực tế (actual series).
+
+55
+00:04:05,620 --> 00:04:06,040
+Hoàn hảo.
+
+56
+00:04:06,050 --> 00:04:09,980
+Chúng ta hãy chạy và xem nó trông như thế nào nhé.
+
+57
+00:04:09,980 --> 00:04:14,450
+Như bạn thấy chúng ta đã có biểu đồ đường cùng với giá trị cực tiểu, cực đại và dữ liệu ghi chép tốc độ chạy trên mặt đất
+
+58
+00:04:14,450 --> 00:04:19,970
+Biểu đồ này bây giờ chưa thực sự hữu ích bởi vì nó là loại khó để nói chính xác vị trí của các điểm dữ liệu
+
+59
+00:04:19,970 --> 00:04:25,330
+Bạn nhận ra nó qua các chỗ gấp khúc của đường nhưng thật khó để thấy nó có vẻ tuyến tính hơn
+
+60
+00:04:25,330 --> 00:04:25,880
+hơn.
+
+61
+00:04:25,910 --> 00:04:29,370
+Vì vậy, hãy tiếp tục và thêm biểu đồ scatter (biểu đồ phân tán) ở đây.
+
+62
+00:04:29,730 --> 00:04:34,760
+Lướt xuống phía dưới bạn sẽ thấy ToolBar, ToolButton
+
+63
+00:04:34,760 --> 00:04:36,390
+và "Add Scatter".
+
+64
+00:04:36,670 --> 00:04:43,440
+Xem tiếp onClicked và bạn thấy tôi đã tạo biến ở đây, chúng ta chỉ tạo ra nó một lần.
+
+65
+00:04:43,460 --> 00:04:48,920
+Tiếp tục tạo hàm Create series trong chart view của chúng ta để thêm bất kỳ chuỗi (series) nào khác
+
+66
+00:04:48,920 --> 00:04:49,570
+cho nó.
+
+67
+00:04:51,790 --> 00:04:56,790
+Và tiếp đó là đặt tên thành "scatter" và x and y axis And then move past in this names, should be "scatter" and x and y axis.
+
+68
+00:04:58,050 --> 00:05:01,530
+Điều cuối cùng mà chúng ta cần làm là tiếp tục và thêm dữ liệu của chúng ta vào đó.
+
+69
+00:05:01,530 --> 00:05:06,440
+chúng tôi đã tạo thành công biểu đồ và chuỗi nhưng chúng ta chưa thêm dữ liệu vào đó.
+
+70
+00:05:06,510 --> 00:05:11,740
+May mắn thay, chúng ta đã có phương pháp, chúng ta đã tạo ra, thực hiện điều này và đã tạo một series từ trước đó.
+
+71
+00:05:11,740 --> 00:05:15,810
+Vì vậy chúng ta sẽ gọi lại điều này cùng với scatter series mà chúng ta vừa tạo.
+
+72
+00:05:15,840 --> 00:05:22,380
+Hãy chạy thêm một lần nữa và sau đó click vào nút add scatter và bạn sẽ thấy nó trông minh bạch
+
+73
+00:05:22,440 --> 00:05:27,780
+Dễ dàng hơn để tìm thấy các điểm dữ liệu có trên bản ghi tốc độ chạy trên mặt đất
+
+74
+00:05:27,780 --> 00:05:29,380
+Bây giờ đang có điều gì đó chưa ổn lắm.
+
+75
+00:05:29,400 --> 00:05:34,230
+Và lý do là chúng ta chỉ đang thể hiện nó như một biểu đồ scatter series
+
+76
+00:05:34,230 --> 00:05:39,930
+Biểu đồ mà bạn đang quan sát thực chất là một biểu đồ line series, hiển thị xu hướng các dữ liệu bản ghi tốc độ
+
+77
+00:05:39,930 --> 00:05:41,000
+thay đổi như thế nào.
+
+78
+00:05:41,040 --> 00:05:47,430
+Vì vậy, tôi thách thức bạn sử dựng mã này và chuyển đổi line series thành scattered series và sau đó
+
+79
+00:05:47,430 --> 00:05:54,610
+tự động tính toán và vẽ đường xu hướng tuyến tính của các bản ghi tốc độ chạy trên mặt đất dưới dạng một line series.
+
+80
+00:05:54,750 --> 00:06:00,270
+Và với điều đó, chúng ta đã thành công tạo ra đồ thị động, tuyến tính và scatter (phân tán)
+
+81
+00:06:00,270 --> 00:06:05,330
+bên cạnh việc xem tài liệu tài nguyên đồ thị tĩnh.
+
+82
+00:06:05,450 --> 00:06:09,890
+Hãy tham gia với chúng tôi trong video tiếp theo nói về hoạt ảnh và chuyển đổi trực quan.
+

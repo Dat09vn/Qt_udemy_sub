@@ -1,0 +1,667 @@
+1
+00:00:00,000 --> 00:00:02,329
+In this lecture we are looking at keys
+
+2
+00:00:02,336 --> 00:00:05,167
+attached properties and how you use them
+
+3
+00:00:05,167 --> 00:00:07,412
+to give superpowers to your qml
+
+4
+00:00:07,415 --> 00:00:10,030
+components. So what are attached
+
+5
+00:00:10,034 --> 00:00:12,409
+properties anyway? They are properties
+
+6
+00:00:12,417 --> 00:00:15,141
+you attach to your qml components and
+
+7
+00:00:15,152 --> 00:00:17,691
+give them powers that they otherwise
+
+8
+00:00:17,698 --> 00:00:20,272
+wouldn't have had to make things clear.
+
+9
+00:00:20,279 --> 00:00:22,803
+Let's go to QT creator and play with us.
+
+10
+00:00:22,811 --> 00:00:27,260
+Okay so here we are in QT creator. We are
+
+11
+00:00:27,885 --> 00:00:30,181
+creating a new project as we always do.
+
+12
+00:00:30,186 --> 00:00:33,413
+We call it keys attached property demo,
+
+13
+00:00:33,415 --> 00:00:35,510
+store it in the usual location, choose
+
+14
+00:00:35,517 --> 00:00:42,761
+our QT version. Choose your Q and
+
+15
+00:00:42,771 --> 00:00:46,701
+finish. Let's change the title to say
+
+16
+00:00:46,701 --> 00:00:50,701
+keys attached and put a rectangle inside.
+
+17
+00:00:50,711 --> 00:00:59,581
+We are going to say rectangle, give it a
+
+18
+00:00:59,636 --> 00:01:09,240
+width of 300, why not? A height of 50. Give
+
+19
+00:01:09,248 --> 00:01:15,461
+it a color of dodgerblue. We Center it in
+
+20
+00:01:15,461 --> 00:01:20,820
+the parenting and set focused to
+
+21
+00:01:20,828 --> 00:01:24,791
+true. We want to give it the focus so
+
+22
+00:01:24,791 --> 00:01:28,100
+that it receives key events. What we want
+
+23
+00:01:28,469 --> 00:01:35,253
+to do is type keys on digit 1. Press for example.
+
+24
+00:01:35,253 --> 00:01:38,074
+And console.log.
+
+25
+00:01:41,396 --> 00:01:45,544
+Pressed on key one. Let's run this
+
+26
+00:01:45,554 --> 00:01:48,383
+application and see what it does. You
+
+27
+00:01:48,394 --> 00:01:50,686
+probably guess that we are going to
+
+28
+00:01:50,693 --> 00:01:54,175
+press the one button on our keyboard and
+
+29
+00:01:54,175 --> 00:01:57,366
+we are going to have a message in the
+
+30
+00:01:57,366 --> 00:02:00,084
+application output pane here if it works
+
+31
+00:02:00,087 --> 00:02:03,035
+as we expect. So I click on one and you
+
+32
+00:02:03,036 --> 00:02:05,694
+see that it says pressed on one. This is
+
+33
+00:02:05,699 --> 00:02:08,714
+how you capture events in your QML
+
+34
+00:02:08,726 --> 00:02:12,105
+objects. You give them the focus if they
+
+35
+00:02:12,113 --> 00:02:14,543
+don't have it, and then you handle events
+
+36
+00:02:14,549 --> 00:02:16,546
+for different keys like we need here.
+
+37
+00:02:16,554 --> 00:02:19,575
+Keys on digit 1 pressed. To see the full
+
+38
+00:02:19,576 --> 00:02:22,225
+list of these events, let's go to the
+
+39
+00:02:22,226 --> 00:02:24,643
+documentation and search for keys. And
+
+40
+00:02:24,651 --> 00:02:28,755
+if you go down in the signals here you
+
+41
+00:02:29,057 --> 00:02:30,934
+can see all these signals here that you
+
+42
+00:02:30,934 --> 00:02:34,559
+can handle. But this list of signals is
+
+43
+00:02:34,566 --> 00:02:37,719
+not exhaustive, not every signal is
+
+44
+00:02:37,727 --> 00:02:39,697
+documented in here and that's why they
+
+45
+00:02:39,705 --> 00:02:42,340
+give you this pressed event where you
+
+46
+00:02:42,340 --> 00:02:45,199
+can check the clicked event yourself. So
+
+47
+00:02:45,203 --> 00:02:49,539
+what we're going to do here is to do
+
+48
+00:02:49,546 --> 00:02:53,999
+keys Onpressed.
+
+49
+00:02:54,003 --> 00:02:57,507
+Handle that event. And from the
+
+50
+00:02:57,514 --> 00:02:59,579
+documentation, you see that this pressed
+
+51
+00:02:59,579 --> 00:03:03,239
+event passes in a key event, and this
+
+52
+00:03:03,243 --> 00:03:06,809
+event has the key that was pressed as a
+
+53
+00:03:06,817 --> 00:03:09,347
+property so we can check for it. So right
+
+54
+00:03:09,347 --> 00:03:11,319
+now we are going to do this check. We are
+
+55
+00:03:11,319 --> 00:03:19,802
+going to say if event key equals QT
+
+56
+00:03:19,808 --> 00:03:26,519
+key one we are going to output something.
+
+57
+00:03:26,522 --> 00:03:32,171
+We are going to say something here.
+
+58
+00:03:32,171 --> 00:03:35,368
+console.log. Pressed on key 1 and we are
+
+59
+00:03:35,369 --> 00:03:37,659
+going to comment this out to make sure
+
+60
+00:03:37,661 --> 00:03:40,948
+that it is this one that is working. Run
+
+61
+00:03:40,959 --> 00:03:45,268
+the application. Press on 1. And you see
+
+62
+00:03:45,273 --> 00:03:48,591
+that we receive the event. You have two
+
+63
+00:03:48,591 --> 00:03:51,877
+ways you can capture your key events in
+
+64
+00:03:51,879 --> 00:03:52,537
+your QML
+
+65
+00:03:52,544 --> 00:03:54,997
+applications. You can capture events for
+
+66
+00:03:55,005 --> 00:03:57,918
+the particular events that are provided
+
+67
+00:03:57,924 --> 00:04:00,738
+here ,or you can use the pressed event
+
+68
+00:04:00,742 --> 00:04:04,399
+and check for the key that was pressed
+
+69
+00:04:04,405 --> 00:04:08,009
+yourself, and do appropriate action in
+
+70
+00:04:08,009 --> 00:04:10,307
+your qml application. So what if you have
+
+71
+00:04:10,307 --> 00:04:14,790
+these two signals handled? Let's see what
+
+72
+00:04:14,794 --> 00:04:15,401
+happens.
+
+73
+00:04:15,408 --> 00:04:20,380
+Run the application. You click on one. You
+
+74
+00:04:20,380 --> 00:04:24,339
+see that one signal is being fired. The
+
+75
+00:04:24,350 --> 00:04:26,440
+other one is not being fired. Which one
+
+76
+00:04:26,446 --> 00:04:29,080
+is being fired here? To differentiate
+
+77
+00:04:29,083 --> 00:04:32,501
+that let's flag in the console here. Say
+
+78
+00:04:32,501 --> 00:04:37,589
+that it is the specific signal. We're
+
+79
+00:04:37,597 --> 00:04:45,852
+going to say specific and say general
+
+80
+00:04:45,858 --> 00:04:51,499
+signal. Run the application. If we click
+
+81
+00:04:51,506 --> 00:04:55,071
+one, you see that the specific signal
+
+82
+00:04:55,077 --> 00:04:59,219
+takes priority over this general signal.
+
+83
+00:04:59,226 --> 00:05:02,000
+If you want both of these handlers to be
+
+84
+00:05:02,001 --> 00:05:05,539
+called you need a way to let on digit
+
+85
+00:05:05,544 --> 00:05:08,191
+one pressed here. Give a chance to the
+
+86
+00:05:08,195 --> 00:05:12,071
+second handler here to run. And the way
+
+87
+00:05:12,071 --> 00:05:17,961
+you do that you say event accepted and
+
+88
+00:05:17,971 --> 00:05:21,220
+set this to false. And what this is doing?
+
+89
+00:05:21,222 --> 00:05:25,420
+It is flagging this event as not handled
+
+90
+00:05:25,889 --> 00:05:28,442
+and other signal handlers that might be
+
+91
+00:05:28,541 --> 00:05:30,350
+interested in handling this event are
+
+92
+00:05:30,358 --> 00:05:32,151
+going to be fired. And in this case key is
+
+93
+00:05:32,380 --> 00:05:34,851
+onpressed is going to be fired and we
+
+94
+00:05:35,449 --> 00:05:37,913
+are going to capture it here and output
+
+95
+00:05:38,169 --> 00:05:40,801
+our console message here. Let's run the
+
+96
+00:05:41,079 --> 00:05:47,409
+application. Press 1 and you see that now
+
+97
+00:05:47,630 --> 00:05:50,870
+both signal handlers are being called. To
+
+98
+00:05:50,971 --> 00:05:53,671
+prove our case let's set this event
+
+99
+00:05:53,801 --> 00:05:56,631
+accepted property to true and you're
+
+100
+00:05:56,740 --> 00:05:59,408
+going to see that only these specific
+
+101
+00:05:59,528 --> 00:06:01,689
+signal is going to be fired and handled.
+
+102
+00:06:01,750 --> 00:06:04,559
+One signal the specific one.
+
+103
+00:06:04,691 --> 00:06:07,530
+Another thing I want you to see is how
+
+104
+00:06:07,621 --> 00:06:10,118
+to work with modifiers. How do you know
+
+105
+00:06:10,280 --> 00:06:12,880
+if the user pressed your key while
+
+106
+00:06:13,060 --> 00:06:16,270
+pressing for example the control key, the
+
+107
+00:06:16,361 --> 00:06:19,690
+shift key, and things like that. Let's add
+
+108
+00:06:19,883 --> 00:06:23,961
+another Key Handler. And we want to
+
+109
+00:06:24,073 --> 00:06:29,781
+capture the handler for the key file.
+
+110
+00:06:29,822 --> 00:06:32,841
+Okay. We want to detect if the user
+
+111
+00:06:33,016 --> 00:06:35,879
+pressed the key number five while
+
+112
+00:06:36,069 --> 00:06:38,351
+pressing down the control modifier. So we
+
+113
+00:06:38,510 --> 00:06:45,871
+want to say if event.modifiers equals
+
+114
+00:06:45,981 --> 00:06:54,642
+control modifier, which is this one we
+
+115
+00:06:54,772 --> 00:07:03,931
+want to say pressed control five. And if
+
+116
+00:07:04,192 --> 00:07:20,981
+it's not, okay. And you might wonder how
+
+117
+00:07:21,112 --> 00:07:24,670
+do I know this. Let's go back to the
+
+118
+00:07:24,870 --> 00:07:27,682
+documentation. This is the only source of
+
+119
+00:07:27,811 --> 00:07:28,598
+truth
+
+120
+00:07:28,730 --> 00:07:32,692
+when in doubt. Let's go back a little bit.
+
+121
+00:07:32,820 --> 00:07:37,941
+On digit five pressed, you see that
+
+122
+00:07:38,072 --> 00:07:41,071
+there's an event parameter that is
+
+123
+00:07:41,162 --> 00:07:44,051
+passed in here. Let's look at it and it
+
+124
+00:07:44,051 --> 00:07:47,201
+has a modifiers property, which says the
+
+125
+00:07:47,201 --> 00:07:50,101
+modifiers that you can pass in here. We
+
+126
+00:07:50,111 --> 00:07:53,406
+are interested in the control modifier
+
+127
+00:07:53,406 --> 00:07:55,795
+that says a control key on the keyboard
+
+128
+00:07:55,956 --> 00:07:58,424
+is pressed. This is how you check these
+
+129
+00:07:58,424 --> 00:08:00,053
+things. And they give you a nice example
+
+130
+00:08:00,184 --> 00:08:02,193
+you can look at. But we are going to test
+
+131
+00:08:02,294 --> 00:08:04,826
+this in our code anyway. Let's run the
+
+132
+00:08:04,955 --> 00:08:06,245
+application.
+
+133
+00:08:06,397 --> 00:08:10,913
+I press number five it's going to say
+
+134
+00:08:10,976 --> 00:08:14,364
+pressed regular five. I hold the control
+
+135
+00:08:14,474 --> 00:08:17,902
+key down, press five and you can see that
+
+136
+00:08:18,003 --> 00:08:21,544
+it is saying pressed ctrl 5. This is cool.
+
+137
+00:08:21,672 --> 00:08:24,585
+So if you want to do the same thing to
+
+138
+00:08:24,652 --> 00:08:28,576
+check for the modifiers, while using the
+
+139
+00:08:28,674 --> 00:08:31,874
+unpressed signal how do you do that? One
+
+140
+00:08:31,935 --> 00:08:35,865
+way I can think of is to actually cheat
+
+141
+00:08:35,991 --> 00:08:37,421
+from the documentation. You just saw this.
+
+142
+00:08:37,503 --> 00:08:42,772
+You can copy this and modify it to suit
+
+143
+00:08:42,883 --> 00:08:45,644
+our needs. I am going to comment this out
+
+144
+00:08:45,793 --> 00:08:48,173
+because I want to have the same effect
+
+145
+00:08:48,273 --> 00:08:50,604
+as this one . I am going to paste in my
+
+146
+00:08:50,733 --> 00:08:53,173
+code here. We want to check for the key
+
+147
+00:08:53,333 --> 00:08:56,045
+number five, so we are going to change
+
+148
+00:08:56,145 --> 00:09:03,193
+this to key_5. Go down to key_5 we want to
+
+149
+00:09:03,333 --> 00:09:06,125
+change this to a triple equal sign
+
+150
+00:09:06,294 --> 00:09:08,774
+because that's more safer. And we want to
+
+151
+00:09:08,933 --> 00:09:14,232
+check for the control modifier. Let's
+
+152
+00:09:14,374 --> 00:09:23,012
+copy this and put that inside here. We
+
+153
+00:09:23,244 --> 00:09:27,044
+are checking to see if the pressed key
+
+154
+00:09:27,211 --> 00:09:29,255
+is key number five. And we are doing an
+
+155
+00:09:29,361 --> 00:09:31,823
+end operation with this expression which
+
+156
+00:09:31,967 --> 00:09:34,655
+checks to see if the control key is
+
+157
+00:09:34,774 --> 00:09:37,472
+pressed. If all this is true we are going
+
+158
+00:09:37,533 --> 00:09:40,493
+to know that control five is pressed. Run
+
+159
+00:09:40,606 --> 00:09:44,726
+the application hit control 5. And you
+
+160
+00:09:44,884 --> 00:09:48,676
+see that we have our thing working.
+
+161
+00:09:48,862 --> 00:09:51,843
+I hope this opens your eyes on ways you
+
+162
+00:09:51,976 --> 00:09:54,574
+can use the keys attached property to
+
+163
+00:09:54,714 --> 00:09:57,544
+handle any key in your QML application.
+
+164
+00:09:57,703 --> 00:09:59,543
+In the next lecture we are going to look
+
+165
+00:09:59,684 --> 00:10:02,244
+at how you can transfer focus between
+
+166
+00:10:02,344 --> 00:10:04,681
+your QML components in your user
+
+167
+00:10:04,784 --> 00:10:07,039
+interface. i'll see you in the next lecture.

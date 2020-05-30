@@ -1,0 +1,3768 @@
+1
+00:00:05,930 --> 00:00:08,809
+All right. So we're going to talk about
+
+2
+00:00:08,809 --> 00:00:12,270
+qml and C++ and how they can work
+
+3
+00:00:12,270 --> 00:00:15,690
+together. As I mentioned, these notes are
+
+4
+00:00:15,690 --> 00:00:18,119
+actually reduction of about a three-day
+
+5
+00:00:18,119 --> 00:00:21,500
+course and how to write applications in
+
+6
+00:00:21,500 --> 00:00:25,950
+qml and Qt. So a lot of things have been
+
+7
+00:00:25,950 --> 00:00:28,290
+compressed condensed and something's
+
+8
+00:00:28,290 --> 00:00:29,970
+dropped. I was looking through the notes
+
+9
+00:00:29,970 --> 00:00:32,159
+and one thing I actually got dropped is
+
+10
+00:00:32,159 --> 00:00:36,680
+a nice quick and dirty way of exporting
+
+11
+00:00:36,680 --> 00:00:41,129
+C++ instanced objects into the qml
+
+12
+00:00:41,129 --> 00:00:43,949
+environments. So if everyone doesn't mind
+
+13
+00:00:43,949 --> 00:00:46,109
+I'm actually gonna switch gears for a
+
+14
+00:00:46,109 --> 00:00:48,559
+second, then jump into the notes for my
+
+15
+00:00:48,559 --> 00:00:51,300
+presentation tomorrow and we're gonna go
+
+16
+00:00:51,300 --> 00:00:53,100
+over the little short section about how
+
+17
+00:00:53,100 --> 00:00:55,620
+if you make an object in C++, like you
+
+18
+00:00:55,620 --> 00:00:58,140
+make a new something pointer, you can
+
+19
+00:00:58,140 --> 00:01:03,140
+export that something pointer into qml.
+
+20
+00:01:03,140 --> 00:01:05,459
+These notes are really geared toward
+
+21
+00:01:05,459 --> 00:01:08,640
+creating an item that you know you make
+
+22
+00:01:08,640 --> 00:01:12,960
+a pie chart or a bar chart item in qml.
+
+23
+00:01:12,960 --> 00:01:14,430
+And the back end of that item it
+
+24
+00:01:14,430 --> 00:01:16,890
+actually does is drawing in C++ which is
+
+25
+00:01:16,890 --> 00:01:26,070
+also very useful. So let's go ahead and
+
+26
+00:01:26,070 --> 00:01:29,730
+if people want to give me a business
+
+27
+00:01:29,730 --> 00:01:30,270
+card
+
+28
+00:01:30,270 --> 00:01:32,760
+after the notes after the class I can
+
+29
+00:01:32,760 --> 00:01:35,190
+send you these notes as well. I know, I
+
+30
+00:01:35,190 --> 00:01:37,620
+think you already have, these notes have
+
+31
+00:01:37,620 --> 00:01:40,200
+been going over on those USB sticks. If
+
+32
+00:01:40,200 --> 00:01:42,270
+you don't have the notes likewise I can
+
+33
+00:01:42,270 --> 00:01:43,350
+send them to you as well.
+
+34
+00:01:43,350 --> 00:01:46,350
+They're actually an open source Nokia
+
+35
+00:01:46,350 --> 00:01:51,330
+thing. So you can take objects that you
+
+36
+00:01:51,330 --> 00:01:54,830
+instantiate in C++ and export them into
+
+37
+00:01:54,830 --> 00:01:58,080
+the qml execution environments where
+
+38
+00:01:58,080 --> 00:02:00,870
+they will just appear has well magic
+
+39
+00:02:00,870 --> 00:02:03,210
+variables. So you can make an abstract
+
+40
+00:02:03,210 --> 00:02:05,610
+item model pointer and export it, you can
+
+41
+00:02:05,610 --> 00:02:07,710
+make a QObject pointer and just
+
+42
+00:02:07,710 --> 00:02:12,569
+export it, and the other way is you can
+
+43
+00:02:12,569 --> 00:02:15,780
+actually export types that are in stance
+
+44
+00:02:15,780 --> 00:02:18,240
+to your ball in qml. So
+
+45
+00:02:18,240 --> 00:02:19,620
+there's a slight difference there so
+
+46
+00:02:19,620 --> 00:02:23,430
+things that you can make in C++. Say you
+
+47
+00:02:23,430 --> 00:02:26,460
+make them in main you and then you can
+
+48
+00:02:26,460 --> 00:02:29,880
+export them into qml is you can make any
+
+49
+00:02:29,880 --> 00:02:33,300
+QObject pointer. You can create it in
+
+50
+00:02:33,300 --> 00:02:37,250
+C++ and export it into the qml
+
+51
+00:02:37,250 --> 00:02:41,220
+environment. Properties simply become
+
+52
+00:02:41,220 --> 00:02:45,870
+variables. Slots are functions now.
+
+53
+00:02:45,870 --> 00:02:47,940
+Sometimes when you're designing your C++
+
+54
+00:02:47,940 --> 00:02:51,750
+so it can be used in C++ and QML. There
+
+55
+00:02:51,750 --> 00:02:54,060
+are some things like functions with
+
+56
+00:02:54,060 --> 00:02:56,310
+return types that you generally don't
+
+57
+00:02:56,310 --> 00:02:58,680
+want to be slots, but you want them to be
+
+58
+00:02:58,680 --> 00:03:01,740
+INVOKABLE from qml. So you can use the
+
+59
+00:03:01,740 --> 00:03:04,410
+Q_INVOKABLE macro in front of the
+
+60
+00:03:04,410 --> 00:03:06,540
+signature rather than putting it in a
+
+61
+00:03:06,540 --> 00:03:10,680
+slots section. You can export a QList
+
+62
+00:03:10,680 --> 00:03:13,560
+of QObject, and this can be used as a
+
+63
+00:03:13,560 --> 00:03:16,260
+quick and dirty data model. However you
+
+64
+00:03:16,260 --> 00:03:19,320
+can insert or append on to the list. It's
+
+65
+00:03:19,320 --> 00:03:22,200
+just a quick and dirty list of items and
+
+66
+00:03:22,200 --> 00:03:24,450
+the most powerful thing that you can
+
+67
+00:03:24,450 --> 00:03:27,900
+make and export from c++ is an abstract
+
+68
+00:03:27,900 --> 00:03:30,930
+item model pointer. You can create that
+
+69
+00:03:30,930 --> 00:03:34,050
+create all your data in C++, create the
+
+70
+00:03:34,050 --> 00:03:37,050
+interface to your data in c++ and simply
+
+71
+00:03:37,050 --> 00:03:41,940
+export it into qml and use it there. You
+
+72
+00:03:41,940 --> 00:03:44,850
+can also export any QVariant instance,
+
+73
+00:03:44,850 --> 00:03:46,590
+which is a wrapper
+
+74
+00:03:46,590 --> 00:03:49,050
+basically a glorified void* and it
+
+75
+00:03:49,050 --> 00:03:51,240
+becomes a simple value type in qml. This
+
+76
+00:03:51,240 --> 00:03:53,190
+is probably the rarest thing to export.
+
+77
+00:03:53,190 --> 00:03:55,520
+Yes?
+
+78
+00:04:00,230 --> 00:04:06,200
+Yes. Yeah, well, it turns out the
+
+79
+00:04:06,200 --> 00:04:08,610
+converting the problem with variance is
+
+80
+00:04:08,610 --> 00:04:10,319
+that you can only convert them to and
+
+81
+00:04:10,319 --> 00:04:14,099
+from your particular item. And if since
+
+82
+00:04:14,099 --> 00:04:16,410
+in qml, you can't do a conversion to like
+
+83
+00:04:16,410 --> 00:04:18,660
+from a custom item to a strain. You could
+
+84
+00:04:18,660 --> 00:04:20,639
+really only pass it in and then pass it
+
+85
+00:04:20,639 --> 00:04:24,120
+back the c++ to have it processed. If you
+
+86
+00:04:24,120 --> 00:04:26,880
+want to have an item a struct exported
+
+87
+00:04:26,880 --> 00:04:30,120
+where you have, like myVariable.name
+
+88
+00:04:30,120 --> 00:04:32,790
+myVariable.title it needs to be a
+
+89
+00:04:32,790 --> 00:04:40,440
+QObject pointer. So we. Yeah. But
+
+90
+00:04:40,440 --> 00:04:43,590
+that's the trick and even in C++, QT,
+
+91
+00:04:43,590 --> 00:04:47,220
+there is no you can't override two
+
+92
+00:04:47,220 --> 00:04:52,639
+strengths for the photo complex types.
+
+93
+00:04:56,780 --> 00:05:00,210
+Yes, so what you're gonna do is and
+
+94
+00:05:00,210 --> 00:05:02,190
+there's actually example few slides away.
+
+95
+00:05:02,190 --> 00:05:05,760
+If you need to wrap something like
+
+96
+00:05:05,760 --> 00:05:08,220
+a something that works in variant in c++
+
+97
+00:05:08,220 --> 00:05:09,570
+and you convert back and forth, it's a
+
+98
+00:05:09,570 --> 00:05:12,000
+deep data structure you can wrap that in
+
+99
+00:05:12,000 --> 00:05:18,120
+a QObject and pass it out. So, but
+
+100
+00:05:18,120 --> 00:05:19,410
+we're going to be concentrating on
+
+101
+00:05:19,410 --> 00:05:21,120
+QObject pointer through an abstract item
+
+102
+00:05:21,120 --> 00:05:27,210
+model. So, so here we have a binding. We
+
+103
+00:05:27,210 --> 00:05:29,760
+were binding our rotation to some value,
+
+104
+00:05:29,760 --> 00:05:32,310
+a minute and a max. These could be
+
+105
+00:05:32,310 --> 00:05:34,380
+variables that are instance. Their
+
+106
+00:05:34,380 --> 00:05:36,510
+properties and qml or the bigger things
+
+107
+00:05:36,510 --> 00:05:40,919
+that have been pushed from C++, so qml
+
+108
+00:05:40,919 --> 00:05:44,310
+can call back the c++ by simply calling
+
+109
+00:05:44,310 --> 00:05:47,070
+the functions that are slots or use
+
+110
+00:05:47,070 --> 00:05:49,560
+Q_INVOKABLE. So you can say
+
+111
+00:05:49,560 --> 00:05:54,360
+backEnd.doSomething. So here's how you
+
+112
+00:05:54,360 --> 00:05:57,780
+would make say a Car object. And a Car
+
+113
+00:05:57,780 --> 00:06:00,450
+object has a list of sensors can get a
+
+114
+00:06:00,450 --> 00:06:04,650
+sensorValue units, a min and a max. So
+
+115
+00:06:04,650 --> 00:06:06,990
+the key here is we have the QObject,
+
+116
+00:06:06,990 --> 00:06:09,840
+Q_OBJECT macro, we use Q_ENUMS and we
+
+117
+00:06:09,840 --> 00:06:11,080
+have a Sensor.
+
+118
+00:06:11,080 --> 00:06:16,930
+And this is good C++ so far. Now the
+
+119
+00:06:16,930 --> 00:06:19,870
+problem with good C++ and qml is there
+
+120
+00:06:19,870 --> 00:06:23,050
+can be some clashes. One is qml does not
+
+121
+00:06:23,050 --> 00:06:26,199
+like enum at all, especially when you're
+
+122
+00:06:26,199 --> 00:06:29,199
+exporting the instance without the type.
+
+123
+00:06:29,199 --> 00:06:31,690
+There's a way to use enum when you
+
+124
+00:06:31,690 --> 00:06:33,460
+export the type. But when you're
+
+125
+00:06:33,460 --> 00:06:36,849
+exporting an instance, it's, it's a lot
+
+126
+00:06:36,849 --> 00:06:40,150
+harder but you can use a wrapper object.
+
+127
+00:06:40,150 --> 00:06:42,340
+Such as here what I'm really going to
+
+128
+00:06:42,340 --> 00:06:46,199
+export into qml is this CarSensorProxy
+
+129
+00:06:46,199 --> 00:06:50,190
+who has a bunch of Q_PROPERTY.
+
+130
+00:06:50,190 --> 00:06:52,960
+This is a flyweight object. It
+
+131
+00:06:52,960 --> 00:06:55,389
+is going to in its constructor take in a
+
+132
+00:06:55,389 --> 00:06:57,460
+pointer to a car and the sensor.
+
+133
+00:06:57,460 --> 00:07:02,199
+It's going to watch and then our interface is
+
+134
+00:07:02,199 --> 00:07:04,300
+going to be a simple property value min
+
+135
+00:07:04,300 --> 00:07:10,389
+and max in C++. We are going to create
+
+136
+00:07:10,389 --> 00:07:14,199
+our declarative view which is going to
+
+137
+00:07:14,199 --> 00:07:16,659
+give us the engine that the QML is going
+
+138
+00:07:16,659 --> 00:07:18,759
+to run inside of as well as the window
+
+139
+00:07:18,759 --> 00:07:21,580
+it's going to run in, and we setSource.
+
+140
+00:07:21,580 --> 00:07:23,650
+Here, I've got a project called
+
+141
+00:07:23,650 --> 00:07:25,150
+MegaDash which is gonna be a dashboard
+
+142
+00:07:25,150 --> 00:07:28,060
+for my car. And we can show it, and we can
+
+143
+00:07:28,060 --> 00:07:31,599
+extract it. Now what happens here in this
+
+144
+00:07:31,599 --> 00:07:34,210
+comment where it says:" Export C++"
+
+145
+00:07:34,210 --> 00:07:35,199
+"instances here."
+
+146
+00:07:35,199 --> 00:07:38,349
+"See next slide". Well, between creating
+
+147
+00:07:38,349 --> 00:07:41,620
+your view and setting the source, you can
+
+148
+00:07:41,620 --> 00:07:44,860
+export as many objects as you want.
+
+149
+00:07:44,860 --> 00:07:47,740
+Such as in a giant for loop export a hundred
+
+150
+00:07:47,740 --> 00:07:51,099
+sensors. So here I'm iterating over the
+
+151
+00:07:51,099 --> 00:07:54,400
+cars enum for its car sensor, and
+
+152
+00:07:54,400 --> 00:08:01,360
+I'm making car sensor proxy pointers and we
+
+153
+00:08:01,360 --> 00:08:02,889
+give it the car in the sensor. And then
+
+154
+00:08:02,889 --> 00:08:06,159
+we are exporting into the view. You get
+
+155
+00:08:06,159 --> 00:08:09,460
+the view.rootContext and you export
+
+156
+00:08:09,460 --> 00:08:12,039
+context property. Probably one of the
+
+157
+00:08:12,039 --> 00:08:14,169
+most ambiguously named functions and
+
+158
+00:08:14,169 --> 00:08:17,529
+Q. But this will export a C++
+
+159
+00:08:17,529 --> 00:08:19,839
+instance to objects into the execution engine.
+
+160
+00:08:19,839 --> 00:08:22,810
+The first parameter is a string
+
+161
+00:08:22,810 --> 00:08:23,710
+which
+
+162
+00:08:23,710 --> 00:08:25,750
+the name of the variable that's gonna be
+
+163
+00:08:25,750 --> 00:08:29,320
+used in QML. Since I use a for-loop here
+
+164
+00:08:29,320 --> 00:08:32,350
+my car is smart enough to return me a
+
+165
+00:08:32,350 --> 00:08:35,110
+string that represents the name for that
+
+166
+00:08:35,110 --> 00:08:38,770
+particular sensor. And we export a name
+
+167
+00:08:38,770 --> 00:08:42,549
+and a the actual pointer. So now
+
+168
+00:08:42,549 --> 00:08:47,280
+magically in my application, I have RPM,
+
+169
+00:08:47,280 --> 00:08:51,280
+speed, fuel pressure oil pressure.
+
+170
+00:08:51,280 --> 00:08:54,600
+Not only that but we can get
+
+171
+00:08:54,600 --> 00:08:57,610
+oilPressure.minimum, oilPressure.maximum,
+
+172
+00:08:57,610 --> 00:09:04,680
+oilPressure.value. Okay, so I'm basically
+
+173
+00:09:04,680 --> 00:09:09,220
+using a way of just taking things that I
+
+174
+00:09:09,220 --> 00:09:12,670
+allocate in C++. I control the life cycle
+
+175
+00:09:12,670 --> 00:09:15,550
+of and pushing them into the QML
+
+176
+00:09:15,550 --> 00:09:18,100
+execution engine. The only rule is that
+
+177
+00:09:18,100 --> 00:09:20,590
+for the lifetime of the view, these
+
+178
+00:09:20,590 --> 00:09:23,110
+objects need to exist or you're gonna
+
+179
+00:09:23,110 --> 00:09:28,680
+get seg faults. It makes sense, right?
+
+180
+00:09:31,110 --> 00:09:35,800
+So that is a nice quick and dirty way of
+
+181
+00:09:35,800 --> 00:09:39,370
+taking. And even appropriate in some
+
+182
+00:09:39,370 --> 00:09:41,200
+cases where you're going to take data.
+
+183
+00:09:41,200 --> 00:09:43,510
+Especially data models that you have in
+
+184
+00:09:43,510 --> 00:09:46,090
+C++. And you're just going to export them
+
+185
+00:09:46,090 --> 00:09:49,330
+into the QML runtime environments.
+
+186
+00:09:49,330 --> 00:09:51,520
+Maybe this is you know some tabular data that
+
+187
+00:09:51,520 --> 00:09:53,500
+you have, it's gonna run like a pie chart.
+
+188
+00:09:53,500 --> 00:09:55,810
+Or something we are reading things off
+
+189
+00:09:55,810 --> 00:10:03,610
+of a serial port or off of a network.
+
+190
+00:10:03,610 --> 00:10:06,090
+Any questions?
+
+191
+00:10:07,830 --> 00:10:10,230
+So we'll go back into the regular notes
+
+192
+00:10:10,230 --> 00:10:12,390
+even though I also talked about. It is
+
+193
+00:10:12,390 --> 00:10:15,300
+how to export types so rather than
+
+194
+00:10:15,300 --> 00:10:18,959
+having instances that we push into QML,
+
+195
+00:10:18,959 --> 00:10:21,060
+I want to say I'm gonna make my own type
+
+196
+00:10:21,060 --> 00:10:24,300
+of item, maybe call a car. And we're gonna
+
+197
+00:10:24,300 --> 00:10:27,089
+let QML programmers make an instance of
+
+198
+00:10:27,089 --> 00:10:31,940
+car where car's implementation is in C++.
+
+199
+00:10:31,940 --> 00:10:34,200
+And we're gonna do that, and we're
+
+200
+00:10:34,200 --> 00:10:35,579
+actually gonna do that with an ellipse item.
+
+201
+00:10:35,579 --> 00:10:38,070
+I mentioned that there's no ellipse
+
+202
+00:10:38,070 --> 00:10:43,649
+or circle item in QML. But we could make
+
+203
+00:10:43,649 --> 00:10:45,990
+our own and we could have it drawn and
+
+204
+00:10:45,990 --> 00:10:48,980
+managed in C++.
+
+205
+00:10:50,450 --> 00:10:55,380
+So anytime you want to write C++ code
+
+206
+00:10:55,380 --> 00:10:58,050
+that is going to know about the
+
+207
+00:10:58,050 --> 00:11:00,630
+declarative environment. There is a
+
+208
+00:11:00,630 --> 00:11:02,850
+separate Qt module called
+
+209
+00:11:02,850 --> 00:11:05,519
+QtDeclarative. So in your project file you
+
+210
+00:11:05,519 --> 00:11:06,930
+need to have QT += declarative.
+
+211
+00:11:06,930 --> 00:11:08,700
+And you need to pound
+
+212
+00:11:08,700 --> 00:11:11,310
+include things from the QtDeclarative module.
+
+213
+00:11:11,310 --> 00:11:14,100
+Oftentimes is there's so few
+
+214
+00:11:14,100 --> 00:11:16,529
+header files you can just use the magic
+
+215
+00:11:16,529 --> 00:11:18,480
+pound include QtDeclarative and get
+
+216
+00:11:18,480 --> 00:11:23,820
+them all. So here's an example where we
+
+217
+00:11:23,820 --> 00:11:26,810
+are including the QDeclarativeView. And
+
+218
+00:11:26,810 --> 00:11:29,880
+just like in the example we saw we make
+
+219
+00:11:29,880 --> 00:11:31,920
+a Declarative View and we set the source
+
+220
+00:11:31,920 --> 00:11:36,510
+on it. We show our window and we exec so
+
+221
+00:11:36,510 --> 00:11:38,760
+every view that you make is a new
+
+222
+00:11:38,760 --> 00:11:41,339
+runtime environment. So you probably want
+
+223
+00:11:41,339 --> 00:11:44,630
+to make as few of these as possible.
+
+224
+00:11:47,360 --> 00:11:50,100
+Inside of your project file, you want to
+
+225
+00:11:50,100 --> 00:11:53,579
+use QT += declarative. Now
+
+226
+00:11:53,579 --> 00:11:57,240
+from when it comes to RESOURCES, your QML
+
+227
+00:11:57,240 --> 00:11:59,699
+can actually be stored in the Qt
+
+228
+00:11:59,699 --> 00:12:05,970
+RESOURCES. So that when you say you know
+
+229
+00:12:05,970 --> 00:12:10,949
+setSource here is "qrc:files/animation.qml",
+
+230
+00:12:10,949 --> 00:12:13,140
+this is coming from the RESOURCES.
+
+231
+00:12:13,140 --> 00:12:16,680
+And remember that everything is relative
+
+232
+00:12:16,680 --> 00:12:20,010
+to the location of the qml file that you
+
+233
+00:12:20,010 --> 00:12:20,950
+are running.
+
+234
+00:12:20,950 --> 00:12:23,800
+So the contents of file/animation
+
+235
+00:12:23,800 --> 00:12:25,600
+that QML is going to use all relative
+
+236
+00:12:25,600 --> 00:12:28,649
+pathing. And that's going to be relative
+
+237
+00:12:28,649 --> 00:12:32,290
+into the resource file. So you're going
+
+238
+00:12:32,290 --> 00:12:35,380
+to include all of your QML source code
+
+239
+00:12:35,380 --> 00:12:37,269
+into the resource and then you can have
+
+240
+00:12:37,269 --> 00:12:39,639
+just distribute the executable and not
+
+241
+00:12:39,639 --> 00:12:41,350
+have to worry about this whole pile of
+
+242
+00:12:41,350 --> 00:12:43,630
+QML files to distribute along with you
+
+243
+00:12:43,630 --> 00:12:48,389
+executable. Yes. Yes.
+
+244
+00:12:56,600 --> 00:12:58,850
+Yeah, that's true. So there is a there is
+
+245
+00:12:58,850 --> 00:13:01,939
+a way to break the rule for main.qml.
+
+246
+00:13:01,939 --> 00:13:05,540
+The root item you could call it does
+
+247
+00:13:05,540 --> 00:13:08,290
+not need to start with a capital letter.
+
+248
+00:13:08,290 --> 00:13:11,869
+And sometimes you'll see it and some
+
+249
+00:13:11,869 --> 00:13:13,519
+people's projects start with just
+
+250
+00:13:13,519 --> 00:13:16,429
+main.qml, has the entry points with a
+
+251
+00:13:16,429 --> 00:13:21,679
+lowercase m. But for all other files that
+
+252
+00:13:21,679 --> 00:13:24,289
+that need to be loaded by QML, they need
+
+253
+00:13:24,289 --> 00:13:27,279
+to start with capital letter.
+
+254
+00:13:37,480 --> 00:13:42,190
+So to create a new instance your type,
+
+255
+00:13:42,190 --> 00:13:47,350
+you can either inherit from directly
+
+256
+00:13:47,350 --> 00:13:50,590
+QObject, or you can use QDeclarativeItem.
+
+257
+00:13:50,590 --> 00:13:55,720
+If you want to draw on through the
+
+258
+00:13:55,720 --> 00:13:58,720
+screen, you need to use QDeclarativeItem
+
+259
+00:13:58,720 --> 00:14:01,690
+which maps pretty much directly to
+
+260
+00:14:01,690 --> 00:14:07,090
+the Item in QML. If you just want to be a
+
+261
+00:14:07,090 --> 00:14:09,310
+hunk of data that people are going to
+
+262
+00:14:09,310 --> 00:14:12,100
+instance and pass around, then you can be
+
+263
+00:14:12,100 --> 00:14:14,110
+just fine inheriting straight from QObject,
+
+264
+00:14:14,110 --> 00:14:19,540
+and skipping the overhead. So
+
+265
+00:14:19,540 --> 00:14:21,130
+basically what's going to happen is
+
+266
+00:14:21,130 --> 00:14:24,100
+you're going to register this type to be
+
+267
+00:14:24,100 --> 00:14:26,950
+valid in QML, and we'll see what that
+
+268
+00:14:26,950 --> 00:14:31,750
+means in a minute. Stay for example.
+
+269
+00:14:31,750 --> 00:14:37,360
+First this ellipse1.qml file now
+
+270
+00:14:37,360 --> 00:14:39,670
+there is no ellipse item in QML. We're
+
+271
+00:14:39,670 --> 00:14:42,490
+going to make that in C++ and let users
+
+272
+00:14:42,490 --> 00:14:45,900
+use it. So here we have an import Shapes 1.0.
+
+273
+00:14:45,900 --> 00:14:48,670
+We have this new module called
+
+274
+00:14:48,670 --> 00:14:51,280
+Shapes, and inside of Shapes happens to
+
+275
+00:14:51,280 --> 00:14:54,430
+be the ellipse item and we create it
+
+276
+00:14:54,430 --> 00:14:58,840
+just like any other QML item. From the
+
+277
+00:14:58,840 --> 00:15:02,500
+point of view of this file the user does
+
+278
+00:15:02,500 --> 00:15:05,350
+not know if the ellipse is another QML file
+
+279
+00:15:05,350 --> 00:15:07,960
+or whether it's one of these C++ plugins.
+
+280
+00:15:07,960 --> 00:15:12,550
+So it's very clean from an API
+
+281
+00:15:12,550 --> 00:15:17,290
+standpoint. And the ellipse is just going
+
+282
+00:15:17,290 --> 00:15:19,420
+to draw the little ellipse on the right.
+
+283
+00:15:19,420 --> 00:15:24,220
+It's pretty basic. So how do we make this
+
+284
+00:15:24,220 --> 00:15:26,560
+item that can have a width and a height,
+
+285
+00:15:26,560 --> 00:15:29,980
+and be drawn in QML. Well, we simply
+
+286
+00:15:29,980 --> 00:15:33,400
+include QDeclarativeItem and inherit
+
+287
+00:15:33,400 --> 00:15:36,730
+from it. We use the Q_OBJECT the macro
+
+288
+00:15:36,730 --> 00:15:40,650
+that's going to be required and we
+
+289
+00:15:40,650 --> 00:15:43,780
+implement the constructor that takes in
+
+290
+00:15:43,780 --> 00:15:46,840
+a QDeclarativeItem *parent. This is
+
+291
+00:15:46,840 --> 00:15:49,990
+going to be used by QML to assign you
+
+292
+00:15:49,990 --> 00:15:50,950
+parent
+
+293
+00:15:50,950 --> 00:15:54,310
+just like you do for Q_OBJECT and QWidget.
+
+294
+00:15:54,310 --> 00:15:56,170
+There's gonna be parent-child
+
+295
+00:15:56,170 --> 00:15:59,920
+hierarchy we've already used that. Then
+
+296
+00:15:59,920 --> 00:16:03,570
+you need to implement the paint function.
+
+297
+00:16:03,570 --> 00:16:07,270
+So this is actually maps one to one and
+
+298
+00:16:07,270 --> 00:16:09,580
+actually up above of QDeclarativeItem
+
+299
+00:16:09,580 --> 00:16:13,980
+inherits QGraphicsItem. And
+
+300
+00:16:13,980 --> 00:16:17,140
+QGraphicsItem has the paint method
+
+301
+00:16:17,140 --> 00:16:19,750
+that takes in a painter a 
+
+302
+00:16:19,750 --> 00:16:22,000
+QStyleOptionGraphicsItem and a widget
+
+303
+00:16:22,000 --> 00:16:23,770
+pointer which is the widget you're being
+
+304
+00:16:23,770 --> 00:16:30,790
+drawn on. So the implementation is
+
+305
+00:16:30,790 --> 00:16:33,010
+actually pretty easy, we have a simple
+
+306
+00:16:33,010 --> 00:16:35,230
+constructor, we pass our parents up to
+
+307
+00:16:35,230 --> 00:16:38,710
+our superclass, and we need to have this
+
+308
+00:16:38,710 --> 00:16:43,030
+setFlag. By default items are not drawn.
+
+309
+00:16:43,030 --> 00:16:45,280
+If you want to be drawn on the screen,
+
+310
+00:16:45,280 --> 00:16:47,680
+you need to set this flag graphics item
+
+311
+00:16:47,680 --> 00:16:52,780
+ItemHasNoContents to false. Why it's
+
+312
+00:16:52,780 --> 00:16:54,670
+not the default to be drawing on the
+
+313
+00:16:54,670 --> 00:16:57,040
+screen, I'm not sure, but it's what you
+
+314
+00:16:57,040 --> 00:17:02,860
+have to do in its paint function. We do
+
+315
+00:17:02,860 --> 00:17:06,490
+something super basic. We take that 
+
+316
+00:17:06,490 --> 00:17:08,170
+QPainter pointer that we've been passed.
+
+317
+00:17:08,170 --> 00:17:10,420
+And painter as you might know from
+
+318
+00:17:10,420 --> 00:17:14,109
+the C++ API has a drawEllipse function
+
+319
+00:17:14,109 --> 00:17:16,750
+which takes in a rectangle. And we're
+
+320
+00:17:16,750 --> 00:17:19,060
+going to take in our option rect which
+
+321
+00:17:19,060 --> 00:17:21,339
+specifies the rectangle of the screen
+
+322
+00:17:21,339 --> 00:17:26,020
+that we take up. So whatever space we've
+
+323
+00:17:26,020 --> 00:17:27,790
+been allocated, we're going to try to
+
+324
+00:17:27,790 --> 00:17:30,270
+draw an ellipse that is going to
+
+325
+00:17:30,270 --> 00:17:34,350
+inscribe that rectangle.
+
+326
+00:17:41,750 --> 00:17:44,460
+Yeah. Well, you can imagine if you're a
+
+327
+00:17:44,460 --> 00:17:47,190
+root item maybe somebody starts a QML
+
+328
+00:17:47,190 --> 00:17:50,550
+file with ellipse open bracket, you have
+
+329
+00:17:50,550 --> 00:18:02,400
+no, you have no parent. Now your parents is
+
+330
+00:18:02,400 --> 00:18:05,340
+another QDeclarativeItem. The widget
+
+331
+00:18:05,340 --> 00:18:08,760
+that you get passed in the paint function
+
+332
+00:18:08,760 --> 00:18:11,640
+is pretty much useless. It's really there
+
+333
+00:18:11,640 --> 00:18:13,260
+because it's useful when you're doing
+
+334
+00:18:13,260 --> 00:18:15,030
+Qt graphics view programming, and
+
+335
+00:18:15,030 --> 00:18:17,280
+you're inheriting from QGraphicsView here.
+
+336
+00:18:17,280 --> 00:18:21,120
+Here be a little forward declaration in
+
+337
+00:18:21,120 --> 00:18:24,890
+QML 2.0. This particular API is changing.
+
+338
+00:18:24,890 --> 00:18:29,730
+But if you use QDeclarativeItem, you
+
+339
+00:18:29,730 --> 00:18:32,970
+can actually get the same the same
+
+340
+00:18:32,970 --> 00:18:37,460
+function names and syntax by using
+
+341
+00:18:37,460 --> 00:18:41,400
+Qt quick painted item. So there is a
+
+342
+00:18:41,400 --> 00:18:43,920
+upgrade path but there will be no
+
+343
+00:18:43,920 --> 00:18:49,110
+QDeclarativeItem anymore. And that will
+
+344
+00:18:49,110 --> 00:18:58,200
+change in Qt five. So, yeah, what we have
+
+345
+00:18:58,200 --> 00:19:01,890
+in main instead of exporting a
+
+346
+00:19:01,890 --> 00:19:03,630
+C++ instance of something, we're actually
+
+347
+00:19:03,630 --> 00:19:07,260
+using this macro function qmlRegisterType
+
+348
+00:19:07,260 --> 00:19:12,000
+to register a type into the QML
+
+349
+00:19:12,000 --> 00:19:16,650
+runtime. And we are exporting the
+
+350
+00:19:16,650 --> 00:19:20,610
+EllipseItem class and we're putting it in the
+
+351
+00:19:20,610 --> 00:19:24,990
+Shapes module, major version, one, minor
+
+352
+00:19:24,990 --> 00:19:28,680
+version, zero, and the name of this item
+
+353
+00:19:28,680 --> 00:19:31,530
+is going to be Ellipse. Notice that the
+
+354
+00:19:31,530 --> 00:19:35,640
+names don't have to match. We then go
+
+355
+00:19:35,640 --> 00:19:38,460
+ahead and make our view. We may, we
+
+356
+00:19:38,460 --> 00:19:42,710
+set our source and now the code that uses
+
+357
+00:19:42,710 --> 00:19:46,200
+the EllipseItem is going to work.
+
+358
+00:19:46,200 --> 00:19:49,380
+Because now Ellipse is a valid type. When
+
+359
+00:19:49,380 --> 00:19:51,390
+you make an instance of Ellipse, it's
+
+360
+00:19:51,390 --> 00:19:52,740
+actually going to make an instance of
+
+361
+00:19:52,740 --> 00:19:55,430
+your EllipseItem.
+
+362
+00:20:05,450 --> 00:20:09,250
+Yeah, it's kind of a beaut part of it.
+
+363
+00:20:12,710 --> 00:20:16,130
+Well, since, yeah, since you are basically
+
+364
+00:20:16,130 --> 00:20:17,900
+by inheriting QDeclarativeItem,
+
+365
+00:20:17,900 --> 00:20:21,290
+you're inheriting item. Remember that
+
+366
+00:20:21,290 --> 00:20:23,750
+item that is the generic in base class
+
+367
+00:20:23,750 --> 00:20:25,400
+for everything that's basically what
+
+368
+00:20:25,400 --> 00:20:27,560
+you're inheriting. So you get x and y,
+
+369
+00:20:27,560 --> 00:20:30,410
+invisible and opacity and all of those
+
+370
+00:20:30,410 --> 00:20:33,200
+properties of item you inherit, just like
+
+371
+00:20:33,200 --> 00:20:34,970
+when you inherit from C++, from a
+
+372
+00:20:34,970 --> 00:20:36,980
+Q_OBJECT with properties, you inherit all
+
+373
+00:20:36,980 --> 00:20:41,000
+their properties too. So from the client
+
+374
+00:20:41,000 --> 00:20:42,500
+side's perspective whoever makes
+
+375
+00:20:42,500 --> 00:20:44,900
+whoever's writing that QML never
+
+376
+00:20:44,900 --> 00:20:47,000
+knows what's implemented in C++, and
+
+377
+00:20:47,000 --> 00:20:49,730
+what's implemented in QML. And that's a
+
+378
+00:20:49,730 --> 00:20:53,540
+good thing. It's not any different. So if
+
+379
+00:20:53,540 --> 00:20:56,750
+you. Even if you wrote some QML and you
+
+380
+00:20:56,750 --> 00:21:00,140
+had this fancy game board object. And you
+
+381
+00:21:00,140 --> 00:21:01,760
+found that it wasn't fast enough doing
+
+382
+00:21:01,760 --> 00:21:03,710
+it in JavaScript. Well, you could make
+
+383
+00:21:03,710 --> 00:21:06,230
+game board in C++ and export it as game
+
+384
+00:21:06,230 --> 00:21:08,120
+board. And your game board code would
+
+385
+00:21:08,120 --> 00:21:18,490
+still work. So, do note here that we are
+
+386
+00:21:18,490 --> 00:21:20,330
+registering these with the fully
+
+387
+00:21:20,330 --> 00:21:22,760
+qualified imports. So, this is import
+
+388
+00:21:22,760 --> 00:21:25,520
+Shapes, 1, 0. There's no way to do this
+
+389
+00:21:25,520 --> 00:21:27,590
+without having the module and the
+
+390
+00:21:27,590 --> 00:21:29,980
+version.
+
+391
+00:21:36,410 --> 00:21:39,050
+And we are effectively a sub type of
+
+392
+00:21:39,050 --> 00:21:43,220
+item. So here for example we have the
+
+393
+00:21:43,220 --> 00:21:45,980
+ellipse item, and we want to add a
+
+394
+00:21:45,980 --> 00:21:48,380
+property. We want to add a property to
+
+395
+00:21:48,380 --> 00:21:51,530
+our ellipse to have a color. So we want
+
+396
+00:21:51,530 --> 00:21:54,860
+to fill it here with the color blue. The
+
+397
+00:21:54,860 --> 00:21:56,900
+x, y, width and height we got from
+
+398
+00:21:56,900 --> 00:21:59,630
+inheriting item easy, but we need to add
+
+399
+00:21:59,630 --> 00:22:02,080
+color.
+
+400
+00:22:02,170 --> 00:22:06,200
+Luckily adding color is as simple as I'm
+
+401
+00:22:06,200 --> 00:22:09,290
+adding the Q_PROPERTY macro. We need a
+
+402
+00:22:09,290 --> 00:22:12,260
+read function a write function and a
+
+403
+00:22:12,260 --> 00:22:18,650
+notify signal. So you would make your C++
+
+404
+00:22:18,650 --> 00:22:21,740
+as usual. Meaning that you're gonna have
+
+405
+00:22:21,740 --> 00:22:23,600
+a member for your color. You're gonna
+
+406
+00:22:23,600 --> 00:22:27,340
+have a setColor and a color getter. And
+
+407
+00:22:27,340 --> 00:22:29,570
+you're gonna have a signal for colorChanged.
+
+408
+00:22:29,570 --> 00:22:32,720
+This is as normal as Qt as you
+
+409
+00:22:32,720 --> 00:22:36,080
+can get. Then, at your header file you
+
+410
+00:22:36,080 --> 00:22:38,360
+simply use the Q_PROPERTY macro. You
+
+411
+00:22:38,360 --> 00:22:40,250
+specify the type of this property which
+
+412
+00:22:40,250 --> 00:22:43,580
+is QColor, a name which is simply color.
+
+413
+00:22:43,580 --> 00:22:46,700
+A read function called color a write
+
+414
+00:22:46,700 --> 00:22:49,070
+function called setColor and a notify signal
+
+415
+00:22:49,070 --> 00:22:54,400
+called colorChanged. This is a an
+
+416
+00:22:54,400 --> 00:22:57,290
+opportunity that you don't have in
+
+417
+00:22:57,290 --> 00:22:59,210
+straight QML, is that you can make
+
+418
+00:22:59,210 --> 00:23:02,900
+read-only properties by manipulating the
+
+419
+00:23:02,900 --> 00:23:05,600
+Q_PROPERTY macro. So if you didn't
+
+420
+00:23:05,600 --> 00:23:08,960
+have a write function then you would be
+
+421
+00:23:08,960 --> 00:23:11,300
+read-only. And if someone tried to set
+
+422
+00:23:11,300 --> 00:23:13,970
+your value the QML runtime would
+
+423
+00:23:13,970 --> 00:23:16,250
+complain, and say that is a right own,
+
+424
+00:23:16,250 --> 00:23:20,780
+that is a read-only property. Also, some
+
+425
+00:23:20,780 --> 00:23:24,290
+properties don't have a dynamic. So
+
+426
+00:23:24,290 --> 00:23:27,940
+there's no reason to have a notification signal.
+
+427
+00:23:27,940 --> 00:23:30,800
+In that case, you can replace
+
+428
+00:23:30,800 --> 00:23:34,370
+NOTIFY with constants. And you don't need
+
+429
+00:23:34,370 --> 00:23:37,250
+to specify a signal that tells the QML
+
+430
+00:23:37,250 --> 00:23:39,560
+environment never to expect a signal
+
+431
+00:23:39,560 --> 00:23:42,560
+when this changes often useful when you
+
+432
+00:23:42,560 --> 00:23:45,230
+want to have read-only constants exposed
+
+433
+00:23:45,230 --> 00:23:48,040
+as properties.
+
+434
+00:23:54,580 --> 00:24:00,769
+So it's pretty simple when you in C++.
+
+435
+00:24:00,769 --> 00:24:02,419
+Just like if you were writing graphicsItem
+
+436
+00:24:02,419 --> 00:24:04,879
+were you writing widgets in your
+
+437
+00:24:04,879 --> 00:24:07,639
+sets? You should always make sure that
+
+438
+00:24:07,639 --> 00:24:09,259
+what you're being set to is different
+
+439
+00:24:09,259 --> 00:24:10,789
+than what you already are. That will keep
+
+440
+00:24:10,789 --> 00:24:13,159
+you from getting infinite recursion. If
+
+441
+00:24:13,159 --> 00:24:15,559
+you have signals and slots crossed up
+
+442
+00:24:15,559 --> 00:24:19,759
+and you set your color. You call update
+
+443
+00:24:19,759 --> 00:24:23,299
+to repaint yourself and you emits the
+
+444
+00:24:23,299 --> 00:24:25,460
+correct signal and here we have the
+
+445
+00:24:25,460 --> 00:24:30,859
+signal colorChanged. And now, all of this
+
+446
+00:24:30,859 --> 00:24:37,669
+code basically equates to the color
+
+447
+00:24:37,669 --> 00:24:40,850
+property in QML and likewise since it's
+
+448
+00:24:40,850 --> 00:24:42,649
+a real property. There's an
+
+449
+00:24:42,649 --> 00:24:45,259
+colorChanged signal handler that you could
+
+450
+00:24:45,259 --> 00:24:47,470
+implement.
+
+451
+00:25:00,670 --> 00:25:03,970
+That's a good question. I guess no reason
+
+452
+00:25:03,970 --> 00:25:05,470
+in particular it could have been called
+
+453
+00:25:05,470 --> 00:25:10,840
+ellipse. Good question!
+
+454
+00:25:10,840 --> 00:25:14,680
+So the main when we exported it we did
+
+455
+00:25:14,680 --> 00:25:17,830
+this qmlRegisterType which takes in a
+
+456
+00:25:17,830 --> 00:25:22,930
+string name to use for the type name. It
+
+457
+00:25:22,930 --> 00:25:24,820
+which does not have to be the same as
+
+458
+00:25:24,820 --> 00:25:34,480
+the class name. Is that? It is a template.
+
+459
+00:25:34,480 --> 00:25:38,920
+It is a template. Now, the nice thing
+
+460
+00:25:38,920 --> 00:25:41,670
+about Qt in general is that Qt uses
+
+461
+00:25:41,670 --> 00:25:44,110
+templates. You know, here, there, and all
+
+462
+00:25:44,110 --> 00:25:46,060
+over the place. But does it really force
+
+463
+00:25:46,060 --> 00:25:48,340
+you to write template classes which is
+
+464
+00:25:48,340 --> 00:25:51,040
+nice? But this is an example it's a
+
+465
+00:25:51,040 --> 00:25:54,070
+template function. It takes in a type and
+
+466
+00:25:54,070 --> 00:25:56,640
+it does it's magic.
+
+467
+00:26:03,230 --> 00:26:06,500
+Yeah so then in your paint method which
+
+468
+00:26:06,500 --> 00:26:08,210
+is going to be called just like in
+
+469
+00:26:08,210 --> 00:26:10,399
+widgets or in graphics, you is gonna be
+
+470
+00:26:10,399 --> 00:26:13,220
+called any time you call update. now it
+
+471
+00:26:13,220 --> 00:26:14,630
+gets a little more complicated because
+
+472
+00:26:14,630 --> 00:26:17,389
+we can't simply draw the ellipse, we're
+
+473
+00:26:17,389 --> 00:26:19,279
+going to save our painter state. We're
+
+474
+00:26:19,279 --> 00:26:21,649
+gonna set the pen, we're gonna draw set the brush,
+
+475
+00:26:21,649 --> 00:26:23,480
+we're gonna draw the ellipse,
+
+476
+00:26:23,480 --> 00:26:28,190
+and restore the painter state. It is
+
+477
+00:26:28,190 --> 00:26:30,380
+always polite to save and restore the
+
+478
+00:26:30,380 --> 00:26:33,139
+painter States any time somebody passes
+
+479
+00:26:33,139 --> 00:26:37,880
+you a QPainter pointer. We'd be rather
+
+480
+00:26:37,880 --> 00:26:39,980
+rude if you change the contents of
+
+481
+00:26:39,980 --> 00:26:42,139
+somebody else's pointer when your
+
+482
+00:26:42,139 --> 00:26:50,809
+function returns. So in summary we've
+
+483
+00:26:50,809 --> 00:26:53,600
+seen that we can create a new type with
+
+484
+00:26:53,600 --> 00:26:56,389
+qmlRegisterType, we can make a new
+
+485
+00:26:56,389 --> 00:26:59,090
+visual item with QDeclarativeItem,
+
+486
+00:26:59,090 --> 00:27:04,880
+and we can add some Qt properties. Does
+
+487
+00:27:04,880 --> 00:27:06,919
+anybody have any questions on this is?
+
+488
+00:27:06,919 --> 00:27:08,840
+We're gonna move on the functions and
+
+489
+00:27:08,840 --> 00:27:17,690
+slots and fun things like enum. Yes? Yeah,
+
+490
+00:27:17,690 --> 00:27:19,669
+in fact you can have a parameter most
+
+491
+00:27:19,669 --> 00:27:21,889
+times in C++. You would have as a
+
+492
+00:27:21,889 --> 00:27:28,159
+parameter, the, the newColor. QML will
+
+493
+00:27:28,159 --> 00:27:31,130
+always ignore the parameter. So it's like
+
+494
+00:27:31,130 --> 00:27:32,510
+one of those things in QT. You can always
+
+495
+00:27:32,510 --> 00:27:36,169
+drop parameters from signal to slot. So
+
+496
+00:27:36,169 --> 00:27:41,630
+when, when that signal. When the on
+
+497
+00:27:41,630 --> 00:27:43,610
+property changed it's going to be a
+
+498
+00:27:43,610 --> 00:27:46,460
+signal with no parameters. It just wants
+
+499
+00:27:46,460 --> 00:27:48,250
+to know that needs to rerun all of the
+
+500
+00:27:48,250 --> 00:27:51,250
+evaluations.
+
+501
+00:28:01,340 --> 00:28:07,129
+Oh. No. But what you can do and you know
+
+502
+00:28:07,129 --> 00:28:11,419
+this. This will get you a little further
+
+503
+00:28:11,419 --> 00:28:13,549
+is that you could inherit from
+
+504
+00:28:13,549 --> 00:28:16,730
+QDeclarativeItem. Okay, and you can
+
+505
+00:28:16,730 --> 00:28:19,460
+actually you could inherit from
+
+506
+00:28:19,460 --> 00:28:23,749
+QProxy widget, and you can actually wrap
+
+507
+00:28:23,749 --> 00:28:27,499
+your QT widget in QProxy widgets,
+
+508
+00:28:27,499 --> 00:28:33,019
+which is a, which is a QGraphicsItem.
+
+509
+00:28:33,019 --> 00:28:36,700
+And you can find examples of that online.
+
+510
+00:28:36,700 --> 00:28:38,269
+Be warned.
+
+511
+00:28:38,269 --> 00:28:39,950
+Just like when doing graphics view
+
+512
+00:28:39,950 --> 00:28:42,320
+programming QProxy widget has
+
+513
+00:28:42,320 --> 00:28:44,869
+performance problems. So if you try to
+
+514
+00:28:44,869 --> 00:28:47,539
+take that QML screen that has an
+
+515
+00:28:47,539 --> 00:28:50,360
+embedded Q table in it. And you try to
+
+516
+00:28:50,360 --> 00:28:52,970
+animate it, it's probably going to drop
+
+517
+00:28:52,970 --> 00:28:56,889
+in performance. But you can do it.
+
+518
+00:28:56,889 --> 00:29:00,350
+In fact, we've done that at ICS for some
+
+519
+00:29:00,350 --> 00:29:03,289
+projects that one use like QWT chart to
+
+520
+00:29:03,289 --> 00:29:12,070
+do some line graphing. Yep
+
+521
+00:29:15,270 --> 00:29:27,280
+Yep. It is better to use multiple signals.
+
+522
+00:29:27,280 --> 00:29:29,260
+Because unless they are intrinsically
+
+523
+00:29:29,260 --> 00:29:32,770
+related. Because it is going to when that
+
+524
+00:29:32,770 --> 00:29:35,710
+signal fires QML is going to rerun all
+
+525
+00:29:35,710 --> 00:29:40,030
+bindings that include that property. So
+
+526
+00:29:40,030 --> 00:29:42,070
+if you change one property, but you just
+
+527
+00:29:42,070 --> 00:29:44,860
+have this uber everything change signal,
+
+528
+00:29:44,860 --> 00:29:46,450
+that's attached to four different,
+
+529
+00:29:46,450 --> 00:29:48,850
+properties then QML is going to seek out
+
+530
+00:29:48,850 --> 00:29:51,460
+those four properties and rerun all the
+
+531
+00:29:51,460 --> 00:29:53,950
+expressions in the bindings. As opposed
+
+532
+00:29:53,950 --> 00:29:55,570
+to have one really change you can get,
+
+533
+00:29:55,570 --> 00:29:57,970
+you know, just maybe two of the lines
+
+534
+00:29:57,970 --> 00:30:00,520
+instead of ,you know, 20 lines to be
+
+535
+00:30:00,520 --> 00:30:03,040
+recalculated. So that's the downside
+
+536
+00:30:03,040 --> 00:30:05,460
+there.
+
+537
+00:30:16,090 --> 00:30:20,149
+So now we want to add functions. Oh,
+
+538
+00:30:20,149 --> 00:30:23,200
+actually we want to add signals to our
+
+539
+00:30:23,200 --> 00:30:28,370
+Qt class that we are exporting into QML.
+
+540
+00:30:28,370 --> 00:30:30,140
+So basically what we want to have, so
+
+541
+00:30:30,140 --> 00:30:32,059
+wouldn't have the ellipse, have an on,
+
+542
+00:30:32,059 --> 00:30:35,149
+have a onReady signal. And so we can use
+
+543
+00:30:35,149 --> 00:30:39,409
+the onReady signal handler. Ready in this
+
+544
+00:30:39,409 --> 00:30:41,480
+context doesn't really mean anything.
+
+545
+00:30:41,480 --> 00:30:44,750
+There's no, it's not like QML and QT are
+
+546
+00:30:44,750 --> 00:30:46,340
+running in separate threads and there's
+
+547
+00:30:46,340 --> 00:30:47,899
+a some synchronization that needs to go
+
+548
+00:30:47,899 --> 00:30:50,659
+on. This is just an example, just some
+
+549
+00:30:50,659 --> 00:30:54,260
+state that's changing. So and what we
+
+550
+00:30:54,260 --> 00:30:57,830
+want to do is when something's ready we
+
+551
+00:30:57,830 --> 00:31:00,139
+want to change some text label to say
+
+552
+00:31:00,139 --> 00:31:06,590
+Ready. Very simple. And all you need to do
+
+553
+00:31:06,590 --> 00:31:10,970
+in QT is do what you'd normally do. Just
+
+554
+00:31:10,970 --> 00:31:13,909
+declare a signal Ready just like you did
+
+555
+00:31:13,909 --> 00:31:16,880
+color changed. The meta-objects will take
+
+556
+00:31:16,880 --> 00:31:18,590
+everything from there. You just recompile
+
+557
+00:31:18,590 --> 00:31:21,289
+your program and of course you need to
+
+558
+00:31:21,289 --> 00:31:25,610
+emit the signal. But after you implement
+
+559
+00:31:25,610 --> 00:31:30,799
+a signal this code will run whenever the
+
+560
+00:31:30,799 --> 00:31:38,649
+your emit ready. So for example we have a
+
+561
+00:31:38,649 --> 00:31:42,080
+QTimer signal single-shot just for
+
+562
+00:31:42,080 --> 00:31:45,220
+giggles after two seconds we're going to
+
+563
+00:31:45,220 --> 00:31:49,909
+emit the signal ready. So at some point
+
+564
+00:31:49,909 --> 00:31:52,070
+the signal is going to get emitted
+
+565
+00:31:52,070 --> 00:31:54,830
+onReady is going to be called and we have
+
+566
+00:31:54,830 --> 00:31:58,010
+stuff happening in QML because we have
+
+567
+00:31:58,010 --> 00:32:02,269
+emitted signals. So when people ask me
+
+568
+00:32:02,269 --> 00:32:05,330
+how do I manipulate the QML items from
+
+569
+00:32:05,330 --> 00:32:08,210
+C++ what you really want to do from a
+
+570
+00:32:08,210 --> 00:32:10,760
+design perspective is not find the items
+
+571
+00:32:10,760 --> 00:32:12,679
+and manipulate them but you want to
+
+572
+00:32:12,679 --> 00:32:14,450
+design your back-end to emit the right
+
+573
+00:32:14,450 --> 00:32:17,419
+signals that state has changed and let
+
+574
+00:32:17,419 --> 00:32:19,700
+the user interface decide what that
+
+575
+00:32:19,700 --> 00:32:21,590
+change, in state means for the user
+
+576
+00:32:21,590 --> 00:32:24,039
+interface.
+
+577
+00:32:34,480 --> 00:32:37,780
+So if you want to add callbacks
+
+578
+00:32:37,780 --> 00:32:40,740
+basically we want slots that we can call
+
+579
+00:32:40,740 --> 00:32:46,620
+from QML. It is just as easy as making
+
+580
+00:32:46,620 --> 00:32:52,630
+slots in C++. You have your option so
+
+581
+00:32:52,630 --> 00:32:55,480
+here when the mouse areas clicked we
+
+582
+00:32:55,480 --> 00:32:58,710
+want to actually call setColor on our
+
+583
+00:32:58,710 --> 00:33:07,270
+object with the strain of a color. So
+
+584
+00:33:07,270 --> 00:33:10,680
+what we can do is we can have this new
+
+585
+00:33:10,680 --> 00:33:14,050
+slot called setColor and you'll notice
+
+586
+00:33:14,050 --> 00:33:20,740
+that it takes in a QColor. Now, the
+
+587
+00:33:20,740 --> 00:33:22,810
+nice thing about QColor is that it
+
+588
+00:33:22,810 --> 00:33:25,840
+has an implicit conversion from strings.
+
+589
+00:33:25,840 --> 00:33:30,640
+So we can pass it darker green and when
+
+590
+00:33:30,640 --> 00:33:32,860
+it gets called in C++ a darker green
+
+591
+00:33:32,860 --> 00:33:35,500
+will be passed to the implicit copy constructor
+
+592
+00:33:35,500 --> 00:33:38,140
+for QColor, and we will
+
+593
+00:33:38,140 --> 00:33:42,970
+make a color from quote darkgreen. So
+
+594
+00:33:42,970 --> 00:33:44,800
+you have your option of specifying
+
+595
+00:33:44,800 --> 00:33:48,580
+public slots or using the Q_INVOKABLE macro.
+
+596
+00:33:48,580 --> 00:33:58,570
+20y prefer. Yeah, so first things
+
+597
+00:33:58,570 --> 00:34:00,730
+like a things that should be slots. Like
+
+598
+00:34:00,730 --> 00:34:02,620
+has an experience Qt programer, you
+
+599
+00:34:02,620 --> 00:34:05,170
+just you'll know what needs what should
+
+600
+00:34:05,170 --> 00:34:07,270
+be slots like things like setColor is a
+
+601
+00:34:07,270 --> 00:34:09,940
+good candidate for a slot. Something
+
+602
+00:34:09,940 --> 00:34:12,400
+where you're doing like a function,
+
+603
+00:34:12,400 --> 00:34:14,530
+that's going to return a value is not a
+
+604
+00:34:14,530 --> 00:34:16,420
+good candidate for a slot, but it might
+
+605
+00:34:16,420 --> 00:34:18,040
+be a good candidate for something to be
+
+606
+00:34:18,040 --> 00:34:20,590
+called from QML like it getMeSomeValue.
+
+607
+00:34:20,590 --> 00:34:24,190
+In that case, I would use getMeSomeValue
+
+608
+00:34:24,190 --> 00:34:26,110
+with Q_INVOKABLE in front
+
+609
+00:34:26,110 --> 00:34:27,969
+of it before someone thinks that they
+
+610
+00:34:27,969 --> 00:34:30,340
+can connect a regular C++ signal to this
+
+611
+00:34:30,340 --> 00:34:32,679
+thing and being like what the does the
+
+612
+00:34:32,679 --> 00:34:35,549
+deal with this function.
+
+613
+00:34:51,130 --> 00:34:59,350
+So we can also, we can also add methods
+
+614
+00:34:59,350 --> 00:35:01,330
+using the Q_INVOKABLE such as the
+
+615
+00:35:01,330 --> 00:35:03,250
+randomColor method here, where we are
+
+616
+00:35:03,250 --> 00:35:05,500
+setting our parent.color to parent.randomColor,
+
+617
+00:35:05,500 --> 00:35:09,580
+parent is an ellipse. So the
+
+618
+00:35:09,580 --> 00:35:13,480
+storage for QColor is in C++ and we're
+
+619
+00:35:13,480 --> 00:35:16,540
+using a function that returns a type. So
+
+620
+00:35:16,540 --> 00:35:19,000
+here bringing them color is not really
+
+621
+00:35:19,000 --> 00:35:21,580
+something that's useful as a slot. We use
+
+622
+00:35:21,580 --> 00:35:25,150
+the Q_INVOKABLE macro and we say return
+
+623
+00:35:25,150 --> 00:35:28,630
+a QColor and randomColor. Done. Now the
+
+624
+00:35:28,630 --> 00:35:30,670
+meta-object system is going to find that
+
+625
+00:35:30,670 --> 00:35:32,590
+macro, add it to the list of callable
+
+626
+00:35:32,590 --> 00:35:36,370
+functions and it now appears in QML. So
+
+627
+00:35:36,370 --> 00:35:39,820
+this line will run on click,
+
+628
+00:35:39,820 --> 00:35:47,740
+parent.color randomColor. And randomColor
+
+629
+00:35:47,740 --> 00:35:52,120
+here is implemented as some random color
+
+630
+00:35:52,120 --> 00:35:56,380
+actually. It's nothing to really say
+
+631
+00:35:56,380 --> 00:36:04,180
+about that. So we figured out that we can
+
+632
+00:36:04,180 --> 00:36:07,510
+define signals just like we do in C++,
+
+633
+00:36:07,510 --> 00:36:10,360
+and they were usable by QML. We can
+
+634
+00:36:10,360 --> 00:36:13,150
+define slots just like we do in C++,
+
+635
+00:36:13,150 --> 00:36:16,270
+usable by QML. And we can define
+
+636
+00:36:16,270 --> 00:36:18,220
+functions and give them the
+
+637
+00:36:18,220 --> 00:36:22,710
+Q_INVOKABLE macro and they're usable from QML.
+
+638
+00:36:25,770 --> 00:36:30,540
+Any questions so far?
+
+639
+00:36:35,410 --> 00:36:40,970
+So defining custom property types. So you
+
+640
+00:36:40,970 --> 00:36:42,980
+can guess that things like floats and
+
+641
+00:36:42,980 --> 00:36:46,279
+boolean and string and colors work. But
+
+642
+00:36:46,279 --> 00:36:48,049
+what if we wanted something more
+
+643
+00:36:48,049 --> 00:36:52,609
+complicated like another item or another
+
+644
+00:36:52,609 --> 00:36:55,039
+QObject that's deep it has many
+
+645
+00:36:55,039 --> 00:36:58,690
+properties or maybe we want to use enums
+
+646
+00:36:58,690 --> 00:37:05,690
+from C++. For example, we want to make our
+
+647
+00:37:05,690 --> 00:37:10,760
+ellipse taken style property where style
+
+648
+00:37:10,760 --> 00:37:15,710
+isn't enum such as Outline. So you'll see
+
+649
+00:37:15,710 --> 00:37:18,200
+these sprinkled all over the QtQuick,
+
+650
+00:37:18,200 --> 00:37:19,910
+stuff where you can say text.something.
+
+651
+00:37:19,910 --> 00:37:22,250
+You can make your own ellipse.something
+
+652
+00:37:22,250 --> 00:37:28,069
+which is an enum and this
+
+653
+00:37:28,069 --> 00:37:31,039
+is actually pretty easy because all you
+
+654
+00:37:31,039 --> 00:37:34,180
+need to use is a Q_PROPERTY macro and
+
+655
+00:37:34,180 --> 00:37:41,059
+the Q_ENUMS macro. This is actually an
+
+656
+00:37:41,059 --> 00:37:44,420
+old macro goes back, you know, decade
+
+657
+00:37:44,420 --> 00:37:46,789
+maybe longer. It was actually used in
+
+658
+00:37:46,789 --> 00:37:49,220
+designer plugins. It's how a designer
+
+659
+00:37:49,220 --> 00:37:51,500
+would know that when you had in your
+
+660
+00:37:51,500 --> 00:37:54,529
+property tree that this is a, you know,
+
+661
+00:37:54,529 --> 00:37:57,319
+what style do I want my frame to be
+
+662
+00:37:57,319 --> 00:38:00,049
+drawn in. It actually got it strings to
+
+663
+00:38:00,049 --> 00:38:03,529
+display from this Q_ENUMS macro. What it
+
+664
+00:38:03,529 --> 00:38:06,349
+does is the meta-object compiler is
+
+665
+00:38:06,349 --> 00:38:08,450
+going to read your header file and go
+
+666
+00:38:08,450 --> 00:38:10,760
+looking for an enum called Style.
+
+667
+00:38:10,760 --> 00:38:13,609
+It then going to make a map of the
+
+668
+00:38:13,609 --> 00:38:18,500
+string name of the, the string name of
+
+669
+00:38:18,500 --> 00:38:20,809
+the enum to the const, integer and
+
+670
+00:38:20,809 --> 00:38:23,450
+keep that map. So you can convert to and
+
+671
+00:38:23,450 --> 00:38:26,329
+from string and that's the same exact
+
+672
+00:38:26,329 --> 00:38:28,460
+functionality that the QML uses to
+
+673
+00:38:28,460 --> 00:38:31,670
+convert your Outline and Filled to
+
+674
+00:38:31,670 --> 00:38:34,130
+ellipse.Outline and ellipse.Filled.
+
+675
+00:38:34,130 --> 00:38:36,349
+These aren't 0 and 1 they're
+
+676
+00:38:36,349 --> 00:38:42,349
+actual strengths. So once you use the
+
+677
+00:38:42,349 --> 00:38:45,950
+Q_ENUMS macro you can use Q_ENUMS. You
+
+678
+00:38:45,950 --> 00:38:47,420
+can use Qt style
+
+679
+00:38:47,420 --> 00:38:50,570
+has a type in a Q_PROPERTY macro and this
+
+680
+00:38:50,570 --> 00:38:57,920
+just works. You just need to have a style
+
+681
+00:38:57,920 --> 00:39:00,440
+and a setStyle, some storage and a
+
+682
+00:39:00,440 --> 00:39:02,890
+signal.
+
+683
+00:39:09,849 --> 00:39:13,329
+And just like in C++, just like we
+
+684
+00:39:13,329 --> 00:39:15,549
+set the color all you need is a getter and
+
+685
+00:39:15,549 --> 00:39:17,799
+setter. And make sure your set or calls
+
+686
+00:39:17,799 --> 00:39:21,130
+updates and emits the right signal very
+
+687
+00:39:21,130 --> 00:39:23,519
+similar to the way we did the color
+
+688
+00:39:23,519 --> 00:39:30,789
+Except now we have an enum. So maybe enum
+
+689
+00:39:30,789 --> 00:39:34,239
+isn't specific enough. Maybe we want to
+
+690
+00:39:34,239 --> 00:39:39,009
+trade in other declarative items. We want
+
+691
+00:39:39,009 --> 00:39:42,459
+to set our style by passing an instance
+
+692
+00:39:42,459 --> 00:39:45,849
+of a style class which is another class
+
+693
+00:39:45,849 --> 00:39:48,219
+that we're going to export. So like you
+
+694
+00:39:48,219 --> 00:39:50,349
+can make instances of ellipse. You can
+
+695
+00:39:50,349 --> 00:39:53,109
+make an instance of a style where style
+
+696
+00:39:53,109 --> 00:39:54,880
+is a non visual item. It's just a
+
+697
+00:39:54,880 --> 00:39:58,900
+collection of data. So how could we do
+
+698
+00:39:58,900 --> 00:40:02,339
+this? Well, it's a little more complicated.
+
+699
+00:40:02,339 --> 00:40:07,920
+We're apparently also up to Shapes 7.0,
+
+700
+00:40:08,759 --> 00:40:14,890
+but what you can do is we declare
+
+701
+00:40:14,890 --> 00:40:19,329
+another QDeclarativeItem. And this time
+
+702
+00:40:19,329 --> 00:40:21,400
+it's gonna we're gonna leave the default
+
+703
+00:40:21,400 --> 00:40:23,440
+to not draw itself. Because this is just
+
+704
+00:40:23,440 --> 00:40:25,959
+data and we're going to implement two
+
+705
+00:40:25,959 --> 00:40:29,109
+properties Color and Filled, and we
+
+706
+00:40:29,109 --> 00:40:31,209
+implement that just like the ellipse. So
+
+707
+00:40:31,209 --> 00:40:34,089
+we're making a style class and an
+
+708
+00:40:34,089 --> 00:40:41,559
+ellipse class. And then we are going to
+
+709
+00:40:41,559 --> 00:40:45,670
+have a style and a setStyle. Now, what
+
+710
+00:40:45,670 --> 00:40:47,349
+makes this more, which makes this
+
+711
+00:40:47,349 --> 00:40:49,959
+interesting and different from C++
+
+712
+00:40:49,959 --> 00:40:52,329
+programming is that we are passing
+
+713
+00:40:52,329 --> 00:40:56,759
+pointers here and we're taking pointers.
+
+714
+00:40:56,759 --> 00:41:00,249
+So generally, in C++ you would return a
+
+715
+00:41:00,249 --> 00:41:02,349
+copy and you take a constant reference.
+
+716
+00:41:02,349 --> 00:41:07,499
+This is going to deal in pointers and
+
+717
+00:41:07,499 --> 00:41:10,859
+our Q_PROPERTY is going to be of type
+
+718
+00:41:10,859 --> 00:41:14,319
+style pointer and the name is going to
+
+719
+00:41:14,319 --> 00:41:17,799
+be style, READ is style, WRITE is setStyle,
+
+720
+00:41:17,799 --> 00:41:22,079
+and NOTIFY is styleChanged.
+
+721
+00:41:23,400 --> 00:41:26,349
+So when we do this we can actually
+
+722
+00:41:26,349 --> 00:41:29,380
+modify our paints actually use the style
+
+723
+00:41:29,380 --> 00:41:30,789
+and decide whether you're going to be
+
+724
+00:41:30,789 --> 00:41:32,409
+filled. And what color you're going to be
+
+725
+00:41:32,409 --> 00:41:34,569
+based on the contents of that style object.
+
+726
+00:41:34,569 --> 00:41:39,309
+So what we need to do is we need
+
+727
+00:41:39,309 --> 00:41:43,059
+to register in main not one type but two
+
+728
+00:41:43,059 --> 00:41:46,029
+types the style type and the ellipse item.
+
+729
+00:41:46,029 --> 00:41:59,819
+and once we do that amount of work
+
+730
+00:42:01,319 --> 00:42:10,799
+this code is actually going to work. Yes?
+
+731
+00:42:13,620 --> 00:42:27,990
+I think it could be. Yeah, yeah, could be.
+
+732
+00:42:27,990 --> 00:42:32,720
+Yeah. Yep.
+
+733
+00:42:41,220 --> 00:42:43,170
+Good question. Now you're getting into
+
+734
+00:42:43,170 --> 00:42:48,060
+religious wars. So according to purists
+
+735
+00:42:48,060 --> 00:42:51,870
+the, the point, the, the type is the type
+
+736
+00:42:51,870 --> 00:42:53,640
+and the fact that it is a pointer
+
+737
+00:42:53,640 --> 00:42:57,090
+actually belongs to the name of the
+
+738
+00:42:57,090 --> 00:43:00,000
+variable. Because if you use the common notation,
+
+739
+00:43:00,000 --> 00:43:03,330
+you know, this is a, I know, this
+
+740
+00:43:03,330 --> 00:43:04,860
+is a function declaration. But if you
+
+741
+00:43:04,860 --> 00:43:08,090
+were making variables and you said
+
+742
+00:43:08,090 --> 00:43:11,730
+style star name comma something else
+
+743
+00:43:11,730 --> 00:43:13,380
+so you made two instances in one line,
+
+744
+00:43:13,380 --> 00:43:15,360
+then where that would actually make is
+
+745
+00:43:15,360 --> 00:43:17,490
+not two pointers but one thing that's a
+
+746
+00:43:17,490 --> 00:43:18,900
+pointer and another thing that's an
+
+747
+00:43:18,900 --> 00:43:22,680
+actual stack instance. So some people
+
+748
+00:43:22,680 --> 00:43:27,240
+like to put the star after you know type
+
+749
+00:43:27,240 --> 00:43:31,770
+space star then the the object it's
+
+750
+00:43:31,770 --> 00:43:34,800
+really a style thing. I prefer to have
+
+751
+00:43:34,800 --> 00:43:37,170
+the star after the type and I don't put
+
+752
+00:43:37,170 --> 00:43:40,010
+two things in one line.
+
+753
+00:43:46,580 --> 00:43:54,720
+Hmm, good question. I'm not actually sure
+
+754
+00:43:54,720 --> 00:43:59,340
+on that. What's that?
+
+755
+00:43:59,340 --> 00:44:03,660
+Oh, is it required that the star go to
+
+756
+00:44:03,660 --> 00:44:10,800
+the, on the star, on style. Yeah, and I'm
+
+757
+00:44:10,800 --> 00:44:12,450
+not sure on that. Actually was a good
+
+758
+00:44:12,450 --> 00:44:19,470
+question. Yeah, or if we would take it
+
+759
+00:44:19,470 --> 00:44:23,150
+either way I'll have to look into that.
+
+760
+00:44:37,460 --> 00:44:40,059
+Yeah.
+
+761
+00:44:45,340 --> 00:44:49,090
+So another question is okay. Maybe I want
+
+762
+00:44:49,090 --> 00:44:51,670
+to have a property that is actually a
+
+763
+00:44:51,670 --> 00:44:54,580
+list. So just like we had an array of
+
+764
+00:44:54,580 --> 00:45:00,100
+styles and an array of transitions. Maybe
+
+765
+00:45:00,100 --> 00:45:02,980
+I want to have a chart object and that
+
+766
+00:45:02,980 --> 00:45:07,000
+chart object has a list of bars. So how
+
+767
+00:45:07,000 --> 00:45:11,410
+would we do this from C++? Well, it's
+
+768
+00:45:11,410 --> 00:45:13,870
+pretty easy because we have a special
+
+769
+00:45:13,870 --> 00:45:17,140
+type of property that is going to be a
+
+770
+00:45:17,140 --> 00:45:21,760
+QDeclarativeListProperty. So here
+
+771
+00:45:21,760 --> 00:45:25,200
+we are going to use the Q_PROPERTY,
+
+772
+00:45:25,200 --> 00:45:28,420
+syntax where our type is actually going
+
+773
+00:45:28,420 --> 00:45:31,750
+to be a template which is QDeclarativeListProperty
+
+774
+00:45:31,750 --> 00:45:34,420
+and we give it the type of
+
+775
+00:45:34,420 --> 00:45:38,980
+which this list will contain. And it's,
+
+776
+00:45:38,980 --> 00:45:41,260
+you know, going to be called bars. It's
+
+777
+00:45:41,260 --> 00:45:45,010
+read functions bars and it has a
+
+778
+00:45:45,010 --> 00:45:52,090
+NOTIFY barsChanged. And what we're going to
+
+779
+00:45:52,090 --> 00:45:54,700
+find out here is that in reality our
+
+780
+00:45:54,700 --> 00:45:57,280
+bars is going to be read rights
+
+781
+00:45:57,280 --> 00:46:00,580
+even though we don't have a write
+
+782
+00:46:00,580 --> 00:46:03,370
+function. And the reason for that is that
+
+783
+00:46:03,370 --> 00:46:06,760
+the read function returns the list not
+
+784
+00:46:06,760 --> 00:46:08,560
+the contents of the list. So we can
+
+785
+00:46:08,560 --> 00:46:10,360
+manipulate the list after we get the
+
+786
+00:46:10,360 --> 00:46:13,560
+reference from the read function.
+
+787
+00:46:26,930 --> 00:46:45,910
+Yeah, okay.
+
+788
+00:46:57,470 --> 00:46:59,760
+Yeah, I don't, I don't think so. Because
+
+789
+00:46:59,760 --> 00:47:04,290
+the, because the items themselves need to
+
+790
+00:47:04,290 --> 00:47:08,760
+be destroyed by QML. Because, imagine if
+
+791
+00:47:08,760 --> 00:47:11,850
+you, the situation where you set three
+
+792
+00:47:11,850 --> 00:47:12,960
+styles in a row
+
+793
+00:47:12,960 --> 00:47:14,670
+or you keep changing the style because
+
+794
+00:47:14,670 --> 00:47:17,130
+you keep clicking on it like you can't
+
+795
+00:47:17,130 --> 00:47:18,720
+let them just sit out on the heap
+
+796
+00:47:18,720 --> 00:47:20,100
+waiting for their parent to die. That
+
+797
+00:47:20,100 --> 00:47:22,670
+would be at the end of the application.
+
+798
+00:47:22,670 --> 00:47:25,800
+So that, suggests that, it's doing the
+
+799
+00:47:25,800 --> 00:47:28,950
+management on after you said it, it would
+
+800
+00:47:28,950 --> 00:47:36,270
+delete, it. Yeah, and yeah. And that's gonna
+
+801
+00:47:36,270 --> 00:47:42,320
+be required for grabs. Yeah.
+
+802
+00:47:49,720 --> 00:47:52,450
+So we make this ChartItem which is
+
+803
+00:47:52,450 --> 00:47:57,040
+going to use our BarItem and we have
+
+804
+00:47:57,040 --> 00:48:00,330
+this QList of BarItem pointers. And
+
+805
+00:48:00,330 --> 00:48:05,710
+we are going to have a static append_bar
+
+806
+00:48:05,710 --> 00:48:10,480
+function which is going to take into the
+
+807
+00:48:10,480 --> 00:48:14,860
+list to append to and the BarItem to
+
+808
+00:48:14,860 --> 00:48:21,820
+append. So and then in our function bars
+
+809
+00:48:21,820 --> 00:48:24,970
+which is our read function, we are simply
+
+810
+00:48:24,970 --> 00:48:28,660
+going to go ahead and return a
+
+811
+00:48:28,660 --> 00:48:33,190
+QDeclarativeListProperty. And the
+
+812
+00:48:33,190 --> 00:48:34,690
+QDeclarativeListProperty is a little
+
+813
+00:48:34,690 --> 00:48:36,970
+complicated because it is a templates. So
+
+814
+00:48:36,970 --> 00:48:38,620
+it takes in the type of which it
+
+815
+00:48:38,620 --> 00:48:43,780
+contains. It, it takes in a pointer to the
+
+816
+00:48:43,780 --> 00:48:47,650
+as a parent and it takes in a function
+
+817
+00:48:47,650 --> 00:48:51,250
+pointer to append to. So that's how it's
+
+818
+00:48:51,250 --> 00:48:56,470
+going to know that when you call BAR, BAR,
+
+819
+00:48:56,470 --> 00:48:58,660
+BAR. how it's going to append, append,
+
+820
+00:48:58,660 --> 00:49:01,740
+append on to the list.
+
+821
+00:49:10,280 --> 00:49:15,290
+So in append_bar what we do is we set
+
+822
+00:49:15,290 --> 00:49:17,000
+the parents correctly so that we're
+
+823
+00:49:17,000 --> 00:49:18,650
+going to take possession of this item. So
+
+824
+00:49:18,650 --> 00:49:20,810
+we can arrange it correctly. We're going
+
+825
+00:49:20,810 --> 00:49:23,660
+to append on to our bars object and
+
+826
+00:49:23,660 --> 00:49:27,760
+we're going to omit barsChanged.
+
+827
+00:49:35,970 --> 00:49:40,350
+So what we've seen is a way to make a
+
+828
+00:49:40,350 --> 00:49:42,930
+QDeclarativeItem that can be
+
+829
+00:49:42,930 --> 00:49:45,840
+instance and seen on the screen like the ellipse.
+
+830
+00:49:45,840 --> 00:49:48,930
+We've seen how we can export
+
+831
+00:49:48,930 --> 00:49:51,810
+properties in enums. We've seen how we
+
+832
+00:49:51,810 --> 00:49:58,560
+can, we can export sub items, so our
+
+833
+00:49:58,560 --> 00:50:03,000
+ellipse had a style item. We've also seen
+
+834
+00:50:03,000 --> 00:50:06,480
+how we can have our visual item, have
+
+835
+00:50:06,480 --> 00:50:08,910
+other visual items and manage them in a
+
+836
+00:50:08,910 --> 00:50:12,920
+list like our chart had a list of bars
+
+837
+00:50:12,920 --> 00:50:15,840
+using the QDeclarativeListProperty,
+
+838
+00:50:15,840 --> 00:50:18,600
+which is a fairly complicated thing and
+
+839
+00:50:18,600 --> 00:50:20,610
+you know needs the function pointer to
+
+840
+00:50:20,610 --> 00:50:24,510
+append onto. But is generally using the
+
+841
+00:50:24,510 --> 00:50:28,110
+same Q_PROPERTY syntax as everything
+
+842
+00:50:28,110 --> 00:50:31,980
+else. So the final thing that we're going
+
+843
+00:50:31,980 --> 00:50:36,290
+to talk about is how to take your C++
+
+844
+00:50:36,290 --> 00:50:40,500
+items and put them into a module so just
+
+845
+00:50:40,500 --> 00:50:43,050
+like we had the line item module. We're
+
+846
+00:50:43,050 --> 00:50:45,300
+going to make our Shapes module. We're
+
+847
+00:50:45,300 --> 00:50:49,920
+instead of exporting the types from main
+
+848
+00:50:49,920 --> 00:50:52,830
+we're gonna let some shared objects take
+
+849
+00:50:52,830 --> 00:50:55,290
+care of that. And just like Qt scans
+
+850
+00:50:55,290 --> 00:50:57,150
+certain directories and gets all the
+
+851
+00:50:57,150 --> 00:50:59,190
+sequel drivers and all the image drivers
+
+852
+00:50:59,190 --> 00:51:01,320
+It is going to scan certain directories
+
+853
+00:51:01,320 --> 00:51:09,300
+and finds your QML C++ plugins. So what
+
+854
+00:51:09,300 --> 00:51:11,430
+you can do much like every other plug-in
+
+855
+00:51:11,430 --> 00:51:12,180
+in Qt.
+
+856
+00:51:12,180 --> 00:51:14,520
+You can simply inherit from
+
+857
+00:51:14,520 --> 00:51:18,330
+QDeclarativeExtensionPlugin same idea
+
+858
+00:51:18,330 --> 00:51:21,630
+as, you know, QImageFormatPlugin or a
+
+859
+00:51:21,630 --> 00:51:25,320
+QSequelDriverPlugin. And it needs to
+
+860
+00:51:25,320 --> 00:51:27,570
+use the Q_OBJECT macro and needs to
+
+861
+00:51:27,570 --> 00:51:30,330
+implement one function called registerTypes.
+
+862
+00:51:30,330 --> 00:51:37,020
+and what happens in registerTypes
+
+863
+00:51:37,020 --> 00:51:40,230
+is, well what you used to have in main. So
+
+864
+00:51:40,230 --> 00:51:42,720
+you'll have a qmlRegisterType<EllipseItem>.
+
+865
+00:51:42,720 --> 00:51:47,790
+You are going to be pass your uri.
+
+866
+00:51:47,790 --> 00:51:49,960
+The reason why this is
+
+867
+00:51:49,960 --> 00:51:54,339
+passed is because the Q, the QML manifest
+
+868
+00:51:54,339 --> 00:51:57,570
+is going to define that and
+
+869
+00:51:57,570 --> 00:52:00,609
+where you located in the file system is
+
+870
+00:52:00,609 --> 00:52:03,490
+going to define what the name of your
+
+871
+00:52:03,490 --> 00:52:08,020
+package is. You specify the version here.
+
+872
+00:52:08,020 --> 00:52:11,589
+We're up to 9.0 and we have the name of
+
+873
+00:52:11,589 --> 00:52:14,500
+the item is going to be ellipse. Now to
+
+874
+00:52:14,500 --> 00:52:16,180
+be entirely accurate we should really
+
+875
+00:52:16,180 --> 00:52:18,640
+have two registers. We, we should registry
+
+876
+00:52:18,640 --> 00:52:23,910
+ellipse item and register our style item.
+
+877
+00:52:24,690 --> 00:52:28,900
+And we have to use the magic export
+
+878
+00:52:28,900 --> 00:52:31,720
+plugin, too. Just like every other plugin,
+
+879
+00:52:31,720 --> 00:52:33,099
+this is going to expand to some see
+
+880
+00:52:33,099 --> 00:52:35,380
+symbols that Qt is going to use to go
+
+881
+00:52:35,380 --> 00:52:37,510
+fishing in the shared object to get your
+
+882
+00:52:37,510 --> 00:52:44,470
+entry points to call registerTypes. So
+
+883
+00:52:44,470 --> 00:52:46,510
+you want to build this as a shared
+
+884
+00:52:46,510 --> 00:52:49,060
+library so you can use something along
+
+885
+00:52:49,060 --> 00:52:52,510
+the lines of this project file. We have a
+
+886
+00:52:52,510 --> 00:52:56,410
+template of library we need to tell the
+
+887
+00:52:56,410 --> 00:52:59,580
+CONFIG variable that were a qt plugin.
+
+888
+00:52:59,580 --> 00:53:02,230
+We need to use HEADERS and SOURCES of
+
+889
+00:53:02,230 --> 00:53:05,740
+course and possibly a DESTDIR to drop
+
+890
+00:53:05,740 --> 00:53:10,450
+our shared object somewhere that's
+
+891
+00:53:10,450 --> 00:53:17,800
+useful. So we get back to this thing
+
+892
+00:53:17,800 --> 00:53:21,849
+where we have a plugins directory and
+
+893
+00:53:21,849 --> 00:53:24,220
+maybe a standalone directory and we have
+
+894
+00:53:24,220 --> 00:53:27,609
+this qmldir. So this qmldir is a
+
+895
+00:53:27,609 --> 00:53:30,160
+manifest and we saw that qmldir can
+
+896
+00:53:30,160 --> 00:53:33,420
+specify QML files. We can also specify
+
+897
+00:53:33,420 --> 00:53:37,240
+shared object plugins to load when you
+
+898
+00:53:37,240 --> 00:53:41,589
+load this import. And the way you do that
+
+899
+00:53:41,589 --> 00:53:45,970
+is you specify an extra line in your QML
+
+900
+00:53:45,970 --> 00:53:50,050
+jar that says plug-in ellipse. Plug-in,
+
+901
+00:53:50,050 --> 00:53:52,030
+that's the name of the shared object
+
+902
+00:53:52,030 --> 00:53:54,250
+without the dot so at the end and the
+
+903
+00:53:54,250 --> 00:53:57,160
+directory to find that shared object in
+
+904
+00:53:57,160 --> 00:53:59,890
+which is a relative path. So it could be
+
+905
+00:53:59,890 --> 00:54:02,619
+in, in this case, ../plugins. It
+
+906
+00:54:02,619 --> 00:54:04,490
+could be in
+
+907
+00:54:04,490 --> 00:54:10,850
+relative path plugins so in one qmldir
+
+908
+00:54:10,850 --> 00:54:13,580
+file you can have a bunch of QML files,
+
+909
+00:54:13,580 --> 00:54:20,480
+and one or more C++ plugins. And to the
+
+910
+00:54:20,480 --> 00:54:23,510
+user who imports that package, you know,
+
+911
+00:54:23,510 --> 00:54:25,190
+they're never quite sure if what's
+
+912
+00:54:25,190 --> 00:54:27,770
+implemented in QML and what's in C++. It
+
+913
+00:54:27,770 --> 00:54:36,050
+looks all the same to them. So, you know,
+
+914
+00:54:36,050 --> 00:54:41,930
+here's an example here of using the
+
+915
+00:54:41,930 --> 00:54:49,520
+ellipse. And if the qmldir and ellipse9s
+
+916
+00:54:49,520 --> 00:54:53,240
+are in the same directory then there's
+
+917
+00:54:53,240 --> 00:54:55,280
+no need to em, you don't need to import
+
+918
+00:54:55,280 --> 00:54:57,380
+your own module is pretty much the point
+
+919
+00:54:57,380 --> 00:55:01,430
+of this slide because ellipse9s is
+
+920
+00:55:01,430 --> 00:55:03,500
+actually a QML file that's being
+
+921
+00:55:03,500 --> 00:55:07,120
+distributed with our plugin.
+
+922
+00:55:13,520 --> 00:55:19,109
+so you can either let load these plugins
+
+923
+00:55:19,109 --> 00:55:23,270
+yourself using the QPluginLoader or
+
+924
+00:55:23,270 --> 00:55:27,990
+you can simply manipulate the QML import
+
+925
+00:55:27,990 --> 00:55:31,380
+path by manipulating static functions on
+
+926
+00:55:31,380 --> 00:55:34,920
+QApplication or setting the
+
+927
+00:55:34,920 --> 00:55:39,020
+QML import path environment variable.
+
+928
+00:55:51,170 --> 00:55:56,180
+So the extensions that you write in C++
+
+929
+00:55:56,180 --> 00:55:58,460
+can be compiled into plugins. They can be
+
+930
+00:55:58,460 --> 00:56:01,130
+bundled with other QML files and they
+
+931
+00:56:01,130 --> 00:56:05,800
+can be imported as one gigantic package
+
+932
+00:56:05,800 --> 00:56:09,530
+if you manipulate the QML import path or
+
+933
+00:56:09,530 --> 00:56:14,300
+use the - i flag to QML viewer. Thank You.
+
+934
+00:56:14,300 --> 00:56:18,530
+You will find these items so you don't
+
+935
+00:56:18,530 --> 00:56:21,500
+need to have a C++ wrapper. If you use
+
+936
+00:56:21,500 --> 00:56:24,110
+plugins you can actually get C++ code to
+
+937
+00:56:24,110 --> 00:56:26,840
+be run from QML viewer which is kind of
+
+938
+00:56:26,840 --> 00:56:30,920
+cool. You can load the plugins directly
+
+939
+00:56:30,920 --> 00:56:34,540
+using QPluginLoader or you can let
+
+940
+00:56:34,540 --> 00:56:37,580
+Qt automatically load the plugins using
+
+941
+00:56:37,580 --> 00:56:46,820
+QML import path that brings us to the
+
+942
+00:56:46,820 --> 00:00:00,000
+end of my presentation.
+

@@ -1,0 +1,180 @@
+﻿1
+00:00:00,750 --> 00:00:06,390
+Và đây là video 7.3 của Qt trên desktop,sẽ bao gồm liên kết  tĩnh trên Qt. Trong video này, chúng ta sẽ
+
+2
+00:00:06,390 --> 00:00:10,260
+tìm hiểu khi nào chúng ta sẽ liên kết tĩnh, tạo Qt cho liên kết tĩnh,
+
+3
+00:00:10,380 --> 00:00:12,870
+và cuối cùng liên kết tĩnh đến ứng dụng của chúng ta.
+
+4
+00:00:12,870 --> 00:00:15,530
+Vì vậy, khi nào chúng ta cần liên kết các thứ tĩnh?
+
+5
+00:00:15,630 --> 00:00:20,040
+Tôi có một vài lý do tại sao nó nên xuất hiện, nhưng lý do chính là nếu chúng ta đang phân phối một gói
+
+6
+00:00:20,040 --> 00:00:25,470
+ứng dụng cho khách hàng và chúng ta không muốn khách hàng của chúng ta tạo bug (lỗi) cho ứng dụng của chúng ta bằng cách tạo liên kết động đến
+
+7
+00:00:25,470 --> 00:00:26,880
+các phiên bản sai của đoạn mã.
+
+8
+00:00:26,880 --> 00:00:32,820
+Bây giờ, lưu ý rằng nếu các bạn liên kết tĩnh 1 dự án, các bạn cần phải hoặc mua giấy phép Qt, hay sẵn sàng
+
+9
+00:00:32,820 --> 00:00:36,730
+phân phối đoạn mã của các bạn cho mỗi giấy phép Qt.
+
+10
+00:00:36,750 --> 00:00:42,420
+Nhưng bây giờ chúng ta quyết định khoá đoạn mã chúng ta lại, chúng ta cần thật sự compile Qt cho liên kết tĩnh.
+
+11
+00:00:43,040 --> 00:00:46,470
+Nếu các bạn cài Qt bằng cách dùng Package Manager (trình quản lý Gói ứng dụng) hay  trong Windows,
+
+12
+00:00:46,470 --> 00:00:52,110
+binary mà bạn đã có không kèm với binary tĩnh thật sự. Vì vậy chúng ta cần tải
+
+13
+00:00:52,110 --> 00:00:58,080
+mã nguồn Qt, đổi đường dẫn đến mã nguồn, gọi lệnh cấu hình confgure, đưa vào tham số '-static' (tĩnh)
+
+14
+00:00:58,140 --> 00:01:03,810
+và sau đó compile (biên dịch) bằng lệnh 'make'. Đây là cách lệnh cơ bản. Cho Debian, chúng ta
+
+15
+00:01:03,810 --> 00:01:06,030
+dùng Package Manager.
+
+16
+00:01:06,090 --> 00:01:10,740
+Vì vậy, chúng ta bắt đầu với lệnh 'build-dep' và build mọi thứ chúng ta cần
+
+17
+00:01:10,740 --> 00:01:17,580
+cho Qtbase 5, phiên bản cho lập trình viên (qtbase5-dev) và sau đó chúng ta sẽ dùng lệnh 'source' ngay đây và
+
+18
+00:01:17,580 --> 00:01:18,550
+lấy mã nguồn.
+
+19
+00:01:18,600 --> 00:01:23,400
+Khi chúng ta xong, chúng ta có thể tiếp tục, đổi đường dẫn đến đó, dùng lệnh 'confgure' và
+
+20
+00:01:23,400 --> 00:01:25,280
+sau đó dùng lệnh 'make'.
+
+21
+00:01:25,290 --> 00:01:30,310
+Vậy, các bạn phải tự làm nó và nó sẽ tốn 1 ít thời gian.
+
+22
+00:01:30,480 --> 00:01:37,750
+Nhưng khi xong, chúng ta đã có bộ thư viện được xây dựng tình. Hãy tiếp tục và dùng chúng.
+
+23
+00:01:37,750 --> 00:01:43,540
+Bây giờ tôi dẫ cài đặt qmake tĩnh trong thư mục ứng dụng (app directory), điều này rất quan trọng bởi vì các bạn cần
+
+24
+00:01:43,540 --> 00:01:46,530
+dùng qmake được tạo bởi trình biên dịch tĩnh (static compilation),
+
+25
+00:01:46,570 --> 00:01:48,550
+không phải bởi trình biên dịch của hệ thống (system compilation).
+
+26
+00:01:48,550 --> 00:01:55,420
+Vì vậy, nếu chúng ta dùng lệnh 'which', các bạn sẽ thấy rằng qmake được gắn với userq/bin/qmake của tôi, không phải
+
+27
+00:01:55,420 --> 00:02:00,880
+là trình biên dịch tĩnh (static compilation), vì vậy tôi cần cung cấp 1 đường dẫn đầy đủ đến qmake tĩnh của tôi.
+
+28
+00:02:00,880 --> 00:02:05,090
+Vì vậy, trong trường hợp này, nó sẽ là 'opt/bin/qmake',
+
+29
+00:02:05,260 --> 00:02:12,970
+vậy trong soure code, tôi muốn tiếp tục và release (giải phóng) vì vậy tôi sẽ muốn dùng '-config'
+
+30
+00:02:12,970 --> 00:02:13,960
+'release' ở đây.
+
+31
+00:02:14,110 --> 00:02:21,170
+Hãy chạy. Và khi tôi xong quá trình cấu hình, tôi tiếp tiệp và gọi lệnh 'make'. Hoàn hảo.
+
+32
+00:02:21,430 --> 00:02:24,780
+Vậy chúng ta đi và xem thử liệu chúng ta có thể liên kết tĩnh hay không.
+
+33
+00:02:24,800 --> 00:02:29,140
+Cách tốt nhất để làm là gọi lệnh 'ldd' trên binary của chúng ta.
+
+34
+00:02:29,260 --> 00:02:32,710
+Chúng ta có 1 đống binary trong đây.
+
+35
+00:02:33,100 --> 00:02:40,170
+Vậy hãy xem liệu chúng ta có thật sự liên kết động với bất kỳ thư viện nào của chúng ta. Và các bạn thấy khi chúng ta chạy
+
+36
+00:02:40,170 --> 00:02:40,960
+lệnh đó,
+
+37
+00:02:40,980 --> 00:02:45,100
+grep libQt, chúng ta không nhận được gì trả về. Điều đó tốt.
+
+38
+00:02:45,150 --> 00:02:53,570
+Vậy, nếu chúng ta kiếm ldd của 1 binary mà dùng liên kết động, các bạn có thể thấy rằng chúng ta thật sự
+
+39
+00:02:53,570 --> 00:02:59,240
+khi chúng ta liên kết động, chúng ta liên kết đến Qt5Widgets, Qt5Gui and Qt5Core.
+
+40
+00:02:59,270 --> 00:03:04,940
+Vậy, liên kết tĩnh của chúng ta là cái mà chúng ta dùng trong qmake cho
+
+41
+00:03:05,030 --> 00:03:08,750
+trình biên dịch tĩnh (static compilation) Liên kết tĩnh là nhị phân.
+
+42
+00:03:08,780 --> 00:03:14,060
+Vì vậy với chúng ta đã thành công trong việc tìm ra cách để tĩnh liên kết một ứng dụng, làm thế nào để xây dựng Qt
+
+43
+00:03:14,060 --> 00:03:18,020
+cho liên kết tĩnh và khi nào dùng liên kết tĩnh.
+
+44
+00:03:18,140 --> 00:03:19,870
+Tham gia cùng chúng tôi trong phần tiếp khi chúng ta tìm hiểu
+
+45
+00:03:19,860 --> 00:03:20,900
+Qt trên mobile.
+

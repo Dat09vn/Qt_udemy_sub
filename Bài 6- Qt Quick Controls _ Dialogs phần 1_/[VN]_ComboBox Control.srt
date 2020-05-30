@@ -1,0 +1,1257 @@
+﻿1
+00:00:00,000 --> 00:00:02,190
+trong bài giảng này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,190 --> 00:00:03,120
+thành phần combobox
+
+3
+00:00:03,120 --> 00:00:05,640
+nó là thành phần cho phép
+
+4
+00:00:05,640 --> 00:00:08,010
+người dùng chọn các các lựa chọn khác nhau
+
+5
+00:00:08,010 --> 00:00:11,460
+nếu bạn dùng Qt creator, hãy vào
+
+6
+00:00:11,460 --> 00:00:15,210
+tools -> options và chọn Build & Run
+
+7
+00:00:15,210 --> 00:00:17,310
+ở đây bạn có một ô lựa chọn (option)
+
+8
+00:00:17,310 --> 00:00:20,070
+lựa chọn dừng chương trình trước khi build mới Tôi chỉ
+
+9
+00:00:20,070 --> 00:00:21,840
+muốn bạn thấy rằng một combobox là
+
+10
+00:00:21,840 --> 00:00:23,699
+một thứ giống như vậy, bạn click vào nó và
+
+11
+00:00:23,699 --> 00:00:25,980
+bạn có một số sự lựa chọn, ban có thể
+
+12
+00:00:25,980 --> 00:00:28,260
+lựa chọn bằng cách
+
+13
+00:00:28,260 --> 00:00:29,279
+click vào nó
+
+14
+00:00:29,279 --> 00:00:31,980
+bây giờ hãy tạo một dự án QT quick application
+
+15
+00:00:31,980 --> 00:00:35,719
+chúng ta gọi nó là combobox demo
+
+16
+00:00:35,719 --> 00:00:41,610
+nhấn next và chọn phiên bản Qt ta
+
+17
+00:00:41,610 --> 00:00:44,040
+muốn sử dụng. Ở phần chọn toolkits, chúng ta sẽ làm việc với
+want these toolkit we are working on
+
+18
+00:00:44,040 --> 00:00:48,960
+desktop trong chương trình thử nghiệm này, chúng ta thay đổi tiêu đề
+
+19
+00:00:48,960 --> 00:00:55,260
+thành combobox demo và chúng ta nên khai báo
+
+20
+00:00:55,260 --> 00:00:59,840
+import cho những controls (thành phần) của QT quick
+
+21
+00:00:59,840 --> 00:01:05,188
+controls 2.4 là cái mà chúng ta cần, chuyển xuống
+
+22
+00:01:05,188 --> 00:01:09,810
+đây chúng ta cần đặt một thành phần column (cột), ta
+
+23
+00:01:09,810 --> 00:01:15,240
+muốn các khoảng trắng (spacing) là 40 và ta muốn and we want
+
+24
+00:01:15,240 --> 00:01:19,369
+chiều rộng của nó thì giống với đối tượng cha
+
+25
+00:01:19,369 --> 00:01:21,960
+Ở đây chúng ta để một đối tượng nhãn (label)
+
+26
+00:01:21,960 --> 00:01:25,290
+và cái nhãn này thì nó cũng giống như một
+
+27
+00:01:25,290 --> 00:01:30,860
+chuỗi (text) sau đó chúng ta nhấn f1
+
+28
+00:01:30,860 --> 00:01:33,390
+sẽ thấy phần hướng dẫn, bạn sẽ
+
+29
+00:01:33,390 --> 00:01:36,750
+thấy rằng Label được kế thừa từ Text
+
+30
+00:01:36,750 --> 00:01:39,750
+với styling và font được thừa hưởng từ lớp Text
+
+31
+00:01:39,750 --> 00:01:42,960
+và Text thì có nhiều tính năng
+
+32
+00:01:42,960 --> 00:01:45,750
+ở đây bạn để vào một số chuỗi
+
+33
+00:01:45,750 --> 00:01:49,799
+để hiển thị ra và chúng ta gõ là
+
+34
+00:01:49,799 --> 00:01:57,329
+"Non Editable Combo" bởi vì chúng ta
+
+35
+00:01:57,329 --> 00:01:59,040
+muốn nói rằng combobox của ta
+
+36
+00:01:59,040 --> 00:02:03,390
+sẽ không cho chỉnh sửa, chúng ta đặt wrapMode là
+
+37
+00:02:03,390 --> 00:02:09,239
+Label.wrapMode, ta muốn nó được canh lề
+
+38
+00:02:09,239 --> 00:02:10,739
+ở giữa thì chúng ta đặt
+
+39
+00:02:10,739 --> 00:02:12,550
+horizontalAlignment là
+
+40
+00:02:12,550 --> 00:02:16,810
+Qt AlignHCenter và ta
+
+41
+00:02:16,810 --> 00:02:19,450
+muốn nó có chiều rộng bằng với
+
+42
+00:02:19,450 --> 00:02:23,200
+đối tượng cha, ta chỉnh Label với
+
+43
+00:02:23,200 --> 00:02:25,600
+các thuộc tính này với ý nghĩa mà
+
+44
+00:02:25,600 --> 00:02:28,720
+phù hợp với những gì ta muốn, bên dưới này
+
+45
+00:02:28,720 --> 00:02:31,440
+chúng ta để một phần tử combobox
+
+46
+00:02:31,440 --> 00:02:34,120
+xong, hãy cùng xem tài liệu hướng dẫn của nó
+
+47
+00:02:34,120 --> 00:02:37,690
+nhấn vào f1 để đi đến phần hướng dẫn đầy đủ và
+
+48
+00:02:37,690 --> 00:02:40,030
+bạn sẽ thấy là nó được kết hợp
+
+49
+00:02:40,030 --> 00:02:42,880
+giữa button (nút) và một danh sách pop-up, phần này
+
+50
+00:02:42,880 --> 00:02:45,640
+giúp giải thích kỹ hơn bản chất là khi bạn nhấn vào
+
+51
+00:02:45,640 --> 00:02:47,920
+nó thì danh sách pop-up sẽ hiển thị ra
+
+52
+00:02:47,920 --> 00:02:50,440
+với các lựa chọn để bạn chọn
+
+53
+00:02:50,440 --> 00:02:53,320
+okay, và bạn sẽ sử dụng nó như thế này, thuộc tính model
+
+54
+00:02:53,320 --> 00:02:55,810
+cho phép bạn định nghĩa một danh sách lựa chọn
+
+55
+00:02:55,810 --> 00:02:58,630
+danh sách này sẽ được hiển thị, và chúng ta chuyển sang
+
+56
+00:02:58,630 --> 00:03:01,360
+tab Edit, hãy cho nó một cái
+
+57
+00:03:01,360 --> 00:03:09,640
+ID, okay đây là tên ID chúng ta sẽ dùng,
+
+58
+00:03:09,640 --> 00:03:11,920
+đóng cái này lại, chúng ta muốn cài đặt dữ liệu cho nó
+
+59
+00:03:11,920 --> 00:03:15,010
+để hiển thị, sử dụng thuộc tính model, chúng ta sử dụng
+
+60
+00:03:15,010 --> 00:03:25,930
+một mảng, và hãy để thử một, hai...
+
+61
+00:03:25,930 --> 00:03:30,010
+Và ta muốn nó được canh giữa theo chiều
+
+62
+00:03:30,010 --> 00:03:32,790
+ngang vì vậy chúng ta để anchors
+
+63
+00:03:32,790 --> 00:03:35,550
+horizontalCenter là parent.horizontalCenter
+
+64
+00:03:35,550 --> 00:03:38,470
+và giờ chúng ta muốn biết
+
+65
+00:03:38,470 --> 00:03:41,320
+khi người dùng chọn một lựa chọn trong
+
+66
+00:03:41,320 --> 00:03:44,020
+combobox, nếu chúng ta quay lại
+
+67
+00:03:44,020 --> 00:03:47,980
+phần hướng dẫn và xem phần signals
+
+68
+00:03:47,980 --> 00:03:51,040
+có một signal (tín hiệu) tên là
+
+69
+00:03:51,040 --> 00:03:55,480
+activated và nó được phát ra khi một phần tử
+
+70
+00:03:55,480 --> 00:03:59,260
+tại vị trí index được kích hoạt bởi
+
+71
+00:03:59,260 --> 00:04:05,520
+người dùng okay, vậy chúng ta có thể chỉnh thuộc tính onActivated
+
+72
+00:04:07,140 --> 00:04:10,750
+thuộc tính này giúp chúng ta xử lý sự kiện đó
+
+73
+00:04:10,750 --> 00:04:13,239
+và ở đây chúng ta muốn sẽ hiện ra
+
+74
+00:04:13,239 --> 00:04:15,880
+phần tử mà chúng ta chọn và có
+
+75
+00:04:15,880 --> 00:04:17,918
+một thuộc tính khác giúp ta
+
+76
+00:04:17,918 --> 00:04:22,060
+làm được điều đó, thuộc tính đó là
+
+77
+00:04:22,060 --> 00:04:26,860
+currentText, chúng ta có thể để console.log
+
+78
+00:04:26,860 --> 00:04:31,360
+chúng ta muốn lấy giá trị ở current index nên để
+
+79
+00:04:31,360 --> 00:04:33,919
+currentIndex bên trong dấu ngoặc vuông
+
+80
+00:04:33,919 --> 00:04:44,900
+như thế này okay, đầu tiên ta muốn
+
+81
+00:04:44,900 --> 00:04:47,389
+hiển thị chỉ số của phần tử hiện tại
+
+82
+00:04:47,389 --> 00:04:49,969
+có một thuộc tính khác của combobox
+
+83
+00:04:49,969 --> 00:04:52,039
+nếu bạn qua đây và xem
+
+84
+00:04:52,039 --> 00:04:55,580
+thuộc tính này lưu giữ chỉ số hiện tại
+
+85
+00:04:55,580 --> 00:04:57,819
+của phần tử đang được chọn trong combobox
+
+86
+00:04:57,819 --> 00:05:01,069
+được rồi, chúng ta sẽ cộng currentText
+
+87
+00:05:01,069 --> 00:05:05,509
+để hiển thị phần tử hiện tại và ta
+
+88
+00:05:05,509 --> 00:05:08,349
+sẽ cộng thêm chuỗi
+
+89
+00:05:08,349 --> 00:05:13,909
+is activated, okay bạn sẽ hiểu ý
+
+90
+00:05:13,909 --> 00:05:16,819
+của tôi khi ta chạy nó lên, nào hãy
+
+91
+00:05:16,819 --> 00:05:21,289
+chạy ứng dụng lên, mm-hmm bạn thấy đó
+
+92
+00:05:21,289 --> 00:05:23,300
+khi ta click vào combobox chúng ta
+
+93
+00:05:23,300 --> 00:05:26,180
+có một danh sách các lựa chọn, bạn có thể lựa chọn
+
+94
+00:05:26,180 --> 00:05:28,580
+một trong bốn, ví dụ ở đây ta chọn
+
+95
+00:05:28,580 --> 00:05:33,830
+phần tử Three và nó hiện ra chỉ số của phần tử,
+
+96
+00:05:33,830 --> 00:05:36,979
+chữ hiển thị trên phần tử và chuỗi is activated
+
+97
+00:05:36,979 --> 00:05:41,240
+okay, chỉ số của phần tử Three là 2 bời vì
+
+98
+00:05:41,240 --> 00:05:44,750
+chỉ số được bắt đầu từ 0 nên sẽ là 0 1 2
+
+99
+00:05:44,750 --> 00:05:50,240
+và phần từ cuối cùng sẽ là 3 và nó hiện
+
+100
+00:05:50,240 --> 00:05:52,639
+tiếp chuỗi trên phần tử và tiếp theo là chữ
+
+101
+00:05:52,639 --> 00:05:53,479
+it is activated
+
+102
+00:05:53,479 --> 00:05:56,210
+Tôi hi vọng rằng bạn đã nắm được cách
+
+103
+00:05:56,210 --> 00:05:59,300
+lấy được phần tử mà đang được chọn trong
+
+104
+00:05:59,300 --> 00:06:02,270
+combobox và cả cách
+
+105
+00:06:02,270 --> 00:06:05,479
+làm sao để truyền vào combobox
+
+106
+00:06:05,479 --> 00:06:09,469
+một danh sách mà nó có thể hiển thị lên được, đó chính là
+
+107
+00:06:09,469 --> 00:06:12,529
+nhờ vào thuộc tính model, chúng ta chưa thật sự
+
+108
+00:06:12,529 --> 00:06:15,409
+tìm hiểu về model kỹ càng, tuy nhiên chúng ta
+
+109
+00:06:15,409 --> 00:06:17,270
+sẽ nói về nó kỹ hơn sau trong khóa học này
+
+110
+00:06:17,270 --> 00:06:20,569
+hiện tại bạn chỉ cần hiểu nó là một cách
+
+111
+00:06:20,569 --> 00:06:24,110
+để bạn truyền dữ liệu cho combobox của bạn
+
+112
+00:06:24,110 --> 00:06:26,509
+và điều đó đã được chúng ta làm từ nãy đến giờ.
+
+113
+00:06:26,509 --> 00:06:29,360
+Vừa rồi bạn đã biết cách làm việc với một
+
+114
+00:06:29,360 --> 00:06:32,689
+combobox không cho chỉnh sửa bằng cách truyền cho nó
+
+115
+00:06:32,689 --> 00:06:35,569
+dữ liệu tĩnh và bằng cách thông qua các thuộc tính ở đây
+
+116
+00:06:35,569 --> 00:06:38,729
+Phần kế tiếp tôi muốn giới thiệu với bạn là
+
+117
+00:06:38,729 --> 00:06:41,939
+về combobox có thể chỉnh sửa được là thứ mà ta có thể thêm
+
+118
+00:06:41,939 --> 00:06:45,509
+dữ liệu vào ngay khi đang chạy chương trình okay, chúng ta sẽ
+
+119
+00:06:45,509 --> 00:06:48,059
+gọi nó là Editable và
+
+120
+00:06:48,059 --> 00:06:51,419
+các thuộc tính khác thì giống như ban đầu và chúng ta
+
+121
+00:06:51,419 --> 00:06:54,169
+sẽ copy cái combobox này
+
+122
+00:06:54,169 --> 00:06:59,879
+với tất cả các thuộc tính bên trong okay,
+
+123
+00:06:59,879 --> 00:07:03,229
+chúng ta sẽ gọi nó là editableCombo
+
+124
+00:07:03,229 --> 00:07:07,020
+bởi vì chúng ta muốn chỉnh sửa nó và ta sẽ
+
+125
+00:07:07,020 --> 00:07:12,479
+để thuộc tính editable là true
+
+126
+00:07:12,479 --> 00:07:15,259
+sẽ làm cho nó có thể chỉnh sửa được
+
+127
+00:07:15,559 --> 00:07:18,059
+rồi và một thứ khác bạn cần chỉnh nữa là
+
+128
+00:07:18,059 --> 00:07:20,550
+bạn sẽ cung cấp cho nó một
+
+129
+00:07:20,550 --> 00:07:23,729
+cái model cụ thể, chúng ta sẽ sử dụng một
+
+130
+00:07:23,729 --> 00:07:30,509
+model là ListModel, chúng ta đặt
+
+131
+00:07:30,509 --> 00:07:33,360
+cho nó một ID và
+
+132
+00:07:33,360 --> 00:07:37,169
+nhắc lại là tôi sẽ không giải thích kỹ về model
+
+133
+00:07:37,169 --> 00:07:40,080
+trong QT quick ngay bây giờ tôi chỉ muốn bạn hiểu
+
+134
+00:07:40,080 --> 00:07:42,300
+nó là cái gì đó để chứa dữ liệu cho combobox
+
+135
+00:07:42,300 --> 00:07:45,149
+và hãy xem những gì tôi làm ở đây
+
+136
+00:07:45,149 --> 00:07:47,819
+đừng chú ý quá vào vấn đề model
+
+137
+00:07:47,819 --> 00:07:50,610
+mà hãy chú ý vào việc làm sao truyền dữ liệu cho combobox
+
+138
+00:07:50,610 --> 00:07:53,159
+okay, tôi sẽ đi và giải thích nó
+
+139
+00:07:53,159 --> 00:07:53,999
+như tôi đã làm
+
+140
+00:07:53,999 --> 00:07:57,180
+để tiết kiệm thời gian tôi sẽ copy
+
+141
+00:07:57,180 --> 00:08:01,319
+danh sách phần tử của model vào đây
+
+142
+00:08:01,319 --> 00:08:04,529
+nhấn ctrl A rồi control I để dóng hàng lại code
+
+143
+00:08:04,529 --> 00:08:08,520
+tôi vừa copy các ListElement vào,
+
+144
+00:08:08,520 --> 00:08:11,069
+phần tử này là một phần tử mà bạn
+
+145
+00:08:11,069 --> 00:08:15,419
+có thể thêm chúng vào model của mình, okay bạn thấy là
+
+146
+00:08:15,419 --> 00:08:19,020
+chúng ta có các object ở bên trong, ta có một
+
+147
+00:08:19,020 --> 00:08:21,509
+thuộc tính text và một thuộc tính về
+
+148
+00:08:21,509 --> 00:08:24,659
+location, ta có một vài con vật ở trong,
+
+149
+00:08:24,659 --> 00:08:27,149
+có chó, gà, mèo và chồn (meerkat) và
+
+150
+00:08:27,149 --> 00:08:30,080
+location (địa điểm) là Kigali, Beijing, Mumbai và
+
+151
+00:08:30,080 --> 00:08:36,179
+Paris, hãy xem cách truyền
+
+152
+00:08:36,179 --> 00:08:38,458
+dữ liệu cho combobox, đừng chú ý quá nhiều vào
+
+153
+00:08:38,458 --> 00:08:41,279
+chi tiết như thế nào, tôi sẽ
+
+154
+00:08:41,279 --> 00:08:43,169
+giải thích kỹ hơn khi chúng ta
+
+155
+00:08:43,169 --> 00:08:45,660
+nói về model và cách sử dụng trong
+
+156
+00:08:45,660 --> 00:08:48,390
+Qt quick, bởi vì ListElement của chúng ta có 2
+
+157
+00:08:48,390 --> 00:08:51,240
+thuộc tính nên chúng ta phải xác định
+
+158
+00:08:51,240 --> 00:08:52,620
+thuộc tính nào sẽ
+
+159
+00:08:52,620 --> 00:08:55,200
+được hiện ra trong ListModel như
+
+160
+00:08:55,200 --> 00:08:58,320
+các chữ One, Two, Three ở trong combobox đầu tiên
+
+161
+00:08:58,320 --> 00:09:01,200
+ở đây cách để chúng ta chỉ ra là bạn sẽ chỉnh
+
+162
+00:09:01,200 --> 00:09:06,870
+thuộc tính textRole và bạn truyền
+
+163
+00:09:06,870 --> 00:09:09,870
+tên của thuộc tính mà bạn có trong
+
+164
+00:09:09,870 --> 00:09:12,150
+model của bạn và tên này nên
+
+165
+00:09:12,150 --> 00:09:17,670
+được để trong nháy đơn, đừng quên điều đó và bây giờ
+
+166
+00:09:17,670 --> 00:09:20,190
+nếu chúng ta chạy chương trình hãy xem
+
+167
+00:09:20,190 --> 00:09:24,900
+ta thấy gì, mm-hmm bạn thấy là các phần tử của chúng ta
+
+168
+00:09:24,900 --> 00:09:28,230
+hiện ra bên trong, chúng ta có chó, gà,
+
+169
+00:09:28,230 --> 00:09:30,990
+mèo và chồn, bạn có thể thấy rằng
+
+170
+00:09:30,990 --> 00:09:33,360
+combobox này khác với combobox mà ta đã
+
+171
+00:09:33,360 --> 00:09:36,750
+làm trước đó bởi vì nó cho phép chúng ta thay đổi
+
+172
+00:09:36,750 --> 00:09:39,089
+dữ liệu bên trong, ví dụ nếu chúng ta để
+
+173
+00:09:39,089 --> 00:09:43,080
+dog111 và nhấn enter chúng ta thấy rằng
+
+174
+00:09:43,080 --> 00:09:46,110
+dữ liệu của chúng ta không được thêm vào model, tại sao ?
+
+175
+00:09:46,110 --> 00:09:48,900
+Nó bởi vì bạn không
+
+176
+00:09:48,900 --> 00:09:52,500
+cấu hình cho tín hiệu (signal) accepted của
+
+177
+00:09:52,500 --> 00:09:54,870
+combobox, nếu bạn quay lại phần
+
+178
+00:09:54,870 --> 00:09:58,459
+tài liệu hướng dẫn của combobox
+
+179
+00:09:58,459 --> 00:10:03,570
+hãy xem ở phần Signals, tín hiệu accepted được
+
+180
+00:10:03,570 --> 00:10:06,330
+phát đi khi có sự kiện nhấn nút Enter
+
+181
+00:10:06,330 --> 00:10:09,420
+trên Editable combobox vì thế chúng ta
+
+182
+00:10:09,420 --> 00:10:12,900
+cần cấu hình tín hiệu này và phải
+
+183
+00:10:12,900 --> 00:10:16,470
+thêm dữ liệu vào model, trước khi chúng ta
+
+184
+00:10:16,470 --> 00:10:19,410
+làm việc đó, tôi muốn bạn xem một
+
+185
+00:10:19,410 --> 00:10:24,360
+thuộc tính khác, đó là editText
+
+186
+00:10:24,360 --> 00:10:27,390
+nó là đố tượng chứa chuỗi text mà người dùng gõ vào
+
+187
+00:10:27,390 --> 00:10:31,260
+combobox để thêm vào model, chúng ta
+
+188
+00:10:31,260 --> 00:10:33,959
+sẽ sử dụng 2 thứ, hãy
+
+189
+00:10:33,959 --> 00:10:43,230
+xuống đây và chỉnh onAccepted, nhưng
+
+190
+00:10:43,230 --> 00:10:46,920
+trước khi chúng ta thêm phần tử vào model
+
+191
+00:10:46,920 --> 00:10:49,800
+chúng ta cần kiểm tra là combobox
+
+192
+00:10:49,800 --> 00:10:52,529
+chưa có phần tử đó, ví
+
+193
+00:10:52,529 --> 00:10:54,959
+dụ như nếu bạn thêm một con chó nữa
+
+194
+00:10:54,959 --> 00:10:57,900
+trong khi chó đã có ở đây, chúng ta nên
+
+195
+00:10:57,900 --> 00:11:00,050
+nhận diện việc đó và không thêm dữ liệu đó nữa,
+
+196
+00:11:00,050 --> 00:11:02,060
+Cách để làm điều này là bạn sẽ sử dụng
+
+197
+00:11:02,060 --> 00:11:04,750
+phương thức được cung cấp của ListElement
+
+198
+00:11:04,750 --> 00:11:09,050
+phương thức đó là find ở đây
+
+199
+00:11:09,050 --> 00:11:13,670
+phương thức này trả về chỉ số của
+
+200
+00:11:13,670 --> 00:11:17,269
+chuỗi đó trong danh sách phần tử của mình hoặc trả về -1 nếu không
+
+201
+00:11:17,269 --> 00:11:20,810
+tìm thấy, và chúng ta cần làm là code
+
+202
+00:11:20,810 --> 00:11:23,470
+nếu hàm find chuỗi editText
+
+203
+00:11:23,470 --> 00:11:29,870
+bởi vì editText là chuỗi
+
+204
+00:11:29,870 --> 00:11:32,990
+mà người dùng gõ vào combobox
+
+205
+00:11:32,990 --> 00:11:35,450
+nếu chúng ta không tìm thấy nó trong combobox
+
+206
+00:11:35,450 --> 00:11:39,470
+thì hàm find sẽ trả về -1
+
+207
+00:11:39,470 --> 00:11:42,950
+và lúc này chúng ta sẽ thêm
+
+208
+00:11:42,950 --> 00:11:44,779
+phần tử mới vào model, chúng ta sẽ
+
+209
+00:11:44,779 --> 00:11:48,350
+gõ "model" là ID của model của chúng ta
+
+210
+00:11:48,350 --> 00:11:51,769
+và gõ append rồi chúng ta sẽ
+
+211
+00:11:51,769 --> 00:11:54,470
+thêm một đối tượng vào, okay giờ chúng ta
+
+212
+00:11:54,470 --> 00:12:02,810
+gõ text rồi editText bời vì
+
+213
+00:12:02,810 --> 00:12:06,170
+model của chúng ta có 2 thuộc tính trong
+
+214
+00:12:06,170 --> 00:12:08,810
+ListElement, chúng ta có thể thêm địa điểm (location)
+
+215
+00:12:08,810 --> 00:12:18,230
+là US chẳng hạn
+
+216
+00:12:18,230 --> 00:12:22,660
+hãy thử làm như thế và giờ chạy lại chương trình
+
+217
+00:12:22,660 --> 00:12:26,120
+okay, bạn sẽ thấy chúng ta có 4
+
+218
+00:12:26,120 --> 00:12:29,320
+tử và nếu ta xóa cái này và thay bằng
+
+219
+00:12:29,320 --> 00:12:35,779
+con trâu (buffalo) rồi enter hãy nhìn lại
+
+220
+00:12:35,779 --> 00:12:38,120
+bạn thấy rằng chúng ta có buffalo và nếu chúng ta
+
+221
+00:12:38,120 --> 00:12:41,360
+chọn nó bạn sẽ thấy chỉ số số 4 đã được
+
+222
+00:12:41,360 --> 00:12:44,930
+thêm và nó là Buffalo, okay chúng ta có thể
+
+223
+00:12:44,930 --> 00:12:48,020
+thêm dữ liệu thủ công vào model của mình ở đây
+
+224
+00:12:48,020 --> 00:12:55,160
+bây giờ thử thêm Giraffe (hưu cao cổ) nhấn enter và nhìn lại
+
+225
+00:12:55,160 --> 00:12:57,050
+bạn thấy chúng ta có Buffalo và chúng ta có
+
+226
+00:12:57,050 --> 00:12:59,540
+Giraffe ở cuói cùng, tôi muố giói thiệu
+
+227
+00:12:59,540 --> 00:13:02,510
+với bạn cách thêm thủ công
+
+228
+00:13:02,510 --> 00:13:04,940
+một phần tử mà không phải chọn một phần tử khác
+
+229
+00:13:04,940 --> 00:13:06,490
+thi thoảng bạn cần điều đó
+
+230
+00:13:06,490 --> 00:13:10,680
+rồi giờ hãy xuống đây và thêm một nút
+
+231
+00:13:10,680 --> 00:13:14,320
+bạn đã biết cách sử dụng một nút (button)
+
+232
+00:13:14,320 --> 00:13:22,810
+thuộc tính text sẽ là "Capture current element"
+
+233
+00:13:22,810 --> 00:13:24,610
+ta muốn nó được canh giữa vì thế ta sẽ
+
+234
+00:13:24,610 --> 00:13:27,390
+copy đoạn này và bỏ vào đây
+
+235
+00:13:27,390 --> 00:13:31,060
+và thuộc tính onClicked, chúng ta muốn lấy
+
+236
+00:13:31,060 --> 00:13:33,670
+phần tử được chọn hiện tại và hiển thị nó lên
+
+237
+00:13:33,670 --> 00:13:35,560
+màn hình debug, vì thế chúng ta gõ
+
+238
+00:13:35,560 --> 00:13:41,710
+console.log, chúng ta muốn lấy giá trị thuộc tính text và
+
+239
+00:13:41,710 --> 00:13:45,190
+location của ListElement ở đây
+
+240
+00:13:45,190 --> 00:13:48,460
+của phần tử đang được chọn trong
+
+241
+00:13:48,460 --> 00:13:52,480
+combobox, cách làm là bạn
+
+242
+00:13:52,480 --> 00:13:56,430
+cần nối chuỗi trong cặp ngoặc vuông này
+
+243
+00:13:56,430 --> 00:14:03,160
+chúng ta gõ trong này
+
+244
+00:14:03,160 --> 00:14:10,050
+model.get, đây là phương thức được
+
+245
+00:14:10,050 --> 00:14:13,240
+cung cấp bởi model, nó đơn giản
+
+246
+00:14:13,240 --> 00:14:16,240
+là trả về đối tượng ListElement và
+
+247
+00:14:16,240 --> 00:14:18,760
+sau đó bạn có thể lấy được thuộc tính của nó bằng cách
+
+248
+00:14:18,760 --> 00:14:20,710
+chấm ra, tôi sẽ làm để bạn
+
+249
+00:14:20,710 --> 00:14:22,960
+hiểu ý của tôi, tôi gõ
+
+250
+00:14:22,960 --> 00:14:28,390
+editableComboboxId.currentIndex, okay
+
+251
+00:14:28,390 --> 00:14:31,020
+khi bạn làm thế nó sẽ trả về
+
+252
+00:14:31,020 --> 00:14:34,300
+ListElement mà đang được
+
+253
+00:14:34,300 --> 00:14:40,180
+chọn, và ta gõ .text để lấy giá trị
+
+254
+00:14:40,180 --> 00:14:40,900
+của thuộc tính text
+
+255
+00:14:40,900 --> 00:14:44,860
+chúng ta đê dấu : ở đây
+
+256
+00:14:44,860 --> 00:14:47,890
+và thêm giá trị thuộc tính Location nữa, và thế là
+
+257
+00:14:47,890 --> 00:14:55,090
+chúng ta đã lấy được thông tin của nó và để
+
+258
+00:14:55,090 --> 00:14:57,490
+vào đây ở dòng bên dưới để code
+
+259
+00:14:57,490 --> 00:15:01,800
+dễ đọc hơn, và gõ .location, tôi
+
+260
+00:15:01,800 --> 00:15:05,140
+hi vọng nó dễ hiểu, đây là một phương thức
+
+261
+00:15:05,140 --> 00:15:09,970
+của ListModel, nó lấy
+
+262
+00:15:09,970 --> 00:15:13,150
+ListElement ở vị trí index, và chúng ta
+
+263
+00:15:13,150 --> 00:15:15,610
+truyền cho nó currentIndex, ta sẽ
+
+264
+00:15:15,610 --> 00:15:19,810
+lấy được đối tượng ListElement và chúng ta
+
+265
+00:15:19,810 --> 00:15:22,819
+lấy thuộc tính text bằng cách gõ .text,
+
+266
+00:15:22,819 --> 00:15:25,100
+lấy location bằng cách gõ
+
+267
+00:15:25,100 --> 00:15:27,229
+.location, rồi chúng ta chạy
+
+268
+00:15:27,229 --> 00:15:31,699
+lại chương trình, chúng ta click nút
+
+269
+00:15:31,699 --> 00:15:34,879
+"Capture current element" và bạn sẽ thấy
+
+270
+00:15:34,879 --> 00:15:38,600
+Dog Kigali là cái mà chúng ta có
+
+271
+00:15:38,600 --> 00:15:42,619
+chó ở Kigali, hãy thêm dữ liệu mới
+
+272
+00:15:42,619 --> 00:15:48,589
+và gõ là Buffalo, hãy nhớ rằng
+
+273
+00:15:48,589 --> 00:15:51,679
+phần tử được thêm thủ công vào thì
+
+274
+00:15:51,679 --> 00:15:54,350
+sẽ được đặt vị trí (location) mặc đinh là US
+
+275
+00:15:54,350 --> 00:15:57,369
+bởi vì chúng ta đã code như vậy ở đây
+
+276
+00:15:57,369 --> 00:16:02,299
+ok, như vậy là chúng ta thêm Buffalo
+
+277
+00:16:02,299 --> 00:16:04,309
+vào danh sách và chúng ta sẽ có
+
+278
+00:16:04,309 --> 00:16:06,679
+phần tử hiện tại là Buffalo
+
+279
+00:16:06,679 --> 00:16:10,429
+có địa điểm là US, nào hãy thêm Giraffe vào, nó
+
+280
+00:16:10,429 --> 00:16:16,579
+cũng sẽ có location là US, rồi chọn
+
+281
+00:16:16,579 --> 00:16:20,319
+chicken, nó sẽ ở Beijing
+
+282
+00:16:20,319 --> 00:16:24,649
+chọn Giraffe thì nó sẽ ở
+
+283
+00:16:24,649 --> 00:16:27,819
+US
+
+284
+00:16:27,819 --> 00:16:31,069
+tôi nghĩ là có một chút vô dụng nếu
+
+285
+00:16:31,069 --> 00:16:34,429
+dữ liệu location được code cứng như thế này nhưng
+
+286
+00:16:34,429 --> 00:16:37,549
+chúng ta hoàn toàn có thể lấy dữ liệu location một cách đơn giản
+
+287
+00:16:37,549 --> 00:16:39,589
+từ một nơi khác trên ứng dụng của bạn
+
+288
+00:16:39,589 --> 00:16:42,439
+và sử dụng dữ liệu đó ở đây (nghĩa là không code cứng), phần này
+
+289
+00:16:42,439 --> 00:16:45,229
+tôi code cứng bởi vì tôi chỉ muốn giới thiệu cách đọc
+
+290
+00:16:45,229 --> 00:16:48,289
+dữ liệu được lưu trữ trong model mà bạn
+
+291
+00:16:48,289 --> 00:16:51,289
+định nghĩa và cung cấp cho combobox
+
+292
+00:16:51,289 --> 00:16:53,720
+và bây giờ bạn đã nắm được cách
+
+293
+00:16:53,720 --> 00:16:55,459
+để àm việc với
+
+294
+00:16:55,459 --> 00:16:58,729
+combobox không cho chỉnh sửa và combobox
+
+295
+00:16:58,729 --> 00:17:02,419
+có thể chỉnh sửa, ok bạn có thể sử dụng dữ liệu tĩnh
+
+296
+00:17:02,419 --> 00:17:05,529
+như thế này hoặc bạn có thể truyền vào một
+
+297
+00:17:05,529 --> 00:17:09,439
+model cụ thể như thế này, rồi đừng quên
+
+298
+00:17:09,439 --> 00:17:12,619
+thêm thuộc tính textRole cho
+
+299
+00:17:12,619 --> 00:17:14,599
+model của bạn khi bạn muốn làm giống thế này
+
+300
+00:17:14,599 --> 00:17:16,909
+bởi vì nếu bạn quên thì combobox của bạn
+
+301
+00:17:16,909 --> 00:17:19,878
+sẽ không biết được nó sẽ
+
+302
+00:17:19,878 --> 00:17:23,750
+hiển thị cái gì ra ở đây, rồi ví dụ nếu ta chú thích lại
+
+303
+00:17:23,750 --> 00:17:26,990
+và chạy lại chương trình chúng ta sẽ
+
+304
+00:17:26,990 --> 00:17:29,450
+bị lỗi ở combobox vì nó không biết
+
+305
+00:17:29,450 --> 00:17:31,700
+phải hiển thị cái gì
+
+306
+00:17:31,700 --> 00:17:33,860
+đây là một lỗi của combobox
+
+307
+00:17:33,860 --> 00:17:36,049
+bởi nó không thể biết
+
+308
+00:17:36,049 --> 00:17:36,290
+hiển thị cái gì
+
+309
+00:17:36,290 --> 00:17:39,170
+bạn cần phải thêm thuộc tính này để để có được
+
+310
+00:17:39,170 --> 00:17:41,890
+một model như thế này có thể hoạt động
+
+311
+00:17:41,890 --> 00:17:44,570
+đến đây là toàn bộ những gì tôi muốn nói trong bài này,
+
+312
+00:17:44,570 --> 00:17:46,640
+ở bài kế tiếp ta sẽ nói về một phần tử
+
+313
+00:17:46,640 --> 00:17:49,490
+được gọi là  Delay Button (Nút chờ)
+
+314
+00:17:49,490 --> 00:00:00,000
+và hẹn gặp bạn ở bài đó
+

@@ -1,0 +1,1328 @@
+﻿1
+00:00:00,000 --> 00:00:01,560
+Trong bài giảng này, ta sẽ học về
+
+2
+00:00:01,560 --> 00:00:03,990
+phần "ApplicationWindow" (Cửa sổ úng dụng). Trong bài học này,
+
+3
+00:00:03,990 --> 00:00:06,420
+ta sẽ đi qua phần menu, thanh menu
+
+4
+00:00:06,420 --> 00:00:08,519
+và StackView. "ApplicationWindow"
+
+5
+00:00:08,519 --> 00:00:10,980
+chia giao diện
+
+6
+00:00:10,980 --> 00:00:13,769
+thành những phần có sẵn để ta tạo
+
+7
+00:00:13,769 --> 00:00:15,750
+nội dung. Ví dụ như ta có thanh menu,
+
+8
+00:00:15,750 --> 00:00:17,880
+có header (phía trên đầu giao diện) và
+
+9
+00:00:17,880 --> 00:00:20,460
+footer (phía dưới chân giao diện), và giao diện
+
+10
+00:00:20,460 --> 00:00:22,830
+chính. Nếu ta nhìn sang phần
+
+11
+00:00:22,830 --> 00:00:24,300
+bên phải này, đây là ứng dụng mà ta sẽ làm
+
+12
+00:00:24,300 --> 00:00:26,910
+trong bài học này, trong thanh menu có
+
+13
+00:00:26,910 --> 00:00:29,760
+File, Edit, Help. Ở
+
+14
+00:00:29,760 --> 00:00:32,610
+phần header, ta có các nút này.
+
+15
+00:00:32,610 --> 00:00:34,860
+Đây là những nút rất tiện dụng cho
+
+16
+00:00:34,860 --> 00:00:37,500
+mục nằm bên trong menu "File", "Edit",
+
+17
+00:00:37,500 --> 00:00:39,719
+"Help". Ta có giao diện chính
+
+18
+00:00:39,719 --> 00:00:42,239
+bao gồm những hình chữ nhật ở đây và
+
+19
+00:00:42,239 --> 00:00:44,579
+ta có footer chứa
+
+20
+00:00:44,579 --> 00:00:46,649
+các thanh "Tab". Và để có thể hiển thị qua lại các
+
+21
+00:00:46,649 --> 00:00:48,870
+trang giao diện, ta sẽ dùng StackView.
+
+22
+00:00:48,870 --> 00:00:51,329
+Ta cũng sẽ học cách
+
+23
+00:00:51,329 --> 00:00:53,699
+sử dụng nó. Ta sẽ mở
+
+24
+00:00:53,699 --> 00:00:56,610
+Qt creator và làm ứng dụng trên. Ta đang ở
+
+25
+00:00:56,610 --> 00:00:58,980
+Qt creator, ta sẽ tạo
+
+26
+00:00:58,980 --> 00:01:03,620
+một project (dự án). Nó là Qt Quick Application.
+
+27
+00:01:04,549 --> 00:01:06,650
+Ta nhấn Next,
+
+28
+00:01:06,650 --> 00:01:13,170
+chọn phiên bản Qt, chọn bộ kit
+
+29
+00:01:13,170 --> 00:01:22,229
+và nhấn "Finish". Ta cần import Qt Quick
+
+0:01:17.939,0:01:24.990
+controls và ta cần đổi tiêu đề
+
+30
+00:01:22,229 --> 00:01:24,990
+thành "ApplicationWindow Demo".
+
+31
+00:01:24,990 --> 00:01:28,049
+Chèn một kí tự trắng vào đây. Ta vào phần
+
+32
+00:01:28,049 --> 00:01:37,650
+tài liệu và tìm hiểu về nó. Nếu ta vào
+
+33
+00:01:37,650 --> 00:01:40,079
+phần mô tả, nó là một
+
+34
+00:01:40,079 --> 00:01:42,509
+window (cửa sổ) mà rất thuận tiện cho việc thêm
+
+35
+00:01:42,509 --> 00:01:45,090
+các thanh menu, header, footer và những phần tử
+
+36
+00:01:45,090 --> 00:01:47,970
+khác. Ta thấy nó ở đây, và đây là
+
+37
+00:01:47,970 --> 00:01:50,490
+code tạo ra nó, và ta có tất cả
+
+38
+00:01:50,490 --> 00:01:52,920
+các thành phần mà ta có thể sử dụng: thanh menu,
+
+39
+00:01:52,920 --> 00:01:55,890
+header, footer và ta cho
+
+40
+00:01:55,890 --> 00:01:57,869
+một vài nội dung vào bên trong. Đây chính xác
+
+41
+00:01:57,869 --> 00:01:59,579
+là những gì ta sẽ làm trong bài học.
+
+42
+00:01:59,579 --> 00:02:02,909
+Hãy quay lại phần code và thay đổi
+
+43
+00:02:02,909 --> 00:02:06,680
+Window thành ApplicationWindow,
+
+44
+00:02:06,680 --> 00:02:12,330
+và ta nên đẩy nhanh
+
+45
+00:02:12,330 --> 00:02:13,709
+tốc độ một chút.
+
+46
+00:02:13,709 --> 00:02:16,239
+Ta sẽ sao chép tất cả những thứ này
+
+47
+00:02:16,239 --> 00:02:18,129
+vì ta sẽ cần đến nó để không
+
+48
+00:02:18,129 --> 00:02:21,310
+cần gõ lại lần nữa. Qt
+
+49
+00:02:21,310 --> 00:02:23,109
+documentation đã làm công việc này cho ta
+
+50
+00:02:23,109 --> 00:02:25,030
+và ta sẽ điền vào những
+
+51
+00:02:25,030 --> 00:02:29,139
+phần trống. Nhấn Ctrl A, Ctrl I để căn chỉnh. Nhưng
+
+52
+00:02:29,139 --> 00:02:31,269
+trước khi ta đi sâu hơn, tôi muốn
+
+53
+00:02:31,269 --> 00:02:33,609
+giải thích thêm một chút về StackView.
+
+54
+00:02:33,609 --> 00:02:40,290
+Ta sẽ nhấn F1, mở rộng hơn ra.
+
+55
+00:02:40,290 --> 00:02:43,060
+Về cơ bản, StackView là thành phần có thể
+
+56
+00:02:43,060 --> 00:02:45,010
+sử dụng với một tập
+
+57
+00:02:45,010 --> 00:02:47,889
+trang thông tin liên quan tới nhau. Nó cho phép ta tạo
+
+58
+00:02:47,889 --> 00:02:50,260
+một chồng (stack) trang giao diện như ta thấy ở đây.
+
+59
+00:02:50,260 --> 00:02:54,159
+Và ta có thể làm rất nhiều thứ khi dùng nó.
+
+60
+00:02:54,159 --> 00:02:56,889
+Ta có thể đẩy thêm trang giao diện vào stack, hoặc
+
+61
+00:02:56,889 --> 00:03:00,189
+có thể hiển thị hoặc xóa một trang giao diện trong
+
+62
+00:03:00,189 --> 00:03:01,449
+stack. Ta sẽ xem cách sử dụng nó
+
+63
+00:03:01,449 --> 00:03:03,790
+như thế nào, tôi chỉ muốn các bạn có cái nhìn tổng thể về
+
+64
+00:03:03,790 --> 00:03:06,430
+các sử dụng nó. Hãy đóng nó lại.
+
+65
+00:03:06,430 --> 00:03:10,120
+Trở lại với thanh Menu ở đây. Cơ bản thì nó
+
+66
+00:03:10,120 --> 00:03:12,939
+chứa các loại menu. Thanh menu này
+
+67
+00:03:12,939 --> 00:03:15,780
+chứa 3 mục menu là
+
+68
+00:03:15,780 --> 00:03:19,449
+"File", "Edit" và "Help". Vì vậy ta sẽ
+
+69
+00:03:19,449 --> 00:03:23,979
+tạo một Menu ở đây, và ta có thể tìm hiểu thêm
+
+70
+00:03:23,979 --> 00:03:26,560
+về Menu trong phần tài liệu.
+
+71
+00:03:26,560 --> 00:03:28,359
+Nó rất dễ và tôi nghĩ bạn
+
+72
+00:03:28,359 --> 00:03:30,759
+có thể đã biết được cách sử dụng
+
+73
+00:03:30,759 --> 00:03:33,189
+tài liệu rồi. Menu có thể
+
+74
+00:03:33,189 --> 00:03:36,400
+có tiêu đề. Ta sẽ đặt menu này là File"
+
+75
+00:03:36,400 --> 00:03:39,310
+ở đây và ta dùng thành phần Action để
+
+76
+00:03:39,310 --> 00:03:42,699
+tạo nội dung cho Menu này. Tôi
+
+77
+00:03:42,699 --> 00:03:44,409
+sẽ dán Action mà tôi đã
+
+78
+00:03:44,409 --> 00:03:48,340
+chuẩn bị vào. Nhấn Ctrl A, Ctrl I để căn chỉnh. Hãy vào
+
+79
+00:03:48,340 --> 00:03:50,949
+phần tài liệu để tìm hiểu về nó và ta sẽ
+
+80
+00:03:50,949 --> 00:03:53,349
+thấy rằng mỗi Action là một
+
+81
+00:03:53,349 --> 00:03:55,659
+hành động tương tác của người dùng.
+
+82
+00:03:55,659 --> 00:03:58,239
+mà có thể có các shortcuts (phím tắt) và có thể được gán cho
+
+83
+00:03:58,239 --> 00:04:01,180
+các mục menu và toolbar buttons (các nút thanh công cụ).
+
+84
+00:04:01,180 --> 00:04:03,250
+Về cơ bản nó là thứ ta có thể có
+
+85
+00:04:03,250 --> 00:04:06,609
+trong phần Menu, trong toolbar (thanh công cụ) và ta có thể
+
+86
+00:04:06,609 --> 00:04:08,409
+có shortcuts (phím tắt) cho nó. Một trong những
+
+87
+00:04:08,409 --> 00:04:10,479
+ví dụ là để sao chép.
+
+88
+00:04:10,479 --> 00:04:12,669
+Trong Toolbar, ta có thể
+
+89
+00:04:12,669 --> 00:04:14,590
+có một nút để
+
+90
+00:04:14,590 --> 00:04:17,048
+sao chép, có thể có trong menu và
+
+91
+00:04:17,048 --> 00:04:19,298
+ta có thể có phím tắt cho việc này.
+
+92
+00:04:19,298 --> 00:04:21,909
+Đây là những gì ta có trong phần
+
+93
+00:04:21,909 --> 00:04:25,740
+code. Đây là Action. Đây là các action
+
+94
+00:04:25,740 --> 00:04:27,610
+"New" trong  menu "File" mà ta sẽ
+
+95
+00:04:27,610 --> 00:04:30,129
+tạo. Ta có thể chỉ định icon (biểu tượng) cho nó,
+
+96
+00:04:30,129 --> 00:04:32,919
+và ta có thể biết khi nào nó được kích hoạt.
+
+97
+00:04:32,919 --> 00:04:35,020
+Khi người dùng nhấn vào Action này trên
+
+98
+00:04:35,020 --> 00:04:37,509
+menu, ta có thể biết và xử lý. Ta
+
+99
+00:04:37,509 --> 00:04:39,729
+cũng thấy rằng nó có thuộc tính
+
+100
+00:04:39,729 --> 00:04:42,039
+"icon.source" (đường dẫn của biểu tưởng). Đây là cách ta
+
+101
+00:04:42,039 --> 00:04:44,560
+đặt biểu tượng cho nó. Ta sẽ thêm
+
+102
+00:04:44,560 --> 00:04:48,189
+biểu tượng này ngay bây giờ. Ta sẽ vào
+
+103
+00:04:48,189 --> 00:04:51,069
+thư mục "Resources" ở đây, nhấn "Add New",
+
+104
+00:04:51,069 --> 00:04:54,759
+"Qt", "Qt Resource File",
+
+105
+00:04:54,759 --> 00:05:06,939
+ta điền resource ở đây. Ta thêm
+
+0:05:03.729,0:05:10.120
+Prefix (tiền tố), có lẽ là ta đều biết cách làm
+
+106
+00:05:06,939 --> 00:05:10,120
+những cái này rồi. Và ta cần mở thư ục
+
+107
+00:05:10,120 --> 00:05:14,889
+những thứ này đang được lưu trên ổ đĩa và thêm
+
+108
+00:05:14,889 --> 00:05:20,889
+thư mục Images (ảnh) mới. Ta sẽ vào trong
+
+109
+00:05:20,889 --> 00:05:22,990
+thư mục và dán một số
+
+110
+00:05:22,990 --> 00:05:26,740
+ảnh mà ta đã chuẩn bị. Đây là
+
+111
+00:05:26,740 --> 00:05:29,409
+các icons (biểu tượng) và ta có thể thấy đây là
+
+112
+00:05:29,409 --> 00:05:31,659
+tập các Action khác nhau ta có thể tạo ra
+
+113
+00:05:31,659 --> 00:05:34,240
+trong ứng dụng.  Ta cần
+
+114
+00:05:34,240 --> 00:05:37,060
+quay lại "resource", vào trong
+
+115
+00:05:37,060 --> 00:05:40,270
+thư mục này và chọn
+
+116
+00:05:40,270 --> 00:05:42,909
+tất cả các ảnh. Thêm chúng vào
+
+117
+00:05:42,909 --> 00:05:46,150
+"resource". Lưu nó lại. Và quay trở lại đây,
+
+118
+00:05:46,150 --> 00:05:49,240
+Ta có thể dùng icon (tệp biểu tượng)
+
+119
+00:05:49,240 --> 00:05:52,389
+lúc này. Ta muốn thêm rất nhiều các
+
+120
+00:05:52,389 --> 00:05:54,900
+action mà ta sẽ cần đến.
+
+121
+00:05:54,900 --> 00:05:58,300
+Vậy ta có mục menu "New" (mới), và có
+
+122
+00:05:58,300 --> 00:06:01,089
+mục menu "Open" (mở), mục menu "Save" (lưu),
+
+123
+00:06:01,089 --> 00:06:03,669
+và mục menu "Save as" (lưu với tên khác).
+
+124
+00:06:03,669 --> 00:06:05,949
+Một điều nữa ta có thể làm là tách
+
+125
+00:06:05,949 --> 00:06:09,759
+các mục menu ở trong phần Menu này.
+
+126
+00:06:09,759 --> 00:06:11,860
+Ta làm điều đó bằng cách tạo
+
+127
+00:06:11,860 --> 00:06:15,909
+phần tử MenuSeparator ở đây.
+
+128
+00:06:15,909 --> 00:06:18,159
+Nó sẽ có một dòng ngang
+
+129
+00:06:18,159 --> 00:06:20,620
+phân chia các mục menu.
+
+130
+00:06:20,620 --> 00:06:23,560
+Hãy thêm Action cuối cùng trong Menu này là
+
+131
+00:06:23,560 --> 00:06:27,009
+"Quit". Nhấn Ctrl A,
+
+132
+00:06:27,009 --> 00:06:30,279
+Ctrl I để căn chỉnh.Và ta thấy
+
+133
+00:06:30,279 --> 00:06:33,069
+khi Action này được kích hoạt, khi ta
+
+134
+00:06:33,069 --> 00:06:36,669
+nhấn vào mục Quit menu, ta sẽ
+
+135
+00:06:36,669 --> 00:06:38,680
+thoát khỏi ứng dụng. Ta
+
+136
+00:06:38,680 --> 00:06:41,199
+gọi phương pháp Qt.quit
+
+137
+00:06:41,199 --> 00:06:43,629
+từ Qt global object (đối tượng Qt toàn cục) mà ta đã
+
+138
+00:06:43,629 --> 00:06:44,529
+biết từ trước.
+
+139
+00:06:44,529 --> 00:06:47,499
+Đây là menu đầu tiên, ta cần
+
+140
+00:06:47,499 --> 00:06:51,520
+làm tương tự với menu "Edit" và  menu "Help".
+
+141
+00:06:51,520 --> 00:06:54,460
+Ta sẽ cho các menu vào, tôi
+
+142
+00:06:54,460 --> 00:06:56,499
+đã chuẩn bị chúng để không phải
+
+143
+00:06:56,499 --> 00:06:59,439
+gõ lại. Chúng ta sẽ xuống đây và
+
+144
+00:06:59,439 --> 00:07:01,960
+đặt các menu vào. Nhấn Ctrl A, Ctrl I
+
+145
+00:07:01,960 --> 00:07:04,749
+để căn chỉnh. Và ta thấy về cơ bản
+
+146
+00:07:04,749 --> 00:07:07,360
+là nó giống nhau. Ta đặc các action vào
+
+147
+00:07:07,360 --> 00:07:10,150
+một dòng để có thể đọc được chúng
+
+148
+00:07:10,150 --> 00:07:12,580
+dễ hơn. Và ta đang dùng
+
+149
+00:07:12,580 --> 00:07:16,360
+qsTr để có thể hiển thị bằng nhiều ngôn ngữ được,
+
+150
+00:07:16,360 --> 00:07:18,879
+ta có thể làm vậy nếu ta muốn.
+
+151
+00:07:18,879 --> 00:07:22,240
+Hãy đổi menu đầu tiên này
+
+152
+00:07:22,240 --> 00:07:25,779
+cho giống những menu khác. Ta sẽ
+
+153
+00:07:25,779 --> 00:07:29,169
+lên phía trên và đổi tiêu đề,
+
+154
+00:07:29,169 --> 00:07:32,650
+và ta đổi thành qsTr("File").
+
+155
+00:07:32,650 --> 00:07:34,839
+Đây là cách ta làm
+
+156
+00:07:34,839 --> 00:07:37,270
+trong các ứng dụng thực tế nếu ta muốn
+
+157
+00:07:37,270 --> 00:07:39,849
+dịch được chúng. Chuỗi kí tự này
+
+158
+00:07:39,849 --> 00:07:41,560
+sẽ có thể được dịch sang
+
+159
+00:07:41,560 --> 00:07:43,839
+nhiều ngôn ngữ khác nhau, nhưng ta sẽ không
+
+160
+00:07:43,839 --> 00:07:46,000
+đi sâu vào vấn đề này trong
+
+161
+00:07:46,000 --> 00:07:49,899
+bải giảng hôm nay. Ta đã có MenuBar,
+
+162
+00:07:49,899 --> 00:07:52,389
+tiếp đến
+
+163
+00:07:52,389 --> 00:07:54,729
+là ToolBar, và điều ta cần
+
+164
+00:07:54,729 --> 00:07:57,370
+phải làm là thêm một đống các nút.
+
+165
+00:07:57,370 --> 00:08:00,009
+Những nút này sẽ trở thành nút công cụ.
+
+166
+00:08:00,009 --> 00:08:02,979
+Về cơ bản, ta đặt chúng vào như
+
+167
+00:08:02,979 --> 00:08:06,399
+thế này. Ta có phần tuwr Row và bên trong
+
+168
+00:08:06,399 --> 00:08:08,680
+Ta có ToolButton với một vài
+
+169
+00:08:08,680 --> 00:08:11,199
+action đã được thiết lập ở phía
+
+170
+00:08:11,199 --> 00:08:13,120
+trên. Đây là những action ta muốn
+
+171
+00:08:13,120 --> 00:08:15,699
+hiển thị trên ToolBar. Ta có "New",
+
+172
+00:08:15,699 --> 00:08:18,990
+"Save", "Save as" và "Quit".
+
+173
+00:08:18,990 --> 00:08:21,639
+Nếu ta lên phía trên, ta có thể tìm tất cả
+
+174
+00:08:21,639 --> 00:08:27,490
+Action, nơi ta tạo ra và
+
+0:08:24.580,0:08:29.860
+gán ID cho chúng. Điều tiếp theo ta cần làm
+
+175
+00:08:27,490 --> 00:08:29,860
+là thêm các trang giao diện mà ta sẽ
+
+176
+00:08:29,860 --> 00:08:32,469
+hiển thị qua lại trong phần tử
+
+177
+00:08:32,469 --> 00:08:35,169
+StackView này. Ta sẽ vào
+
+178
+00:08:35,169 --> 00:08:38,229
+tệp qml qrc, đó là nơi ta
+
+179
+00:08:38,229 --> 00:08:40,000
+muốn thêm chúng để chúng ở cùng thư mục
+
+180
+00:08:40,000 --> 00:08:45,459
+với những file qml khác. Nhấn "Add New", "Qt", "QML File".
+
+181
+00:08:45,459 --> 00:08:50,190
+Ta đăt tên nó là "Page1".
+
+182
+00:08:51,270 --> 00:08:54,250
+Ta đổi phần import thành Qt Quick
+
+183
+00:08:54,250 --> 00:08:57,820
+2.11 vì đó là cái chúng ta đang dùng
+
+184
+00:08:57,820 --> 00:09:01,990
+ở đây. Nếu ta vào phần file main.qml,
+
+185
+00:09:01,990 --> 00:09:04,870
+như ta thấy đây. Ta tạo
+
+186
+00:09:04,870 --> 00:09:08,470
+phần tử Rectangle bên trong, và ta đặt
+
+187
+00:09:08,470 --> 00:09:16,810
+màu cho nó là xanh lá. Ta
+
+0:09:13.030,0:09:22.690
+làm tương tự để có 3 trang giao diện nữa.
+
+188
+00:09:16,810 --> 00:09:22,690
+Ta nhấn "Add New", "Qt", QML file, đặt tên
+
+189
+00:09:22,690 --> 00:09:27,160
+là Page2, nhấn Next, Finish. Ta
+
+190
+00:09:27,160 --> 00:09:33,100
+vào Page1, sao chép và ta
+
+191
+00:09:33,100 --> 00:09:36,730
+dán vào đây, và ta đặt màu
+
+192
+00:09:36,730 --> 00:09:43,110
+đỏ. Ta quay trở lại, nhấn "Add New", "Qt", "QML file",
+
+193
+00:09:43,110 --> 00:09:51,940
+đặt tên Page3. Và ta
+
+194
+00:09:51,940 --> 00:09:55,450
+dán lại vào đây, đặt màu
+
+195
+00:09:55,450 --> 00:09:59,980
+xanh biển. Ta đã có các trang giao điện. Bây giờ ta
+
+196
+00:09:59,980 --> 00:10:02,320
+có thể quay trở lại tệp QML chính và
+
+197
+00:10:02,320 --> 00:10:06,490
+làm tiếp tục với phần tử StackView. Phần tử này sẽ
+
+198
+00:10:06,490 --> 00:10:08,440
+phủ hết cha của nó.
+
+199
+00:10:08,440 --> 00:10:12,310
+Ta cần gán id: mStackId,
+
+200
+00:10:12,310 --> 00:10:18,100
+và nếu ta vào phần tài liệu,
+
+201
+00:10:18,100 --> 00:10:21,910
+hãy xem nếu ta có thể tìm StackView, ta
+
+202
+00:10:21,910 --> 00:10:24,030
+thấy nó có thuộc tính
+
+203
+00:10:24,030 --> 00:10:29,740
+"initialItem". Giá trị của nó là
+
+204
+00:10:29,740 --> 00:10:31,720
+trang ban đầu mà StackView sẽ hiển thị khi
+
+205
+00:10:31,720 --> 00:10:34,810
+được tạo ra. Vậy ta sẽ đăt
+
+206
+00:10:34,810 --> 00:10:42,220
+Page1 thuộc tính này, ta hiện thị nó
+
+207
+00:10:42,220 --> 00:10:45,220
+như thế này. Và trên footer, ta sẽ
+
+208
+00:10:45,220 --> 00:10:48,160
+có TabBar, nó sẽ cho phép
+
+209
+00:10:48,160 --> 00:10:50,770
+ta chuyển hiển thị qua lại các trang.
+
+210
+00:10:50,770 --> 00:10:54,550
+Ta gán TabBar
+
+211
+00:10:54,550 --> 00:10:57,160
+một id
+
+212
+00:10:57,160 --> 00:11:01,839
+và ta muốn chiều rộng của nó bằng
+
+213
+00:11:01,839 --> 00:11:05,680
+chiều rộng của parent. Ta cần một
+
+214
+00:11:05,680 --> 00:11:07,990
+vài nút tab bên trong, ta sẽ tạo
+
+215
+00:11:07,990 --> 00:11:12,040
+TabButton. Cái đấu tiên ta điền là
+
+216
+00:11:12,040 --> 00:11:19,480
+qsTr(“Page1”),
+
+217
+00:11:19,480 --> 00:11:22,420
+và ta xử lý khi nó được
+
+218
+00:11:22,420 --> 00:11:26,800
+nhấn vào. Điều đầu tiên ta cần làm là
+
+219
+00:11:26,800 --> 00:11:29,350
+bỏ trang giao điện đang hiển thị trong
+
+220
+00:11:29,350 --> 00:11:32,350
+StackView và xoá nó, và ta làm điều đó bằng
+
+221
+00:11:32,350 --> 00:11:35,170
+cách gọi phương thức "pop". Ta cần
+
+222
+00:11:35,170 --> 00:11:39,610
+đặt trang Page1 vaog stack để nó có thể
+
+223
+00:11:39,610 --> 00:11:42,069
+hiển thị trên và ta đặt nó ở phía trên
+
+224
+00:11:42,069 --> 00:11:44,350
+Stack để nó hiển thị ngay lập tức, bằng cách
+
+225
+00:11:44,350 --> 00:11:48,699
+gọi mStackid.push. Và ta cần
+
+226
+00:11:48,699 --> 00:11:51,819
+truyền vào thứ gì đó để hiển thị. Có một cách ta truyền
+
+227
+00:11:51,819 --> 00:11:54,100
+có những gì ở trong file qrc ở đây. Ta
+
+228
+00:11:54,100 --> 00:11:59,620
+gõ "qrc:/Page1.qml"
+
+229
+00:11:59,620 --> 00:12:01,540
+vì đó là những gì ta muốn được hiển thị
+
+230
+00:12:01,540 --> 00:12:05,019
+Khi TabButton được nhấn vào. Và để
+
+231
+00:12:05,019 --> 00:12:07,240
+chắc chắn mọi thứ đang hoạt động,
+
+232
+00:12:07,240 --> 00:12:10,660
+Ta sẽ in ra trong console số lượng
+
+233
+00:12:10,660 --> 00:12:13,300
+các trang trong Stack. Ta sẽ gõ
+
+234
+00:12:13,300 --> 00:12:25,990
+console.log "Number of items:…" (số lượng phần tử)
+
+235
+00:12:25,990 --> 00:12:30,579
+ ta sẽ thêm mStackId.depth.
+
+236
+00:12:30,579 --> 00:12:32,589
+Ta có thể xem thuộc tính depth trong
+
+237
+00:12:32,589 --> 00:12:35,529
+phần tài liệu. Khi ta nhấn vào
+
+238
+00:12:35,529 --> 00:12:38,019
+nút này, ta sẽ bỏ bất cứ cái gì ở
+
+239
+00:12:38,019 --> 00:12:40,480
+phía trên stack, và ta sẽ
+
+240
+00:12:40,480 --> 00:12:42,639
+thêm vào trang ta muốn đưa vào trong
+
+241
+00:12:42,639 --> 00:12:44,559
+đó. Trong trường hợp này nó sẽ là
+
+242
+00:12:44,559 --> 00:12:49,630
+Page1.qml ở đây. Ta muốn lặp lại điều ta
+
+243
+00:12:49,630 --> 00:12:52,300
+vừa làm ở đây và áp dụng cho tất cả
+
+244
+00:12:52,300 --> 00:12:55,990
+các trang, là 2 trang còn lại. Ta sao chép
+
+245
+00:12:55,990 --> 00:13:00,160
+và dán, ở đây ta điền Page2, số 3
+
+246
+00:13:00,160 --> 00:13:03,670
+sẽ trở nên dễ dàng hơn, và ở đây
+
+247
+00:13:03,670 --> 00:13:08,949
+ta chuyển thành 3, ở đây ta
+
+248
+00:13:08,949 --> 00:13:10,120
+chuyển thành 2,
+
+249
+00:13:10,120 --> 00:13:14,260
+ở đây ta chuyển thành 3. Và ta
+
+250
+00:13:14,260 --> 00:13:16,750
+đã có đủ mọi thứ
+
+251
+00:13:16,750 --> 00:13:19,930
+sẵn sàng để chạy ứng dụng.
+
+252
+00:13:19,930 --> 00:13:22,570
+Giờ ta có rất nhiều
+
+253
+00:13:22,570 --> 00:13:24,970
+thông tin. Hãy chạy thử
+
+254
+00:13:24,970 --> 00:13:26,589
+và tôi sẽ giải thích
+
+255
+00:13:26,589 --> 00:13:28,420
+lần nữa, để mọi người
+
+256
+00:13:28,420 --> 00:13:31,450
+hiểu rõ hơn.
+
+257
+00:13:31,450 --> 00:13:34,300
+Ta có mọi thức ở đây, hãy tạm thời
+
+258
+00:13:34,300 --> 00:13:38,010
+bỏ qua  thứ này, và ta có thể nhấn để
+
+259
+00:13:38,010 --> 00:13:40,810
+chuyển qua các trang.
+
+260
+00:13:40,810 --> 00:13:48,760
+Trang đầu tiên màu xanh lá, rồi đỏ, xanh dương,
+
+0:13:45.040,0:13:53.050
+giống như ta đã đặt ở đây: Page1
+
+261
+00:13:48,760 --> 00:13:53,050
+xanh lá, Page2 đỏ và Page3 xanh dương. Và ta
+
+262
+00:13:53,050 --> 00:13:55,360
+có các menu ở phía trên này. Nếu ta nhấn
+
+263
+00:13:55,360 --> 00:14:02,290
+vào "File", ta sẽ thấy "New", "Open", "Save",
+
+0:13:58.210,0:14:07.120
+"Save As". Nếu ta quay lại phần code,
+
+264
+00:14:02,290 --> 00:14:07,120
+Ta thấy menu "File" có "New", "Open", "Save", :Save as".
+
+265
+00:14:07,120 --> 00:14:10,750
+Về cơ bản ta đặt
+
+266
+00:14:10,750 --> 00:14:12,779
+những thứ ta muốn có trong thanh Menu.
+
+267
+00:14:12,779 --> 00:14:16,390
+Ta muốn có có menu "File", nó
+
+268
+00:14:16,390 --> 00:14:18,820
+ở đây. Ta muốn có menu "Edit",
+
+269
+00:14:18,820 --> 00:14:21,370
+nó là menu này. Ta muốn có
+
+270
+00:14:21,370 --> 00:14:23,800
+menu "Help", đó là menu này. Và
+
+271
+00:14:23,800 --> 00:14:27,100
+nếu ta quay lại ứng dụng, ta
+
+272
+00:14:27,100 --> 00:14:29,980
+thấy những menu này ở đây, đó là menu "File", "Edit".
+
+273
+00:14:29,980 --> 00:14:31,690
+Để tạo mục ở bên trong menu, ta sử dụng
+
+274
+00:14:31,690 --> 00:14:34,330
+action. Đây là Action của chúng ta và một vài
+
+275
+00:14:34,330 --> 00:14:36,670
+thuôc tính bên trong, và nó đều
+
+276
+00:14:36,670 --> 00:14:39,160
+là giống nhau. Đây là
+
+277
+00:14:39,160 --> 00:14:42,310
+MenuSeperator. Ta có thể thấy
+
+278
+00:14:42,310 --> 00:14:45,190
+nó là dòng này, sau đó ta lấy
+
+279
+00:14:45,190 --> 00:14:48,459
+một số các action và đưa chúng
+
+280
+00:14:48,459 --> 00:14:50,500
+vào ToolBar. Ta có các action
+
+281
+00:14:50,500 --> 00:14:53,620
+New" "Save" "Save As" "Quit" trong ToolBar
+
+282
+00:14:53,620 --> 00:14:57,580
+và đó là những gì ta tạo tra trong
+
+283
+00:14:57,580 --> 00:14:59,940
+header dưới đây. Ta có Toolbar và ta
+
+284
+00:14:59,940 --> 00:15:02,529
+có các ToolButton và tryền vào
+
+285
+00:15:02,529 --> 00:15:04,839
+action mà tạo ra ở đây. Và
+
+286
+00:15:04,839 --> 00:15:07,740
+giờ thì ta có thể thấy
+
+287
+00:15:07,740 --> 00:15:10,600
+sự linh hoạt của mục Action khi
+
+288
+00:15:10,600 --> 00:15:13,150
+nó có thể được dùng ở nhiều nơi. Ta
+
+289
+00:15:13,150 --> 00:15:16,150
+tạo chúng ở trên thanh menu và ta
+
+290
+00:15:16,150 --> 00:15:19,329
+đang sử dụng nó trên thành phần header
+
+291
+00:15:19,329 --> 00:15:22,300
+ở đây, qua ToolButton. Một
+
+292
+00:15:22,300 --> 00:15:23,900
+Action có thể được sử dụng ở nhiều
+
+293
+00:15:23,900 --> 00:15:26,810
+nơi trong giao diện. Và
+
+294
+00:15:26,810 --> 00:15:28,880
+logic (luồng xử lý) mà ta định rõ trên action,
+
+295
+00:15:28,880 --> 00:15:31,430
+ví dụ ở đây, logic sẽ
+
+296
+00:15:31,430 --> 00:15:33,350
+thực hiện khi ta kích hoạt action
+
+297
+00:15:33,350 --> 00:15:35,930
+là thoát khỏi ứng dụng. Ta có thể
+
+298
+00:15:35,930 --> 00:15:38,120
+thoát khỏi ứng dụng từ menu "File"
+
+299
+00:15:38,120 --> 00:15:40,940
+và ta có thể thoát ứng dụng từ
+
+300
+00:15:40,940 --> 00:15:43,700
+Toolbar bằng cách nhấn vào ToolButton
+
+301
+00:15:43,700 --> 00:15:45,860
+ở đây. Và ta sẽ chứng minh điều ta
+
+302
+00:15:45,860 --> 00:15:47,890
+vừa nói, ta sẽ vào "File" ở đây,
+
+303
+00:15:47,890 --> 00:15:50,780
+nhấn vào và ta thấy ứng dụng tắt.
+
+304
+00:15:50,780 --> 00:15:54,590
+Ta khởi động lại, nhấn vào "Quit"
+
+305
+00:15:54,590 --> 00:15:57,320
+trong toolbar ở đây và
+
+306
+00:15:57,320 --> 00:16:01,040
+ứng dụng tắt.
+
+0:15:58.340,0:16:03.500
+Và phần còn lại
+
+307
+00:16:01,040 --> 00:16:03,500
+là thêm biểu tượng trong
+
+308
+00:16:03,500 --> 00:16:06,110
+thư mục Resource và đảm bảo
+
+309
+00:16:06,110 --> 00:16:08,420
+chúng có thể sử dụng được khi
+
+310
+00:16:08,420 --> 00:16:13,670
+hiển thị các action như thế này. Và đây
+
+0:16:11.660,0:16:15.920
+là tất cả về
+
+311
+00:16:13,670 --> 00:16:15,920
+Application Window. Ta làm việc với nó
+
+312
+00:16:15,920 --> 00:16:17,990
+khi ta muốn tận dụng
+
+313
+00:16:17,990 --> 00:16:20,930
+thanh menu và toolbar, footer.
+
+314
+00:16:20,930 --> 00:16:24,440
+Và ta sẽ thấy nó chủ yếu
+
+315
+00:16:24,440 --> 00:16:26,600
+được sử dụng với thành phần StackView vì
+
+316
+00:16:26,600 --> 00:16:29,330
+nó cho phép ta hiển thị qua lại các trang
+
+317
+00:16:29,330 --> 00:16:31,910
+giao diện khác nhau
+
+318
+00:16:31,910 --> 00:16:34,790
+như thế này, và nó khá là dễ
+
+319
+00:16:34,790 --> 00:16:37,100
+sử dụng. Nếu ta quay lại
+
+320
+00:16:37,100 --> 00:16:38,540
+Help, ta sẽ thấy có
+
+321
+00:16:38,540 --> 00:16:40,540
+rất nhiều phương thước ta có thể dùng
+
+322
+00:16:40,540 --> 00:16:43,580
+với StackView và có thể tìm hiểu thêm
+
+323
+00:16:43,580 --> 00:16:45,590
+về nó bằng cách nhấn vào từng mục
+
+324
+00:16:45,590 --> 00:16:48,140
+ở đây. Đây là tất cả những gì
+
+325
+00:16:48,140 --> 00:16:50,210
+trong bài giảng này, mong là các bạn thấy nó thú vị.
+
+326
+00:16:50,210 --> 00:00:00,000
+Hẹn gặp lại trong chương tiếp theo.
+

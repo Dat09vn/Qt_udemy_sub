@@ -1,0 +1,553 @@
+1
+00:00:00,810 --> 00:00:03,970
+Bây giờ, tôi sẽ giới thiệu cho các bạn 
+
+2
+00:00:03,970 --> 00:00:04,960
+khái niệm "margin" ("lề") 
+
+3
+00:00:04,960 --> 00:00:07,809
+Ta có đặt giá trị cho lề trên, 
+
+4
+00:00:07,809 --> 00:00:12,100
+lề trái, lề phải, và 
+
+5
+00:00:12,100 --> 00:00:15,040
+lề dưới của một phẩn tử QML. Ta sử dụng cú pháp này. 
+
+6
+00:00:15,040 --> 00:00:18,400
+Ví dụ, ta có thể xem lại khung lưới này, 
+
+7
+00:00:18,400 --> 00:00:21,730
+và xem hình chữ nhật centerCenterRectId (hình nằm giữa-giữa), 
+
+8
+00:00:21,730 --> 00:00:24,970
+đây. Hình này được đặt 
+
+9
+00:00:24,970 --> 00:00:27,670
+ở phía dưới hình chữ nhật topRightRectId (hình nằm trên-phải).
+
+10
+00:00:27,670 --> 00:00:30,520
+Ví dụ, nếu ta muốn thêm 
+
+11
+00:00:30,520 --> 00:00:34,239
+lề vào cạnh trên của hình, ta có thể viết 
+
+12
+00:00:34,239 --> 00:00:39,760
+"anchors.topMargin", giả dụ như thêm 10 đi, 
+
+13
+00:00:39,760 --> 00:00:47,319
+ví dụ thôi. Ta chạy ứng dụng, mm-hmm, 
+
+14
+00:00:47,319 --> 00:00:50,920
+ta thấy cạnh trên của hình đã dịch xuống 
+
+15
+00:00:50,920 --> 00:00:54,489
+10 pixel so với cạnh trên này. Ok, một điều mà tôi muốn các bạn rõ, 
+
+16
+00:00:54,489 --> 00:00:57,309
+đó là nếu ta không có thuộc tính anchor 
+
+17
+00:00:57,309 --> 00:01:00,609
+trên đường neo (anchor line), ta sẽ 
+
+18
+00:01:00,609 --> 00:01:03,219
+không thể đặt được lề trên cạnh đó. 
+
+19
+00:01:03,219 --> 00:01:06,460
+Ở đây ta có thể đặt được lề là vì ta có 
+
+20
+00:01:06,460 --> 00:01:10,060
+anchor ở cạnh trên. Ok. Ta sẽ thử đặt lề 
+
+21
+00:01:10,060 --> 00:01:14,710
+cho cạnh phải. Ta đang muốn thêm 
+
+22
+00:01:14,710 --> 00:01:17,980
+lề vào cạnh phải ở đây. Tuy nhiên, chú ý rằng 
+
+23
+00:01:17,980 --> 00:01:20,860
+ta không có anchor của cạnh phải, do đó 
+
+24
+00:01:20,860 --> 00:01:23,410
+lề trên cạnh phải sẽ không có hiệu quả nào. Tuy nhiên, ta vẫn sẽ thử làm 
+
+25
+00:01:23,410 --> 00:01:25,720
+để các bạn thấy rõ hơn. Ta gõ
+
+26
+00:01:25,720 --> 00:01:30,600
+"anchors.rightMargin", ở đây ta cũng đặt 10. 
+
+27
+00:01:30,600 --> 00:01:34,390
+Chạy ứng dụng. Ta thấy lề 
+
+28
+00:01:34,390 --> 00:01:36,880
+không có tác dụng. Đây là điều khiến 
+
+29
+00:01:36,880 --> 00:01:39,220
+nhiều người khó hiểu khi gặp phải. 
+
+30
+00:01:39,220 --> 00:01:45,510
+Do vậy, tôi sẽ chú thích ra ở đây:
+(Để đặt được lề cho một cạnh, ta cần phải đặt thuộc tính anchor vào cạnh đó)  
+
+31
+00:01:59,170 --> 00:02:02,600
+Ok, dòng code này không hoạt động. Ta hãy chú thích nó lại 
+
+32
+00:02:02,600 --> 00:02:06,170
+và đặt lề với cạnh có thuộc tính anchors. 
+
+33
+00:02:06,170 --> 00:02:11,209
+Ví dụ "anchors.topMargin, đặt 10, 
+
+34
+00:02:11,209 --> 00:02:26,299
+và chú thích: "lề này có tác dụng trên cạnh top (trên) vì cạnh đó có thuộc tính anchor". Ok. 
+
+35
+00:02:26,299 --> 00:02:30,049
+Tôi muốn các bạn thấy rõ được điều này. Chạy lại lần nữa. 
+
+36
+00:02:30,049 --> 00:02:33,349
+lề trên đã được đặt. Tôi muốn các bạn chú ý ở đây: 
+
+37
+00:02:33,349 --> 00:02:35,690
+do hình chữ nhật xanh lá dịch chuyển xuống dưới,  
+
+38
+00:02:35,690 --> 00:02:38,410
+vì vậy, các hình khác
+
+39
+00:02:38,410 --> 00:02:40,849
+có vị trí phụ thuộc vào hình xanh lá 
+
+40
+00:02:40,849 --> 00:02:43,370
+cũng di chuyển theo. Ta áp dụng lề 
+
+41
+00:02:43,370 --> 00:02:45,530
+vào hình xanh lá ở đây, 
+
+42
+00:02:45,530 --> 00:02:47,480
+nhưng ta thấy tất cả các hình nằm ở hàng dưới gồm
+
+43
+00:02:47,480 --> 00:02:49,370
+hình dưới-trái, hình dưới-giữa, 
+
+44
+00:02:49,370 --> 00:02:50,209
+hình dưới-phải, 
+
+45
+00:02:50,209 --> 00:02:52,670
+đều di chuyển xuống dưới. Tôi muốn 
+
+46
+00:02:52,670 --> 00:02:56,030
+các bạn nắm được điều này. Các thuộc tính lề 
+
+47
+00:02:56,030 --> 00:02:59,000
+đều ảnh hưởng đến tất cả 
+
+48
+00:02:59,000 --> 00:03:02,000
+các phần tử được neo vào phần tử 
+
+49
+00:03:02,000 --> 00:03:05,150
+mà ta vừa đặt lề. Tôi nghĩ điều này là dễ hiểu 
+
+50
+00:03:05,150 --> 00:03:07,459
+với các bạn. Một thứ nữa mà bạn có thể làm 
+
+51
+00:03:07,459 --> 00:03:10,870
+là sử dụng offsets (độ lệch). Các offset
+
+52
+00:03:10,870 --> 00:03:13,660
+của phần tử cho phép thay đổi vị trí của phần tử đó
+
+53
+00:03:13,660 --> 00:03:16,310
+lệch đi so với các đường neo trung tâm. 
+
+54
+00:03:16,310 --> 00:03:19,549
+Ta hãy cùng quay lại hình chữ nhật xanh lá ở đây
+
+55
+00:03:19,549 --> 00:03:24,349
+và chú thích dòng code này lại. Ta gõ 
+
+56
+00:03:24,349 --> 00:03:30,319
+anchors.horizontalCenterOffset, ta lấy 10. 
+
+57
+00:03:30,319 --> 00:03:36,079
+Chạy ứng dụng. Ta thấy không có gì 
+
+58
+00:03:36,079 --> 00:03:41,799
+xảy ra cả. Tuy nhiên, nếu ta chú thích đoạn code này và 
+
+59
+00:03:41,799 --> 00:03:44,980
+đặt các phần tử dựa trên
+
+60
+00:03:44,980 --> 00:03:48,680
+các đường néo trung tâm theo chiều dọc và ngang, 
+
+61
+00:03:48,680 --> 00:03:51,040
+bằng cách đặt: 
+
+62
+00:03:51,040 --> 00:03:56,659
+"anchors.horizontalCenter: parent.horizontalCenter", 
+
+63
+00:03:56,659 --> 00:04:01,550
+"anchors.verticalCenter: parent:verticalCenter"
+
+64
+00:04:01,550 --> 00:04:05,800
+chạy lại lần nữa. 
+
+65
+00:04:05,800 --> 00:04:11,930
+Ok, ta thấy nó có tác dụng. 
+
+66
+00:04:11,930 --> 00:04:14,300
+Tương tự với các thuộc tính anchor, 
+
+67
+00:04:14,300 --> 00:04:17,630
+ta cố gắng đặt offset cho 
+
+68
+00:04:17,630 --> 00:04:20,810
+đường neo trung tâm ngang, tuy nhiên, 
+
+69
+00:04:20,810 --> 00:04:23,120
+ta không có anchor cho đường neo horizontalCenter đó, 
+
+70
+00:04:23,120 --> 00:04:25,280
+và offset này không có tác dụng. Tôi thực sự muốn 
+
+71
+00:04:25,280 --> 00:04:27,080
+các bạn hiểu được phần này bởi nó rất quan trọng. 
+
+72
+00:04:27,080 --> 00:04:29,840
+Ta thấy đó, nếu không chú ý, 
+
+73
+00:04:29,840 --> 00:04:32,750
+thì các phần tử mà ta có sẽ không cho ra kết quả đúng 
+
+74
+00:04:32,750 --> 00:04:35,120
+như những gì mà ta muốn, và cũng không biết 
+
+75
+00:04:35,120 --> 00:04:37,310
+tại sao. Đây là lý do vì sao mà ta khi 
+
+76
+00:04:37,310 --> 00:04:39,950
+đặt lề hoặc offset và để chúng hoạt động,
+
+77
+00:04:39,950 --> 00:04:42,380
+ta cần phải có thuộc tính anchor trên đường neo
+
+78
+00:04:42,380 --> 00:04:45,050
+mà ta
+
+79
+00:04:45,050 --> 00:04:47,870
+đặt lề hoặc offset. Ok, thuộc tính offset
+
+80
+00:04:47,870 --> 00:04:50,890
+cũng có thể dùng theo chiều dọc (trục tung) 
+
+81
+00:04:50,890 --> 00:04:54,050
+Ta có thể gõ "anchors.verticalCenterOffset", 
+
+82
+00:04:54,050 --> 00:04:58,850
+vẫn lấy 10. Offset này 
+
+83
+00:04:58,850 --> 00:05:00,800
+sẽ hoạt động. Ok, hình này sẽ 
+
+84
+00:05:00,800 --> 00:05:03,710
+di chuyển xuống phía dưới một chút, điều mà tôi đang muốn. 
+
+85
+00:05:03,710 --> 00:05:06,770
+Ok, hình màu xanh lá dịch chuyển sang bên phải và đẩy 
+
+86
+00:05:06,770 --> 00:05:09,500
+hình xanh nước biển này. Nó cũng dịch chuyển xuống dưới, 
+
+87
+00:05:09,500 --> 00:05:12,740
+và đẩy các hình ở hàng dưới, 
+
+88
+00:05:12,740 --> 00:05:15,140
+vì những hình này đều neo vào nó. 
+
+89
+00:05:15,140 --> 00:05:18,050
+Nếu nhìn vào hình xanh nước biển ở đây, 
+
+90
+00:05:18,050 --> 00:05:20,630
+hình nằm ở giữa-phải, cạnh trái của nó
+
+91
+00:05:20,630 --> 00:05:23,150
+phải được neo vào vào cạnh phải của
+
+92
+00:05:23,150 --> 00:05:25,460
+của hình xanh lá. Ta hãy làm rõ điều này. 
+
+93
+00:05:25,460 --> 00:05:28,790
+Ta thấy, cạnh trái của hình được neo vào 
+
+94
+00:05:28,790 --> 00:05:31,250
+cạnh phải của hình centerCenterRectId (hình giữa-giữa). 
+
+95
+00:05:31,250 --> 00:05:34,010
+Điểm cuối cùng mà tôi muốn đưa ra trong bài là 
+
+96
+00:05:34,010 --> 00:05:36,080
+ta chỉ có thể dùng 
+
+97
+00:05:36,080 --> 00:05:37,820
+các thuộc tính anchor khi ta nói về 
+
+98
+00:05:37,820 --> 00:05:40,370
+các phần tử thuộc cùng một phần tử cha (sibling: các phẩn từ anh em) 
+
+99
+00:05:40,370 --> 00:05:43,490
+hoặc các phần tử cha với phần tử con (parent-child) 
+
+100
+00:05:43,490 --> 00:05:46,040
+Tôi sẽ nói rõ hơn. Tôi xem ở phía dưới này, 
+
+101
+00:05:46,040 --> 00:05:48,350
+phía dưới cùng của phần tử 
+
+102
+00:05:48,350 --> 00:05:51,800
+containerRectId (hình chứa). Tôi sẽ tạo 
+
+103
+00:05:51,800 --> 00:05:56,390
+một hình chữ nhật khác. Chiều rộng của hình là 200, 
+
+104
+00:05:56,390 --> 00:06:01,940
+Chiều cao cũng là 200. Hình có
+
+105
+00:06:01,940 --> 00:06:09,950
+màu đen. Id của hình là 
+
+106
+00:06:09,950 --> 00:06:12,880
+"siblingRecId" (hình chữ nhật anh em) 
+
+107
+00:06:13,660 --> 00:06:16,870
+Hình được đặt vào 
+
+108
+00:06:16,870 --> 00:06:20,140
+bên trái của hình chứa. Do vậy, 
+
+109
+00:06:20,140 --> 00:06:23,050
+ta gõ "anchors.right". Cạnh phải 
+
+110
+00:06:23,050 --> 00:06:25,030
+của hình sẽ được gắn vào hình chứa, 
+
+111
+00:06:25,030 --> 00:06:31,830
+containerRectId.left. Chạy ứng dụng, 
+
+112
+00:06:31,830 --> 00:06:34,750
+ta thấy hình màu đen nằm ở đây. 
+
+113
+00:06:34,750 --> 00:06:37,660
+Khi ta di chuyển, ta thấy các anchor 
+
+114
+00:06:37,660 --> 00:06:41,140
+vẫn ở đó. Cạnh phải của hình màu đen
+
+115
+00:06:41,140 --> 00:06:44,560
+được gắn vào hình chứa. 
+
+116
+00:06:44,560 --> 00:06:47,050
+Tôi muốn chỉ cho các bạn thấy là 
+
+117
+00:06:47,050 --> 00:06:50,830
+ta không thể neo một hình chữ nhật 
+
+118
+00:06:50,830 --> 00:06:54,040
+nằm bên trong hình chứa (containerRectId) vào 
+
+119
+00:06:54,040 --> 00:06:57,340
+hình chữ nhật đen được, do hình này không phải là hình cha 
+
+120
+00:06:57,340 --> 00:07:00,610
+hoặc hình anh em. Neo chỉ thực hiện được 
+
+121
+00:07:00,610 --> 00:07:02,880
+giữa các phần tử anh em hoặc giữa phần tử cha và phần tử con. 
+
+122
+00:07:02,880 --> 00:07:05,560
+Ví dụ, ta thử lấy hình chữ nhật 
+
+123
+00:07:05,560 --> 00:07:08,590
+nằm ở trên-trái, hình màu cánh sen, 
+
+124
+00:07:08,590 --> 00:07:12,190
+và neo hình này vào cạnh dưới 
+
+125
+00:07:12,190 --> 00:07:14,530
+của hình màu đen, nó sẽ không neo được như vậy.  
+
+126
+00:07:14,530 --> 00:07:16,390
+Hãy thử làm. Ta gõ 
+
+127
+00:07:16,390 --> 00:07:22,500
+anchors.top: 
+
+128
+00:07:22,500 --> 00:07:25,500
+siblingRectId.bottom. 
+
+129
+00:07:25,500 --> 00:07:30,630
+Thử chạy ứng dụng này, hmm, ta thấy 
+
+130
+00:07:30,630 --> 00:07:33,250
+không thể neo vào phần tử không phải là phần tử cha 
+
+131
+00:07:33,250 --> 00:07:36,490
+hoặc phần tử anh em. Việc neo chỉ có thể được thực hiện 
+
+132
+00:07:36,490 --> 00:07:39,460
+giữa các phần tử anh em hoặc giữa phần tử cha 
+
+133
+00:07:39,460 --> 00:07:40,270
+và phần tử con. 
+
+134
+00:07:40,270 --> 00:07:42,730
+Ok, như vậy ta đã đi qua hết nội dung 
+
+135
+00:07:42,730 --> 00:07:44,410
+trong bài giảng này. Ở bài tiếp theo, 
+
+136
+00:07:44,410 --> 00:07:46,240
+ta sẽ thảo luận về bố cục các phần tử như 
+
+137
+00:07:46,240 --> 00:07:48,970
+hàng, cột hay khung lưới. Hẹn gặp lại các bạn 
+
+138
+00:07:48,970 --> 00:00:00,000
+trong bài giảng tiếp theo. 
+

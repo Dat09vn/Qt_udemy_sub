@@ -1,0 +1,196 @@
+﻿1
+00:00:01,610 --> 00:00:13,480
+Các Widget chỉnh sửa được. Trong video này chúng ta sẽ nói về các widget nhập dữ diệu chỉnh sửa được, cụ thể là
+
+2
+00:00:13,480 --> 00:00:16,490
+Combo Box và Text Edit.
+
+3
+00:00:16,580 --> 00:00:21,130
+Chúng ta sẽ xây dựng một ứng dụng để xem trước văn bản được đang được nhập.
+
+4
+00:00:21,260 --> 00:00:27,930
+Ta có thể sử dụng Combo Box để chọn chế độ văn bản, và phần xem trước sẽ được cập nhật theo thời gian thực.
+
+5
+00:00:27,980 --> 00:00:29,730
+Cùng bắt đầu nhé.
+
+6
+00:00:29,790 --> 00:00:43,110
+Mở Qt Creator và tạo project mới. Thay đổi "centralWidget" thành LayoutVertically. Kéo
+
+7
+00:00:43,210 --> 00:00:44,860
+widget TextEdit vào.
+
+8
+00:00:50,450 --> 00:01:03,560
+Kéo một widget Text Edit lên trên cùng,sau đó là một widget Combo Box, và cuối cùng là một widget Text Browser.
+
+9
+00:01:03,560 --> 00:01:13,280
+Bây giờ chúng ta sẽ sử dụng Text Browser hiển thị phần xem thử trước và Text Edit làm widget để người sử dụng nhập văn bản,
+
+10
+00:01:13,280 --> 00:01:16,210
+Combo Box để chọn chế độ hiển thị.
+
+11
+00:01:16,380 --> 00:01:20,060
+Ta thêm các mục vào Combo Box như thế nào?
+
+12
+00:01:20,130 --> 00:01:22,050
+Chỉ cần click đúp vào đó.
+
+13
+00:01:23,380 --> 00:01:30,720
+Trong hộp thoại Edit, ta có thể thêm, sắp xếp và xoá các item.
+
+14
+00:01:30,740 --> 00:01:35,700
+Ở đây ta có 2 mục: Plain (chế độ thường) và Html. (chế độ HTML)
+
+15
+00:01:35,690 --> 00:01:42,240
+Quá nhiều cho phần thiết kế UI rồi.
+
+16
+00:01:42,670 --> 00:01:44,220
+Ta cùng chuyển sang công đoạn viết mã nguồn.
+
+17
+00:01:47,190 --> 00:01:56,600
+Mở mainwindow.h, file header. Thêm một biến thành viên private plainText (văn bản thường)
+
+18
+00:02:01,060 --> 00:02:07,600
+Thêm 2 hàm private slots, updateTextBrowser và onComboBoxChanged.
+
+19
+00:02:11,560 --> 00:02:18,930
+Hàm slot onComboBoxChanged sẽ được sử dụng để xử lý tín hiệu "textChanged" khi người sử dụng
+
+20
+00:02:18,940 --> 00:02:20,300
+thay đổi chế độ hiển thị trong Combo Box,
+
+21
+00:02:23,310 --> 00:02:28,180
+updateTextBrowser xử lý khi nhập dữ liệu vào widget Text Edit.
+
+22
+00:02:30,960 --> 00:02:35,270
+Chuyển sang file .cpp.
+
+23
+00:02:36,390 --> 00:02:39,130
+Ta sẽ viết đoạn code thực hiện cho 2 slot này.
+
+24
+00:02:40,370 --> 00:02:50,300
+Trước hết, trong updateTextBrowser, ta sẽ lấy đoạn văn bản trong widget Text Edit.
+
+25
+00:02:50,320 --> 00:02:54,590
+Hàm document sẽ trả lại một biến con trỏ *QTextDocument .
+
+26
+00:02:58,940 --> 00:03:04,380
+Sau đó ta gọi hàm toPlainText để lấy văn bản mà người dùng nhập.
+
+27
+00:03:04,610 --> 00:03:12,260
+Có một hàm nữa là toHtml cũng trả về một QString nhưng dưới dạng
+
+28
+00:03:12,350 --> 00:03:14,010
+Html,
+
+29
+00:03:14,330 --> 00:03:21,640
+như vậy sẽ không phù hợp với ví dụ này. Sau đó tuỳ thuộc vào biến plainText được đặt là true hay false
+
+30
+00:03:23,240 --> 00:03:30,610
+mà ta cập nhật văn bản của textBrowser bằng hàm setPlainText (nếu plainText là true) hoặc setHtml (nếu plainText là false).
+
+31
+00:03:31,570 --> 00:03:34,240
+Trong hàm slot onComboBoxChanged,
+
+32
+00:03:37,430 --> 00:03:44,720
+ta đặt giá trị biến plainText tuỳ thuộc vào giá trị hiện tại của Combo Box được truyền vào hàm qua
+
+33
+00:03:45,490 --> 00:03:47,060
+tín hiệu.
+
+34
+00:03:47,190 --> 00:03:51,040
+Sau đó ta gọi hàm updateTextBrowser để cập nhật thay đổi.
+
+35
+00:03:51,570 --> 00:03:53,220
+Cuối cùng nhưng cũng không kém phần quan trọng,
+
+36
+00:03:53,370 --> 00:04:00,690
+đừng quên khởi tạo plainText. Và kết nối những tín hiệu đó với các slot tương ứng.
+
+37
+00:04:00,700 --> 00:04:01,530
+Các bạn có thể thấy ở đây
+
+38
+00:04:04,520 --> 00:04:11,710
+tín hiệu currentTextChanged từ QComboBoxber có cùng tham số với
+
+39
+00:04:11,730 --> 00:04:12,480
+onComboBoxChanged.
+
+40
+00:04:16,400 --> 00:04:32,050
+Bây giờ ta có thể build úng dụng (biên dịch để sinh ra chương trình). Sau đó, chạy ứng dụng.
+
+41
+00:04:32,140 --> 00:04:35,160
+Ta sẽ xem liệu nó có hoạt động như ta muốn không.
+
+42
+00:04:35,530 --> 00:04:39,970
+Ta thử nhập một văn bản dạng Html đơn giản vào widget Text Edit.
+
+43
+00:04:48,570 --> 00:04:53,110
+Với chế độ Plain Text, Text Browser sẽ hiển thị văn bản giống hệt.
+
+44
+00:04:53,510 --> 00:05:01,750
+Sau đó nếu thay đổi Combo Box sang Html, các bạn sẽ quan sát thấy đoạn văn bản được định dạng chỉn chu. Và nó sẽ tự cập nhật
+
+45
+00:05:02,530 --> 00:05:04,470
+khi ta thay đổi văn bản trong trình soạn thảo trên này.
+
+46
+00:05:23,420 --> 00:05:33,380
+Qt cũng cung cấp các widget nhập dữ liệu khác nữa.
+
+47
+00:05:33,580 --> 00:05:39,750
+Ta có thể coi Line Edit, Plain Text Edit như những phiên bản đơn giản của Text Edit.
+
+48
+00:05:43,980 --> 00:05:51,440
+Các API của tất cả những widget nhập dữ liệu này đều rất giống nhau và dễ sử dụng. Trong video tiếp theo,
+
+49
+00:05:51,870 --> 00:05:54,390
+các bạn sẽ được tìm hiểu thêm về layout (bố cục).
+

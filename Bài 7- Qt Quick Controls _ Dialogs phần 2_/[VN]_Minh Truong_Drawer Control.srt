@@ -1,0 +1,1116 @@
+﻿1
+00:00:00,000 --> 00:00:05,009
+Trong bài giảng này chúng ta sẽ tìm hiểu phần
+
+2
+00:00:02,220 --> 00:00:07,259
+tủ Drawer trong Qt Quick.
+
+3
+00:00:05,009 --> 00:00:10,500
+Đây là thành phần cho phép ta tạo ra
+
+4
+00:00:07,259 --> 00:00:12,719
+sliding panel (bảng trượt) như thế này
+
+5
+00:00:10,500 --> 00:00:16,109
+Bạn thấy rằng khi bạn click vào, nó sẽ trượt ra
+
+6
+00:00:12,719 --> 00:00:18,779
+lần nữa. Drawer sẽ giúp ta
+
+7
+00:00:16,109 --> 00:00:20,760
+tạo ra nó. Chúng ta sẽ
+
+8
+00:00:18,779 --> 00:00:22,230
+tạo ra một project mới trong Qt creator
+
+9
+00:00:20,760 --> 00:00:26,779
+và thực hành.
+10
+
+10
+00:00:22,230 --> 00:00:29,250
+Nhấn vào File -> New project -> Qt Quick Application.
+11
+
+11
+00:00:26,779 --> 00:00:35,160
+Chúng ta sẽ đặt tên nó là “Drawer Demo”,
+12
+
+12
+00:00:29,250 --> 00:00:38,570
+lưu nó tại thực mục hay dùng, chọn phiên bản
+13
+
+13
+00:00:35,160 --> 00:00:41,520
+Qt và chọn bộ kit và
+14
+
+14
+00:00:38,570 --> 00:00:44,809
+chúng ta sẽ có project tại đây. Chúng ta
+15
+
+15
+00:00:41,520 --> 00:00:55,469
+nên đổi tiêu đề thành “Drawer Demo”,
+16
+
+16
+00:00:44,809 --> 00:00:58,309
+import Qt Quick Controls. Hãy
+17
+
+17
+00:00:55,469 --> 00:01:01,559
+di chuyển xuống dưới và thay đổi số cuối cùng,
+18
+
+18
+00:00:58,309 --> 00:01:03,210
+và ở đây chúng ta nên import
+19
+
+19
+00:01:01,559 --> 00:01:09,570
+Qt Quick layout vì chúng ta sẽ
+20
+
+20
+00:01:03,210 --> 00:01:12,090
+cần đến nó. Ta có thể sử dụng Layout 1.4
+21
+
+21
+00:01:09,570 --> 00:01:14,280
+và một điều nữa ta cần làm
+22
+
+22
+00:01:12,090 --> 00:01:17,130
+là thay đổi phần tử này thành
+23
+
+23
+00:01:14,280 --> 00:01:20,820
+ApplicationWindow. Đây là
+24
+
+24
+00:01:17,130 --> 00:01:22,500
+phần tử có sẵn trong Qt
+25
+
+25
+00:01:20,820 --> 00:01:24,630
+Quick controls. Chúng ta sẽ tìm hiểu
+26
+
+26
+00:01:22,500 --> 00:01:26,159
+nó một cách chi tiết sau. Nếu bạn muốn
+27
+
+27
+00:01:24,630 --> 00:01:28,860
+biết thêm về nó, hãy bôi đen và nhấn
+28
+
+28
+00:01:26,159 --> 00:01:31,860
+F1 và chúng ta sẽ đọc được
+29
+
+29
+00:01:28,860 --> 00:01:34,170
+rất nhiều thứ về phần tử này. Nó
+30
+
+30
+00:01:31,860 --> 00:01:37,740
+cơ bản là một window (cửa sổ) và nó khá
+31
+
+31
+00:01:34,170 --> 00:01:40,259
+thuận tiện để thêm vào menu bar (thanh menu), status bar (thanh trạng thái)
+32
+
+32
+00:01:37,740 --> 00:01:42,990
+và những thứ tương tự. Ta cần gán một
+33
+
+33
+00:01:40,259 --> 00:01:46,590
+id cho Window (cửa sổ) ở đây, chúng ta sẽ
+34
+
+34
+00:01:42,990 --> 00:01:50,159
+đặt là rootId và thay đổi
+35
+
+35
+00:01:46,590 --> 00:01:53,280
+chiều rộng và chiều dài để nó trông giống như
+36
+
+36
+00:01:50,159 --> 00:01:57,600
+ứng dụng điện thoại. Ta sẽ đổi nó thành
+37
+
+37
+00:01:53,280 --> 00:02:00,299
+520. Chúng ta sẽ đặt
+38
+
+38
+00:01:57,600 --> 00:02:02,729
+header property (phần đầu của ứng dụng) cho
+39
+
+39
+00:02:00,299 --> 00:02:07,229
+ứng dụng này và chúng ta sẽ đặt
+40
+
+40
+00:02:02,729 --> 00:02:11,099
+Toolbar (thanh công cụ) vào. Toolbar có thể chứa rất nhiều thứ.
+41
+
+41
+00:02:07,229 --> 00:02:13,540
+Ta đặt chiều cao 50, tại sao không?
+42
+
+42
+00:02:11,099 --> 00:02:20,200
+và chúng ta đặt
+43
+
+43
+00:02:13,540 --> 00:02:22,840
+background (nền) là Rectangle. Ta đặt màu cho nó
+44
+
+44
+00:02:20,200 --> 00:02:25,840
+là "mintcream" (màu lá bạc hà). Nếu ta muốn biết
+45
+
+45
+00:02:22,840 --> 00:02:28,359
+màu này trông như thế nào thì chỉ cần di chuột lên trên
+46
+
+46
+00:02:25,840 --> 00:02:30,730
+và nó trông như thế này. Bên trong
+47
+
+47
+00:02:28,359 --> 00:02:34,989
+Toolbar chúng ta sẽ tạo
+48
+
+48
+00:02:30,730 --> 00:02:38,530
+phần tự Rowlayout. Ta đặt thuộc tính spacing
+49
+
+49
+00:02:34,989 --> 00:02:41,980
+là 20 và sẽ phủ tràn hết
+50
+
+50
+00:02:38,530 --> 00:02:44,769
+phần tử cha của nó, đó là
+51
+
+51
+00:02:41,980 --> 00:02:47,280
+phần tử ToolBar ở đây và bên trong đó,
+52
+
+52
+00:02:44,769 --> 00:02:50,439
+ta sẽ tạo phẩn tử ToolButton, phần tử mà
+53
+
+53
+00:02:47,280 --> 00:02:53,859
+người dùng có thể nhấn vào được, và
+54
+
+54
+00:02:50,439 --> 00:02:57,400
+chúng ta sẽ tạo một đoạn chữ ở đây (dùng phần từ Label).
+55
+
+55
+00:02:53,859 --> 00:03:00,189
+ToolButton cũng có thể có background (nền).
+56
+
+56
+00:02:57,400 --> 00:03:03,189
+Ta sẽ đổi background cho nó
+57
+
+57
+00:03:00,189 --> 00:03:08,019
+giống với background của ToolBar để chúng
+58
+
+58
+00:03:03,189 --> 00:03:11,079
+trông giống nhau. Nó cũng
+59
+
+59
+00:03:08,019 --> 00:03:13,359
+có thuộc tính để đặt hình ảnh
+60
+
+60
+00:03:11,079 --> 00:03:17,069
+dùng để hiển thị trong ToolButton đó.
+61
+
+61
+00:03:13,359 --> 00:03:21,220
+Thuộc tính đó là
+62
+
+62
+00:03:17,069 --> 00:03:24,340
+"icon.source"
+63
+
+63
+00:03:21,220 --> 00:03:27,220
+và chúng ta sẽ đặt đường dẫn đến hình ảnh tại đây.
+64
+
+64
+00:03:24,340 --> 00:03:31,150
+Trước đó, ta cần thêm thêm một
+65
+
+65
+00:03:27,220 --> 00:03:31,629
+resource file khác. Ta đều biết
+66
+
+66
+00:03:31,150 --> 00:03:34,900
+cách làm rồi.
+67
+
+67
+00:03:31,629 --> 00:03:40,239
+Tôi sẽ đi qua phần này nhanh thôi. Ta đặt
+68
+
+68
+00:03:34,900 --> 00:03:43,239
+nó là "resource", nhấn Next và thêm nó vào đây.
+69
+
+69
+00:03:40,239 --> 00:03:45,669
+Ta sẽ thêm tiền tố (prefix) và đặt
+70
+
+70
+00:03:43,239 --> 00:03:50,109
+tiền tố trống để đường dẫn ta dùng giống với
+71
+
+71
+00:03:45,669 --> 00:03:55,030
+đường dẫn ban đầu của nó. Và ta sẽ mở file này
+72
+
+72
+00:03:50,109 --> 00:03:58,750
+trong Explorer để mở project được
+73
+
+73
+00:03:55,030 --> 00:04:03,189
+lưu trong ở đĩa. Ta có thể làm giống hệt
+74
+
+74
+00:03:58,750 --> 00:04:06,010
+hoặc tương tự trong hệ điều hành MacOS
+75
+
+75
+00:04:03,189 --> 00:04:08,909
+và Linux. Ta sẽ tạo
+76
+
+76
+00:04:06,010 --> 00:04:12,639
+một thư mục mới ở đây và đặt nó là "images", và
+77
+
+77
+00:04:08,909 --> 00:04:15,849
+ta sẽ mở nó ra và đặt vào
+78
+
+78
+00:04:12,639 --> 00:04:18,310
+hình ảnh mà ta đã chuẩn bị. Ta sẽ quay trở lại
+79
+
+79
+00:04:15,849 --> 00:04:22,630
+resource file và chọn "Add files"
+80
+
+80
+00:04:18,310 --> 00:04:25,990
+các tệp, và nếu ta vào, ta sẽ nhìn thấy
+81
+
+81
+00:04:22,630 --> 00:04:27,070
+ảnh "drawer" mà ta đã cho vào ở trên. Ta lưu
+82
+
+82
+00:04:25,990 --> 00:04:31,840
+lại nó
+83
+
+83
+00:04:27,070 --> 00:04:37,720
+và nếu ta quay trở lại toolbar, ta có thể
+84
+
+84
+00:04:31,840 --> 00:04:40,960
+gõ images/drawer.png và ta
+85
+
+85
+00:04:37,720 --> 00:04:42,940
+sẽ có icon (biểu tượng) ở đây. Ta cũng
+86
+
+86
+00:04:40,960 --> 00:04:46,320
+sẽ muốn biết khi nào ToolButton được
+87
+
+87
+00:04:42,940 --> 00:04:51,580
+nhấn vào, vì vậy ta sẽ gõ console.log
+88
+
+88
+00:04:46,320 --> 00:04:53,410
+"Toolbutton Clicked" và ta sẽ làm
+89
+
+89
+00:04:51,580 --> 00:04:57,480
+một thứ khác nữa. Ta sẽ
+90
+
+90
+00:04:53,410 --> 00:04:57,480
+mở drawer, hãy chú thích ở đây.
+91
+
+91
+00:04:58,410 --> 00:05:03,220
+Bây giờ ta nên cho một vài thông tin vào
+92
+
+92
+00:05:01,060 --> 00:05:07,030
+phần tử Label (nhãn) ở đây. Ta sẽ chỉ paste (dán)
+93
+
+93
+00:05:03,220 --> 00:05:11,380
+một vài dòng code mà tôi đã chuẩn bị. Tôi sẽ
+94
+
+94
+00:05:07,030 --> 00:05:14,980
+giải thích chúng. Nhấn ctrl A -> ctrl I để
+95
+
+95
+00:05:11,380 --> 00:05:17,740
+căn chỉnh. Về cơ bản nó là Label (nhãn) và nó có
+96
+
+96
+00:05:14,980 --> 00:05:20,530
+một vài chữ để hiển thị và một vài thuộc tính,
+97
+
+97
+00:05:17,740 --> 00:05:24,310
+và ta muốn phần tử Label (nhãn) này
+98
+
+98
+00:05:20,530 --> 00:05:26,800
+phủ tràn hết chiều rộng
+99
+
+99
+00:05:24,310 --> 00:05:30,190
+của phẩn tử RowLayout. Giờ ta có
+100
+
+100
+00:05:26,800 --> 00:05:33,640
+ToolBar, hơi phức tạp một chút,
+101
+
+101
+00:05:30,190 --> 00:05:37,960
+ta sẽ tạo phần tử Drawer,
+102
+
+102
+00:05:33,640 --> 00:05:39,970
+ta sẽ gõ Drawer và ta nên
+103
+
+103
+00:05:37,960 --> 00:05:42,460
+xem tài liệu một chút để xem
+104
+
+104
+00:05:39,970 --> 00:05:47,770
+nó viết gì về Drawer. Ta gõ "Drawer".
+105
+
+105
+00:05:42,460 --> 00:05:50,980
+Drawer cung cấp
+106
+
+106
+00:05:47,770 --> 00:05:53,320
+swipe-based side panel (bảng trượt vuốt), tương tự
+107
+
+107
+00:05:50,980 --> 00:05:55,230
+với những phần tử được sử dụng giao diện cảm ứng,
+108
+
+108
+00:05:53,320 --> 00:05:58,060
+chỉ được hiện lên khi được
+109
+
+109
+00:05:55,230 --> 00:06:01,410
+mở ra". Đây là cách hoạt động của nó.
+110
+
+110
+00:05:58,060 --> 00:06:03,610
+Ta nên gán một ID và đặt
+111
+
+111
+00:06:01,410 --> 00:06:08,770
+nó là drawerId.
+112
+
+112
+00:06:03,610 --> 00:06:11,190
+Chiều rộng của nó sẽ là
+113
+
+113
+00:06:08,770 --> 00:06:15,130
+giá trị nhỏ nhất. Vậy chúng ta sẽ gõ Math.min.
+114
+
+114
+00:06:11,190 --> 00:06:17,590
+Ta có thể làm điều này bằng JavaScript
+115
+
+115
+00:06:15,130 --> 00:06:20,200
+nếu bạn còn nhớ và nó sẽ là giá trị nhỏ nhất
+116
+
+116
+00:06:17,590 --> 00:06:22,390
+của chiều rộng và
+117
+
+117
+00:06:20,200 --> 00:06:25,120
+chiều dài của thành phần Application Window (cửa sổ ứng dụng).
+118
+
+118
+00:06:22,390 --> 00:06:28,360
+Ta nên chú ý nếu
+119
+
+119
+00:06:25,120 --> 00:06:30,070
+giao diện người dùng bị xoay.
+120
+
+120
+00:06:28,360 --> 00:06:34,690
+Đó là lí do ta dùng giá trị nhỏ nhất. Ta sẽ
+121
+
+121
+00:06:30,070 --> 00:06:39,700
+gõ rootId.width (chiều rộng), rootId.height (chiều dài).
+122
+
+122
+00:06:34,690 --> 00:06:42,250
+Chúng ta cần
+123
+
+123
+00:06:39,700 --> 00:06:45,280
+giá trị nhỏ nhất của chúng và
+124
+
+124
+00:06:42,250 --> 00:06:48,760
+đặt chiều rộng của drawer bằng 2/3
+125
+
+125
+00:06:45,280 --> 00:06:51,610
+giá trị này.
+126
+
+126
+00:06:48,760 --> 00:06:54,460
+Chiều dài sẽ bằng với
+127
+
+127
+00:06:51,610 --> 00:06:58,630
+phàn tử ngoài cùng. Vì vậy ta sẽ
+128
+
+128
+00:06:54,460 --> 00:07:00,730
+gõ rootId.height và ta đặt thuộc tính
+129
+
+129
+00:06:58,630 --> 00:07:03,280
+"interactive" (tương tác) bằng "true". Ta muốn người dùng tương tác
+130
+
+130
+00:07:00,730 --> 00:07:06,070
+với nó. Giờ chúng ta đã có Drawer,
+131
+
+131
+00:07:03,280 --> 00:07:08,890
+Ta cần tìm cách bố trí các thành phần
+132
+
+132
+00:07:06,070 --> 00:07:10,870
+bên trong nó. Ta đã tạo ra nó, giờ
+133
+
+133
+00:07:08,890 --> 00:07:12,370
+ta cần cho nội dung vào trong. Nếu bạn nhớ
+134
+
+134
+00:07:10,870 --> 00:07:15,280
+ta đã có gì khi bắt đầu
+135
+
+135
+00:07:12,370 --> 00:07:18,430
+bài học này, chúng ta có một vài button (nút)
+136
+
+136
+00:07:15,280 --> 00:07:22,260
+bên trong drawer. Giờ chúng ta sẽ làm tương tự.
+137
+
+137
+00:07:18,430 --> 00:07:22,260
+Ta gõ ColumnLayout.
+138
+
+138
+00:07:24,480 --> 00:07:34,360
+Khoảng cách sẽ là 20 và
+139
+
+139
+00:07:29,970 --> 00:07:37,510
+chúng ta muốn phủ hết phần tử cha là
+140
+
+140
+00:07:34,360 --> 00:07:39,820
+Drawer này và bên trong ta có thể đặt
+141
+
+141
+00:07:37,510 --> 00:07:43,360
+một vài button (nút). Ta sẽ đặt nút
+142
+
+142
+00:07:39,820 --> 00:07:46,120
+đầu tiên. Nhấn Control A -> control I để căn chỉnh.
+143
+
+143
+00:07:43,360 --> 00:07:48,010
+Về cơ bản nó là một button (nút) bình thường. Nó có
+144
+
+144
+00:07:46,120 --> 00:07:51,250
+chiều rộng của bằng phần tử cha, khó để có thể
+145
+
+145
+00:07:48,010 --> 00:07:53,920
+ẩn đi được và được đặt là item1. Nó có cỡ font,
+146
+
+146
+00:07:51,250 --> 00:07:55,990
+màu của background (nền). Các bạn
+147
+
+147
+00:07:53,920 --> 00:07:59,740
+đều biết và dùng phần tử này rồi
+148
+
+148
+00:07:55,990 --> 00:08:03,400
+nên chúng ta sẽ sao chép nó và
+149
+
+149
+00:07:59,740 --> 00:08:07,330
+dán nó một vài lần. Chúng ta
+150
+
+150
+00:08:03,400 --> 00:08:11,350
+sẽ dán nó ở đây, và cả ở đây nữa.
+151
+
+151
+00:08:07,330 --> 00:08:17,380
+Nút thứ hai ta đặt là
+152
+
+152
+00:08:11,350 --> 00:08:21,100
+Item2. Màu của nó sẽ là "yellowgreen" (vàng xanh).
+153
+
+153
+00:08:17,380 --> 00:08:27,100
+Ta có thể thay bất cứ cái gì ta muốn.
+154
+
+154
+00:08:21,100 --> 00:08:30,460
+Gõ "Clicked on item2". Cái thứ ba sẽ đặt là
+155
+
+155
+00:08:27,100 --> 00:08:32,160
+Item3, màu của nó sẽ là
+156
+
+156
+00:08:30,460 --> 00:08:39,849
+"dodgerblue"
+157
+
+157
+00:08:32,160 --> 00:08:43,320
+và điền "Clicked on item3".
+158
+
+158
+00:08:39,849 --> 00:08:46,300
+Và ta thấy mỗi khi ta nhấn vào
+159
+
+159
+00:08:43,320 --> 00:08:48,520
+bất cứ button nào, ta sẽ đóng drawer lại.
+160
+
+160
+00:08:46,300 --> 00:08:54,000
+Hãy quay trở lại và xem rằng ta đặt nó
+161
+
+161
+00:08:48,520 --> 00:08:54,000
+là drawer. Ta cần gõ drawerId.close
+162
+
+162
+00:08:57,029 --> 00:09:09,640
+và lặp lại.
+163
+
+163
+00:09:00,760 --> 00:09:12,190
+Sao chép, dán và dán ở đây. Ta cần
+164
+
+164
+00:09:09,640 --> 00:09:16,750
+quay lại về ToolButton.
+165
+
+165
+00:09:12,190 --> 00:09:18,670
+Và trong ToolBar ở đây, khi ta nhấn vào, ta
+166
+
+166
+00:09:16,750 --> 00:09:24,490
+cần mở drawer, vì vậy ta cần gõ
+167
+
+167
+00:09:18,670 --> 00:09:26,410
+drawerId.open và trước khi ta chạy
+168
+
+168
+00:09:24,490 --> 00:09:29,140
+application (ứng dụng), tôi biết các bạn đang muốn
+169
+
+169
+00:09:26,410 --> 00:09:32,709
+chạy để xem ta có những gì rồi, nhưng ta cần
+170
+
+170
+00:09:29,140 --> 00:09:35,649
+cung cấp thêm nội dung gì đó cho
+171
+
+171
+00:09:32,709 --> 00:09:38,200
+giao diện và ta đặt nó trong
+172
+
+172
+00:09:35,649 --> 00:09:40,149
+phần tử ngoài cùng ở đây. Khi ta chạy
+173
+
+173
+00:09:38,200 --> 00:09:43,079
+application (ứng dụng), drawer sẽ không
+174
+
+174
+00:09:40,149 --> 00:09:46,420
+hiện thị. Nó mặc định bị ẩn.
+175
+
+175
+00:09:43,079 --> 00:09:49,300
+Ta hiển thị nó bằng cách gọi phương thức "open"
+176
+
+176
+00:09:46,420 --> 00:09:52,450
+và ta ẩn nó đi bằng phương thức "close".
+177
+
+177
+00:09:49,300 --> 00:09:55,899
+Ta sẽ thêm một hình chữ nhật
+178
+
+178
+00:09:52,450 --> 00:09:57,910
+vào giao diện, nó
+179
+
+179
+00:09:55,899 --> 00:10:02,350
+sẽ phủ tràn chiều rộng và
+180
+
+180
+00:09:57,910 --> 00:10:05,290
+chiều cao, và nó sẽ có màu:
+181
+
+181
+00:10:02,350 --> 00:10:06,430
+"lightsteelblue". Và nếu ta muốn xem
+182
+
+182
+00:10:05,290 --> 00:10:08,560
+nó trông như thế nào,
+183
+
+183
+00:10:06,430 --> 00:10:11,320
+di chuột qua nó và ta sẽ thấy
+184
+
+184
+00:10:08,560 --> 00:10:14,100
+được. Bây giờ nó đã sẵn sàng để chạy
+185
+
+185
+00:10:11,320 --> 00:10:17,230
+và xem nó trông như thế nào.
+186
+
+186
+00:10:14,100 --> 00:10:20,670
+Nếu ta nhấn vào
+187
+
+187
+00:10:17,230 --> 00:10:24,730
+đây, ta thấy drawer mở ra và
+188
+
+188
+00:10:20,670 --> 00:10:28,149
+nó in ra "Toolbutton clicked", nếu ta
+189
+
+189
+00:10:24,730 --> 00:10:30,100
+click vào item1,
+190
+
+190
+00:10:28,149 --> 00:10:32,770
+drawer sẽ đóng và ta thấy hiệu ứng
+191
+
+191
+00:10:30,100 --> 00:10:36,640
+tương tự nếu ta nhấn vào một trong những
+192
+
+192
+00:10:32,770 --> 00:10:38,740
+button (nút) ở đây. Có một Vấn đề là
+193
+
+193
+00:10:36,640 --> 00:10:41,140
+khoảng cách giữa các nút
+194
+
+194
+00:10:38,740 --> 00:10:44,290
+quá lớn. Vì vậy ta sẽ quay
+195
+
+195
+00:10:41,140 --> 00:10:47,949
+trở lại phần code và xem những gì
+196
+
+196
+00:10:44,290 --> 00:10:51,519
+ta có trong drawer. Về cơ bản ta không
+197
+
+197
+00:10:47,949 --> 00:10:53,769
+muốn phần tử Column phủ hết phần tử cha. Ta chỉ muốn nó có
+198
+
+198
+00:10:51,519 --> 00:10:59,010
+chiều rộng bằng với cha của nó.
+199
+
+199
+00:10:53,769 --> 00:11:03,399
+Ta sẽ gõ width: parent.width và đặt
+200
+
+200
+00:10:59,010 --> 00:11:06,670
+khoảng cách bằng 0. Hãy cùng xem
+211
+
+201
+00:11:03,399 --> 00:11:09,550
+ta có gì. Chúng ta có ứng dụng ở đây.
+212
+
+202
+00:11:06,670 --> 00:11:12,940
+Nhấn vào đây và ta thấy đây là
+213
+
+203
+00:11:09,550 --> 00:11:16,350
+nhưng gì ta muốn. Nhấn và ta thấy
+214
+
+204
+00:11:12,940 --> 00:11:19,390
+drawer biến mất và nếu ta nhấn vào
+215
+
+205
+00:11:16,350 --> 00:11:21,510
+Tool button ở đây, ta thấy drawer
+216
+
+206
+00:11:19,390 --> 00:11:24,370
+mở ra. Và ta cũng có thể đóng nó vào bằng cách nhấn
+217
+
+207
+00:11:21,510 --> 00:11:27,520
+phía bên ngoài. Ta có thể làm
+218
+
+208
+00:11:24,370 --> 00:11:30,520
+thêm một thứ thú vị hơn khi ta đóng
+219
+
+209
+00:11:27,520 --> 00:11:33,760
+nó. Ta có thể đổi màu
+220
+
+210
+00:11:30,520 --> 00:11:41,530
+hình chữ nhật ở đây. Ta sẽ
+221
+
+211
+00:11:33,760 --> 00:11:43,870
+gán id: contentRectId và khi
+222
+
+212
+00:11:41,530 --> 00:11:49,090
+ta nhấn vào, trước khi đóng drawer,
+223
+
+213
+00:11:43,870 --> 00:11:56,320
+ta sẽ thay đỏi màu của contentRectId,
+224
+
+214
+00:11:49,090 --> 00:12:01,570
+đổi thành màu đỏ với button
+225
+
+215
+00:11:56,320 --> 00:12:04,810
+thứ nhất, đổi thành màu xanh lá với
+226
+
+216
+00:12:01,570 --> 00:12:10,740
+button thứ hai, hãy đổi thuộc tính này, và
+227
+
+217
+00:12:04,810 --> 00:12:14,860
+đổi thành màu xanh dương cho button thứ ba.
+228
+
+218
+00:12:10,740 --> 00:12:17,860
+Hãy chạy và xem nó có hoạt động không. Ta
+229
+
+219
+00:12:14,860 --> 00:12:24,550
+có ứng dụng, nhấn vào mục nút đầu tiên và
+230
+
+220
+00:12:17,860 --> 00:12:28,180
+nền chuyển thành màu đỏ, rồi xanh lá. Nhấn
+231
+
+221
+00:12:24,550 --> 00:12:30,310
+vào lần nữa và ta thấy màu xanh dương.
+232
+
+222
+00:12:28,180 --> 00:12:32,830
+Đây là cách làm việc với phần tử Drawer.
+233
+
+223
+00:12:30,310 --> 00:12:35,320
+Trong bài học tiếp theo ta sẽ
+234
+
+224
+00:12:32,830 --> 00:12:39,090
+học về Spin box QT quick
+235
+
+225
+00:12:35,320 --> 00:12:39,090
+control. Hẹn gặp lại các bạn.
+

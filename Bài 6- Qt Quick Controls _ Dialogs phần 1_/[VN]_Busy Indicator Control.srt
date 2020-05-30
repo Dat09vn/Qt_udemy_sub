@@ -1,0 +1,1091 @@
+﻿1
+00:00:00,030 --> 00:00:06,089
+Trong bài này, ta sẽ cùng nhau tìm hiểu
+
+2
+00:00:02,250 --> 00:00:08,220
+về phần tử BusyIndicator (dấu hiệu báo bận) trong Qt Quick Controls
+
+3
+00:00:06,089 --> 00:00:11,070
+Ta dùng phần tử này để thông báo
+
+4
+00:00:08,220 --> 00:00:13,740
+trạng thái đang tải của một thứ gì đó. Ta hãy đi đến
+
+5
+00:00:11,070 --> 00:00:16,260
+Qt Creator và cùng nhau nghiên cứu. Ok,
+
+6
+00:00:13,740 --> 00:00:17,550
+đây là Qt Creator. Ta sẽ
+
+7
+00:00:16,260 --> 00:00:21,300
+tạo một dự án mới.
+
+8
+00:00:17,550 --> 00:00:23,490
+Đây là Qt Quick Application. Ta cần phải
+
+9
+00:00:21,300 --> 00:00:26,939
+chắc chắn một điều, đó là lưu dự án vào vị trí
+10
+
+10
+00:00:23,490 --> 00:00:28,369
+không có khoảng cách giữa các chữ. Nếu xuất hiện các khoảng cách,
+11
+
+11
+00:00:26,939 --> 00:00:31,199
+ta sẽ gặp vấn đề khi
+12
+
+12
+00:00:28,369 --> 00:00:33,570
+chạy ứng dụng trên các thiết bị
+13
+
+13
+00:00:31,199 --> 00:00:36,090
+di động như Android. Hãy chú ý về điều này.
+14
+
+14
+00:00:33,570 --> 00:00:38,969
+Ta gọi dự án là "BusyIndicatorDemo",
+15
+
+15
+00:00:36,090 --> 00:00:44,120
+sử dụng vị trí này làm vị trí mặc định
+16
+
+16
+00:00:38,969 --> 00:00:49,489
+cho dự án. Lựa chọn phiên bản Qt,
+17
+
+17
+00:00:44,120 --> 00:00:53,460
+chọn các bộ công cụ, Android for x86 và
+18
+
+18
+00:00:49,489 --> 00:00:56,219
+bộ công cụ trên máy tính. Ta sẽ không dùng araeabi do
+19
+
+19
+00:00:53,460 --> 00:00:58,710
+công cụ này chạy rất chậm trên
+20
+
+20
+00:00:56,219 --> 00:01:03,030
+các thiết bị ảo. Ta đã biết điều này rồi, chọn "Finish".
+21
+
+21
+00:00:58,710 --> 00:01:06,990
+Ta thực hiện import QtQuick.Controls 2.4
+22
+
+22
+00:01:03,030 --> 00:01:09,119
+và QtQuick.Layouts do ta sẽ
+23
+
+23
+00:01:06,990 --> 00:01:14,220
+sử dụng những thứ này về sau. Ta đổi tên ở đây,
+24
+
+24
+00:01:09,119 --> 00:01:16,890
+ta viết "BusyIndicator Demo". Nếu đi đến
+25
+
+25
+00:01:14,220 --> 00:01:21,150
+phần tài liệu và gõ
+26
+
+26
+00:01:16,890 --> 00:01:24,840
+"BusyIndicator", ta sẽ thấy loại phần tử này ở đây.
+27
+
+27
+00:01:21,150 --> 00:01:27,210
+BusyIndicator dùng làm dấu hiệu,
+28
+
+28
+00:01:24,840 --> 00:01:30,210
+chỉ cho ta thấy đang có một hoạt động nào đó, trong khi đang tải nội dung
+29
+
+29
+00:01:27,210 --> 00:01:32,070
+hoặc khi UI đang bị chặn để chờ
+30
+
+30
+00:01:30,210 --> 00:01:34,409
+nguồn nhập vào.
+31
+
+31
+00:01:32,070 --> 00:01:37,560
+Về cơ bản, ta dùng BusyIndicator khi có cái gì đó
+32
+
+32
+00:01:34,409 --> 00:01:40,650
+đang chạy, để thông báo cho người dùng biết.
+33
+
+33
+00:01:37,560 --> 00:01:46,320
+Và đây là cách ta dùng BusyIndicator. Bây giờ,
+34
+
+34
+00:01:40,650 --> 00:01:48,420
+ta sẽ đặt một ColumnLayout (layout dạng cột) vào đây.
+35
+
+35
+00:01:46,320 --> 00:01:53,040
+Bên trong, ta sẽ đặt một phần tử BusyIndicator,
+36
+
+36
+00:01:48,420 --> 00:01:56,310
+ta viết "BusyIndicator". Ta sẽ đặt
+37
+
+37
+00:01:53,040 --> 00:01:58,700
+thuộc tính chiều rộng
+38
+
+38
+00:01:56,310 --> 00:01:58,700
+vào layout này,
+39
+
+39
+00:01:58,850 --> 00:02:07,259
+đặt thêm cả thuộc tính chiều cao. Ta đặt như vậy.
+40
+
+40
+00:02:04,110 --> 00:02:13,590
+Ở dưới BusyIndicator, ta sẽ
+41
+
+41
+00:02:07,259 --> 00:02:15,840
+đặt thêm một ColumnLayout khác.
+42
+
+42
+00:02:13,590 --> 00:02:19,290
+Layout này sẽ chứa hai button (nút),
+43
+
+43
+00:02:15,840 --> 00:02:32,760
+ta viết Button, Id: button1.
+44
+
+44
+00:02:19,290 --> 00:02:37,140
+Button, Id: button2. Ở button thứ nhất,
+45
+
+45
+00:02:32,760 --> 00:02:40,290
+ta viết "Running" (Chạy), dùng để diễn tả
+46
+
+46
+00:02:37,140 --> 00:02:45,450
+một thứ gì đó đang diễn ra. Ở button thứ hai,
+47
+
+47
+00:02:40,290 --> 00:02:47,549
+ta viết "Not Running" (Không chạy).
+48
+
+48
+00:02:45,450 --> 00:02:51,420
+Chạy ứng dụng và xem ta có những gì.
+49
+
+49
+00:02:47,549 --> 00:02:54,030
+Ta sẽ chạy ứng dụng này trên máy tính.
+50
+
+50
+00:02:51,420 --> 00:02:57,209
+Click vào nút xanh, ta thấy có dấu hiệu
+51
+
+51
+00:02:54,030 --> 00:02:59,430
+đang quay, đồng nghĩa với việc có cái gì đó
+52
+
+52
+00:02:57,209 --> 00:03:01,560
+đang chạy, đồng thời ta có hai button
+53
+
+53
+00:02:59,430 --> 00:03:03,780
+nằm ở dưới này. Tuy nhiên, ta thấy
+54
+
+54
+00:03:01,560 --> 00:03:06,780
+bố cục chung không được đẹp lắm. Ta cần phải đẩy
+55
+
+55
+00:03:03,780 --> 00:03:09,209
+toàn bộ những thứ này lên trên đầu,
+56
+
+56
+00:03:06,780 --> 00:03:12,000
+đặt BusyIndicator vào vị trí chính giữa,
+57
+
+57
+00:03:09,209 --> 00:03:13,890
+còn các button thì trải đều ra chiều rộng cho sẵn.
+58
+
+58
+00:03:12,000 --> 00:03:15,750
+Ta sẽ bắt đầu với các button trước. Việc này
+59
+
+59
+00:03:13,890 --> 00:03:22,019
+khá dễ làm. Ta sẽ viết
+60
+
+60
+00:03:15,750 --> 00:03:28,920
+Layout.fillWidth, "true" (đúng). Ta làm tương tự
+61
+
+61
+00:03:22,019 --> 00:03:32,069
+với button thứ hai. Ta nên sửa lại
+62
+
+62
+00:03:28,920 --> 00:03:35,819
+chữ này, thành "Not Running".
+63
+
+63
+00:03:32,069 --> 00:03:38,459
+Chạy ứng dụng và xem những thay đổi đã được thực hiện,
+64
+
+64
+00:03:35,819 --> 00:03:42,180
+mm-hmm, các button đã trải đều
+65
+
+65
+00:03:38,459 --> 00:03:45,870
+ra toàn bộ chiều rộng cho sẵn. Bây giờ, ta sẽ đặt BusyIndicator vào vị trí chính giữa.
+66
+
+66
+00:03:42,180 --> 00:03:48,359
+Ta có thể làm cách nào? Một cách để làm
+67
+
+67
+00:03:45,870 --> 00:03:52,950
+đó là sử dụng các alignment (các liên kết),
+68
+
+68
+00:03:48,359 --> 00:03:57,739
+Ta viết Layout.alignment và viết
+69
+
+69
+00:03:52,950 --> 00:04:01,709
+Qt.AlignHCenter.
+70
+
+70
+00:03:57,739 --> 00:04:04,019
+Nếu chạy ứng dụng thì BusyIndicator sẽ được đặt
+71
+
+71
+00:04:01,709 --> 00:04:06,209
+vào vị trí chính giữa. Cuối cùng, ta cần
+72
+
+72
+00:04:04,019 --> 00:04:09,180
+tìm cách đẩy những thứ này lên trên đầu.
+73
+
+73
+00:04:06,209 --> 00:04:11,700
+Một cách mà tôi vừa nghĩ ra, đó là
+74
+
+74
+00:04:09,180 --> 00:04:14,700
+thêm một phần tử vào phần dưới
+75
+
+75
+00:04:11,700 --> 00:04:18,329
+của ColumnLayout, phần tử này sẽ phủ hết
+76
+
+76
+00:04:14,700 --> 00:04:20,070
+khoảng trống còn lại trong cửa sổ.
+77
+
+77
+00:04:18,329 --> 00:04:22,860
+Tôi sẽ thực hiện để các bạn thấy rõ. Tôi sẽ
+78
+
+78
+00:04:20,070 --> 00:04:26,220
+đi xuống phần dưới của ColumnLayout này, nơi chứa
+79
+
+79
+00:04:22,860 --> 00:04:30,090
+các button. Tôi sẽ đặt
+80
+
+80
+00:04:26,220 --> 00:04:34,490
+vào đây một phần tử, và phần tử này
+81
+
+81
+00:04:30,090 --> 00:04:34,490
+sẽ trải đều ra chiều rộng và chiều cao cho sẵn.
+82
+
+82
+00:04:41,000 --> 00:04:49,110
+Các bạn sẽ thấy phần tử này giống như phần tử đệm (spacer)
+83
+
+83
+00:04:45,540 --> 00:04:53,100
+trong C++ thuộc Qt, nếu các bạn đã từng làm việc
+84
+
+84
+00:04:49,110 --> 00:04:56,460
+với các phần tử đệm trước đó. Chạy chương trình,
+85
+
+85
+00:04:53,100 --> 00:04:59,790
+ta sẽ thấy mọi thứ đều được đẩy lên trên đầu,
+86
+
+86
+00:04:56,460 --> 00:05:02,550
+giống như vậy, và tất cả các khoảng trống
+87
+
+87
+00:04:59,790 --> 00:05:05,460
+đều được lấp đầy bởi phần tử mà ta vừa đặt vào.
+88
+
+88
+00:05:02,550 --> 00:05:10,110
+Để có thể thấy được phần tử này, ta có thể đặt vào đó
+89
+
+89
+00:05:05,460 --> 00:05:12,479
+một hình chữ nhật. Hình này không có tác dụng gì cả,
+90
+
+90
+00:05:10,110 --> 00:05:17,600
+tôi chỉ muốn dùng hình này để chỉ cho các bạn thấy là ta có khoảng trống ở đây.
+91
+
+91
+00:05:12,479 --> 00:05:21,930
+Ta sẽ cho hình chữ nhật phủ kín phần tử mẹ.
+92
+
+92
+00:05:17,600 --> 00:05:26,520
+Hình sẽ phủ đầy phần tử. Ta sẽ cho hình này màu đỏ,
+93
+
+93
+00:05:21,930 --> 00:05:29,490
+ví dụ như vậy. Các bạn có thể chọn màu mà mình thích.
+94
+
+94
+00:05:26,520 --> 00:05:32,039
+Chạy ứng dụng, ta sẽ thấy
+95
+
+95
+00:05:29,490 --> 00:05:34,620
+có một hình chữ nhật màu đỏ ở đây, nằm trong
+96
+
+96
+00:05:32,039 --> 00:05:36,210
+khoảng trống này. Hình đó đây. Tôi sẽ lấy
+97
+
+97
+00:05:34,620 --> 00:05:38,880
+hình này ra do hình này không có hữu dụng gì
+98
+
+98
+00:05:36,210 --> 00:05:41,729
+ở đây cả. Tôi sẽ chú giải hình đó ra.
+99
+
+99
+00:05:38,880 --> 00:05:45,060
+Và đây là cách để ta đẩy mọi thứ lên trên đầu,
+100
+
+100
+00:05:41,729 --> 00:05:48,060
+bằng cách chỉ ra một phần tử
+101
+
+101
+00:05:45,060 --> 00:05:50,490
+phủ kín khoảng trống còn lại.
+102
+
+102
+00:05:48,060 --> 00:05:53,729
+Tôi muốn các bạn nắm được kỹ thuật này,
+103
+
+103
+00:05:50,490 --> 00:05:57,270
+để các bạn có thể dùng ở những nơi khác.
+104
+
+104
+00:05:53,729 --> 00:06:02,070
+Tuy nhiên, các bạn cũng có thể bỏ hết phần này đi, ok,
+105
+
+105
+00:05:57,270 --> 00:06:05,370
+không cần chỉ rõ thuộc tính chiều cao
+106
+
+106
+00:06:02,070 --> 00:06:07,580
+của ColumnLayout ở đây, từ đây,
+107
+
+107
+00:06:05,370 --> 00:06:10,139
+mọi thứ sẽ được sắp xếp từ đầu trên cùng.
+108
+
+108
+00:06:07,580 --> 00:06:13,169
+Chạy ứng dụng để ta có thể
+109
+
+109
+00:06:10,139 --> 00:06:16,410
+thấy rõ hơn. Ok, vẫn giống
+110
+
+110
+00:06:13,169 --> 00:06:19,050
+như trước. Đây là hai cách mà bạn có thể làm cho
+111
+
+111
+00:06:16,410 --> 00:06:21,510
+giao diện người dùng trông như thế này.
+112
+
+112
+00:06:19,050 --> 00:06:24,380
+Bây giờ, ta sẽ tập trung vào BusyIndicator.
+113
+
+113
+00:06:21,510 --> 00:06:27,110
+Một điều mà có lẽ tất cả các bạn đều muốn làm,
+114
+
+114
+00:06:24,380 --> 00:06:28,760
+đó là làm cho BusyIndicator bắt đầu chạy và ngừng chạy.
+115
+
+115
+00:06:27,110 --> 00:06:32,060
+Ta làm thế nào?
+116
+
+116
+00:06:28,760 --> 00:06:39,110
+Ta hãy dùng các button ở đây,
+117
+
+117
+00:06:32,060 --> 00:06:49,250
+xử lý lệnh onClicked. Ta gán cho BusyIndicator một Id,
+118
+
+118
+00:06:39,110 --> 00:06:52,930
+Khi ta muốn BusyIndicator hoạt động,
+119
+
+119
+00:06:49,250 --> 00:06:57,020
+ta chỉ cần đặt thuộc tính running (chạy),
+120
+
+120
+00:06:52,930 --> 00:06:59,990
+Xem trong phần tài liệu về BusyIndicator,
+121
+
+121
+00:06:57,020 --> 00:07:01,760
+ta thấy có một thuộc tính gọi là running.
+122
+
+122
+00:06:59,990 --> 00:07:03,830
+Thuộc tính này chỉ ra BusyIndicator
+123
+
+123
+00:07:01,760 --> 00:07:06,440
+có đang được dùng để chỉ một hoạt động nào đó hay không.
+124
+
+124
+00:07:03,830 --> 00:07:08,900
+Nếu đúng (true), thì tức là đang có hoạt động.
+125
+
+125
+00:07:06,440 --> 00:07:12,020
+Nếu sai (false), tức là không có hoạt động.
+126
+
+126
+00:07:08,900 --> 00:07:18,490
+Do đó, ở đây ta sẽ viết
+127
+
+127
+00:07:12,020 --> 00:07:23,780
+BusyIndicatorId.running bằng với "true" (đúng),
+128
+
+128
+00:07:18,490 --> 00:07:27,110
+do ta muốn BusyIndicator chạy. Và khi ta
+129
+
+129
+00:07:23,780 --> 00:07:31,490
+click vào "Not Running", ta muốn
+130
+
+130
+00:07:27,110 --> 00:07:37,120
+BusyIndicator không chạy. Do đó,
+131
+
+131
+00:07:31,490 --> 00:07:41,270
+ta sẽ đặt thuộc tính running là "false" (sai)
+132
+
+132
+00:07:37,120 --> 00:07:43,640
+Ta cũng muốn khi bắt đầu, BusyIndicator sẽ không chạy,
+133
+
+133
+00:07:41,270 --> 00:07:48,820
+do đó, ta sẽ đặt thuộc tính "running"
+134
+
+134
+00:07:43,640 --> 00:07:52,220
+là "false" (sai). Khi khai báo ở đây,
+135
+
+135
+00:07:48,820 --> 00:07:55,250
+và chạy ứng dụng, ta thấy
+136
+
+136
+00:07:52,220 --> 00:07:58,780
+BusyIndicator không chạy và
+137
+
+137
+00:07:55,250 --> 00:08:03,650
+cũng không xuất hiện ở đây. Khi thực hiện chạy,
+138
+
+138
+00:07:58,780 --> 00:08:06,950
+thì BusyIndicator mới xuất hiện. Và khi ngừng chạy,
+139
+
+139
+00:08:03,650 --> 00:08:09,920
+ta sẽ không thấy BusyIndicator nữa. Ok, chạy ứng dụng,
+140
+
+140
+00:08:06,950 --> 00:08:13,820
+ta thấy BusyIndicator đang chạy. Dừng lại, ta không thấy BusyIndicator nữa.
+141
+
+141
+00:08:09,920 --> 00:08:17,570
+Theo lẽ thường, ta sẽ muốn
+142
+
+142
+00:08:13,820 --> 00:08:19,940
+BusyIndicator không chiếm chỗ trống khi nó không xuất hiện.
+143
+
+143
+00:08:17,570 --> 00:08:23,540
+Vậy ta làm thế nào? Để làm được điều này,
+144
+
+144
+00:08:19,940 --> 00:08:26,780
+thực ra rất dễ dàng. Ta có thể quay trở lại
+145
+
+145
+00:08:23,540 --> 00:08:29,570
+dòng code và làm cho BusyIndicator không xuất hiện
+146
+
+146
+00:08:26,780 --> 00:08:34,669
+khi nó không chạy. Ta viết "visible...
+147
+
+147
+00:08:29,570 --> 00:08:38,620
+...false" Thực hiện tương tự ở đây.
+148
+
+148
+00:08:34,669 --> 00:08:38,620
+Khi chạy thì BusyIndicator sẽ xuất hiện,
+149
+
+149
+00:08:38,849 --> 00:08:55,330
+ta viết "visible", và viết "visible..false" ỏ đây.
+150
+
+150
+00:08:47,500 --> 00:08:58,450
+Chạy ứng dụng, BusyIndicator sẽ không xuất hiện.
+151
+
+151
+00:08:55,330 --> 00:09:01,570
+Và khi click vào Running, BusyIndicator xuất hiện,
+152
+
+152
+00:08:58,450 --> 00:09:05,500
+đồng thời toàn bộ UI sẽ dịch chuyển một chút xuống dưới
+153
+
+153
+00:09:01,570 --> 00:09:08,040
+để chừa chỗ cho BusyIndicator. Khi ngừng chạy,
+154
+
+154
+00:09:05,500 --> 00:09:12,280
+mm-hmm,
+155
+
+155
+00:09:08,040 --> 00:09:15,580
+Running, Not Running, BusyIndicator không xuất hiện.
+156
+
+156
+00:09:12,280 --> 00:09:20,320
+Tuy nhiên, BusyIndicator không dịch chuyển lên trên để lấp khoảng trống.
+157
+
+157
+00:09:15,580 --> 00:09:26,770
+Sao vậy nhỉ? À, ở đây là "true" (đúng),
+158
+
+158
+00:09:20,320 --> 00:09:31,480
+nhẽ ra phải là "false" (sai). Lỗi của tôi. Ta chạy lại.
+159
+
+159
+00:09:26,770 --> 00:09:34,270
+BusyIndicator đã xuất hiện. Khi ngừng chạy, BusyIndicator
+160
+
+160
+00:09:31,480 --> 00:09:37,420
+biến mất. Và đây là tất cả những gì
+161
+
+161
+00:09:34,270 --> 00:09:39,130
+về BusyIndicator khi ta dùng. Ta cho BusyIndicator
+162
+
+162
+00:09:37,420 --> 00:09:42,550
+xuất hiện nếu muốn. Và ta cho BusyIndicator xuất hiện như này,
+163
+
+163
+00:09:39,130 --> 00:09:45,520
+bằng cách viết visible,
+164
+
+164
+00:09:42,550 --> 00:09:47,980
+đặt thuộc tính running là "true" (đúng).
+165
+
+165
+00:09:45,520 --> 00:09:50,620
+Ta ẩn BusyIndicator bằng cách đặt các thuộc tính này là
+166
+
+166
+00:09:47,980 --> 00:09:54,310
+"false" (sai). Ok, BusyIndicator mà ta vừa thực hành
+167
+
+167
+00:09:50,620 --> 00:09:56,890
+có kiểu dáng mặc định.
+168
+
+168
+00:09:54,310 --> 00:09:59,260
+Làm thế nào để có thể đổi sang kiểu dáng khác,
+169
+
+169
+00:09:56,890 --> 00:10:01,180
+bởi ta không muốn nhìn mãi kiểu này?
+170
+
+170
+00:09:59,260 --> 00:10:05,530
+Ta đã được học cách thay đổi kiểu dáng.
+171
+
+171
+00:10:01,180 --> 00:10:14,590
+Ta có hai include qtquickcontrols2 ở đây,
+172
+
+172
+00:10:05,530 --> 00:10:18,670
+Ta cần đi đến main file,
+173
+
+173
+00:10:14,590 --> 00:10:27,010
+chọn cpp, include QQuickStyle,
+174
+
+174
+00:10:18,670 --> 00:10:29,460
+ở dưới này ta viết QQuickStyle,
+175
+
+175
+00:10:27,010 --> 00:10:29,460
+setStyle,
+176
+
+176
+00:10:32,810 --> 00:10:42,570
+và đặt kiểu "Material", do ta muốn xem
+177
+
+177
+00:10:38,940 --> 00:10:44,700
+kiểu dáng này trên Android. Ta đã thực hiện
+178
+
+178
+00:10:42,570 --> 00:10:52,500
+một vài thay đổi trong file dự án, do đó,
+179
+
+179
+00:10:44,700 --> 00:10:57,530
+ta cần phải chạy QMake. qtquickcontrols2
+180
+
+180
+00:10:52,500 --> 00:11:00,300
+không có ở đây. Như vậy là không đúng rồi.
+181
+
+181
+00:10:57,530 --> 00:11:04,410
+Ta đi đến dự án đầu tiên, thay đổi một ít ở đây.
+182
+
+182
+00:11:00,300 --> 00:11:13,940
+Ok, phải là quickcontrols2, chứ không phải là
+183
+
+183
+00:11:04,410 --> 00:11:17,940
+qtquickcontrols2. Lỗi của tôi. Chạy ứng dụng.
+184
+
+184
+00:11:13,940 --> 00:11:22,740
+Ok, đây là BusyIndicator
+185
+
+185
+00:11:17,940 --> 00:11:25,980
+theo kiểu dáng "Material". Nếu chạy,
+186
+
+186
+00:11:22,740 --> 00:11:28,710
+BusyIndicator trông như thế này. Ta ngừng chạy,
+187
+
+187
+00:11:25,980 --> 00:11:31,200
+giống như những gì ta làm trước đó. Các bạn có thể thử
+188
+
+188
+00:11:28,710 --> 00:11:36,180
+các kiểu dáng khác nếu muốn. Ví dụ,
+189
+
+189
+00:11:31,200 --> 00:11:40,800
+ta có thể thử kiểu "Fusion". Chạy lại,
+190
+
+190
+00:11:36,180 --> 00:11:43,590
+và đây là BusyIndicator trong kiểu Fusion.
+191
+
+191
+00:11:40,800 --> 00:11:45,660
+Ngừng chạy. Việc cuối cùng mà tôi muốn làm là
+192
+
+192
+00:11:43,590 --> 00:11:48,300
+chạy trên thiết bị Android và xem xem BusyIndicator
+193
+
+193
+00:11:45,660 --> 00:11:51,510
+trông như thế nào. Các bạn nên hình thành thói quen
+194
+
+194
+00:11:48,300 --> 00:11:53,520
+chạy ứng dụng trên các nền tảng khác nhau
+195
+
+195
+00:11:51,510 --> 00:11:56,730
+nếu có thể, bởi đây là
+196
+
+196
+00:11:53,520 --> 00:12:00,060
+tất cả những gì mà Qt nói về. Tôi sẽ đặt lại
+197
+
+197
+00:11:56,730 --> 00:12:03,870
+kiểu dáng "Material"
+198
+
+198
+00:12:00,060 --> 00:12:07,470
+do đây là kiểu dáng đặc trưng
+199
+
+199
+00:12:03,870 --> 00:12:18,530
+trên các thiết bị Android. Tôi sẽ đi xuống đây,
+200
+
+200
+00:12:07,470 --> 00:12:18,530
+chọn bộ công cụ Android, làm sạch dự án.
+201
+
+201
+00:12:20,600 --> 00:12:23,960
+Chạy QMake
+202
+
+202
+00:12:26,339 --> 00:12:34,829
+và chạy lại dự án. Các bạn cần chắc chắn một điều,
+203
+
+203
+00:12:30,139 --> 00:12:36,749
+đó là chạy dự án khi đã được làm sạch.
+204
+
+204
+00:12:34,829 --> 00:12:39,480
+Nếu muốn thử chạy trên thiết bị Android,
+205
+
+205
+00:12:36,749 --> 00:12:43,519
+ta cần phải có một thiết bị ảo
+205
+
+206
+00:12:39,480 --> 00:12:48,839
+để có thể chạy. Tôi có ở đây rồi.
+206
+
+207
+00:12:43,519 --> 00:12:52,129
+Nếu thành công, tôi sẽ
+207
+
+208
+00:12:48,839 --> 00:12:53,309
+nhấn vào nút chạy ứng dụng.
+208
+
+209
+00:12:52,129 --> 00:12:57,089
+Okay,
+209
+
+210
+00:12:53,309 --> 00:13:03,410
+thành công rồi, như vậy tôi có thể
+210
+
+211
+00:12:57,089 --> 00:13:03,410
+chạy được ứng dụng. Chọn thiết bị ở đây, chọn "OK",
+211
+
+212
+00:13:04,370 --> 00:13:13,709
+mang thiết bị ra lần nữa, và
+212
+
+213
+00:13:10,199 --> 00:13:18,240
+UI sẽ chạy trên ứng dụng Android
+213
+
+214
+00:13:13,709 --> 00:13:22,370
+trong một vài phút nữa. Ok, đây là ứng dụng mà ta có.
+214
+
+215
+00:13:18,240 --> 00:13:26,730
+Click vào "Running", ta thấy
+215
+
+216
+00:13:22,370 --> 00:13:31,170
+BusyIndicator ở đây, click vào "Not Running",
+216
+
+217
+00:13:26,730 --> 00:13:33,179
+BusyIndicator dừng lại. Đây là tất cả những nội dung
+217
+
+218
+00:13:31,170 --> 00:13:35,490
+mà tôi cần chia sẻ trong bài giảng này. Ở bài tiếp theo,
+218
+
+219
+00:13:33,179 --> 00:13:40,160
+ta sẽ cùng nhau tìm hiểu về phần tử check box
+219
+
+220
+00:13:35,490 --> 00:13:40,160
+trong Qt Quick Controls. Hẹn gặp lại các bạn.
+

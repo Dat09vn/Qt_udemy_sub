@@ -1,0 +1,309 @@
+0:00:00.000,0:00:04.009
+In this chapter, we are going to look at
+
+0:00:01.620,0:00:06.660
+transforms, transitions and animations.
+
+0:00:04.009,0:00:09.059
+This is a very interesting
+
+0:00:06.660,0:00:11.580
+and rich topic into amount
+
+0:00:09.059,0:00:13.950
+because it really brings your user interface to life.
+
+0:00:11.580,0:00:16.379
+We are going to touch on transforms,
+
+0:00:13.950,0:00:19.020
+which are a set of changes that you can apply
+
+0:00:16.379,0:00:22.080
+to your QML elements.
+
+0:00:19.020,0:00:24.660
+You can do translations which are a way to move
+
+0:00:22.080,0:00:27.539
+your elements on the x-axis or the y-axis.
+
+0:00:24.660,0:00:29.490
+You can see on the left here.
+
+0:00:27.539,0:00:33.030
+We have the starting position of Qt text here,
+
+0:00:29.490,0:00:36.000
+It is to the top left
+
+0:00:33.030,0:00:38.280
+and we translated it to be in the middle of the rectangle here.
+
+0:00:36.000,0:00:40.710
+It's given distance on the x-axis,
+
+0:00:38.280,0:00:43.649
+and it's given distance on the y-axis.
+
+0:00:40.710,0:00:45.629
+Rotation is exactly what it sounds like.
+
+0:00:43.649,0:00:48.660
+It allows you to rotate your elements.
+
+0:00:45.629,0:00:51.809
+You see that it was in the centre
+
+0:00:48.660,0:00:54.840
+on the first state here but now
+
+0:00:51.809,0:00:57.000
+we rotate it a given angle.
+
+0:00:54.840,0:00:59.489
+This is what rotation does and we are going to have a
+
+0:00:57.000,0:01:01.670
+chance to play with it. We are also going
+
+0:00:59.489,0:01:04.920
+to look at scaling and see how you can
+
+0:01:01.670,0:01:07.920
+expand your QML elements or shrink them down in size.
+
+0:01:04.920,0:01:10.080
+Animations are a way for you
+
+0:01:07.920,0:01:12.450
+to specify the starting state of
+
+0:01:10.080,0:01:15.090
+your QML element and the ending state
+
+0:01:12.450,0:01:17.520
+and you let the system fill the intermediary steps .
+
+0:01:15.090,0:01:20.159
+Let me show you what I mean.
+
+0:01:17.520,0:01:21.930
+We have a rectangle here to the left
+
+0:01:20.159,0:01:24.659
+and we wanted to move to the right.
+
+0:01:21.930,0:01:27.990
+We specify the starting position to be
+
+0:01:24.659,0:01:30.930
+the left of the window here and the
+
+0:01:27.990,0:01:33.659
+ending position is the right of the window here.
+
+0:01:30.930,0:01:36.810
+Notice what happens when we touch it.
+
+0:01:33.659,0:01:38.820
+It goes fully way from left
+
+0:01:36.810,0:01:41.189
+to right. And this is exactly what
+
+0:01:38.820,0:01:43.560
+animations allow you to do.
+
+0:01:41.189,0:01:46.439
+There is a good number of animation types that you
+
+0:01:43.560,0:01:48.149
+can use in QML. The parent of the
+
+0:01:46.439,0:01:51.060
+animations, that we're going to use, is
+
+0:01:48.149,0:01:53.310
+PropertyAnimation, which can virtually
+
+0:01:51.060,0:01:55.860
+allow you to animate any property in QML.
+
+0:01:53.310,0:01:58.770
+We also have a number of
+
+0:01:55.860,0:02:00.960
+specialised animations that are designed
+
+0:01:58.770,0:02:03.240
+to fit a particular purpose. We have
+
+0:02:00.960,0:02:05.700
+NumberAnimation, ColorAnimation,
+
+0:02:03.240,0:02:07.680
+RotationAnimation and Vector3dAnimation.
+
+0:02:05.700,0:02:09.569
+We are going to have a chance
+
+0:02:07.680,0:02:12.599
+to look at the few of these animations.
+
+0:02:09.569,0:02:15.780
+We are also going to look at how you can group
+
+0:02:12.599,0:02:18.329
+your animations and make them run in a
+
+0:02:15.780,0:02:21.510
+sequence using SequentialAnimation or
+
+0:02:18.329,0:02:24.329
+make them run in parallel using the ParallelAnimation QML type.
+
+0:02:21.510,0:02:26.340
+There is a number of
+
+0:02:24.329,0:02:29.040
+methods, properties and signals
+
+0:02:26.340,0:02:31.439
+that we can use to control how our
+
+0:02:29.040,0:02:33.569
+animations are running. You also want to
+
+0:02:31.439,0:02:36.540
+understand a bit about Easings
+
+0:02:33.569,0:02:38.909
+which are different ways your animation can happen.
+
+0:02:36.540,0:02:41.819
+For example, we saw an example
+
+0:02:38.909,0:02:45.450
+of a rectangle moving from left to right.
+
+0:02:41.819,0:02:47.310
+If you use a Linear Easing, it's going to
+
+0:02:45.450,0:02:50.310
+go linear, it's going to go at a constant speed.
+
+0:02:47.310,0:02:53.370
+If you use InQuad, it's going to
+
+0:02:50.310,0:02:55.739
+start out slow and end fast.
+
+0:02:53.370,0:02:57.449
+We can actually bring up that example and show
+
+0:02:55.739,0:03:00.299
+you again what these things are about.
+
+0:02:57.449,0:03:02.989
+Okay we have the example here.
+
+0:03:00.299,0:03:06.840
+You see: linear, it goes at constant speed.
+
+0:03:02.989,0:03:09.060
+InQuad, it starts slow and ends fast.
+
+0:03:06.840,0:03:11.219
+I don't know if the recording software can
+
+0:03:09.060,0:03:12.569
+capture that. But this is what you see
+
+0:03:11.219,0:03:14.879
+and you're going to have a chance to
+
+0:03:12.569,0:03:18.299
+write this application in this chapter.
+
+0:03:14.879,0:03:20.099
+And the list goes on on the types of Easings
+
+0:03:18.299,0:03:22.650
+that you can use in your animations in QML. 
+
+0:03:20.099,0:03:24.870
+We're going
+
+0:03:22.650,0:03:26.579
+to have a chance to try all this. You can
+
+0:03:24.870,0:03:29.400
+see that there are quite a few that are
+
+0:03:26.579,0:03:31.229
+very interesting. We're going to end the
+
+0:03:29.400,0:03:34.139
+chapter by looking at states and
+
+0:03:31.229,0:03:37.229
+transitions. A state is a group of
+
+0:03:34.139,0:03:39.329
+properties that are applied to your QML element.
+
+0:03:37.229,0:03:41.939
+If you look at this rectangle here,
+
+0:03:39.329,0:03:44.759
+it has this width, this height, this colour.
+
+0:03:41.939,0:03:48.209
+You can consider that to be the state
+
+0:03:44.759,0:03:49.919
+this rectangle is as. If, for example,
+
+0:03:48.209,0:03:52.769
+one of these properties changes, it goes
+
+0:03:49.919,0:03:54.419
+in another state. This is what states are
+
+0:03:52.769,0:03:56.159
+about. And I don't expect you to
+
+0:03:54.419,0:03:58.859
+understand all this now. We're going to
+
+0:03:56.159,0:04:00.840
+explain this in the chapter. Transitions
+
+0:03:58.859,0:04:03.299
+are a way for you to go from one state
+
+0:04:00.840,0:04:05.129
+to another. And you can animate these
+
+0:04:03.299,0:04:07.229
+changes. And we're going to see exactly
+
+0:04:05.129,0:04:09.419
+how you do that in a few upcoming lectures.
+
+0:04:07.229,0:04:11.519
+I don't know about you but I
+
+0:04:09.419,0:04:13.979
+think this is the most exciting part of
+
+0:04:11.519,0:04:16.079
+working with QML. The next lecture
+
+0:04:13.979,0:04:19.609
+we're going to look at transforms in detail.
+
+0:04:16.079,0:04:19.609
+I'll see you there.
+

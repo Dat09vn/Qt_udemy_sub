@@ -1,0 +1,203 @@
+00:00.980 --> 00:09.500
+This is Section 3 Networking. In this section you are going to get an introduction to network programming
+
+00:09.860 --> 00:18.100
+then how to make HTTP request and download files. TCP server is covered in the end of this section.
+
+00:18.290 --> 00:26.390
+We are going to go through network programming introduction. Topics out POSIX sockets, TCP and UDP
+
+00:26.960 --> 00:33.080
+and HTTP. To develop applications with networking capabilities
+
+00:33.080 --> 00:39.920
+We need to first to go through some fundamental knowledge related to Internet Protocol suite which
+
+00:39.920 --> 00:48.050
+is commonly known as TCP/IP because of the original Protocols in the suite are the Transmission
+
+00:48.050 --> 00:56.080
+Control Protocol and the Internet Protocol. Internet Protocol suite is currently the dominant protocol
+
+00:56.230 --> 01:00.610
+for applications and devices to communicate with each other.
+
+01:01.500 --> 01:11.730
+A socket is an endpoint to receive or send data in the computer network. In the context of TCP/IP, a socket
+
+01:11.820 --> 01:18.420
+is assumed to be associated with a specific socket address. What is a socket address then?
+
+01:18.440 --> 01:25.080
+It's basically the combination of IP address and port number.
+
+01:25.270 --> 01:35.720
+For example a typical HTTP server would be running with port number 80 and a local IP address is 127 point
+
+01:35.860 --> 01:36.500
+what
+
+01:36.520 --> 01:41.750
+It's 127.0.0.1.
+
+01:41.780 --> 01:48.980
+So a local HTTP server would be running at socket address 127.0.0.1:80.
+
+01:49.320 --> 01:57.110
+By local, it means no communication with other nodes in the network.
+
+01:57.270 --> 02:05.480
+The process of associating a socket address with a socket is called binding.
+
+02:05.690 --> 02:08.620
+Now let's go to the programming domain.
+
+02:08.760 --> 02:19.290
+Berkeley sockets which is also known as BSD sockets is an application programming interface aka API for network
+
+02:19.290 --> 02:24.800
+socket. It evolved and made into POSIX specifications.
+
+02:24.800 --> 02:29.080
+And became the standard interface for connecting to the Internet.
+
+02:29.390 --> 02:37.670
+All modern operating systems have implemented Berkeley sockets or POSIX sockets including, Microsoft
+
+02:37.670 --> 02:42.410
+Windows. And the implementation in Microsoft Windows,
+
+02:42.450 --> 02:50.440
+Winsock follows the standard closely. A socket can operate under different protocols.
+
+02:50.560 --> 03:01.940
+The common ones are transmission control protocol TCP and user datagram protocol UDP. TCP is widely
+
+03:01.940 --> 03:03.210
+used in the Internet world.
+
+03:03.210 --> 03:04.330
+Due to it's
+
+03:04.340 --> 03:08.930
+notable advantages, reliability and accuracy.
+
+03:08.930 --> 03:17.330
+Most internet services such as World Wide Web, file transfer, e-mail are using TCP.
+
+03:17.480 --> 03:26.860
+The most prominent feature of TCP is that TCP guarantees the order and the completeness of data packages.
+
+03:26.930 --> 03:35.390
+That means all bytes received will be exactly the same with bytes sent and in the same order. Because
+
+03:35.390 --> 03:39.230
+the physical networks are not always reliable.
+
+03:39.230 --> 03:45.520
+Some data packages may be lost, duplicated or delivered in different order.
+
+03:45.680 --> 03:53.660
+In those cases TCP requests the sender to redelivered the lost data and  rearranges the packages
+
+03:54.260 --> 04:01.140
+to make sure the data correctness and the completeness. In the case where the data is still not able
+
+04:01.140 --> 04:06.320
+to be delivered, the sender will be notified of this failure.
+
+04:06.340 --> 04:14.300
+You might think network programming sounds so complicated that there are so many details to take care of.
+
+04:14.310 --> 04:22.620
+On the contrary, because of TCP applications don't need to do with this low labor networking details.
+
+04:23.780 --> 04:28.060
+TCP has abstracted the low level transmission details away.
+
+04:28.350 --> 04:38.190
+Although UDP is not widely used as TCP. It remains a brightstar in some areas, especially where latency
+
+04:38.190 --> 04:40.640
+plays a more important role.
+
+04:40.650 --> 04:45.300
+By contrast UDP doesn't provide a reliable connection.
+
+04:45.300 --> 04:52.710
+In fact it is connectionless which also means UDP doesn't provide protection against data being
+
+04:52.710 --> 04:53.370
+lost.
+
+04:53.550 --> 04:56.220
+Miss ordered or duplicated.
+
+04:56.490 --> 05:04.590
+Therefore UDP is very suitable for applications where those error detection is not required or handled
+
+05:04.640 --> 05:06.700
+at the application level.
+
+05:06.780 --> 05:14.970
+In some cases where latency is very sensitive, applications also prefer UDP than TCP because dropping
+
+05:14.970 --> 05:24.400
+data packages are better than waiting for delayed packages. Due to these features, UDP has much less
+
+05:24.460 --> 05:32.460
+overhead than TCP and has been used in the areas from query to video and audio streaming.
+
+05:32.620 --> 05:41.390
+Notably, the domain name system DNS and network time protocol NTP both favor UDP.
+
+05:41.770 --> 05:52.120
+Other than them some big names including NFS network file system, IPTV and Skype are also using UDP.
+
+05:53.930 --> 06:00.670
+So a quick summary of TCP and the UDP would be TCP is a reliable protocol.
+
+06:00.800 --> 06:09.490
+Meanwhile UDP is simple and fast. The next protocol we are going to look is hypertext transfer protocol
+
+06:10.040 --> 06:10.990
+HTTP.
+
+06:13.810 --> 06:19.590
+The backbone of world wide web. They're all called protocols.
+
+06:19.630 --> 06:26.250
+But HTTP is a protocol at application layer rather than transport layer.
+
+06:26.500 --> 06:34.060
+It's assumed a reliable underlying transport layer protocol where in most cases TCP is used.
+
+06:34.490 --> 06:43.380
+HTTP is a protocol for client-server model where the client send HTTP request and the server responses
+
+06:43.470 --> 06:50.120
+with the required resources. Take a real life example to wrap up this session.
+
+06:50.330 --> 06:59.450
+When you open browser and type www.Google.com. A DNS query is sent by UDP to
+
+06:59.450 --> 07:04.850
+resolve the IP address of www.Google.com.
+
+07:04.890 --> 07:06.950
+Once the result is received.
+
+07:06.980 --> 07:15.290
+The browser will send a HTTP request wire TCP to Google's web server and that server will return the
+
+07:15.290 --> 07:16.400
+content.
+
+07:18.600 --> 07:22.750
+www.Google.com are the response.
+
+07:22.950 --> 07:35.490
+Again I have to emphasize that you could send a DNS query via TCP and use HTTP over UDP. In the next
+
+07:35.490 --> 07:40.000
+video we're going to get our hands on HTTP request in Qt.

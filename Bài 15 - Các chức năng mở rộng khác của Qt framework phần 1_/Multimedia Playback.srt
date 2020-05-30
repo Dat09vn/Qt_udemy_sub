@@ -1,0 +1,592 @@
+﻿1
+00:00:00,820 --> 00:00:06,290
+Chào mừng đến với video 4.2 Quản lý đa phương tiện về phát lại đa phương tiện. Trong video này chúng ta sẽ
+
+2
+00:00:06,290 --> 00:00:10,880
+tìm hiểu về cách phát video bằng playlist và phát lại video cao cấp.
+
+3
+00:00:10,940 --> 00:00:12,780
+Ta cùng bắt đầu nhé.
+
+4
+00:00:13,840 --> 00:00:19,570
+Nếu mở project Play và nhìn vào một số thành viên dữ liệu trong media này, cuộn xuống
+
+5
+00:00:19,570 --> 00:00:26,560
+tận dưới cùng, các bạn sẽ thấy chúng ta đã có QMediaPlayer, QMediaPlaylists và QVideoWidget.
+
+6
+00:00:26,590 --> 00:00:30,990
+QMediaPlayer có thể phát bài hát, chiếu phim, hay radio trên internet.
+
+7
+00:00:31,030 --> 00:00:36,580
+Playlist chứa danh sách của những thứ ta muốn phát và widget video sẽ chạy
+
+8
+00:00:36,580 --> 00:00:37,440
+nội dung.
+
+9
+00:00:37,510 --> 00:00:41,250
+Bây giờ ta sẽ chuyển sang file thực hiện và khởi chạy những class này.
+
+10
+00:00:44,250 --> 00:00:49,770
+Điều cuối cùng ta cần làm là cài đặt VideoOutput của video_widget
+
+11
+00:00:49,770 --> 00:00:52,080
+cho media player. Tuyệt vời.
+
+12
+00:00:52,080 --> 00:00:56,370
+Sau khi đã khởi chạy xong mấy thứ này, ta sẽ thiết lập một số hoạt động tương tác.
+
+13
+00:00:56,370 --> 00:01:01,460
+Các bạn có thể thấy chúng ta đã có một đống PushButton, ta đã có play, pause, stop, next và previous video.
+
+14
+00:01:01,650 --> 00:01:03,220
+Giờ ta sẽ kết nối tất cả lại với nhau.
+
+15
+00:01:03,330 --> 00:01:09,170
+Play_button sẽ kết nối với slot MediaPlayer Play.
+
+16
+00:01:09,510 --> 00:01:14,660
+Pause_button sẽ kết nối với slot QMediaPlayer Pause.
+
+17
+00:01:14,830 --> 00:01:20,300
+Và tương tự stop_button sẽ kết nối với slot MediaPlayer Stop.
+
+18
+00:01:20,540 --> 00:01:26,450
+Bây giờ các nút next video và previous video, những tín hiệu sau khi click cho 2 nút này sẽ được kết nối với
+
+19
+00:01:26,450 --> 00:01:27,670
+MediaPlaylist.
+
+20
+00:01:27,680 --> 00:01:35,100
+Và MediaPlaylist có một slot Next và một slot Previous, vậy nên ta sẽ kết nối chúng lại với nhau.
+
+21
+00:01:35,160 --> 00:01:41,250
+Bây giờ ta cần cập nhật các nút để cho người sử dụng biết họ có thể làm gì và có thể
+
+22
+00:01:41,250 --> 00:01:41,940
+sử dụng những gì.
+
+23
+00:01:42,030 --> 00:01:44,060
+Ta sẽ sử dụng slot update_button.
+
+24
+00:01:44,070 --> 00:01:49,850
+Đó là một phần của class MainWindow này. Để bật và tắt các nút một cách có chọn lọc dựa trên
+
+25
+00:01:49,860 --> 00:01:50,600
+media_player_state,
+
+26
+00:01:50,680 --> 00:01:54,550
+QMediaPlayer có tín hiệu stateChanged, vậy nên ta cũng kết nối luôn.
+
+27
+00:01:56,800 --> 00:02:02,710
+Cuối cùng ta cập nhật trạng thái với StoppedState vì đó là
+
+28
+00:02:02,710 --> 00:02:03,210
+mặc định.
+
+29
+00:02:04,780 --> 00:02:09,200
+Bây giờ ta muốn người sử dụng có thể tải file vào playlist.
+
+30
+00:02:09,220 --> 00:02:15,030
+Vậy thì ta sẽ thêm tính năng này vào thanh menu. Sau khi đã có
+
+31
+00:02:15,050 --> 00:02:21,820
+QAction đó, ta sẽ kết nối tín hiệu đã kích hoạt với trigger_media_file_ slot
+
+32
+00:02:21,820 --> 00:02:22,170
+trong
+
+33
+00:02:22,300 --> 00:02:22,940
+MainWindow này.
+
+34
+00:02:25,540 --> 00:02:25,960
+Tuyệt vời.
+
+35
+00:02:25,960 --> 00:02:31,510
+Ta cùng cuộn xuống slot này và triển khai bằng hàm FileName từ QFileDialog
+
+36
+00:02:31,510 --> 00:02:36,220
+để cho phé người sử dụng chọn file theo ý muốn. Được rồi.
+
+37
+00:02:36,220 --> 00:02:42,370
+Như vậy cơ bản QFileDialog sẽ mở ra, và người sử dụng có thể chọn file và tên,
+
+38
+00:02:42,430 --> 00:02:44,240
+StringList của những file mà ta đã đưa vào đây.
+
+39
+00:02:44,260 --> 00:02:50,890
+Ta sẽ lặp lại từng thao tác một lần nữa và lấy filepath. Sau đó ta sẽ thêm
+
+40
+00:02:50,890 --> 00:02:55,270
+vào media playlist bằng hàm addMedia.
+
+41
+00:02:55,270 --> 00:03:02,050
+Hàm addMedia cần có một Url, vì vậy ta sẽ sử dụng class QUrl để chuyển đổi một QString thành
+
+42
+00:03:02,050 --> 00:03:10,380
+Url. Cuối cùng ta sẽ kiểm tra xem currentIndex có được thiết lập chưa. Nếu có thì ta sẽ sử dụng hàm setCurrentIndex
+
+43
+00:03:10,380 --> 00:03:13,030
+để thay đổi từ index đầu tiên,
+
+44
+00:03:13,050 --> 00:03:18,780
+đấy là có. Vậy nếu currentIndex của media_playlist bằng -1 thì ta sẽ đặt nó bằng
+
+45
+00:03:18,780 --> 00:03:23,550
+0. 0 sẽ luôn luôn là index đầu tiên trong một array.
+
+46
+00:03:24,390 --> 00:03:24,810
+Tuyệt vời.
+
+47
+00:03:24,810 --> 00:03:26,420
+Như vậy ta đã thiết lập xong MediaPlayer đơn giản.
+
+48
+00:03:26,430 --> 00:03:28,140
+Giờ ta sẽ chạy thử.
+
+49
+00:03:28,150 --> 00:03:34,350
+Nếu ta click vào open file và điều hướng tới một file và ấn play.
+
+50
+00:03:34,680 --> 00:03:39,720
+Các bạn có thể thấy chúng ta đã phát được một video đơn giản. Tuyệt vời.
+
+51
+00:03:39,740 --> 00:03:45,230
+Bây giờ ta cần đi sâu hơn một chút nữa để có thể làm việc trực tiếp với video
+
+52
+00:03:45,230 --> 00:03:46,340
+trong phần tiếp theo.
+
+53
+00:03:46,370 --> 00:03:50,490
+Vậy làm cách nào ta có thể truy cập sâu hơn vào dữ liệu thực?
+
+54
+00:03:50,690 --> 00:03:56,000
+Để làm được điều đso ta sẽ phải phân class và triển khai QAbstractVideoSurface.
+
+55
+00:03:56,030 --> 00:04:02,420
+Nếu mở project complex_playback và nhìn vào MainWindow rồi cuộn xuống dưới đoạn mã, ta sẽ thấy
+
+56
+00:04:02,420 --> 00:04:03,230
+chúng rất giống nhau.
+
+57
+00:04:03,230 --> 00:04:09,320
+Điểm khác biệt duy nhất là thay vì tạo một QVideoWidget, ta tạo một bản triển khai riêng
+
+58
+00:04:09,380 --> 00:04:10,400
+của VideoWidget.
+
+59
+00:04:10,430 --> 00:04:16,010
+Và nếu ta nhìn vào file thực hiện, thay vì thiết lậpVideoOutput là QWidget
+
+60
+00:04:16,130 --> 00:04:19,130
+ta sẽ gọi đó là hàm hỗ trợ get_video_surface.
+
+61
+00:04:19,160 --> 00:04:22,190
+Vậy nếu chuyển sang VideoWidget
+
+62
+00:04:25,380 --> 00:04:29,940
+các bạn có thể thấy chúng ta đã tái triển khai paintEvent và resizeEvent.
+
+63
+00:04:30,090 --> 00:04:35,310
+Ví dụ ta sẽ sử dụng công cụ Qt painting để có thể tập trung nhiều hơn vào xử lý dữ liệu
+
+64
+00:04:35,340 --> 00:04:38,580
+và không phân tâm quá nhiều vào chú thích thư viện đồ hoạ.
+
+65
+00:04:38,580 --> 00:04:41,790
+Nhưng điều đó không có nghĩa ta sẽ bị giảm hiệu suất.
+
+66
+00:04:41,790 --> 00:04:44,740
+Ta cùng chuyển sang file VideoWidget.
+
+67
+00:04:44,970 --> 00:04:47,610
+Các bạn có thể thấy đối với paintEvent, thao tác rất đơn giản.
+
+68
+00:04:47,610 --> 00:04:49,650
+Ta tạo một QPainter.
+
+69
+00:04:49,650 --> 00:04:56,550
+Ta đặt RenderHint thành Antialiasing, sau đó chuyển tới class tuỳ biến VideoSurface.
+
+70
+00:04:56,550 --> 00:05:02,100
+Và cơ bản ta sẽ làm tương tự đối với resizeEvent. Ta gọi class parent rồi đưa vào
+
+71
+00:05:02,100 --> 00:05:04,650
+phần triển khai tuỳ biến.
+
+72
+00:05:04,650 --> 00:05:10,400
+Nếu nhìn vào file file của class VideoSurface ta sẽ thây có khá nhiều mã
+
+73
+00:05:10,530 --> 00:05:12,320
+và tôi sẽ không động chạm gì đến chỗ này cả.
+
+74
+00:05:12,330 --> 00:05:17,460
+Tôi sẽ chỉ đi theo dữ liệu vì chúng ta chỉ quan tâm đến cách nhập dữ liệu video
+
+75
+00:05:17,460 --> 00:05:19,310
+và cách hiển thị dữ liệu.
+
+76
+00:05:19,320 --> 00:05:23,620
+Chúng ta sẽ loại bỏ một số class ở dưới cùng có chứa các hàm supportedPixelFormat và
+
+77
+00:05:23,630 --> 00:05:25,340
+nearestFormat.
+
+78
+00:05:25,350 --> 00:05:28,640
+Thay vào đó ta sẽ bắt đầu với hàm start.
+
+79
+00:05:28,710 --> 00:05:31,660
+Đó là vị trí mà tôi sẽ xử lý class này.
+
+80
+00:05:31,710 --> 00:05:36,930
+Nếu mở file thực hiện và cuộn tới hàm start, các bạn sẽ thấy chúng ta đã đưa vào một
+
+81
+00:05:36,930 --> 00:05:43,380
+QVideoSurfaceFormat dưới dạng format. Và đầu tiên ta sẽ tạo
+
+82
+00:05:43,380 --> 00:05:50,220
+size và QImage image_format, bởi chúng ta sẽ cần đến sự giúp đỡ của
+
+83
+00:05:50,220 --> 00:05:50,680
+class QImage.
+
+84
+00:05:50,700 --> 00:05:54,990
+Ta sẽ phiên dịch từ VideoSurfaceFormat sang ImageFormat, vậy thì ưu tiên việc đó trước đã.
+
+85
+00:05:54,990 --> 00:05:59,800
+Các bạn có thể thấy để xuất được QImageFormat
+
+86
+00:05:59,820 --> 00:06:06,020
+ta sử dụng một hàm tĩnh ImageFormatFromPixelFormat nằm trong QVideoFrame.
+
+87
+00:06:06,150 --> 00:06:06,620
+Tuyệt vời.
+
+88
+00:06:06,620 --> 00:06:11,850
+Trước hết chúng ta phải đưa vào một hàm check, và ta sẽ kiểm tra xem
+
+89
+00:06:11,850 --> 00:06:14,840
+định dạng hình ảnh vừa xuất có hợp lệ hay không
+
+90
+00:06:14,970 --> 00:06:20,520
+và có dữ liệu thực trong size hay không. Nếu không chúng ta sẽ thoát
+
+91
+00:06:20,580 --> 00:06:24,780
+hàm start để báo cho người sử dụng biết ta có thể làm được tất cả những gì họ cần.
+
+92
+00:06:26,080 --> 00:06:29,950
+Tuyệt vời. Vậy nếu ta vượt qua được mệnh đề đầu tiên thì tức là
+
+93
+00:06:29,950 --> 00:06:31,050
+ta đã thành công.
+
+94
+00:06:31,060 --> 00:06:35,530
+Điều đầu tiên cần làm là lưu trữ định dạng hình ảnh vừa tạo và
+
+95
+00:06:35,530 --> 00:06:37,790
+kích thước làm một phần của class.
+
+96
+00:06:37,990 --> 00:06:42,520
+Sau đó các bạn sẽ thấy ta phải xử lý hàng tá thứ liên quan đến kích thước thực.
+
+97
+00:06:42,550 --> 00:06:47,830
+Ta sẽ tạo source_rectangle này và gọi class parent.
+
+98
+00:06:47,830 --> 00:06:53,530
+Tiếp theo ta cần cập nhật rồi thay đổi kích thước video_widget geometry.
+
+99
+00:06:53,530 --> 00:06:55,700
+Giờ ta cùng nhìn vào hàm resize này.
+
+100
+00:06:55,720 --> 00:06:58,050
+Các bạn nên biết một số điều như sau.
+
+101
+00:06:58,090 --> 00:07:00,390
+Trước hết là kích thước thực của video lớn đến cỡ nào.
+
+102
+00:07:00,430 --> 00:07:02,990
+Ta sẽ lấy thông tin đó từ surfaceFormat sizeHint.
+
+103
+00:07:03,010 --> 00:07:07,390
+Tiếp theo ta cần biết kích thước của widget parent mà ta có thể lấy được từ hàm size.
+
+104
+00:07:07,420 --> 00:07:13,800
+Và rồi cơ bản ta sẽ đo kích thước của video bằng widget_size vừa xuất. Chúng ta
+
+105
+00:07:13,810 --> 00:07:18,400
+có sử dụng một số hàm hỗ trợ khác, đó là hàm boundedTo.  Ta báo cho Qt rằng ta sẽ
+
+106
+00:07:18,400 --> 00:07:25,150
+giữ nguyên tỷ lệ khung hình. Nhưng sau khi đã có kích thước thực của video, theo
+
+107
+00:07:25,150 --> 00:07:30,510
+widget parent, ta sẽ tạo target_rectangle này, chỉ là một điểm 0 0
+
+108
+00:07:30,510 --> 00:07:37,200
+đối với kích thước video, sau đó ta di chuyển target_rectangle vào trung tâm của widget video.
+
+109
+00:07:37,210 --> 00:07:41,120
+Và đó là sơ qua về hàm resize.
+
+110
+00:07:41,170 --> 00:07:42,910
+Ta cùng chuyển sang hàm tiếp theo.
+
+111
+00:07:42,910 --> 00:07:48,700
+Đây là thời điểm ta bắt đầu chạm tới QVideoFrames như một phần của
+
+112
+00:07:48,940 --> 00:07:49,450
+hàm present.
+
+113
+00:07:49,450 --> 00:07:53,980
+Sau khi gọi hàm, ta sẽ đưa frame vào. Điều đầu tiên ta cần làm là
+
+114
+00:07:53,980 --> 00:07:58,690
+kiểm tra để đảm bảo hàm start đã được gọi bằng frame mà ta vừa
+
+115
+00:07:58,690 --> 00:07:59,180
+đưa vào.
+
+116
+00:07:59,290 --> 00:08:04,230
+Nếu chưa ta sẽ đặt một error và stop rồi trả lại false vì đây là một boolean.
+
+117
+00:08:04,240 --> 00:08:08,290
+Nhưng nếu mọi thứ đều hợp lệ thì ta sẽ tiếp tục lưu trữ frame vừa đưa vào và
+
+118
+00:08:08,290 --> 00:08:11,800
+sau đó ta sẽ làm điều gì đó khác một chút. Chúng ta sẽ kích hoạt một repaint.
+
+119
+00:08:11,890 --> 00:08:15,690
+Ta sẽ chỉ lưu trữ thông tin frame rồi kích hoạt một repaint.
+
+120
+00:08:15,700 --> 00:08:20,060
+Ta cùng nhìn vào hàm paint.
+
+121
+00:08:20,080 --> 00:08:26,220
+Nếu các bạn còn nhớ widget parent, tiếp theo ta sẽ gọi, đúng hơn là ta sẽ chỉ gọi duy nhất
+
+122
+00:08:26,220 --> 00:08:28,680
+class paint này trong một paintEvent.
+
+123
+00:08:28,680 --> 00:08:31,690
+Vậy là hàm repaint mà ta vừa gọi sẽ nhận nhiệm vụ kích hoạt.
+
+124
+00:08:31,710 --> 00:08:34,130
+Ta sẽ thả nó vào ngay chỗ này.
+
+125
+00:08:34,140 --> 00:08:38,460
+Trước hết trong class paint này ta phải đảm bảo video_frame
+
+126
+00:08:38,460 --> 00:08:44,500
+đã được thiết lập ReadOnly. Sau đó ta sẽ tạo một QImage.
+
+127
+00:08:44,520 --> 00:08:49,410
+Hãy nhớ rằng dữ liệu video_frame được lưu trữ trong thành viên dữ liệu current_video_frame.
+
+128
+00:08:49,410 --> 00:08:52,700
+Vì thế ta sẽ sử dụng luôn dữ liệu đó để tạo QImage.
+
+129
+00:08:55,480 --> 00:09:01,990
+Sau khi đã tạo xong hình ảnh, ta chỉ việc vẽ ra thôi. Hình ảnh cần phải biết
+
+130
+00:09:02,050 --> 00:09:07,660
+thông tin đi vào lớn bao nhiêu và mặt phẳng để vẽ lên cũng như thông tin hình ảnh thực
+
+131
+00:09:07,660 --> 00:09:10,030
+nhỏ bao nhiêu.
+
+132
+00:09:10,180 --> 00:09:16,410
+Sau khi đã vẽ ảnh thành công, chúng ta sẽ xuất dữ liệu video.
+
+133
+00:09:16,810 --> 00:09:22,840
+Điều kỳ lạ ở đây là đôi khi dữ liệu video sẽ bị ngược so với
+
+134
+00:09:22,840 --> 00:09:24,060
+quy tắc thông thường.
+
+135
+00:09:24,070 --> 00:09:25,860
+Vì thế ta cũng phải kiểm tra cả điều đó nữa.
+
+136
+00:09:30,320 --> 00:09:36,890
+Tôi sẽ không đi quá sâu vào phần này nhưng trong trường hợp này ta sẽ lệnh cho QPainter vẽ ngược lại
+
+137
+00:09:36,950 --> 00:09:41,810
+và sử dụng hàm translate để hỗ trợ, như vậy mọi thứ sẽ dễ dàng hơn một chút.
+
+138
+00:09:43,290 --> 00:09:46,480
+Bây giờ chúng ta sẽ chạy thử.
+
+139
+00:09:46,520 --> 00:09:48,420
+Như vậy chắc là được rồi đấy.
+
+140
+00:09:51,570 --> 00:09:56,210
+Nếu click vào Open File, đi tới clip và ấn play,
+
+141
+00:09:56,230 --> 00:10:02,700
+các bạn có thể thấy ta đã hoàn toàn triển khai thành công bề mặt video trừu tượng.
+
+142
+00:10:02,800 --> 00:10:08,050
+Vậy là các bạn đã sắp thành thạo rồi đấy vì hiện tại ta đã nắm được cách xuất QVideoFrame
+
+143
+00:10:08,050 --> 00:10:11,650
+và cách làm việc trực tiếp với dữ liệu.
+
+144
+00:10:11,650 --> 00:10:12,030
+Đúng không?
+
+145
+00:10:12,030 --> 00:10:16,740
+Ta thực hiện điều đó với các current_video_frame bits, width, heighth và bytesPerLine.
+
+146
+00:10:17,050 --> 00:10:22,630
+Như vậy ta đã tìm hiểu xong về cách làm việc với video cao cấp hơn bằng cách trực tiếp xử lý dữ liệu
+
+147
+00:10:22,630 --> 00:10:30,250
+video, thêm vào một vài trình quản lý playlist media player và cách phát video. Hãy theo dõi
+
+148
+00:10:30,250 --> 00:10:33,390
+video tiếp theo của tôi về tương tác với open computer vision.
+

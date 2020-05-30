@@ -1,0 +1,608 @@
+﻿1
+00:00:00,920 --> 00:00:06,380
+Chào mừng đến với phần 4 Làm chủ lập trình Qt về quản lý đa phương tiện. Ta cùng
+
+2
+00:00:06,410 --> 00:00:09,890
+bắt đầu với capture đa phương tiện. Trong video này
+
+3
+00:00:09,890 --> 00:00:15,110
+chúng ta sẽ tìm hiểu về cách chụp ảnh, cách quay video và cuối cùng là cách cấu hình cài đặt
+
+4
+00:00:15,110 --> 00:00:16,000
+cho capture.
+
+5
+00:00:16,130 --> 00:00:19,490
+Ta sẽ bắt đầu với chụp ảnh.
+
+6
+00:00:19,490 --> 00:00:24,200
+Trong ví dụ này ta muốn người sử dụng có thể chọn camera một cách chủ động
+
+7
+00:00:24,200 --> 00:00:29,870
+trong trường hợp người sử dụng có nhiều camera. Hiện tại chúng ta chưa tìm hiểu quá sâu về quản lý bộ nhớ
+
+8
+00:00:29,900 --> 00:00:34,090
+vì ta vẫn đang phụ thuộc vào mô hình sở hữu cha/con của Qt.
+
+9
+00:00:34,100 --> 00:00:38,540
+Nhưng trong trường hợp này vì ta sẽ chỉ định camera, nên ta sẽ có một vài thành viên
+
+10
+00:00:38,540 --> 00:00:42,060
+nằm ngoài mô hình sở hữu cha/con.
+
+11
+00:00:42,140 --> 00:00:47,720
+Như vậy chúng ta sẽ sử dụng scope pointer để tự động xoá các object mỗi khi chúng vượt ra ngoài
+
+12
+00:00:47,720 --> 00:00:53,780
+phạm vi. Và class mà ta sẽ sử dụng là QScopedPointer. Cụ thể ta sẽ quản lý
+
+13
+00:00:53,780 --> 00:00:57,000
+QCamera và QImageCapture theo cách này.
+
+14
+00:00:57,290 --> 00:01:00,170
+Bây giờ ta cùng tạo nhanh các instance thành viên đó.
+
+15
+00:01:01,760 --> 00:01:09,350
+Vậy là instance QCamera này quản lý camera, QImageCamera, classQImageCapture
+
+16
+00:01:09,730 --> 00:01:16,160
+và thực chất là class ghi hình ảnh cấp cao có khả năng phiên dịch từ camera thành một
+
+17
+00:01:16,160 --> 00:01:23,240
+file thực. Và QCameraViewfinder này sẽ tiếp tục hiển thị bất cứ những gì mà QCamera
+
+18
+00:01:23,240 --> 00:01:27,050
+nhìn thấy để ta biết mình đang chụp những gì.
+
+19
+00:01:27,050 --> 00:01:30,260
+Giờ ta cùng chuyển sang file thực hiện.
+
+20
+00:01:30,260 --> 00:01:35,030
+Điều đầu tiên ta cần làm là tạo các view để người sử dụng biết
+
+21
+00:01:35,030 --> 00:01:36,760
+ta đang chụp những gì.
+
+22
+00:01:37,760 --> 00:01:38,320
+Tuyệt vời.
+
+23
+00:01:38,330 --> 00:01:44,900
+Như vậy UI của ta sẽ gồm view thực hiển thị những gì ta sẽ chụp và
+
+24
+00:01:44,900 --> 00:01:49,000
+một push button được sử dụng để thông báo thời điểm chụp ảnh.
+
+25
+00:01:49,130 --> 00:01:51,100
+Ta sẽ tạo một QWidget trống.
+
+26
+00:01:51,170 --> 00:01:56,900
+Nếu nhìn vào hàm setup_UI này các bạn sẽ thấy ta đang tạo một layout và thêm cả camera_view
+
+27
+00:01:56,900 --> 00:02:02,640
+và QPushButton vào layout đó trước khi gửi tới widget.
+
+28
+00:02:02,660 --> 00:02:08,540
+Sau khi đã thiết lập giao diện người dùng, chúng ta sẽ túm lấy toàn bộ camera để
+
+29
+00:02:08,540 --> 00:02:11,050
+người sử dụng có thể lựa chọn một cách chủ động.
+
+30
+00:02:11,120 --> 00:02:15,850
+Như vậy ta sẽ sử dụng hàm tĩnh availableCameras.
+
+31
+00:02:15,950 --> 00:02:22,030
+Cách cung cấp tuỳ chọn cho người sử dụng đơn giản nhất là đưa tất cả những thông tin này lên thanh menu.
+
+32
+00:02:22,080 --> 00:02:27,530
+QMainWindow đã có sẵn một thanh menu tích hợp, nên ta chỉ cần tham chiếu là được. Sau đó
+
+33
+00:02:27,530 --> 00:02:33,710
+ta sẽ thêm một menu cụ thể gọi các thiết bị tới thanh menu. Tuyệt vời.
+
+34
+00:02:33,710 --> 00:02:40,400
+Và ta tiếp tục lặp lại từng QCameraInfo vừa tạo vào
+
+35
+00:02:40,400 --> 00:02:41,930
+ngay QList này.
+
+36
+00:02:43,710 --> 00:02:49,890
+Về cơ bản chúng ta sẽ tạo một QAction nhưng tôi sẽ không
+
+37
+00:02:49,890 --> 00:02:50,710
+đi quá sâu vào mã.
+
+38
+00:02:50,730 --> 00:02:53,430
+Ta đặt hành động này là checkable.
+
+39
+00:02:53,430 --> 00:02:59,940
+Ta cũng đặt là Qt camera_info để mỗi lần người sử dụng chọn hành động này, thì đó sẽ là giá trị thực
+
+40
+00:02:59,940 --> 00:03:03,120
+được chấp nhận khi người sử dụng bắt đầu một hành động mới.
+
+41
+00:03:03,210 --> 00:03:09,470
+Sau đó ta kiểm tra xem liệu camera_info mà ta đang lặp có phải là defaultCamera hay không.
+
+42
+00:03:09,630 --> 00:03:12,450
+Nếu có thì ta sẽ tiếp tục đặt là checked.
+
+43
+00:03:12,450 --> 00:03:17,820
+Vậy ta sẽ đặt ở đây là checkable và ở đây là checked rồi thêm từng
+
+44
+00:03:17,880 --> 00:03:23,520
+hành động đã tạo trên dòng đầu tiên này vào menu thiết bị mà ta tạo ở trên đây.
+
+45
+00:03:23,640 --> 00:03:28,650
+Như vậy điều duy nhất ta còn thiếu trong đống mã này là một nhóm hành động. Nhóm
+
+46
+00:03:28,650 --> 00:03:34,140
+hành động sẽ giúp ta quản lý toàn bộ hành động dù ta chỉ có một giao diện duy nhất để
+
+47
+00:03:34,140 --> 00:03:35,550
+thay đổi mọi thứ.
+
+48
+00:03:35,550 --> 00:03:37,390
+Bây giờ chúng ta sẽ tạo luộn nhóm hành động.
+
+49
+00:03:38,870 --> 00:03:39,400
+Tuyệt vời.
+
+50
+00:03:39,410 --> 00:03:44,990
+Giờ đây sau khi có camera_group, một QActionGroup, cái ta cần mỗi khi người sử dụng
+
+51
+00:03:44,990 --> 00:03:50,000
+chọn một hành động camera mới là hành động đó sẽ được đưa vào slot
+
+52
+00:03:50,000 --> 00:03:51,400
+set_camera_action.
+
+53
+00:03:51,440 --> 00:03:58,270
+Ta sẽ kết nối tín hiệu đã kích hoạt của QActionGroup vào slot set_camera_action.
+
+54
+00:03:59,450 --> 00:04:00,040
+Tuyệt vời.
+
+55
+00:04:00,050 --> 00:04:06,680
+Vậy là ta đã giúp người sử dụng có thể thay đổi camera theo ý muốn chỉ với
+
+56
+00:04:06,770 --> 00:04:08,620
+một vài dòng mã.
+
+57
+00:04:08,690 --> 00:04:10,930
+Ta cùng cuộn lên một chút.
+
+58
+00:04:10,940 --> 00:04:14,920
+Còn một điều nữa ta chưa thực hiện là thiết lập các camera.
+
+59
+00:04:14,960 --> 00:04:23,120
+Vậy ta cùng thiết lập camera mặc định. Và class CameraInfo có một hàm
+
+60
+00:04:23,120 --> 00:04:28,830
+tĩnh được gọi là defaultCamera, ta có thể áp dụng hàm này để thiết lập camera mặc định.
+
+61
+00:04:29,150 --> 00:04:31,710
+Ta vẫn chưa có slot set_camera.
+
+62
+00:04:31,700 --> 00:04:34,320
+Ta sẽ cuộn xuống và tạo luôn.
+
+63
+00:04:34,320 --> 00:04:39,880
+Trước hết ta sẽ tạo một instance mới của camera.
+
+64
+00:04:39,890 --> 00:04:47,450
+Hãy nhớ rằng đây là những QScopedPointer. QCamera và QCameraImageCapture
+
+65
+00:04:47,450 --> 00:04:51,950
+đều nằm trong QScopedPointer này, vì vậy giao diện trông sẽ hơi khác một chút.
+
+66
+00:04:52,020 --> 00:04:55,120
+Nhưng ta vẫn tạo instance ở đây.
+
+67
+00:04:56,400 --> 00:05:03,140
+Sau khi đã tạo xong instance, ta tiếp tục thiết lập mới ImageCapture.
+
+68
+00:05:03,210 --> 00:05:09,560
+Và class QImageCapture cần tham chiếu cho camera cụ thể.
+
+69
+00:05:09,570 --> 00:05:11,230
+Nên ta cũng sẽ đưa nó vào luôn.
+
+70
+00:05:12,450 --> 00:05:12,890
+Tuyệt vời.
+
+71
+00:05:12,890 --> 00:05:19,470
+Hãy đảm bảo rằng camera đã được thiết lập nhanh cho ImageCapture. Và ta có thể thực hiện điều đó bằng cách
+
+72
+00:05:19,500 --> 00:05:22,190
+sử dụng hàm setCaptureMode.
+
+73
+00:05:23,150 --> 00:05:26,000
+Và ta sẽ thay đổi nó thành CaptureStillimages.
+
+74
+00:05:26,430 --> 00:05:33,210
+Điều cuối cùng ta cần làm trong hàm này là thiết lập viewfinder hoặc reset viewfinder
+
+75
+00:05:33,240 --> 00:05:37,410
+để có thể thu nhận dữ liệu từ chính class này.
+
+76
+00:05:37,410 --> 00:05:41,900
+Như vậy ta sẽ thực hiện điều đó bằng hàm setViewfinder.
+
+77
+00:05:43,270 --> 00:05:43,920
+Tuyệt vời.
+
+78
+00:05:43,930 --> 00:05:50,960
+Cuối cùng, trong ứng dụng này ta cần liên kết PushButton.
+
+79
+00:05:51,200 --> 00:05:56,150
+Trước đó chúng ta đã cài đặt camera, đã cài đặt tất cả thiết bị camera, thiết lập cả UI nữa.
+
+80
+00:05:56,260 --> 00:06:01,570
+Ta phải đảm bảo chụp được một bức ảnh mỗi khi ấn QPushButton.
+
+81
+00:06:01,570 --> 00:06:07,990
+Vì ta đã chủ động reset lại ImageCapture, class được sử dụng để lưu
+
+82
+00:06:08,110 --> 00:06:14,800
+file, chúng ta sẽ sử dụng một functor hơn là kết nối trực tiêp với instance trong
+
+83
+00:06:14,800 --> 00:06:15,800
+class này.
+
+84
+00:06:17,340 --> 00:06:20,760
+Được rồi. Bây giờ ta sẽ chạy ứng dụng và chụp 1 bức ảnh.
+
+85
+00:06:21,500 --> 00:06:23,850
+Hình như tôi thiếu mất dấu chấm phẩy ở đây.
+
+86
+00:06:23,960 --> 00:06:26,670
+Rồi bây giờ thì chạy ứng dụng và chụp ảnh thôi.
+
+87
+00:06:27,420 --> 00:06:27,950
+Tuyệt vời.
+
+88
+00:06:27,990 --> 00:06:33,510
+Các bạn có thể thấy ta đã có view finder ở đây và push button. Và nếu click vào chỗ này
+
+89
+00:06:33,660 --> 00:06:36,090
+rồi thay đổi ở đây.
+
+90
+00:06:40,810 --> 00:06:47,550
+Nhìn vào kết quả mới nhất thì các bạn có thể thấy ta đã chụp ảnh thành công rồi. Tuyệt vời.
+
+91
+00:06:47,550 --> 00:06:52,200
+Sau khi xong phần chụp ảnh, chúng ta cùng chuyển tiếp sang quay video.
+
+92
+00:06:52,200 --> 00:06:56,130
+Ta sẽ mở project record ra và quan sát một chút.
+
+93
+00:06:56,160 --> 00:07:02,250
+Tất cả mã hẳn trông sẽ rất giống nhau nhưng có một điều là thay vì sử dụng QCameraImageCapture
+
+94
+00:07:02,250 --> 00:07:09,300
+chúng ta sẽ sử dụng QMediaRecorder. Tiến hành thôi. Tuyệt vời.
+
+95
+00:07:09,300 --> 00:07:16,540
+Sau đso ta sẽ chuyển sang file thực hiện và đi tới hàm set_camera hay là slot.
+
+96
+00:07:16,590 --> 00:07:22,650
+Ta cần phải khởi chạy QMediaRecorder giống như đối với QImageCapture bằng cách nhập
+
+97
+00:07:22,710 --> 00:07:24,690
+tham chiếu vào camera.
+
+98
+00:07:26,250 --> 00:07:26,860
+Tuyệt vời.
+
+99
+00:07:26,890 --> 00:07:33,220
+Giờ đây khi QMediaRecorder đã được khởi chạy, ta sẽ thiết lập các slot record và stop recording trong
+
+100
+00:07:33,220 --> 00:07:34,480
+MainWindow.
+
+101
+00:07:34,480 --> 00:07:39,940
+Hãy nhớ rằng ta sẽ không kết nối trực tiếp các tín hiệu với thành viên instance, trong trường hợp này là
+
+102
+00:07:39,940 --> 00:07:40,910
+media_recorder.
+
+103
+00:07:40,930 --> 00:07:46,840
+Vì ta sẽ thay thế nó mỗi khi thay đôi thiết bị nên ta sẽ đặt các slot vào widget parent
+
+104
+00:07:46,840 --> 00:07:49,900
+thay vì, trong trường hợp này là, MainWindow.
+
+105
+00:07:50,020 --> 00:07:55,360
+Do đó muốn ghi hình thì ta gọi hàm là record, và muốn dừng ghi hình
+
+106
+00:07:55,360 --> 00:07:57,110
+thì ta gọi hàm là
+
+107
+00:07:57,130 --> 00:07:58,000
+stop.
+
+108
+00:07:58,000 --> 00:07:58,330
+Được rồi.
+
+109
+00:07:58,330 --> 00:08:00,210
+Bây giờ ta sẽ cuộn lên trên cùng.
+
+110
+00:08:00,250 --> 00:08:03,000
+Các bạn có thể thấy ta đang tạo 2 QPushButton.
+
+111
+00:08:03,010 --> 00:08:09,400
+Một cái được gọi là record_button có chứa từ record và cái còn lại là stop_record. Và
+
+112
+00:08:09,400 --> 00:08:14,200
+ở dưới cùng class ta đang kết nối những slot vừa tạo,
+
+113
+00:08:14,240 --> 00:08:19,870
+tín hiệu sau khi click sẽ được kết nối với slot record và tín hiệu stop_record_button sẽ được
+
+114
+00:08:19,870 --> 00:08:22,810
+kết nối với slot stop_recording.
+
+115
+00:08:22,810 --> 00:08:27,730
+Điều khác biệt duy nhất mà chúng ta chưa thực hiện là chủ động
+
+116
+00:08:27,730 --> 00:08:33,190
+thay đổi những nút này sao cho ta chỉ có thể ấn nút khi được kích hoạt.
+
+117
+00:08:33,210 --> 00:08:38,530
+Ví dụ khi đang ghi hình, người sử dụng sẽ không thể ấn nút record nữa.
+
+118
+00:08:38,530 --> 00:08:43,450
+Và tương tự khi không ghi hình người sử dụng cũng không thể ấn nút stop recording.
+
+119
+00:08:43,450 --> 00:08:48,680
+Và slot mà ta đã thiết lập cho điều này là update_recorder_state.
+
+120
+00:08:48,760 --> 00:08:51,290
+Cuộn xuống các bạn sẽ thấy hàm thực hiện ở đây.
+
+121
+00:08:51,340 --> 00:08:57,610
+Ở đây ta có 2 case, RecordingState và StoppedState. Mỗi khi ghi hình
+
+122
+00:08:57,670 --> 00:09:00,760
+ta phải đảm bảo rằng người sử dụng không thể ấn nút record được nữa.
+
+123
+00:09:00,760 --> 00:09:06,460
+Và tương tự khi không ghi hình ta cũng phải đảm bảo người sử dụng không thể ấn nút stop recording.
+
+124
+00:09:06,520 --> 00:09:13,930
+Ta tiếp tục kết nối tín hiệu trên instance QMediaRecorder, và tín hiệu
+
+125
+00:09:13,930 --> 00:09:21,710
+ta cần là tín hiệu stateChanged. Tôi sẽ kết nối với slot. Tuyệt vời. Vậy là chúng ta đã
+
+126
+00:09:21,710 --> 00:09:27,370
+kết nối thành công. Bây giờ mỗi khi trạng thái của QMediaRecorder thay đổi,
+
+127
+00:09:27,380 --> 00:09:33,440
+ta sẽ có thể cập nhật trạng thái recorder trong hàm, từ đó thay đổi
+
+128
+00:09:33,440 --> 00:09:41,080
+những nút ở đây, và ta sẽ lặp lại hoặc chuyển sang một enum, hay
+
+129
+00:09:41,090 --> 00:09:41,960
+QMediaRecorder State.
+
+130
+00:09:43,410 --> 00:09:48,840
+Cuối cùng chúng ta cần phải kiểm tra để đảm bảo ta có thể
+
+131
+00:09:48,840 --> 00:09:53,150
+quay video bằng camera mặc định.
+
+132
+00:09:53,250 --> 00:10:02,240
+Nếu có thể, chúng ta sẽ đặt CaptureMode thành CaptureVideo. Và nếu thực sự có thể
+
+133
+00:10:02,240 --> 00:10:06,210
+ta sẽ thông báo cho người sử dụng biết. Tuyệt vời.
+
+134
+00:10:06,210 --> 00:10:11,030
+Bây giờ ta thử chạy chương trình và quay video.
+
+135
+00:10:13,270 --> 00:10:18,900
+Các bạn có thể thấy 2 nút ở đây, ở dưới cùng, và nếu ấn record ta sẽ thấy nút record
+
+136
+00:10:18,900 --> 00:10:26,820
+mờ dần và nếu ấn nút stop recording vừa tạo, ta có thể thể hiện kết thúc ghi hình
+
+137
+00:10:27,040 --> 00:10:32,850
+bằng cách chạy clip, các bạn có thể thấy chúng ta đã quay video
+
+138
+00:10:32,850 --> 00:10:33,870
+thành công.
+
+139
+00:10:36,970 --> 00:10:41,410
+Có một điều có thể các bạn chưa biết là ta sẽ phải thay đổi định dạng file
+
+140
+00:10:41,410 --> 00:10:42,470
+đang thu hình.
+
+141
+00:10:42,520 --> 00:10:45,520
+Hiện tại ta chỉ đang thu hình với định dạng mặc định.
+
+142
+00:10:45,520 --> 00:10:52,700
+Vậy thì ta có thể sử dụng một hàm trên media_recorder để kiểm tra định dạng. Đó chính là
+
+143
+00:10:52,700 --> 00:10:54,940
+supportedAudioCodecs.
+
+144
+00:10:55,130 --> 00:11:00,140
+Hàm trên sẽ cho ta một StringList của tất cả mọi thứ và sau đó ta có thể, các bạn biết đấy, hiển thị
+
+145
+00:11:00,140 --> 00:11:06,980
+cho người sử dụng để họ lựa chọn và có thể đặt luôn làm mặc định cũng được.
+
+146
+00:11:07,370 --> 00:11:12,800
+Các bạn có thể sử dụng supported_audio. Ta có ContainerFormat và cả EncodingSettings.
+
+147
+00:11:12,800 --> 00:11:18,800
+Ta còn có các hàm mặc định đối với từng tuỳ chọn và các hàm set để cài đặt
+
+148
+00:11:18,800 --> 00:11:19,070
+những tuỳ chọn đó.
+
+149
+00:11:19,070 --> 00:11:24,890
+Tôi khuyến khích các bạn nên tự mình nghịch thêm những ví dụ này để xem hệ thống của mình có những gì.
+
+150
+00:11:25,010 --> 00:11:31,280
+Vậy là ta đã tìm hiểu xong về cách chụp ảnh, cách quay video và làm quen với
+
+151
+00:11:31,280 --> 00:11:34,780
+cách cấu hình hình ảnh và video.
+
+152
+00:11:35,870 --> 00:11:39,200
+Đừng quên theo dõi video tiếp theo của tôi về phát lại đa phương tiện.
+

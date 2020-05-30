@@ -1,0 +1,157 @@
+WEBVTT
+
+00:01.190 --> 00:08.900
+Multi-processing. In this video we are going to take a look at how to start an external program with Qprocess in Qt.
+
+00:08.980 --> 00:18.280
+Then we're also check how we can communicate with this Qprocess using standard input and output.
+
+00:18.430 --> 00:24.030
+If you're ready to get your hands on some small exercises. Let's get started. The external program
+
+00:24.040 --> 00:29.100
+we will demo today is Gzip. An open source compression utility.
+
+00:29.380 --> 00:33.250
+You can get the binaries from Gzip windows web page.
+
+00:33.460 --> 00:37.960
+I've downloaded and extracted binaries into my local drive.
+
+00:37.990 --> 00:44.770
+Now if you're ready. Let's open Qt creator and create a new Qt console application project. In this
+
+00:44.770 --> 00:50.120
+new project we will need to first re-include QProcess header file.
+
+00:50.350 --> 01:00.550
+Then we create a QProcess object. Set Gzip as the program. And now  if we call start() method.
+
+01:00.580 --> 01:04.970
+The process will start and enter running state.
+
+01:05.320 --> 01:13.630
+Let's use some standard output to check these. As you can see we output the current application process ID
+
+01:13.960 --> 01:16.190
+and our child process ID as well.
+
+01:18.850 --> 01:20.880
+If we build and run the application now.
+
+01:25.820 --> 01:34.380
+You can see the two process IDs and if you check systems task manager you'll find Gzip in process list.
+
+01:34.400 --> 01:41.720
+This is because our current application is blocked by our standard input. Now if we give a number
+
+01:44.700 --> 01:46.390
+and check the task manager again.
+
+01:47.560 --> 01:49.380
+Gzip disappeared.
+
+01:49.390 --> 01:56.720
+This is it because the close method close all read and write channels and then kill the process.
+
+01:56.740 --> 02:01.090
+OK but how do we communicate with Gzip to do some useful things.
+
+02:03.130 --> 02:09.540
+Let's first start Gzip with dash h argument to see what choices we have. To do this
+
+02:09.610 --> 02:12.250
+you just need to make a QStringList object.
+
+02:17.370 --> 02:23.700
+A QStringList is just a shortcut
+
+02:23.900 --> 02:25.660
+to QList<QString>
+
+02:32.500 --> 02:35.060
+And the only argument we need is dash h.
+
+02:41.650 --> 02:47.490
+now we can use setArguments() method to set the argument for our program
+
+02:51.290 --> 02:52.860
+To read from the process
+
+02:52.910 --> 02:57.880
+We can use method readAll(), since QProcess derives from QIODevice.
+
+02:58.130 --> 03:00.880
+So it inherits all input and output methods.
+
+03:11.450 --> 03:18.050
+We need to use toStdString() method to convert a Qt backed array to standard string so we
+
+03:18.050 --> 03:20.960
+can use std::cout to output the result.
+
+03:27.720 --> 03:29.960
+To make sure there is something to read.
+
+03:30.000 --> 03:32.900
+We can also use waitForReadyRead() method.
+
+03:41.840 --> 03:44.150
+Now if you build and run the application again
+
+03:48.520 --> 03:56.120
+we basically redirect the output from Gzip to our applications output. And you can see Gzip by default.
+
+03:56.120 --> 03:58.280
+It reads from the standard input
+
+03:58.330 --> 04:00.450
+if there is no file specified.
+
+04:00.670 --> 04:08.170
+Additionally we can give a dash c argument to make Gzip prints result into standard output.
+
+04:08.530 --> 04:16.040
+So let's change our application a bit to write something to Gzip standard input. It's fairly simple, just
+
+04:16.040 --> 04:26.750
+call write() method with a QByteArray object.
+
+04:26.960 --> 04:28.870
+Let's write "Hello World" into Gzip.
+
+04:29.790 --> 04:38.820
+And we can use waitForByteWriten() to make sure the write was successful. And then we need to close
+
+04:39.000 --> 04:40.200
+the write channel.
+
+04:40.200 --> 04:42.650
+This is very necessary to close
+
+04:42.650 --> 04:47.570
+write channel to let Gzip know that there is no more data in standard input.
+
+04:48.540 --> 04:56.590
+Let's also change the arguments to dash c. Lastly, but not the least, we don't want junky characters
+
+04:56.860 --> 05:01.200
+so we can use toBase64() to encode our results.
+
+05:09.500 --> 05:10.600
+Build and run now
+
+05:16.050 --> 05:21.790
+And you get to see the base64 encoded results of Gzip compressed "Hello world".
+
+05:22.140 --> 05:24.880
+Now let's look back after this section.
+
+05:24.900 --> 05:29.250
+You should understand the difference between a thread and a process.
+
+05:29.250 --> 05:35.120
+More importantly how to use threads and processes in Qt. In the upcoming section.
+
+05:35.160 --> 05:37.710
+We'll go through networking programming in Qt.

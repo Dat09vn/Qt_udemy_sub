@@ -1,0 +1,340 @@
+﻿1
+00:00:00,310 --> 00:00:02,560
+Đây là video 6.4- mô tả
+
+2
+00:00:02,560 --> 00:00:04,900
+ trực quan về 3D trong Qtquick.
+
+3
+00:00:04,900 --> 00:00:06,970
+Trong video này chúng ta sẽ học về
+
+4
+00:00:06,970 --> 00:00:10,089
+cách tạo ra một cửa sổ QML 3D windows (QML 3D window), thiết lập
+
+5
+00:00:10,089 --> 00:00:11,919
+kết xuất đồ họa (Rendering Pipeline) và
+
+6
+00:00:11,919 --> 00:00:13,269
+tạo bản demo hình cầu xoay (Rotating Sphere
+
+7
+00:00:13,269 --> 00:00:15,969
+Demo). Chúng ta đã làm ví dụ Qt Quick 3D
+
+8
+00:00:15,969 --> 00:00:18,730
+C++, bây giờ chúng ta sẽ làm nó trong QML.
+
+9
+00:00:18,730 --> 00:00:19,870
+Nó sẽ trở nên
+
+10
+00:00:19,870 --> 00:00:22,360
+ngắn gọn hơn vì QML không có
+
+11
+00:00:22,360 --> 00:00:24,400
+thông tin nhập C++. Điều đầu tiên chúng ta
+
+12
+00:00:24,400 --> 00:00:26,530
+cần phải làm là tạo một cửa sổ 3D QML.
+
+13
+00:00:26,530 --> 00:00:29,170
+Hãy bắt đầu với main.cpp, chúng ta sẽ
+
+14
+00:00:29,170 --> 00:00:31,810
+sử dụng đối tượng (object) là Qt3DQuickWindow
+
+15
+00:00:31,810 --> 00:00:34,960
+trong Qt3DQuickExtras trong Quick
+
+16
+00:00:34,960 --> 00:00:36,640
+name space, nó sẽ trông
+
+17
+00:00:36,640 --> 00:00:38,820
+như trên hình.
+
+18
+00:00:38,820 --> 00:00:40,560
+Khi đã tạo xong cửa sổ, chúng ta sẽ tiếp tục
+
+19
+00:00:40,560 --> 00:00:42,720
+thiết lập nguồn (source) để tạo thành main.qml
+
+20
+00:00:42,720 --> 00:00:46,170
+Tôi sẽ làm tiếp và cho nó hiển thị.
+
+21
+00:00:46,170 --> 00:00:48,059
+Tốt rồi! Bây giờ hãy chuyển sang
+
+22
+00:00:48,059 --> 00:00:50,190
+main.qml. Điều đầu tiên
+
+23
+00:00:50,190 --> 00:00:52,079
+cần làm là thiết lập scene
+
+24
+00:00:52,079 --> 00:00:54,269
+root. Khi đã có cảnh gốc rồi
+
+25
+00:00:54,269 --> 00:00:55,949
+chúng ta cần thiết lập kết xuất đồ hoạ (rendering pipeline),
+
+26
+00:00:55,949 --> 00:00:57,780
+Một trong những điều đầu tiên
+
+27
+00:00:57,780 --> 00:00:59,670
+chúng ta cần cho việc kết xuất đồ hoạ là máy ảnh. Vậy
+
+28
+00:00:59,670 --> 00:01:02,339
+hãy tạo máy ảnh trước.
+
+29
+00:01:02,339 --> 00:01:03,960
+Tôi sẽ chỉ dán một số tùy chọn (options)
+
+30
+00:01:03,960 --> 00:01:05,850
+cho máy ảnh để chúng ta có thể đặt
+
+31
+00:01:05,850 --> 00:01:08,909
+trường xem (field of view), tỷ lệ khung hình (aspect ratio), kế hoạch đặt gần và xa và vị trí của nó ( near and far plans)
+
+32
+00:01:08,909 --> 00:01:12,060
+và vị trí (positioning) của nó. Tốt rồi.
+
+33
+00:01:12,060 --> 00:01:13,860
+Bây giờ hãy thiết lập
+
+34
+00:01:13,860 --> 00:01:15,840
+kết xuất đồ hoạ. Chúng ta sẽ sử dụng
+
+35
+00:01:15,840 --> 00:01:17,610
+dụng thuộc tính thành phần trong
+
+36
+00:01:17,610 --> 00:01:21,149
+thực thể gốc (root entity) để làm điều đó. Với phần
+
+37
+00:01:21,149 --> 00:01:22,679
+kết xuất đồ hoạ, không nên có sự
+
+38
+00:01:22,679 --> 00:01:24,810
+bất ngờ gì ở đây: Chúng ta sẽ sử dụng
+
+39
+00:01:24,810 --> 00:01:27,360
+một trình kết xuất đồ hoạ (forward renderer)làm biểu đồ khung hoạt động (active frame.
+
+40
+00:01:27,360 --> 00:01:29,220
+graph). Chúng sẽ thiết lập camera
+
+41
+00:01:29,220 --> 00:01:30,750
+trở thành camera chúng ta vừa tạo ra
+
+42
+00:01:30,750 --> 00:01:35,240
+và cài đặt màu xanh nhạt.
+
+43
+00:01:36,000 --> 00:01:38,130
+Chúng ta cũng có thể thêm một số cài đặt đầu vào mặc định
+
+44
+00:01:38,130 --> 00:01:40,620
+cho các thành phần để chúng ta
+
+45
+00:01:40,620 --> 00:01:42,270
+có thể tương tác với hình cầu quay mẫu.
+
+46
+00:01:42,270 --> 00:01:45,210
+Bây giờ, phần cuối cùng chúng ta cần làm
+
+47
+00:01:45,210 --> 00:01:46,470
+làm trong phần cài đặt thực thể gốc
+
+48
+00:01:46,470 --> 00:01:48,660
+gốc là tạo ra một vài sự điều khiển của góc nhìn thứ nhất (first-person
+
+49
+00:01:48,660 --> 00:01:50,640
+camera controls), mà chúng ta có thể thực hiện bằng cách sử dụng
+
+50
+00:01:50,640 --> 00:01:53,700
+FirstPersonCameraController (bộ điều khiển góc nhìn thứ nhất).
+
+51
+00:01:53,700 --> 00:01:55,380
+Tốt rồi, Giờ thì chúng ta đã hoàn thành
+
+52
+00:01:55,380 --> 00:01:57,090
+phần thiết lập kết xuất đồ hoạ, hãy
+
+53
+00:01:57,090 --> 00:01:59,430
+hãy tạo một demo hình cầu xoay. Hãy
+
+54
+00:01:59,430 --> 00:02:01,380
+Hãy tạo ra hai thực thể để theo dõi
+
+55
+00:02:01,380 --> 00:02:04,020
+quả cầu. Giờ chúng ta đã có các thực thể,
+
+56
+00:02:04,020 --> 00:02:06,210
+hãy tiếp tục và tạo lưới hình (SphereMesh) cầu để tạo phần thể tích.
+
+57
+00:02:06,210 --> 00:02:08,949
+để tạo phần thể tích.
+
+58
+00:02:08,949 --> 00:02:10,750
+Sau đó chúng ta cũng cần tạo ra các vật liệu (material)
+
+59
+00:02:10,750 --> 00:02:12,400
+để tương tác
+
+60
+00:02:12,400 --> 00:02:14,930
+với nguồn sáng.
+
+61
+00:02:14,930 --> 00:02:17,030
+Bây giờ hãy tiếp tục và thêm
+
+62
+00:02:17,030 --> 00:02:18,739
+những thành phần này vào thực thể bằng cách sử dụng
+
+63
+00:02:18,739 --> 00:02:20,950
+thuộc tính thành phần (components entity).
+
+64
+00:02:20,950 --> 00:02:22,990
+Chúng ta có hai hình cầu; chúng ta cần
+
+65
+00:02:22,990 --> 00:02:24,610
+tạo một hình cầu vệ tinh xoay quanh hình
+
+66
+00:02:24,610 --> 00:02:25,900
+còn lại, chúng ta sẽ tạo một chuyển đổi
+
+67
+00:02:25,900 --> 00:02:28,209
+(transform) để làm điều này. Chúng ta sẽ tạo
+
+68
+00:02:28,209 --> 00:02:30,400
+thuộc tính có tên user_angle
+
+69
+00:02:30,400 --> 00:02:32,860
+và sau đó thiết lập ma trận để xoay
+
+70
+00:02:32,860 --> 00:02:35,910
+và dịch với user_angle.
+
+71
+00:02:39,630 --> 00:02:41,910
+Bây giờ chúng ta chỉ cần tạo ra thứ gì đó
+
+72
+00:02:41,910 --> 00:02:44,190
+đó có thể thay đổi user_angle từ 0
+
+73
+00:02:44,190 --> 00:02:47,250
+đến 360 để nó di chuyển theo đúng một vòng. Và
+
+74
+00:02:47,250 --> 00:02:49,260
+nếu bạn nhớ từ lần trước, chúng ta có thể
+
+75
+00:02:49,260 --> 00:02:51,300
+sử dụng một số phép biến đổi (transformation)
+
+76
+00:02:51,300 --> 00:02:54,770
+và hoạt ảnh (number animation) để thực hiện nó.
+
+77
+00:02:58,540 --> 00:03:00,430
+Như bạn đã thấy chúng ta đã tạo ra
+
+78
+00:03:00,430 --> 00:03:02,470
+được một demo hình cầu xoay
+
+79
+00:03:02,470 --> 00:03:05,319
+và chúng ta có thể nhấp chuột vào nó
+
+80
+00:03:05,319 --> 00:03:08,349
+và thấy nó xoay xay xung quanh. Qua việc
+
+81
+00:03:08,349 --> 00:03:09,939
+tạo thành công quả cầu xoay mẫu,
+
+82
+00:03:09,939 --> 00:03:12,760
+chúng ta đã minh họa được cách
+
+83
+00:03:12,760 --> 00:03:14,980
+thiết lập kết xuất đồ hoạ QML
+
+84
+00:03:14,980 --> 00:03:18,760
+cũng như tạo ra một cửa sổ 3D QML. Trong phần tiếp theo,
+
+85
+00:03:18,760 --> 00:00:00,000
+chúng ta sẽ học về Qt trên desktop.
+

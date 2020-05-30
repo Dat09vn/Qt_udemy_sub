@@ -1,0 +1,340 @@
+1
+00:00:00,310 --> 00:00:02,560
+This is video 6.4 visual
+
+2
+00:00:02,560 --> 00:00:04,900
+representations which covers 3d in Qt
+
+3
+00:00:04,900 --> 00:00:06,970
+quick. In this video we're going to cover
+
+4
+00:00:06,970 --> 00:00:10,089
+creating QML 3-d windows, setting up the
+
+5
+00:00:10,089 --> 00:00:11,919
+Rendering Pipeline before finally
+
+6
+00:00:11,919 --> 00:00:13,269
+finishing up with the Rotating Sphere
+
+7
+00:00:13,269 --> 00:00:15,969
+Demo. Alright so we've made the Qt 3D in
+
+8
+00:00:15,969 --> 00:00:18,730
+C++, for example, and now let's make it in QML. 
+
+9
+00:00:18,730 --> 00:00:19,870
+This is going to be a little more
+
+10
+00:00:19,870 --> 00:00:22,360
+concise because QML doesn't have C++
+
+11
+00:00:22,360 --> 00:00:24,400
+typing information. First thing we
+
+12
+00:00:24,400 --> 00:00:26,530
+need to do is create our QML 3d window.
+
+13
+00:00:26,530 --> 00:00:29,170
+Let's start in our main.cpp, we'll be
+
+14
+00:00:29,170 --> 00:00:31,810
+using the Qt3DQuickWindow as object, 
+
+15
+00:00:31,810 --> 00:00:34,960
+the Qt3DQuickExtras model in the quick
+
+16
+00:00:34,960 --> 00:00:36,640
+name space which looks something like
+
+17
+00:00:36,640 --> 00:00:38,820
+this.
+
+18
+00:00:38,820 --> 00:00:40,560
+And once we created our window, we'll go
+
+19
+00:00:40,560 --> 00:00:42,720
+ahead and set the source to be our main.qml
+
+20
+00:00:42,720 --> 00:00:46,170
+and I'll go ahead and show it.
+
+21
+00:00:46,170 --> 00:00:48,059
+Awesome! So now let's switch to our
+
+22
+00:00:48,059 --> 00:00:50,190
+main.qml. The first thing that we want to
+
+23
+00:00:50,190 --> 00:00:52,079
+do is go ahead and set up our scene
+
+24
+00:00:52,079 --> 00:00:54,269
+route. Once we've got our scene route,
+
+25
+00:00:54,269 --> 00:00:55,949
+we need to set up our rendering pipeline,
+
+26
+00:00:55,949 --> 00:00:57,780
+one of the first things that we need in
+
+27
+00:00:57,780 --> 00:00:59,670
+our rendering pipeline is the camera so
+
+28
+00:00:59,670 --> 00:01:02,339
+let's go ahead and create that first. Now
+
+29
+00:01:02,339 --> 00:01:03,960
+I'm just going to paste in some options
+
+30
+00:01:03,960 --> 00:01:05,850
+for our camera so that will set its
+
+31
+00:01:05,850 --> 00:01:08,909
+field of view, aspect ratio, near and far
+
+32
+00:01:08,909 --> 00:01:12,060
+planes, and it's positioning. Awesome! so
+
+33
+00:01:12,060 --> 00:01:13,860
+now let's get to setting up our
+
+34
+00:01:13,860 --> 00:01:15,840
+rendering pipeline. We're going to use
+
+35
+00:01:15,840 --> 00:01:17,610
+the components property on our route
+
+36
+00:01:17,610 --> 00:01:21,149
+entity to do that. Now as part of our
+
+37
+00:01:21,149 --> 00:01:22,679
+rendering pipeline, there should be no
+
+38
+00:01:22,679 --> 00:01:24,810
+surprises here: we're going to use a
+
+39
+00:01:24,810 --> 00:01:27,360
+forward renderer as our active frame
+
+40
+00:01:27,360 --> 00:01:29,220
+graph. We're going to set the camera to
+
+41
+00:01:29,220 --> 00:01:30,750
+be the camera that we just created and
+
+42
+00:01:30,750 --> 00:01:35,240
+set the clear color to be a nice blue.
+
+43
+00:01:36,000 --> 00:01:38,130
+Let's also add some default input
+
+44
+00:01:38,130 --> 00:01:40,620
+settings to our components so that we
+
+45
+00:01:40,620 --> 00:01:42,270
+can interact with our rotating sphere
+
+46
+00:01:42,270 --> 00:01:45,210
+example. Now the last thing that we want
+
+47
+00:01:45,210 --> 00:01:46,470
+to do as part of our route entity
+
+48
+00:01:46,470 --> 00:01:48,660
+settings is create some first-person
+
+49
+00:01:48,660 --> 00:01:50,640
+camera controls, which we can do using
+
+50
+00:01:50,640 --> 00:01:53,700
+the FirstPersonCameraController.
+
+51
+00:01:53,700 --> 00:01:55,380
+Awesome, so now that we're finished
+
+52
+00:01:55,380 --> 00:01:57,090
+setting up our rendering pipeline, let's
+
+53
+00:01:57,090 --> 00:01:59,430
+create our rotating sphere demo. Let's
+
+54
+00:01:59,430 --> 00:02:01,380
+create two entities to track our two
+
+55
+00:02:01,380 --> 00:02:04,020
+spheres. Now that we've got our entities
+
+56
+00:02:04,020 --> 00:02:06,210
+let's go ahead and create our SphereMesh
+
+57
+00:02:06,210 --> 00:02:08,949
+to give them some volume.
+
+58
+00:02:08,949 --> 00:02:10,750
+And then we also need to create our
+
+59
+00:02:10,750 --> 00:02:12,400
+material so that it can interact with
+
+60
+00:02:12,400 --> 00:02:14,930
+our lights floors.
+
+61
+00:02:14,930 --> 00:02:17,030
+Awesome! So let's go ahead and add these
+
+62
+00:02:17,030 --> 00:02:18,739
+components to our entities using the
+
+63
+00:02:18,739 --> 00:02:20,950
+components property.
+
+64
+00:02:20,950 --> 00:02:22,990
+So we've got our two spheres, but we need
+
+65
+00:02:22,990 --> 00:02:24,610
+to create one sphere that orbits the
+
+66
+00:02:24,610 --> 00:02:25,900
+other, so we're going to create a
+
+67
+00:02:25,900 --> 00:02:28,209
+transform to do this. We'll create a
+
+68
+00:02:28,209 --> 00:02:30,400
+property called user_angle and then set
+
+69
+00:02:30,400 --> 00:02:32,860
+the matrix to rotate and translate with
+
+70
+00:02:32,860 --> 00:02:35,910
+the user_angle.
+
+71
+00:02:39,630 --> 00:02:41,910
+So now we just need to create something
+
+72
+00:02:41,910 --> 00:02:44,190
+that'll change our user_angle from 0 to
+
+73
+00:02:44,190 --> 00:02:47,250
+360 so that it goes in a full circle. And
+
+74
+00:02:47,250 --> 00:02:49,260
+if you remember from last time, we can
+
+75
+00:02:49,260 --> 00:02:51,300
+use a number of transformation or a
+
+76
+00:02:51,300 --> 00:02:54,770
+number animation to do this.
+
+77
+00:02:58,540 --> 00:03:00,430
+So you can see we've managed to
+
+78
+00:03:00,430 --> 00:03:02,470
+successfully create our rotating sphere
+
+79
+00:03:02,470 --> 00:03:05,319
+demo and we can click this and look
+
+80
+00:03:05,319 --> 00:03:08,349
+around as well. So with that we've
+
+81
+00:03:08,349 --> 00:03:09,939
+successfully created our rotating sphere
+
+82
+00:03:09,939 --> 00:03:12,760
+demo demonstrateing how to set up a the
+
+83
+00:03:12,760 --> 00:03:14,980
+QMl rendering pipeline as well as
+
+84
+00:03:14,980 --> 00:03:18,760
+created a QML 3D window. Join us in the
+
+85
+00:03:18,760 --> 00:00:00,000
+next section we'll cover Qt on desktop.
+

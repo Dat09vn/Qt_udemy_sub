@@ -1,0 +1,644 @@
+1
+00:00:00,000 --> 00:00:01,650
+In this lecture we're going to see how
+
+2
+00:00:01,650 --> 00:00:03,929
+you can work with gradients within your
+
+3
+00:00:03,929 --> 00:00:06,660
+States changes. This is a subject that
+
+4
+00:00:06,660 --> 00:00:09,000
+confuses many students so I thought it
+
+5
+00:00:09,000 --> 00:00:11,040
+was a good idea to include it as a
+
+6
+00:00:11,040 --> 00:00:13,349
+lecture and make things clear a little
+
+7
+00:00:13,349 --> 00:00:15,780
+bit. We're going to go to QT creator and
+
+8
+00:00:15,780 --> 00:00:17,910
+look at that. We are going to start from
+
+9
+00:00:17,910 --> 00:00:20,010
+this state we left the last lecture and
+
+10
+00:00:20,010 --> 00:00:22,109
+but I am going to do this as a separate
+
+11
+00:00:22,109 --> 00:00:24,390
+project to have been separated nice and
+
+12
+00:00:24,390 --> 00:00:26,130
+neat. So I am going to create a new
+
+13
+00:00:26,130 --> 00:00:30,630
+project, file - new project,
+
+14
+00:00:30,630 --> 00:00:33,600
+it's a QT quick application we call it
+
+15
+00:00:33,600 --> 00:00:37,620
+StatesWithGradientsDemo, choose our QT
+
+16
+00:00:37,620 --> 00:00:43,530
+version, choose our kit, hit next and
+
+17
+00:00:43,530 --> 00:00:49,309
+finish. Let's state what we want to do. I
+
+18
+00:00:53,120 --> 00:00:55,890
+am going to go to the last project and
+
+19
+00:00:55,890 --> 00:00:58,199
+copy whatever we had in there and use it
+
+20
+00:00:58,199 --> 00:01:01,230
+here. The way I do that, I'm going to go
+
+21
+00:01:01,230 --> 00:01:04,110
+back there, you should go there in your
+
+22
+00:01:04,110 --> 00:01:08,670
+project and copy everything that is
+
+23
+00:01:08,670 --> 00:01:13,170
+inside the window element. We should do
+
+24
+00:01:13,170 --> 00:01:15,710
+it like this. I think this is correct.
+
+25
+00:01:15,710 --> 00:01:19,380
+Let's double check, yes, hit copy we come
+
+26
+00:01:19,380 --> 00:01:21,479
+back to the project here, the new one and
+
+27
+00:01:21,479 --> 00:01:25,350
+we paste in what we had. We also have to
+
+28
+00:01:25,350 --> 00:01:27,180
+bring in the resource files otherwise
+
+29
+00:01:27,180 --> 00:01:29,000
+we're not going to find the tree.
+
+30
+00:01:29,000 --> 00:01:33,360
+We're going to go where the last lecture
+
+31
+00:01:33,360 --> 00:01:36,299
+is defined click on the file here, the
+
+32
+00:01:36,299 --> 00:01:41,790
+main file of it - show in Explorer. We find
+
+33
+00:01:41,790 --> 00:01:43,710
+this folder of images. We're going to
+
+34
+00:01:43,710 --> 00:01:47,729
+copy it, close this, come back to our
+
+35
+00:01:47,729 --> 00:01:51,119
+current project - show in Explorer, the
+
+36
+00:01:51,119 --> 00:01:54,780
+same thing really. And we're going to
+
+37
+00:01:54,780 --> 00:01:58,590
+paste in this folder of images. Ok we
+
+38
+00:01:58,590 --> 00:02:01,680
+have our trees. Now we can add a resource
+
+39
+00:02:01,680 --> 00:02:06,930
+file resources - add new - qt - resource file,
+
+40
+00:02:06,930 --> 00:02:10,700
+call it resource.
+
+41
+00:02:13,230 --> 00:02:17,920
+You want to add your prefix tip, take
+
+42
+00:02:17,920 --> 00:02:22,480
+this out, hit enter, add files. And you're
+
+43
+00:02:22,480 --> 00:02:25,150
+going to find the two images here. You
+
+44
+00:02:25,150 --> 00:02:28,650
+want to load them, save your thing,
+
+45
+00:02:28,650 --> 00:02:31,990
+come back to main.qml. We can
+
+46
+00:02:31,990 --> 00:02:35,140
+close this actually let's see what thing
+
+47
+00:02:35,140 --> 00:02:38,080
+here, close everything because I don't
+
+48
+00:02:38,080 --> 00:02:40,150
+want things to confuse me, open my
+
+49
+00:02:40,150 --> 00:02:42,550
+project again. Okay this is what we have,
+
+50
+00:02:42,550 --> 00:02:45,459
+we run it we're going to have everything
+
+51
+00:02:45,459 --> 00:02:51,760
+we had in the last lecture. Okay this is
+
+52
+00:02:51,760 --> 00:02:54,280
+what we had. What I want to show you is
+
+53
+00:02:54,280 --> 00:02:57,310
+what would happen if you specified, for
+
+54
+00:02:57,310 --> 00:03:00,580
+example, the color of your sky or the
+
+55
+00:03:00,580 --> 00:03:02,230
+ground as a gradient.
+
+56
+00:03:02,230 --> 00:03:04,720
+Okay let's comment this out, for example,
+
+57
+00:03:04,720 --> 00:03:08,190
+and put in a gradient property like this.
+
+58
+00:03:08,190 --> 00:03:11,650
+Gradient is really nothing but a set of
+
+59
+00:03:11,650 --> 00:03:13,870
+color changes. You want to set the color
+
+60
+00:03:13,870 --> 00:03:16,810
+of your gradient for example us going
+
+61
+00:03:16,810 --> 00:03:19,269
+fluently from one color to another, for
+
+62
+00:03:19,269 --> 00:03:21,190
+example, from red to blue. You're going to
+
+63
+00:03:21,190 --> 00:03:22,959
+see what I mean if you run this
+
+64
+00:03:22,959 --> 00:03:25,930
+application now, let's see what happens.
+
+65
+00:03:25,930 --> 00:03:28,989
+Okay you see that the color of the sky
+
+66
+00:03:28,989 --> 00:03:32,650
+is like this, it's going from dark blue
+
+67
+00:03:32,650 --> 00:03:35,620
+to a lighter blue. This is what the
+
+68
+00:03:35,620 --> 00:03:38,290
+gradient is. So if you want to use this
+
+69
+00:03:38,290 --> 00:03:40,720
+in our application we are going to have
+
+70
+00:03:40,720 --> 00:03:43,959
+problems if we try to say this States
+
+71
+00:03:43,959 --> 00:03:46,540
+by passing gradient like this. I'm going
+
+72
+00:03:46,540 --> 00:03:47,920
+to show you what I mean. I'm going to put
+
+73
+00:03:47,920 --> 00:03:50,560
+another gradient for the ground. Let's
+
+74
+00:03:50,560 --> 00:03:53,530
+comment this out and put in a gradient
+
+75
+00:03:53,530 --> 00:03:59,410
+and go to our state's in summer. What
+
+76
+00:03:59,410 --> 00:04:01,959
+many new students do is specify a
+
+77
+00:04:01,959 --> 00:04:04,720
+gradient like this, okay, like they
+
+78
+00:04:04,720 --> 00:04:08,160
+specify a color so they say gradient and
+
+79
+00:04:08,160 --> 00:04:10,780
+set it to something like this, for
+
+80
+00:04:10,780 --> 00:04:13,360
+example, put in another gradient well
+
+81
+00:04:13,360 --> 00:04:16,000
+this is going to be disasters.
+
+82
+00:04:16,000 --> 00:04:20,769
+Let's run. Your application is not even
+
+83
+00:04:20,769 --> 00:04:22,930
+going to run because there are
+
+84
+00:04:22,930 --> 00:04:23,830
+components
+
+85
+00:04:23,830 --> 00:04:27,189
+that are going to fail to load. This is a
+
+86
+00:04:27,189 --> 00:04:30,460
+bad syntax and it can be confusing for
+
+87
+00:04:30,460 --> 00:04:33,069
+many students if they do this. So the way
+
+88
+00:04:33,069 --> 00:04:35,169
+you do this, you shouldn't pass a
+
+89
+00:04:35,169 --> 00:04:37,479
+full-blown gradient component like this.
+
+90
+00:04:37,479 --> 00:04:40,240
+You should look at the gradient, you see
+
+91
+00:04:40,240 --> 00:04:43,389
+that it has an ID okay and it has
+
+92
+00:04:43,389 --> 00:04:45,969
+properties so you can actually target
+
+93
+00:04:45,969 --> 00:04:49,210
+this thing and change its color. Okay so
+
+94
+00:04:49,210 --> 00:04:51,009
+what you should do is not do something
+
+95
+00:04:51,009 --> 00:04:52,360
+like this, we're going to comment this
+
+96
+00:04:52,360 --> 00:04:56,530
+out. Instead you would do a separate
+
+97
+00:04:56,530 --> 00:04:59,110
+property change that targets the
+
+98
+00:04:59,110 --> 00:05:01,500
+gradient ctrl+a crtl+i to align.
+
+99
+00:05:01,500 --> 00:05:05,110
+You see that we are targeting the start
+
+100
+00:05:05,110 --> 00:05:08,919
+color of the sky and we are changing
+
+101
+00:05:08,919 --> 00:05:11,440
+this to the color that we want. And we
+
+102
+00:05:11,440 --> 00:05:13,539
+could do the same thing for the sky end
+
+103
+00:05:13,539 --> 00:05:16,960
+color crtl+a crtl+i to align.
+
+104
+00:05:16,960 --> 00:05:20,199
+Then we animate the changing of the
+
+105
+00:05:20,199 --> 00:05:22,330
+start color and the end color in our
+
+106
+00:05:22,330 --> 00:05:26,139
+gradient. Okay this is how you should do
+
+107
+00:05:26,139 --> 00:05:28,690
+it when you want to pass in States
+
+108
+00:05:28,690 --> 00:05:31,449
+changes from your gradient. We're going
+
+109
+00:05:31,449 --> 00:05:35,050
+to do the same in the spring actually
+
+110
+00:05:35,050 --> 00:05:37,990
+the changes we did here are for spring.
+
+111
+00:05:37,990 --> 00:05:41,199
+So we're going to copy them here, I'm
+
+112
+00:05:41,199 --> 00:05:43,479
+sorry for that if this confuses you.
+
+113
+00:05:43,479 --> 00:05:48,039
+We're going to put this in spring and on
+
+114
+00:05:48,039 --> 00:05:49,960
+top here we are going to do for summer
+
+115
+00:05:49,960 --> 00:05:52,839
+and in summer it's going to be like this
+
+116
+00:05:52,839 --> 00:05:55,629
+crtl+a crtl+i. It's nothing new
+
+117
+00:05:55,629 --> 00:05:58,000
+really we are just changing the colors
+
+118
+00:05:58,000 --> 00:06:01,690
+here let's run and see what we get. This
+
+119
+00:06:01,690 --> 00:06:04,629
+guy should animate correctly now. You see
+
+120
+00:06:04,629 --> 00:06:06,969
+that we see our thing here. We are seeing
+
+121
+00:06:06,969 --> 00:06:09,669
+a gradient on the ground and on the sky
+
+122
+00:06:09,669 --> 00:06:12,879
+and if we click you see that the sky
+
+123
+00:06:12,879 --> 00:06:16,389
+color changes fluidly. This is what we
+
+124
+00:06:16,389 --> 00:06:19,690
+want and it is a gradient and it adds a
+
+125
+00:06:19,690 --> 00:06:22,300
+little bit of light to your scene here. I
+
+126
+00:06:22,300 --> 00:06:24,819
+don't know if you can see that. So we're
+
+127
+00:06:24,819 --> 00:06:27,190
+going to do the same for the ground. So
+
+128
+00:06:27,190 --> 00:06:27,940
+in summer,
+
+129
+00:06:27,940 --> 00:06:31,300
+the ground is going to change till, we
+
+130
+00:06:31,300 --> 00:06:32,979
+want to take out the color because
+
+131
+00:06:32,979 --> 00:06:35,979
+that's not what we are changing, we
+
+132
+00:06:35,979 --> 00:06:37,480
+comment this out
+
+133
+00:06:37,480 --> 00:06:40,540
+and we put an gradient that changes the
+
+134
+00:06:40,540 --> 00:06:44,230
+ground color crtl+a crtl+i. This is
+
+135
+00:06:44,230 --> 00:06:47,230
+what we want in summer, we should do the
+
+136
+00:06:47,230 --> 00:06:51,310
+same thing in spring. Let's go down find
+
+137
+00:06:51,310 --> 00:06:54,490
+ground, we should take this out because
+
+138
+00:06:54,490 --> 00:06:57,640
+we are not changing the colors we are
+
+139
+00:06:57,640 --> 00:06:59,770
+changing the gradients crtl+a crtl+i
+
+140
+00:06:59,770 --> 00:07:03,060
+to align. And we change the ground
+
+141
+00:07:03,060 --> 00:07:05,770
+gradient like this, we change the start
+
+142
+00:07:05,770 --> 00:07:08,250
+color and the end color.
+
+143
+00:07:08,250 --> 00:07:13,660
+Let's run you see that the ground also
+
+144
+00:07:13,660 --> 00:07:16,270
+is changing accordingly following the
+
+145
+00:07:16,270 --> 00:07:18,550
+gradients that we said. And this is
+
+146
+00:07:18,550 --> 00:07:20,380
+really all I wanted to show you in this
+
+147
+00:07:20,380 --> 00:07:22,720
+lecture. If you want to pass gradient
+
+148
+00:07:22,720 --> 00:07:25,000
+changes in your property changes you
+
+149
+00:07:25,000 --> 00:07:26,920
+shouldn't do it like this, this is not
+
+150
+00:07:26,920 --> 00:07:29,290
+going to work, your application is not
+
+151
+00:07:29,290 --> 00:07:31,870
+even going to run. Instead you should
+
+152
+00:07:31,870 --> 00:07:34,690
+specify your gradients like this give
+
+153
+00:07:34,690 --> 00:07:38,380
+gradientstop an ID and target these
+
+154
+00:07:38,380 --> 00:07:41,140
+IDs to change the colors this is how you
+
+155
+00:07:41,140 --> 00:07:43,570
+do it. This is all for this lecture. In
+
+156
+00:07:43,570 --> 00:07:45,520
+the next chapter we are actually going
+
+157
+00:07:45,520 --> 00:07:47,860
+to start working with networking in
+
+158
+00:07:47,860 --> 00:07:49,900
+qml and we are going to do fun
+
+159
+00:07:49,900 --> 00:07:53,110
+stuff like fetching REST API and using
+
+160
+00:07:53,110 --> 00:07:55,570
+them in our qt quick applications. I'll see
+
+161
+00:07:55,570 --> 00:00:00,000
+you there
+

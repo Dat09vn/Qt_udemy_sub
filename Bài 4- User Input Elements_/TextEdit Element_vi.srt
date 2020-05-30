@@ -1,0 +1,686 @@
+1
+00:00:00,000 --> 00:00:01,920
+Trong bài giảng này, ta sẽ xem xét
+
+2
+00:00:01,920 --> 00:00:05,279
+phần tử TextEdit. Từ tài liệu
+
+3
+00:00:05,279 --> 00:00:08,069
+họ nói rằng "Mục TextEdit hiển thị một
+
+4
+00:00:08,069 --> 00:00:10,650
+khối văn bản có thể chỉnh sửa, định dạng ". Và
+
+5
+00:00:10,650 --> 00:00:12,840
+đây là một ví dụ nhỏ về cách ta sử dụng
+
+6
+00:00:12,840 --> 00:00:16,049
+nó Vì vậy, hãy sao chép này và tạo một cái mới
+
+7
+00:00:16,049 --> 00:00:18,320
+dự án.
+
+8
+00:00:18,740 --> 00:00:21,480
+Đây là ứng dụng Qt Quick. Ta sẽ
+
+9
+00:00:21,480 --> 00:00:24,720
+để gọi nó là TextEditDemo. Lưu nó trong
+
+10
+00:00:24,720 --> 00:00:35,130
+vị trí thông thường. Chọn Kit. Và ta
+
+11
+00:00:35,130 --> 00:00:37,320
+sẽ dán vào văn bản cần
+
+12
+00:00:37,320 --> 00:00:41,640
+sao chép. Ctrl + A, Ctrl + I để căn chỉnh
+
+13
+00:00:41,640 --> 00:00:45,960
+đẹp đẽ. Và thay đổi tiêu đề ở đây thành "TextEdit Demo".
+
+14
+00:00:45,960 --> 00:00:52,350
+Hãy chạy ứng dụng. Được rồi.
+
+15
+00:00:52,350 --> 00:00:55,350
+ta thấy rằng văn bản ở đây. Nhưng ta
+
+16
+00:00:55,350 --> 00:00:57,300
+đang nhìn thấy những thẻ (tag) này ở đây. Tại sao lại
+
+17
+00:00:57,300 --> 00:01:00,930
+như thế? Đó là bởi vì ta chưa thiết lập
+
+18
+00:01:00,930 --> 00:01:05,129
+định dạng văn bản là định dạng "RichText". Được rồi nó
+
+19
+00:01:05,129 --> 00:01:12,869
+được dùng để hiển thị các văn bản đơn giản như thế này. Chạy
+
+20
+00:01:12,869 --> 00:01:13,580
+lần nữa.
+
+21
+00:01:13,580 --> 00:01:15,720
+Được rồi, ta thấy rằng nó hiện "Hello World".
+
+22
+00:01:15,720 --> 00:01:18,979
+Nhưng nếu ta muốn những thẻ (tag) này
+
+23
+00:01:18,979 --> 00:01:23,070
+được xử lý thì ta có thể làm kiểu như "textFormat"
+
+24
+00:01:23,070 --> 00:01:31,439
+"RichText". Tôi nghĩ là có. Và giờ ta có thể
+
+25
+00:01:31,439 --> 00:01:36,000
+sử dụng văn bản mà ta đã có ở đây trong
+
+26
+00:01:36,000 --> 00:01:39,540
+tài liệu Qt. Đây là các thẻ (tag) HTML.
+
+27
+00:01:39,540 --> 00:01:44,310
+nếu bạn đã quen thuộc với HTML. Hãy làm
+
+28
+00:01:44,310 --> 00:01:49,740
+điều này. Và nếu ta chạy "Hello" sẽ
+
+29
+00:01:49,740 --> 00:01:53,460
+in đậm, "World" sẽ được in nghiêng,
+
+30
+00:01:53,460 --> 00:01:56,939
+như thế này. Bạn cũng có thể đặt cái này
+
+31
+00:01:56,939 --> 00:01:58,890
+ở giữa như ta đã làm
+
+32
+00:01:58,890 --> 00:02:04,490
+trước giờ với anchors.centerIn:parent.
+
+33
+00:02:04,490 --> 00:02:07,790
+Chạy lại.
+
+34
+00:02:09,030 --> 00:02:11,760
+Được rồi, ta cũng có thể xóa và chỉnh sửa
+
+35
+00:02:11,760 --> 00:02:15,360
+bản văn. Nhân tiện đây cũng là một thành phần TextEdit.
+
+36
+00:02:15,360 --> 00:02:17,700
+OK nhưng cái này có thể xử lý
+
+37
+00:02:17,700 --> 00:02:21,330
+nhiều dòng văn bản. Vì vậy, những gì ta sẽ
+
+38
+00:02:21,330 --> 00:02:23,970
+phải làm là đưa vào một đoạn văn bản mà tôi đã
+
+39
+00:02:23,970 --> 00:02:26,250
+chuẩn bị, có một số tính năng mà tôi
+
+40
+00:02:26,250 --> 00:02:28,980
+muốn thể hiện. Tôi muốn tách cái này
+
+41
+00:02:28,980 --> 00:02:32,760
+thành các dòng khác nhau. Như vậy, những điều đó
+
+42
+00:02:32,760 --> 00:02:34,830
+rất dễ thấy bởi vì đây là một đoạn
+
+43
+00:02:34,830 --> 00:02:42,360
+văn bản dài. Và tôi muốn các bạn chú ý
+
+44
+00:02:42,360 --> 00:02:45,630
+bên trong chúng ta có các thẻ (tag) "strong"
+
+45
+00:02:45,630 --> 00:02:47,459
+chúng sẽ làm cho văn bản đậm lên.
+
+46
+00:02:47,459 --> 00:02:49,860
+Ta có ký tự xuống dòng (carriage return) và
+
+47
+00:02:49,860 --> 00:02:52,590
+tạo ký tự dòng mới (new line) bên trong. Ta cũng có
+
+48
+00:02:52,590 --> 00:02:56,400
+đặt màu phông chữ thành màu đỏ cho
+
+49
+00:02:56,400 --> 00:02:58,800
+đoạn văn bản này ở đây. Nếu chạy cái này thì ta
+
+50
+00:02:58,800 --> 00:03:01,020
+sẽ thấy rằng văn bản của mình bị cắt bớt.
+
+51
+00:03:01,020 --> 00:03:03,000
+Nó đang cố gắng hiện văn bản này trong một
+
+52
+00:03:03,000 --> 00:03:05,520
+dòng nhưng chiều rộng không đủ để
+
+53
+00:03:05,520 --> 00:03:07,980
+làm vậy. Vì vậy, những gì đang xảy ra ở đây là
+
+54
+00:03:07,980 --> 00:03:11,310
+văn bản đang được cắt ra theo chiều rộng. Nếu
+
+55
+00:03:11,310 --> 00:03:13,620
+muốn toàn bộ văn bản được hiển thị ta
+
+56
+00:03:13,620 --> 00:03:16,320
+nên sử dụng thuộc tính "wrap". Được rồi, chúng ta
+
+57
+00:03:16,320 --> 00:03:23,459
+có thể sử dụng TextEdit.Wrap. Chạy để xem
+
+58
+00:03:23,459 --> 00:03:26,040
+tác dụng của điều này. Bạn có thể thấy rằng văn bản
+
+59
+00:03:26,040 --> 00:03:28,410
+đang gói gọn trong "div" và chiều rộng của ta
+
+60
+00:03:28,410 --> 00:03:31,230
+TextEdit ở đây, là 240. Nhưng nó
+
+61
+00:03:31,230 --> 00:03:34,470
+cũng không hiển thị ở chiều cao định sẵn
+
+62
+00:03:34,470 --> 00:03:36,930
+mà ta có ở đây. Vậy ta nên làm gì
+
+63
+00:03:36,930 --> 00:03:39,269
+gì đó nhỉ? Sẽ thực sự hữu ích nếu ta
+
+64
+00:03:39,269 --> 00:03:41,610
+có thể cuộn văn bản để xem
+
+65
+00:03:41,610 --> 00:03:44,370
+những gì đang được hiển thị ở đây. Và cách
+
+66
+00:03:44,370 --> 00:03:47,040
+Để làm điều đó, ta bọc TextEdit trong
+
+67
+00:03:47,040 --> 00:03:49,709
+một thành phần Flickable được. Nếu tìm kiếm
+
+68
+00:03:49,709 --> 00:03:50,370
+Flickable
+
+69
+00:03:50,370 --> 00:03:52,950
+trong tài liệu ta thấy rằng nó là
+
+70
+00:03:52,950 --> 00:03:56,370
+một thành phần bọc thành phần con của nó trên
+
+71
+00:03:56,370 --> 00:03:58,820
+bề mặt "có thể được kéo và vuốt
+
+72
+00:03:58,820 --> 00:04:02,280
+để tạo ra view vào các mục con
+
+73
+00:04:02,280 --> 00:04:04,590
+để cuộn". Và đây là những gì ta muốn. Ta muốn
+
+74
+00:04:04,590 --> 00:04:06,570
+để có thể vuốt qua văn bản
+
+75
+00:04:06,570 --> 00:04:10,650
+mà chúng ta có trong phần tử TextEdit. Vì thế
+
+76
+00:04:10,650 --> 00:04:12,329
+chúng ta sẽ tạo ra một thành phần Flickable
+
+77
+00:04:12,329 --> 00:04:17,130
+Ta sẽ lấy TextEdit này.
+
+78
+00:04:17,130 --> 00:04:21,320
+Bọc nó lại.
+
+79
+00:04:21,920 --> 00:04:25,160
+Và đặt nó bên trong yếu tố Flickable của ta.
+
+80
+00:04:25,160 --> 00:04:32,900
+Ta cung cấp cho nó một id và chiều rộng của điều này
+
+81
+00:04:32,900 --> 00:04:35,810
+Flickable sẽ là chiều rộng của
+
+82
+00:04:35,810 --> 00:04:41,270
+văn bản nàyInputId. Bạn cần phải
+
+83
+00:04:41,270 --> 00:04:43,430
+cho phần tử Flickable này biết chiều cao
+
+84
+00:04:43,430 --> 00:04:46,460
+của nội dung mà ta muốn
+
+85
+00:04:46,460 --> 00:04:48,920
+hiển thị. Và ta xác định rằng sử dụng
+
+86
+00:04:48,920 --> 00:04:53,570
+thuộc tính contentHeight. Và nó
+
+87
+00:04:53,570 --> 00:04:56,320
+được đặt là textInputId.implicitHeight
+
+88
+00:04:56,320 --> 00:04:58,910
+bởi vì đây là chiều cao của văn bản
+
+89
+00:04:58,910 --> 00:05:00,920
+mà ta muốn hiển thị. Nhưng ta cũng cần
+
+90
+00:05:00,920 --> 00:05:03,980
+chỉ định một chiều cao. Vì vậy, ta sẽ gán cho
+
+91
+00:05:03,980 --> 00:05:07,520
+nó chiều cao là 300. Hãy chạy và xem
+
+92
+00:05:07,520 --> 00:05:10,160
+những gì chúng ta có. Lưu ý rằng giờ ta có thể cuộn được
+
+93
+00:05:10,160 --> 00:05:13,370
+nhưng văn bản không được căn giữa và ta
+
+94
+00:05:13,370 --> 00:05:15,830
+không thể thực sự cuộn. Nó vẫn đang cố gắng
+
+95
+00:05:15,830 --> 00:05:18,380
+để hiển thị toàn bộ chiều cao của văn bản. Như vậy
+
+96
+00:05:18,380 --> 00:05:22,070
+những gì ta có thể làm là cắt đoạn văn bản này. Đặt
+
+97
+00:05:22,070 --> 00:05:24,500
+thuộc tính "clip" này là "true".
+
+98
+00:05:24,500 --> 00:05:30,290
+Và đặt câu lệnh centerIn ở đây
+
+99
+00:05:30,290 --> 00:05:33,590
+trở lại Item cha, chính là
+
+100
+00:05:33,590 --> 00:05:36,080
+phần tử Flickable. Chạy ứng dụng
+
+101
+00:05:36,080 --> 00:05:38,900
+lần nữa. Và lần này tốt hơn nhiều. Bây giờ
+
+102
+00:05:38,900 --> 00:05:41,420
+có thể thấy rằng ta có thể cuộn qua
+
+103
+00:05:41,420 --> 00:05:45,920
+toàn bộ văn bản mà ta có. Nó được in đậm
+
+104
+00:05:45,920 --> 00:05:48,800
+bởi vì ta đặt nó thành "strong" trong văn bản
+
+105
+00:05:48,800 --> 00:05:52,580
+ở đây. Bạn có thể thấy rằng "localhost"
+
+106
+00:05:52,580 --> 00:05:55,520
+có màu đỏ bởi vì ta bọc nó trong
+
+107
+00:05:55,520 --> 00:05:58,070
+các thẻ (tag) "font" và cho nó
+
+108
+00:05:58,070 --> 00:06:01,130
+thuộc tính màu sắc. Bạn cũng có thể thấy rằng
+
+109
+00:06:01,130 --> 00:06:03,110
+phần tử TextEdit cho phép nhiều thuộc tính
+
+110
+00:06:03,110 --> 00:06:06,530
+mà ta đã thấy với phần tử Text. Ta
+
+111
+00:06:06,530 --> 00:06:08,930
+có màu của văn bản. Ta có
+
+112
+00:06:08,930 --> 00:06:10,820
+phông chữ. Điều cuối cùng tôi muốn cho bạn thấy
+
+113
+00:06:10,820 --> 00:06:12,500
+trong bài giảng này là cách ta có thể nắm bắt
+
+114
+00:06:12,500 --> 00:06:15,440
+văn bản bên trong cái này, ở đây.
+
+115
+00:06:15,440 --> 00:06:18,140
+Ta có thể đính kèm vào signal onEditingFinished
+
+116
+00:06:18,140 --> 00:06:25,610
+và viết console.log ("The current text
+
+117
+00:06:25,610 --> 00:06:32,790
+is: ",
+0:06:27.060,0:06:36.240
+cộng với "text". Được rồi chỉ như thế thôi. Nhưng
+
+118
+00:06:32,790 --> 00:06:36,240
+để làm điều này ta cần một cách tập trung
+
+119
+00:06:36,240 --> 00:06:38,970
+vào TextEdit này tại đây. Vì vậy, để làm điều đó
+
+120
+00:06:38,970 --> 00:06:45,840
+ta sẽ cung cấp cho nó một id. Và xuống
+
+121
+00:06:45,840 --> 00:06:49,940
+dưới đây chúng ta sẽ đặt một hình chữ nhsật
+
+122
+00:06:50,510 --> 00:06:54,860
+bên trong, ta có một MouseArea.
+
+123
+00:06:58,010 --> 00:07:02,610
+Chiều rộng sẽ là 200. Tại sao không? Nó
+
+124
+00:07:02,610 --> 00:07:06,690
+sẽ là 100 và màu sắc là
+
+125
+00:07:06,690 --> 00:07:09,660
+màu đỏ. Hãy làm cho nó có màu đỏ. Và ta
+
+126
+00:07:09,660 --> 00:07:12,510
+muốn được hiển thị ở dưới cùng của
+
+127
+00:07:12,510 --> 00:07:15,000
+phần tử Flickable. Ta muốn dòng trên cùng
+
+128
+00:07:15,000 --> 00:07:17,430
+của hình chữ nhật này là ở dưới cùng của
+
+129
+00:07:17,430 --> 00:07:19,080
+cùng Flickable. Như vậy, ta sẽ viết
+
+130
+00:07:19,080 --> 00:07:25,700
+anchors.top:mFlickable.bottom.
+
+131
+00:07:25,700 --> 00:07:32,370
+Ta hãy chạy để xem vị trí có ở chỗ
+
+132
+00:07:32,370 --> 00:07:34,350
+ta muốn hay không. Được rồi,
+
+133
+00:07:34,350 --> 00:07:37,650
+cái này hoạt động tốt. Và khi nhấp vào
+
+134
+00:07:37,650 --> 00:07:43,590
+MouseArea, ta muốn tập trung vào
+
+135
+00:07:43,590 --> 00:07:48,110
+hình chữ nhật. Vì vậy, ta gõ mRectId.focus.
+
+136
+00:07:48,110 --> 00:07:52,650
+giá trị là "true". Ta hãy thử điều này.
+
+137
+00:07:52,650 --> 00:07:55,620
+Chạy ứng dụng. Khi ta nhấp vào
+
+138
+00:07:55,620 --> 00:07:57,389
+chỗ này ta bọc văn bản
+
+139
+00:07:57,389 --> 00:08:00,690
+bên trong TextEdit. Hãy xóa
+
+140
+00:08:00,690 --> 00:08:06,710
+toàn bộ văn bản và gõ "This is my new text".
+
+141
+00:08:09,210 --> 00:08:13,540
+Nhấn vào đây. Và ta thấy rằng nó
+
+142
+00:08:13,540 --> 00:08:17,940
+nói ... Hãy tìm kiếm xem nào. Ctrl, tìm
+
+143
+00:08:17,940 --> 00:08:25,870
+"This is my...", "my new text". Và ta thấy rằng
+
+144
+00:08:25,870 --> 00:08:28,570
+đây là những gì chúng ta vừa gõ vào đây. Được rồi,
+
+145
+00:08:28,570 --> 00:08:30,580
+ta có thể bọc văn bản bằng cách nghe (listen) với
+
+146
+00:08:30,580 --> 00:08:32,830
+onEditingFinished. Nhưng ta cũng có thể
+
+147
+00:08:32,830 --> 00:08:35,500
+trực tiếp bọc văn bản bên trong đây
+
+148
+00:08:35,500 --> 00:08:38,590
+nếu ta tình cờ cần nó. Và nó rất
+
+149
+00:08:38,590 --> 00:08:44,169
+dễ dàng. Ta có thể gõ console.log ("The
+
+150
+00:08:44,169 --> 00:08:50,410
+new text"). Và ta truyền vào id cho
+
+151
+00:08:50,410 --> 00:08:52,390
+TextInput. Vì vậy, ta sẽ gõ
+
+152
+00:08:52,390 --> 00:08:57,130
+TextInput.text. Chỉ như thế này ta phải
+
+153
+00:08:57,130 --> 00:09:02,190
+nối văn bản vào chuỗi này ở đây. Và
+
+154
+00:09:02,190 --> 00:09:04,870
+khi ta nhấp vào đây, ta có
+
+155
+00:09:04,870 --> 00:09:08,170
+văn bản mà ta muốn. Điều này bao gồm việc sử dụng
+
+156
+00:09:08,170 --> 00:09:11,140
+của TextInput. Bạn có thể sử dụng nó để hiển thị
+
+157
+00:09:11,140 --> 00:09:14,920
+văn bản. Bạn có thể sử dụng một số thẻ (tag) HTML để
+
+158
+00:09:14,920 --> 00:09:17,140
+làm cho văn bản của mình đẹp hơn. Để làm được điều đó
+
+159
+00:09:17,140 --> 00:09:19,690
+ta phải đặt textFormat thành
+
+160
+00:09:19,690 --> 00:09:22,360
+TextEdit.RichText tại đây. Ta cũng có thể thiết lập
+
+161
+00:09:22,360 --> 00:09:25,000
+chế độ "wrap" khác nhau để có hiệu ứng
+
+162
+00:09:25,000 --> 00:09:27,790
+khác nhau cho văn bản của mình. Và ta có thể nhìn vào
+
+163
+00:09:27,790 --> 00:09:30,640
+tài liệu cho các tùy chọn 
+
+164
+00:09:30,640 --> 00:09:33,220
+có sẵn cho chế độ wrap được
+
+165
+00:09:33,220 --> 00:09:35,890
+sử dụng ở đây. Điều này bao gồm tất cả những gì ta
+
+166
+00:09:35,890 --> 00:09:37,600
+cần làm trong bài giảng này. Ở phần tiếp theo
+
+167
+00:09:37,600 --> 00:09:39,220
+chúng ta sẽ xem xét MouseArea
+
+168
+00:09:39,220 --> 00:09:42,040
+chi tiết hơn một chút và xem
+
+169
+00:09:42,040 --> 00:09:43,750
+làm thế nào ta có thể sử dụng nó để kéo và thả
+
+170
+00:09:43,750 --> 00:09:46,150
+các phần tử. Hẹn gặp lại các bạn trong bài học
+
+171
+00:09:46,150 --> 00:00:00,000
+tiếp theo.
+

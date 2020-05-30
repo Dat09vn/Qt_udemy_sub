@@ -1,0 +1,484 @@
+1
+00:00:00,000 --> 00:00:02,460
+Trong bài này chúng ta sẽ tìm hiểu về
+
+2
+00:00:02,460 --> 00:00:05,520
+TextArea một đối tượng trong Qt Quick Control,
+
+3
+00:00:05,520 --> 00:00:08,610
+đối tượng này được dùng để thu thập 
+
+4
+00:00:08,610 --> 00:00:11,429
+các đoạn chữ nhiều dòng từ người dùng. Ta
+
+5
+00:00:11,429 --> 00:00:13,620
+sẽ vào QT creator và thử nghiệm 
+
+6
+00:00:13,620 --> 00:00:16,260
+nó. Okay giờ ta đang ở Qt Creator, 
+
+7
+00:00:16,260 --> 00:00:19,859
+ta sẽ tạo mới một project, nó sẽ là dạng
+
+8
+00:00:19,859 --> 00:00:22,920
+Qt Quick Application như thường lệ, đặt tên nó
+
+9
+00:00:22,920 --> 00:00:28,080
+là TextAreaDemo, nhấn next, chọn
+
+10
+00:00:28,080 --> 00:00:32,308
+phiên bản Qt, chọn bộ Kit và
+
+11
+00:00:32,308 --> 00:00:39,079
+nhấn finish. Ta sẽ phải khai báo thư viện
+
+12
+00:00:39,079 --> 00:00:44,579
+QtQuick Control, ta chọn bản mới nhất
+
+13
+00:00:44,579 --> 00:00:48,300
+mà đã cài là bản 2.4. Ta sẽ hiển thị 
+
+14
+00:00:48,300 --> 00:00:51,420
+thông tin của Demo này. Rồi để một đối tượng
+
+15
+00:00:51,420 --> 00:00:55,730
+Column, cho nó một ít khoảng cách
+
+16
+00:00:55,730 --> 00:01:01,140
+tầm 40 và chỉnh chiều rộng nó bằng với 
+
+17
+00:01:01,140 --> 00:01:06,030
+chiều rộng của cha. Bên trong này ta để một
+
+18
+00:01:06,030 --> 00:01:09,150
+phần tử Label, đây là Label mà ta muốn.
+
+19
+00:01:09,150 --> 00:01:12,570
+Nhấn Ctrl A rồi Ctrl I để dóng hàng cho nó.
+
+20
+00:01:12,570 --> 00:01:15,619
+Dưới này ta để một đối tượng TextArea
+
+21
+00:01:15,619 --> 00:01:22,490
+sau đó chỉnh chiều rộng của 
+
+22
+00:01:22,490 --> 00:01:29,759
+nó là 600, chiều cao là 115. Chỉnh
+
+23
+00:01:29,759 --> 00:01:31,740
+canh giữa cho nó, ta gõ 
+
+24
+00:01:31,740 --> 00:01:35,759
+anchor.horizontalCenter là parent.horizontalCenter.
+
+25
+00:01:35,759 --> 00:01:39,299
+cho nó một màu sắc, màu này sẽ là 
+
+26
+00:01:39,299 --> 00:01:42,119
+màu chữ được nhập vào, hãy để 
+
+27
+00:01:42,119 --> 00:01:46,220
+là màu đỏ, sau đó để wrapMode
+
+28
+00:01:46,220 --> 00:01:52,470
+ta sẽ để là TextArea.wrapMode, nếu
+
+29
+00:01:52,470 --> 00:01:56,040
+ta trở lại phần tài liệu TextArea và xem một số
+
+30
+00:01:56,040 --> 00:02:00,299
+thuộc tính của nó, bạn thấy nó kế thừa từ TextEdit
+
+31
+00:02:00,299 --> 00:02:02,520
+Tôi nghĩ là chúng ta chưa giải thích về
+
+32
+00:02:02,520 --> 00:02:05,729
+wrapMode nên đây sẽ là cơ hội để
+
+33
+00:02:05,729 --> 00:02:08,580
+nói về nó. Đặt giá trị này
+
+34
+00:02:08,580 --> 00:02:12,239
+để có thể bao được chữ nằm trong chiều rộng của 
+
+35
+00:02:12,239 --> 00:02:12,780
+TextEdit
+
+36
+00:02:12,780 --> 00:02:15,540
+Nếu mà chuỗi dài quá 
+
+37
+00:02:15,540 --> 00:02:18,120
+chiều rộng có sẵn thì chúng ta có những cách khác nhau
+
+38
+00:02:18,120 --> 00:02:20,459
+để xử lý, bạn có thể ngắt nó xuống dòng
+
+39
+00:02:20,459 --> 00:02:23,459
+và ở đây là tất cả các trường hợp mà bạn
+
+40
+00:02:23,459 --> 00:02:25,290
+nên đọc để ứng dụng nếu bạn thích.
+
+41
+00:02:25,290 --> 00:02:28,110
+Oke bạn thấy giá trị mặc định là NoWrap, nếu 
+
+42
+00:02:28,110 --> 00:02:30,690
+bạn không chọn chế độ wrapping nào nó sẽ không
+
+43
+00:02:30,690 --> 00:02:32,670
+được xử lý và chữ sẽ chỉ hiện ra
+
+44
+00:02:32,670 --> 00:02:36,030
+trên một dòng, tôi cũng để một thuộc tính
+
+45
+00:02:36,030 --> 00:02:39,510
+Text và nó là một chuỗi rất dài
+
+46
+00:02:39,510 --> 00:02:42,840
+không thể vừa trên một 
+
+47
+00:02:42,840 --> 00:02:48,510
+hàng, ta hãy chạy thử và bạn sẽ thấy
+
+48
+00:02:48,510 --> 00:02:52,680
+chuỗi của chúng ta hiển thị ở đây
+
+49
+00:02:52,680 --> 00:02:55,380
+chúng ta đang sử dụng TextArea và nó
+
+50
+00:02:55,380 --> 00:02:57,900
+hiển thị chuỗi, bạn có thể 
+
+51
+00:02:57,900 --> 00:03:00,450
+chỉnh sửa chữ trên này và lấy được giá trị
+
+52
+00:03:00,450 --> 00:03:02,330
+mà đã được nhập. Ví dụ bạn có thể 
+
+53
+00:03:02,330 --> 00:03:05,880
+xóa bớt một số chữ và thêm một vài chữ mới
+
+54
+00:03:05,880 --> 00:03:09,780
+của bạn và bạn thấy khi chúng ta gõ
+
+55
+00:03:09,780 --> 00:03:13,550
+thêm các chữ lung tung vào đây, thì chuỗi 
+
+56
+00:03:13,550 --> 00:03:18,209
+hiển thị trong TextArea sẽ bị che mất bớt, nếu bạn
+
+57
+00:03:18,209 --> 00:03:20,519
+muốn thấy tất cả chữ thì bạn cần
+
+58
+00:03:20,519 --> 00:03:23,519
+bao bọc chữ của bạn lại bằng một
+
+59
+00:03:23,519 --> 00:03:26,370
+thanh cuộn và đó là cái mà ta sẽ 
+
+60
+00:03:26,370 --> 00:03:29,370
+làm, Chúng ta sẽ đặt một ScrollView
+
+61
+00:03:29,370 --> 00:03:35,970
+ở đây và cho tất cả phần TextView
+
+62
+00:03:35,970 --> 00:03:44,100
+vào bên trong và phần canh giữa này sẽ
+
+63
+00:03:44,100 --> 00:03:48,060
+được đưa lên ScrollView.
+
+64
+00:03:48,060 --> 00:03:51,420
+và chiều rộng, chiều cao 
+
+65
+00:03:51,420 --> 00:03:54,480
+cũng nên được đưa ra như vậy,
+
+66
+00:03:54,480 --> 00:03:56,840
+đưa lên phần cấp trên này. Giờ
+
+67
+00:03:56,840 --> 00:04:00,959
+chạy lại chương trình, nó nhìn thì
+
+68
+00:04:00,959 --> 00:04:03,150
+giống lúc nãy nhưng khi bạn rê chuột vào trên này
+
+69
+00:04:03,150 --> 00:04:05,670
+bạn sẽ thấy thanh cuộn hiện ra
+
+70
+00:04:05,670 --> 00:04:08,880
+ở phía bên phải, nhờ vậy ta có thể cuộn
+
+71
+00:04:08,880 --> 00:04:12,329
+lên xuống để xem nội dung. Một thứ khác
+
+72
+00:04:12,329 --> 00:04:13,980
+mà tôi muốn bạn xem đó là bạn có thể
+
+73
+00:04:13,980 --> 00:04:16,649
+khai báo một thành phần hình nền cho
+
+74
+00:04:16,649 --> 00:04:19,339
+TextArea của bạn, bạn có thể gõ
+
+75
+00:04:19,339 --> 00:04:22,950
+background và ta sẽ để một
+
+76
+00:04:22,950 --> 00:04:25,380
+hình chữ nhật thử xem
+
+77
+00:04:25,380 --> 00:04:32,040
+sau đó cho màu của nó là màu đen và đổi
+
+78
+00:04:32,040 --> 00:04:34,560
+màu chữ thành màu trắng vì nó nằm 
+
+79
+00:04:34,560 --> 00:04:38,010
+trên nền đen.
+
+80
+00:04:38,010 --> 00:04:41,340
+Thử chạy nào, mm-hmm
+
+81
+00:04:41,340 --> 00:04:45,840
+nhìn tốt hơn rồi đấy, tôi thích nó như bây giờ. Khi bạn
+
+82
+00:04:45,840 --> 00:04:48,930
+muốn sử dụng TextArea để lấy thông tin
+
+83
+00:04:48,930 --> 00:04:51,750
+thì làm sao để có thể lấy được
+
+84
+00:04:51,750 --> 00:04:54,060
+dữ liệu mà người dùng gõ. Và ta sẽ
+
+85
+00:04:54,060 --> 00:04:57,150
+bỏ chữ đi và 
+
+86
+00:04:57,150 --> 00:05:01,680
+để một vài thông tin hướng dẫn. Ta 
+
+87
+00:05:01,680 --> 00:05:05,550
+gõ placeholder và ta sẽ 
+
+88
+00:05:05,550 --> 00:05:11,640
+gõ Type in your query. Khi bạn chạy lại chương trình
+
+89
+00:05:11,640 --> 00:05:17,160
+nó sẽ hiện lên "Type in your query"
+
+90
+00:05:17,160 --> 00:05:19,530
+chúng ta nên có một cái nút
+
+91
+00:05:19,530 --> 00:05:22,650
+ở phía dưới của phần tử ScrollView
+
+92
+00:05:22,650 --> 00:05:30,960
+và gõ "Submit"
+
+93
+00:05:30,960 --> 00:05:32,240
+để mô tả việc nhấn nút
+
+94
+00:05:32,240 --> 00:05:38,540
+chúng ta nên canh giữa cho nó 
+
+95
+00:05:38,540 --> 00:05:43,230
+và khi button được nhấn ta muốn 
+
+96
+00:05:43,230 --> 00:05:45,990
+lấy chữ ở bên trong TextArea
+
+97
+00:05:45,990 --> 00:05:48,030
+và vì thế ta sẽ đặt cho nó một
+
+98
+00:05:48,030 --> 00:05:56,550
+id chỗ này và ta sẽ gõ console.log
+
+99
+00:05:56,550 --> 00:06:09,650
+nội dung này, sau đó 
+
+100
+00:06:09,650 --> 00:06:12,510
+cộng với chuỗi mà chúng ta lấy được
+
+101
+00:06:12,510 --> 00:06:18,920
+vì thế ta gõ textAreaId.text
+
+102
+00:06:18,920 --> 00:06:24,810
+rồi chạy lại chương trình, đây là cái ta có
+
+103
+00:06:24,810 --> 00:06:26,910
+nó hiện gợi ý "Type in your query" và khi bạn
+
+104
+00:06:26,910 --> 00:06:29,280
+bắt đầu gõ chữ thì dòng gợi ý
+
+105
+00:06:29,280 --> 00:06:31,800
+sẽ biến mất, nếu bạn xóa chữ đi thì 
+
+106
+00:06:31,800 --> 00:06:35,790
+dòng gợi ý hiện lại và nếu bạn gõ 
+
+107
+00:06:35,790 --> 00:06:38,720
+chữ vào ví dụ
+
+108
+00:06:52,520 --> 00:06:55,680
+như thế này và khi bạn nhấn submit
+
+109
+00:06:55,680 --> 00:06:58,530
+bạn sẽ thấy chữ hiện ra ở đây và dĩ nhiên trong một
+
+110
+00:06:58,530 --> 00:07:00,479
+ứng dụng thực tế bạn có thể thực hiện
+
+111
+00:07:00,479 --> 00:07:03,389
+kiểm tra dữ liệu mà bạn lấy được 
+
+112
+00:07:03,389 --> 00:07:05,849
+từ người dùng nhập vào. Oke đây là tất cả những gì tôi muốn nói
+
+113
+00:07:05,849 --> 00:07:08,639
+về thành phần TextArea, nó thật sự
+
+114
+00:07:08,639 --> 00:07:11,250
+rất dễ dùng, bạn chỉ việc đặt nó vào
+
+115
+00:07:11,250 --> 00:07:13,500
+giao diện của bạn, nếu bạn muốn
+
+116
+00:07:13,500 --> 00:07:15,750
+có thanh cuộn khi bạn có một 
+
+117
+00:07:15,750 --> 00:07:18,330
+đoạn chữ dài thì bạn nên bọc
+
+118
+00:07:18,330 --> 00:07:21,240
+nó vào bên trong 1 ScrollView. Trong
+
+119
+00:07:21,240 --> 00:07:23,069
+bài tiếp theo chúng ta sẽ nói về
+
+120
+00:07:23,069 --> 00:07:26,219
+thành phần TextField trong QT Quick Control
+
+121
+00:07:26,219 --> 00:00:00,000
+Hẹn gặp bạn ở đó.
+

@@ -1,0 +1,138 @@
+WEBVTT
+
+00:07.670 --> 00:09.110
+Hi, i am Symeon Huang.
+
+00:09.110 --> 00:12.520
+And welcome to learning Qt5 by a Packt publishing.
+
+00:14.400 --> 00:20.070
+I have been a full stack developer for a few years and am very passionate about the UI and UX
+
+00:20.460 --> 00:23.160
+as well as the latest open source technologies.
+
+00:25.790 --> 00:31.880
+this coursework consists of a complete overview of learning Qt5 including what can be accomplished
+
+00:31.880 --> 00:32.900
+with it.
+
+00:33.140 --> 00:40.550
+Our exploration of learning Qt5 will include enhancing command line applications with Qt, C++
+
+00:40.550 --> 00:47.120
+GUI programming with Qt and the declarative Qt quick application development.
+
+00:47.120 --> 00:51.560
+This video provides you with a glimpse of the entire course.
+
+00:51.590 --> 00:58.250
+This video consists of nine sections. In the first section,
+
+00:58.290 --> 01:04.080
+You'll learn how to enrich your command line applications with a Qt framework while learning the architecture
+
+01:05.090 --> 01:06.770
+for example CommandLineOption.
+
+01:06.770 --> 01:11.140
+Parsing is very common and useful console applications.
+
+01:11.400 --> 01:15.240
+We're going to cover this in this section.
+
+01:15.460 --> 01:20.680
+Then in the second section we would talk about multi-threading and the multi-processing.
+
+01:20.820 --> 01:26.980
+The difference between them and what Qt has offer to make using multiple threads and process easy
+
+01:28.020 --> 01:33.760
+writing a worker class and off-loading heavy job into separate threads to improve your application.
+
+01:39.980 --> 01:46.100
+in the world of Internet, It's almost inevitable to do some network programming as in the section 3.
+
+01:46.260 --> 01:49.460
+You will learn how network programming in Qt works.
+
+01:49.500 --> 01:53.860
+For example we are going to build a TCP server and a TCP client.
+
+01:53.910 --> 01:57.510
+Now we're going to show you how easy it is to let them work in Qt.
+
+02:04.100 --> 02:05.410
+in Section 4.
+
+02:05.570 --> 02:11.770
+We will learn important knowledge about Qt GUI programing such as signals and slots.
+
+02:11.830 --> 02:19.690
+It is the bedrock of asynchronous and GUI programming in Qt. The we will learn all different kinds of widgets
+
+02:19.780 --> 02:20.890
+in the 5th section
+
+02:23.710 --> 02:30.100
+move further advanced knowledge GUI programming in the section 6 including the crucial concept models
+
+02:30.100 --> 02:31.090
+and the views.
+
+02:31.090 --> 02:35.170
+Surely it also means GUI widgets like table and layout which we covered
+
+02:42.170 --> 02:43.550
+from the section 7 on.
+
+02:43.550 --> 02:49.010
+We will enter the word of Qt quick and QML .The fundamental knowledge where we cover
+
+02:49.030 --> 02:49.830
+first.
+
+02:50.030 --> 02:53.920
+You also get to learn the declarative way building a GUI application
+
+02:59.220 --> 03:00.750
+then in Section 8.
+
+03:00.820 --> 03:09.090
+We will talk about the architecture of QML and its relationship with javascript and how easy it is to
+
+03:09.090 --> 03:13.260
+import a javascript to resource file in QML and make use of it.
+
+03:17.600 --> 03:24.240
+In the last section Qt Quick is covered so that we can make elegant GUI applications in a rapid and 
+
+03:24.470 --> 03:26.000
+declarative fashion.
+
+03:29.880 --> 03:33.830
+This includes different styles and animations.
+
+03:38.090 --> 03:43.770
+In this video course any prior knowledge about Qt is not required.
+
+03:43.790 --> 03:48.260
+You should be familiar with C++ but you don't have to be a master.
+
+03:48.380 --> 03:56.230
+Knowledge about javascript would be prefered but it is not required. Since a Qt is a cross-platform framework.
+
+03:56.240 --> 04:01.270
+it means you can learn this course on either Windows, Mac or Linux.
+
+04:01.610 --> 04:07.610
+By the end of this course you will have a good understanding of the Qt architecture . Be able to enhance
+04:07.610 --> 04:14.360
+your console applications and create cross-platform Qt GUI applications and also write modern
+
+04:14.360 --> 04:16.280
+dynamic GUI applications.
+
+04:16.280 --> 04:18.080
+Declaratively with Qt quick.

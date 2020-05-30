@@ -1,0 +1,858 @@
+0:00:00.000,0:00:04.500
+Trong bài giảng này ta sẽ học
+
+0:00:01.589,0:00:06.99
+cách xây dựng các thành phần của riêng mình bằng cách
+
+0:00:04.500,0:00:10.500
+kết hợp các phần tử mà ta đã thấy
+
+0:00:06.990,0:00:12.960
+như hình chữ nhật (rectangle), văn bản (text) và hình ảnh (image). Hãy đến
+
+0:00:10.500,0:00:15.900
+"QT creator" và xem làm thế nào ta có thể làm điều đó.
+
+0:00:12.960,0:00:18.539
+Được rồi, ở đây ta là "QT creator". Ta
+
+0:00:15.900,0:00:21.630
+sẽ tạo ra một project thông thường. Nó
+
+0:00:18.539,0:00:24.240
+là một ứng dụng nhanh trong QT. Ta
+
+0:00:21.630,0:00:28.740
+gọi nó là CustomComponentDemo, lưu trữ nó
+
+0:00:24.240,0:00:31.710
+ở vị trí thông thường. Chọn phiên bản QT
+
+0:00:28.740,0:00:35.250
+và ta chọn bộ máy tính để bàn này.
+
+0:00:31.710,0:00:37.140
+Và ta có project ở đây. Nhưng trước khi
+
+0:00:35.250,0:00:39.2770
+chúng ta bắt đầu tôi muốn cho bạn thấy
+
+0:00:37.140,0:00:42.809
+một thành phần mà chúng ta sẽ cần. Và
+
+0:00:39.270,0:00:44.940
+đó là "Column". Được rồi, nó là một phần tử
+
+0:00:42.809,0:00:47.30
+mà ta sử dụng để nhóm các phần tử lại với nhau.
+
+0:00:44.940,0:00:52.079
+Hãy xem ý nghĩa của nó. Tôi sẽ
+
+0:00:47.309,0:00:55.050
+thiết lập hai hình chữ nhật(rectangle) bên trong. Cái này
+
+0:00:52.079,0:01:00.750
+sẽ có chiều rộng 300 chiều cao
+
+0:00:55.050,0:01:06.479
+100 và màu "đỏ". Và ta sẽ
+
+0:01:00.750,0:01:12.000
+đặt một cái khác vào trong. Cái này 
+
+0:01:06.479,0:01:15.030
+"màu xanh". Chạy nào. Và ta nên
+
+0:01:12.000,0:01:15.560
+đăt hai hình chữ nhật(rectangle) chồng lên
+
+0:01:15.030,0:01:18.119
+nhau.
+
+0:01:15.560,0:01:20.700
+Mm-hmm đây là những gì chúng ta có. Đây là những gì
+
+0:01:18.119,0:01:24.509
+phần tử này làm. Nó cho phép ta nằm
+
+0:01:20.700,0:01:27.090
+mọi thứ từ trên xuống dưới. Ta
+
+0:01:24.509,0:01:28.979
+có thể sử dụng một số thuộc tính của cột(column) để
+
+0:01:27.090,0:01:31.909
+kiểm soát cách chúng được đặt ra. Ví dụ.
+
+0:01:28.979,0:01:35.520
+ta có thể đặt khoảng cách
+
+0:01:31.909,0:01:38.729
+giữa các phần tử này. Đặt thử 20 và
+
+0:01:35.520,0:01:41.670
+xem những gì ta nhận được. Mm-hmm đây là những gì ta
+
+0:01:38.729,0:01:44.759
+có. Có một phần tử khác mà ta
+
+0:01:41.670,0:01:48.689
+có thể sử dụng để đặt thứ này từ trái
+
+0:01:44.759,0:01:52.020
+qua phải. Nó được gọi là "row". Bạn
+
+0:01:48.689,0:01:54.240
+có thể đoán được điều đó. Được rồi, trái qua
+
+0:01:52.020,0:01:57.450
+phải. Tôi đang đề cập đến những phần tử này
+
+0:01:54.240,0:01:59.579
+ở đây vì ta sẽ sử dụng chúng để
+
+0:01:57.50,0:02:02.520
+tạo ra một điểm mà ta muốn thực hiện trong các
+
+0:01:59.579,0:02:05.909
+thành phần tùy chỉnh "
+custom components". Bây giờ ta đã biết điều này.
+
+0:02:02.520,0:02:07.799
+Hãy bình luận nó. Ta sẽ
+
+0:02:05.909,0:02:10.140
+xây dựng một nút mà người dùng có thể nhấp vào
+
+0:02:07.799,0:02:12.819
+và nút đó sẽ dựa trên
+
+0:02:10.140,0:02:16.299
+hình chữ nhật (rectangle). Vì vậy, nó sẽ có màu đỏ
+
+0:02:12.819,0:02:19.299
+và bên trong ta sẽ có một "Text
+
+0:02:16.299,0:02:22.510
+Element" và văn bản sẽ hiển thị "Button".
+
+0:02:19.299,0:02:24.790
+Bây giờ hình chữ nhật (rectangle) 
+
+0:02:22.510,0:02:27.250
+sẽ có một vài thuộc tính. Vì vậy, nó sẽ
+
+0:02:24.790,0:02:31.959
+có màu đỏ. Và nó sẽ
+
+0:02:27.250,0:02:34.689
+có một đường biên(border). Hãy sử dụng các thuộc tính nhóm.
+
+0:02:31.959,0:02:38.10
+Màu sắc của đường biên sẽ là
+
+0:02:34.689,0:02:43.209
+"blue". Và chiều rộng của đường biên 
+
+0:02:38.10,0:02:46.480
+..., giả sử, 3. Ta nên
+
+0:02:43.20,0:02:52.50
+sử dụng dấu chấm phẩy ở đây. Xin lỗi vì chuyện đó.
+
+0:02:46.480,0:02:54.099
+văn bản (text) sẽ có id. Và ta muốn
+
+0:02:52.150,0:02:56.590
+hình chữ nhật (rectangle) có chiều rộng
+
+0:02:54.099,0:02:59.049
+phụ thuộc vào văn bản (text) này để nó
+
+0:02:56.590,0:03:00.849
+bao quanh chúng. Vì vậy, cách chúng ta sẽ làm
+
+0:02:59.049,0:03:04.079
+ta sẽ đặt chiều rộng của
+
+0:03:00.849,0:03:08.3749
+hình chữ nhật bằng chiều rộng ẩn của
+
+0:03:04.079,0:03:13.120
+buttonTextId. Và đây là chiều rộng của nó.
+
+0:03:08.349,0:03:15.519
+Sau khi nó được gán chiều rộng
+
+0:03:13.120,0:03:17.680
+khớp với văn bản bên trong. Ta hi vọng
+
+0:03:15.519,0:03:21.32
+điều này có ý nghĩa. Và ta sẽ thêm
+
+0:03:17.680,0:03:26.650
+một lề cho nó, như thế này. Chúng ta sắp
+
+0:03:21.340,0:03:29.949
+làm điều tương tự cho chiều cao. Button-
+
+0:03:26.650,0:03:35.620
+TextId.implicitHeight và thêm một lề
+
+0:03:29.949,0:03:41.650
+20. Hãy xem nút của chúng ta trông như thế nào. Chạy
+
+0:03:35.620,0:03:45.250
+ứng dụng. Chúng ta nên căn giữa
+
+0:03:41.650,0:03:56.459
+bản văn. Đây là việc dễ dàng. Ta có thể gọi
+
+0:03:45.250,0:04:00.699
+anchors.CenterIn "parent". Chạy lại. Và
+
+0:03:56.459,0:04:04.650
+đoạn văn bản được căn ở giữa. Nhưng chúng ta có một
+
+0:04:00.699,0:04:10.739
+vấn đề. Màu sắc nên được bọc trong
+
+0:04:04.650,0:04:14.319
+dấu ngoặc kép như thế này. Đây là một vấn đề dễ sửa chữa.
+
+0:04:10.739,0:04:17.049
+Được rồi, ta có đường biên. Chúng ta nên làm
+
+0:04:14.319,0:04:22.630
+nút này có thể nhấp. Vì vậy, ta thêm một MouseArea.
+
+0:04:17.049,0:04:24.660
+Nó sẽ lấp đầy hình chữ nhật này.
+
+0:04:22.630,0:04:30.630
+Vì vậy, gọi anchors.fill
+
+0:04:24.660,0:04:33.600
+"parent". Nhân tiện tôi luôn sử dụng
+
+0:04:30.630,0:04:36.210
+phần tử cha ở đây với thuộc tính 
+
+0:04:33.600,0:04:38.670
+anchor.fill . Nhưng ta cũng có thể thoải mái
+
+0:04:36.210,0:04:41.610
+gán ý tưởng của hình chữ nhật này nếu
+
+0:04:38.670,0:04:43.500
+ta đã tình cờ gán. Ta để đó
+
+0:04:41.610,0:04:46.410
+cho "parent" vì đó là những gì ta đã sử dụng
+
+0:04:43.500,0:04:50.520
+đến. Nhưng ta có thể thử nghiệm với điều đó. Vì thế
+
+0:04:46.410,0:04:56.580
+onClicked ta sẽ gõ
+
+0:04:50.520,0:04:59.32
+console.log, "Clicked ON" và gọi những gì ta
+
+0:04:56.580,0:05:02.070
+bấm vào. Ta sẽ gõ
+
+0:04:59.340,0:05:03.870
+text nằm trong phần tử Text. Vậy
+
+0:05:02.070,0:05:07.610
+ta sẽ gõ buttonTextId.text.
+
+0:05:03.870,0:05:11.130
+Ta thấy rằng ta không thể
+
+0:05:07.610,0:05:13.170
+gọi trực tiếp một thuộc tính văn bản nếu ta
+
+0:05:11.130,0:05:15.240
+không ở trong phần tử này. Nếu làm điều này và
+
+0:05:13.170,0:05:18.390
+bấm vào ta sẽ có một vấn đề.
+
+0:05:15.240,0:05:20.430
+Bởi vì text không được định nghĩa ở đây, nên nó
+
+0:05:18.390,0:05:23.190
+cũng không được định nghĩa trong phần tử cha
+
+0:05:20.430,0:05:26.780
+đó là hình chữ nhật ở đây. Hãy chạy
+
+0:05:23.190,0:05:26.780
+ứng dụng và ta sẽ thấy nó là gì.
+
+0:05:27.230,0:05:33.180
+Được rồi nếu ta nhấp vào nó sẽ hiện
+
+0:05:30.390,0:05:36.240
+"Text is not defined" bởi vì nó không 
+
+0:05:33.180,0:05:40.472
+được xác định. Và MouseArea này ở đây, vì vậy ta
+
+0:05:36.240,0:05:43.500
+nên sử dụng buttonTextId để gán
+
+0:05:40.47,0:05:47.940
+phần tử text này đến từ đâu.
+
+0:05:43.500,0:05:52.440
+Vâyỵ, chúng ta nên gõ nút và như thế
+
+0:05:47.940,0:05:55.620
+này. Và nếu chúng ta chạy nó sẽ hoạt động.
+
+0:05:52.440,0:05:57.960
+"Clicked ON button". Bây giờ ta đã có nút
+
+0:05:55.620,0:06:00.180
+để ta nhấp vào. Nhưng chúng ta muốn sử dụng nó
+
+0:05:57.960,0:06:03.180
+nhiều lần và chúng ta không muốn
+
+0:06:00.180,0:06:07.10
+sao chép tất cả những thứ này. Vậy để có ý nghĩa
+
+0:06:03.180,0:06:10.530
+ta tạo một thành phần riêng biệt. Đặt
+
+0:06:07.10,0:06:13.260
+hình chữ nhật này vào và khởi tạo nó
+
+0:06:10.530,0:06:15.360
+bất cứ khi nào chúng ta cần. Tôi sẽ chỉ rõ điều này
+
+0:06:13.260,0:06:24.780
+Ý tôi là. Ta sẽ đi đến tệp tài nguyên
+
+0:06:15.360,0:06:28.37
+tại đây và thêm tệp Qt QML mới, Qt Quick 2.
+
+0:06:24.780,0:06:31.800
+Chúng ta sẽ gọi đây là MButton
+
+0:06:28.380,0:06:34.590
+bởi vì nó là nút của chúng ta. Và
+
+0:06:31.800,0:06:37.889
+phiên bản Qt quick và các mẫu này
+
+0:06:34.590,0:06:40.050
+thường rất cũ nên ta
+
+0:06:37.889,0:06:42.060
+có thể tham khảo dự án mà chúng tôi đã tạo ra.
+
+0:06:40.050,0:06:46.860
+Ta thấy rằng phiên bản 2 Qt Quick là
+
+0:06:42.060,0:06:49.740
+2.11. Vì vậy, ta có thể cập nhật điều này tại đây và sao chép
+
+0:06:46.860,0:06:54.240
+hình chữ nhật mà ta có ở đây và đưa nó
+
+0:06:49.740,0:06:58.080
+vào nút này. Hãy lấy món đồ này
+
+0:06:54.240,0:07:03.050
+ra. Và ta có hình chữ nhật. Nếu ta đến
+
+0:06:58.080,0:07:03.050
+phần tử chính và gõ M.
+
+0:07:04.009,0:07:09.870
+Được rồi, ta thấy rằng nó được công nhận và
+
+0:07:06.719,0:07:15.30
+ta có thể khởi tạo nó như thế này. Hãy
+
+0:07:09.870,0:07:17.789
+gõ button. Ah ha, chúng ta có một nút ở đây và
+
+0:07:15.330,0:07:20.729
+chúng ta có thể nhấp vào nó. Ta có thể
+
+0:07:17.789,0:07:26.460
+gán thêm một số thứ khác. Hãy gõ MButton
+
+0:07:20.729,0:07:38.37
+một lần nữa và xem liệu chúng ta có thể gán vị trí x
+
+0:07:26.460,0:07:41.37
+là 100. Tại sao không? Chạy lại. Mm-hmm
+
+0:07:38.370,0:07:43.710
+ở mức 100. Mọi thứ đều ổn. Okay
+
+0:07:41.370,0:07:45.870
+nút đang hoạt động như ta muốn. Nhưng có
+
+0:07:43.710,0:07:48.629
+một vấn đề. Đôi khi ta muốn
+
+0:07:45.870,0:07:50.250
+gán văn bản được hiển thị trong nút này
+
+0:07:48.629,0:07:53.580
+vì ta không muốn nó
+
+0:07:50.250,0:07:55.589
+luôn luôn nói nút. Được rồi vậy ta phải làm 
+
+0:07:53.580,0:07:56.250
+cách nào? Cách ta làm điều đó, ta có thể sử dụng
+
+0:07:55.589,0:07:58.379
+thuộc tính
+
+0:07:56.250,0:08:08.569
+"alias". Ý là? Ta có thể làm
+
+0:07:58.379,0:08:15.539
+một cái gì đó như "property alias buttonText" và
+
+0:08:08.569,0:08:19.460
+liên kết này với buttonTextId.text. Ok
+
+0:08:15.539,0:08:23.270
+và khi ta gán buttonTextId ngay bây giờ.
+
+0:08:19.460,0:08:23.270
+Hãy thiết lập điều này trước.
+
+0:08:28.360,0:08:44.899
+Và nếu chúng ta chạy ứng dụng. ta
+
+0:08:43.039,0:08:46.850
+sẽ thấy điều đó. Nó gọi nút 1
+
+0:08:44.899,0:08:49.490
+và nút 2. Nếu bạn nhấp vào nó
+
+0:08:46.850,0:08:51.709
+thông báo "Clicked ON:Button 1". Nếu ta nhấp vào
+
+0:08:49.490,0:08:54.740
+đây nó sẽ nói nút 2. Ta đang xác định
+
+0:08:51.709,0:08:56.839
+thành phần của chính mình và ta có thể
+
+0:08:54.740,0:08:59.000
+tiết lộ một số thuộc tính của thành phần
+
+0:08:56.839,0:09:01.040
+bên trong này. Nhưng đôi khi ta không muốn
+
+0:08:59.000,0:09:02.959
+người khác có thể truy cập vào tất cả
+
+0:09:01.040,0:09:05.630
+thiết lập ta có trong các thành phần của mình. Ví dụ
+
+0:09:02.959,0:09:07.970
+người dùng có thể thay đổi chiều rộng và
+
+0:09:05.630,0:09:10.10
+chiều cao của hình chữ nhật và màu sắc
+
+0:09:07.970,0:09:12.472
+và đường biên. Nhưng ta không muốn điều đó.
+
+0:09:10.10,0:09:15.920
+Cách để làm điều đó, ta quấn
+
+0:09:12.470,0:09:23.779
+thành phần thành thành phần "Item"
+
+0:09:15.920,0:09:26.120
+như thế này. Và đặt nó vào trong. Và ta
+
+0:09:23.779,0:09:28.3939
+phải làm là để lộ các thuộc tính của mình
+
+0:09:26.120,0:09:30.472
+giống như cách ta đang làm. Ta
+
+0:09:28.339,0:09:33.709
+để lộ các thuộc tính của mình ở
+
+0:09:30.47,0:09:36.770
+cấp độ gốc của mục cha. Ok
+
+0:09:33.709,0:09:42.079
+mục cha là mục này ở đây. Và chúng ta
+
+0:09:36.770,0:09:45.050
+nên cung cấp cho nó một id. Và đây là nơi
+
+0:09:42.079,0:09:47.000
+chúng ta để lộ các thuộc tính của mình. Ta chạy
+
+0:09:45.050,0:09:49.820
+ứng dụng và nó sẽ hoạt động giống như
+
+0:09:47.000,0:09:51.709
+những gì ta mong đợi. Ta nhấp vào
+
+0:09:49.820,0:09:54.079
+nút, ta thấy, nút 1. Ta bấm vào
+
+0:09:51.709,0:09:57.32
+nút 2, ta thấy nút 2. Nhưng người dùng
+
+0:09:54.079,0:09:59.540
+không có cách nào để xác định điều gì xảy ra khi
+
+0:09:57.320,0:10:02.829
+nút này được nhấp. Và chúng ta cần
+
+0:09:59.540,0:10:07.940
+để lộ tín hiệu này. Cách làm điều đó.
+
+0:10:02.829,0:10:12.3780
+ta gán "signal" như thế này và gõ
+
+0:10:07.940,0:10:14.99
+buttonClicked. Và khi người dùng nhấp
+
+0:10:12.380,0:10:17.149
+trong MouseArea ta muốn gọi cho
+
+0:10:14.990,0:10:20.120
+tín hiệu ở đây. Và đây là tín hiệu
+
+0:10:17.149,0:10:22.040
+người dùng có thể nhận ở đây. Vậy ta
+
+0:10:20.120,0:10:24.500
+sẽ comment điều này vì chúng ta
+
+0:10:22.040,0:10:28.490
+không muốn nó làm ai bối rối. Chúng ta sẽ
+
+0:10:24.500,0:10:31.040
+gõ rootId vì ở cấp độ này
+
+0:10:28.490,0:10:37.820
+tín hiệu được xác định và gõ
+
+0:10:31.040,0:10:39.779
+buttonNhấp như thế này. Ok, bây giờ là người dùng
+
+0:10:37.820,0:10:44.37
+có thể gõ
+
+0:10:39.779,0:10:51.920
+onButtonClicked sử dụng một cái gì đó, gõ
+
+0:10:44.370,0:10:59.279
+console.log. Và chúng ta có thể làm điều tương tự
+
+0:10:51.920,0:11:01.259
+cho nút 2. Và chúng ta đang gõ
+
+0:10:59.279,0:11:03.509
+từ tệp chính để không có
+
+0:11:01.259,0:11:06.809
+nhầm lẫn về nơi tín hiệu này là
+
+0:11:03.50,0:11:09.689
+đến từ đâu, ngay cả khi chúng ta nhận xét
+
+0:11:06.809,0:11:13.139
+Tôi là người hoang tưởng này. Chạy
+
+0:11:09.689,0:11:15.509
+ứng dụng, nhấp vào nút 1. Nhấp vào
+
+0:11:13.139,0:11:17.759
+nút một từ tệp chính ta có thể
+
+0:11:15.509,0:11:22.800
+chụp tín hiệu này rằng nút
+
+0:11:17.759,0:11:26.249
+đã được nhấp. Và điều tương tự cũng xảy ra
+
+0:11:22.800,0:11:30.059
+với nút 2. Ta gần như hoàn thành điều này.
+
+0:11:26.249,0:11:32.879
+Nhưng khi ta cố gắng bọc các nút ở đây
+
+0:11:30.059,0:11:36.089
+trong thành phần "Row", hãy làm điều đó tương tự như
+
+0:11:32.879,0:11:42.809
+"Column". Hãy sử dụng "Column". Ta sẽ phải
+
+0:11:36.089,0:11:45.779
+đặt những thứ của mình ra từ trên xuống dưới. Được
+
+0:11:42.809,0:11:48.120
+đặt điều này trong một "Column". Và bởi vì
+
+0:11:45.779,0:11:50.839
+cột đang quan tâm đến vị trí của chúng ta
+
+0:11:48.120,0:11:54.660
+Ta không muốn chỉ định x này nữa.
+
+0:11:50.839,0:11:57.870
+Hãy lấy cái này ra. Chạy
+
+0:11:54.660,0:12:00.180
+ứng dụng. Và những gì chúng ta sẽ thấy
+
+0:11:57.870,0:12:03.300
+sẽ rất ngạc nhiên. Thấy
+
+0:12:00.180,0:12:07.079
+không ? Chúng ta chỉ thấy nút 2? Đó là gì?
+
+0:12:03.300,0:12:09.779
+Điều đang xảy ra ở đây là:"Column" của chúng ta là
+
+0:12:07.079,0:12:12.2929
+cố gắng định vị các mục này nhưng
+
+0:12:09.779,0:12:15.360
+không biết chiều rộng và chiều cao của
+
+0:12:12.329,0:12:16.860
+nút này của chúng ta. Lưu ý rằng chúng ta
+
+0:12:15.360,0:12:20.879
+không tiết lộ chiều rộng và chiều cao
+
+0:12:16.860,0:12:24.029
+của hình chữ nhật này. Và điều đó là không thể
+
+0:12:20.879,0:12:26.129
+cho tệp "main" để biết chiều rộng của
+
+0:12:24.029,0:12:28.649
+hình chữ nhật này bởi vì ta đã không phơi bày
+
+0:12:26.129,0:12:31.50
+nó. Vì vậy, nếu chúng ta muốn hàng và cột
+
+0:12:28.649,0:12:33.559
+định vị thành phần tùy chỉnh của mình chính xác
+
+0:12:31.350,0:12:36.360
+ta nên phơi ra chiều rộng và chiều cao.
+
+0:12:33.559,0:12:38.730
+Ta nên nhớ điều này vì những
+
+0:12:36.360,0:12:40.980
+lỗi rất khó gỡ. Và tôi đã
+
+0:12:38.730,0:12:42.779
+có sinh viên đến với tôi nhiều lần về
+
+0:12:40.980,0:12:44.879
+vấn đề này vì vậy ta nên tập trung
+
+0:12:42.779,0:12:47.37
+vấn đề này khi xác định
+
+0:12:44.879,0:12:49.679
+các thành phần. Ta nên đảm bảo rằng
+
+0:12:47.370,0:12:52.710
+chúng có chiều rộng và chiều cao như trái ngược
+
+0:12:49.679,0:12:54.780
+với các tệp nhiệt bên ngoài.
+
+0:12:52.710,0:13:00.50
+Và cách ta vạch trần những đặc tính này,
+
+0:12:54.780,0:13:00.50
+ta cấp cho hình chữ nhật của mình một id. Vì vậy, ta gõ,
+
+0:13:01.790,0:13:14.960
+ví dụ và chỉ phơi ra chiều rộng
+
+0:13:05.550,0:13:14.960
+là container ... và chiều cao là ...
+
+0:13:17.120,0:13:23.880
+Được rồi, và điều này sẽ đảm bảo phơi ra
+
+0:13:21.690,0:13:26.430
+những đặc tính này cho thế giới bên ngoài. Ta
+
+0:13:23.880,0:13:29.520
+sẽ chuyển đến tệp "main". Chạy
+
+0:13:26.430,0:13:30.900
+lần nữa. Mm-hmm ... và ta thấy nó có vẻ
+
+0:13:29.520,0:13:33.030
+không có gì thay đổi. Đây là
+
+0:13:30.900,0:13:36.30
+vì Qt Creator đôi khi có
+
+0:13:33.030,0:13:39.270
+vấn đề khi ta thay đổi các tệp khác
+
+0:13:36.330,0:13:41.130
+tệp "main" đang sử dụng ta phải đi đến
+
+0:13:39.270,0:13:42.770
+"main" và làm cho nó trông giống như
+
+0:13:41.130,0:13:46.50
+một cái gì đó đã thay đổi. Vì vậy, chúng ta sẽ
+
+0:13:42.770,0:13:48.780
+bấm vào không gian của mình ở đây. Chạy lại. Và
+
+0:13:46.350,0:13:51.210
+ta thấy rằng các nút của mình bây giờ
+
+0:13:48.780,0:13:53.790
+có vị trí rất độc đáo. Tôi thích điều này
+
+0:13:51.210,0:13:55.710
+hơn. Và tôi hy vọng điều này thực sự phơi bày cho
+
+0:13:53.790,0:13:58.200
+bạn 2 cách mà bạn có thể xác định
+
+0:13:55.710,0:14:00.780
+các thành phần chạy của mình. Ta đặt chúng vào một
+
+0:13:58.200,0:14:02.580
+tập tin. Khi ta đặt chúng vào tệp đó và
+
+0:14:00.780,0:14:04.47
+tệp đó ở cùng một
+
+0:14:02.580,0:14:06.420
+vị trí với tệp "main" thì ta
+
+0:14:04.470,0:14:10.020
+không phải làm gì cả. Ta chỉ cần gọi cho
+
+0:14:06.420,0:14:12.780
+các thành phần như chúng ta đã làm ở đây, cho MButton.
+
+0:14:10.020,0:14:16.920
+Một điều ta nên làm là để bọc
+
+0:14:12.780,0:14:19.230
+các thành phần của mình vào Item thành loại
+
+0:14:16.920,0:14:21.480
+kiểm soát những thuộc tính nào hiển thị với
+
+0:14:19.230,0:14:22.890
+thế giới bên ngoài. Ví dụ, chúng ta
+
+0:14:21.480,0:14:24.870
+sẽ không muốn mọi người có thể
+
+0:14:22.890,0:14:27.390
+thay đổi màu sắc. Hãy xem điều gì sẽ
+
+0:14:24.870,0:14:30.180
+xảy ra khi chúng ta cố gắng đặt màu
+
+0:14:27.390,0:14:35.430
+này cho MButton. Hãy
+
+0:14:30.180,0:14:38.490
+làm vậy đi. Ta nên thử mọi thứ. Ta
+
+0:14:35.430,0:14:40.500
+thấy rằng màu sắc không được công nhận. Nếu ta
+
+0:14:38.490,0:14:44.130
+cố gắng chạy nó sẽ cảnh báo ta về
+
+0:14:40.500,0:14:47.040
+vấn đề này. Nó có thể sẽ thông báo
+
+0:14:44.130,0:14:50.250
+màu không được xác định:"Cannot assign to a
+
+0:14:47.040,0:14:52.500
+non-existent property "color"". Ok vậy điều này
+
+0:14:50.250,0:14:55.170
+không được để lộ ra, ta có thể thấy điều đó. Ta có thể
+
+0:14:52.500,0:14:58.50
+biến các thuộc tính của mình thành các phần tử
+
+0:14:55.170,0:15:00.870
+riêng bằng cách gói thành phần của mình vào
+
+0:14:58.50,0:15:04.050
+một Item. Và điều này thực sự quan trọng 
+
+0:15:00.870,0:15:06.110
+đấy. Một điều ta thấy là làm thế nào ta có thể
+
+0:15:04.050,0:15:08.600
+phơi ra tín hiệu. Ta có thể
+
+0:15:06.110,0:15:10.880
+phơi ra tín hiệu của mình bằng cách khai báo tín hiệu 
+
+0:15:08.600,0:15:13.700
+như thế này và sau đó gọi nó khi
+
+0:15:10.880,0:15:15.920
+một điều gì đó xảy ra. Hãy để chúng ta làm ở đây. Và
+
+0:15:13.700,0:15:18.560
+cuối cùng nhưng không kém phần quan trọng ta nên luôn
+
+0:15:15.920,0:15:20.630
+gán chiều rộng và chiều cao cho tùy chỉnh của
+
+0:15:18.560,0:15:22.850
+các thành phần của mình. Nếu không, ta sẽ
+
+0:15:20.630,0:15:26.180
+có vấn đề đặt chúng ra trong
+
+0:15:22.850,0:15:28.100
+định vị như "Row" và "Column". Những
+
+0:15:26.180,0:15:30.110
+covers này luôn luôn được đặt ra để làm trong
+
+0:15:28.100,0:15:32.810
+bài giảng và người hướng dẫn. Chúng ta sẽ
+
+0:15:30.110,0:15:34.910
+bắt đầu xem xét các yếu tố đầu vào của người dùng trong
+
+0:15:32.810,0:15:37.060
+QT quick. hẹn gặp lại ở phần 
+
+0:15:34.910,0:15:37.060
+tiếp theo.

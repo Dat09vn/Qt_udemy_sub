@@ -1,0 +1,728 @@
+1
+00:00:00,000 --> 00:00:01,800
+in this lecture, we're going to look at
+
+2
+00:00:01,800 --> 00:00:04,140
+another aspects of decorations in your
+
+3
+00:00:04,140 --> 00:00:07,230
+list views, and that is using sections to
+
+4
+00:00:07,230 --> 00:00:10,200
+group your data in similar groups. we're
+
+5
+00:00:10,200 --> 00:00:12,240
+going to go to QT creator and play
+
+6
+00:00:12,240 --> 00:00:15,089
+with it. okay here we are, in Qt Creator.
+
+7
+00:00:15,089 --> 00:00:17,340
+we're going to create a new project.
+
+8
+00:00:17,340 --> 00:00:20,279
+it's a QT quick application, we call it
+
+9
+00:00:20,279 --> 00:00:23,279
+DecorationSectionDemo, save it in the
+
+10
+00:00:23,279 --> 00:00:28,699
+usual location. choose our Qt version.
+
+11
+00:00:28,880 --> 00:00:33,390
+choose our kit, and finish. we want to
+
+12
+00:00:33,390 --> 00:00:37,140
+change the title here. it is another kind
+
+13
+00:00:37,140 --> 00:00:39,739
+of decoration, so we say that here. I
+
+14
+00:00:39,739 --> 00:00:43,320
+want to have a mListView. it's going to
+
+15
+00:00:43,320 --> 00:00:46,140
+be the usual thing really. the idea is
+
+16
+00:00:46,140 --> 00:00:53,430
+going to be mListView. it's going to
+
+17
+00:00:53,430 --> 00:01:01,710
+fill the parent, and we are going to
+
+18
+00:01:01,710 --> 00:01:04,140
+specify a delegate which is going to be
+
+19
+00:01:04,140 --> 00:01:06,390
+an external component, so we're going to
+
+20
+00:01:06,390 --> 00:01:11,070
+say "delegateID" like this. I want to put
+
+21
+00:01:11,070 --> 00:01:14,670
+in a model that I have prepared to save
+
+22
+00:01:14,670 --> 00:01:18,180
+some typing. it is nothing special.
+
+23
+00:01:18,180 --> 00:01:20,310
+it is a ListModel with ListElement.
+
+24
+00:01:20,310 --> 00:01:23,400
+right now we have roles name and company.
+
+25
+00:01:23,400 --> 00:01:26,580
+what we want to do is to group these
+
+26
+00:01:26,580 --> 00:01:29,310
+people in all this view based on the
+
+27
+00:01:29,310 --> 00:01:31,799
+company where they work. so now we have a
+
+28
+00:01:31,799 --> 00:01:34,979
+model, let's check the ID mListModel.
+
+29
+00:01:34,979 --> 00:01:37,320
+mListModel. this is okay.
+
+30
+00:01:37,320 --> 00:01:40,619
+we want to specify our delegate. again I
+
+31
+00:01:40,619 --> 00:01:42,930
+am going to put in our delegate like
+
+32
+00:01:42,930 --> 00:01:46,680
+this. Press ctrl A ctrl I to align. it is
+
+33
+00:01:46,680 --> 00:01:48,420
+the same thing we've seen before. we have
+
+34
+00:01:48,420 --> 00:01:51,090
+an ID inside, it is a rectangle that
+
+35
+00:01:51,090 --> 00:01:53,909
+specifies how each element in the list
+
+36
+00:01:53,909 --> 00:01:56,130
+view is going to look. so it's a
+
+37
+00:01:56,130 --> 00:01:58,799
+rectangle with the background color of
+
+38
+00:01:58,799 --> 00:02:01,790
+beige, border color yellow green, it has
+
+39
+00:02:01,790 --> 00:02:05,280
+round edges, and inside we have a test
+
+40
+00:02:05,280 --> 00:02:07,829
+component that says the names of the
+
+41
+00:02:07,829 --> 00:02:11,129
+person. ok we don't want to display the
+
+42
+00:02:11,129 --> 00:02:13,980
+company, we only display
+
+43
+00:02:13,980 --> 00:02:16,800
+the name of the person in the delegate
+
+44
+00:02:16,800 --> 00:02:19,530
+here, and we have access to this because
+
+45
+00:02:19,530 --> 00:02:22,620
+the delegate has access to both the
+
+46
+00:02:22,620 --> 00:02:25,799
+model and the view. the data in there and
+
+47
+00:02:25,799 --> 00:02:28,890
+the functions that are inside. okay now
+
+48
+00:02:28,890 --> 00:02:32,069
+we have our model, we have our delegate,
+
+49
+00:02:32,069 --> 00:02:34,709
+and we have our listview, we want to
+
+50
+00:02:34,709 --> 00:02:37,069
+know how to group the elements together.
+
+51
+00:02:37,069 --> 00:02:40,890
+let's go back to the documentation, find
+
+52
+00:02:40,890 --> 00:02:43,319
+listview. if we look at the list of
+
+53
+00:02:43,319 --> 00:02:45,209
+properties that we have, we have one
+
+54
+00:02:45,209 --> 00:02:48,269
+called section. click on that and you're
+
+55
+00:02:48,269 --> 00:02:49,980
+going to see that this is a grouped
+
+56
+00:02:49,980 --> 00:02:53,160
+property. ok this property's determined
+
+57
+00:02:53,160 --> 00:02:56,450
+the expressions to be evaluated and
+
+58
+00:02:56,450 --> 00:03:00,030
+appearance of Deception levels, this is
+
+59
+00:03:00,030 --> 00:03:02,220
+what you use to group your elements
+
+60
+00:03:02,220 --> 00:03:05,010
+based on a criteria of the data that is
+
+61
+00:03:05,010 --> 00:03:08,310
+stored in the model. in this case, we want
+
+62
+00:03:08,310 --> 00:03:10,950
+to group the people based on the company
+
+63
+00:03:10,950 --> 00:03:13,019
+where they work at, and the company is
+
+64
+00:03:13,019 --> 00:03:15,450
+also stored in the model in all 
+
+65
+00:03:15,450 --> 00:03:19,260
+listmodel here. so we want to put an A
+
+66
+00:03:19,260 --> 00:03:21,569
+section here. this is how you work with
+
+67
+00:03:21,569 --> 00:03:25,709
+it. you can do this separately like they
+
+68
+00:03:25,709 --> 00:03:28,349
+are doing it here in the examples. if you
+
+69
+00:03:28,349 --> 00:03:29,519
+scroll down you're going to see an
+
+70
+00:03:29,519 --> 00:03:32,130
+example of how you work with this. section,
+
+71
+00:03:32,130 --> 00:03:34,109
+property section, criteria section,
+
+72
+00:03:34,109 --> 00:03:36,660
+delegate like this, but I want to show
+
+73
+00:03:36,660 --> 00:03:38,970
+you another syntax, because you need to
+
+74
+00:03:38,970 --> 00:03:41,340
+see that too. you can specify it like
+
+75
+00:03:41,340 --> 00:03:44,880
+this directly, and you can specify the
+
+76
+00:03:44,880 --> 00:03:47,280
+properties inside like this. the first
+
+77
+00:03:47,280 --> 00:03:49,650
+thing we want to specify is the property
+
+78
+00:03:49,650 --> 00:03:54,870
+that we are going to group by. ok we want
+
+79
+00:03:54,870 --> 00:04:00,480
+to specify it in here, in quotes, it is
+
+80
+00:04:00,480 --> 00:04:03,359
+company in the model, criteria is going
+
+81
+00:04:03,359 --> 00:04:06,389
+to be usage and full strength.
+
+82
+00:04:06,389 --> 00:04:08,579
+if we go back in the documentation,
+
+83
+00:04:08,579 --> 00:04:12,840
+you're going to see that the criteria
+
+84
+00:04:12,840 --> 00:04:15,329
+holds the criteria for forming each
+
+85
+00:04:15,329 --> 00:04:18,329
+section based on section property. you
+
+86
+00:04:18,329 --> 00:04:20,339
+can make it a full string, which is
+
+87
+00:04:20,339 --> 00:04:22,409
+going to show the entire thing. this is
+
+88
+00:04:22,409 --> 00:04:25,380
+the default or you can group by first
+
+89
+00:04:25,380 --> 00:04:27,540
+character, so if you had something
+
+90
+00:04:27,540 --> 00:04:29,280
+like an address book, it's going to group
+
+91
+00:04:29,280 --> 00:04:32,670
+people by ABC and things like that. but
+
+92
+00:04:32,670 --> 00:04:34,560
+we are going to use full string in
+
+93
+00:04:34,560 --> 00:04:37,200
+this example here. so we specify full
+
+94
+00:04:37,200 --> 00:04:39,510
+string, so we are going to specify a
+
+95
+00:04:39,510 --> 00:04:41,700
+delegate. this is going to be the
+
+96
+00:04:41,700 --> 00:04:45,600
+delegate for the section headers. we want
+
+97
+00:04:45,600 --> 00:04:48,660
+to put in a rectangle like this, because
+
+98
+00:04:48,660 --> 00:04:50,430
+I don't really want to type this again,
+
+99
+00:04:50,430 --> 00:04:52,250
+I'm going to put in this rectangle
+
+100
+00:04:52,250 --> 00:04:55,620
+ctrl A ctrl I, and I'm going to
+
+101
+00:04:55,620 --> 00:04:59,400
+try and explain it, so the rectangle is
+
+102
+00:04:59,400 --> 00:05:03,600
+what we have in here. we have an ID for
+
+103
+00:05:03,600 --> 00:05:05,340
+this rectangle. we have a width and a
+
+104
+00:05:05,340 --> 00:05:08,790
+height, a color, a border, radius. this is
+
+105
+00:05:08,790 --> 00:05:11,520
+nothing new to you. right now inside we
+
+106
+00:05:11,520 --> 00:05:14,610
+have a text component. it has an ID. the
+
+107
+00:05:14,610 --> 00:05:17,390
+text is going to be the section header.
+
+108
+00:05:17,390 --> 00:05:20,490
+this property holds what you are
+
+109
+00:05:20,490 --> 00:05:23,610
+grouping by. in this case we are grouping
+
+110
+00:05:23,610 --> 00:05:25,380
+people by company, so we're going to see
+
+111
+00:05:25,380 --> 00:05:28,650
+a section for a company of Google. we are
+
+112
+00:05:28,650 --> 00:05:31,110
+going to see a section for a company of
+
+113
+00:05:31,110 --> 00:05:33,330
+10 cent, Apple, Baidu and things like that.
+
+114
+00:05:33,330 --> 00:05:36,150
+this is the data that you have in this
+
+115
+00:05:36,150 --> 00:05:38,760
+section property is art your section
+
+116
+00:05:38,760 --> 00:05:42,630
+here. ok we Center that and specify a
+
+117
+00:05:42,630 --> 00:05:45,390
+point size for the font. we also want to
+
+118
+00:05:45,390 --> 00:05:48,210
+make this clickable, and we display the
+
+119
+00:05:48,210 --> 00:05:50,190
+section here. by now we have our
+
+120
+00:05:50,190 --> 00:05:52,740
+components in place, and the meat of this
+
+121
+00:05:52,740 --> 00:05:56,130
+lecture is really this section, you see
+
+122
+00:05:56,130 --> 00:05:59,160
+here. we are trying to group the data in
+
+123
+00:05:59,160 --> 00:06:01,800
+our model based on company. the company
+
+124
+00:06:01,800 --> 00:06:05,910
+is the role that we have in our model, we
+
+125
+00:06:05,910 --> 00:06:08,550
+want to group by company. we are going to
+
+126
+00:06:08,550 --> 00:06:12,840
+show the criteria for group end in full
+
+127
+00:06:12,840 --> 00:06:14,580
+string, so we are going to show the
+
+128
+00:06:14,580 --> 00:06:16,620
+full names of the companies that we are
+
+129
+00:06:16,620 --> 00:06:20,130
+grouping by, and the way the section
+
+130
+00:06:20,130 --> 00:06:22,980
+header is going to look is specified in
+
+131
+00:06:22,980 --> 00:06:24,960
+this delegate component here. it's going
+
+132
+00:06:24,960 --> 00:06:26,760
+to be a rectangle, inside we're going to
+
+133
+00:06:26,760 --> 00:06:28,860
+have a text element, and the text
+
+134
+00:06:28,860 --> 00:06:31,110
+is going to be displayed is the section
+
+135
+00:06:31,110 --> 00:06:33,600
+header, and it's going to be the same
+
+136
+00:06:33,600 --> 00:06:36,900
+thing as the name of the company we are
+
+137
+00:06:36,900 --> 00:06:39,210
+grouping by. I hope this makes sense, and
+
+138
+00:06:39,210 --> 00:06:41,070
+if it's not clear,
+
+139
+00:06:41,070 --> 00:06:43,260
+maybe it's going to be more clear if we
+
+140
+00:06:43,260 --> 00:06:47,340
+run the application. so we run it. mm-hmm
+
+141
+00:06:47,340 --> 00:06:50,700
+you see that our people are grouped by
+
+142
+00:06:50,700 --> 00:06:54,180
+the companies they work at. if we look in
+
+143
+00:06:54,180 --> 00:06:57,720
+our model, you see that Seth Morris works
+
+144
+00:06:57,720 --> 00:07:03,060
+at Google. jack may works at Apple. Mary
+
+145
+00:07:03,060 --> 00:07:06,120
+beige works at 10cent. and you see what
+
+146
+00:07:06,120 --> 00:07:08,640
+data in here. so sometimes you need this,
+
+147
+00:07:08,640 --> 00:07:11,400
+when you do, this will come in handy.
+
+148
+00:07:11,400 --> 00:07:13,470
+but one thing you need to know is that
+
+149
+00:07:13,470 --> 00:07:16,520
+for your data to be displayed correctly,
+
+150
+00:07:16,520 --> 00:07:19,950
+you need to have your elements stored
+
+151
+00:07:19,950 --> 00:07:23,910
+contiuously. what do I mean? let's take
+
+152
+00:07:23,910 --> 00:07:27,990
+Seth Morris here, copy the element and
+
+153
+00:07:27,990 --> 00:07:32,580
+put it at the end of the list in the
+
+154
+00:07:32,580 --> 00:07:36,690
+model. let's run again. mm-hmm you see
+
+155
+00:07:36,690 --> 00:07:39,240
+that we have Google and we have Miriam,
+
+156
+00:07:39,240 --> 00:07:42,210
+but if we go to the bottom. you see that
+
+157
+00:07:42,210 --> 00:07:45,180
+we have another Google header, and we have
+
+158
+00:07:45,180 --> 00:07:48,000
+Seth Morris inside. and this is really
+
+159
+00:07:48,000 --> 00:07:51,030
+how the sectioning works. if you don't
+
+160
+00:07:51,030 --> 00:07:54,660
+have your elements continuously, you are
+
+161
+00:07:54,660 --> 00:07:57,240
+going to have the header on every piece
+
+162
+00:07:57,240 --> 00:08:00,240
+of element that comes after the other
+
+163
+00:08:00,240 --> 00:08:02,460
+element. in this case Google is coming
+
+164
+00:08:02,460 --> 00:08:04,770
+back after Baidu, and the ListView is
+
+165
+00:08:04,770 --> 00:08:07,530
+going to let you know that Seth Morris
+
+166
+00:08:07,530 --> 00:08:10,380
+works at Google by putting a header like
+
+167
+00:08:10,380 --> 00:08:12,780
+this. I hope this makes sense. if you want
+
+168
+00:08:12,780 --> 00:08:15,990
+to have only one header for each company,
+
+169
+00:08:15,990 --> 00:08:17,850
+you're going to have to store your
+
+170
+00:08:17,850 --> 00:08:21,300
+elements continuously in the model. and
+
+171
+00:08:21,300 --> 00:08:25,170
+put it back like it was before. let's put
+
+172
+00:08:25,170 --> 00:08:29,450
+this first again, run our application, and
+
+173
+00:08:29,450 --> 00:08:33,000
+this is what we had before. one thing you
+
+174
+00:08:33,000 --> 00:08:35,130
+need to know is that the look of the
+
+175
+00:08:35,130 --> 00:08:37,830
+section header is controlled by the
+
+176
+00:08:37,830 --> 00:08:41,849
+delegate property in your section. what
+
+177
+00:08:41,849 --> 00:08:45,900
+we have here is rectangle. this is all
+
+178
+00:08:45,900 --> 00:08:47,700
+had to say in this lecture. I hope you
+
+179
+00:08:47,700 --> 00:08:49,650
+know how you can group your elements in
+
+180
+00:08:49,650 --> 00:08:51,960
+your list view, and the next lecture
+
+181
+00:08:51,960 --> 00:08:53,460
+we're going to see how you work with
+
+182
+00:08:53,460 --> 00:00:00,000
+of repeaters. I see you there.
+

@@ -1,0 +1,368 @@
+﻿1
+00:00:00,829 --> 00:00:04,310
+Xin chào mừng các bạn đã quay trở lại.
+
+2
+00:00:04,310 --> 00:00:07,049
+Trong video này chúng ta sẽ học về Multithreading- công nghệ đa luồng.
+
+3
+00:00:07,049 --> 00:00:09,030
+chúng ta sẽ cùng tìm hiểu về QThread, cách
+
+4
+00:00:09,030 --> 00:00:11,309
+sử dụng threads trong ứng dụng Qt.
+
+5
+00:00:11,309 --> 00:00:14,490
+Để có thể học cách dùng trong nhiều trường hợp nhất sau này, chúng ta
+
+6
+00:00:14,490 --> 00:00:17,730
+sẽ xem xét cách tạo thread worker
+
+7
+00:00:17,730 --> 00:00:20,430
+và sử dụng lớp QThread để tạo các thread
+
+8
+00:00:20,430 --> 00:00:23,580
+trong một ứng dụng. Hãy cùng nhau làm một
+
+9
+00:00:23,580 --> 00:00:27,510
+bài tập nhỏ. Giả sử ta muốn
+
+10
+00:00:27,510 --> 00:00:29,670
+tiếp nhân (listen) được đầu vào của người dùng (User Imput) trong Console Application,
+
+11
+00:00:29,670 --> 00:00:32,210
+và tạo ra một vector với các số ngẫu nhiên.
+
+12
+00:00:32,210 --> 00:00:35,250
+Tất nhiên kích thước được xác định từ
+
+13
+00:00:35,250 --> 00:00:38,430
+đầu vào của người dùng. Để tránh bị chặn không nghe được
+
+14
+00:00:38,430 --> 00:00:40,649
+đầu vào của người dùng, chúng ta sẽ phải tạo một
+
+15
+00:00:40,649 --> 00:00:43,170
+luồng để lồng ghép công việc tạo ra ngẫu nhiên
+
+16
+00:00:43,170 --> 00:00:45,840
+vào một luồng khác, và cũng bởi vì
+
+17
+00:00:45,840 --> 00:00:47,910
+chúng ta không thể chạy vòng lặp với một vòng lặp sự kiện bị chặn,
+
+18
+00:00:47,910 --> 00:00:50,039
+nên chúng ta cũng phải đặt vòng lặp
+
+19
+00:00:50,039 --> 00:00:52,949
+trong một luồng khác. Làm như thế để đáp ứng
+
+20
+00:00:52,949 --> 00:00:55,110
+yêu cầu là ứng dụng phải luôn luôn
+
+21
+00:00:55,110 --> 00:00:58,440
+sẵn sàng. Điều đó có nghĩa là
+
+22
+00:00:58,440 --> 00:01:00,449
+luồng chính nơi có luồng vòng lặp sự kiện
+
+23
+00:01:00,449 --> 00:01:04,920
+không được phép bị chặn. Bây giờ hãy mở
+
+24
+00:01:04,920 --> 00:01:08,490
+Qt creator. Đầu tiên, hãy tạo một InputWorker
+
+25
+00:01:08,490 --> 00:01:12,479
+Nó là một class kế thừa từ
+
+26
+00:01:12,479 --> 00:01:16,229
+QObject. Ở đây chúng ta  khai báo một tín hiệu inputAvailable (input có sẵn)
+
+27
+00:01:16,229 --> 00:01:19,970
+và một hàm slot (hàm xử lí sự kiện) startWork.
+
+28
+00:01:19,970 --> 00:01:22,920
+Chúng ta sẽ sử dụng QTextString (chuỗi văn bản Q) để
+
+29
+00:01:22,920 --> 00:01:25,470
+nhận đầu vào.
+
+30
+00:01:25,470 --> 00:01:27,990
+Đúng rồi, như bạn thấy đấy, ta đang sử dụng
+
+31
+00:01:27,990 --> 00:01:30,720
+cơ chế signals and slots (tín hiệu và hàm xử lí sự kiện) của Qt. Bạn có thể nghĩ
+
+32
+00:01:30,720 --> 00:01:33,480
+signals giống như những tín hiệu mà một QObject
+
+33
+00:01:33,480 --> 00:01:36,780
+có thể thực thi hoặc phát ra. Còn một hàm Slot (slot function)
+
+34
+00:01:36,780 --> 00:01:39,750
+thì xử lí các tín hiệu mà có
+
+35
+00:01:39,750 --> 00:01:42,180
+một số dấu hiệu (signatures) nhất định giống nhau.
+
+36
+00:01:42,180 --> 00:01:44,730
+Chúng ta sẽ học kĩ hơn về chúng trong các video sau này,
+
+37
+00:01:44,730 --> 00:01:47,610
+còn bây giờ thì cứ tập trung vào QThread
+
+38
+00:01:47,610 --> 00:01:50,910
+trong video này trước đã. Trong lớp input worker này,
+
+39
+00:01:50,910 --> 00:01:53,940
+chúng ta sử dụng đầu vào chuẩn để xây dựng
+
+40
+00:01:53,940 --> 00:01:58,350
+chuỗi văn bản Qt (QTextString) và sau đó chúng ta sẽ
+
+41
+00:01:58,350 --> 00:02:00,390
+sử dụng đối tượng QtextString
+
+42
+00:02:00,390 --> 00:02:04,770
+"is" để đọc user imput. Mỗi khi đọc user imput
+
+43
+00:02:04,770 --> 00:02:07,050
+chúng ta sẽ
+
+44
+00:02:07,050 --> 00:02:09,600
+phát một tín hiệu inputAvailable, và
+
+45
+00:02:09,600 --> 00:02:13,290
+input chính là giá trị truyền vào (arguments). Một lớp khác
+
+46
+00:02:13,290 --> 00:02:15,060
+mà chúng ta cũng sẽ phải tạo đó là
+
+47
+00:02:15,060 --> 00:02:19,530
+một vector worker ngẫu nhiên. Lớp này sẽ xử lí user
+
+48
+00:02:19,530 --> 00:02:21,480
+input và cho ra một
+
+49
+00:02:21,480 --> 00:02:29,280
+vector ngẫu nhiên. Trong inputHandler chúng ta sẽ sử dụng
+
+50
+00:02:29,280 --> 00:02:31,590
+thời gian hiện tại của nguồn input
+
+51
+00:02:31,590 --> 00:02:33,480
+để  khởi tạo trình tạo số ngẫu nhiên,
+
+52
+00:02:33,480 --> 00:02:37,110
+và với mỗi số trong vector chúng ta sẽ
+
+53
+00:02:37,110 --> 00:02:38,820
+gán nó với một số ngẫu nhiên mới.
+
+54
+00:02:38,820 --> 00:02:42,300
+Sau thao tác này chúng ta sẽ
+
+55
+00:02:42,300 --> 00:02:46,620
+cho ra một số ngẫu nhiên. Bây giờ hãy quay lại
+
+56
+00:02:46,620 --> 00:02:52,590
+main.cpp. Để sử dụng 2 luồng ta chỉ cần
+
+57
+00:02:52,590 --> 00:02:56,030
+dựng lên thread1 và thread2.
+
+58
+00:02:56,030 --> 00:02:59,910
+Chúng là các đối tượng (object) của QThread, và mỗi tên
+
+59
+00:02:59,910 --> 00:03:02,880
+đại diện cho một luồng. Để
+
+60
+00:03:02,880 --> 00:03:05,420
+chuyển các workers vào trong mỗi luồng,
+
+61
+00:03:05,420 --> 00:03:08,040
+ta chỉ cần gọi hàm movetoThread
+
+62
+00:03:08,040 --> 00:03:10,590
+có địa chỉ QThread (QThread address) trên
+
+63
+00:03:10,590 --> 00:03:13,950
+giá trị truyền vào. Sử dụng thread trong
+
+64
+00:03:13,950 --> 00:03:16,620
+Qt chỉ đơn giản vậy thôi. Còn để sử dụng được
+
+65
+00:03:16,620 --> 00:03:19,860
+tín hiệu và hàm sử lí sự kiện (signal and slot) ở đây, chúng ta sẽ kết nối tín hiệu inputAvailable
+
+66
+00:03:19,860 --> 00:03:23,820
+với hàm xử lí inputHandler,
+
+67
+00:03:23,820 --> 00:03:26,220
+để mỗi lần tín hiệu inputAvailable
+
+68
+00:03:26,220 --> 00:03:29,400
+được phát ra, inputHandler sẽ được
+
+69
+00:03:29,400 --> 00:03:32,820
+thực thi, và sẽ tạo ra các số ngẫu nhiên
+
+70
+00:03:32,820 --> 00:03:38,190
+cho chúng ta. Cuối cùng chúng ta phải đảm bảo vòng lặp sự kiện
+
+71
+00:03:38,190 --> 00:03:41,430
+đang chạy và dừng công việc của input
+
+72
+00:03:41,430 --> 00:03:45,750
+worker trước khi chúng ta quay về a.exec. Bây giờ
+
+73
+00:03:45,750 --> 00:03:47,910
+hãy tạo ứng dụng đó và chạy thử
+
+74
+00:03:47,910 --> 00:03:50,030
+xem!
+
+75
+00:03:53,900 --> 00:03:57,629
+Như các bạn thấy chúng ta đã thấy địa chỉ luông (thread address) của input
+
+76
+00:03:57,629 --> 00:04:01,170
+worker và bây giờ hãy cho nó
+
+77
+00:04:01,170 --> 00:04:06,060
+một vector, 10 đi. Thao tác đã được
+
+78
+00:04:06,060 --> 00:04:08,579
+thực hiện ngay lập tức nhưng ta có thể thấy rằng
+
+79
+00:04:08,579 --> 00:04:12,030
+vector worker ngẫu nhiên xuất hiện ở
+
+80
+00:04:12,030 --> 00:04:14,909
+different thread một luồng khác. Bây giờ nếu ta cho  nó một
+
+81
+00:04:14,909 --> 00:04:20,030
+con số lớn, ví dụ 200 triệu.
+
+82
+00:04:20,980 --> 00:04:23,350
+thì sẽ mất một chút thời gian nhưng
+
+83
+00:04:23,350 --> 00:04:25,870
+ứng dụng không bị chặn
+
+84
+00:04:25,870 --> 00:04:28,680
+bởi vì user imput
+
+85
+00:04:28,680 --> 00:04:32,760
+lập tức được đưa vào Qt console application.
+
+86
+00:04:32,760 --> 00:04:35,650
+Chú ý rằng nếu ứng dụng của bạn không được khởi động
+
+87
+00:04:35,650 --> 00:04:37,300
+trong terminal terminal, bạn có thể sẽ phải
+
+88
+00:04:37,300 --> 00:04:42,070
+đặt cấu hình cho các project của bạn, vậy hãy nhớ đảm bảo rằng bạn đã tích chọn ô
+
+89
+00:04:42,070 --> 00:04:45,820
+Run in terminal. Trong video tiếp theo
+
+90
+00:04:45,820 --> 00:04:47,860
+chúng ta sẽ học về đa xử lý (multithreading)
+
+91
+00:04:47,860 --> 00:04:51,010
+và xem xem có khác biệt gì
+
+92
+00:04:51,010 --> 00:00:00,000
+khi sử dụng nhiều luồng khác nhau trong Qt.
+

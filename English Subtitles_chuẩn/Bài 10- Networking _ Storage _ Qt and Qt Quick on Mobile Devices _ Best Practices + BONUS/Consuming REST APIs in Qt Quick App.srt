@@ -1,0 +1,837 @@
+0:00:00.000,0:00:04.080
+and this lecturer we're going to see how
+
+0:00:01.829,0:00:07.109
+you work with the rest api is in your
+
+0:00:04.080,0:00:10.080
+qml applications we are going to work
+
+0:00:07.109,0:00:14.610
+with the api service that is provided by
+
+0:00:10.080,0:00:18.090
+this website here it is called ICN d be
+
+0:00:14.610,0:00:21.689
+calm and it gives a funny api that
+
+0:00:18.090,0:00:25.380
+fetches Chuck Norris jokes so you want
+
+0:00:21.689,0:00:27.779
+to come to database restful api and
+
+0:00:25.380,0:00:30.539
+click on this link here and they show
+
+0:00:27.779,0:00:32.579
+you the documentation on their api if
+
+0:00:30.539,0:00:35.670
+you go down they give you a list of
+
+0:00:32.579,0:00:38.780
+lengths you can use to get the api's we
+
+0:00:35.670,0:00:43.350
+want to use this one you want to copy it
+
+0:00:38.780,0:00:44.430
+and open it in a new tab we're going to
+
+0:00:43.350,0:00:46.530
+open it like this
+
+0:00:44.430,0:00:49.590
+and if I call it like this it is going
+
+0:00:46.530,0:00:53.039
+to give me three jokes you see that I am
+
+0:00:49.590,0:00:54.960
+opening this in a browser I am using
+
+0:00:53.039,0:00:58.680
+Firefox right now you can use whatever
+
+0:00:54.960,0:01:01.890
+you want but Firefox by default gives me
+
+0:00:58.680,0:01:04.559
+this good display that helps me see my
+
+0:01:01.890,0:01:07.650
+data very well I'm going to increase the
+
+0:01:04.559,0:01:11.010
+size so that you see what we get okay we
+
+0:01:07.650,0:01:14.070
+get a JSON object really and inside we
+
+0:01:11.010,0:01:17.400
+have a type attribute which is whether
+
+0:01:14.070,0:01:21.420
+we were successful or not and inside we
+
+0:01:17.400,0:01:24.000
+have a value array and it contains JSON
+
+0:01:21.420,0:01:26.810
+objects as well on the zero index we
+
+0:01:24.000,0:01:31.380
+have this object inside we have an ID
+
+0:01:26.810,0:01:33.900
+the joke attribute here any categories
+
+0:01:31.380,0:01:37.439
+already but this array is empty for now
+
+0:01:33.900,0:01:40.350
+let's try to pass in turn to see if this
+
+0:01:37.439,0:01:43.259
+changes anything nothing really the
+
+0:01:40.350,0:01:44.939
+categories array is empty but we are
+
+0:01:43.259,0:01:46.649
+interested in the joke here so what
+
+0:01:44.939,0:01:49.950
+we're going to do we're going to get
+
+0:01:46.649,0:01:52.320
+this data parse it in our two ml code
+
+0:01:49.950,0:01:54.890
+and fetch the data that we have in here
+
+0:01:52.320,0:01:57.750
+and we're going to display this in
+
+0:01:54.890,0:01:59.159
+ListView and when we get the data from
+
+0:01:57.750,0:02:02.790
+the internet we're going to find a way
+
+0:01:59.159,0:02:05.070
+to put that in our model so that it is
+
+0:02:02.790,0:02:07.770
+displayed by the view we're going to go
+
+0:02:05.070,0:02:09.239
+to Qt create or and do that here we are
+
+0:02:07.770,0:02:11.670
+including create or we're going to
+
+0:02:09.239,0:02:12.599
+create our project so two to quick
+
+0:02:11.670,0:02:16.049
+application
+
+0:02:12.599,0:02:18.900
+we call it REST API is demo stir it in
+
+0:02:16.049,0:02:24.870
+the usual location hit next choose your
+
+0:02:18.900,0:02:26.459
+QT version choose your kit and finish we
+
+0:02:24.870,0:02:33.000
+want to change the title here to say
+
+0:02:26.459,0:02:39.989
+rest api's demo and we want to import QT
+
+0:02:33.000,0:02:44.579
+quick controls because we're going to
+
+0:02:39.989,0:02:51.299
+need a button and the spin bugs we also
+
+0:02:44.579,0:02:54.480
+want to take leap layouts we're going to
+
+0:02:51.299,0:03:00.299
+use one for done here we want to put in
+
+0:02:54.480,0:03:05.370
+a column layout it is going to fill the
+
+0:03:00.299,0:03:07.939
+parent we want a spacing of zero inside
+
+0:03:05.370,0:03:12.030
+we're going to have a ListView
+
+0:03:07.939,0:03:15.750
+it's pin box component that is going to
+
+0:03:12.030,0:03:18.780
+allow us to specify the number of jokes
+
+0:03:15.750,0:03:21.209
+that we want and the button that is
+
+0:03:18.780,0:03:24.629
+going to kick off the download of the
+
+0:03:21.209,0:03:29.879
+api's the left review is going to have
+
+0:03:24.629,0:03:34.680
+an IBM let's view ID as usual spin box
+
+0:03:29.879,0:03:36.689
+is going to be spin box ID and pattern
+
+0:03:34.680,0:03:38.609
+is going to be button ID I don't know if
+
+0:03:36.689,0:03:42.000
+you're going to need the ID for the
+
+0:03:38.609,0:03:45.060
+bottom but we put it in anyway we also
+
+0:03:42.000,0:03:49.439
+want a list model for the list of you so
+
+0:03:45.060,0:03:53.669
+we're going to say list model ID M list
+
+0:03:49.439,0:03:55.919
+model and it's going to be just like
+
+0:03:53.669,0:03:59.280
+this we are going to put in the data
+
+0:03:55.919,0:04:02.340
+dynamically as we get the data from the
+
+0:03:59.280,0:04:08.639
+REST API so we can specify a model for
+
+0:04:02.340,0:04:10.829
+our list view here M list model ID like
+
+0:04:08.639,0:04:13.500
+to put ID at the end so we know it's an
+
+0:04:10.829,0:04:15.959
+ID this list view is going to need to
+
+0:04:13.500,0:04:18.750
+delegate we're going to go down below
+
+0:04:15.959,0:04:21.539
+everything and define a component that
+
+0:04:18.750,0:04:24.719
+is going to be our delegate I don't want
+
+0:04:21.539,0:04:26.410
+to type all this so I prepared it before
+
+0:04:24.719,0:04:29.110
+and I'm going to put
+
+0:04:26.410,0:04:31.450
+and try to explain it if you have
+
+0:04:29.110,0:04:34.000
+watched the chapter on model 2
+
+0:04:31.450,0:04:36.550
+architecture this is not going to be new
+
+0:04:34.000,0:04:39.190
+to you so it is a delegate we have the
+
+0:04:36.550,0:04:41.830
+ID inside we have a rectangle with a
+
+0:04:39.190,0:04:44.350
+bunch of properties with hide color and
+
+0:04:41.830,0:04:48.190
+inside we have a text component that is
+
+0:04:44.350,0:04:52.900
+going to display jokes in our case here
+
+0:04:48.190,0:04:55.600
+and we applied some decoration on text
+
+0:04:52.900,0:04:58.420
+component to make it look better we set
+
+0:04:55.600,0:05:00.070
+the font size we centered it in the
+
+0:04:58.420,0:05:04.150
+parent and you see that we applied some
+
+0:05:00.070,0:05:06.550
+margin on the rectangle to make the text
+
+0:05:04.150,0:05:09.370
+have some breathing room we also want to
+
+0:05:06.550,0:05:12.190
+align the text in the rectangle and we
+
+0:05:09.370,0:05:14.650
+are wrapping to not have our text
+
+0:05:12.190,0:05:17.560
+chopped off this is really all we have
+
+0:05:14.650,0:05:21.820
+we can go back to our list view and
+
+0:05:17.560,0:05:26.740
+specify a delegate it's going to be
+
+0:05:21.820,0:05:28.720
+delegate ID I guess yes it is okay now
+
+0:05:26.740,0:05:31.510
+that we have our delegate we want to
+
+0:05:28.720,0:05:35.080
+make the ListView fill the available
+
+0:05:31.510,0:05:41.650
+space we're going to say a layout fill
+
+0:05:35.080,0:05:46.870
+with set this to true layout fill height
+
+0:05:41.650,0:05:50.740
+and set this to true let's take one call
+
+0:05:46.870,0:05:54.190
+on a way and we want the others to fill
+
+0:05:50.740,0:05:59.350
+the available width okay so we say spin
+
+0:05:54.190,0:06:02.970
+box and button kill the width for these
+
+0:05:59.350,0:06:05.680
+pin box we want to specify the value
+
+0:06:02.970,0:06:08.290
+that is going to be and by default we
+
+0:06:05.680,0:06:11.890
+want to have at and inside control a
+
+0:06:08.290,0:06:14.320
+control I to align fence and for the
+
+0:06:11.890,0:06:17.820
+button we want to have the text that is
+
+0:06:14.320,0:06:21.850
+going to be shown let's say fetch and
+
+0:06:17.820,0:06:23.620
+when it is correct we want to know and
+
+0:06:21.850,0:06:26.530
+this is where we are going to kick off
+
+0:06:23.620,0:06:28.240
+the download of our data so we want to
+
+0:06:26.530,0:06:30.840
+put in the function that is going to
+
+0:06:28.240,0:06:35.370
+fetch the jobs we go to the top here and
+
+0:06:30.840,0:06:38.880
+say function fetch
+
+0:06:35.370,0:06:41.100
+jokes it's going to take a you around
+
+0:06:38.880,0:06:44.160
+just like we did in the last lecture
+
+0:06:41.100,0:06:47.130
+really we're going to just download HTTP
+
+0:06:44.160,0:06:49.770
+data we just happen to get JSON data
+
+0:06:47.130,0:06:53.430
+from this request inside we're going to
+
+0:06:49.770,0:06:56.639
+pass in a call back same thing really as
+
+0:06:53.430,0:06:58.740
+the last lecture so inside we are going
+
+0:06:56.639,0:07:01.530
+to do the same thing we did in the last
+
+0:06:58.740,0:07:04.380
+lecture you see we are creating our xml
+
+0:07:01.530,0:07:07.949
+httprequest object we are calling open
+
+0:07:04.380,0:07:12.030
+and send here and when the ready state
+
+0:07:07.949,0:07:14.460
+changes we get that here if we are done
+
+0:07:12.030,0:07:17.820
+we check to see if the status is okay
+
+0:07:14.460,0:07:19.979
+and we console out the resource found we
+
+0:07:17.820,0:07:23.160
+don't want to say in text ID we don't
+
+0:07:19.979,0:07:26.550
+have that here that's that this out and
+
+0:07:23.160,0:07:29.400
+we call back a method with the response
+
+0:07:26.550,0:07:31.320
+text that we got from the internet okay
+
+0:07:29.400,0:07:33.479
+this is really the same thing this part
+
+0:07:31.320,0:07:36.060
+is completely the same as the last
+
+0:07:33.479,0:07:39.030
+lecture we just changed the name of the
+
+0:07:36.060,0:07:41.099
+function here to reflect what we are
+
+0:07:39.030,0:07:44.180
+doing here so when you click the button
+
+0:07:41.099,0:07:49.169
+we want to call the fetch jugs method
+
+0:07:44.180,0:07:52.169
+let's do that okay we want to pass in
+
+0:07:49.169,0:07:55.200
+the URL let's go back to our REST API
+
+0:07:52.169,0:07:59.789
+service here copy the URL that we are
+
+0:07:55.200,0:08:03.120
+passing in here we are going to put the
+
+0:07:59.789,0:08:05.370
+semi URL inside here but this number is
+
+0:08:03.120,0:08:08.150
+going to be dynamic it's not going to be
+
+0:08:05.370,0:08:13.050
+static like this so we're going to put a
+
+0:08:08.150,0:08:16.940
+code here and add that number
+
+0:08:13.050,0:08:21.840
+dynamically so we're going to say plus
+
+0:08:16.940,0:08:24.389
+spinvox ID value you get the value that
+
+0:08:21.840,0:08:27.060
+is in this main box we can change this
+
+0:08:24.389,0:08:30.419
+at runtime by clicking the plus or minus
+
+0:08:27.060,0:08:32.820
+button but when we click the button here
+
+0:08:30.419,0:08:35.219
+we're going to get whatever value is in
+
+0:08:32.820,0:08:37.229
+the spin box I hope this makes sense and
+
+0:08:35.219,0:08:42.870
+after this we want to pass in our
+
+0:08:37.229,0:08:45.320
+callback function function response we
+
+0:08:42.870,0:08:48.030
+want to pass in the parameter list and
+
+0:08:45.320,0:08:51.030
+provide the body for our function
+
+0:08:48.030,0:08:53.640
+here we don't want this parameter list
+
+0:08:51.030,0:08:56.310
+we put that in the response sorry for
+
+0:08:53.640,0:08:58.530
+that we're going to shrink this so that
+
+0:08:56.310,0:09:01.560
+we have more area to see what is going
+
+0:08:58.530,0:09:03.420
+on okay now we have a response here so
+
+0:09:01.560,0:09:06.090
+what we're going to do is console again
+
+0:09:03.420,0:09:09.240
+to see what we are getting actually and
+
+0:09:06.090,0:09:13.980
+know that our logic here is working -
+
+0:09:09.240,0:09:16.650
+then - console.log responds like this
+
+0:09:13.980,0:09:20.730
+let's run the application and see that
+
+0:09:16.650,0:09:22.920
+our logic is working we have our user
+
+0:09:20.730,0:09:24.750
+interface here there is nothing in here
+
+0:09:22.920,0:09:28.800
+because the model is empty
+
+0:09:24.750,0:09:32.970
+if we hit fetch notice what we get okay
+
+0:09:28.800,0:09:34.740
+we say type success value ID job Chuck
+
+0:09:32.970,0:09:37.740
+Norris and things like that
+
+0:09:34.740,0:09:39.930
+okay we have our data we want to parse
+
+0:09:37.740,0:09:43.080
+it actually and put the data in our
+
+0:09:39.930,0:09:46.430
+model we want to check if we got a
+
+0:09:43.080,0:09:52.530
+correct response so we say if response
+
+0:09:46.430,0:09:59.400
+we do parse the data and if we have no
+
+0:09:52.530,0:10:07.080
+response let's say console.log something
+
+0:09:59.400,0:10:09.570
+went wrong this will do now what we want
+
+0:10:07.080,0:10:12.560
+to do is turn the data into a just an
+
+0:10:09.570,0:10:20.670
+object that we can coerce we save our
+
+0:10:12.560,0:10:22.590
+object equals JSON course and we pass in
+
+0:10:20.670,0:10:26.880
+the string that we want to course so we
+
+0:10:22.590,0:10:30.650
+say a response this is what we want now
+
+0:10:26.880,0:10:30.650
+what we want to do is loop
+
+0:10:40.899,0:10:45.800
+okay we want to loop over this to
+
+0:10:43.339,0:10:47.630
+capture our jokes I want to go back to
+
+0:10:45.800,0:10:49.790
+our browser and look at the structure of
+
+0:10:47.630,0:10:52.850
+the response we get because we obviously
+
+0:10:49.790,0:10:55.670
+want to know that notice that our object
+
+0:10:52.850,0:10:59.480
+is going to contain the attribute of
+
+0:10:55.670,0:11:02.000
+time and an array of value okay we want
+
+0:10:59.480,0:11:04.640
+to actually loop over this array and
+
+0:11:02.000,0:11:07.040
+capture these objects so if you don't
+
+0:11:04.640,0:11:09.830
+know how to loop over an array you can
+
+0:11:07.040,0:11:19.010
+actually open your favorite search
+
+0:11:09.830,0:11:22.730
+engine and type in I think it's going to
+
+0:11:19.010,0:11:26.330
+give us the documentation for JavaScript
+
+0:11:22.730,0:11:29.920
+you come here and what you want to look
+
+0:11:26.330,0:11:32.810
+at is wilting objects look at array and
+
+0:11:29.920,0:11:35.300
+there are methods that we can column
+
+0:11:32.810,0:11:38.390
+this array one of those methods is for
+
+0:11:35.300,0:11:41.750
+each and you can use this to loop over
+
+0:11:38.390,0:11:43.760
+an array you can look at this to see how
+
+0:11:41.750,0:11:46.370
+you can loop over your array this is
+
+0:11:43.760,0:11:56.470
+what we are going to use so we are going
+
+0:11:46.370,0:11:56.470
+to go to our code and say object values
+
+0:11:57.190,0:12:04.399
+because if you go back to our response
+
+0:12:00.500,0:12:06.770
+we got we have a value array it's not
+
+0:12:04.399,0:12:11.839
+values its value so you need to check
+
+0:12:06.770,0:12:14.240
+your fans and say for each inside we
+
+0:12:11.839,0:12:17.959
+pass in a callback function just like
+
+0:12:14.240,0:12:20.720
+what we did with our requests it is
+
+0:12:17.959,0:12:23.329
+going to pass a parameter of joke and
+
+0:12:20.720,0:12:26.270
+what we have in here is going to be our
+
+0:12:23.329,0:12:29.120
+joke object we want to go in the body of
+
+0:12:26.270,0:12:32.450
+the function and do something with the
+
+0:12:29.120,0:12:35.000
+joke data that we have we actually want
+
+0:12:32.450,0:12:37.610
+to capture this data and put that in the
+
+0:12:35.000,0:12:40.520
+model okay we want to get the joke out
+
+0:12:37.610,0:12:42.709
+of the joke object what we are going to
+
+0:12:40.520,0:12:44.570
+take here is going to be one of these
+
+0:12:42.709,0:12:44.940
+elements you see we have many elements
+
+0:12:44.570,0:12:46.740
+or there
+
+0:12:44.940,0:12:49.320
+take one element and this is going to be
+
+0:12:46.740,0:12:53.100
+one joke and we want to capture the joke
+
+0:12:49.320,0:12:54.240
+out of that I hope this makes sense so
+
+0:12:53.100,0:12:56.400
+what we're going to do we're going to
+
+0:12:54.240,0:13:01.980
+capture the ID of our model it's called
+
+0:12:56.400,0:13:04.740
+MLS model ID let's say Emily's model ID
+
+0:13:01.980,0:13:07.980
+app and we want to append data and we
+
+0:13:04.740,0:13:14.070
+want to append this as a JSON object so
+
+0:13:07.980,0:13:18.030
+we're going to say joke okay we want to
+
+0:13:14.070,0:13:20.970
+put the color on here and say joke joke
+
+0:13:18.030,0:13:23.490
+joke is our object that we pass in here
+
+0:13:20.970,0:13:25.650
+and we want to take the joke out of it
+
+0:13:23.490,0:13:27.870
+notice that we did everything we have to
+
+0:13:25.650,0:13:33.150
+do but we did it in the wrong place so
+
+0:13:27.870,0:13:36.540
+we should copy this and put that when we
+
+0:13:33.150,0:13:39.270
+get the data sorry for that guys now we
+
+0:13:36.540,0:13:41.730
+can run the application and see that we
+
+0:13:39.270,0:13:49.020
+are getting the data and showing that in
+
+0:13:41.730,0:13:52.380
+our model let's run okay we have our
+
+0:13:49.020,0:13:56.340
+application here let's change to make it
+
+0:13:52.380,0:13:58.860
+fit five jokes fetch and you see that we
+
+0:13:56.340,0:14:01.800
+have our jokes here let's fetch again
+
+0:13:58.860,0:14:04.560
+you see that our list keeps growing you
+
+0:14:01.800,0:14:06.480
+can increase the count fetch again and
+
+0:14:04.560,0:14:08.970
+you see that we are fetching the jokes
+
+0:14:06.480,0:14:11.580
+and showing them in our application here
+
+0:14:08.970,0:14:13.740
+the bulk of this application is really
+
+0:14:11.580,0:14:15.960
+how you parse the data that you get
+
+0:14:13.740,0:14:17.670
+getting the data is part of the last
+
+0:14:15.960,0:14:20.790
+lecture that's where we focused on
+
+0:14:17.670,0:14:23.220
+getting HTML data from the internet now
+
+0:14:20.790,0:14:26.880
+we want to parse the data as a JSON
+
+0:14:23.220,0:14:29.640
+object and get whatever parts of that
+
+0:14:26.880,0:14:32.670
+just an object that we want in this case
+
+0:14:29.640,0:14:35.000
+we want to get joke data and put that in
+
+0:14:32.670,0:14:37.620
+our model using the append method
+
+0:14:35.000,0:14:39.270
+dynamically this is all hard to say in
+
+0:14:37.620,0:14:43.440
+this lecture I hope you know how to work
+
+0:14:39.270,0:14:47.280
+with XML HTTP requests to both download
+
+0:14:43.440,0:14:49.650
+HTTP data and parse that data as suggest
+
+0:14:47.280,0:14:51.300
+an object is necessary in the next
+
+0:14:49.650,0:14:53.760
+chapter we're going to see how you work
+
+0:14:51.300,0:14:56.760
+with storage mechanisms that are
+
+0:14:53.760,0:14:59.000
+provided to you by QT quick I see you
+
+0:14:56.760,0:14:59.000
+there
+

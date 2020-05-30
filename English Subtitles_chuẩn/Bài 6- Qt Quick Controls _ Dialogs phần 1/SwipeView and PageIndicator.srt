@@ -1,0 +1,676 @@
+1
+00:00:00,000 --> 00:00:01,829
+in this lecture we're going to look at
+
+2
+00:00:01,829 --> 00:00:04,609
+swipe view and page indicator controls
+
+3
+00:00:04,609 --> 00:00:07,020
+we're basically going to let the user
+
+4
+00:00:07,020 --> 00:00:09,870
+swipe through pages to select one page
+
+5
+00:00:09,870 --> 00:00:12,570
+or another and on the UI we are going to
+
+6
+00:00:12,570 --> 00:00:14,309
+put the page indicator to let the user
+
+7
+00:00:14,309 --> 00:00:17,220
+know which page they are at and all of
+
+8
+00:00:17,220 --> 00:00:19,289
+the user to navigate quickly to one
+
+9
+00:00:19,289 --> 00:00:22,080
+specific page let's go to Qt creator
+
+10
+00:00:22,080 --> 00:00:24,900
+and play with us okay here we are we are
+
+11
+00:00:24,900 --> 00:00:27,390
+going to create a new project
+
+12
+00:00:27,390 --> 00:00:31,019
+it's a Qt Quick application we call it
+
+13
+00:00:31,019 --> 00:00:34,950
+swipe view page indicator demo hit next
+
+14
+00:00:34,950 --> 00:00:39,420
+choose our QT version and we want to
+
+15
+00:00:39,420 --> 00:00:41,790
+choose the desktop Kit I recommend
+
+16
+00:00:41,790 --> 00:00:44,040
+running this on Android because this
+
+17
+00:00:44,040 --> 00:00:46,379
+project is a little bit fun but if you
+
+18
+00:00:46,379 --> 00:00:47,910
+don't have your virtual device around
+
+19
+00:00:47,910 --> 00:00:50,550
+you can only run on desktop that's fine
+
+20
+00:00:50,550 --> 00:00:55,530
+too hip next we are going to change this
+
+21
+00:00:55,530 --> 00:00:59,910
+title I think this is a good time to go
+
+22
+00:00:59,910 --> 00:01:02,160
+to the documentation and look at these
+
+23
+00:01:02,160 --> 00:01:04,949
+components we're going to type page
+
+24
+00:01:04,949 --> 00:01:09,000
+indicator ok you see that this is a
+
+25
+00:01:09,000 --> 00:01:12,540
+QtQuick control component and it gives
+
+26
+00:01:12,540 --> 00:01:14,520
+you things like that in this case we are
+
+27
+00:01:14,520 --> 00:01:18,150
+at page three and you see that the dot
+
+28
+00:01:18,150 --> 00:01:21,570
+is not like the others it is black while
+
+29
+00:01:21,570 --> 00:01:24,960
+the others are gray this is what this
+
+30
+00:01:24,960 --> 00:01:26,729
+control does and this is how you really
+
+31
+00:01:26,729 --> 00:01:29,070
+use it you can use it with multiple
+
+32
+00:01:29,070 --> 00:01:31,710
+components this is how you define your
+
+33
+00:01:31,710 --> 00:01:33,960
+page indicator we're going to play with
+
+34
+00:01:33,960 --> 00:01:37,590
+us in a minute and if we look at this
+
+35
+00:01:37,590 --> 00:01:42,750
+wipe if you control it also comes from
+
+36
+00:01:42,750 --> 00:01:46,560
+QT quick controls and it allows you to
+
+37
+00:01:46,560 --> 00:01:49,950
+navigate through pages okay so what
+
+38
+00:01:49,950 --> 00:01:52,680
+we're going to do is import QT quick
+
+39
+00:01:52,680 --> 00:01:55,250
+controls
+
+40
+00:01:58,570 --> 00:02:04,189
+they are 2.4 version and down here 
+
+41
+00:02:04,189 --> 00:02:08,590
+we're going to put a SwipeView control
+
+42
+00:02:10,509 --> 00:02:17,300
+want to give it an id and we want it
+
+43
+00:02:17,300 --> 00:02:21,680
+to fill the parent, At the bottom of this
+
+44
+00:02:21,680 --> 00:02:23,660
+right view we want to put a page
+
+45
+00:02:23,660 --> 00:02:27,709
+indicator component you want to give it
+
+46
+00:02:27,709 --> 00:02:33,049
+an ID and we want to stick it to the
+
+47
+00:02:33,049 --> 00:02:35,569
+bottom of the window we're going to say
+
+48
+00:02:35,569 --> 00:02:43,069
+anchor is bottom parent bottom and we
+
+49
+00:02:43,069 --> 00:02:46,670
+are going to put a bunch of properties
+
+50
+00:02:46,670 --> 00:02:49,250
+that are specific to the page indicator
+
+51
+00:02:49,250 --> 00:02:51,260
+the first one is going to be current
+
+52
+00:02:51,260 --> 00:02:54,319
+index we wanted to know which page it is
+
+53
+00:02:54,319 --> 00:02:57,200
+at and the way you do that you give it
+
+54
+00:02:57,200 --> 00:02:59,750
+the current index for the SwipeView
+
+55
+00:02:59,750 --> 00:03:02,390
+would like to say SwipeView current
+
+56
+00:03:02,390 --> 00:03:06,079
+index because this SwideView has this
+
+57
+00:03:06,079 --> 00:03:11,090
+property too if you look there and go up
+
+58
+00:03:11,090 --> 00:03:13,370
+you're going to see that this container
+
+59
+00:03:13,370 --> 00:03:16,579
+inherits container and if we go to the
+
+60
+00:03:16,579 --> 00:03:19,459
+container component we're going to have
+
+61
+00:03:19,459 --> 00:03:22,190
+current index okay so this property is
+
+62
+00:03:22,190 --> 00:03:26,389
+available to us in the swipe view and
+
+63
+00:03:26,389 --> 00:03:29,720
+page indicator components we want these
+
+64
+00:03:29,720 --> 00:03:31,069
+to be interactive
+
+65
+00:03:31,069 --> 00:03:33,019
+we want the user to be able to click it
+
+66
+00:03:33,019 --> 00:03:36,079
+we need to tell it how many pages it is
+
+67
+00:03:36,079 --> 00:03:38,030
+dealing with and the way you do that you
+
+68
+00:03:38,030 --> 00:03:41,060
+use the count property and the count is
+
+69
+00:03:41,060 --> 00:03:43,880
+the same as the count in the swipe view
+
+70
+00:03:43,880 --> 00:03:46,160
+component so we're going to say
+
+71
+00:03:46,160 --> 00:03:50,359
+swipeViewId.count, we also need to swipeView
+
+72
+00:03:50,359 --> 00:03:53,329
+note the current index so
+
+73
+00:03:53,329 --> 00:03:56,150
+we're going to say current index equals
+
+74
+00:03:56,150 --> 00:04:00,230
+page indicator ID current index okay
+
+75
+00:04:00,230 --> 00:04:03,079
+they take data from each other so the
+
+76
+00:04:03,079 --> 00:04:05,209
+result of this is going to be that if
+
+77
+00:04:05,209 --> 00:04:07,759
+the user changes the current page from
+
+78
+00:04:07,759 --> 00:04:08,000
+the SwipeView then
+
+79
+00:04:08,000 --> 00:04:10,910
+the page indicator is going to know
+
+80
+00:04:10,910 --> 00:04:13,310
+and if you change the current page from
+
+81
+00:04:13,310 --> 00:04:15,470
+the page indicator, the SwipeView is
+
+82
+00:04:15,470 --> 00:04:17,899
+going to know, now that we have the swipeView
+
+83
+00:04:17,899 --> 00:04:20,750
+and it's basic properties set up
+
+84
+00:04:20,750 --> 00:04:23,060
+we need to give it the content to show
+
+85
+00:04:23,060 --> 00:04:24,920
+because right now it doesn't have
+
+86
+00:04:24,920 --> 00:04:27,050
+anything to show to make this a little
+
+87
+00:04:27,050 --> 00:04:29,870
+bit fun I am going to put in a image
+
+88
+00:04:29,870 --> 00:04:44,000
+component the source is going to be an
+
+89
+00:04:44,000 --> 00:04:46,250
+image from the internet we're going to
+
+90
+00:04:46,250 --> 00:04:48,230
+start with images from the internet and
+
+91
+00:04:48,230 --> 00:04:50,180
+then we're going to save them locally so
+
+92
+00:04:50,180 --> 00:04:51,890
+that you can play with this a little boy
+
+93
+00:04:51,890 --> 00:04:59,300
+let's copy this a couple of times say
+
+94
+00:04:59,300 --> 00:05:05,150
+image tune here an image 3 I am going to
+
+95
+00:05:05,150 --> 00:05:08,450
+grab a few images from our website I am
+
+96
+00:05:08,450 --> 00:05:11,120
+going to go to the blog and choose this
+
+97
+00:05:11,120 --> 00:05:14,120
+blog entry and I am going to choose
+
+98
+00:05:14,120 --> 00:05:18,680
+these images I can use okay so I am
+
+99
+00:05:18,680 --> 00:05:21,710
+going to select this image and copy
+
+100
+00:05:21,710 --> 00:05:24,680
+image location we're going to come back
+
+101
+00:05:24,680 --> 00:05:27,710
+to QT creator and paste the location of
+
+102
+00:05:27,710 --> 00:05:31,510
+that image these images are numbered in
+
+103
+00:05:31,510 --> 00:05:34,550
+increasing order so I'm going to paste
+
+104
+00:05:34,550 --> 00:05:43,990
+here again and say two and three okay
+
+105
+00:05:43,990 --> 00:05:46,760
+let's run to see what we have we're
+
+106
+00:05:46,760 --> 00:05:48,620
+going to have a swipe view to the top
+
+107
+00:05:48,620 --> 00:05:54,130
+and a page indicator to the bottom okay
+
+108
+00:05:54,130 --> 00:05:56,870
+you see that frame is loading and you
+
+109
+00:05:56,870 --> 00:06:01,610
+have the image here I like this but our
+
+110
+00:06:01,610 --> 00:06:04,820
+page indicator is not centered so we
+
+111
+00:06:04,820 --> 00:06:07,669
+should go back and look at that and see
+
+112
+00:06:07,669 --> 00:06:10,280
+if we did that no we didn't Center it so
+
+113
+00:06:10,280 --> 00:06:12,800
+we're going to say anchor.horizontalCenter
+
+114
+00:06:12,800 --> 00:06:15,680
+is parent.horizontalCenter
+
+115
+00:06:15,680 --> 00:06:24,270
+just like this run
+
+116
+00:06:24,270 --> 00:06:30,270
+again this is better wait a minute the
+
+117
+00:06:30,270 --> 00:06:33,210
+image is going to load it is here we can
+
+118
+00:06:33,210 --> 00:06:36,810
+swipe left and right to go through the
+
+119
+00:06:36,810 --> 00:06:40,380
+images we can also select through the
+
+120
+00:06:40,380 --> 00:06:43,020
+page indicator this is really good I
+
+121
+00:06:43,020 --> 00:06:46,170
+think this is the most fun application
+
+122
+00:06:46,170 --> 00:06:48,300
+we've done in this course and I like it
+
+123
+00:06:48,300 --> 00:06:50,790
+better okay now that we are getting
+
+124
+00:06:50,790 --> 00:06:53,040
+these images from the Internet
+
+125
+00:06:53,040 --> 00:06:55,830
+I want to also do the same but get the
+
+126
+00:06:55,830 --> 00:06:58,980
+images from the resource folder I am
+
+127
+00:06:58,980 --> 00:07:00,960
+going to comment these source property
+
+128
+00:07:00,960 --> 00:07:03,530
+out so that you have the same thing and
+
+129
+00:07:03,530 --> 00:07:06,330
+you can try to load images from
+
+130
+00:07:06,330 --> 00:07:09,450
+elsewhere it is going to work I am going
+
+131
+00:07:09,450 --> 00:07:21,210
+to put another source property here okay
+
+132
+00:07:21,210 --> 00:07:23,640
+the first thing I want to do is to go
+
+133
+00:07:23,640 --> 00:07:25,950
+where my project is stored I'm going to
+
+134
+00:07:25,950 --> 00:07:29,010
+right click on mainl.qml and
+
+135
+00:07:29,010 --> 00:07:32,280
+choose show in Explorer it's going to
+
+136
+00:07:32,280 --> 00:07:35,190
+open where my project is stored I'm
+
+137
+00:07:35,190 --> 00:07:37,350
+going to create the folder inside call
+
+138
+00:07:37,350 --> 00:07:42,150
+it images I am going to open the folder
+
+139
+00:07:42,150 --> 00:07:44,790
+and question the images that I have
+
+140
+00:07:44,790 --> 00:07:47,640
+prepared okay if you look it is the same
+
+141
+00:07:47,640 --> 00:07:51,810
+images that we had from the internet the
+
+142
+00:07:51,810 --> 00:07:54,480
+next thing I want to do is to add a new
+
+143
+00:07:54,480 --> 00:07:56,520
+resource file that is going to contain
+
+144
+00:07:56,520 --> 00:08:00,390
+those images so I'm going to go to the
+
+145
+00:08:00,390 --> 00:08:05,040
+resources folder add new select Qt and
+
+146
+00:08:05,040 --> 00:08:07,410
+choose new resource file we've done this
+
+147
+00:08:07,410 --> 00:08:09,410
+before
+
+148
+00:08:09,410 --> 00:08:14,610
+it next next we don't want any prefix so
+
+149
+00:08:14,610 --> 00:08:17,760
+we're going to deselect prefix check
+
+150
+00:08:17,760 --> 00:08:21,270
+this out and hit enter and we're going
+
+151
+00:08:21,270 --> 00:08:24,750
+to add files to this resource file of
+
+152
+00:08:24,750 --> 00:08:26,640
+ours we're going to select the three
+
+153
+00:08:26,640 --> 00:08:29,040
+images and when we do that
+
+154
+00:08:29,040 --> 00:08:31,410
+they became available here we need to
+
+155
+00:08:31,410 --> 00:08:34,679
+save this come back to our main KML file
+
+156
+00:08:34,679 --> 00:08:40,380
+and we can say images and you see that
+
+157
+00:08:40,380 --> 00:08:48,150
+they appear ok images to 1d second one
+
+158
+00:08:48,150 --> 00:08:58,070
+and here we say images three dot PNG
+
+159
+00:08:58,070 --> 00:09:02,490
+let's run again and now you see that the
+
+160
+00:09:02,490 --> 00:09:06,660
+images are loaded instantly because they
+
+161
+00:09:06,660 --> 00:09:10,830
+are local ok but it looks the same there
+
+162
+00:09:10,830 --> 00:09:13,470
+is no visual difference between loading
+
+163
+00:09:13,470 --> 00:09:16,020
+the image from the internet and loading
+
+164
+00:09:16,020 --> 00:09:18,360
+it locally I just wanted you to see
+
+165
+00:09:18,360 --> 00:09:20,040
+different ways to do the same thing
+
+166
+00:09:20,040 --> 00:09:22,470
+these covers all I had to say in this
+
+167
+00:09:22,470 --> 00:09:24,450
+lecture and the next one we're going to
+
+168
+00:09:24,450 --> 00:09:26,850
+look at the progress bar to the quick
+
+169
+00:09:26,850 --> 00:00:00,000
+control I see you there
+

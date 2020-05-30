@@ -1,0 +1,1194 @@
+1
+00:00:00,000 --> 00:00:02,070
+Tôi muốn chào mừng các bạn một lần nữa và
+
+2
+00:00:02,070 --> 00:00:04,200
+chúc mừng các bạn đã bước lên con đường
+
+3
+00:00:04,200 --> 00:00:06,240
+trở thành một nhà phát triển giao diện 
+
+4
+00:00:06,240 --> 00:00:08,760
+người dùng Qt quick. Qt quick là công nghệ
+
+5
+00:00:08,760 --> 00:00:11,309
+thiết kế giao diện người dùng mới nhất từ 
+
+6
+00:00:11,309 --> 00:00:13,950
+khung chương trình Qt, nó là viết bộ công cụ
+
+7
+00:00:13,950 --> 00:00:17,190
+thiết kế giao diện người dùng. Qt quick sử dụng
+
+8
+00:00:17,190 --> 00:00:20,189
+ngôn ngữ Qml làm trung tâm và Qml là viết tắt của
+
+9
+00:00:20,189 --> 00:00:22,470
+ngôn ngữ đánh dấu Qt.
+
+10
+00:00:22,470 --> 00:00:24,930
+Qt là một khung chương trình các bạn có thể swe dụng để xây dựng
+
+11
+00:00:24,930 --> 00:00:27,480
+các ứng dụng đa nền tảng. Các bạn có thể
+
+12
+00:00:27,480 --> 00:00:29,490
+cơ bản là sử dụng nó để nhắm vào tất cả các
+
+13
+00:00:29,490 --> 00:00:31,740
+hệ điều hành các bạn thấy ở đây:
+
+14
+00:00:31,740 --> 00:00:35,250
+Android, iOS, Linux, Mac OS, Windows, Windows Phone
+
+15
+00:00:35,250 --> 00:00:38,309
+và nhiều hệ điều hành khác. Nó ban đầu được
+
+16
+00:00:38,309 --> 00:00:40,469
+thiết kế bởi 2 anh chàng: Haayard và
+
+17
+00:00:40,469 --> 00:00:43,469
+Eirik và qua thời gian nó được sở hữu
+
+18
+00:00:43,469 --> 00:00:46,320
+bởi những công ty các bạn thấy ở đây. Hiện giờ nó
+
+19
+00:00:46,320 --> 00:00:48,840
+được sở hữu bởi công ty Qt mà chính là một
+
+20
+00:00:48,840 --> 00:00:51,180
+công ty con của Digia, các bạn có thể đọc thêm về
+
+21
+00:00:51,180 --> 00:00:52,739
+các công ty này bằng cách ấn vào các link này.
+
+22
+00:00:52,739 --> 00:00:56,309
+Qt là một khung chương trình rất manh mẽ, các bạn
+
+23
+00:00:56,309 --> 00:00:58,050
+có thể thấy một vài công ty đang
+
+24
+00:00:58,050 --> 00:01:00,719
+sử dụng nó. Từ đây các bạn có thể có ý tưởng 
+
+25
+00:01:00,719 --> 00:01:05,489
+về tính năng của nó. Các bạn có thể thấy có AMD ở đây
+
+26
+00:01:05,489 --> 00:01:09,570
+Microsoft, Samsung, CMS, Volvo và nhiều công ty
+
+27
+00:01:09,570 --> 00:01:11,970
+lớn khác. Dưới này nếu các bạn tiếp tục
+
+28
+00:01:11,970 --> 00:01:13,470
+kéo xuống các bạn sẽ thấy một vài
+
+29
+00:01:13,470 --> 00:01:15,630
+ứng dụng sử dụng Qt.
+
+30
+00:01:15,630 --> 00:01:18,240
+Các bạn có thể thấy vài sản phẩm của Adobe, Google Earth,
+
+31
+00:01:18,240 --> 00:01:21,450
+Krita, nó là một phần mềm chuyên thiết kế đồ họa
+
+32
+00:01:21,450 --> 00:01:24,210
+và vẽ kĩ thuật số, Mathematica,
+
+33
+00:01:24,210 --> 00:01:26,220
+các bạn sẽ nhận ra nó nếu các bạn
+
+34
+00:01:26,220 --> 00:01:28,770
+là nhà khoa học. Tiếp tục kéo xuống các bạn sẽ
+
+35
+00:01:28,770 --> 00:01:31,430
+gặp VirtualBox, một trình giả lập
+
+36
+00:01:31,430 --> 00:01:34,920
+mạnh mẽ. Các bạn có thể thấy VLC
+
+37
+00:01:34,920 --> 00:01:37,140
+trình chạy nhạc. Từ đây tôi mong rằng các bạn có thể
+
+38
+00:01:37,140 --> 00:01:40,020
+thấy sự hữu ích và sức mạnh của Qt.
+
+39
+00:01:40,020 --> 00:01:42,780
+Bây giờ tôi đang nói về Qt vậy
+
+40
+00:01:42,780 --> 00:01:46,200
+Qt quick sẽ nằm ở đâu. Chà Qt quick
+
+41
+00:01:46,200 --> 00:01:48,299
+là một khung chương trình khác
+
+42
+00:01:48,299 --> 00:01:51,270
+mà được tạo ra dựa trên Qt với một mục đích
+
+43
+00:01:51,270 --> 00:01:54,119
+duy nhất là xây dựng giao diện người dùng
+
+44
+00:01:54,119 --> 00:01:56,520
+mà có thể chạy trên các thiết bị cảm ứng,
+
+45
+00:01:56,520 --> 00:02:00,060
+các thiết bị di động và theo đúng nghĩa nó đang được
+
+46
+00:02:00,060 --> 00:02:02,909
+đưa lên cả nền tảng vi tính. Vậy các bạn
+
+47
+00:02:02,909 --> 00:02:04,920
+có thể dùng nó để xay dựng giao diện người dùng mà
+
+48
+00:02:04,920 --> 00:02:07,439
+có thể chạy trên bất cứ thiết bị nào. Và nếu các bạn
+
+49
+00:02:07,439 --> 00:02:08,818
+đọc ở đây các bạn sẽ nhận ra là
+
+50
+00:02:08,818 --> 00:02:11,870
+cú pháp Qml cho phép sử dụng JavaScript
+
+51
+00:02:11,870 --> 00:02:15,379
+để giải quyết logic. Nó thường được dùng cho
+
+52
+00:02:15,379 --> 00:02:17,780
+mục đích này nên các bạn có thể sử dụng JavaScript
+
+53
+00:02:17,780 --> 00:02:20,510
+để thêm các tính năng tương tác vào code
+
+54
+00:02:20,510 --> 00:02:23,750
+Qml của mình. Qml bản thân đã là một ngôn ngữ
+
+55
+00:02:23,750 --> 00:02:26,180
+khai báo. Và bây giờ một vài bạn sẽ 
+
+56
+00:02:26,180 --> 00:02:29,329
+hỏi ngôn ngữ khai báo là gì? Qml
+
+57
+00:02:29,329 --> 00:02:32,000
+là một ngôn ngữ khai báo mà trong đó nó 
+
+58
+00:02:32,000 --> 00:02:34,489
+cho phép bạn quyết định hình thức của 
+
+59
+00:02:34,489 --> 00:02:37,250
+giao diện người dùng mà không cần phải đi theo
+
+60
+00:02:37,250 --> 00:02:40,970
+trình tự logic. Và đây là một link của
+
+61
+00:02:40,970 --> 00:02:42,829
+Wikipedia về lập trình hướng khai báo
+
+62
+00:02:42,829 --> 00:02:44,690
+nếu các bạn muống biết thêm về
+
+63
+00:02:44,690 --> 00:02:46,849
+vấn đề này. Nếu các bạn nhìn ở đây họ nói rằng
+
+64
+00:02:46,849 --> 00:02:49,160
+nhiều ngôn ngữ thực hiện việc lập trình
+
+65
+00:02:49,160 --> 00:02:52,129
+hướng khai báo để có gắng giảm thiểu hay
+
+66
+00:02:52,129 --> 00:02:54,440
+loại bỏ các tác dụng phụ bởi việc mô tả
+
+67
+00:02:54,440 --> 00:02:57,200
+phẩn mềm cần làm gì trong
+
+68
+00:02:57,200 --> 00:03:00,920
+định nghĩa của hệ chuyên gia. Trong Qt quick
+
+69
+00:03:00,920 --> 00:03:03,739
+hệ chuyên gia phải là cách giao diện người dùng 
+
+70
+00:03:03,739 --> 00:03:06,530
+của các bạn có hình thức như thế nào. Vậy chúng ta
+
+71
+00:03:06,530 --> 00:03:08,810
+miêu tả hình thức của giao diện người dùng
+
+72
+00:03:08,810 --> 00:03:11,390
+nhưng chúng ta không muốn đi sâu vào
+
+73
+00:03:11,390 --> 00:03:14,269
+chi tiết về cách mà nó thực hiện
+
+74
+00:03:14,269 --> 00:03:16,760
+Việc thực hiện nó thuộc về
+
+75
+00:03:16,760 --> 00:03:19,400
+Qml engine được gắn kèm với khung
+
+76
+00:03:19,400 --> 00:03:21,530
+chương trình Qt. Đây là điều mà họ
+
+77
+00:03:21,530 --> 00:03:23,299
+đang cố nói ở đây, các bạn có thể đọc thêm
+
+78
+00:03:23,299 --> 00:03:25,849
+về nó nếu các bạn quan tâm. Để giúp cho các bạn
+
+79
+00:03:25,849 --> 00:03:28,519
+hiểu rõ hơn: nếu các bạn đưa một vài
+
+80
+00:03:28,519 --> 00:03:31,340
+nút ra hiển thị trong ngôn ngữ
+
+81
+00:03:31,340 --> 00:03:34,489
+mệnh lệnh mà không phải khai báo, các bạn
+
+82
+00:03:34,489 --> 00:03:38,690
+sẽ kết hợp cấu trúc chảy và logic lập trình. Các bạn thấy
+
+83
+00:03:38,690 --> 00:03:41,629
+ở đây chúng ta đang thêm các tính năng lên bố cục
+
+84
+00:03:41,629 --> 00:03:44,319
+bên trong vòng lặp, là một cấu trúc điều khiển
+
+85
+00:03:44,319 --> 00:03:49,400
+dòng trong C++ hay bất cứ ngôn ngữ giống C nào khác.
+
+86
+00:03:49,400 --> 00:03:52,129
+Nếu chúng ta làm thế bằng cách khai báo như chúng ta làm
+
+87
+00:03:52,129 --> 00:03:54,190
+trong Qml các bạn thấy chúng ta định nghĩa một thành phần.
+
+88
+00:03:54,190 --> 00:03:57,049
+Đây là một bố cục dạng cột, nó sắp xếp
+
+89
+00:03:57,049 --> 00:03:59,690
+mọi thứ từ trên xuống dưới và cho phép chúng ta
+
+90
+00:03:59,690 --> 00:04:02,329
+cứ thêm các thứ chúng ta muốn thêm vào
+
+91
+00:04:02,329 --> 00:04:04,790
+bố cục và thế là xong, chúng ta không cần bận tâm
+
+92
+00:04:04,790 --> 00:04:06,829
+về cách nó được thực hiện
+
+93
+00:04:06,829 --> 00:04:09,799
+đó là việc của Qml engine để
+
+94
+00:04:09,799 --> 00:04:13,010
+đảm bảo nó hoạt động. Ok bây giờ các bạn đã có
+
+95
+00:04:13,010 --> 00:04:15,889
+khái niệm về Qt, các bạn đã khái niệm về Qt quick
+
+96
+00:04:15,889 --> 00:04:18,829
+cách chúng tương tác, cách để các bạn
+
+97
+00:04:18,829 --> 00:04:21,529
+tập hợp chúng. Chủ yếu có
+
+98
+00:04:21,529 --> 00:04:24,200
+hai phương diện khi thiết kế với Qt.
+
+99
+00:04:24,200 --> 00:04:26,450
+Các bạn có thể phát triển ứng dụng của mình
+
+100
+00:04:26,450 --> 00:04:29,360
+hoàn toàn trong C++ và đây là cách chúng ta
+
+101
+00:04:29,360 --> 00:04:31,340
+đều làm trước khi họ phát minh ra
+
+102
+00:04:31,340 --> 00:04:32,360
+Qt quick
+
+103
+00:04:32,360 --> 00:04:34,640
+nhưng vần đề với ứng dụng
+
+104
+00:04:34,640 --> 00:04:37,370
+được phát triển với C++ là chúng không 
+
+105
+00:04:37,370 --> 00:04:39,650
+vận hành tốt khi các bạn chạy chúng trên các thiết bị
+
+106
+00:04:39,650 --> 00:04:42,620
+di động. Thực sự rất khó chịu khi
+
+107
+00:04:42,620 --> 00:04:44,360
+chứng kiến các ứng dụng tiện ích chạy trên
+
+108
+00:04:44,360 --> 00:04:47,960
+Android và iOS. Một mặt khác là sử dụng Qt quick
+
+109
+00:04:47,960 --> 00:04:50,930
+mà được thiết kế để vận hành giao diện
+
+110
+00:04:50,930 --> 00:04:53,780
+người dùng trơn chu và năng động mà có thể chạy trên
+
+111
+00:04:53,780 --> 00:04:57,200
+Android, iOS, giao diện cảm ứng hay các thiết bị
+
+112
+00:04:57,200 --> 00:04:59,750
+nhúng hay thậm chi trên desktop, các bạn có thể dùng nó
+
+113
+00:04:59,750 --> 00:05:01,700
+để lập trình các ứng dụng trên desktop.
+
+114
+00:05:01,700 --> 00:05:03,860
+Chúng ta sẽ nghiên cứu về nó trong khóa học.
+
+115
+00:05:03,860 --> 00:05:07,250
+Qt quick cũng bao gồm 2 phần 
+
+116
+00:05:07,250 --> 00:05:09,950
+đó là Qml, ngôn ngữ 
+
+117
+00:05:09,950 --> 00:05:11,810
+cho phép các bạn thiết kế giao diện
+
+118
+00:05:11,810 --> 00:05:14,240
+người dùng nó cho phép bạn
+
+119
+00:05:14,240 --> 00:05:17,570
+thiết kế các thành phần UI tĩnh và động.
+
+120
+00:05:17,570 --> 00:05:19,010
+Và nếu bạn muốn thêm các chức năng
+
+121
+00:05:19,010 --> 00:05:20,930
+tương tác vào ứng dụng của mình các bạn
+
+122
+00:05:20,930 --> 00:05:23,270
+sẽ sử dụng JavaScript để làm điều đó. Nếu
+
+123
+00:05:23,270 --> 00:05:25,820
+các bạn muốn những thứ như phản hồi lại
+
+124
+00:05:25,820 --> 00:05:28,580
+một cú nhấp lên một nút và những thứ tương tự
+
+125
+00:05:28,580 --> 00:05:30,590
+các bạn sẽ sử dụng JavaScript. Chúng ta
+
+126
+00:05:30,590 --> 00:05:32,570
+sẽ nghiên cứu chính xác cách thức thiết kế sau. Bây giờ
+
+127
+00:05:32,570 --> 00:05:34,730
+tôi muốn hướng sự chú ý của các bạn tới
+
+128
+00:05:34,730 --> 00:05:37,640
+khả năng liên hệ giữa Qt quick
+
+129
+00:05:37,640 --> 00:05:40,070
+và C++. Và hướng lập trình được
+
+130
+00:05:40,070 --> 00:05:42,800
+khuyến nghị là thiết kế bằng Qt để phát triển
+
+131
+00:05:42,800 --> 00:05:46,310
+các ứng dụng đa nền tảng là thiết 
+
+132
+00:05:46,310 --> 00:05:49,250
+giao diện người dùng của bạn trong Qt quick và thực hiện
+
+133
+00:05:49,250 --> 00:05:54,380
+các công việc cần nhiều tài nguyên trong C++. Ví dụ
+135
+00:05:52,790 --> 00:05:56,600
+nếu các bạn làm một ứng dụng xử lý
+
+134
+00:05:54,380 --> 00:05:56,600
+ảnh các bạn có thể thiết kế giao diện
+
+135
+00:05:56,600 --> 00:05:59,330
+người dùng trong Qt quick và lợi dụng
+
+136
+00:05:59,330 --> 00:06:01,400
+tất cả những thứ thú vị mà công nghệ
+
+137
+00:06:01,400 --> 00:06:03,800
+này mang lại. Và các bạn có thể thực
+
+138
+00:06:03,800 --> 00:06:06,020
+hiện các công việc nặng như thực hiện xử lý
+
+139
+00:06:06,020 --> 00:06:09,800
+hình ảnh trên mang C++ và đưa tài nguyên
+
+140
+00:06:09,800 --> 00:06:12,020
+quay lại cho Qt quick để hiển thị.
+
+141
+00:06:12,020 --> 00:06:15,260
+Tôi phải nói trước là kháo học này chủ yếu là về
+
+142
+00:06:15,260 --> 00:06:17,210
+Qt quick, chúng tôi không hướng dẫn các bạn
+
+143
+00:06:17,210 --> 00:06:19,760
+phần giao tiếp giữa C++ và Qt quick
+
+144
+00:06:19,760 --> 00:06:21,890
+bởi vì chúng tôi muốn khóa học này sẽ
+
+145
+00:06:21,890 --> 00:06:24,890
+hữu ích tương đương cho các nhà thiết kế không mấy
+
+146
+00:06:24,890 --> 00:06:29,000
+hứng thú với C++ và các nhà phát triển C++ mà 
+
+147
+00:06:29,000 --> 00:06:31,070
+muốn biết thêm về cách làm việc với Qt quick.
+
+148
+00:06:31,070 --> 00:06:33,710
+Các bạn có lẽ cũng để ý các 
+
+149
+00:06:33,710 --> 00:06:35,870
+thuật ngữ Qml và Qt quick được sử dụng
+
+150
+00:06:35,870 --> 00:06:36,969
+thay thế cho nhau.
+
+151
+00:06:36,969 --> 00:06:39,969
+Qt quick là một công nghệ toàn diện nếu các bạn
+
+152
+00:06:39,969 --> 00:06:41,409
+quan sát vào biểu đồ các bạn sẽ thấy
+
+153
+00:06:41,409 --> 00:06:43,989
+là nó bao gồm cả Qml, nó cũng 
+
+154
+00:06:43,989 --> 00:06:46,869
+bao gồm cả Qml API mà chúng ta sẽ
+
+155
+00:06:46,869 --> 00:06:49,989
+sử dụng trong khóa học này và nó bao gồm cả C++ API
+
+156
+00:06:49,989 --> 00:06:53,619
+mà trong phép các bạn mở rộng Qml với
+
+157
+00:06:53,619 --> 00:06:57,669
+các hình thức mới sử dụng C++. Bản thân Qml bao gồm
+
+158
+00:06:57,669 --> 00:06:59,699
+Qml engine và ngôn ngữ Qml.
+
+159
+00:06:59,699 --> 00:07:05,889
+Việc nhân biết khác biết giữa
+162
+00:07:02,319 --> 00:07:08,559
+Qml và C++ cũng quan trọng giới hạn trong
+
+160
+00:07:05,889 --> 00:07:08,559
+cái gì có sẵn cho bạn, bạn có thể sử dụng
+
+161
+00:07:08,559 --> 00:07:11,860
+những gì. Qml là có tính khai báo chúng ta vừa thấy
+
+162
+00:07:11,860 --> 00:07:14,469
+điều đó ở trong silde trước nhưng nó cũng có
+
+163
+00:07:14,469 --> 00:07:16,209
+tính mệnh lệnh bởi vì các bạn có thể sử dụng
+
+164
+00:07:16,209 --> 00:07:17,919
+JavaScript mà là một ngôn ngữ mệnh lệnh
+
+165
+00:07:17,919 --> 00:07:20,379
+để thêm vào sự tương tác cho
+
+166
+00:07:20,379 --> 00:07:23,049
+các ứng dụng Qml. C++
+
+167
+00:07:23,049 --> 00:07:25,329
+có tính mệnh lệnh các bạn có thể sẽ thấy ít
+
+168
+00:07:25,329 --> 00:07:29,409
+thông tin kiểm soat lỗi hơn trong aml. Và C++ là
+
+169
+00:07:29,409 --> 00:07:31,329
+một quái vật trong việc đưa cho bạn có thông tin
+
+170
+00:07:31,329 --> 00:07:34,479
+hữu ích. Có Api trong hầu hết các module
+
+171
+00:07:34,479 --> 00:07:38,589
+của Qt trong C++ nhưng Qml chỉ bao gồm
+
+172
+00:07:38,589 --> 00:07:41,139
+vài cái module Qt đó. Nó vẫn còn khá mới
+
+173
+00:07:41,139 --> 00:07:44,649
+so với phía C++ trong Qt nhưng nó
+
+174
+00:07:44,649 --> 00:07:46,509
+đang được hoàn thiện dần. Chúng ta cũng cần chú ý là
+
+175
+00:07:46,509 --> 00:07:48,969
+có một vài API chỉ có sẵn trong 
+
+176
+00:07:48,969 --> 00:07:51,879
+Qml ví như Qt quick API
+
+177
+00:07:51,879 --> 00:07:54,610
+nó chỉ có trong Qml.
+
+178
+00:07:54,610 --> 00:07:57,339
+Và đó là một lí do chính các bạn cần
+
+179
+00:07:57,339 --> 00:07:58,899
+học Qml bởi vì các bạn sẽ
+
+180
+00:07:58,899 --> 00:08:01,779
+có nhiều lợi ích từ việc đó. Qml hỗ trợ
+
+181
+00:08:01,779 --> 00:08:04,179
+ràng buộc đặc tính, một tính năng
+
+182
+00:08:04,179 --> 00:08:05,709
+quang trọng cho phép các bạn thực hiện
+
+183
+00:08:05,709 --> 00:08:07,959
+lan chuyền các thay đổi sang một đặc tính khác
+
+184
+00:08:07,959 --> 00:08:10,209
+chúng ta sẽ nghiên cứu về nó và C++
+
+185
+00:08:10,209 --> 00:08:12,819
+không hỗ trọ tính năng đó. Và Qml có thể 
+
+186
+00:08:12,819 --> 00:08:16,089
+được mở rộng từ C++. Okay và ý tưởng 
+
+187
+00:08:16,089 --> 00:08:18,909
+là Qt quick được sử dụng để thiết kế giao diện
+
+188
+00:08:18,909 --> 00:08:22,089
+người dùng và C++ chịu trách nhiệm phần
+
+189
+00:08:22,089 --> 00:08:25,209
+việc nặng, thực hiện các công việc tốn nhiều tài nguyên
+
+190
+00:08:25,209 --> 00:08:27,909
+và chuyển kết quả lại cho Qt quick
+
+191
+00:08:27,909 --> 00:08:30,399
+để hiển thị cho người dùng.
+
+192
+00:08:30,399 --> 00:08:33,129
+Qml có bốn thành phần chính. Nó có 
+
+193
+00:08:33,129 --> 00:08:35,529
+các khối đối tượng xếp chồng lên nhau
+
+194
+00:08:35,529 --> 00:08:37,929
+ở đây Qml thì sẽ trông như thế này. Chúng ta sẽ
+
+195
+00:08:37,929 --> 00:08:38,979
+nghiên cứu cái này
+
+196
+00:08:38,979 --> 00:08:41,349
+nhưng các bạn hãy xem chúng ta 1 đối tượng Item ở đây và
+
+197
+00:08:41,349 --> 00:08:43,299
+những cái ngoặc ở bên trong, chúng ta có 
+
+198
+00:08:43,299 --> 00:08:46,000
+một đối tượng hình chữ nhật khác, bên trong 
+
+199
+00:08:46,000 --> 00:08:47,380
+đối tượng hình chữ nhật chúng ta có
+
+200
+00:08:47,380 --> 00:08:49,600
+một khu vực cho chuột khác. Các bạn thấy là chúng 
+
+201
+00:08:49,600 --> 00:08:52,540
+xếp chống lên nhau, đây chính là ý của chúng. Qml có
+
+202
+00:08:52,540 --> 00:08:55,180
+các đặc tính như XY các bạn thấy ở đây
+
+203
+00:08:55,180 --> 00:08:58,300
+rông, cao, mãu săc ccs tính năng 
+
+204
+00:08:58,300 --> 00:09:01,210
+chúng ta có trong Qml. Các bạn có thể răng buộc các đặc tính với nhau
+
+205
+00:09:01,210 --> 00:09:02,980
+chúng ta sẽ nghiên cứu cách hoạt động của nó trong Qml.
+
+206
+00:09:02,980 --> 00:09:05,920
+Chúng ta cũng có tín hiệu và điều khiển.
+
+207
+00:09:05,920 --> 00:09:08,170
+Nếu các bạn bạn quan sát ở trong vùng con trỏ
+
+208
+00:09:08,170 --> 00:09:11,080
+onClicked ở đây là một tín hiệu và các bạn
+
+209
+00:09:11,080 --> 00:09:14,320
+có thể phát hoặc truyền tín hiệu trong Qt quick.
+
+210
+00:09:14,320 --> 00:09:16,600
+Tôi có nhận được câu hỏi này
+
+211
+00:09:16,600 --> 00:09:19,780
+rát nhiều: Làm sao để biết phiên bản của
+
+212
+00:09:19,780 --> 00:09:22,690
+Qt quick để cài đặt. Phiên bản Qt quick
+
+213
+00:09:22,690 --> 00:09:24,730
+mà bạn sử dụng đi kèm với phiên bản
+
+214
+00:09:24,730 --> 00:09:27,640
+Qt các bạn cài đặt. Vì dụ như hiện nay
+
+215
+00:09:27,640 --> 00:09:30,700
+tôi đang sử dụng Qt 5.11
+
+216
+00:09:30,700 --> 00:09:32,950
+và phiên bản Qt quick mà đi kèm
+
+217
+00:09:32,950 --> 00:09:36,490
+với nó là 2.11. Các module khác nhay mà
+
+218
+00:09:36,490 --> 00:09:38,680
+bạn cài vào Qt quick cũng sẽ có
+
+219
+00:09:38,680 --> 00:09:41,320
+phiên bản đi kèm với chúng. Chúng thường
+
+220
+00:09:41,320 --> 00:09:43,180
+khác với phiên bản Qt quick mà
+
+221
+00:09:43,180 --> 00:09:46,210
+bạn nhnf thấy. Một cách hay để tìm ra
+
+222
+00:09:46,210 --> 00:09:48,340
+phiên bản mà bạn có thể sử dụng là
+
+223
+00:09:48,340 --> 00:09:51,340
+tìm kiếm các phần tử trong tài liệu
+
+224
+00:09:51,340 --> 00:09:53,650
+của Qt và chúng sẽ cho bạn biết
+
+225
+00:09:53,650 --> 00:09:55,450
+các cài đặt mà bạn có thể sử dụng. Ví dụ
+
+226
+00:09:55,450 --> 00:09:57,520
+các bạn có thể tìm tối tượng chữ nhật trong
+
+227
+00:09:57,520 --> 00:10:00,040
+tài liệu Qt và chúng sẽ cho bạn biết
+
+228
+00:10:00,040 --> 00:10:03,490
+bạn cần thêm vào những gì để
+
+229
+00:10:03,490 --> 00:10:05,680
+có thể sử dụng thành phần đó trong
+
+230
+00:10:05,680 --> 00:10:08,230
+phầ ncode Qml. Tôi muốn nói với các bạn về
+
+231
+00:10:08,230 --> 00:10:10,420
+những thứ các bạn cần trong khóa học nầy để có thể
+
+232
+00:10:10,420 --> 00:10:12,940
+đạt được lợi ích từ nó. Đầu tiên các bạn
+
+233
+00:10:12,940 --> 00:10:14,590
+cần có một bộ não cởi mở và sự
+
+234
+00:10:14,590 --> 00:10:16,780
+tự nguyện tiếp thu những thứ chúng ta nói đến
+
+235
+00:10:16,780 --> 00:10:18,610
+trong khóa học này, nó thực sự không
+
+236
+00:10:18,610 --> 00:10:21,220
+khó. Tất cả những gì các bạn phải làm là thực hiện
+
+237
+00:10:21,220 --> 00:10:23,880
+theo các hướng dẫn mà tôi làm và thử
+
+238
+00:10:23,880 --> 00:10:27,010
+đưa vào những thay đổi của chính các bạn và
+
+239
+00:10:27,010 --> 00:10:29,620
+hiểu cách thức hoạt động của chúng. Sẽ rất
+
+240
+00:10:29,620 --> 00:10:31,540
+hữu ích nếu bạn có tầm nhìn
+
+241
+00:10:31,540 --> 00:10:33,730
+thiết kế bởi vì rõ răng chúng ta đang
+
+242
+00:10:33,730 --> 00:10:36,760
+thiết kế những thứ thấy được. Qml là một
+
+243
+00:10:36,760 --> 00:10:38,980
+ngôn ngữ hoàn toàn mới nên bạn không 
+
+244
+00:10:38,980 --> 00:10:41,770
+thực sự cần có những kĩ năng khác
+
+245
+00:10:41,770 --> 00:10:44,710
+nhưng nếu bạn có các kĩ năng lập trình
+
+246
+00:10:44,710 --> 00:10:46,780
+cơ bản nếu các bạn đã làm việc với
+
+247
+00:10:46,780 --> 00:10:50,050
+CSS và HTML. Và nếu các bạn có những 
+
+248
+00:10:50,050 --> 00:10:52,810
+hiểu biết cơ bản về JavaScript nhưng
+
+249
+00:10:52,810 --> 00:10:55,060
+kiểu soát dòng dữ liệu mếu các bạn biết cách
+
+250
+00:10:55,060 --> 00:10:58,300
+làm việc với IFS và ELSES, nếu các bạn biết cách
+
+251
+00:10:58,300 --> 00:11:00,520
+làm việc với vòng lặp, các bạn sẽ làm 
+
+252
+00:11:00,520 --> 00:11:02,500
+khá ổn trong khóa học này. Nhưng
+
+253
+00:11:02,500 --> 00:11:04,270
+điều quan trọng nhất là có một suy nghĩ cởi mở
+
+254
+00:11:04,270 --> 00:11:06,490
+và sẵn sàng dành thời gian để
+
+255
+00:11:06,490 --> 00:11:09,120
+học những gì được đưa ra trong khóa học.
+
+256
+00:11:09,120 --> 00:11:11,740
+Okay cách để dành được tối đa từ 
+
+257
+00:11:11,740 --> 00:11:14,020
+khóa học này, tôi vừa mới nói các bạn chỉ cần
+
+258
+00:11:14,020 --> 00:11:16,300
+làm theo những gì tôi làm và thử
+
+259
+00:11:16,300 --> 00:11:18,400
+tự viết code của mình và quan sát cách
+
+260
+00:11:18,400 --> 00:11:20,980
+mọi thứ vận hành. Khóa học này rất 
+
+261
+00:11:20,980 --> 00:11:23,710
+thực dụng, chúng ta sẽ dành hầu hết 
+
+262
+00:11:23,710 --> 00:11:26,290
+thời gian vào việc viết code và
+
+263
+00:11:26,290 --> 00:11:29,080
+cố làm cho mọi thứ hoạt động. Nếu bạn bị
+
+264
+00:11:29,080 --> 00:11:31,420
+kẹt ở đâu hãy thử so sánh code của bạn với của tôi,
+
+265
+00:11:31,420 --> 00:11:34,270
+các dự án sẽ được đính kèm trong
+
+266
+00:11:34,270 --> 00:11:37,120
+mọi bài giảng và các bạn có thể tải về
+
+267
+00:11:37,120 --> 00:11:39,730
+dễ dàng và xem tôi gõ những gì
+
+268
+00:11:39,730 --> 00:11:42,520
+hoặc là chạy thử dự án của tôi và xem
+
+269
+00:11:42,520 --> 00:11:44,980
+phần này của bạn bị lỗi. Nếu bạn vẫn
+
+270
+00:11:44,980 --> 00:11:47,920
+không thể giải quyết vẫn đề các bạn có thể tra
+
+271
+00:11:47,920 --> 00:11:49,840
+Google với lỗi mà bạn gặp
+
+272
+00:11:49,840 --> 00:11:52,540
+ở IDE. Và việc này thương thì sẽ
+
+273
+00:11:52,540 --> 00:11:54,790
+đãn bạn đến với ai đó đã gặp
+
+274
+00:11:54,790 --> 00:11:56,980
+vấn đề tương tự với bạn và bạn hãy xem
+
+275
+00:11:56,980 --> 00:11:59,440
+cách giải quyết của học và áp dụng nó. Nếu
+
+276
+00:11:59,440 --> 00:12:01,540
+sau đo mà bạn vẫn chưa giải quyết được
+
+277
+00:12:01,540 --> 00:12:03,580
+vấn đề đây là lúc tìm tới cộng đồng.
+
+278
+00:12:03,580 --> 00:12:06,220
+Bản thân Udemy có phần QA
+
+279
+00:12:06,220 --> 00:12:08,800
+chõ mà các bạn có thể đang câu hỏi của mình
+
+280
+00:12:08,800 --> 00:12:11,110
+và tôi sẽ cố trả lời 
+
+281
+00:12:11,110 --> 00:12:13,870
+hết sức có thể. Chúng tôi cũng có 
+
+282
+00:12:13,870 --> 00:12:16,180
+một nhóm trên Facebook để giúp đỡ
+
+283
+00:12:16,180 --> 00:12:18,820
+học viên tìm hiểu về các chủ đề 
+
+284
+00:12:18,820 --> 00:12:21,190
+liên quan đến sự khám phá Qt, chúng tôi nói về C++
+
+285
+00:12:21,190 --> 00:12:24,190
+chúng tôi cũng sẽ nói về Qt quick. Cho nên nếu các bạn
+
+286
+00:12:24,190 --> 00:12:26,140
+có thắc mắc hay bất cứ gì các bạn muốn 
+
+287
+00:12:26,140 --> 00:12:28,390
+chia sẻ thì hãy đến đó và đăng bài
+
+288
+00:12:28,390 --> 00:12:30,700
+và chia sẻ với chúng tôi. Tiện đây đây là 
+
+289
+00:12:30,700 --> 00:12:33,220
+thời điểm hoàn hảo để đăng video lên
+
+290
+00:12:33,220 --> 00:12:35,470
+Facebook và thích trang để các bạn 
+
+291
+00:12:35,470 --> 00:12:38,290
+có các cập nhật từ các học viên khác để thử 
+
+292
+00:12:38,290 --> 00:12:40,780
+và học hỏi từ nhau. Okay đây là 
+
+293
+00:12:40,780 --> 00:12:42,940
+kết thúc phần giới thiệt, trong bài tiếp theo
+
+294
+00:12:42,940 --> 00:12:44,590
+chúng ta sẽ tải và 
+
+295
+00:12:44,590 --> 00:12:47,590
+cài đặt Qt và Qt creator và cài đặt
+
+296
+00:12:47,590 --> 00:12:50,260
+môi trường phát triển cần thiết. Tôi sẽ
+
+297
+00:12:50,260 --> 00:00:00,000
+gặp lại các bạn ở đó.
+

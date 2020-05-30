@@ -1,0 +1,448 @@
+1
+00:00:00,000 --> 00:00:01,709
+In this lecture we are talking about
+
+2
+00:00:01,709 --> 00:00:04,830
+properties and signal handlers. When you
+
+3
+00:00:04,830 --> 00:00:06,960
+define your property in qt quick
+
+4
+00:00:06,960 --> 00:00:10,500
+something important happens behind the
+
+5
+00:00:10,500 --> 00:00:13,080
+scenes and that is for every property
+
+6
+00:00:13,080 --> 00:00:15,780
+that you define. There is a signal that
+
+7
+00:00:15,780 --> 00:00:18,660
+is automatically generated for you and
+
+8
+00:00:18,660 --> 00:00:20,939
+you can use it to track changes to your
+
+9
+00:00:20,939 --> 00:00:23,820
+property. Let's go to QT creator and show
+
+10
+00:00:23,820 --> 00:00:26,250
+you what I mean. I'm going to create a
+
+11
+00:00:26,250 --> 00:00:29,160
+new project we are going to work with. I
+
+12
+00:00:29,160 --> 00:00:31,800
+am going to call it properties and
+
+13
+00:00:31,800 --> 00:00:37,140
+handlers demo and save it in the usual
+
+14
+00:00:37,140 --> 00:00:40,290
+location we're going to hit next it's a qmake
+
+15
+00:00:40,290 --> 00:00:43,620
+project, choose the latters version of
+
+16
+00:00:43,620 --> 00:00:47,270
+qt I have installed, choose our kit and
+
+17
+00:00:47,270 --> 00:00:50,129
+we have a project here. We're going to
+
+18
+00:00:50,129 --> 00:01:00,210
+change the title here. And we are going
+
+19
+00:01:00,210 --> 00:01:04,049
+to put in our usual rectangle, you must
+
+20
+00:01:04,049 --> 00:01:06,110
+be familiar with this already.
+
+21
+00:01:06,110 --> 00:01:13,400
+Let's give it a width of 300, a height of
+
+22
+00:01:13,400 --> 00:01:18,570
+100, a color of let's try dodger blue
+
+23
+00:01:18,570 --> 00:01:21,540
+right now. And by the way if you wonder
+
+24
+00:01:21,540 --> 00:01:24,770
+where I am getting this color names from.
+
+25
+00:01:24,770 --> 00:01:29,180
+Let's go to the help and type in color
+
+26
+00:01:29,180 --> 00:01:36,060
+and you're going to find qml basic type
+
+27
+00:01:36,060 --> 00:01:39,240
+of color, click on that. And they're going
+
+28
+00:01:39,240 --> 00:01:41,220
+to tell you that: this is a type for
+
+29
+00:01:41,220 --> 00:01:45,960
+colors and you can specify your color in
+
+30
+00:01:45,960 --> 00:01:49,020
+a number of ways: by an SVG color name,
+
+31
+00:01:49,020 --> 00:01:51,479
+which is what we are using; you can also
+
+32
+00:01:51,479 --> 00:01:54,540
+use a hexadecimal triplet or quad or
+
+33
+00:01:54,540 --> 00:01:57,210
+using these methods from the qt global
+
+34
+00:01:57,210 --> 00:02:01,170
+object. Click on this SVG color name link
+
+35
+00:02:01,170 --> 00:02:03,570
+and you are going to have a list of all
+
+36
+00:02:03,570 --> 00:02:06,060
+the colors that you can choose. Let's
+
+37
+00:02:06,060 --> 00:02:08,310
+copy one for example. Let's choose
+
+38
+00:02:08,310 --> 00:02:11,640
+this green yellow I like it. Come back to
+
+39
+00:02:11,640 --> 00:02:13,300
+qt creator
+
+40
+00:02:13,300 --> 00:02:17,830
+and change this to green yellow, why not.
+
+41
+00:02:17,830 --> 00:02:19,870
+So inside here we're going to code
+
+42
+00:02:19,870 --> 00:02:23,950
+a mouseArea ,it's going to fill its
+
+43
+00:02:23,950 --> 00:02:29,020
+parent and when it's clicked we want to
+
+44
+00:02:29,020 --> 00:02:30,880
+do something. We're going to leave this
+
+45
+00:02:30,880 --> 00:02:34,390
+empty for now. And we want to Center this
+
+46
+00:02:34,390 --> 00:02:38,490
+retangle too so you're going to say.
+
+47
+00:02:38,670 --> 00:02:41,590
+Right now we just using anchors to have
+
+48
+00:02:41,590 --> 00:02:43,300
+things laid out nicely
+
+49
+00:02:43,300 --> 00:02:44,770
+but we're going to have a chance to talk
+
+50
+00:02:44,770 --> 00:02:49,660
+about them. Let's run the application and
+
+51
+00:02:49,660 --> 00:02:53,080
+we have our yellow green rectangle in
+
+52
+00:02:53,080 --> 00:02:54,910
+the middle you click on it nothing
+
+53
+00:02:54,910 --> 00:02:57,520
+happens. Okay so we are talking about
+
+54
+00:02:57,520 --> 00:03:00,100
+properties and signal handlers, let's
+
+55
+00:03:00,100 --> 00:03:02,680
+define our first property here make it a
+
+56
+00:03:02,680 --> 00:03:06,370
+string type. So it's going to say first
+
+57
+00:03:06,370 --> 00:03:09,940
+name that's what we're going to call
+
+58
+00:03:09,940 --> 00:03:12,610
+this variable and we are going to put in
+
+59
+00:03:12,610 --> 00:03:17,440
+a default value of Daniel for example. We
+
+60
+00:03:17,440 --> 00:03:19,930
+also want to come down here and do
+
+61
+00:03:19,930 --> 00:03:24,239
+something when the component is loaded.
+
+62
+00:03:24,300 --> 00:03:38,560
+We are going to console.log, we're going
+
+63
+00:03:38,560 --> 00:03:41,920
+to output it. Run the application and you
+
+64
+00:03:41,920 --> 00:03:44,410
+can guess what we are going to see. We
+
+65
+00:03:44,410 --> 00:03:46,090
+are going to see the first name is
+
+66
+00:03:46,090 --> 00:03:50,500
+Daniel. So when we define mFirstName
+
+67
+00:03:50,500 --> 00:03:53,800
+here qt automatically generated the
+
+68
+00:03:53,800 --> 00:03:55,660
+signal that is going to be fired
+
+69
+00:03:55,660 --> 00:03:58,660
+whenever this property changes. Okay so
+
+70
+00:03:58,660 --> 00:04:01,540
+for example we can say on, you can see
+
+71
+00:04:01,540 --> 00:04:03,580
+that we have a signal called
+
+72
+00:04:03,580 --> 00:04:07,690
+onMFirstNamechanged. Okay
+
+73
+00:04:07,690 --> 00:04:09,730
+this is the signal that is generated for
+
+74
+00:04:09,730 --> 00:04:11,980
+you automatically. You can notice that it
+
+75
+00:04:11,980 --> 00:04:14,980
+starts with on capitalizes the first
+
+76
+00:04:14,980 --> 00:04:17,560
+letter of your property name and then
+
+77
+00:04:17,560 --> 00:04:21,100
+adds it changed suffix to that. Whenever
+
+78
+00:04:21,100 --> 00:04:22,840
+you want to track your changes you
+
+79
+00:04:22,840 --> 00:04:24,729
+should look for this signal. So we're
+
+80
+00:04:24,729 --> 00:04:26,800
+going to click on it.
+
+81
+00:04:26,800 --> 00:04:29,050
+and we are going to do something when
+
+82
+00:04:29,050 --> 00:04:31,060
+the first name changes we are going to
+
+83
+00:04:31,060 --> 00:04:33,819
+console.log you might have guessed that
+
+84
+00:04:33,819 --> 00:04:39,310
+that's what we are doing for now and say
+
+85
+00:04:39,310 --> 00:04:44,650
+"The first name changed to" the new value
+
+86
+00:04:44,650 --> 00:04:48,479
+which is still stored in mFirstName.
+
+87
+00:04:48,479 --> 00:04:51,759
+Okay so we are going to change the first
+
+88
+00:04:51,759 --> 00:04:54,789
+name when we click on this mouseArea so
+
+89
+00:04:54,789 --> 00:04:58,240
+we're going to say mFirstName =
+
+90
+00:04:58,240 --> 00:05:02,229
+John for example. Let's run the
+
+91
+00:05:02,229 --> 00:05:05,080
+application, okay the first name is
+
+92
+00:05:05,080 --> 00:05:08,379
+Daniel when I click here you see that it
+
+93
+00:05:08,379 --> 00:05:10,509
+says the first name changed to John.
+
+94
+00:05:10,509 --> 00:05:13,120
+Because we are doing that when we click
+
+95
+00:05:13,120 --> 00:05:16,780
+on this mouseArea here. So I hope this
+
+96
+00:05:16,780 --> 00:05:19,210
+drives from the point that whenever you
+
+97
+00:05:19,210 --> 00:05:21,819
+define a property you also have an
+
+98
+00:05:21,819 --> 00:05:24,580
+automatically generated signal that is
+
+99
+00:05:24,580 --> 00:05:26,860
+fired every time something changes about
+
+100
+00:05:26,860 --> 00:05:29,349
+that property of yours. And this works
+
+101
+00:05:29,349 --> 00:05:32,650
+for any property that you may define be
+
+102
+00:05:32,650 --> 00:05:34,870
+a string, a boolean and integer or
+
+103
+00:05:34,870 --> 00:05:37,029
+whatever really. That's what I wanted to
+
+104
+00:05:37,029 --> 00:05:39,130
+make clear in this lecture because many
+
+105
+00:05:39,130 --> 00:05:41,289
+of my students are confused by this
+
+106
+00:05:41,289 --> 00:05:43,870
+thing so I just want to make sure that
+
+107
+00:05:43,870 --> 00:05:47,560
+it is very clear to you. Okay this covers
+
+108
+00:05:47,560 --> 00:05:49,719
+all I had to say in this lecture and the
+
+109
+00:05:49,719 --> 00:05:51,279
+next chapter we are going to keep
+
+110
+00:05:51,279 --> 00:05:54,130
+digging on more concepts to work with QT
+
+111
+00:05:54,130 --> 00:05:57,219
+quick to design fluid user interfaces.
+
+112
+00:05:57,219 --> 00:00:00,000
+I'll see you in the next chapter.
+

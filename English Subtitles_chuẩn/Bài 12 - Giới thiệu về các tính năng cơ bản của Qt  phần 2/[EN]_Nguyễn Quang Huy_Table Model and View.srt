@@ -1,0 +1,151 @@
+WEBVTT
+
+00:02.180 --> 00:08.790
+Table model and view. In this video we will talk about the
+
+00:08.910 --> 00:17.720
+QSqlTableModel which provides a data model for a database table and the QTableView which displays
+
+00:17.810 --> 00:29.310
+items of data in the table. Let's launch qt creator and create a new qt widgets application project.
+
+00:29.450 --> 00:36.000
+And the project file, in case you forgot, it's the .pro file
+
+00:36.470 --> 00:44.870
+And SqlModel into qt configuration field this enables us to use QSqlModel which
+
+00:44.870 --> 00:53.220
+is necessary for QSqlTableModelable . UI first, now if you DoubleClick mainwindow.ui
+
+00:53.220 --> 00:59.720
+and redirect to design mode. You can find the table widget,
+
+01:02.850 --> 01:04.360
+pay attention to the widget.
+
+01:04.500 --> 01:17.060
+It is the table view widgets that says model based instead of the table widget which is item based. So if you
+
+01:17.060 --> 01:24.760
+drag table view widget into the view and change the layout of a central widget so that the Table
+
+01:24.820 --> 01:28.870
+View widgets can make use of all the space.
+
+01:29.090 --> 01:37.900
+Then in the mainwindow.h file declared to private member functions init D-B
+
+01:37.930 --> 01:44.070
+and initModel. They are going to initialize the sql database connection and the
+
+01:44.110 --> 01:46.350
+QSqlTableModel respectively.
+
+01:48.280 --> 01:52.960
+Moreover initModel will return a pointer to QSqlTableModel.
+
+01:57.660 --> 02:05.370
+In the main windows constructor in the cpp file we first call initDb to initialize a database
+
+02:05.370 --> 02:06.650
+connection.
+
+02:06.960 --> 02:11.360
+Then we get QSqlTableModel pointer for initModel.
+
+02:14.950 --> 02:15.850
+To make the tableview
+
+02:15.880 --> 02:17.590
+use this model
+
+02:17.860 --> 02:20.510
+you just need to call set model method,
+
+02:20.560 --> 02:25.890
+simple as that. People will look at initDb definition.
+
+02:25.960 --> 02:33.670
+Make sure you've included QSqlDatabase and QSqlQuery haeder, they are required to
+
+02:33.670 --> 02:43.360
+construct a QSqlDatabase object and execute Sql statements. In initDb we first need make a
+
+02:43.360 --> 02:52.510
+QSqlDatabase object by calling the static member function addDatabase the argument is a
+
+02:52.690 --> 02:53.190
+QSqlDatabase Type.
+
+02:53.230 --> 03:02.720
+Here is SQLite since we don't give a second argument which is the database connection
+
+03:02.750 --> 03:11.620
+and this database connection will be that the default database connection. Then we call setDatabaseName method
+
+03:13.440 --> 03:17.250
+to set SQLite as a in memory database.
+
+03:17.450 --> 03:21.250
+We then open this connection and execute some standards Sql statements.
+
+03:21.250 --> 03:28.300
+Creating a table called price and insert a few rows into the table.
+
+03:28.460 --> 03:35.500
+In another word this function creates a default database connection to add inmemory in SQLite database
+
+03:36.900 --> 03:41.450
+and create a database table that we would use later.
+
+03:41.450 --> 03:46.490
+Now let's move to initModel function, in this function
+
+03:47.000 --> 03:50.580
+we first create a QSqlTableModel instance.
+
+03:50.930 --> 03:59.850
+Here we didn't give the second argument to this constructor which is the type of SqlDatabase therefore the model
+
+03:59.900 --> 04:06.780
+uses the default database connection which we just made in initDb.
+
+04:07.000 --> 04:12.140
+Then we called setTable to set the database table that it will read.
+
+04:12.160 --> 04:19.230
+Then we call select to get all the data from the database table and populate
+
+04:19.430 --> 04:20.850
+them into this model.
+
+04:24.110 --> 04:29.540
+In the end we use setHeaderData method to create table header.
+
+04:29.750 --> 04:32.110
+Then we return this pointer.
+
+04:32.360 --> 04:40.660
+If you look back at the constructor, it should be much clearer that initDb create the underlying
+
+04:40.660 --> 04:44.240
+database, that initModel creat the data model.
+
+04:44.470 --> 04:52.460
+And lastly we use a set model to let tableview widgets access data from the model.
+
+04:52.570 --> 04:59.400
+And lastly we use a set model to let tableview widgets access data from the model.
+
+04:59.640 --> 05:02.080
+Now if you build and run the application
+
+05:11.820 --> 05:16.780
+you can see a table shown in the window, it shows all the data from the database.
+
+05:22.380 --> 05:23.930
+In the next video
+
+05:24.380 --> 05:26.700
+you will learn the list model and view.

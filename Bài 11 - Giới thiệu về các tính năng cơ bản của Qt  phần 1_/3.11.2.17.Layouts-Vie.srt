@@ -1,0 +1,216 @@
+﻿1
+00:00:05,570 --> 00:00:09,420
+Trong bài học này, ta sẽ học về layout manager(quản lý bố cục).
+
+2
+00:00:09,420 --> 00:00:16,800
+Ta đã được dùng QBoxLayout, sau khi giới thiệu qua về nó
+
+3
+00:00:16,800 --> 00:00:18,220
+tôi sẽ giới thiệu nốt hai layout manager(bộ quản lý bố cục) còn lại.
+
+4
+00:00:18,260 --> 00:00:30,100
+QBoxLayout bao gồm hai kiểu bố cục.
+
+5
+00:00:30,370 --> 00:00:41,130
+Bố cục ngang QHBoxLayout. Và bố cục dọc QVBoxLayout. Chúng lần lượt sắp xếp các widget(tiện ích) theo chiều ngang và chiều dọc.
+
+6
+00:00:41,130 --> 00:00:47,430
+Trong bài học trước, ta đã dùng hai bố cục này để xắp xếp các widget(tiện ích) trên màn hình.
+
+7
+00:00:47,460 --> 00:00:57,150
+Còn QGridLayout dùng mảng hai chiều dạng lưới để xắp xếp các widget(tiện ích),
+
+8
+00:00:57,150 --> 00:01:00,970
+nó được chia thành các ô có kích thước bằng nhau.
+
+9
+00:01:01,090 --> 00:01:04,640
+Một widget(tiện ích) có chiếm vị trí của nhiều ô.
+
+10
+00:01:04,740 --> 00:01:09,640
+QGridLayout là bộ quản lý bố cục dễ tùy biến nhất trong các bộ quản lý bố cục có sẵn.
+
+11
+00:01:09,730 --> 00:01:20,130
+Còn có bố cục kiểu QFormLayout, nó là một kiểu bố cục đặc biệt của QGridLayout.
+
+12
+00:01:20,160 --> 00:01:23,180
+Bố cục này chia các phần tử con thành hai hàng.
+
+13
+00:01:23,290 --> 00:01:28,730
+Bên trái thường là các label(nhãn hiệu), còn bên phải là các widget(tiện ích) nhận thông tin người dùng nhập vào.
+
+14
+00:01:28,750 --> 00:01:34,650
+Điểm lợi khi dùng QFormLayout so với QGridLayout là nó sẽ tương thích
+
+15
+00:01:34,710 --> 00:01:35,520
+với quy định xắp xếp bố cục của hệ điều hành đang chạy.
+
+16
+00:01:35,580 --> 00:01:45,260
+Nó có tính năng bọc hàng(row wrap) và có nhiều bộ API hỗ trợ việc thêm các cặp label và field.
+
+17
+00:01:45,260 --> 00:01:51,260
+Ta mở Qt Creator lên để thử các bố cục này.
+
+18
+00:01:51,610 --> 00:01:57,820
+Tạo một project mới hoặc dùng lại project đã làm ở bài học trước cũng được.
+
+19
+00:01:57,850 --> 00:02:00,520
+Ta kéo thả bốn nút bấm này vào màn hình.
+
+20
+00:02:06,820 --> 00:02:16,510
+Ta thử thay đổi bố cục của centralWidget từ dàn hàng ngang sang dàn hàng dọc.
+
+21
+00:02:16,510 --> 00:02:21,690
+Đó là kiểu quản lý bố cục QBoxLayout.
+
+22
+00:02:21,730 --> 00:02:25,660
+Chọn centralWidget và nhấn nút Lay Out in a Grid(xắp xếp kiểu lưới).
+
+23
+00:02:28,560 --> 00:02:30,050
+Không có gì thay đổi cả.
+
+24
+00:02:30,050 --> 00:02:36,650
+Bạn có thể coi bố cục kiểu QBoxLayout là bố cục kiểu QGridLayout
+
+25
+00:02:36,650 --> 00:02:42,900
+nhưng chỉ có một hàng hay một cột.
+
+26
+00:02:43,100 --> 00:02:45,200
+Nếu bạn kéo thả nút này ra chỗ khác
+
+27
+00:02:50,120 --> 00:02:51,560
+thì sẽ thấy sự khác biệt ngay.
+
+28
+00:02:55,350 --> 00:03:01,950
+Khi để mặc đinh, chiều cao của nút là cố định nên bạn không thể cho nó cao bằng hai ô của cột được.
+
+29
+00:03:05,330 --> 00:03:07,920
+Nhưng bạn có thể kéo dài để nó chiếm nhiều ô trong một dòng được.
+
+30
+00:03:11,790 --> 00:03:16,040
+Khi bạn nhấn nút Lay Out in a Form(xắp xếp dạng biểu mẫu).
+
+31
+00:03:20,660 --> 00:03:26,010
+thì các widget(tiện ích) ở cột bên trái sẽ bị thu nhỏ về kích thước tối thiểu của nó.
+
+32
+00:03:26,270 --> 00:03:34,740
+Và các widget(tiện ích) sẽ được dồn hết lên phía trên(top aligned) để nhìn giống một biểu mẫu.
+
+33
+00:03:34,740 --> 00:03:35,130
+Bố cục này hay được dùng để
+
+34
+00:03:35,130 --> 00:03:38,890
+xắp xếp các label(nhãn dán) sang bên trái và các input widget(các tiện ích nhận dữ liệu người dùng) sang bên phải.
+
+35
+00:03:38,910 --> 00:03:40,800
+Ví dụ widget Line Edit này.
+
+36
+00:03:53,140 --> 00:03:59,240
+Bộ API trong C++ sẽ hỗ trợ ta thêm các cặp widget(tiện ích) kiểu như này.
+
+37
+00:03:59,430 --> 00:04:07,130
+Đóng trình chỉnh sửa giao diện và mở trình soạn thảo code lên.
+
+38
+00:04:07,280 --> 00:04:09,420
+Ta học một hàm mẫu(template function) mới
+
+39
+00:04:09,460 --> 00:04:20,350
+đó là qobject_cast(). Nó hoạt động tương tự hàm dynamic_cast() trong C++ và có vài điểm cải tiến.
+
+40
+00:04:20,930 --> 00:04:26,770
+Đối số của hàm mẫu(template function) phải là kiểu con của kiểu đã được định nghĩa trước cho đối số.
+
+41
+00:04:31,540 --> 00:04:34,090
+Nếu không ép được kiểu
+
+42
+00:04:34,120 --> 00:04:35,700
+thì hàm sẽ trả về 0 hoặc null pointer(con trỏ null).
+
+43
+00:04:35,950 --> 00:04:44,280
+Ta cài đặt bố cục của centralWidget là bố cục biểu mẫu(form layout) nên thay vì ép thành kiểu gốc Qlayout,
+
+44
+00:04:44,280 --> 00:04:48,260
+ta có thể ép kiểu cho nó thành QFormLayout
+
+45
+00:04:48,490 --> 00:04:53,980
+Ta sẽ dùng được hàm addRow().
+
+46
+00:04:54,050 --> 00:05:00,640
+Hàm nhận tham số truyền vào là một chuỗi, một pointer kiểu QWidget.
+
+47
+00:05:00,820 --> 00:05:05,280
+Ta tạo một đối tượng widget(tiện ích) và truyền đối tượng đó vào hàm.
+
+48
+00:05:06,520 --> 00:05:09,290
+để thêm vào bố cục(thêm cặp label và field).
+
+49
+00:05:09,570 --> 00:05:12,600
+Giờ build và chạy chương trình.
+
+50
+00:05:25,870 --> 00:05:30,750
+Ngoài các widwget(tiện ích) ta đã thêm bằng trình chỉnh sửa UI
+
+51
+00:05:31,060 --> 00:05:34,140
+bạn sẽ thấy, ta đã thêm được một cặp label(nhãn dán) và line edit(hộp soạn thảo chữ)
+
+52
+00:05:34,390 --> 00:05:35,060
+vào dòng cuối.
+
+53
+00:05:38,510 --> 00:05:42,240
+Trong bài học tiếp theo, bạn sẽ được học cách sử dùng Tab
+
+54
+00:05:42,270 --> 00:05:42,830
+trong Qt.
+

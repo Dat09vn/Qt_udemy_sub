@@ -1,0 +1,2632 @@
+﻿1
+00:00:01,070 --> 00:00:04,220
+[Nhạc]
+
+2
+00:00:04,220 --> 00:00:07,980
+Trong video này, chúng ta sẽ tạo 1 ứng dụng
+
+3
+00:00:07,980 --> 00:00:10,440
+To-do-list (Việc cần làm) đơn giản. Cuối bài hướng dẫn,
+
+4
+00:00:10,440 --> 00:00:12,179
+các bạn sẽ học cách làm thế nào để
+
+5
+00:00:12,179 --> 00:00:14,940
+hiển thị vào sửa đổi mô hình C++ trong QtQuick.
+
+6
+00:00:14,940 --> 00:00:17,130
+Nếu các bạn không quen thuộc với QtQuick
+
+7
+00:00:17,130 --> 00:00:19,020
+hay Qt Creator, chúng tôi khuyến nghị
+
+8
+00:00:19,020 --> 00:00:20,760
+các bạn xem video 'Getting started with Qt: Hello Quick World'
+
+9
+00:00:20,760 --> 00:00:23,430
+(''Bắt đầu với Qt: Xin chào thế giới Quick") trước. Như trong video này,
+
+10
+00:00:23,430 --> 00:00:24,930
+các bạn sẽ thấy quen thuộc
+
+11
+00:00:24,930 --> 00:00:28,289
+với các chủ đề. Bước đầu tiên là
+
+12
+00:00:28,289 --> 00:00:31,619
+khởi động Qt Creator, chúng ta sẽ sử dụng bản
+
+13
+00:00:31,619 --> 00:00:36,000
+4.4.1 cùng với Qt 5.9.2.
+
+14
+00:00:36,000 --> 00:00:39,150
+Hãy tạo ra một dự án mới. Bấm vào nút
+
+15
+00:00:39,150 --> 00:00:41,780
+'New Project' (Dự án mới).
+
+16
+00:00:43,990 --> 00:00:46,090
+Chọn 'Qt Quick Controls 2 Application' (Ứng dụng Qt Quick Controls 2).
+
+17
+00:00:46,090 --> 00:00:48,550
+Và sau đó nhấn vào nút 'Choose'
+
+18
+00:00:48,550 --> 00:00:50,580
+ (Chọn).
+
+19
+00:00:51,730 --> 00:00:54,580
+Cung cấp cho dự án một cái tên, chúng ta sẽ gọi
+
+20
+00:00:54,580 --> 00:00:55,540
+'todo-list'
+
+21
+00:00:55,540 --> 00:00:58,860
+tách ra bởi dấu gạch nối.
+
+22
+00:01:03,630 --> 00:01:05,760
+Chọn địa điểm thích hợp
+
+23
+00:01:05,760 --> 00:01:10,790
+để lưu nó, chúng ta sẽ dùng vị trí mặc định.
+
+24
+00:01:10,980 --> 00:01:14,690
+Nhấn 'Next' (Tiếp theo) khi các bạn xong.
+
+25
+00:01:16,430 --> 00:01:19,940
+Tiếp theo chọn một hệ thống build (xây dựng) ứng dụng, chúng ta sẽ dính
+
+26
+00:01:19,940 --> 00:01:23,590
+với lựa chọn mặc định là qmake.
+
+27
+00:01:24,430 --> 00:01:26,580
+Bây giờ chúng ta sẽ lựa chọn
+
+28
+00:01:26,580 --> 00:01:29,250
+phong cách cho Qt Quick Controls 2,
+
+29
+00:01:29,250 --> 00:01:31,290
+chọn 'Material' và sau đó
+
+30
+00:01:31,290 --> 00:01:33,920
+Nhấn 'Next' (Tiếp theo),
+
+31
+00:01:37,970 --> 00:01:39,950
+Chọn kit mà các bạn muốn dùng
+
+32
+00:01:39,950 --> 00:01:43,120
+và sau đó nhấn 'Next'.
+
+33
+00:01:43,680 --> 00:01:47,750
+Nhấn vào 'Finish' (Kết thúc) để tạo dự án.
+
+34
+00:01:49,049 --> 00:01:52,229
+Dự án của chúng ta đã được tạo ra, và bây giờ
+
+35
+00:01:52,229 --> 00:01:54,679
+chúng ta đang xem main.qml trong trình biên tập.
+
+36
+00:01:54,679 --> 00:01:57,210
+Qt Creator tạo ra 1 số mã mà
+
+37
+00:01:57,210 --> 00:02:00,310
+mà chúng ta không cần, vì vậy, hãy bỏ nó.
+
+38
+00:02:00,310 --> 00:02:03,360
+Đầu tiên bỏ mã trong main.qml,
+
+39
+00:02:03,360 --> 00:02:05,829
+chỉ để lại cửa sổ ứng dụng và
+
+40
+00:02:05,829 --> 00:02:07,539
+các thuộc tính của nó.
+
+41
+00:02:07,539 --> 00:02:11,569
+Sau đó bỏ Page1Form.ui.qml
+
+42
+00:02:11,569 --> 00:02:14,300
+bằng cách click phải vào nó
+
+43
+00:02:14,300 --> 00:02:18,580
+và chọn 'Remove File' (Xoá tập tin).
+
+44
+00:02:19,280 --> 00:02:21,800
+Tích vào ô 'Delete File Permanently' (Xoá vĩnh viễn)
+
+45
+00:02:21,800 --> 00:02:25,730
+và chọn 'OK'. Chúng ta sẽ
+
+46
+00:02:25,730 --> 00:02:27,860
+làm phần lớn việc của chúng ta trên trình biên tập (editor), vì vậy
+
+47
+00:02:27,860 --> 00:02:32,210
+chúng ta không cần tập tin UI QML (Giao diện người dùng QML). Tiếp theo đổi tên
+
+48
+00:02:32,210 --> 00:02:35,180
+Page1.qml thành ToDoList.qml
+
+49
+00:02:35,180 --> 00:02:37,400
+bằng cách click phải vào nó trong dự án
+
+50
+00:02:37,400 --> 00:02:40,900
+và chọn 'Rename' (Đổi tên).
+
+51
+00:02:46,450 --> 00:02:48,510
+Các bạn
+
+52
+00:02:52,980 --> 00:02:55,170
+thêm đonaj mã sau vào
+
+53
+00:02:55,170 --> 00:02:57,470
+cửa sổ ứng dụng.
+
+54
+00:03:00,460 --> 00:03:02,520
+Các bạn
+
+55
+00:03:18,410 --> 00:03:20,780
+sao chép các 'import' ở đầu của main.qml
+
+56
+00:03:20,780 --> 00:03:23,090
+và thay các import
+
+57
+00:03:23,090 --> 00:03:26,530
+ở ToDoList.qml bằng chúng.
+
+58
+00:03:31,340 --> 00:03:33,400
+Các bạn
+
+59
+00:03:36,530 --> 00:03:39,470
+sau đó thay 'item' đầu tiên bằng 1
+
+60
+00:03:39,470 --> 00:03:41,740
+'frame'.
+
+61
+00:03:43,890 --> 00:03:46,050
+'frame' đến từ Qt Quick
+
+62
+00:03:46,050 --> 00:03:48,330
+Controls 2 và cung cấp 1 cách tiện lợi
+
+63
+00:03:48,330 --> 00:03:49,890
+để tạo khung viền cho
+
+64
+00:03:49,890 --> 00:03:54,210
+to-do-list. Hãy chạy ứng dụng, nhấn
+
+65
+00:03:54,210 --> 00:03:57,920
+nút 'Run' hay nhấn Ctrl+R.
+
+66
+00:04:02,880 --> 00:04:04,940
+
+
+67
+00:04:05,770 --> 00:04:08,200
+Chúng ta thấy 1 khung trống ở giữa
+
+68
+00:04:08,200 --> 00:04:10,620
+cửa sổ.
+
+69
+00:04:10,810 --> 00:04:13,180
+Đóng các ứng dụng và quay trở lại
+
+70
+00:04:13,180 --> 00:04:15,540
+Qt Creator.
+
+71
+00:04:16,320 --> 00:04:20,510
+Trong 'frame', thêm 1 ListView.
+
+72
+00:04:24,030 --> 00:04:26,090
+
+
+73
+00:04:28,220 --> 00:04:30,290
+ListView là chế độ hiển thị phổ biến nhất
+
+74
+00:04:30,290 --> 00:04:32,930
+trong Qt Quick. Có 3 điều quan trọng
+
+75
+00:04:32,930 --> 00:04:34,520
+mà ListView cần để
+
+76
+00:04:34,520 --> 00:04:38,630
+hiển thị dữ liệu: kích thước (size), mô hình (model) và
+
+77
+00:04:38,630 --> 00:04:41,180
+đại biểu (delegate). Kích thước (size) xác định khu vực
+
+78
+00:04:41,180 --> 00:04:42,950
+mà trong đó người dùng có thể tương tác với
+
+79
+00:04:42,950 --> 00:04:47,740
+danh sách các mục. Thêm mã sau.
+
+80
+00:04:52,400 --> 00:04:54,460
+Các bạn
+
+81
+00:04:58,250 --> 00:05:00,320
+lưu ý rằng chúng ta dùng implicitWidth
+
+82
+00:05:00,320 --> 00:05:02,360
+và implicitHeight thay vì Width (chiều rộng) và
+
+83
+00:05:02,360 --> 00:05:06,290
+Height (Chiều dài). Kích thước ngầm (Implicit size) là kích thước
+
+84
+00:05:06,290 --> 00:05:10,430
+tự nhiên hay mặc định của 1 mục. Ví dụ
+
+85
+00:05:10,430 --> 00:05:12,830
+thể loại văn bản có kích thước ngầm là
+
+86
+00:05:12,830 --> 00:05:14,450
+chiều rộng và chiều dài của văn bản
+
+87
+00:05:14,450 --> 00:05:17,180
+mà nó chứa. Trong trường hợp chúng ta, 'frame' sẽ
+
+88
+00:05:17,180 --> 00:05:18,800
+tự động điều chỉnh kích thước của nó cho
+
+89
+00:05:18,800 --> 00:05:21,170
+vừa với kích thước của các mục con
+
+90
+00:05:21,170 --> 00:05:24,050
+ngay như khi chỉ có 1 mục. Chúng ta
+
+91
+00:05:24,050 --> 00:05:25,520
+lợi dụng điều đó ở đây để chúng ta không
+
+92
+00:05:25,520 --> 00:05:27,830
+phải xác định kích thước cụ thể của
+
+93
+00:05:27,830 --> 00:05:29,750
+frame (khung).
+
+94
+00:05:29,750 --> 00:05:32,120
+Mô hình ListView là nguồn cho
+
+95
+00:05:32,120 --> 00:05:34,330
+dữ liệu mà nó dùng để tạo danh sách các mục
+
+96
+00:05:34,330 --> 00:05:38,110
+Nhập mã sau.
+
+97
+00:05:43,200 --> 00:05:45,520
+Cái này nói cho ListView rằng mô hình
+
+98
+00:05:45,520 --> 00:05:48,250
+bao gồm 100 số. Chúng ta sử dụng
+
+99
+00:05:48,250 --> 00:05:50,080
+mô hình với các con số bây giờ bởi vì nó
+
+100
+00:05:50,080 --> 00:05:51,790
+cho phép chúng ta thấy cách mà ListView
+
+101
+00:05:51,790 --> 00:05:53,840
+hoạt động.
+
+102
+00:05:53,840 --> 00:05:56,150
+Mô hình có thể là QML List Model
+
+103
+00:05:56,150 --> 00:05:59,630
+Javascript array hay C++ model
+
+104
+00:05:59,630 --> 00:06:02,380
+trong số những thứ khác.
+
+105
+00:06:02,380 --> 00:06:05,270
+Đại biểu (delegate) là 1 thành phần, 1 loại
+
+106
+00:06:05,270 --> 00:06:07,250
+template dùng để mô tả các mục sẽ
+
+107
+00:06:07,250 --> 00:06:10,520
+trông như thế nào. Đối với ứng dụng to-do-list của chúng ta, chúng ta
+
+108
+00:06:10,520 --> 00:06:12,410
+muốn 1 checkbox để đánh dấu các mục khi hoàn thành
+
+109
+00:06:12,410 --> 00:06:16,639
+và1 trường văn bản để nhập mô tả. Chúng ta
+
+110
+00:06:16,639 --> 00:06:17,990
+cũng muốn các mục này được đặt
+
+111
+00:06:17,990 --> 00:06:22,690
+cạnh nhau, vì vậy chúng ta sẽ thêm 1 RowLayout (Bố cục Hàng)
+
+112
+00:06:27,889 --> 00:06:29,949
+
+
+113
+00:06:31,879 --> 00:06:33,930
+RowLayout là từ Qt Quick
+
+114
+00:06:33,930 --> 00:06:36,240
+Layout và hoạt động tương tự như
+
+115
+00:06:36,240 --> 00:06:38,879
+Row trong Qt Quick Trong 1 hàng (RowLayout),
+
+116
+00:06:38,879 --> 00:06:43,370
+thêm 1 CheckBox và 1 TextField.
+
+117
+00:06:48,090 --> 00:06:50,150
+
+
+118
+00:06:56,129 --> 00:06:58,409
+2 loại này các điều khiển từ
+
+119
+00:06:58,409 --> 00:07:01,199
+QtQuick.Controls 2. Chạy ứng dụng
+
+120
+00:07:01,199 --> 00:07:04,999
+để xem nó hoạt động thế nào.
+
+121
+00:07:05,710 --> 00:07:07,810
+Các bạn để ý rằng nội dung
+
+122
+00:07:07,810 --> 00:07:09,520
+được hiển thị bên ngoài frame
+
+123
+00:07:09,520 --> 00:07:12,640
+mà chúng ta thì không muốn điều đó. Chúng ta sẽ
+
+124
+00:07:12,640 --> 00:07:15,760
+sửa nó trong chốc lát. CheckBox và TextField
+
+125
+00:07:15,760 --> 00:07:17,980
+có thể tương tác được, nhưng khi
+
+126
+00:07:17,980 --> 00:07:19,360
+chúng không được nối với mô hình, bất kỳ
+
+127
+00:07:19,360 --> 00:07:21,040
+thay đổi nào cũng sẽ mất khi chúng
+
+128
+00:07:21,040 --> 00:07:23,560
+đi quá xa ngoài ListView. Điều này là
+
+129
+00:07:23,560 --> 00:07:25,120
+bởi vì chế độ hiển thị này sẽ huỷ các delegate
+
+130
+00:07:25,120 --> 00:07:26,710
+mà không nhìn thấy được để tiết kiệm
+
+131
+00:07:26,710 --> 00:07:28,750
+bộ nhớ, cho phép nó hiển thị một lượng
+
+132
+00:07:28,750 --> 00:07:31,290
+lớn dữ liệu một cách hiệu quả.
+
+133
+00:07:31,290 --> 00:07:33,040
+Để thử điều này,
+
+134
+00:07:33,040 --> 00:07:34,660
+đánh dấu checkbox nằm dưới
+
+135
+00:07:34,660 --> 00:07:38,040
+bên trong ListView.
+
+136
+00:07:41,300 --> 00:07:43,220
+Di chuyển xuống dưới, trong chế độ xem này bằng cách búng
+
+137
+00:07:43,220 --> 00:07:46,000
+hay lăn chuột xuống,
+
+138
+00:07:49,520 --> 00:07:53,289
+sau đó lăn trở lên.
+
+139
+00:07:54,360 --> 00:07:56,909
+Checkbox đã không còn được đánh dấu nữa vì nó
+
+140
+00:07:56,909 --> 00:07:59,650
+đã bị phá hủy và tái tạo.
+
+141
+00:07:59,650 --> 00:08:02,320
+Đóng ứng dụng và quay trở lại
+
+142
+00:08:02,320 --> 00:08:07,500
+Qt Creator. Thiết lập 'clip' thành 'true' trong ListView.
+
+143
+00:08:09,120 --> 00:08:11,580
+Điều này sẽ đảm bảo rằng bất kỳ mục danh sách
+
+144
+00:08:11,580 --> 00:08:14,400
+nào ngoài listview đều không được nhìn thấy. Trong
+
+145
+00:08:14,400 --> 00:08:19,040
+delegate, thiết lập 'width' (chiều rộng) là 'parent.width' (chiều rộng đói tượng bố mẹ)
+
+146
+00:08:23,070 --> 00:08:25,290
+Bây giờ các hàng sẽ có cùng chiều rộng với
+
+147
+00:08:25,290 --> 00:08:27,480
+ListView, trong khi trước đó nó chỉ
+
+148
+00:08:27,480 --> 00:08:29,250
+rộng bằng chiều rộng của các đối tượng con cộng lại,
+
+149
+00:08:29,250 --> 00:08:33,390
+tức CheckBox và TextField. Chúng ta muốn
+
+150
+00:08:33,390 --> 00:08:35,429
+TextField (trường văn bản) càng rộng càng tốt
+
+151
+00:08:35,429 --> 00:08:37,080
+để người dùng có nhiểu không gian để
+
+152
+00:08:37,080 --> 00:08:40,200
+viết vào. Thêm thuộc tính đính kèm
+
+153
+00:08:40,200 --> 00:08:43,669
+liên kết với trường văn bản.
+
+154
+00:08:48,620 --> 00:08:50,680
+
+
+155
+00:08:52,089 --> 00:08:54,490
+và thuộc tính đính kèm cung cấp 1 cách để
+
+156
+00:08:54,490 --> 00:08:56,589
+chú thích 1 đối tượng với các thuộc tính thêm vào
+
+157
+00:08:56,589 --> 00:08:58,360
+hay các tín hiệu xử lý mà đối tượng không
+
+158
+00:08:58,360 --> 00:09:01,509
+thể làm. Trong trường hợp này, chúng tôi sử dụng
+
+159
+00:09:01,509 --> 00:09:03,370
+thuộc tính đính kèm loại bố cục để đảm bảo
+
+160
+00:09:03,370 --> 00:09:05,350
+trường văn bản có càng nhiều khoảng rộng
+
+161
+00:09:05,350 --> 00:09:08,069
+càng tốt.
+
+162
+00:09:08,260 --> 00:09:12,660
+Chạy ứng dụng để xem các thay đổi.
+
+163
+00:09:14,240 --> 00:09:16,339
+Lưu ý rằng các mục trong ListView không còn
+
+164
+00:09:16,339 --> 00:09:17,929
+nhìn thấy bên ngoài ListView và
+
+165
+00:09:17,929 --> 00:09:21,309
+trường văn bản thì rộng hơn.
+
+166
+00:09:21,700 --> 00:09:24,370
+Bây giờ chúng ta sẽ tìm hiểu về mô hình. Đóng
+
+167
+00:09:24,370 --> 00:09:27,840
+ứng dụng và trở lại Qt Creator.
+
+168
+00:09:27,840 --> 00:09:30,130
+Thay mô hình chứ số với 1
+
+169
+00:09:30,130 --> 00:09:32,430
+ToDoModel.
+
+170
+00:09:36,300 --> 00:09:39,300
+Bên trong nó, thêm đối tượng phần tử vào danh sách
+
+171
+00:09:39,300 --> 00:09:41,990
+bằng đoạn mã sau.
+
+172
+00:09:45,900 --> 00:09:47,960
+
+
+173
+00:09:57,139 --> 00:09:59,299
+Mỗi thuộc tính trong danh sách phần tử được
+
+174
+00:09:59,299 --> 00:10:01,399
+gọi là 1 'role' (vai trò). Nếu các bạn quen thuộc với
+
+175
+00:10:01,399 --> 00:10:03,769
+C++ model (mô hình) và queue (xếp hàng), nó cùng
+
+176
+00:10:03,769 --> 00:10:04,459
+1 khái niệm.
+
+177
+00:10:04,459 --> 00:10:07,069
+Vai trò 'done' (hoàn thành) sẽ có giá trị boolean và
+
+178
+00:10:07,069 --> 00:10:10,429
+vai trò 'description' (mô tả) sẽ có giá trị chuỗi. Copy
+
+179
+00:10:10,429 --> 00:10:12,439
+và dán danh sách phần tử và thiết lập
+
+180
+00:10:12,439 --> 00:10:15,819
+các thuộc tính các giá trị sau.
+
+181
+00:10:20,889 --> 00:10:22,949
+
+
+182
+00:10:35,550 --> 00:10:37,560
+Nếu chúng ta chaỵ ứng dụng bây giờ,
+
+183
+00:10:37,560 --> 00:10:40,140
+chúng ta sẽ có 2 phần tử trong danh sách nhưng chúng sẽ không
+
+184
+00:10:40,140 --> 00:10:41,910
+hiển thị dữ liệu từ mô hình của chúng ta bởi vì
+
+185
+00:10:41,910 --> 00:10:44,700
+chúng chưa được kết nối với nhau. Trong
+
+186
+00:10:44,700 --> 00:10:46,620
+CheckBox, thiết lập 'checked' (đã đánh dấu)
+
+187
+00:10:46,620 --> 00:10:50,120
+thuộc tính thành 'model.done'.
+
+188
+00:10:55,320 --> 00:10:57,380
+
+
+189
+00:11:00,180 --> 00:11:02,279
+Các vai trò trong mô hình thì
+
+190
+00:11:02,279 --> 00:11:04,830
+sẵn sàng cho delegate thông qua mô hình. Chúng ta
+
+191
+00:11:04,830 --> 00:11:06,450
+cũng có thể tham chiếu các vai trò trực tiếp
+
+192
+00:11:06,450 --> 00:11:08,130
+không cần thông qua mô hình.
+
+193
+00:11:08,130 --> 00:11:11,040
+Tuy nhiên, làm như thế sẽ dẫn đến
+
+194
+00:11:11,040 --> 00:11:12,930
+đoạn mã sẽ dễ bị đọc
+
+195
+00:11:12,930 --> 00:11:15,390
+và hiểu được khi mà chúng có thể ngay lập tức
+
+196
+00:11:15,390 --> 00:11:18,240
+nhìn ra thuộc tính từ đâu đến. Trong trường văn bản
+
+197
+00:11:18,240 --> 00:11:20,760
+thiết lập thuộc tính 'text' thành
+
+198
+00:11:20,760 --> 00:11:23,240
+model.description.
+
+199
+00:11:28,470 --> 00:11:30,530
+
+
+200
+00:11:35,190 --> 00:11:37,800
+Bây giờ tôi sẽ chạy ứng dụng
+
+201
+00:11:37,800 --> 00:11:39,540
+Hộp checkbox và trường văn bản đang hiển thị
+
+202
+00:11:39,540 --> 00:11:42,440
+dữ liệu từ mô hình.
+
+203
+00:11:42,470 --> 00:11:44,960
+Tuy nhiên, bất cứ thay đổi nào đối với
+
+204
+00:11:44,960 --> 00:11:47,390
+các giá trị điều khiển sẽ không được lưu vào trong mô hình. Để
+
+205
+00:11:47,390 --> 00:11:49,010
+làm điều đó, chúng ta cần đáp lại
+
+206
+00:11:49,010 --> 00:11:50,990
+tương tác người dùng và thiết lập giá trị
+
+207
+00:11:50,990 --> 00:11:53,780
+của mô hình cho phù hợp. Đóng
+
+208
+00:11:53,780 --> 00:11:57,310
+ứng dụng và trở lại Qt Creator.
+
+209
+00:11:57,860 --> 00:12:02,350
+Trong CheckBox, thêm vào đoạn mã sau.
+
+210
+00:12:06,320 --> 00:12:08,380
+
+
+211
+00:12:11,620 --> 00:12:13,840
+Bây giờ, bất cứ khi nào checkbox được nhấn
+
+212
+00:12:13,840 --> 00:12:16,390
+bởi chuột hay chạm hay bàn phím, giá trị mới
+
+213
+00:12:16,390 --> 00:12:18,790
+sẽ được lưu vào mô hình. Trong
+
+214
+00:12:18,790 --> 00:12:22,110
+TextField, thêm vào đoạn mã này.
+
+215
+00:12:26,980 --> 00:12:29,040
+
+
+216
+00:12:33,059 --> 00:12:35,579
+Cái này cũng tương tự
+
+217
+00:12:35,579 --> 00:12:36,959
+với 1 điểm khác biệt là tín hiệu
+
+218
+00:12:36,959 --> 00:12:38,369
+đã hoàn thành chỉnh sửa (onEditingFinished) được phát ra
+
+219
+00:12:38,369 --> 00:12:40,109
+bất cứ khi nào phím Enter được nhấn hoặc
+
+220
+00:12:40,109 --> 00:12:43,709
+trường văn bản không được dùng. To-do-list của chúng ta
+
+221
+00:12:43,709 --> 00:12:45,929
+bây giờ có thể chỉnh sửa nhưng vẫn
+
+222
+00:12:45,929 --> 00:12:48,989
+dùng QML list model. Cho một số
+
+223
+00:12:48,989 --> 00:12:51,029
+trường hợp sử dụng, model đơn giản như này thì
+
+224
+00:12:51,029 --> 00:12:53,219
+đủ, đặc biệt nếu dữ liệu không thể
+
+225
+00:12:53,219 --> 00:12:55,199
+được chỉnh lại hoặc không cần lưu lại
+
+226
+00:12:55,199 --> 00:12:58,079
+trên đĩa để liên tục. Trong
+
+227
+00:12:58,079 --> 00:13:00,449
+đa số trường hợp, logic của ứng dụng
+
+228
+00:13:00,449 --> 00:13:03,599
+trong C++ và do đó
+
+229
+00:13:03,599 --> 00:13:05,549
+model C++ là cần thiết để bắt đầu
+
+230
+00:13:05,549 --> 00:13:10,829
+với QML. Hãy thêm vào 1 model C++. Mở menu 'File' (Tập tin)
+
+231
+00:13:10,829 --> 00:13:14,959
+và chọn 'New File or Project' (Tập hay Dự án mới).
+
+232
+00:13:18,380 --> 00:13:20,790
+Dưới mục 'Files and Classes' (Các tập tin và các lớp),
+
+233
+00:13:20,790 --> 00:13:23,899
+chọn Qt
+
+234
+00:13:25,680 --> 00:13:28,290
+sau đó chọn 'Qt Item Model' (Mô hình Mục Qt) từ
+
+235
+00:13:28,290 --> 00:13:30,460
+to-do-list.
+
+236
+00:13:30,460 --> 00:13:33,330
+Nhấn nút 'Choose' (Chọn),
+
+237
+00:13:33,330 --> 00:13:35,190
+bây giờ chúng ta đang thấy trình thuật sĩ (wizard)
+
+238
+00:13:35,190 --> 00:13:38,070
+tạo bộ khung cho mô hình của chúng ta. Ở phần
+
+239
+00:13:38,070 --> 00:13:42,050
+'Class Name' (Tên lớp), gõ ToDoModel.
+
+240
+00:13:47,170 --> 00:13:50,150
+Trong phần Base Class (Lớp cơ sở), chọn
+
+241
+00:13:50,150 --> 00:13:52,630
+'QtAbtractListModel'.
+
+242
+00:13:54,630 --> 00:13:57,130
+Đây là 1 lớp thuận tiện
+
+243
+00:13:57,130 --> 00:13:59,290
+để triển khai list model và nó có nguồn gốc từ
+
+244
+00:13:59,290 --> 00:14:01,360
+QtAbstractItemModel vốn là lớp cơ sở
+
+245
+00:14:01,360 --> 00:14:03,390
+của tất cả mô hình trong Qt.
+
+246
+00:14:03,390 --> 00:14:07,300
+Bỏ chọn 'Customize header row' (Tuỳ chỉnh tiêu để bây giờ) và chọn
+
+247
+00:14:07,300 --> 00:14:10,340
+'Items are editable' (Các mục có thể chỉnh sửa).
+
+248
+00:14:10,340 --> 00:14:12,830
+Tên tập tin tiêu đề và tập tin nguồn được
+
+249
+00:14:12,830 --> 00:14:15,080
+tự động đề nghị cho chúng ta dựa trên
+
+250
+00:14:15,080 --> 00:14:19,900
+tên lớp chúng ta nhập vào. Nhấn 'Next' (Tiếp theo),
+
+251
+00:14:20,810 --> 00:14:23,960
+và sau đó hoàn thành.
+
+252
+00:14:23,960 --> 00:14:26,620
+Chúng ta đang nhìn vào todomodel.cpp
+
+253
+00:14:26,620 --> 00:14:28,910
+Để bắt đầu, chúng ta sẽ triển khai
+
+254
+00:14:28,910 --> 00:14:30,830
+chức năng vừa đủ để chúng ta có thể
+
+255
+00:14:30,830 --> 00:14:33,380
+thấy được model C++ trong Qt ListView của chúng ta.
+
+256
+00:14:33,380 --> 00:14:35,660
+Điều đầu tiên chúng ta cần làm
+
+257
+00:14:35,660 --> 00:14:37,700
+là định nghĩa vai trò mà chúng ta dùng trong
+
+258
+00:14:37,700 --> 00:14:42,529
+QML, vai trò 'done' và vai trò 'description'. Chuyển qua
+
+259
+00:14:42,529 --> 00:14:44,390
+tập tin tiêu đề bằng cách nhấn F4 hay
+
+260
+00:14:44,390 --> 00:14:46,339
+nhấp phải vào bất cứ chỗ nào trong tập tin và
+
+261
+00:14:46,339 --> 00:14:48,680
+chọn 'Switch Header/Source' (Đổi sang Tiêu đề/Nguồn) từ
+
+262
+00:14:48,680 --> 00:14:51,100
+trình đơn ngữ cảnh.
+
+263
+00:14:52,080 --> 00:14:54,390
+Thêm enum sau ở dưới
+
+264
+00:14:54,390 --> 00:14:56,900
+phương thức khởi tạo (constructor).
+
+265
+00:15:01,059 --> 00:15:03,119
+
+
+266
+00:15:19,980 --> 00:15:22,209
+Thêm đoạn mã sau ở dưới
+
+267
+00:15:22,209 --> 00:15:24,660
+hàm cuối cùng.
+
+268
+00:15:28,089 --> 00:15:30,149
+
+
+269
+00:15:50,070 --> 00:15:52,000
+Nhấp phải chọn tên hàm
+
+270
+00:15:52,000 --> 00:15:55,060
+và chọn 'Refactor', 'Add definition in
+
+271
+00:15:55,060 --> 00:15:58,260
+todomodel.cpp'.
+
+272
+00:16:03,279 --> 00:16:05,749
+Bây giờ chúng ta đã được đưa tới vị trí định nghĩa
+
+273
+00:16:05,749 --> 00:16:08,270
+của hàm tại tập tin nguồn.
+
+274
+00:16:08,270 --> 00:16:11,590
+Thêm mã sau.
+
+275
+00:16:15,279 --> 00:16:17,339
+
+
+276
+00:16:55,190 --> 00:16:57,230
+Trong hàm 'rowCount', thêm
+
+277
+00:16:57,230 --> 00:17:01,450
+1 dòng 'return' để trả lại 100.
+
+278
+00:17:07,500 --> 00:17:11,369
+Điều này sẽ cho chúng ta 100 dòng trong mô hình.
+
+279
+00:17:11,369 --> 00:17:14,490
+Trong hàm 'data', thêm đoạn mã này sau
+
+280
+00:17:14,490 --> 00:17:17,300
+comment 'FIXME'.
+
+281
+00:17:21,829 --> 00:17:23,890
+
+
+282
+00:18:05,020 --> 00:18:07,480
+Bây giờ, mô hình sẽ trả lại
+
+283
+00:18:07,480 --> 00:18:09,460
+chỗ cho dữ liệu nhưng chúng ta vẫn cần khiến QML
+
+284
+00:18:09,460 --> 00:18:15,480
+nhận ra nó và dùng nó. Mở main.cpp.
+
+285
+00:18:17,250 --> 00:18:20,340
+Thêm 1 'include' cho 'todomodel.h' sau
+
+286
+00:18:20,340 --> 00:18:23,030
+các Qt include.
+
+287
+00:18:27,500 --> 00:18:29,560
+
+
+288
+00:18:31,100 --> 00:18:33,679
+Sau đó, dưới dòng mà QGuiApplication
+
+289
+00:18:33,679 --> 00:18:38,169
+được khởi tạo, thêm dòng mã này
+
+290
+00:18:42,410 --> 00:18:44,470
+
+
+291
+00:19:09,240 --> 00:19:12,060
+Hàm này đăng ký model C++
+
+292
+00:19:12,060 --> 00:19:14,240
+với hệ thống QML.
+
+293
+00:19:14,240 --> 00:19:17,940
+Đến ToDoList.qml,
+
+294
+00:19:17,940 --> 00:19:20,549
+và thêm 1 'import' để chúng ta có thể dùng được thư viện 'ToDo'
+
+295
+00:19:20,549 --> 00:19:23,330
+ở dưới các Qt import.
+
+296
+00:19:28,020 --> 00:19:30,080
+
+
+297
+00:19:32,100 --> 00:19:36,450
+Thay ListModel bằng ToDoModel
+
+298
+00:19:39,549 --> 00:19:41,610
+
+
+299
+00:19:44,460 --> 00:19:47,190
+Mở menu 'Build' (Xây dựng) và chọn 'Run qmake' (Chạy qmake).
+
+300
+00:19:47,190 --> 00:19:49,340
+
+
+301
+00:19:53,380 --> 00:19:56,269
+Điều này để đảm bảo rằng MOC, Meta-Object Compiler
+
+302
+00:19:56,269 --> 00:19:59,360
+trình biên dịch Meta Object, được khởi chạy. Bất cứ lớp
+
+303
+00:19:59,360 --> 00:20:00,919
+nào dùng Qt object macro được thêm vào dự án
+
+304
+00:20:00,919 --> 00:20:04,100
+đều yêu cầu qmake để chạy. Bây giờ chạy
+
+305
+00:20:04,100 --> 00:20:06,440
+ứng dụng, mà cũng sẽ gọi nó
+
+306
+00:20:06,440 --> 00:20:08,830
+để xây dựng.
+
+307
+00:20:11,690 --> 00:20:14,830
+Một mô hình dữ liệu từ C++ được hiển thị.
+
+308
+00:20:14,830 --> 00:20:16,940
+Lưu ý là không thể thay đổi
+
+309
+00:20:16,940 --> 00:20:20,289
+giá trị của các điều khiển.
+
+310
+00:20:21,960 --> 00:20:24,880
+Để các điều khiển có thể chỉnh sửa, chúng ta phải
+
+311
+00:20:24,880 --> 00:20:26,830
+thực hiện triển khai hàm 'data'
+
+312
+00:20:26,830 --> 00:20:28,870
+đồng thời nó yêu cầu chúng ta phải lưu điểm khởi đầu
+
+313
+00:20:28,870 --> 00:20:31,600
+của To-do-list ở nơi nào đó. Chúng ta có thể lưu dữ liệu
+
+314
+00:20:31,600 --> 00:20:33,550
+trong mô hình nhưng trong thế giới thực
+
+315
+00:20:33,550 --> 00:20:35,290
+dữ liệu được lưu trữ ở
+
+316
+00:20:35,290 --> 00:20:39,040
+backend, tách biệt với mô hình. Mở
+
+317
+00:20:39,040 --> 00:20:42,430
+menu 'File', chọn ' New file or
+
+318
+00:20:42,430 --> 00:20:43,960
+project'.
+
+319
+00:20:43,960 --> 00:20:46,150
+Dưới mục 'Files and Classes' (Các tập tin và các lớp),
+
+320
+00:20:46,150 --> 00:20:52,110
+chọn 'C++', sau đó 'C++ Class' (Lớp C++).
+
+321
+00:20:52,370 --> 00:20:54,590
+Chúng ta đã ở trình thuật sĩ C++ Class
+
+322
+00:20:54,590 --> 00:20:57,950
+gõ ToDoList vào mục 'Class
+
+323
+00:20:57,950 --> 00:21:00,490
+name' (Tên lớp).
+
+324
+00:21:02,630 --> 00:21:05,600
+Trong trình đơn Base Class
+
+325
+00:21:05,600 --> 00:21:08,020
+chọn QObject,
+
+326
+00:21:09,389 --> 00:21:12,600
+nhấn 'Next' (Tiếp theo),
+
+327
+00:21:12,600 --> 00:21:15,600
+và sau đó nhấn 'Finish' (Hoàn thành). Chúng ta đang
+
+328
+00:21:15,600 --> 00:21:18,660
+nhìn todolist.cpp, chuyển sang
+
+329
+00:21:18,660 --> 00:21:21,020
+tập tin tiêu đề
+
+330
+00:21:23,180 --> 00:21:25,670
+Có 3 hoạt động mà lớp todolist
+
+331
+00:21:25,670 --> 00:21:27,610
+cần hỗ trợ cho mục todo:
+
+332
+00:21:27,610 --> 00:21:30,320
+thêm mục mới, thay đổi mục hiện có
+
+333
+00:21:30,320 --> 00:21:34,670
+và xoá mục. Mỗi mục todo
+
+334
+00:21:34,670 --> 00:21:36,170
+có 2 thuộc tính mà chúng ta đã định nghĩa như
+
+335
+00:21:36,170 --> 00:21:40,220
+vai trò lúc đầu, 'done' và description'. Hãy
+
+336
+00:21:40,220 --> 00:21:41,900
+làm nó, struct ToDoItem, để
+
+337
+00:21:41,900 --> 00:21:45,410
+dễ dàng hơn trong quản lý các mục. Thêm
+
+338
+00:21:45,410 --> 00:21:47,120
+đoạn mã sau ở phía trên
+
+339
+00:21:47,120 --> 00:21:49,780
+public class ToDoList.
+
+340
+00:21:54,650 --> 00:21:56,710
+
+
+341
+00:22:13,680 --> 00:22:16,300
+'include' Qvector
+
+342
+00:22:16,300 --> 00:22:18,630
+sau 'include' QObject.
+
+343
+00:22:22,070 --> 00:22:24,130
+
+
+344
+00:22:25,539 --> 00:22:28,779
+Thêm 1 'private' QVector ToDoItem
+
+345
+00:22:28,779 --> 00:22:32,220
+như 1 biến thành viên của ToDoList.
+
+346
+00:22:36,679 --> 00:22:38,740
+
+
+347
+00:22:46,460 --> 00:22:49,080
+Tiếp theo chúng ta sẽ thêm 3 hàm
+
+348
+00:22:49,080 --> 00:22:50,700
+để hỗ trợ những hoạt động chúng ta đã đề cập
+
+349
+00:22:50,700 --> 00:22:54,090
+trước đó. Sau trình khởi tạo và trước
+
+350
+00:22:54,090 --> 00:22:56,520
+từ khoá tín hiệu, thêm
+
+351
+00:22:56,520 --> 00:22:58,880
+đoạn mã sau.
+
+352
+00:23:03,690 --> 00:23:05,750
+
+
+353
+00:23:13,960 --> 00:23:16,299
+Điều này sẽ cho phép mô hình thay đổi
+
+354
+00:23:16,299 --> 00:23:20,080
+dữ liệu to-do-list, tiếp theo thêm 2 hàm
+
+355
+00:23:20,080 --> 00:23:23,490
+phía dưới phần 'public slots'.
+
+356
+00:23:28,200 --> 00:23:30,260
+
+
+357
+00:23:44,490 --> 00:23:47,910
+Cái này sẽ được gọi bởi mã QML
+
+358
+00:23:47,910 --> 00:23:50,220
+Bên dưới phần 'signals', thêm
+
+359
+00:23:50,220 --> 00:23:52,700
+đoạn mã sau.
+
+360
+00:23:56,750 --> 00:23:58,810
+
+
+361
+00:24:27,540 --> 00:24:29,970
+Dùng tiền và hậu tín hiệu phù hợp
+
+362
+00:24:29,970 --> 00:24:32,670
+với điều mà mô hình muốn. Cần
+
+363
+00:24:32,670 --> 00:24:34,290
+được báo trước khi bất cứ điều gì sẽ diễn ra
+
+364
+00:24:34,290 --> 00:24:36,120
+với dữ liệu khi nó được phơi bày
+
+365
+00:24:36,120 --> 00:24:39,480
+và cũng như sau đó. Bây giờ chúng ta cần
+
+366
+00:24:39,480 --> 00:24:40,920
+cung cấp một cách để cho mô hình truy cập
+
+367
+00:24:40,920 --> 00:24:43,800
+vào dữ liệu trong danh sách. Thêm hàm này
+
+368
+00:24:43,800 --> 00:24:46,760
+sau trình khởi tạo.
+
+369
+00:24:51,460 --> 00:24:53,520
+
+
+370
+00:25:02,920 --> 00:25:06,220
+Hãy triển khia những hàm này. Cho mỗi
+
+371
+00:25:06,220 --> 00:25:08,560
+hàm, trừ những tín hiệu mà không cần
+
+372
+00:25:08,560 --> 00:25:11,020
+định nghĩa, chúng ta sẽ dùng
+
+373
+00:25:11,020 --> 00:25:12,850
+lựa chọn Refactor của Qt Creator để thêm
+
+374
+00:25:12,850 --> 00:25:14,460
+các định nghĩa vào tập tin nguồn.
+
+375
+00:25:14,460 --> 00:25:16,570
+Nhấp phải vào tên
+
+376
+00:25:16,570 --> 00:25:20,710
+của hàm và chọn 'Refactor',
+
+377
+00:25:20,710 --> 00:25:25,090
+'Add definition in todolist.cpp'.
+
+378
+00:25:25,090 --> 00:25:27,399
+Trong hàm, thêm
+
+379
+00:25:27,399 --> 00:25:29,879
+đoạn mã sau.
+
+380
+00:25:35,120 --> 00:25:39,350
+Làm tương tự cho setItmAt.
+
+381
+00:25:42,429 --> 00:25:44,490
+
+
+382
+00:25:48,230 --> 00:25:52,299
+Trong đó, thêm đoạn mã này vào.
+
+383
+00:25:54,730 --> 00:25:56,790
+
+
+384
+00:26:09,860 --> 00:26:12,549
+Điều tiên chúng ta kiểm tra xem các chỉ mục có hợp lệ,
+
+385
+00:26:12,549 --> 00:26:14,570
+trả về false nếu nó không hợp lệ.
+
+386
+00:26:14,570 --> 00:26:17,030
+Hàm thiết lập dữ liệu ToDoModel
+
+387
+00:26:17,030 --> 00:26:18,799
+trả lại 1 giá trị boolean để chỉ ra rằng liệu
+
+388
+00:26:18,799 --> 00:26:20,380
+dữ liệu có được thay đổi thành công hay không.
+
+389
+00:26:20,380 --> 00:26:24,679
+Vì vậy, đó là lý do tại sao chúng tôi cũng trả lại 1 giá trị boolean. Tiếp theo
+
+390
+00:26:24,679 --> 00:26:27,790
+thêm mã sau.
+
+391
+00:26:32,300 --> 00:26:34,360
+
+
+392
+00:27:04,940 --> 00:27:08,120
+Cái này lưu trữ mục hiện tại và mục cũ trong
+
+393
+00:27:08,120 --> 00:27:11,060
+biến local const sau đó kiểm tra xem
+
+394
+00:27:11,060 --> 00:27:13,040
+liệu mục mới có cùng giá trị với mục cũ
+
+395
+00:27:13,040 --> 00:27:16,010
+, nếu trùng, nó sẽ trả về false để chỉ ra
+
+396
+00:27:16,010 --> 00:27:18,950
+rằng không có gì thay đổi. Cuối cùng thêm
+
+397
+00:27:18,950 --> 00:27:21,610
+mã này.
+
+398
+00:27:26,020 --> 00:27:28,080
+
+
+399
+00:27:33,700 --> 00:27:35,740
+Nếu đoạn mã được thực thi đến đây,
+
+400
+00:27:35,740 --> 00:27:37,540
+nó có nghĩa là mục
+
+401
+00:27:37,540 --> 00:27:39,760
+đã thay đổi, vì vậy chúng ta lưu nó trong danh sách của chúng ta
+
+402
+00:27:39,760 --> 00:27:41,580
+và trả về 'true'.
+
+403
+00:27:41,580 --> 00:27:45,590
+Bây giờ chúng ta sẽ triển khai cái thứ 2.
+
+404
+00:27:47,429 --> 00:27:50,339
+Thêm định nghĩa cho việc thêm mục
+
+405
+00:27:50,339 --> 00:27:53,119
+thông qua Refactor
+
+406
+00:27:57,430 --> 00:28:02,040
+Thêm đoạn mã này vào.
+
+407
+00:28:04,890 --> 00:28:06,950
+
+
+408
+00:28:25,720 --> 00:28:28,029
+Chúng ta bỏ qua tiền và hâụ tín hiệu trước
+
+409
+00:28:28,029 --> 00:28:28,940
+và sau
+
+410
+00:28:28,940 --> 00:28:30,580
+appendItem.
+
+411
+00:28:30,580 --> 00:28:32,500
+Cuối cùng chúng ta kết nối mô hình đến
+
+412
+00:28:32,500 --> 00:28:34,710
+tín hiệu.
+
+413
+00:28:34,710 --> 00:28:38,020
+Trở lại tập tin tiêu đề
+
+414
+00:28:38,020 --> 00:28:40,000
+và thêm 1 định nghĩa cho việc xoá bỏ
+
+415
+00:28:40,000 --> 00:28:42,750
+những mục đã hoàn thành.
+
+416
+00:28:45,389 --> 00:28:49,549
+Thêm vòng lập 'for' sau vào.
+
+417
+00:28:52,940 --> 00:28:55,000
+
+
+418
+00:29:02,630 --> 00:29:07,510
+Sau đó, trong vòng lặp 'for', thêm đoạn mã này.
+
+419
+00:29:10,509 --> 00:29:12,570
+
+
+420
+00:29:50,320 --> 00:29:52,630
+Chúng ta đi qua từng mục trong danh sách và
+
+421
+00:29:52,630 --> 00:29:56,020
+kiểm tra xem nó có 'done'. Nếu có, chúng ta bỏ
+
+422
+00:29:56,020 --> 00:29:58,630
+tiền tín hiệu (pre signal) và sau đó bỏ
+
+423
+00:29:58,630 --> 00:30:01,450
+hâụ tín hiệu (post signal). Nếu mục không phải 'done', chúng ta
+
+424
+00:30:01,450 --> 00:30:03,210
+chuyển sang kế tiếp.
+
+425
+00:30:03,210 --> 00:30:05,380
+Cuối cùng chúng ta sẽ giả vờ rằng danh sách của chúng ta
+
+426
+00:30:05,380 --> 00:30:07,360
+đã có vài dữ liêu trong đó bằng cách
+
+427
+00:30:07,360 --> 00:30:11,250
+thêm 1 vài mục trong trình khởi tạo.
+
+428
+00:30:16,530 --> 00:30:18,590
+
+
+429
+00:30:44,110 --> 00:30:47,490
+Sau khi làm điều này, lớp đã xong.
+
+430
+00:30:47,490 --> 00:30:50,799
+Thường thi những lớp C++ nhu này được tạo
+
+431
+00:30:50,799 --> 00:30:52,360
+như là một phần của các ứng dụng backend lớn hơn
+
+432
+00:30:52,360 --> 00:30:55,179
+trong C++, vì đó là điều chúng ta
+
+433
+00:30:55,179 --> 00:30:57,610
+sẽ làm. Chúng ta tạo 1 instance
+
+434
+00:30:57,610 --> 00:31:01,110
+cho lịch sử trong main.cpp.
+
+435
+00:31:02,960 --> 00:31:05,879
+Sau Qt include cuối, thêm
+
+436
+00:31:05,879 --> 00:31:08,119
+dòng này.
+
+437
+00:31:12,060 --> 00:31:14,120
+
+
+438
+00:31:16,070 --> 00:31:18,410
+Điều này là cần thiết để có thể
+
+439
+00:31:18,410 --> 00:31:21,560
+phơi bày đối tượng cho QML,
+
+440
+00:31:21,560 --> 00:31:26,170
+sau đó thêm 'include todolist.h'
+
+441
+00:31:30,250 --> 00:31:32,310
+
+
+442
+00:31:32,500 --> 00:31:35,860
+Sau mã qmlRegisterType, thêm
+
+443
+00:31:35,860 --> 00:31:38,100
+dòng này.
+
+444
+00:31:42,169 --> 00:31:44,230
+
+
+445
+00:31:46,330 --> 00:31:49,630
+Và trước mã engine.load, thêm
+
+446
+00:31:49,630 --> 00:31:51,870
+dòng này.
+
+447
+00:31:55,700 --> 00:31:57,760
+
+
+448
+00:32:19,680 --> 00:32:21,870
+Đây là nơi mà to-do-list thực sự
+
+449
+00:32:21,870 --> 00:32:24,930
+tiếp xúc với QML. Chúng ta thiết lập nó như là một
+
+450
+00:32:24,930 --> 00:32:26,490
+thuộc tính, có nghĩa là nó
+
+451
+00:32:26,490 --> 00:32:28,620
+sẽ sẵn sàng cho bất kỳ tập tin QML
+
+452
+00:32:28,620 --> 00:32:31,050
+được tải bởi chương trình. Có những cách khác để
+
+453
+00:32:31,050 --> 00:32:33,750
+phơi bày các QML khác như 1 thuộc tính nhưng
+
+454
+00:32:33,750 --> 00:32:36,180
+đây là thuận tiện nhất.
+
+455
+00:32:36,180 --> 00:32:39,390
+Chạy qmake
+
+456
+00:32:43,270 --> 00:32:45,580
+sau đó xây dựng dự án để kiểm tra
+
+457
+00:32:45,580 --> 00:32:48,180
+rằng không có lỗi nào.
+
+458
+00:32:51,590 --> 00:32:53,629
+Bây giờ chúng ta sẽ làm ToDoModel
+
+459
+00:32:53,629 --> 00:32:57,289
+nhận ra to-do-list. Mở todomodel.h
+
+460
+00:32:57,289 --> 00:33:00,049
+và thêm 1 declaration cho
+
+461
+00:33:00,049 --> 00:33:02,259
+to-do-list.
+
+462
+00:33:07,290 --> 00:33:09,350
+
+
+463
+00:33:11,280 --> 00:33:13,830
+Chúng ta sẽ chỉ đề cập đến to-do-list
+
+464
+00:33:13,830 --> 00:33:15,810
+thông qua con trỏ trong các tiêu đề, vì vậy nó
+
+465
+00:33:15,810 --> 00:33:18,540
+chưa cần thiết để bao gồm nó. Sau
+
+466
+00:33:18,540 --> 00:33:20,940
+Q_OBJECT, bắt đầu gõ
+
+467
+00:33:20,940 --> 00:33:23,130
+Q_PROPERTY và sau đó nhấn Enter,
+
+468
+00:33:23,130 --> 00:33:25,620
+khi mà gợi ý với biểu tượng màu đỏ
+
+469
+00:33:25,620 --> 00:33:28,140
+bên trái nhìn thấy được. Đây là một snippet tiện lợi
+
+470
+00:33:28,140 --> 00:33:29,780
+mà giúp cho chúng ta khỏi phải gõ.
+
+471
+00:33:29,780 --> 00:33:31,860
+Không có thay đổi vị trí của
+
+472
+00:33:31,860 --> 00:33:35,480
+con trỏ, gõ 'ToDoList'
+
+473
+00:33:37,580 --> 00:33:43,240
+nhấn Tab và gõ 'list'
+
+474
+00:33:43,240 --> 00:33:45,159
+Những thuộc tính đối tượng chính
+
+475
+00:33:45,159 --> 00:33:47,860
+sẽ tự cập nhật. Nhấn ENTER để
+
+476
+00:33:47,860 --> 00:33:49,880
+xác nhận thay đổi
+
+477
+00:33:49,880 --> 00:33:52,670
+và sau đó, thêm một dấu * bên trái
+
+478
+00:33:52,670 --> 00:33:55,130
+của instance đầu tiên trong danh sách để đánh dấu
+
+479
+00:33:55,130 --> 00:33:58,640
+vị trí con trỏ, bỏ và thông báo danh sách thay đổi
+
+480
+00:33:58,640 --> 00:34:00,560
+là phần tuỳ chọn và không bắt buộc
+
+481
+00:34:00,560 --> 00:34:02,990
+trong trường hợp của chúng ta.
+
+482
+00:34:02,990 --> 00:34:05,480
+Dưới phần 'private' của ToDoModel,
+
+483
+00:34:05,480 --> 00:34:08,559
+thêm dòng này.
+
+484
+00:34:13,369 --> 00:34:15,429
+
+
+485
+00:34:17,050 --> 00:34:19,420
+Nhấp phải lên biến thành viên đó và
+
+486
+00:34:19,420 --> 00:34:22,210
+chọn 'Refactor',
+
+487
+00:34:22,210 --> 00:34:24,990
+'Create Getter and Setter Member Functions'.
+
+488
+00:34:29,730 --> 00:34:32,668
+Chuyển sang tập tin nguồn và thêm
+
+489
+00:34:32,668 --> 00:34:36,138
+'include todolist.h'
+
+490
+00:34:40,589 --> 00:34:42,649
+
+
+491
+00:34:49,030 --> 00:34:51,870
+Trong trình khởi tạo bắt đầu danh sách,
+
+492
+00:34:51,870 --> 00:34:56,280
+khởi tạo 'nList' với null pointer (nullptr).
+
+493
+00:34:59,150 --> 00:35:01,789
+Ở đầu setList, thêm
+
+494
+00:35:01,789 --> 00:35:04,269
+đoạn mã sau.
+
+495
+00:35:08,099 --> 00:35:10,160
+
+
+496
+00:35:33,400 --> 00:35:35,529
+Trước khi nguồn của mô hình bắt đầu
+
+497
+00:35:35,529 --> 00:35:37,990
+thay đổi, chúng ta phải gọi beginResetModel.
+
+498
+00:35:37,990 --> 00:35:40,900
+Khi tôi kết nối tín hiệu
+
+499
+00:35:40,900 --> 00:35:42,910
+đến các to-do-list khác, nó là 1 ý tưởng tốt
+
+500
+00:35:42,910 --> 00:35:44,650
+khi ngắt kết nối từ cái cũ khi thiết lập
+
+501
+00:35:44,650 --> 00:35:47,680
+cái mới. Trong trường hợp của chúng ta, điều này không
+
+502
+00:35:47,680 --> 00:35:50,200
+cần thiết, vì 1 thuộc tính chỉ có thể thiết lập
+
+503
+00:35:50,200 --> 00:35:52,990
+một lần. Tuy nhiên, nó là một thói quen tốt để
+
+504
+00:35:52,990 --> 00:35:55,480
+làm quen. Sau khi danh sách đã được chỉ định
+
+505
+00:35:55,480 --> 00:35:59,339
+thêm vào dòng if sau.
+
+506
+00:36:04,490 --> 00:36:06,550
+
+
+507
+00:36:08,290 --> 00:36:10,600
+Nếu 1 to-do-list hợp lệ được thiết lập
+
+508
+00:36:10,600 --> 00:36:12,340
+trong mô hình, chúng ta sẽ kết nối chúng với các tín hiệu
+
+509
+00:36:12,340 --> 00:36:14,200
+khác nhau để gọi hàm
+
+510
+00:36:14,200 --> 00:36:16,570
+bắt đầu và kết thúc. Thêm mã sau
+
+511
+00:36:16,570 --> 00:36:19,650
+trong dòng if.
+
+512
+00:36:24,560 --> 00:36:26,620
+
+
+513
+00:37:11,630 --> 00:37:14,180
+Cái này kết nối 1 lambda vào tín hiệu
+
+514
+00:37:14,180 --> 00:37:17,270
+preItemAppended của to-do-list. Hàm lambda
+
+515
+00:37:17,270 --> 00:37:19,670
+sẽ gọi beginInsertRows với 1
+
+516
+00:37:19,670 --> 00:37:22,220
+mục lục vì chúng ta muốn
+
+517
+00:37:22,220 --> 00:37:23,900
+thêm mục vào cuối
+
+518
+00:37:23,900 --> 00:37:26,390
+ToDoModel. Hai argument tiếp theo là
+
+519
+00:37:26,390 --> 00:37:28,460
+mục lục đầu và cuối mà trong đó
+
+520
+00:37:28,460 --> 00:37:31,130
+mục mới được thêm vào. Vì chúng ta muốn
+
+521
+00:37:31,130 --> 00:37:32,840
+thêm mục mới vào cuối mô hình,
+
+522
+00:37:32,840 --> 00:37:35,720
+chúng ta dùng 1 mục lục hợp lệ
+
+523
+00:37:35,720 --> 00:37:37,490
+cuối cùng trong danh sách.
+
+524
+00:37:37,490 --> 00:37:40,730
+Tiếp kết nối postItemAppended vào một
+
+525
+00:37:40,730 --> 00:37:44,500
+lambda để gọi endInsertRows.
+
+526
+00:37:49,819 --> 00:37:51,880
+
+
+527
+00:38:07,990 --> 00:38:11,470
+Kết nối preItemRemoved với 1 lambda
+
+528
+00:38:11,470 --> 00:38:14,820
+để gọi beginRemoveRows.
+
+529
+00:38:19,620 --> 00:38:21,680
+
+
+530
+00:38:46,940 --> 00:38:50,270
+Cuối cùng kết nối postedItemRemove với
+
+531
+00:38:50,270 --> 00:38:54,010
+1 lambda để gọi endRemoveRows.
+
+532
+00:38:58,609 --> 00:39:00,670
+
+
+533
+00:39:12,220 --> 00:39:15,070
+Để phù hợp với beginResetModel, chúng ta cũng
+
+534
+00:39:15,070 --> 00:39:18,420
+gọi endResetModel.
+
+535
+00:39:22,650 --> 00:39:24,710
+
+
+536
+00:39:25,050 --> 00:39:27,660
+Bây giờ là thời điểm tốt để xây dựng dự án
+
+537
+00:39:27,660 --> 00:39:30,560
+kiểm tra biên dịch của chúng ta.
+
+538
+00:39:33,570 --> 00:39:36,240
+Tôi gần như đã sẵn sàng để sử dụng trên mô hình và QML.
+
+539
+00:39:36,240 --> 00:39:39,940
+Hãy triển khai các chức năng còn lại.
+
+540
+00:39:39,940 --> 00:39:43,420
+Trong rowCount, thêm điểm null để kiểm tra
+
+541
+00:39:43,420 --> 00:39:46,050
+với if.
+
+542
+00:39:50,510 --> 00:39:52,570
+
+
+543
+00:39:52,579 --> 00:39:54,380
+Chúng ta làm tương tự với
+
+544
+00:39:54,380 --> 00:39:56,209
+các hàm khác có sử dụng nList
+
+545
+00:39:56,209 --> 00:39:58,249
+như 1 thực hành tốt để
+
+546
+00:39:58,249 --> 00:39:59,779
+bảo vệ chống lại điểm null
+
+547
+00:39:59,779 --> 00:40:02,269
+truy cập vào, xoá comment FIXME và
+
+548
+00:40:02,269 --> 00:40:04,369
+đổi 'return' để trả lại
+
+549
+00:40:04,369 --> 00:40:08,140
+số lượng mục trong todo-list
+
+550
+00:40:13,960 --> 00:40:19,450
+và dữ liệu tại điểm null để kiểm tra.
+
+551
+00:40:22,860 --> 00:40:24,920
+
+
+552
+00:40:28,110 --> 00:40:30,660
+Xoá comment FIXME và lưu
+
+553
+00:40:30,660 --> 00:40:35,120
+mục hiện tại vào biến local const.
+
+554
+00:40:39,740 --> 00:40:41,800
+
+
+555
+00:40:54,020 --> 00:40:57,080
+Trong các trường hợp ở 'switch', trả lại
+
+556
+00:40:57,080 --> 00:40:59,920
+dữ liệu ở dòng ở giai đoạn liên quan.
+
+557
+00:41:04,010 --> 00:41:06,070
+
+
+558
+00:41:12,910 --> 00:41:16,120
+Và với setData, thêm 1 if statement mà
+
+559
+00:41:16,120 --> 00:41:17,860
+trả về false nếu điểm null
+
+560
+00:41:17,860 --> 00:41:20,130
+kiểm tra sai.
+
+561
+00:41:24,740 --> 00:41:26,800
+
+
+562
+00:41:30,040 --> 00:41:33,070
+Sau đó lưu mục hiện tại tại mục lục
+
+563
+00:41:33,070 --> 00:41:36,090
+trong biến local.
+
+564
+00:41:40,480 --> 00:41:42,540
+
+
+565
+00:41:53,200 --> 00:41:55,390
+Chúng ta sẽ kiểm tra vai trò nào
+
+566
+00:41:55,390 --> 00:41:57,630
+được thiết lập và cập nhật.
+
+567
+00:41:57,630 --> 00:41:59,700
+Copy mà đoạn mã 'switch' từ hàm
+
+568
+00:41:59,700 --> 00:42:01,940
+'data',
+
+569
+00:42:04,290 --> 00:42:06,540
+và dán nó sau dòng cuối cùng chúng ta
+
+570
+00:42:06,540 --> 00:42:08,810
+đã thêm vào.
+
+571
+00:42:11,619 --> 00:42:14,170
+Thay đổi trường hợp 'done' để
+
+572
+00:42:14,170 --> 00:42:16,680
+nó giống thế này.
+
+573
+00:42:20,660 --> 00:42:22,720
+
+
+574
+00:42:32,930 --> 00:42:37,750
+Sau đó thay đổi trường hợp vai trò 'description'
+
+575
+00:42:41,260 --> 00:42:43,320
+
+
+576
+00:42:45,870 --> 00:42:49,740
+Xoá comment FIXME
+
+577
+00:42:50,870 --> 00:42:54,610
+và thay đổi dòng này.
+
+578
+00:42:57,230 --> 00:42:59,290
+
+
+579
+00:43:12,330 --> 00:43:14,580
+Chúng ta sẽ lợi dụng setItemAt
+
+580
+00:43:14,580 --> 00:43:16,530
+trả về giá trị để xác định liệu
+
+581
+00:43:16,530 --> 00:43:18,290
+dữ liệu có thật sự bị thay đổi, và
+
+582
+00:43:18,290 --> 00:43:20,520
+do đó chỉ phát ra tín hiệu
+
+583
+00:43:20,520 --> 00:43:23,910
+'dataChanged' (dữ liệu thay đổi) khi cần thiết. Cuối cùng, nếu các dữ liệu
+
+584
+00:43:23,910 --> 00:43:26,300
+thay đổi, chúng ta trả về 'true', nếu không
+
+585
+00:43:26,300 --> 00:43:30,780
+là 'false'. Trong hàm ItemFlags, xoá
+
+586
+00:43:30,780 --> 00:43:33,440
+comment FIXME.
+
+587
+00:43:35,900 --> 00:43:38,809
+Tập tin là hoặc là có thể chỉnh sửa
+
+588
+00:43:38,809 --> 00:43:43,660
+hoặc không phải tập tin. Mở main.cpp,
+
+589
+00:43:43,910 --> 00:43:45,640
+và thêm đoạn sau vào
+
+590
+00:43:45,640 --> 00:43:49,740
+phía sau mã để .....
+
+591
+00:43:54,570 --> 00:43:56,630
+
+
+592
+00:44:39,690 --> 00:44:43,020
+Cái này bắt ToDoList là 1 dạng QML để
+
+593
+00:44:43,020 --> 00:44:44,730
+co thể dùng như 1 thuộc tính của
+
+594
+00:44:44,730 --> 00:44:47,700
+ToDoModel. Vì đây là 1 backend, chúng ta không muốn
+
+595
+00:44:47,700 --> 00:44:50,220
+để nó có thể được tạo trong QML, vì vậy chúng ta
+
+596
+00:44:50,220 --> 00:44:52,619
+sẽ dùng
+
+597
+00:44:52,619 --> 00:44:55,049
+qmlRegisterUncreatableType. Hàm này sẽ in thông điệp lỗi
+
+598
+00:44:55,049 --> 00:44:57,000
+mà chúng ta dùng như argument cuối
+
+599
+00:44:57,000 --> 00:44:58,680
+nếu chúng ta cố
+
+600
+00:44:58,680 --> 00:45:03,559
+khởi tạo trong QML. Trong ToDoList.qml,
+
+601
+00:45:03,559 --> 00:45:05,910
+gán thuộc tính ToDoList
+
+602
+00:45:05,910 --> 00:45:10,579
+vào thuộc tính 'list' của ToDoModel.
+
+603
+00:45:15,660 --> 00:45:17,720
+
+
+604
+00:45:19,740 --> 00:45:23,400
+Chạy ứng dụng.
+
+605
+00:45:26,890 --> 00:45:29,380
+Chúng ta có thể sửa các dữ liệu mô hình
+
+606
+00:45:29,380 --> 00:45:31,540
+đến từ C++ trong QtQuick
+
+607
+00:45:31,540 --> 00:45:33,930
+ListView.
+
+608
+00:45:39,090 --> 00:45:41,470
+Trước khi chúng ta có thể nói rằng
+
+609
+00:45:41,470 --> 00:45:43,690
+ứng dụng của chúng ta hoàn tất. Chúng ta cần phải
+
+610
+00:45:43,690 --> 00:45:45,520
+cho người dùng thêm và xoá mục từ
+
+611
+00:45:45,520 --> 00:45:47,830
+to-do-list. Chúng ta sẽ thêm hai nút
+
+612
+00:45:47,830 --> 00:45:50,250
+bên dưới to-do-list để đạt được điều này.
+
+613
+00:45:50,250 --> 00:45:53,700
+Đóng ứng dụng
+
+614
+00:45:53,700 --> 00:45:56,160
+và thêm 1 bố cục cột như là bố mẹ của
+
+615
+00:45:56,160 --> 00:45:58,490
+frame (khung).
+
+616
+00:46:03,040 --> 00:46:05,100
+
+
+617
+00:46:07,530 --> 00:46:11,250
+Để nhanh chóng thụt vào một tập tin QML, chọn
+
+618
+00:46:11,250 --> 00:46:14,930
+đoạn mã và nhấn Ctrl+I.
+
+619
+00:46:16,730 --> 00:46:21,310
+Sau frame, thêm 1 RowLayout.
+
+620
+00:46:23,240 --> 00:46:28,010
+Trong RowLayout, thêm 2 nút.
+
+621
+00:46:31,980 --> 00:46:34,040
+
+
+622
+00:46:50,490 --> 00:46:52,740
+Chạy ứng dụng và xem nó trông thế nào
+
+623
+00:46:52,740 --> 00:46:54,950
+cho đến giờ.
+
+624
+00:46:55,520 --> 00:46:57,650
+Lưu ý các nút vô tình được sắp xếp
+
+625
+00:46:57,650 --> 00:47:00,470
+đẹp theo chiều rộng của ListView. Thuận tiện,
+
+626
+00:47:00,470 --> 00:47:03,770
+đây chỉ là 1 sự trùng hợp, chúng ta
+
+627
+00:47:03,770 --> 00:47:05,300
+cần phải làm 1 vài bước để đảm bảo
+
+628
+00:47:05,300 --> 00:47:07,640
+chiều rộng kết hợp của các nút khớp với
+
+629
+00:47:07,640 --> 00:47:11,270
+chiều rộng của ListView và ngược lại. Để
+
+630
+00:47:11,270 --> 00:47:12,980
+mô phỏng độ rộng của các nút
+
+631
+00:47:12,980 --> 00:47:14,990
+trên hệ thống với kích thước font mặc định lớn
+
+632
+00:47:14,990 --> 00:47:18,020
+hãy tạm thời thêm vào 1 số chữ
+
+633
+00:47:18,020 --> 00:47:20,010
+vào các nhãn.
+
+634
+00:47:20,010 --> 00:47:22,380
+Thêm 3 khoảng trắng vào cuối mỗi
+
+635
+00:47:22,380 --> 00:47:25,280
+chuỗi ký tự trên nút.
+
+636
+00:47:30,070 --> 00:47:32,130
+
+
+637
+00:47:42,400 --> 00:47:44,809
+Tiếp theo, chúng ta muốn chắc chắn rằng mỗi
+
+638
+00:47:44,809 --> 00:47:48,519
+nút lấp đầy chiều rộng của RowLayout.
+
+639
+00:47:53,010 --> 00:47:55,070
+
+
+640
+00:47:58,400 --> 00:48:03,309
+Sau đó, thêm 1 giới hạn tương tự vào frame.
+
+641
+00:48:07,809 --> 00:48:12,460
+Cuối cùng cho ListView lấp đầy frame.
+
+642
+00:48:15,880 --> 00:48:19,380
+Chạy ứng dụng một lần nữa.
+
+643
+00:48:21,930 --> 00:48:25,140
+Bây giờ, nếu chữ trên nút quá rộng,
+
+644
+00:48:25,140 --> 00:48:27,610
+ListView sẽ được kéo dãn ra tương ứng.
+
+645
+00:48:27,610 --> 00:48:32,070
+Xoá các khoảng trắng thêm vào trong văn bản.
+
+646
+00:48:34,910 --> 00:48:37,760
+Để hoàn thành ứng dụng của chúng ta, chúng ta cần phải
+
+647
+00:48:37,760 --> 00:48:39,859
+làm cho các nút làm một cái gì đó. Thêm
+
+648
+00:48:39,859 --> 00:48:42,640
+đoạn sau vào nút Add (Thêm vào).
+
+649
+00:48:47,350 --> 00:48:49,410
+
+
+650
+00:48:56,480 --> 00:49:00,490
+Thêm đoạn sau vào nút Remove (Hủy Bỏ).
+
+651
+00:49:03,480 --> 00:49:05,540
+
+
+652
+00:49:15,710 --> 00:49:19,150
+Chạy ứng dụng một lần nữa.
+
+653
+00:49:21,380 --> 00:49:23,440
+
+
+654
+00:49:25,950 --> 00:49:29,369
+Bây giờ chúng ta có thể thêm, chỉnh sửa và bỏ mục
+
+655
+00:49:29,369 --> 00:49:32,839
+từ mô hình C++ của chúng ta.
+
+656
+00:49:36,990 --> 00:49:39,050
+
+
+657
+00:49:42,119 --> 00:49:43,320
+
+
+658
+00:49:43,320 --> 00:00:00,000
+[Nhạc]
+

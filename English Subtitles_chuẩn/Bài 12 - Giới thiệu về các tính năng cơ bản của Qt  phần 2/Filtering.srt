@@ -1,0 +1,541 @@
+WEBVTT
+
+00:00.810 --> 00:05.940
+This is video of diving into Model/View section which covers filtering. In this video, we're going to cover
+
+00:06.060 --> 00:10.890
+a quick review of Qt's Model/View, establishing a need for filtering with a real life problem before
+
+00:10.890 --> 00:13.970
+covering how to filter using a QSortFilterProxyModel.
+
+00:13.980 --> 00:15.470
+So let's go ahead and get started.
+
+00:15.570 --> 00:19.510
+Now this is going to be a relatively easy section, since we already laid most of the groundwork last
+
+00:19.510 --> 00:19.880
+time.
+
+00:19.890 --> 00:24.060
+But as a reminder, we've got our model/view framework that Qt relies on.
+
+00:24.240 --> 00:28.350
+Now our model is responsible for controlling how the view sees the data.
+
+00:28.350 --> 00:32.880
+Now often it's more useful for our users to see part of the data rather than all of it.
+
+00:32.880 --> 00:37.140
+So we're going to look at how to cut down some of the data our users are seeing using filtering.
+
+00:37.140 --> 00:41.310
+Since the model is responsible for controlling what data the view sees, that's where we're going to
+
+00:41.310 --> 00:44.460
+focus on implementing our filter. For our problem,
+
+00:44.460 --> 00:48.390
+we're going to continue to work with pictures. So maybe we've got to design app, and working through a
+
+00:48.390 --> 00:53.050
+bunch of differently colored random photos, like let's say, 6000 different photos.
+
+00:53.060 --> 00:57.770
+Now that's a lot of photos, and we want to give our users a way to narrow down some of them.
+
+00:57.780 --> 01:00.200
+So let's go ahead and implement some filtering to do this,
+
+01:00.240 --> 01:03.670
+and in this case, we'll filter our photos by their luminosity value.
+
+01:03.750 --> 01:06.590
+So let's go ahead and take a look at the code that we've got so far.
+
+01:06.600 --> 01:09.050
+It's going to be slightly more advanced than last time.
+
+01:09.260 --> 01:14.460
+But if we open up the filtering.pro and look at the main.cpp, we can see that we are again creating
+
+01:14.490 --> 01:17.540
+a custom MainWindow, showing it before executing it.
+
+01:17.610 --> 01:22.090
+And if we open up the MainWindow, we can start to see some of the implementation.
+
+01:22.110 --> 01:27.210
+So scrolling down, we're going to be using a QListView as our central widget and main view for this
+
+01:27.210 --> 01:27.820
+example.
+
+01:27.840 --> 01:33.810
+We will again have a PhotoModel, which is a simple subclass of QStandardItemModel, and we're going to have
+
+01:33.810 --> 01:40.050
+two buttons, one for setting the minimum value for our filter and one for setting the maximum value for
+
+01:40.050 --> 01:40.730
+our filter.
+
+01:40.860 --> 01:46.890
+If we look at the implementation of our MainWindow, we can see that we create a QToolbar to put both
+
+01:46.890 --> 01:48.060
+of our buttons in.
+
+01:48.060 --> 01:53.670
+We then create the buttons and add them to our toolbar before adding the toolbar to our main window
+
+01:53.730 --> 01:57.480
+using the addToolbar method. Next using the connect function,
+
+01:57.480 --> 02:04.530
+we wire up the buttons, specifically the clicked signal, with the set_maximum and set_minimum slots that
+
+02:04.530 --> 02:09.690
+are part of this MainWindow class. We're going to take a look at that implementation in a second.
+
+02:09.690 --> 02:14.640
+But before we do that, let's look at the rest of the code where we create our main view, the QListView,
+
+02:14.640 --> 02:19.110
+our PhotoModel and go ahead and set the model on the view.
+
+02:19.200 --> 02:24.000
+We also set up some of the UI before setting the CentralWidget as the list_view.
+
+02:24.000 --> 02:28.800
+Now if we run this code, we can see what we're working with. You can see we've got our randomly sorted
+
+02:28.800 --> 02:32.220
+photos here, and we've got our toolbar that we just created.
+
+02:32.220 --> 02:33.720
+Now if you haven't worked with toolbars before,
+
+02:33.720 --> 02:38.940
+the nice thing about them is you can click and drag them around the main window wherever you would like
+
+02:38.940 --> 02:43.810
+them. Clicking the buttons pops up a dialog where we can actually set,
+
+02:43.920 --> 02:48.540
+in this case, our minimum value. By going and clicking the thing and just dragging it wherever we want
+
+02:48.540 --> 02:55.200
+it and click the OK button, we'll see this is actually reflected in the new minimum on the main window.
+
+02:55.260 --> 02:58.430
+This happens thanks to the set_maximum and set_minimum slots,
+
+02:58.420 --> 02:59.290
+we just talked about.
+
+02:59.310 --> 03:02.040
+Let's go ahead and take a look at those implementations now.
+
+03:02.170 --> 03:06.620
+So if we're back to our code and we look at the set_minimum and set_maximum,
+
+03:06.630 --> 03:08.500
+the slots are basically the same.
+
+03:08.520 --> 03:10.020
+We create a dialogue,
+
+03:10.050 --> 03:14.200
+in this case VirdisDialogue, and call the static method on it, get_color.
+
+03:14.250 --> 03:20.070
+This method opens a new color selector dialog, and returns the minimum color or maximum color at the
+
+03:20.070 --> 03:21.090
+end of the method.
+
+03:21.210 --> 03:25.500
+If we look at the implementation of the VirdisDialog, it's very simple.
+
+03:25.500 --> 03:32.460
+We create two widgets, a ColorPicker and a PushButton, add then to a layout right here and then go ahead
+
+03:32.490 --> 03:36.870
+and connect the PushButton's clicked signal with the Dialog's accept slot.
+
+03:36.870 --> 03:42.480
+Now the color picker code, that we use to actually select the color, is a little bit more complex and
+
+03:42.480 --> 03:47.130
+out of scope for this tutorial. But it basically creates a QImage from the VirdisColorScheme, and
+
+03:47.130 --> 03:48.680
+then handles the MouseEvents.
+
+03:48.680 --> 03:54.510
+It's a small reimplementation of QColoredDialogue which we'll use later on in this series.
+
+03:54.510 --> 04:01.320
+Feel free to poke around the code however you like. But like I said before, the main section of the code
+
+04:01.770 --> 04:07.760
+is actually creating this QImage and going ahead and wrangling that. Back to our slot implementation,
+
+04:07.860 --> 04:15.180
+once we've gotten the new color, we go ahead and use it to update the button icon before we calculate
+
+04:15.210 --> 04:19.930
+the luminosity. The luminosity calculations are in luminosity_calc.h
+
+04:19.980 --> 04:23.490
+again which you can take a look as part of this example.
+
+04:23.580 --> 04:28.020
+So now that we've looked at all the code, where does this leave a set for our problem?
+
+04:28.020 --> 04:32.190
+Well as you might have noticed with the notes I've left, the only thing that we need to do is actually
+
+04:32.190 --> 04:38.700
+implement some sort of way to filter the model using the luminosity values from both set_maximum and
+
+04:38.710 --> 04:40.940
+luminosity values from set_minimum.
+
+04:41.220 --> 04:43.160
+So how do we go about doing that?
+
+04:43.290 --> 04:49.140
+Well if you remember back to our last section, the class that we were using was called
+
+04:49.200 --> 04:50.240
+QSortFilterProxyModel.
+
+04:50.370 --> 04:54.920
+So we're going to be using the same class that we use to implement sorting to do the filtering as well.
+
+04:54.930 --> 04:59.700
+Now do you remember how to set QSortFilterProxyModel on the source model?
+
+04:59.710 --> 05:01.370
+If you don't it's no worries.
+
+05:01.390 --> 05:02.740
+We'll go ahead and do that right now.
+
+05:02.890 --> 05:07.840
+So we'll scroll back up to where we create our model, and we'll go ahead and create.
+
+05:07.840 --> 05:10.520
+I've got a picture filter which is close enough.
+
+05:10.570 --> 05:16.150
+It's our final implementation that we'll be using. But for now go ahead and create a QSortFilterProxyModel.
+
+05:16.150 --> 05:24.430
+And then what we want to do on our picture_filter is go ahead and call the setSourceModel function,
+
+05:24.490 --> 05:29.140
+and we'll go ahead and pass in our original model, which in this case will be the photo_model.
+
+05:29.230 --> 05:33.610
+And once we've done that, we're going to want to go to our view, and instead of passing in our original
+
+05:33.610 --> 05:39.400
+photo_model, we want to pass in our proxy model. So we'll go ahead and pass in the picture_filter into
+
+05:39.400 --> 05:41.750
+that method call. Awesome.
+
+05:41.790 --> 05:45.120
+So we've now implemented the filter proxy at a high level.
+
+05:45.120 --> 05:48.330
+Now let's actually implement the low level filtering code.
+
+05:48.480 --> 05:54.780
+So if we change back to our picturefilter.h, you can see that I have a basic subclass of
+
+05:54.790 --> 06:01.530
+QSortFilterProxyModel that I've created. The method that we need to implement is the filterAcceptsRow method,
+
+06:01.650 --> 06:08.430
+which as you can see here, takes in two variables, a source_row and a source_parent which is a
+
+06:08.430 --> 06:09.730
+QModelIndex.
+
+06:09.840 --> 06:15.300
+The method then returns either a true or false for whether or not this row that gets passed with these
+
+06:15.300 --> 06:17.330
+two variables is accepted.
+
+06:17.340 --> 06:19.890
+So we need to get our hands on the data.
+
+06:20.010 --> 06:24.800
+The best way to do that is to grab the QModelIndex that represents the individual picture that we're
+
+06:24.810 --> 06:29.540
+checking, not the parent index, that gets passed into the method.
+
+06:29.550 --> 06:30.970
+So how do we do that?
+
+06:31.020 --> 06:38.220
+Well if we look at our original model, and more specifically the set item command in the constructor,
+
+06:38.310 --> 06:45.000
+what we'll find is the row is set by this for loop which goes from 0 to 100. But the column which is
+
+06:45.000 --> 06:52.530
+actually the second is always set to be zero because we don't have multiple columns in our list view.
+
+06:52.530 --> 06:58.650
+Now the method that we'll be using to grab the specific index from our Source model out is the index
+
+06:58.650 --> 06:59.510
+command.
+
+06:59.700 --> 07:06.210
+So if we switch back, the index command takes in three variables, the row, the column, and the parent
+
+07:06.210 --> 07:07.260
+QModelIndex.
+
+07:07.260 --> 07:13.720
+So in our case, we've already got the row passed in by the function, the parent QModelIndex.
+
+07:13.740 --> 07:18.780
+And so the only thing we need that we don't have is the column. But remembering back to our original model,
+
+07:18.780 --> 07:21.030
+all pictures are in the zero column.
+
+07:21.030 --> 07:22.800
+So we do have everything that we need.
+
+07:22.800 --> 07:24.480
+So let's go ahead and grab out our index now.
+
+07:24.480 --> 07:29.460
+The first thing that we're going to do is go ahead and create a column variable out of an integer.
+
+07:29.460 --> 07:34.220
+We'll set that equal to zero because all of our pictures are in the zero column. And then we want to get
+
+07:34.230 --> 07:38.090
+the QModelIndex that represents our picture_index.
+
+07:38.090 --> 07:42.810
+So we're going to create that method. And what we need to do is go ahead and get access to our source model,
+
+07:42.870 --> 07:45.510
+which there is a method call that does that.
+
+07:45.510 --> 07:49.020
+And what we need to call on that is the actual index command.
+
+07:49.080 --> 07:54.420
+Now as I just said, the index command takes in three variables, the row which we have access to as the
+
+07:54.420 --> 07:58.470
+source row, the column which is the zero column for all of these,
+
+07:58.500 --> 08:02.860
+and then the source_parent which gets passed in per the method call as well.
+
+08:02.870 --> 08:07.560
+So now that we've got the correct index, do you remember how to grab the data out of it?
+
+08:07.560 --> 08:13.520
+Well if you don't, remember you need to use the data method on the index and pass in the specific item
+
+08:13.560 --> 08:15.540
+role that you would like from the model.
+
+08:15.540 --> 08:19.880
+So in our case, since we want graphic information, it'll be the Qt DecorationRole.
+
+08:19.890 --> 08:25.620
+So go ahead and create a QVariant and call it data. And we'll set this equal to our picture index, and
+
+08:25.620 --> 08:31.560
+we're going to call the data method on it. And we're going to pass in the decoration roll into this method
+
+08:31.560 --> 08:32.170
+call.
+
+08:32.430 --> 08:32.880
+Awesome.
+
+08:32.880 --> 08:38.100
+So the last thing that we need to do is get the QIcon out from the QVariant, which we can do using
+
+08:38.100 --> 08:39.350
+the value method.
+
+08:39.670 --> 08:45.990
+So go ahead and create a variable called icon. We'll set this equal to the data, and we can always use
+
+08:45.990 --> 08:51.720
+the value method on QVariant to pass in the specific type of data that we need out of it, which in this
+
+08:51.720 --> 08:53.660
+case is the QIcon.
+
+08:53.700 --> 08:59.160
+Now I've already provided a method to wrangle the color information out of a QIcon, which will call
+
+08:59.160 --> 09:06.690
+using the icon_to_luminosity function. So go ahead and create a qreal, and we'll create a lum variable.
+
+09:07.080 --> 09:12.030
+And then we'll call the icon_to_luminosity function and pass in our icon.
+
+09:12.030 --> 09:16.830
+Now please note that this method is provided by luminosity_calc.h. And you can go ahead and pull
+
+09:16.830 --> 09:20.370
+that open and look at the implementation for exactly how that does that
+
+09:20.370 --> 09:27.010
+if you like. Cool. So we've successfully converted a source_row and a source_parent QModelIndex
+
+09:27.010 --> 09:28.440
+to a luminosity value.
+
+09:28.510 --> 09:34.240
+Let's go ahead and see if it meets the constraints on our proxy filter. And we'll do this by checking
+
+09:34.450 --> 09:40.750
+the set_min_filter_value and the set_max_filter_value. And we're just going to do a real simple boolean
+
+09:40.750 --> 09:43.160
+and compound statement because we need a boolean.
+
+09:43.270 --> 09:47.850
+And what we're going to check we're going to see if luminosity is greater than the min_filter_value,
+
+09:48.040 --> 09:53.790
+and we need it to be, the luminosity to be less than the max_filter_value.
+
+09:53.980 --> 10:00.360
+And we'll just go ahead and return the results of that to see if our filter accepts the row or not.
+
+10:01.030 --> 10:01.590
+And that's it.
+
+10:01.600 --> 10:06.610
+We've successfully implemented a filter for our model which filters by luminosity.
+
+10:06.610 --> 10:12.310
+Now there is only one problem, and that is "how does our proxy model know when the filter values change"?
+
+10:12.310 --> 10:14.220
+Well currently they don't.
+
+10:14.440 --> 10:19.360
+So let's go ahead and fix that by providing a couple of setter methods. We'll create two, a set_min_filter_value and
+
+10:19.360 --> 10:22.280
+a set_max_filter_value.
+
+10:22.360 --> 10:27.400
+Now in these method calls, there is a specific method that we need to call to let our proxy model know
+
+10:27.400 --> 10:30.640
+that the filter has been change and needs to be recalculated.
+
+10:30.640 --> 10:32.870
+This method is called invalidateFilter.
+
+10:32.930 --> 10:34.720
+So let's go ahead and create these two methods.
+
+10:34.830 --> 10:43.360
+Void set_min_filter_value. It's going to take in a qreal of luminosity. And for the implementation of that,
+
+10:43.410 --> 10:49.750
+all you need to do is reset this with whatever that would get passed in. And the last thing that we need
+
+10:49.750 --> 10:53.660
+to do is call that function, which is the invalidateFilter function.
+
+10:53.670 --> 10:57.650
+We need to implement to these, and we need to implement one for our max as well.
+
+10:57.670 --> 11:01.960
+We'll do this by copying and pasting it real quick. And that's it.
+
+11:01.960 --> 11:07.960
+So let's switch back to our MainWindow implementation. Now instead of creating this
+
+11:07.960 --> 11:08.560
+QSortFilterProxyModel,
+
+11:08.560 --> 11:13.050
+We want to use our concrete implementation of that, which is PictureFilter.
+
+11:13.270 --> 11:19.270
+Lastly we need to call the methods that we just created, the set of methods that we just created, from
+
+11:19.270 --> 11:21.860
+the two slots set_minimum and set_maximum.
+
+11:21.880 --> 11:22.720
+So go down here.
+
+11:22.720 --> 11:29.120
+Go ahead and delete. And we'll go ahead and on our picture_ilter, we'll call these set_min_filter_value.
+
+11:29.240 --> 11:34.520
+And we'll go ahead and pass in our luminosity. And then we'll do the same thing for our set_maximum.
+
+11:34.600 --> 11:38.310
+Changing this to the max_filter_value instead.
+
+11:38.590 --> 11:41.600
+So let's go ahead and run this and see how it works.
+
+11:42.130 --> 11:50.710
+If we click the set minimum value and drag it up to be light instead of super dark and hit OK, we can
+
+11:50.710 --> 11:57.130
+see is now our model is actually filtering out all the values that are between the set maximum and set
+
+11:57.130 --> 12:03.600
+minimum. So we can go ahead and play with that and include or exclude as many variables as we would like.
+
+12:03.610 --> 12:08.950
+Now I took out the sorting code from our last section, but I want to mention that you don't need to do
+
+12:08.950 --> 12:09.330
+that.
+
+12:09.370 --> 12:15.250
+And I would encourage you right now to go ahead and try to implement and combine both filtering and
+
+12:15.250 --> 12:22.360
+sorting in a QSortFilterProxyModel using this picture_filter as a stepping point to kind of do both
+
+12:22.360 --> 12:23.190
+of those.
+
+12:23.470 --> 12:29.740
+But for now, and with that, we have successfully learned how to filter a model using a
+
+12:29.740 --> 12:30.940
+QSortFilterProxyModel.
+
+12:30.970 --> 12:36.990
+We also reviewed Qt's model/view and establish a simple use case for filtering.
+
+12:37.030 --> 12:41.770
+Please join us in the next video where we continue our dive into the model/view by creating our first
+
+12:41.770 --> 12:42.600
+custom model.

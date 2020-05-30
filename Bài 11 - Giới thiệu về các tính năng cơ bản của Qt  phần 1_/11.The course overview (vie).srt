@@ -1,0 +1,184 @@
+﻿1
+00:00:07,670 --> 00:00:09,110
+Xin chào, tôi là Symeon Huang.
+
+2
+00:00:09,110 --> 00:00:12,520
+Chào mừng bạn đến với khóa học Qt5 của Packt.
+
+3
+00:00:14,400 --> 00:00:20,070
+Tôi là một full stack developer. Tôi rất đam mê mảng lập trình UI và UX
+
+4
+00:00:20,460 --> 00:00:23,160
+và nghiên cứu các công nghệ mã nguồn mở nữa(open source technologies).
+
+5
+00:00:25,790 --> 00:00:31,880
+Khóa học này nói về tổng quan framework và các tính năng
+
+6
+00:00:31,880 --> 00:00:32,900
+của Qt5.
+
+7
+00:00:33,140 --> 00:00:40,550
+Ta sẽ học cách nâng cao ứng dụng chạy trên nền console,
+
+8
+00:00:40,550 --> 00:00:47,120
+lập trình giao diện GUI trên C++ bằng Qt và quy trình phát triển phần mềm trên Qt quick framework.
+
+9
+00:00:47,120 --> 00:00:51,560
+Video này giúp bạn có cái nhìn tổng quan về cả khóa học.
+
+10
+00:00:51,590 --> 00:00:58,250
+Có tất cả 9 phần. Trong phần thứ nhất,
+
+11
+00:00:58,290 --> 00:01:04,080
+Bạn sẽ học cách nâng cấp ứng dụng console bằng Qt framework và cấu trúc của Qt framework
+
+12
+00:01:05,090 --> 00:01:06,770
+Ví dụ như lớp(class) CommandLineOption,
+
+13
+00:01:06,770 --> 00:01:11,140
+một lớp(class) rất hữu ích và được sử dụng nhiều trong các ứng dụng console.
+
+14
+00:01:11,400 --> 00:01:15,240
+Ta sẽ học cách dùng lớp(class) đó trong phần đầu tiên.
+
+15
+00:01:15,460 --> 00:01:20,680
+Ở phần hai, ta sẽ học về đa luồng(multi-threading) và xử lý đa luồng(multi-processing),
+
+16
+00:01:20,820 --> 00:01:26,980
+phân biệt sự khác nhau giữa hai khái niệm và học cách xử lý đa luồng bằng Qt,
+
+17
+00:01:28,020 --> 00:01:33,760
+viết một lớp(class) worker và tách các xử lý nặng nề ra các luồng riêng biệt giúp cải thiện hiệu năng.
+
+18
+00:01:39,980 --> 00:01:46,100
+Hiện nay, kỹ thuật lập trình mạng là cực kỳ cần thiết.
+
+19
+00:01:46,260 --> 00:01:49,460
+Ở phần 3, bạn sẽ được học kỹ thuật lậ trình mạng trên Qt.
+
+20
+00:01:49,500 --> 00:01:53,860
+Ví dụ làm một TCP server và TCP client
+
+21
+00:01:53,910 --> 00:01:57,510
+Tôi sẽ hướng dẫn bạn làm ứng dụng đó một cách rất đơn giản.
+
+22
+00:02:04,100 --> 00:02:05,410
+Trong phần 4,
+
+23
+00:02:05,570 --> 00:02:11,770
+Ta học các kiến thức quan trọng về lập trình giao diện GUI trên Qt, ví dụ như signals và slots.
+
+24
+00:02:11,830 --> 00:02:19,690
+Đó là kiến thức nền tảng của kỹ thuật lập trình bất đồng bộ và giao diện GUI trên Qt. Và ta học tất cả các widgets có trong Qt
+
+25
+00:02:19,780 --> 00:02:20,890
+ở phần 5.
+
+26
+00:02:23,710 --> 00:02:30,100
+Tiếp đó, trong phần 6 ta sẽ học kiến thức nâng cao về models
+
+27
+00:02:30,100 --> 00:02:31,090
+và views.
+
+28
+00:02:31,090 --> 00:02:35,170
+Chúng cơ bản cũng là GUI widgets như là bảng(table) hay bố cục(layout) mà ta đã học ở phần 5.
+
+29
+00:02:42,170 --> 00:02:43,550
+Từ phần 7 trở đi,
+
+30
+00:02:43,550 --> 00:02:49,010
+Ta sẽ học Qt quick và QML .Ta sẽ học
+
+31
+00:02:49,030 --> 00:02:49,830
+kiến thức căn bản trước.
+
+32
+00:02:50,030 --> 00:02:53,920
+trong phần 7, bạn cũng sẽ học cách làm ứng dụng GUI theo hướng declarative programming(Lập trình theo hướng lập trình viên ra lệnh cho máy mình muốn làm gì và để máy tự xử lý).
+
+33
+00:02:59,220 --> 00:03:00,750
+Trong phần 8,
+
+34
+00:03:00,820 --> 00:03:09,090
+Ta học về cấu trúc của QML và mối quan hệ giữa QML với javascript,
+
+35
+00:03:09,090 --> 00:03:13,260
+học cách import và sử dụng file javascript bằng QML.
+
+36
+00:03:17,600 --> 00:03:24,240
+Ở phần cuối ta học về Qt Quick. framework giúp ta tạo phần mềm nhanh chóng
+
+37
+00:03:24,470 --> 00:03:26,000
+theo hướng declarative programming,
+
+38
+00:03:29,880 --> 00:03:33,830
+và học về styles và animations.
+
+39
+00:03:38,090 --> 00:03:43,770
+Bạn không bắt buộc phải biết Qt framework trước mới học được khóa này.
+
+40
+00:03:43,790 --> 00:03:48,260
+Chỉ cần biết sơ qua C++ là được.
+
+41
+00:03:48,380 --> 00:03:56,230
+Cũng không bắt buộc phải biết javascript, nếu biết thì càng tốt.
+
+42
+00:03:56,240 --> 00:04:01,270
+Qt là framework đa nền tảng nên bạn học khóa này trên Windows, Mac hay Linux đều được.
+
+43
+00:04:01,610 --> 00:04:07,610
+Học hết khóa này, bạn sẽ nắm chắc được cấu trúc của Qt, cách nâng cấp
+
+44
+00:04:07,610 --> 00:04:14,360
+cấp ứng dụng console, tạo ứng dụng GUI chạy trên đa nền tảng và cách lập trình
+
+45
+00:04:14,360 --> 00:04:16,280
+ứng dụng GUI linh hoạt theo hướng
+
+46
+00:04:16,280 --> 00:04:18,080
+declarative programming trên Qt quick.
+
